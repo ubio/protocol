@@ -1,0 +1,38 @@
+{
+  "name": "@ubio/protocol",
+  "version": "0.0.0",
+  "description": "ubio Automation Protocol",
+  "main": "index.js",
+  "author": "ubio",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "check": "eslint --ext=js,vue .",
+    "dev": "run-p watch:* serve",
+    "build": "run-p build:*",
+    "serve": "ws -d docs --spa index.html",
+    "build:js": "browserify dev/ -o docs/build/app.js",
+    "watch:js": "watchify -p browserify-hmr dev/ -o docs/build/app.js"
+  },
+  "pre-commit": [
+    "check",
+    "build"
+  ],
+  "devDependencies": {
+    "ajv": "^5.3.0",
+    "babel-core": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
+    "browserify-hmr": "^0.3.5",
+    "eslint": "^4.10.0",
+    "eslint-config-ub": "^2.0.0",
+    "eslint-plugin-vue": "^2.1.0",
+    "local-web-server": "^2.3.0",
+    "npm-run-all": "^4.1.2",
+    "pre-commit": "^1.2.2",
+    "vue": "^2.5.3",
+    "vue-router": "^3.0.1",
+    "vueify": "^9.4.1",
+    "watchify": "^3.9.0"
+  }
+}

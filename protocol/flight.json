@@ -1,0 +1,40 @@
+{
+    "id": "Flight",
+    "description": "Flight domain allows automating airplane tickets booking and collecting related information.",
+    "events": {
+        "finalPrice": {
+            "id": "finalPrice",
+            "description": "Emitted immediately before placing booking order, when final price is available.",
+            "properties": {
+                "price": {
+                    "$ref": "Core#/types/Price",
+                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page"
+                }
+            },
+            "required": [
+                "price"
+            ]
+        },
+        "bookingSuccess": {
+            "id": "bookingSuccess",
+            "description": "Emitted on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking"
+                },
+                "price": {
+                    "$ref": "Core#/types/Price"
+                }
+            },
+            "required": [
+                "bookingReference"
+            ]
+        }
+    },
+    "types": {}
+}
