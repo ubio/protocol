@@ -4,7 +4,7 @@ const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
     mode: 'history',
-    base: '/',
+    base: '/protocol',
     routes: [
         {
             path: '',
