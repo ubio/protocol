@@ -9,9 +9,15 @@
                 {{ prop.type }}
             </div>
             <template v-if="ref">
-                <a :href="ref.href">
+                <router-link :to="{
+                    name: 'domain',
+                    params: {
+                        domainId: ref.domainId,
+                    },
+                    hash: ref.hash,
+                }">
                     {{ ref.domainId }}.{{ ref.id }}
-                </a>
+                </router-link>
             </template>
             <div class="prop__optional"
                  v-if="!required">
@@ -39,14 +45,14 @@ module.exports = {
         ref() {
             const { $ref } = this.prop;
             if ($ref) {
-                const href = '/' + $ref;
                 const [domainId, pointer] = $ref.split('#');
                 const [,namespace, id] = pointer.split('/');
                 return {
                     domainId,
                     namespace,
                     id,
-                    href,
+                    pointer,
+                    hash: `#${namespace}-${id}`,
                 };
             }
             return null;

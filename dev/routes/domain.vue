@@ -38,6 +38,16 @@ module.exports = {
         domainId: { type: String, required: true },
     },
 
+    watch: {
+
+        $route({ hash }) {
+            if (hash) {
+                this.scrollToActive();
+            }
+        },
+
+    },
+
     computed: {
 
         domain() {
@@ -50,6 +60,22 @@ module.exports = {
 
         hasEvents() {
             return Object.keys(this.domain.events).length > 0;
+        },
+
+    },
+
+    methods: {
+
+        scrollToActive() {
+            if (!this.$route.hash) {
+                return;
+            }
+            try {
+                const el = this.$el.querySelector(this.$route.hash);
+                if (el) {
+                    el.scrollIntoViewIfNeeded();
+                }
+            } catch (err) {}
         },
 
     },

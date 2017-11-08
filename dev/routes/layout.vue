@@ -3,7 +3,8 @@
         <div class="layout__sidebar">
             <router-link
                 class="layout__sidebar-link"
-                :to="{ name: 'home' }">
+                :to="{ name: 'home' }"
+                exact>
                 Home
             </router-link>
             <router-link class="layout__sidebar-link"
@@ -61,7 +62,7 @@ module.exports = {
     color: var(--ui-primary);
 }
 
-.layout__sidebar-link.router-link-exact-active {
+.layout__sidebar-link.router-link-active {
     color: var(--ui-primary--inverse);
     background: var(--ui-primary);
 }

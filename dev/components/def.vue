@@ -1,5 +1,6 @@
 <template>
     <div class="def"
+         :class="{ 'def--active': active }"
          :id="id">
         <h3>
             <span class="def__domain">{{ domain.id }}</span>.<span class="def__id">{{ def.id }}</span>
@@ -43,7 +44,11 @@ module.exports = {
     computed: {
 
         id() {
-            return `/protocol/${this.namespace}/${this.def.id}`;
+            return `${this.namespace}-${this.def.id}`;
+        },
+
+        active() {
+            return this.$route.hash === '#' + this.id;
         },
 
     },
@@ -63,6 +68,11 @@ module.exports = {
 <style>
 .def {
     margin: 1em 0;
+    padding: 0 1em;
+}
+
+.def--active {
+    border-left: 2px solid var(--ui-primary);
 }
 
 .def__type {

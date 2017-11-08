@@ -16,7 +16,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":12,"vue-hot-reload-api":10,"vueify/lib/insert-css":13}],2:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    margin: 1em 0;\n}\n\n.def__type {\n    color: var(--ui-muted);\n}\n\n.def__body {\n    margin-left: 2em;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    margin: 1em 0;\n    padding: 0 1em;\n}\n\n.def--active {\n    border-left: 2px solid var(--ui-primary);\n}\n\n.def__type {\n    color: var(--ui-muted);\n}\n\n.def__body {\n    margin-left: 2em;\n}")
 ;(function(){
 
 
@@ -35,7 +35,11 @@ module.exports = {
     computed: {
 
         id() {
-            return `/protocol/${this.namespace}/${this.def.id}`;
+            return `${this.namespace}-${this.def.id}`;
+        },
+
+        active() {
+            return this.$route.hash === '#' + this.id;
         }
 
     },
@@ -54,7 +58,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",attrs:{"id":_vm.id}},[_c('h3',[_c('span',{staticClass:"def__domain"},[_vm._v(_vm._s(_vm.domain.id))]),_vm._v("."),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),(_vm.def.type)?_c('span',{staticClass:"def__type"},[_vm._v(_vm._s(_vm.def.type))]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"def__body"},[_c('p',{staticClass:"def__description"},[_vm._v("\n            "+_vm._s(_vm.def.description)+"\n        ")]),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.def.enum.join(', ')))])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"required":_vm.isPropRequired(id)}})})]:_vm._e()],2)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.id}},[_c('h3',[_c('span',{staticClass:"def__domain"},[_vm._v(_vm._s(_vm.domain.id))]),_vm._v("."),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),(_vm.def.type)?_c('span',{staticClass:"def__type"},[_vm._v(_vm._s(_vm.def.type))]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"def__body"},[_c('p',{staticClass:"def__description"},[_vm._v("\n            "+_vm._s(_vm.def.description)+"\n        ")]),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.def.enum.join(', ')))])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"required":_vm.isPropRequired(id)}})})]:_vm._e()],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -85,14 +89,14 @@ module.exports = {
         ref() {
             const { $ref } = this.prop;
             if ($ref) {
-                const href = '/' + $ref;
                 const [domainId, pointer] = $ref.split('#');
                 const [, namespace, id] = pointer.split('/');
                 return {
                     domainId,
                     namespace,
                     id,
-                    href
+                    pointer,
+                    hash: `#${namespace}-${id}`
                 };
             }
             return null;
@@ -105,7 +109,13 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[(_vm.prop.type)?_c('div',{staticClass:"prop__type"},[_vm._v("\n            "+_vm._s(_vm.prop.type)+"\n        ")]):_vm._e(),_vm._v(" "),(_vm.ref)?[_c('a',{attrs:{"href":_vm.ref.href}},[_vm._v("\n                "+_vm._s(_vm.ref.domainId)+"."+_vm._s(_vm.ref.id)+"\n            ")])]:_vm._e(),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description"},[_vm._v("\n            "+_vm._s(_vm.prop.description)+"\n        ")]):_vm._e()],2)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[(_vm.prop.type)?_c('div',{staticClass:"prop__type"},[_vm._v("\n            "+_vm._s(_vm.prop.type)+"\n        ")]):_vm._e(),_vm._v(" "),(_vm.ref)?[_c('router-link',{attrs:{"to":{
+                name: 'domain',
+                params: {
+                    domainId: _vm.ref.domainId,
+                },
+                hash: _vm.ref.hash,
+            }}},[_vm._v("\n                "+_vm._s(_vm.ref.domainId)+"."+_vm._s(_vm.ref.id)+"\n            ")])]:_vm._e(),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description"},[_vm._v("\n            "+_vm._s(_vm.prop.description)+"\n        ")]):_vm._e()],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -124,8 +134,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
-    mode: 'history',
-    base: '/protocol',
+    mode: 'hash',
     routes: [{
         path: '',
         component: require('./routes/layout.vue'),
@@ -158,6 +167,16 @@ module.exports = {
         domainId: { type: String, required: true }
     },
 
+    watch: {
+
+        $route({ hash }) {
+            if (hash) {
+                this.scrollToActive();
+            }
+        }
+
+    },
+
     computed: {
 
         domain() {
@@ -170,6 +189,22 @@ module.exports = {
 
         hasEvents() {
             return Object.keys(this.domain.events).length > 0;
+        }
+
+    },
+
+    methods: {
+
+        scrollToActive() {
+            if (!this.$route.hash) {
+                return;
+            }
+            try {
+                const el = this.$el.querySelector(this.$route.hash);
+                if (el) {
+                    el.scrollIntoViewIfNeeded();
+                }
+            } catch (err) {}
         }
 
     }
@@ -207,7 +242,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":12,"vue-hot-reload-api":10}],7:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout {\n    height: 100vh;\n    display: flex;\n    flex-flow: row no-wrap;\n}\n\n.layout__sidebar {\n    flex: 0 0 160px;\n    background: var(--ui-default);\n    overflow-y: auto;\n}\n\n.layout__main {\n    flex: 1;\n    padding: 1em 2em;\n    overflow: auto;\n}\n\n.layout__sidebar-link {\n    display: block;\n    padding: .5em;\n    color: var(--ui-primary);\n}\n\n.layout__sidebar-link.router-link-exact-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout {\n    height: 100vh;\n    display: flex;\n    flex-flow: row no-wrap;\n}\n\n.layout__sidebar {\n    flex: 0 0 160px;\n    background: var(--ui-default);\n    overflow-y: auto;\n}\n\n.layout__main {\n    flex: 1;\n    padding: 1em 2em;\n    overflow: auto;\n}\n\n.layout__sidebar-link {\n    display: block;\n    padding: .5em;\n    color: var(--ui-primary);\n}\n\n.layout__sidebar-link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}")
 ;(function(){
 
 
@@ -226,7 +261,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__sidebar"},[_c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{ name: 'home' }}},[_vm._v("\n            Home\n        ")]),_vm._v(" "),_vm._l((_vm.protocol),function(domain){return _c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__sidebar"},[_c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{ name: 'home' },"exact":""}},[_vm._v("\n            Home\n        ")]),_vm._v(" "),_vm._l((_vm.protocol),function(domain){return _c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{
                          name: 'domain',
                          params: { domainId: domain.id }
                      }}},[_vm._v("\n            "+_vm._s(domain.id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
