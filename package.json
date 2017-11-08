@@ -10,7 +10,7 @@
     "check": "eslint --ext=js,vue .",
     "dev": "run-p watch:* serve",
     "build": "run-p build:* && git add docs/build",
-    "serve": "ws -d docs --spa index.html",
+    "serve": "ws -d docs --spa index.html -r '/protocol/* -> /$1'",
     "build:js": "browserify dev/ -o docs/build/app.js",
     "watch:js": "watchify -p browserify-hmr dev/ -o docs/build/app.js"
   },

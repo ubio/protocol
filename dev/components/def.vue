@@ -43,7 +43,7 @@ module.exports = {
     computed: {
 
         id() {
-            return `/${this.namespace}/${this.def.id}`;
+            return `/protocol/${this.namespace}/${this.def.id}`;
         },
 
     },
