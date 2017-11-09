@@ -24,7 +24,7 @@
 </template>
 
 <script>
-const protocol = require('../../protocol');
+const protocol = require('../../src/protocol');
 
 module.exports = {
 

@@ -4,7 +4,7 @@
     "inputs": {
         "selectedSeats": {
             "id": "selectedSeats",
-            "description": "An array of seat identifiers selected for each passenger. Must match identifiers from <code>Flight.seatSelection</code> event.",
+            "description": "An array of seat identifiers selected for each passenger. Must match identifiers from <code>Flight.requestSeatSelection</code> event.",
             "properties": {
                 "seatIds": {
                     "type": "array",
@@ -19,8 +19,8 @@
         }
     },
     "events": {
-        "seatSelection": {
-            "id": "seatSelection",
+        "requestSeatSelection": {
+            "id": "requestSeatSelection",
             "description": "Emitted when seat selection is required by website. Client must read information about available seats and then respond with <code>Flight.selectedSeats</code>.",
             "properties": {
                 "availableSeats": {
@@ -61,7 +61,7 @@
             "id": "Seat",
             "description": "Seat selection metadata, extracted from the page.",
             "properties": {
-                "id": {
+                "seatId": {
                     "type": "string",
                     "description": "Seat identifier."
                 },
@@ -71,7 +71,7 @@
                 }
             },
             "required": [
-                "id"
+                "seatId"
             ]
         }
     }

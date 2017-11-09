@@ -179,7 +179,7 @@ module.exports = new VueRouter({
 ;(function(){
 
 
-const protocol = require('../../protocol');
+const protocol = require('../../src/protocol');
 
 module.exports = {
 
@@ -254,7 +254,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-7b888ac9", __vue__options__)
   }
 })()}
-},{"../../protocol":16,"../components/def.vue":2,"vue":12,"vue-hot-reload-api":10}],6:[function(require,module,exports){
+},{"../../src/protocol":16,"../components/def.vue":2,"vue":12,"vue-hot-reload-api":10}],6:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -274,7 +274,7 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout 
 ;(function(){
 
 
-const protocol = require('../../protocol');
+const protocol = require('../../src/protocol');
 
 module.exports = {
 
@@ -305,7 +305,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-4bebe3a2", __vue__options__)
   }
 })()}
-},{"../../protocol":16,"vue":12,"vue-hot-reload-api":10,"vueify/lib/insert-css":13}],8:[function(require,module,exports){
+},{"../../src/protocol":16,"vue":12,"vue-hot-reload-api":10,"vueify/lib/insert-css":13}],8:[function(require,module,exports){
 'use strict';
 
 const Vue = require('vue');
@@ -11620,7 +11620,7 @@ module.exports={
     "inputs": {
         "selectedSeats": {
             "id": "selectedSeats",
-            "description": "An array of seat identifiers selected for each passenger. Must match identifiers from <code>Flight.seatSelection</code> event.",
+            "description": "An array of seat identifiers selected for each passenger. Must match identifiers from <code>Flight.requestSeatSelection</code> event.",
             "properties": {
                 "seatIds": {
                     "type": "array",
@@ -11635,8 +11635,8 @@ module.exports={
         }
     },
     "events": {
-        "seatSelection": {
-            "id": "seatSelection",
+        "requestSeatSelection": {
+            "id": "requestSeatSelection",
             "description": "Emitted when seat selection is required by website. Client must read information about available seats and then respond with <code>Flight.selectedSeats</code>.",
             "properties": {
                 "availableSeats": {
@@ -11677,7 +11677,7 @@ module.exports={
             "id": "Seat",
             "description": "Seat selection metadata, extracted from the page.",
             "properties": {
-                "id": {
+                "seatId": {
                     "type": "string",
                     "description": "Seat identifier."
                 },
@@ -11687,7 +11687,7 @@ module.exports={
                 }
             },
             "required": [
-                "id"
+                "seatId"
             ]
         }
     }
