@@ -16,7 +16,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":12,"vue-hot-reload-api":10,"vueify/lib/insert-css":13}],2:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    margin: 1em 0;\n    padding: 0 1em;\n}\n\n.def--active {\n    border-left: 2px solid var(--ui-primary);\n}\n\n.def__type {\n    color: var(--ui-muted);\n}\n\n.def__body {\n    margin-left: 2em;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    margin: 1em 0;\n}\n\n.def__header {\n    margin: 1em 0;\n    font-size: 20px;\n    display: flex;\n    flex-flow: row nowrap;\n}\n\n.def__link {\n    flex: 0 0 2rem;\n    visibility: hidden;\n    cursor: pointer;\n}\n\n.def__header:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    position: relative;\n    top: -.5em;\n    color: var(--ui-muted);\n}\n\n.def__body {\n    margin-left: 2rem;\n}")
 ;(function(){
 
 
@@ -49,6 +49,10 @@ module.exports = {
         isPropRequired(id) {
             const required = this.def.required || [];
             return required.includes(id);
+        },
+
+        permalink() {
+            this.$router.replace('#' + this.id);
         }
 
     }
@@ -58,7 +62,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.id}},[_c('h3',[_c('span',{staticClass:"def__domain"},[_vm._v(_vm._s(_vm.domain.id))]),_vm._v("."),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),(_vm.def.type)?_c('span',{staticClass:"def__type"},[_vm._v(_vm._s(_vm.def.type))]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"def__body"},[_c('p',{staticClass:"def__description"},[_vm._v("\n            "+_vm._s(_vm.def.description)+"\n        ")]),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.def.enum.join(', ')))])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"required":_vm.isPropRequired(id)}})})]:_vm._e()],2)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.id}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__domain"},[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('span',{staticClass:"def__dot"},[_vm._v(".")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),(_vm.def.type)?_c('span',{staticClass:"def__type"},[_vm._v("\n            "+_vm._s(_vm.def.type)+"\n        ")]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"def__body"},[_c('p',{staticClass:"def__description"},[_vm._v("\n            "+_vm._s(_vm.def.description)+"\n        ")]),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.def.enum.join(', ')))])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"required":_vm.isPropRequired(id)}})})]:_vm._e()],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -11160,8 +11164,22 @@ exports.insert = function (css) {
 },{}],14:[function(require,module,exports){
 module.exports={
     "id": "Core",
-    "description": "Core domain contains data type definitions for all other domains.",
-    "events": {},
+    "description": "Core domain contains generic definitions used in other domains.",
+    "events": {
+        "finalPrice": {
+            "id": "finalPrice",
+            "description": "Emitted immediately before placing booking order, when final price is available.",
+            "properties": {
+                "price": {
+                    "$ref": "Core#/types/Price",
+                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page"
+                }
+            },
+            "required": [
+                "price"
+            ]
+        }
+    },
     "types": {
         "URL": {
             "id": "URL",
@@ -11574,19 +11592,6 @@ module.exports={
     "id": "Flight",
     "description": "Flight domain allows automating airplane tickets booking and collecting related information.",
     "events": {
-        "finalPrice": {
-            "id": "finalPrice",
-            "description": "Emitted immediately before placing booking order, when final price is available.",
-            "properties": {
-                "price": {
-                    "$ref": "Core#/types/Price",
-                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page"
-                }
-            },
-            "required": [
-                "price"
-            ]
-        },
         "bookingSuccess": {
             "id": "bookingSuccess",
             "description": "Emitted on \"Booking success\" page.",

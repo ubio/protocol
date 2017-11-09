@@ -2,11 +2,17 @@
     <div class="def"
          :class="{ 'def--active': active }"
          :id="id">
-        <h3>
-            <span class="def__domain">{{ domain.id }}</span>.<span class="def__id">{{ def.id }}</span>
+        <div class="def__header">
+            <span class="def__link"
+                  @click="permalink">🔗</span>
+            <span class="def__domain">{{ domain.id }}</span>
+            <span class="def__dot">.</span>
+            <span class="def__id">{{ def.id }}</span>
             <span class="def__type"
-                  v-if="def.type">{{ def.type }}</span>
-        </h3>
+                  v-if="def.type">
+                {{ def.type }}
+            </span>
+        </div>
         <div class="def__body">
             <p class="def__description">
                 {{ def.description }}
@@ -60,6 +66,10 @@ module.exports = {
             return required.includes(id);
         },
 
+        permalink() {
+            this.$router.replace('#' + this.id);
+        },
+
     },
 
 };
@@ -68,18 +78,33 @@ module.exports = {
 <style>
 .def {
     margin: 1em 0;
-    padding: 0 1em;
 }
 
-.def--active {
-    border-left: 2px solid var(--ui-primary);
+.def__header {
+    margin: 1em 0;
+    font-size: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.def__link {
+    flex: 0 0 2rem;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.def__header:hover .def__link,
+.def--active .def__link {
+    visibility: visible;
 }
 
 .def__type {
+    position: relative;
+    top: -.5em;
     color: var(--ui-muted);
 }
 
 .def__body {
-    margin-left: 2em;
+    margin-left: 2rem;
 }
 </style>

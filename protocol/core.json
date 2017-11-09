@@ -1,7 +1,21 @@
 {
     "id": "Core",
-    "description": "Core domain contains data type definitions for all other domains.",
-    "events": {},
+    "description": "Core domain contains generic definitions used in other domains.",
+    "events": {
+        "finalPrice": {
+            "id": "finalPrice",
+            "description": "Emitted immediately before placing booking order, when final price is available.",
+            "properties": {
+                "price": {
+                    "$ref": "Core#/types/Price",
+                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page"
+                }
+            },
+            "required": [
+                "price"
+            ]
+        }
+    },
     "types": {
         "URL": {
             "id": "URL",
