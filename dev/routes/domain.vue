@@ -2,25 +2,34 @@
     <div class="domain">
         <div class="domain__intro">
             <h1>{{ domain.id }}</h1>
-            <p>{{ domain.description }}</p>
+            <div class="domain__description">{{ domain.description }}</div>
         </div>
+
+        <template v-if="hasInputs">
+            <h2>Inputs</h2>
+            <def
+                v-for="def of domain.inputs"
+                namespace="inputs"
+                :def="def"
+                :domain="domain"/>
+        </template>
 
         <template v-if="hasEvents">
             <h2>Events</h2>
-            <def v-for="def of domain.events"
-                 namespace="events"
-                 :def="def"
-                 :domain="domain">
-            </def>
+            <def
+                v-for="def of domain.events"
+                namespace="events"
+                :def="def"
+                :domain="domain"/>
         </template>
 
         <template v-if="hasTypes">
             <h2>Types</h2>
-            <def v-for="def of domain.types"
-                 namespace="types"
-                 :def="def"
-                 :domain="domain">
-            </def>
+            <def
+                v-for="def of domain.types"
+                namespace="types"
+                :def="def"
+                :domain="domain"/>
         </template>
     </div>
 </template>
@@ -54,12 +63,16 @@ module.exports = {
             return protocol[this.domainId];
         },
 
-        hasTypes() {
-            return Object.keys(this.domain.types).length > 0;
+        hasInputs() {
+            return Object.keys(this.domain.inputs).length > 0;
         },
 
         hasEvents() {
             return Object.keys(this.domain.events).length > 0;
+        },
+
+        hasTypes() {
+            return Object.keys(this.domain.types).length > 0;
         },
 
     },

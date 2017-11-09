@@ -21,6 +21,14 @@ html, body {
     font: 14px/1.5 'Libre Franklin', sans-serif;
 }
 
+h1 {
+    margin: 1em 0;
+}
+
+h2 {
+    margin: 2em 0;
+}
+
 a {
     color: var(--ui-primary);
     text-decoration: none;
@@ -28,5 +36,11 @@ a {
 
 dt {
     font-weight: bold;
+}
+
+code {
+    padding: 0 2px;
+    background: var(--ui-default);
+    font: 14px/1.5 monospace;
 }
 </style>

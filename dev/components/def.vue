@@ -8,27 +8,28 @@
             <span class="def__domain">{{ domain.id }}</span>
             <span class="def__dot">.</span>
             <span class="def__id">{{ def.id }}</span>
-            <span class="def__type"
-                  v-if="def.type">
-                {{ def.type }}
+            <span class="def__type">
+                {{ def.type || 'object' }}
             </span>
         </div>
         <div class="def__body">
-            <p class="def__description">
-                {{ def.description }}
-            </p>
+            <div class="def__description"
+                 v-html="def.description">
+            </div>
             <template v-if="def.enum">
                 <h4>Allowed values</h4>
-                <p>{{ def.enum.join(', ') }}</p>
+                <div class="def__enum">
+                    {{ def.enum.join(', ') }}
+                </div>
             </template>
             <template v-if="def.properties">
                 <h4>Properties</h4>
-                <prop class="def__prop"
-                        v-for="prop,id in def.properties"
-                        :id="id"
-                        :prop="prop"
-                        :required="isPropRequired(id)">
-                </prop>
+                <prop
+                    class="def__prop"
+                    v-for="prop,id in def.properties"
+                    :id="id"
+                    :prop="prop"
+                    :required="isPropRequired(id)"/>
             </template>
         </div>
     </div>
@@ -77,18 +78,18 @@ module.exports = {
 
 <style>
 .def {
-    margin: 1em 0;
+    margin: 2em 0;
 }
 
 .def__header {
-    margin: 1em 0;
+    margin: 1em 0 1em -1.5em;
     font-size: 20px;
     display: flex;
     flex-flow: row nowrap;
 }
 
 .def__link {
-    flex: 0 0 2rem;
+    flex: 0 0 1.5em;
     visibility: hidden;
     cursor: pointer;
 }
@@ -99,12 +100,7 @@ module.exports = {
 }
 
 .def__type {
-    position: relative;
-    top: -.5em;
+    margin-left: .5em;
     color: var(--ui-muted);
-}
-
-.def__body {
-    margin-left: 2rem;
 }
 </style>

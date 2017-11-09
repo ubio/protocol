@@ -1,6 +1,8 @@
 {
     "id": "Core",
     "description": "Core domain contains generic definitions used in other domains.",
+    "inputs": {
+    },
     "events": {
         "finalPrice": {
             "id": "finalPrice",
@@ -8,7 +10,7 @@
             "properties": {
                 "price": {
                     "$ref": "Core#/types/Price",
-                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page"
+                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
                 }
             },
             "required": [
@@ -34,7 +36,7 @@
                 "value": {
                     "type": "integer",
                     "minimum": 0,
-                    "description": "A positive integer in the smallest currency unit (100 for £1.00)"
+                    "description": "A positive integer in the smallest currency unit (100 for £1.00)."
                 }
             },
             "required": [

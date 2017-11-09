@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --ui-default: hsl(204, 10%, 90%);\n    --ui-default--inverse: #222;\n    --ui-primary: hsl(204, 72%, 48%);\n    --ui-primary--inverse: #fff;\n    --ui-muted: hsl(204, 15%, 50%);\n    --ui-muted--inverse: #fff;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/1.5 'Libre Franklin', sans-serif;\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ndt {\n    font-weight: bold;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --ui-default: hsl(204, 10%, 90%);\n    --ui-default--inverse: #222;\n    --ui-primary: hsl(204, 72%, 48%);\n    --ui-primary--inverse: #fff;\n    --ui-muted: hsl(204, 15%, 50%);\n    --ui-muted--inverse: #fff;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/1.5 'Libre Franklin', sans-serif;\n}\n\nh1 {\n    margin: 1em 0;\n}\n\nh2 {\n    margin: 2em 0;\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ndt {\n    font-weight: bold;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
@@ -16,7 +16,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":12,"vue-hot-reload-api":10,"vueify/lib/insert-css":13}],2:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    margin: 1em 0;\n}\n\n.def__header {\n    margin: 1em 0;\n    font-size: 20px;\n    display: flex;\n    flex-flow: row nowrap;\n}\n\n.def__link {\n    flex: 0 0 2rem;\n    visibility: hidden;\n    cursor: pointer;\n}\n\n.def__header:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    position: relative;\n    top: -.5em;\n    color: var(--ui-muted);\n}\n\n.def__body {\n    margin-left: 2rem;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    margin: 2em 0;\n}\n\n.def__header {\n    margin: 1em 0 1em -1.5em;\n    font-size: 20px;\n    display: flex;\n    flex-flow: row nowrap;\n}\n\n.def__link {\n    flex: 0 0 1.5em;\n    visibility: hidden;\n    cursor: pointer;\n}\n\n.def__header:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin-left: .5em;\n    color: var(--ui-muted);\n}")
 ;(function(){
 
 
@@ -62,7 +62,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.id}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__domain"},[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('span',{staticClass:"def__dot"},[_vm._v(".")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),(_vm.def.type)?_c('span',{staticClass:"def__type"},[_vm._v("\n            "+_vm._s(_vm.def.type)+"\n        ")]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"def__body"},[_c('p',{staticClass:"def__description"},[_vm._v("\n            "+_vm._s(_vm.def.description)+"\n        ")]),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.def.enum.join(', ')))])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"required":_vm.isPropRequired(id)}})})]:_vm._e()],2)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.id}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__domain"},[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('span',{staticClass:"def__dot"},[_vm._v(".")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('span',{staticClass:"def__type"},[_vm._v("\n            "+_vm._s(_vm.def.type || 'object')+"\n        ")])]),_vm._v(" "),_c('div',{staticClass:"def__body"},[_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.description)}}),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n                "+_vm._s(_vm.def.enum.join(', '))+"\n            ")])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"required":_vm.isPropRequired(id)}})})]:_vm._e()],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -92,18 +92,32 @@ module.exports = {
 
         ref() {
             const { $ref } = this.prop;
-            if ($ref) {
-                const [domainId, pointer] = $ref.split('#');
-                const [, namespace, id] = pointer.split('/');
-                return {
-                    domainId,
-                    namespace,
-                    id,
-                    pointer,
-                    hash: `#${namespace}-${id}`
-                };
-            }
-            return null;
+            return $ref ? this.parseRef($ref) : null;
+        },
+
+        isArray() {
+            return this.prop.type === 'array';
+        },
+
+        itemsRef() {
+            const { $ref } = this.prop.items || {};
+            return $ref ? this.parseRef($ref) : null;
+        }
+
+    },
+
+    methods: {
+
+        parseRef($ref) {
+            const [domainId, pointer] = $ref.split('#');
+            const [, namespace, id] = pointer.split('/');
+            return {
+                domainId,
+                namespace,
+                id,
+                pointer,
+                hash: `#${namespace}-${id}`
+            };
         }
 
     }
@@ -113,13 +127,19 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[(_vm.prop.type)?_c('div',{staticClass:"prop__type"},[_vm._v("\n            "+_vm._s(_vm.prop.type)+"\n        ")]):_vm._e(),_vm._v(" "),(_vm.ref)?[_c('router-link',{attrs:{"to":{
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[(_vm.prop.type)?_c('div',{staticClass:"prop__type"},[_vm._v("\n            "+_vm._s(_vm.prop.type)+"\n            "),(_vm.isArray)?_c('span',{staticClass:"prop__array"},[_vm._v("\n                of\n                "),(_vm.itemsRef)?[_c('router-link',{attrs:{"to":{
+                        name: 'domain',
+                        params: {
+                            domainId: _vm.itemsRef.domainId,
+                        },
+                        hash: _vm.itemsRef.hash,
+                    }}},[_vm._v("\n                        "+_vm._s(_vm.itemsRef.domainId)+"."+_vm._s(_vm.itemsRef.id)+"\n                    ")])]:[_vm._v("\n                    "+_vm._s(_vm.prop.items.type)+"\n                ")]],2):_vm._e()]):_vm._e(),_vm._v(" "),(_vm.ref)?[_c('router-link',{attrs:{"to":{
                 name: 'domain',
                 params: {
                     domainId: _vm.ref.domainId,
                 },
                 hash: _vm.ref.hash,
-            }}},[_vm._v("\n                "+_vm._s(_vm.ref.domainId)+"."+_vm._s(_vm.ref.id)+"\n            ")])]:_vm._e(),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description"},[_vm._v("\n            "+_vm._s(_vm.prop.description)+"\n        ")]):_vm._e()],2)])}
+            }}},[_vm._v("\n                "+_vm._s(_vm.ref.domainId)+"."+_vm._s(_vm.ref.id)+"\n            ")])]:_vm._e(),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e()],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -187,12 +207,16 @@ module.exports = {
             return protocol[this.domainId];
         },
 
-        hasTypes() {
-            return Object.keys(this.domain.types).length > 0;
+        hasInputs() {
+            return Object.keys(this.domain.inputs).length > 0;
         },
 
         hasEvents() {
             return Object.keys(this.domain.events).length > 0;
+        },
+
+        hasTypes() {
+            return Object.keys(this.domain.types).length > 0;
         }
 
     },
@@ -218,7 +242,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.domain.description))])]),_vm._v(" "),(_vm.hasEvents)?[_c('h2',[_vm._v("Events")]),_vm._v(" "),_vm._l((_vm.domain.events),function(def){return _c('def',{attrs:{"namespace":"events","def":def,"domain":_vm.domain}})})]:_vm._e(),_vm._v(" "),(_vm.hasTypes)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.domain.types),function(def){return _c('def',{attrs:{"namespace":"types","def":def,"domain":_vm.domain}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description"},[_vm._v(_vm._s(_vm.domain.description))])]),_vm._v(" "),(_vm.hasInputs)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.domain.inputs),function(def){return _c('def',{attrs:{"namespace":"inputs","def":def,"domain":_vm.domain}})})]:_vm._e(),_vm._v(" "),(_vm.hasEvents)?[_c('h2',[_vm._v("Events")]),_vm._v(" "),_vm._l((_vm.domain.events),function(def){return _c('def',{attrs:{"namespace":"events","def":def,"domain":_vm.domain}})})]:_vm._e(),_vm._v(" "),(_vm.hasTypes)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.domain.types),function(def){return _c('def',{attrs:{"namespace":"types","def":def,"domain":_vm.domain}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -246,7 +270,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":12,"vue-hot-reload-api":10}],7:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout {\n    height: 100vh;\n    display: flex;\n    flex-flow: row no-wrap;\n}\n\n.layout__sidebar {\n    flex: 0 0 160px;\n    background: var(--ui-default);\n    overflow-y: auto;\n}\n\n.layout__main {\n    flex: 1;\n    padding: 1em 2em;\n    overflow: auto;\n}\n\n.layout__sidebar-link {\n    display: block;\n    padding: .5em;\n    color: var(--ui-primary);\n}\n\n.layout__sidebar-link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout {\n    height: 100vh;\n    display: flex;\n    flex-flow: row no-wrap;\n}\n\n.layout__sidebar {\n    flex: 0 0 160px;\n    background: var(--ui-default);\n    overflow-y: auto;\n}\n\n.layout__main {\n    flex: 1;\n    padding: 1em 4em;\n    overflow: auto;\n}\n\n.layout__sidebar-link {\n    display: block;\n    padding: .5em;\n    color: var(--ui-primary);\n}\n\n.layout__sidebar-link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}")
 ;(function(){
 
 
@@ -11165,6 +11189,8 @@ exports.insert = function (css) {
 module.exports={
     "id": "Core",
     "description": "Core domain contains generic definitions used in other domains.",
+    "inputs": {
+    },
     "events": {
         "finalPrice": {
             "id": "finalPrice",
@@ -11172,7 +11198,7 @@ module.exports={
             "properties": {
                 "price": {
                     "$ref": "Core#/types/Price",
-                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page"
+                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
                 }
             },
             "required": [
@@ -11198,7 +11224,7 @@ module.exports={
                 "value": {
                     "type": "integer",
                     "minimum": 0,
-                    "description": "A positive integer in the smallest currency unit (100 for £1.00)"
+                    "description": "A positive integer in the smallest currency unit (100 for £1.00)."
                 }
             },
             "required": [
@@ -11591,21 +11617,54 @@ module.exports={
 module.exports={
     "id": "Flight",
     "description": "Flight domain allows automating airplane tickets booking and collecting related information.",
+    "inputs": {
+        "selectedSeats": {
+            "id": "selectedSeats",
+            "description": "An array of seat identifiers selected for each passenger. Must match identifiers from <code>Flight.seatSelection</code> event.",
+            "properties": {
+                "seatIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "seatIds"
+            ]
+        }
+    },
     "events": {
+        "seatSelection": {
+            "id": "seatSelection",
+            "description": "Emitted when seat selection is required by website. Client must read information about available seats and then respond with <code>Flight.selectedSeats</code>.",
+            "properties": {
+                "availableSeats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Flight#/types/Seat"
+                    }
+                }
+            },
+            "required": [
+                "availableSeats"
+            ]
+        },
         "bookingSuccess": {
             "id": "bookingSuccess",
-            "description": "Emitted on \"Booking success\" page.",
+            "description": "Emitted on \"Booking success\" page. This will be the last emitted event before <code>Job.state</code> becomes <code>success</code>.",
             "properties": {
                 "bookingReference": {
                     "type": "string",
-                    "description": "Booking reference grabbed from the page"
+                    "description": "Booking reference grabbed from the page."
                 },
                 "message": {
                     "type": "string",
-                    "description": "Message about successful booking"
+                    "description": "Message about successful booking."
                 },
                 "price": {
-                    "$ref": "Core#/types/Price"
+                    "$ref": "Core#/types/Price",
+                    "description": "Price, if found on the successful booking page."
                 }
             },
             "required": [
@@ -11613,7 +11672,25 @@ module.exports={
             ]
         }
     },
-    "types": {}
+    "types": {
+        "Seat": {
+            "id": "Seat",
+            "description": "Seat selection metadata, extracted from the page.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Seat identifier."
+                },
+                "price": {
+                    "$ref": "Core#/types/Price",
+                    "description": "Price, if available."
+                }
+            },
+            "required": [
+                "id"
+            ]
+        }
+    }
 }
 
 },{}],16:[function(require,module,exports){

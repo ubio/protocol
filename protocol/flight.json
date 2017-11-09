@@ -1,21 +1,54 @@
 {
     "id": "Flight",
     "description": "Flight domain allows automating airplane tickets booking and collecting related information.",
+    "inputs": {
+        "selectedSeats": {
+            "id": "selectedSeats",
+            "description": "An array of seat identifiers selected for each passenger. Must match identifiers from <code>Flight.seatSelection</code> event.",
+            "properties": {
+                "seatIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "seatIds"
+            ]
+        }
+    },
     "events": {
+        "seatSelection": {
+            "id": "seatSelection",
+            "description": "Emitted when seat selection is required by website. Client must read information about available seats and then respond with <code>Flight.selectedSeats</code>.",
+            "properties": {
+                "availableSeats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "Flight#/types/Seat"
+                    }
+                }
+            },
+            "required": [
+                "availableSeats"
+            ]
+        },
         "bookingSuccess": {
             "id": "bookingSuccess",
-            "description": "Emitted on \"Booking success\" page.",
+            "description": "Emitted on \"Booking success\" page. This will be the last emitted event before <code>Job.state</code> becomes <code>success</code>.",
             "properties": {
                 "bookingReference": {
                     "type": "string",
-                    "description": "Booking reference grabbed from the page"
+                    "description": "Booking reference grabbed from the page."
                 },
                 "message": {
                     "type": "string",
-                    "description": "Message about successful booking"
+                    "description": "Message about successful booking."
                 },
                 "price": {
-                    "$ref": "Core#/types/Price"
+                    "$ref": "Core#/types/Price",
+                    "description": "Price, if found on the successful booking page."
                 }
             },
             "required": [
@@ -23,5 +56,23 @@
             ]
         }
     },
-    "types": {}
+    "types": {
+        "Seat": {
+            "id": "Seat",
+            "description": "Seat selection metadata, extracted from the page.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Seat identifier."
+                },
+                "price": {
+                    "$ref": "Core#/types/Price",
+                    "description": "Price, if available."
+                }
+            },
+            "required": [
+                "id"
+            ]
+        }
+    }
 }

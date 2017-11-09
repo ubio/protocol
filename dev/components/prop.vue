@@ -7,6 +7,24 @@
             <div class="prop__type"
                  v-if="prop.type">
                 {{ prop.type }}
+                <span class="prop__array"
+                      v-if="isArray">
+                    of
+                    <template v-if="itemsRef">
+                        <router-link :to="{
+                            name: 'domain',
+                            params: {
+                                domainId: itemsRef.domainId,
+                            },
+                            hash: itemsRef.hash,
+                        }">
+                            {{ itemsRef.domainId }}.{{ itemsRef.id }}
+                        </router-link>
+                    </template>
+                    <template v-else>
+                        {{ prop.items.type }}
+                    </template>
+                </span>
             </div>
             <template v-if="ref">
                 <router-link :to="{
@@ -24,8 +42,8 @@
                 optional
             </div>
             <div class="prop__description"
-                 v-if="prop.description">
-                {{ prop.description }}
+                 v-if="prop.description"
+                 v-html="prop.description">
             </div>
         </div>
     </div>
@@ -44,18 +62,32 @@ module.exports = {
 
         ref() {
             const { $ref } = this.prop;
-            if ($ref) {
-                const [domainId, pointer] = $ref.split('#');
-                const [,namespace, id] = pointer.split('/');
-                return {
-                    domainId,
-                    namespace,
-                    id,
-                    pointer,
-                    hash: `#${namespace}-${id}`,
-                };
-            }
-            return null;
+            return $ref ? this.parseRef($ref) : null;
+        },
+
+        isArray() {
+            return this.prop.type === 'array';
+        },
+
+        itemsRef() {
+            const { $ref } = this.prop.items || {};
+            return $ref ? this.parseRef($ref) : null;
+        },
+
+    },
+
+    methods: {
+
+        parseRef($ref) {
+            const [domainId, pointer] = $ref.split('#');
+            const [,namespace, id] = pointer.split('/');
+            return {
+                domainId,
+                namespace,
+                id,
+                pointer,
+                hash: `#${namespace}-${id}`,
+            };
         },
 
     },

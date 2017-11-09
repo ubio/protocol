@@ -52,7 +52,7 @@ module.exports = {
 
 .layout__main {
     flex: 1;
-    padding: 1em 2em;
+    padding: 1em 4em;
     overflow: auto;
 }
 
