@@ -2,5 +2,5 @@
 
 module.exports = {
     Core: require('./core'),
-    Flight: require('./flight'),
+    FlightBooking: require('./flight-booking'),
 };

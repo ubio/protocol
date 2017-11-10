@@ -1,0 +1,81 @@
+{
+    "description": "Allows automating airplane tickets booking and collecting related information.",
+    "inputs": {
+        "url": { "$ref": "#/Core/types/URL" },
+        "flight": { "$ref": "#/FlightBooking/types/Flight" },
+        "account": { "$ref": "#/Core/types/Account" },
+        "passengers": { "$ref": "#/FlightBooking/types/Passengers" },
+        "payment": { "$ref": "#/Core/types/Payment" },
+        "selectedSeats": { "$ref": "#/FlightBooking/types/SelectedSeats" },
+        "finalPriceConsent": { "$ref": "#/Core/types/FinalPriceConsent" }
+    },
+    "outputs": {
+        "availableSeats": { "$ref": "#/FlightBooking/types/AvailableSeats" },
+        "finalPrice": { "$ref": "#/Core/types/FinalPrice" },
+        "bookingConfirmation": { "$ref": "#/FlightBooking/types/BookingConfirmation" }
+    },
+    "types": {
+        "AvailableSeats": {
+            "description": "Seat selection metadata extracted from website.",
+            "type": "array",
+            "items": {
+                "$ref": "#/FlightBooking/types/AvailableSeat"
+            },
+            "additionalProperties": "false"
+        },
+        "AvailableSeat": {
+            "properties": {
+                "seatId": {
+                    "type": "string",
+                    "description": "Seat identifier."
+                },
+                "price": {
+                    "$ref": "#/Core/types/Price",
+                    "description": "Price, if available."
+                }
+            },
+            "additionalProperties": "false",
+            "required": [
+                "seatId",
+                "price"
+            ]
+        },
+        "SelectedSeats": {
+            "description": "Seats selected for each passenger. Must match identifiers from <code>Flight.availableSeats</code> output.",
+            "properties": {
+                "seatIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Must match <code>seatId</code> from <code>Flight.availableSeats</code>"
+                }
+            },
+            "additionalProperties": "false",
+            "required": [
+                "seatIds"
+            ]
+        },
+        "BookingConfirmation": {
+            "description": "Emitted on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking."
+                },
+                "price": {
+                    "$ref": "#/Core/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": "false",
+            "required": [
+                "bookingReference"
+            ]
+        }
+    }
+}

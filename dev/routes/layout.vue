@@ -8,12 +8,12 @@
                 Home
             </router-link>
             <router-link class="layout__sidebar-link"
-                         v-for="domain in protocol"
+                         v-for="domain in domains"
                          :to="{
                              name: 'domain',
-                             params: { domainId: domain.id }
+                             params: { domainId: domain._id }
                          }">
-                {{ domain.id }}
+                {{ domain._id }}
             </router-link>
         </div>
         <div class="layout__main">
@@ -24,13 +24,13 @@
 </template>
 
 <script>
-const protocol = require('../../src/protocol');
+const protocol = require('../../src');
 
 module.exports = {
 
     data() {
         return {
-            protocol,
+            domains: protocol.domains,
         };
     },
 

@@ -1,0 +1,58 @@
+title Message-based communication
+
+note over Client,Job
+    I. Supply initial input
+end note
+
+Client->Job: POST /jobs { input: { url, flight, ... } }
+
+note over Client,Job
+    II. Over-supply input in runtime
+end note
+
+Client->Job: POST ~/inputs { account: { email, phone, ... } }
+
+note over Client,Job
+    III. Seat selection
+end note
+
+Job->Client: POST ~/outputs { availableSeats: [...] }
+
+Job->Job: job.state = "awaitingInput"
+
+Job->Job: job.waitFor = "selectedSeats"
+
+Client->Job: POST ~/inputs { selectedSeats: [...] }
+
+note over Job
+    <resume>
+end note
+
+note over Client,Job
+    IV. Price confirmation
+end note
+
+Job->Client: POST ~/outputs { finalPrice: { price } }
+
+Job->Job: job.state = "awaitingInput"
+
+Job->Job: job.waitFor = "finalPriceConsent"
+
+Client->Job: POST ~/inputs "finalPriceConsent": { confirm: true }
+
+note over Job
+    <resume>
+end note
+
+note over Client,Job
+    V. Booking confirmation
+end note
+
+Job->Client: POST ~/outputs { bookingSuccess: { bookingRef, price }}
+
+Job->Job: job.state = "success"
+
+note over Job
+    <end>
+end note
+

@@ -13,6 +13,8 @@
     --ui-primary--inverse: #fff;
     --ui-muted: hsl(204, 15%, 50%);
     --ui-muted--inverse: #fff;
+    --ui-failure: hsl(0, 100%, 64%);
+    --ui-failure--inverse: #fff;
 }
 
 html, body {
@@ -32,10 +34,6 @@ h2 {
 a {
     color: var(--ui-primary);
     text-decoration: none;
-}
-
-dt {
-    font-weight: bold;
 }
 
 code {

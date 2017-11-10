@@ -1,37 +1,41 @@
 {
-    "id": "Core",
     "description": "Core domain contains generic definitions used in other domains.",
-    "inputs": {
-    },
-    "events": {
-        "finalPrice": {
-            "id": "finalPrice",
-            "description": "Emitted immediately before placing booking order, when final price is available.",
+    "inputs": {},
+    "outputs": {},
+    "types": {
+        "URL": {
+            "type": "string",
+            "format": "url",
+            "title": "URL Record",
+            "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url"
+        },
+        "FinalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.",
             "properties": {
                 "price": {
-                    "$ref": "Core#/types/Price",
+                    "$ref": "#/Core/types/Price",
                     "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
                 }
             },
             "required": [
                 "price"
             ]
-        }
-    },
-    "types": {
-        "URL": {
-            "id": "URL",
-            "type": "string",
-            "format": "url",
-            "title": "URL Record",
-            "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url"
+        },
+        "FinalPriceConsent": {
+            "description": "Client's consent for final price. Must exactly match the <code>FinalPrice</code> object.",
+            "properties": {
+                "price": { "$ref": "#/Core/types/Price" }
+            },
+            "additionalProperties": "false",
+            "required": [
+                "price"
+            ]
         },
         "Price": {
-            "id": "Price",
             "type": "object",
             "properties": {
                 "currencyCode": {
-                    "$ref": "Core#/types/CurrencyCode"
+                    "$ref": "#/Core/types/CurrencyCode"
                 },
                 "value": {
                     "type": "integer",
@@ -46,7 +50,6 @@
             "additionalProperties": false
         },
         "CountryCode": {
-            "id": "CountryCode",
             "type": "string",
             "title": "ISO 3166-1 alpha-2 Country Code",
             "description": "ISO 3166-1 alpha-2 code representing the country. United Kingdom is officially assigned the alpha-2 code gb rather than uk. Lowercase.",
@@ -305,7 +308,6 @@
             ]
         },
         "CurrencyCode": {
-            "id": "CurrencyCode",
             "type": "string",
             "minLength": 3,
             "maxLength": 3,
