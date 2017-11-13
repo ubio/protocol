@@ -12,7 +12,8 @@
     "build": "run-p build:* && git add docs/build",
     "serve": "ws -d docs",
     "build:js": "browserify dev/ -o docs/build/app.js",
-    "watch:js": "watchify -p browserify-hmr dev/ -o docs/build/app.js"
+    "watch:js": "watchify -p browserify-hmr dev/ -o docs/build/app.js",
+    "test": "mocha"
   },
   "pre-commit": [
     "check",
@@ -27,7 +28,9 @@
     "eslint": "^4.10.0",
     "eslint-config-ub": "^2.0.0",
     "eslint-plugin-vue": "^2.1.0",
+    "expect": "^21.2.1",
     "local-web-server": "^2.3.0",
+    "mocha": "^4.0.1",
     "npm-run-all": "^4.1.2",
     "pre-commit": "^1.2.2",
     "vue": "^2.5.3",

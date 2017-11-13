@@ -1,0 +1,2 @@
+-R spec
+test/**/*.test.js

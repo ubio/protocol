@@ -220,7 +220,7 @@ module.exports = new VueRouter({
 ;(function(){
 
 
-const protocol = require('../../src/protocol');
+const protocol = require('../../src');
 
 module.exports = {
 
@@ -250,7 +250,7 @@ module.exports = {
     computed: {
 
         domain() {
-            return protocol[this.domainId];
+            return protocol.getDomain(this.domainId);
         },
 
         hasInputs() {
@@ -288,7 +288,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.hasInputs)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.domain.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.hasOutputs)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.domain.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.hasTypes)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.domain.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.$id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.hasInputs)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.domain.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.hasOutputs)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.domain.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.hasTypes)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.domain.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -300,7 +300,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-7b888ac9", __vue__options__)
   }
 })()}
-},{"../../src/protocol":69,"../components/def.vue":2,"../components/oneliner.vue":3,"vue":64,"vue-hot-reload-api":62}],8:[function(require,module,exports){
+},{"../../src":66,"../components/def.vue":2,"../components/oneliner.vue":3,"vue":64,"vue-hot-reload-api":62}],8:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -337,8 +337,8 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__sidebar"},[_c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{ name: 'home' },"exact":""}},[_vm._v("\n            Home\n        ")]),_vm._v(" "),_vm._l((_vm.domains),function(domain){return _c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{
                          name: 'domain',
-                         params: { domainId: domain._id }
-                     }}},[_vm._v("\n            "+_vm._s(domain._id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
+                         params: { domainId: domain.$id }
+                     }}},[_vm._v("\n            "+_vm._s(domain.$id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18543,28 +18543,32 @@ exports.insert = function (css) {
 'use strict';
 
 const Ajv = require('ajv');
-const protocol = require('./protocol');
+const schema = require('./schema');
+const metaSchema = require('./meta.json');
 
 const namespaces = ['inputs', 'outputs', 'types'];
 const domainsById = new Map();
 const defsById = new Map();
 const defsByRef = new Map();
 
-for (const domainId of Object.keys(protocol)) {
-    const domain = protocol[domainId];
-    domain._id = domainId;
+for (const domainId of Object.keys(schema.domains)) {
+    const domain = schema.domains[domainId];
+    domain.$id = domainId;
     domainsById.set(domainId, domain);
     for (const ns of namespaces) {
         const defs = domain[ns];
         for (const relativeId of Object.keys(defs)) {
             const def = defs[relativeId];
-            def._id = `${domainId}.${relativeId}`;
+            const id = `${domainId}.${relativeId}`;
+            const relativeRef = `${domainId}#/${ns}/${relativeId}`;
+            def._id = id;
             def._ns = ns;
             def._relativeId = relativeId;
             def._domainId = domainId;
-            def._selfRef = `#/${domainId}/${ns}/${relativeId}`;
-            defsById.set(def._id, def);
-            defsByRef.set(def._selfRef, def);
+            def._relativeRef = relativeRef;
+            def._absoluteRef = `https://ub.io/protocol/${relativeRef}`;
+            defsById.set(id, def);
+            defsByRef.set(relativeRef, def);
         }
     }
 }
@@ -18573,7 +18577,8 @@ const domains = Array.from(domainsById.values());
 const defs = Array.from(defsById.values());
 
 module.exports = {
-    protocol,
+    schema,
+    metaSchema,
     namespaces,
     domains,
     defs,
@@ -18597,16 +18602,198 @@ function resolveRef($ref) {
 
 function createValidator(options) {
     const ajv = new Ajv(options);
-    ajv.addSchema(protocol, 'ubio');
+    ajv.addSchema(schema);
     for (const def of defs) {
-        ajv.addSchema({ $ref: 'ubio' + def._selfRef }, def._id);
+        ajv.addSchema({ $ref: def._absoluteRef }, def._id);
     }
     return ajv;
 }
 
-},{"./protocol":69,"ajv":12}],67:[function(require,module,exports){
+},{"./meta.json":67,"./schema":70,"ajv":12}],67:[function(require,module,exports){
 module.exports={
-    "description": "Core domain contains generic definitions used in other domains.",
+    "type": "object",
+    "properties": {
+        "$id": {
+            "type": "string"
+        },
+        "domains": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": { "$ref": "#/definitions/Domain" }
+            }
+        }
+    },
+    "required": [
+        "$id",
+        "domains"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+        "Id": {
+            "type": "string",
+            "pattern": "^[A-Z][a-zA-Z0-9]+"
+        },
+        "Domain": {
+            "type": "object",
+            "properties": {
+                "$id": { "$ref": "#/definitions/Id" },
+                "description": {
+                    "type": "string"
+                },
+                "inputs": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": { "$ref": "#/definitions/SimpleDef" }
+                    }
+                },
+                "outputs": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": { "$ref": "#/definitions/SimpleDef" }
+                    }
+                },
+                "types": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": { "$ref": "#/definitions/TypeDef" }
+                    }
+                }
+            },
+            "required": [
+                "$id",
+                "description",
+                "inputs",
+                "outputs",
+                "types"
+            ],
+            "additionalProperties": false
+        },
+        "SimpleDef": {
+            "properties": {
+                "$ref": {
+                    "type": "string",
+                    "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
+                },
+                "_id": {
+                    "type": "string",
+                    "pattern": "^[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
+                },
+                "_domainId": {
+                    "type": "string",
+                    "pattern": "^[A-Z][a-zA-Z0-9]+$"
+                },
+                "_ns": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9]+$"
+                },
+                "_relativeId": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9]+$"
+                },
+                "_relativeRef": {
+                    "type": "string",
+                    "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
+                },
+                "_absoluteRef": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "TypeDef": {
+        }
+    }
+}
+
+
+},{}],68:[function(require,module,exports){
+module.exports={
+    "$id": "FlightBooking",
+    "description": "Allows automating airplane tickets booking and collecting related information.",
+    "inputs": {
+        "url": { "$ref": "Generic#/types/URL" },
+        "flight": { "$ref": "FlightBooking#/types/Flight" },
+        "account": { "$ref": "Generic#/types/Account" },
+        "passengers": { "$ref": "FlightBooking#/types/Passengers" },
+        "payment": { "$ref": "Generic#/types/Payment" },
+        "selectedSeats": { "$ref": "FlightBooking#/types/SelectedSeats" },
+        "finalPriceConsent": { "$ref": "Generic#/types/FinalPriceConsent" }
+    },
+    "outputs": {
+        "availableSeats": { "$ref": "FlightBooking#/types/AvailableSeats" },
+        "finalPrice": { "$ref": "Generic#/types/FinalPrice" },
+        "bookingConfirmation": { "$ref": "FlightBooking#/types/BookingConfirmation" }
+    },
+    "types": {
+        "AvailableSeats": {
+            "description": "Seat selection metadata extracted from website.",
+            "type": "array",
+            "items": {
+                "$ref": "FlightBooking#/types/AvailableSeat"
+            },
+            "additionalProperties": "false"
+        },
+        "AvailableSeat": {
+            "properties": {
+                "seatId": {
+                    "type": "string",
+                    "description": "Seat identifier."
+                },
+                "price": {
+                    "$ref": "Generic#/types/Price",
+                    "description": "Price, if available."
+                }
+            },
+            "additionalProperties": "false",
+            "required": [
+                "seatId",
+                "price"
+            ]
+        },
+        "SelectedSeats": {
+            "description": "Seats selected for each passenger. Must match identifiers from <code>Flight.availableSeats</code> output.",
+            "properties": {
+                "seatIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Must match <code>seatId</code> from <code>Flight.availableSeats</code>"
+                }
+            },
+            "additionalProperties": "false",
+            "required": [
+                "seatIds"
+            ]
+        },
+        "BookingConfirmation": {
+            "description": "Emitted on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking."
+                },
+                "price": {
+                    "$ref": "Generic#/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": "false",
+            "required": [
+                "bookingReference"
+            ]
+        }
+    }
+}
+
+},{}],69:[function(require,module,exports){
+module.exports={
+    "$id": "Generic",
+    "description": "Generic domain contains generic definitions used in other domains.",
     "inputs": {},
     "outputs": {},
     "types": {
@@ -18620,7 +18807,7 @@ module.exports={
             "description": "Emitted immediately before placing order, when final price is available.",
             "properties": {
                 "price": {
-                    "$ref": "#/Core/types/Price",
+                    "$ref": "Generic#/types/Price",
                     "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
                 }
             },
@@ -18631,7 +18818,7 @@ module.exports={
         "FinalPriceConsent": {
             "description": "Client's consent for final price. Must exactly match the <code>FinalPrice</code> object.",
             "properties": {
-                "price": { "$ref": "#/Core/types/Price" }
+                "price": { "$ref": "Generic#/types/Price" }
             },
             "additionalProperties": "false",
             "required": [
@@ -18642,7 +18829,7 @@ module.exports={
             "type": "object",
             "properties": {
                 "currencyCode": {
-                    "$ref": "#/Core/types/CurrencyCode"
+                    "$ref": "Generic#/types/CurrencyCode"
                 },
                 "value": {
                     "type": "integer",
@@ -19034,95 +19221,15 @@ module.exports={
         }
     }
 }
-},{}],68:[function(require,module,exports){
-module.exports={
-    "description": "Allows automating airplane tickets booking and collecting related information.",
-    "inputs": {
-        "url": { "$ref": "#/Core/types/URL" },
-        "flight": { "$ref": "#/FlightBooking/types/Flight" },
-        "account": { "$ref": "#/Core/types/Account" },
-        "passengers": { "$ref": "#/FlightBooking/types/Passengers" },
-        "payment": { "$ref": "#/Core/types/Payment" },
-        "selectedSeats": { "$ref": "#/FlightBooking/types/SelectedSeats" },
-        "finalPriceConsent": { "$ref": "#/Core/types/FinalPriceConsent" }
-    },
-    "outputs": {
-        "availableSeats": { "$ref": "#/FlightBooking/types/AvailableSeats" },
-        "finalPrice": { "$ref": "#/Core/types/FinalPrice" },
-        "bookingConfirmation": { "$ref": "#/FlightBooking/types/BookingConfirmation" }
-    },
-    "types": {
-        "AvailableSeats": {
-            "description": "Seat selection metadata extracted from website.",
-            "type": "array",
-            "items": {
-                "$ref": "#/FlightBooking/types/AvailableSeat"
-            },
-            "additionalProperties": "false"
-        },
-        "AvailableSeat": {
-            "properties": {
-                "seatId": {
-                    "type": "string",
-                    "description": "Seat identifier."
-                },
-                "price": {
-                    "$ref": "#/Core/types/Price",
-                    "description": "Price, if available."
-                }
-            },
-            "additionalProperties": "false",
-            "required": [
-                "seatId",
-                "price"
-            ]
-        },
-        "SelectedSeats": {
-            "description": "Seats selected for each passenger. Must match identifiers from <code>Flight.availableSeats</code> output.",
-            "properties": {
-                "seatIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Must match <code>seatId</code> from <code>Flight.availableSeats</code>"
-                }
-            },
-            "additionalProperties": "false",
-            "required": [
-                "seatIds"
-            ]
-        },
-        "BookingConfirmation": {
-            "description": "Emitted on \"Booking success\" page.",
-            "properties": {
-                "bookingReference": {
-                    "type": "string",
-                    "description": "Booking reference grabbed from the page."
-                },
-                "message": {
-                    "type": "string",
-                    "description": "Message about successful booking."
-                },
-                "price": {
-                    "$ref": "#/Core/types/Price",
-                    "description": "Price, if found on the successful booking page."
-                }
-            },
-            "additionalProperties": "false",
-            "required": [
-                "bookingReference"
-            ]
-        }
-    }
-}
-
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 
 module.exports = {
-    Core: require('./core'),
-    FlightBooking: require('./flight-booking')
+    $id: 'https://ub.io/protocol/',
+    domains: {
+        Generic: require('./generic'),
+        FlightBooking: require('./flight-booking')
+    }
 };
 
-},{"./core":67,"./flight-booking":68}]},{},[10]);
+},{"./flight-booking":68,"./generic":69}]},{},[10]);

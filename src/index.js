@@ -1,28 +1,32 @@
 'use strict';
 
 const Ajv = require('ajv');
-const protocol = require('./protocol');
+const schema = require('./schema');
+const metaSchema = require('./meta.json');
 
 const namespaces = ['inputs', 'outputs', 'types'];
 const domainsById = new Map();
 const defsById = new Map();
 const defsByRef = new Map();
 
-for (const domainId of Object.keys(protocol)) {
-    const domain = protocol[domainId];
-    domain._id = domainId;
+for (const domainId of Object.keys(schema.domains)) {
+    const domain = schema.domains[domainId];
+    domain.$id = domainId;
     domainsById.set(domainId, domain);
     for (const ns of namespaces) {
         const defs = domain[ns];
         for (const relativeId of Object.keys(defs)) {
             const def = defs[relativeId];
-            def._id = `${domainId}.${relativeId}`;
+            const id = `${domainId}.${relativeId}`;
+            const relativeRef = `${domainId}#/${ns}/${relativeId}`;
+            def._id = id;
             def._ns = ns;
             def._relativeId = relativeId;
             def._domainId = domainId;
-            def._selfRef = `#/${domainId}/${ns}/${relativeId}`;
-            defsById.set(def._id, def);
-            defsByRef.set(def._selfRef, def);
+            def._relativeRef = relativeRef;
+            def._absoluteRef = `https://ub.io/protocol/${relativeRef}`;
+            defsById.set(id, def);
+            defsByRef.set(relativeRef, def);
         }
     }
 }
@@ -31,7 +35,8 @@ const domains = Array.from(domainsById.values());
 const defs = Array.from(defsById.values());
 
 module.exports = {
-    protocol,
+    schema,
+    metaSchema,
     namespaces,
     domains,
     defs,
@@ -55,9 +60,9 @@ function resolveRef($ref) {
 
 function createValidator(options) {
     const ajv = new Ajv(options);
-    ajv.addSchema(protocol, 'ubio');
+    ajv.addSchema(schema);
     for (const def of defs) {
-        ajv.addSchema({ $ref: 'ubio' + def._selfRef }, def._id);
+        ajv.addSchema({ $ref: def._absoluteRef }, def._id);
     }
     return ajv;
 }

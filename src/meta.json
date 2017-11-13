@@ -1,0 +1,95 @@
+{
+    "type": "object",
+    "properties": {
+        "$id": {
+            "type": "string"
+        },
+        "domains": {
+            "type": "object",
+            "patternProperties": {
+                "^.*$": { "$ref": "#/definitions/Domain" }
+            }
+        }
+    },
+    "required": [
+        "$id",
+        "domains"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+        "Id": {
+            "type": "string",
+            "pattern": "^[A-Z][a-zA-Z0-9]+"
+        },
+        "Domain": {
+            "type": "object",
+            "properties": {
+                "$id": { "$ref": "#/definitions/Id" },
+                "description": {
+                    "type": "string"
+                },
+                "inputs": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": { "$ref": "#/definitions/SimpleDef" }
+                    }
+                },
+                "outputs": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": { "$ref": "#/definitions/SimpleDef" }
+                    }
+                },
+                "types": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": { "$ref": "#/definitions/TypeDef" }
+                    }
+                }
+            },
+            "required": [
+                "$id",
+                "description",
+                "inputs",
+                "outputs",
+                "types"
+            ],
+            "additionalProperties": false
+        },
+        "SimpleDef": {
+            "properties": {
+                "$ref": {
+                    "type": "string",
+                    "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
+                },
+                "_id": {
+                    "type": "string",
+                    "pattern": "^[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
+                },
+                "_domainId": {
+                    "type": "string",
+                    "pattern": "^[A-Z][a-zA-Z0-9]+$"
+                },
+                "_ns": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9]+$"
+                },
+                "_relativeId": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9]+$"
+                },
+                "_relativeRef": {
+                    "type": "string",
+                    "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
+                },
+                "_absoluteRef": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "TypeDef": {
+        }
+    }
+}
+

@@ -1,25 +1,26 @@
 {
+    "$id": "FlightBooking",
     "description": "Allows automating airplane tickets booking and collecting related information.",
     "inputs": {
-        "url": { "$ref": "#/Core/types/URL" },
-        "flight": { "$ref": "#/FlightBooking/types/Flight" },
-        "account": { "$ref": "#/Core/types/Account" },
-        "passengers": { "$ref": "#/FlightBooking/types/Passengers" },
-        "payment": { "$ref": "#/Core/types/Payment" },
-        "selectedSeats": { "$ref": "#/FlightBooking/types/SelectedSeats" },
-        "finalPriceConsent": { "$ref": "#/Core/types/FinalPriceConsent" }
+        "url": { "$ref": "Generic#/types/URL" },
+        "flight": { "$ref": "FlightBooking#/types/Flight" },
+        "account": { "$ref": "Generic#/types/Account" },
+        "passengers": { "$ref": "FlightBooking#/types/Passengers" },
+        "payment": { "$ref": "Generic#/types/Payment" },
+        "selectedSeats": { "$ref": "FlightBooking#/types/SelectedSeats" },
+        "finalPriceConsent": { "$ref": "Generic#/types/FinalPriceConsent" }
     },
     "outputs": {
-        "availableSeats": { "$ref": "#/FlightBooking/types/AvailableSeats" },
-        "finalPrice": { "$ref": "#/Core/types/FinalPrice" },
-        "bookingConfirmation": { "$ref": "#/FlightBooking/types/BookingConfirmation" }
+        "availableSeats": { "$ref": "FlightBooking#/types/AvailableSeats" },
+        "finalPrice": { "$ref": "Generic#/types/FinalPrice" },
+        "bookingConfirmation": { "$ref": "FlightBooking#/types/BookingConfirmation" }
     },
     "types": {
         "AvailableSeats": {
             "description": "Seat selection metadata extracted from website.",
             "type": "array",
             "items": {
-                "$ref": "#/FlightBooking/types/AvailableSeat"
+                "$ref": "FlightBooking#/types/AvailableSeat"
             },
             "additionalProperties": "false"
         },
@@ -30,7 +31,7 @@
                     "description": "Seat identifier."
                 },
                 "price": {
-                    "$ref": "#/Core/types/Price",
+                    "$ref": "Generic#/types/Price",
                     "description": "Price, if available."
                 }
             },
@@ -68,7 +69,7 @@
                     "description": "Message about successful booking."
                 },
                 "price": {
-                    "$ref": "#/Core/types/Price",
+                    "$ref": "Generic#/types/Price",
                     "description": "Price, if found on the successful booking page."
                 }
             },

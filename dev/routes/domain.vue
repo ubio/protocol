@@ -1,12 +1,11 @@
 <template>
     <div class="domain">
         <div class="domain__intro">
-            <h1>{{ domain.id }}</h1>
+            <h1>{{ domain.$id }}</h1>
             <div class="domain__description"
                  v-html="domain.description">
             </div>
         </div>
-
 
         <template v-if="hasInputs">
             <h2>Inputs</h2>
@@ -33,7 +32,7 @@
 </template>
 
 <script>
-const protocol = require('../../src/protocol');
+const protocol = require('../../src');
 
 module.exports = {
 
@@ -63,7 +62,7 @@ module.exports = {
     computed: {
 
         domain() {
-            return protocol[this.domainId];
+            return protocol.getDomain(this.domainId);
         },
 
         hasInputs() {
