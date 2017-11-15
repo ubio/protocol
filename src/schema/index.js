@@ -5,5 +5,6 @@ module.exports = {
     domains: {
         Generic: require('./generic'),
         FlightBooking: require('./flight-booking'),
+        Test: require('./test'),
     },
 };

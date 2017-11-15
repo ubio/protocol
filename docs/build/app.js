@@ -19238,8 +19238,22 @@ module.exports = {
     $id: 'https://ub.io/protocol/',
     domains: {
         Generic: require('./generic'),
-        FlightBooking: require('./flight-booking')
+        FlightBooking: require('./flight-booking'),
+        Test: require('./test')
     }
 };
 
-},{"./flight-booking":68,"./generic":69}]},{},[10]);
+},{"./flight-booking":68,"./generic":69,"./test":71}],71:[function(require,module,exports){
+module.exports={
+    "$id": "Test",
+    "description": "Internal domain for testing platform features.",
+    "inputs": {
+        "url": { "$ref": "Generic#/types/URL" }
+    },
+    "outputs": {
+    },
+    "types": {
+    }
+}
+
+},{}]},{},[10]);

@@ -21,7 +21,6 @@ describe('Protocol', () => {
 
         it('returns list of domains', () => {
             expect(Array.isArray(protocol.domains)).toEqual(true);
-            expect(protocol.domains.length).toEqual(2);
         });
 
     });

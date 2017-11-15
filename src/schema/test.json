@@ -1,0 +1,11 @@
+{
+    "$id": "Test",
+    "description": "Internal domain for testing platform features.",
+    "inputs": {
+        "url": { "$ref": "Generic#/types/URL" }
+    },
+    "outputs": {
+    },
+    "types": {
+    }
+}
