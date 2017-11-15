@@ -4,7 +4,14 @@ const Ajv = require('ajv');
 const schema = require('./schema');
 const metaSchema = require('./meta.json');
 
-const namespaces = ['inputs', 'outputs', 'types'];
+const DEFAULT_AJV_OPTIONS = {
+    allErrors: true,
+    useDefaults: true,
+    jsonPointers: true,
+    format: 'full',
+};
+const NAMESPACES = ['inputs', 'outputs', 'types'];
+
 const domainsById = new Map();
 const defsById = new Map();
 const defsByRef = new Map();
@@ -14,7 +21,7 @@ for (const domainId of Object.keys(schema.domains)) {
     domain.$id = domainId;
     domain.domainId = domainId;
     domainsById.set(domainId, domain);
-    for (const ns of namespaces) {
+    for (const ns of NAMESPACES) {
         const defs = domain[ns];
         for (const relativeId of Object.keys(defs)) {
             const def = defs[relativeId];
@@ -36,9 +43,10 @@ const domains = Array.from(domainsById.values());
 const defs = Array.from(defsById.values());
 
 module.exports = {
+    DEFAULT_AJV_OPTIONS,
+    NAMESPACES,
     schema,
     metaSchema,
-    namespaces,
     domains,
     defs,
     getDomain,
@@ -59,7 +67,7 @@ function resolveRef($ref) {
     return defsByRef.get($ref);
 }
 
-function createValidator(options) {
+function createValidator(options = DEFAULT_AJV_OPTIONS) {
     const ajv = new Ajv(options);
     ajv.addSchema(schema);
     for (const def of defs) {
