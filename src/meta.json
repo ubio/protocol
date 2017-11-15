@@ -25,6 +25,7 @@
             "type": "object",
             "properties": {
                 "$id": { "$ref": "#/definitions/Id" },
+                "domainId": { "$ref": "#/definitions/Id" },
                 "description": {
                     "type": "string"
                 },
@@ -62,27 +63,27 @@
                     "type": "string",
                     "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
                 },
-                "_id": {
+                "defId": {
                     "type": "string",
                     "pattern": "^[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
                 },
-                "_domainId": {
+                "domainId": {
                     "type": "string",
                     "pattern": "^[A-Z][a-zA-Z0-9]+$"
                 },
-                "_ns": {
+                "ns": {
                     "type": "string",
                     "pattern": "^[a-zA-Z0-9]+$"
                 },
-                "_relativeId": {
+                "relativeId": {
                     "type": "string",
                     "pattern": "^[a-zA-Z0-9]+$"
                 },
-                "_relativeRef": {
+                "relativeRef": {
                     "type": "string",
                     "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
                 },
-                "_absoluteRef": {
+                "absoluteRef": {
                     "type": "string"
                 }
             },

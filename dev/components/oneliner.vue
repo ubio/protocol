@@ -1,7 +1,7 @@
 <template>
     <div class="oneliner">
         <div class="oneliner__id">
-            {{ def._relativeId }}
+            {{ def.relativeId }}
         </div>
         <div class="oneliner__body">
             <schema-type :def="def"/>

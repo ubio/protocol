@@ -12,6 +12,7 @@
     "build": "run-p build:* && git add docs/build",
     "serve": "ws -d docs",
     "build:js": "browserify dev/ -o docs/build/app.js",
+    "build:schema": "node ./build-schema.js",
     "watch:js": "watchify -p browserify-hmr dev/ -o docs/build/app.js",
     "test": "mocha"
   },

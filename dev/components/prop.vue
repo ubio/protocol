@@ -54,8 +54,7 @@ module.exports = {
 }
 
 .prop__id {
-    flex: 0 0 120px;
-    margin-right: 1em;
+    flex: 0 0 160px;
 }
 
 .prop__body {

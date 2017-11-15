@@ -12,6 +12,7 @@ const defsByRef = new Map();
 for (const domainId of Object.keys(schema.domains)) {
     const domain = schema.domains[domainId];
     domain.$id = domainId;
+    domain.domainId = domainId;
     domainsById.set(domainId, domain);
     for (const ns of namespaces) {
         const defs = domain[ns];
@@ -19,12 +20,12 @@ for (const domainId of Object.keys(schema.domains)) {
             const def = defs[relativeId];
             const id = `${domainId}.${relativeId}`;
             const relativeRef = `${domainId}#/${ns}/${relativeId}`;
-            def._id = id;
-            def._ns = ns;
-            def._relativeId = relativeId;
-            def._domainId = domainId;
-            def._relativeRef = relativeRef;
-            def._absoluteRef = `https://ub.io/protocol/${relativeRef}`;
+            def.defId = id;
+            def.ns = ns;
+            def.relativeId = relativeId;
+            def.domainId = domainId;
+            def.relativeRef = relativeRef;
+            def.absoluteRef = `https://ub.io/protocol/${relativeRef}`;
             defsById.set(id, def);
             defsByRef.set(relativeRef, def);
         }
@@ -62,7 +63,7 @@ function createValidator(options) {
     const ajv = new Ajv(options);
     ajv.addSchema(schema);
     for (const def of defs) {
-        ajv.addSchema({ $ref: def._absoluteRef }, def._id);
+        ajv.addSchema({ $ref: def.absoluteRef }, def.defId);
     }
     return ajv;
 }
