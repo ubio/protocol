@@ -18627,8 +18627,8 @@ module.exports={
         },
         "domains": {
             "type": "object",
-            "patternProperties": {
-                "^.*$": { "$ref": "#/definitions/Domain" }
+            "additionalProperties": {
+                "$ref": "#/definitions/Domain"
             }
         }
     },
@@ -18652,20 +18652,20 @@ module.exports={
                 },
                 "inputs": {
                     "type": "object",
-                    "patternProperties": {
-                        "^.*$": { "$ref": "#/definitions/SimpleDef" }
+                    "additionalProperties": {
+                        "$ref": "#/definitions/SimpleDef"
                     }
                 },
                 "outputs": {
                     "type": "object",
-                    "patternProperties": {
-                        "^.*$": { "$ref": "#/definitions/SimpleDef" }
+                    "additionalProperties": {
+                        "$ref": "#/definitions/SimpleDef"
                     }
                 },
                 "types": {
                     "type": "object",
-                    "patternProperties": {
-                        "^.*$": { "$ref": "#/definitions/TypeDef" }
+                    "additionalProperties": {
+                        "$ref": "#/definitions/TypeDef"
                     }
                 }
             },

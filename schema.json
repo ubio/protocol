@@ -656,6 +656,24 @@
         }
       },
       "domainId": "FlightBooking"
+    },
+    "Test": {
+      "$id": "Test",
+      "description": "Internal domain for testing platform features.",
+      "inputs": {
+        "url": {
+          "$ref": "Generic#/types/URL",
+          "defId": "Test.url",
+          "ns": "inputs",
+          "relativeId": "url",
+          "domainId": "Test",
+          "relativeRef": "Test#/inputs/url",
+          "absoluteRef": "https://ub.io/protocol/Test#/inputs/url"
+        }
+      },
+      "outputs": {},
+      "types": {},
+      "domainId": "Test"
     }
   }
 }
