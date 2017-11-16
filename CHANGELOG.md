@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [0.0.1] - 2017-11-16
+
 - Publish `schema.json` to GH pages
 - Amend `getDef` to accept `domain` and `key` separately
 
