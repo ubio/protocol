@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "author": "ubio",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "check": "eslint --ext=js,vue .",
     "dev": "run-p watch:* serve",
@@ -16,9 +15,9 @@
     "watch:js": "watchify -p browserify-hmr dev/ -o docs/build/app.js",
     "test": "mocha",
     "changelog": "node changelog.js",
-    "preversion": "run-s check test build",
+    "preversion": "run-s check test build changelog",
     "version": "git add -A",
-    "postversion": "npm publish && git push origin master --tags"
+    "postversion": "npm publish --access public && git push origin master --tags"
   },
   "pre-commit": [
     "check",
