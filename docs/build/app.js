@@ -19251,8 +19251,13 @@ module.exports={
         "url": { "$ref": "Generic#/types/URL" }
     },
     "outputs": {
+        "object": { "$ref": "Test#/types/Object" }
     },
     "types": {
+        "Object": {
+            "type": "object",
+            "description": "An object of arbitrary structure."
+        }
     }
 }
 
