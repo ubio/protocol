@@ -671,8 +671,29 @@
           "absoluteRef": "https://ub.io/protocol/Test#/inputs/url"
         }
       },
-      "outputs": {},
-      "types": {},
+      "outputs": {
+        "object": {
+          "$ref": "Test#/types/Object",
+          "defId": "Test.object",
+          "ns": "outputs",
+          "relativeId": "object",
+          "domainId": "Test",
+          "relativeRef": "Test#/outputs/object",
+          "absoluteRef": "https://ub.io/protocol/Test#/outputs/object"
+        }
+      },
+      "types": {
+        "Object": {
+          "type": "object",
+          "description": "An object of arbitrary structure.",
+          "defId": "Test.Object",
+          "ns": "types",
+          "relativeId": "Object",
+          "domainId": "Test",
+          "relativeRef": "Test#/types/Object",
+          "absoluteRef": "https://ub.io/protocol/Test#/types/Object"
+        }
+      },
       "domainId": "Test"
     }
   }

@@ -14,7 +14,11 @@
     "build:js": "browserify dev/ -o docs/build/app.js",
     "build:schema": "node ./build-schema.js",
     "watch:js": "watchify -p browserify-hmr dev/ -o docs/build/app.js",
-    "test": "mocha"
+    "test": "mocha",
+    "changelog": "node changelog.js",
+    "preversion": "run-s check test build",
+    "version": "git add -A",
+    "postversion": "npm publish && git push origin master --tags"
   },
   "pre-commit": [
     "check",
