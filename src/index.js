@@ -59,7 +59,10 @@ function getDomain(id) {
     return domainsById.get(id);
 }
 
-function getDef(id) {
+function getDef(domainOrDefId, key) {
+    const id = typeof key === 'string' ?
+        domainOrDefId + '.' + key :
+        domainOrDefId;
     return defsById.get(id);
 }
 

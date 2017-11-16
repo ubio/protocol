@@ -8,7 +8,7 @@
   "scripts": {
     "check": "eslint --ext=js,vue .",
     "dev": "run-p watch:* serve",
-    "build": "run-p build:* && git add docs/build",
+    "build": "run-p build:* && git add docs",
     "serve": "ws -d docs",
     "build:js": "browserify dev/ -o docs/build/app.js",
     "build:schema": "node ./build-schema.js",
