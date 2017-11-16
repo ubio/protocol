@@ -1,5 +1,4 @@
 {
-    "$id": "Generic",
     "description": "Generic domain contains generic definitions used in other domains.",
     "inputs": {},
     "outputs": {},
@@ -14,7 +13,7 @@
             "description": "Emitted immediately before placing order, when final price is available.",
             "properties": {
                 "price": {
-                    "$ref": "Generic#/types/Price",
+                    "$ref": "#Generic.Price",
                     "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
                 }
             },
@@ -25,7 +24,7 @@
         "FinalPriceConsent": {
             "description": "Client's consent for final price. Must exactly match the <code>FinalPrice</code> object.",
             "properties": {
-                "price": { "$ref": "Generic#/types/Price" }
+                "price": { "$ref": "#Generic.Price" }
             },
             "additionalProperties": "false",
             "required": [
@@ -36,7 +35,7 @@
             "type": "object",
             "properties": {
                 "currencyCode": {
-                    "$ref": "Generic#/types/CurrencyCode"
+                    "$ref": "#Generic.CurrencyCode"
                 },
                 "value": {
                     "type": "integer",

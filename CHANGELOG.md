@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Implement proper class-based API (essentials only)
 
 ## [0.0.1] - 2017-11-16
 

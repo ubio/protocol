@@ -1,30 +1,30 @@
 <template>
     <div class="domain">
         <div class="domain__intro">
-            <h1>{{ domain.$id }}</h1>
+            <h1>{{ domain.id }}</h1>
             <div class="domain__description"
                  v-html="domain.description">
             </div>
         </div>
 
-        <template v-if="hasInputs">
+        <template v-if="inputs.length">
             <h2>Inputs</h2>
             <oneliner
-                v-for="def of domain.inputs"
+                v-for="def of inputs"
                 :def="def"/>
         </template>
 
-        <template v-if="hasOutputs">
+        <template v-if="outputs.length">
             <h2>Outputs</h2>
             <oneliner
-                v-for="def of domain.outputs"
+                v-for="def of outputs"
                 :def="def"/>
         </template>
 
-        <template v-if="hasTypes">
+        <template v-if="types.length">
             <h2>Types</h2>
             <def
-                v-for="def of domain.types"
+                v-for="def of types"
                 :def="def"/>
         </template>
 
@@ -65,16 +65,16 @@ module.exports = {
             return protocol.getDomain(this.domainId);
         },
 
-        hasInputs() {
-            return Object.keys(this.domain.inputs).length > 0;
+        inputs() {
+            return this.domain.getInputs();
         },
 
-        hasOutputs() {
-            return Object.keys(this.domain.outputs).length > 0;
+        outputs() {
+            return this.domain.getOutputs();
         },
 
-        hasTypes() {
-            return Object.keys(this.domain.types).length > 0;
+        types() {
+            return this.domain.getTypes();
         },
 
     },

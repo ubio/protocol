@@ -11,9 +11,9 @@
                          v-for="domain in domains"
                          :to="{
                              name: 'domain',
-                             params: { domainId: domain.$id }
+                             params: { domainId: domain.id }
                          }">
-                {{ domain.$id }}
+                {{ domain.id }}
             </router-link>
         </div>
         <div class="layout__main">

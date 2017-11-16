@@ -2,7 +2,6 @@
   "$id": "https://ub.io/protocol/",
   "domains": {
     "Generic": {
-      "$id": "Generic",
       "description": "Generic domain contains generic definitions used in other domains.",
       "inputs": {},
       "outputs": {},
@@ -12,54 +11,39 @@
           "format": "url",
           "title": "URL Record",
           "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url",
-          "defId": "Generic.URL",
-          "ns": "types",
-          "relativeId": "URL",
-          "domainId": "Generic",
-          "relativeRef": "Generic#/types/URL",
-          "absoluteRef": "https://ub.io/protocol/Generic#/types/URL"
+          "$id": "#Generic.URL"
         },
         "FinalPrice": {
           "description": "Emitted immediately before placing order, when final price is available.",
           "properties": {
             "price": {
-              "$ref": "Generic#/types/Price",
+              "$ref": "#Generic.Price",
               "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
             }
           },
           "required": [
             "price"
           ],
-          "defId": "Generic.FinalPrice",
-          "ns": "types",
-          "relativeId": "FinalPrice",
-          "domainId": "Generic",
-          "relativeRef": "Generic#/types/FinalPrice",
-          "absoluteRef": "https://ub.io/protocol/Generic#/types/FinalPrice"
+          "$id": "#Generic.FinalPrice"
         },
         "FinalPriceConsent": {
           "description": "Client's consent for final price. Must exactly match the <code>FinalPrice</code> object.",
           "properties": {
             "price": {
-              "$ref": "Generic#/types/Price"
+              "$ref": "#Generic.Price"
             }
           },
           "additionalProperties": "false",
           "required": [
             "price"
           ],
-          "defId": "Generic.FinalPriceConsent",
-          "ns": "types",
-          "relativeId": "FinalPriceConsent",
-          "domainId": "Generic",
-          "relativeRef": "Generic#/types/FinalPriceConsent",
-          "absoluteRef": "https://ub.io/protocol/Generic#/types/FinalPriceConsent"
+          "$id": "#Generic.FinalPriceConsent"
         },
         "Price": {
           "type": "object",
           "properties": {
             "currencyCode": {
-              "$ref": "Generic#/types/CurrencyCode"
+              "$ref": "#Generic.CurrencyCode"
             },
             "value": {
               "type": "integer",
@@ -72,12 +56,7 @@
             "value"
           ],
           "additionalProperties": false,
-          "defId": "Generic.Price",
-          "ns": "types",
-          "relativeId": "Price",
-          "domainId": "Generic",
-          "relativeRef": "Generic#/types/Price",
-          "absoluteRef": "https://ub.io/protocol/Generic#/types/Price"
+          "$id": "#Generic.Price"
         },
         "CountryCode": {
           "type": "string",
@@ -336,12 +315,7 @@
             "zm",
             "zw"
           ],
-          "defId": "Generic.CountryCode",
-          "ns": "types",
-          "relativeId": "CountryCode",
-          "domainId": "Generic",
-          "relativeRef": "Generic#/types/CountryCode",
-          "absoluteRef": "https://ub.io/protocol/Generic#/types/CountryCode"
+          "$id": "#Generic.CountryCode"
         },
         "CurrencyCode": {
           "type": "string",
@@ -460,111 +434,55 @@
             "yer",
             "zwd"
           ],
-          "defId": "Generic.CurrencyCode",
-          "ns": "types",
-          "relativeId": "CurrencyCode",
-          "domainId": "Generic",
-          "relativeRef": "Generic#/types/CurrencyCode",
-          "absoluteRef": "https://ub.io/protocol/Generic#/types/CurrencyCode"
+          "$id": "#Generic.CurrencyCode"
         }
       },
-      "domainId": "Generic"
+      "$id": "#Generic"
     },
     "FlightBooking": {
-      "$id": "FlightBooking",
       "description": "Allows automating airplane tickets booking and collecting related information.",
       "inputs": {
         "url": {
-          "$ref": "Generic#/types/URL",
-          "defId": "FlightBooking.url",
-          "ns": "inputs",
-          "relativeId": "url",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/inputs/url",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/inputs/url"
+          "$ref": "#Generic.URL",
+          "$id": "#FlightBooking.url"
         },
         "flight": {
-          "$ref": "FlightBooking#/types/Flight",
-          "defId": "FlightBooking.flight",
-          "ns": "inputs",
-          "relativeId": "flight",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/inputs/flight",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/inputs/flight"
+          "$ref": "#FlightBooking.Flight",
+          "$id": "#FlightBooking.flight"
         },
         "account": {
-          "$ref": "Generic#/types/Account",
-          "defId": "FlightBooking.account",
-          "ns": "inputs",
-          "relativeId": "account",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/inputs/account",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/inputs/account"
+          "$ref": "#Generic.Account",
+          "$id": "#FlightBooking.account"
         },
         "passengers": {
-          "$ref": "FlightBooking#/types/Passengers",
-          "defId": "FlightBooking.passengers",
-          "ns": "inputs",
-          "relativeId": "passengers",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/inputs/passengers",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/inputs/passengers"
+          "$ref": "#FlightBooking.Passengers",
+          "$id": "#FlightBooking.passengers"
         },
         "payment": {
-          "$ref": "Generic#/types/Payment",
-          "defId": "FlightBooking.payment",
-          "ns": "inputs",
-          "relativeId": "payment",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/inputs/payment",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/inputs/payment"
+          "$ref": "#Generic.Payment",
+          "$id": "#FlightBooking.payment"
         },
         "selectedSeats": {
-          "$ref": "FlightBooking#/types/SelectedSeats",
-          "defId": "FlightBooking.selectedSeats",
-          "ns": "inputs",
-          "relativeId": "selectedSeats",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/inputs/selectedSeats",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/inputs/selectedSeats"
+          "$ref": "#FlightBooking.SelectedSeats",
+          "$id": "#FlightBooking.selectedSeats"
         },
         "finalPriceConsent": {
-          "$ref": "Generic#/types/FinalPriceConsent",
-          "defId": "FlightBooking.finalPriceConsent",
-          "ns": "inputs",
-          "relativeId": "finalPriceConsent",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/inputs/finalPriceConsent",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/inputs/finalPriceConsent"
+          "$ref": "#Generic.FinalPriceConsent",
+          "$id": "#FlightBooking.finalPriceConsent"
         }
       },
       "outputs": {
         "availableSeats": {
-          "$ref": "FlightBooking#/types/AvailableSeats",
-          "defId": "FlightBooking.availableSeats",
-          "ns": "outputs",
-          "relativeId": "availableSeats",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/outputs/availableSeats",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/outputs/availableSeats"
+          "$ref": "#FlightBooking.AvailableSeats",
+          "$id": "#FlightBooking.availableSeats"
         },
         "finalPrice": {
-          "$ref": "Generic#/types/FinalPrice",
-          "defId": "FlightBooking.finalPrice",
-          "ns": "outputs",
-          "relativeId": "finalPrice",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/outputs/finalPrice",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/outputs/finalPrice"
+          "$ref": "#Generic.FinalPrice",
+          "$id": "#FlightBooking.finalPrice"
         },
         "bookingConfirmation": {
-          "$ref": "FlightBooking#/types/BookingConfirmation",
-          "defId": "FlightBooking.bookingConfirmation",
-          "ns": "outputs",
-          "relativeId": "bookingConfirmation",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/outputs/bookingConfirmation",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/outputs/bookingConfirmation"
+          "$ref": "#FlightBooking.BookingConfirmation",
+          "$id": "#FlightBooking.bookingConfirmation"
         }
       },
       "types": {
@@ -572,15 +490,10 @@
           "description": "Seat selection metadata extracted from website.",
           "type": "array",
           "items": {
-            "$ref": "FlightBooking#/types/AvailableSeat"
+            "$ref": "#FlightBooking.AvailableSeat"
           },
           "additionalProperties": "false",
-          "defId": "FlightBooking.AvailableSeats",
-          "ns": "types",
-          "relativeId": "AvailableSeats",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/types/AvailableSeats",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/types/AvailableSeats"
+          "$id": "#FlightBooking.AvailableSeats"
         },
         "AvailableSeat": {
           "properties": {
@@ -589,7 +502,7 @@
               "description": "Seat identifier."
             },
             "price": {
-              "$ref": "Generic#/types/Price",
+              "$ref": "#Generic.Price",
               "description": "Price, if available."
             }
           },
@@ -598,12 +511,7 @@
             "seatId",
             "price"
           ],
-          "defId": "FlightBooking.AvailableSeat",
-          "ns": "types",
-          "relativeId": "AvailableSeat",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/types/AvailableSeat",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/types/AvailableSeat"
+          "$id": "#FlightBooking.AvailableSeat"
         },
         "SelectedSeats": {
           "description": "Seats selected for each passenger. Must match identifiers from <code>Flight.availableSeats</code> output.",
@@ -620,12 +528,7 @@
           "required": [
             "seatIds"
           ],
-          "defId": "FlightBooking.SelectedSeats",
-          "ns": "types",
-          "relativeId": "SelectedSeats",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/types/SelectedSeats",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/types/SelectedSeats"
+          "$id": "#FlightBooking.SelectedSeats"
         },
         "BookingConfirmation": {
           "description": "Emitted on \"Booking success\" page.",
@@ -639,7 +542,7 @@
               "description": "Message about successful booking."
             },
             "price": {
-              "$ref": "Generic#/types/Price",
+              "$ref": "#Generic.Price",
               "description": "Price, if found on the successful booking page."
             }
           },
@@ -647,54 +550,33 @@
           "required": [
             "bookingReference"
           ],
-          "defId": "FlightBooking.BookingConfirmation",
-          "ns": "types",
-          "relativeId": "BookingConfirmation",
-          "domainId": "FlightBooking",
-          "relativeRef": "FlightBooking#/types/BookingConfirmation",
-          "absoluteRef": "https://ub.io/protocol/FlightBooking#/types/BookingConfirmation"
+          "$id": "#FlightBooking.BookingConfirmation"
         }
       },
-      "domainId": "FlightBooking"
+      "$id": "#FlightBooking"
     },
     "Test": {
-      "$id": "Test",
       "description": "Internal domain for testing platform features.",
       "inputs": {
         "url": {
-          "$ref": "Generic#/types/URL",
-          "defId": "Test.url",
-          "ns": "inputs",
-          "relativeId": "url",
-          "domainId": "Test",
-          "relativeRef": "Test#/inputs/url",
-          "absoluteRef": "https://ub.io/protocol/Test#/inputs/url"
+          "$ref": "#Generic.URL",
+          "$id": "#Test.url"
         }
       },
       "outputs": {
         "object": {
-          "$ref": "Test#/types/Object",
-          "defId": "Test.object",
-          "ns": "outputs",
-          "relativeId": "object",
-          "domainId": "Test",
-          "relativeRef": "Test#/outputs/object",
-          "absoluteRef": "https://ub.io/protocol/Test#/outputs/object"
+          "$ref": "#Test.Object",
+          "$id": "#Test.object"
         }
       },
       "types": {
         "Object": {
           "type": "object",
           "description": "An object of arbitrary structure.",
-          "defId": "Test.Object",
-          "ns": "types",
-          "relativeId": "Object",
-          "domainId": "Test",
-          "relativeRef": "Test#/types/Object",
-          "absoluteRef": "https://ub.io/protocol/Test#/types/Object"
+          "$id": "#Test.Object"
         }
       },
-      "domainId": "Test"
+      "$id": "#Test"
     }
   }
 }

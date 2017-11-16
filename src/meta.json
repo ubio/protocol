@@ -17,15 +17,18 @@
     ],
     "additionalProperties": false,
     "definitions": {
-        "Id": {
+        "DomainId": {
             "type": "string",
-            "pattern": "^[A-Z][a-zA-Z0-9]+"
+            "pattern": "^#[A-Z][a-zA-Z0-9]+$"
+        },
+        "RefId": {
+            "type": "string",
+            "pattern": "^#[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
         },
         "Domain": {
             "type": "object",
             "properties": {
-                "$id": { "$ref": "#/definitions/Id" },
-                "domainId": { "$ref": "#/definitions/Id" },
+                "$id": { "$ref": "#/definitions/DomainId" },
                 "description": {
                     "type": "string"
                 },
@@ -59,37 +62,17 @@
         },
         "SimpleDef": {
             "properties": {
-                "$ref": {
-                    "type": "string",
-                    "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
-                },
-                "defId": {
-                    "type": "string",
-                    "pattern": "^[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
-                },
-                "domainId": {
-                    "type": "string",
-                    "pattern": "^[A-Z][a-zA-Z0-9]+$"
-                },
-                "ns": {
-                    "type": "string",
-                    "pattern": "^[a-zA-Z0-9]+$"
-                },
-                "relativeId": {
-                    "type": "string",
-                    "pattern": "^[a-zA-Z0-9]+$"
-                },
-                "relativeRef": {
-                    "type": "string",
-                    "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
-                },
-                "absoluteRef": {
-                    "type": "string"
-                }
+                "$id": { "$ref": "#/definitions/RefId" },
+                "$ref": { "$ref": "#/definitions/RefId" }
             },
+            "required": ["$id", "$ref"],
             "additionalProperties": false
         },
         "TypeDef": {
+            "properties": {
+                "$id": { "$ref": "#/definitions/RefId" }
+            },
+            "additionalProperties": true
         }
     }
 }

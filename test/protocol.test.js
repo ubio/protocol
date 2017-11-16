@@ -30,7 +30,7 @@ describe('Protocol', () => {
         it('should contain $id', () => {
             const genericDomain = protocol.getDomain('Generic');
             expect(genericDomain).toBeTruthy();
-            expect(genericDomain.$id).toEqual('Generic');
+            expect(genericDomain.$id).toEqual('#Generic');
         });
 
     });
@@ -48,12 +48,7 @@ describe('Protocol', () => {
         it('should contain identifier fields', () => {
             const priceDef = protocol.getDef('Generic.Price');
             expect(priceDef).toBeTruthy();
-            expect(priceDef.defId).toEqual('Generic.Price');
-            expect(priceDef.domainId).toEqual('Generic');
-            expect(priceDef.relativeId).toEqual('Price');
-            expect(priceDef.ns).toEqual('types');
-            expect(priceDef.relativeRef).toEqual('Generic#/types/Price');
-            expect(priceDef.absoluteRef).toEqual('https://ub.io/protocol/Generic#/types/Price');
+            expect(priceDef.$id).toEqual('#Generic.Price');
         });
 
     });

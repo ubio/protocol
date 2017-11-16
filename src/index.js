@@ -3,6 +3,8 @@
 const Ajv = require('ajv');
 const schema = require('./schema');
 const metaSchema = require('./meta.json');
+const Domain = require('./domain');
+const Def = require('./def');
 
 const DEFAULT_AJV_OPTIONS = {
     allErrors: true,
@@ -14,27 +16,15 @@ const NAMESPACES = ['inputs', 'outputs', 'types'];
 
 const domainsById = new Map();
 const defsById = new Map();
-const defsByRef = new Map();
 
 for (const domainId of Object.keys(schema.domains)) {
-    const domain = schema.domains[domainId];
-    domain.$id = domainId;
-    domain.domainId = domainId;
+    const domain = new Domain(domainId, schema.domains[domainId]);
     domainsById.set(domainId, domain);
     for (const ns of NAMESPACES) {
         const defs = domain[ns];
-        for (const relativeId of Object.keys(defs)) {
-            const def = defs[relativeId];
-            const id = `${domainId}.${relativeId}`;
-            const relativeRef = `${domainId}#/${ns}/${relativeId}`;
-            def.defId = id;
-            def.ns = ns;
-            def.relativeId = relativeId;
-            def.domainId = domainId;
-            def.relativeRef = relativeRef;
-            def.absoluteRef = `https://ub.io/protocol/${relativeRef}`;
-            defsById.set(id, def);
-            defsByRef.set(relativeRef, def);
+        for (const key of Object.keys(defs)) {
+            const def = new Def(domain, ns, key, defs[key]);
+            defsById.set(def.id, def);
         }
     }
 }
@@ -51,7 +41,7 @@ module.exports = {
     defs,
     getDomain,
     getDef,
-    resolveRef,
+    getDefByDomainKey,
     createValidator,
 };
 
@@ -59,22 +49,19 @@ function getDomain(id) {
     return domainsById.get(id);
 }
 
-function getDef(domainOrDefId, key) {
-    const id = typeof key === 'string' ?
-        domainOrDefId + '.' + key :
-        domainOrDefId;
+function getDef(id) {
     return defsById.get(id);
 }
 
-function resolveRef($ref) {
-    return defsByRef.get($ref);
+function getDefByDomainKey(domainId, key) {
+    return getDef(domainId + '.' + key);
 }
 
 function createValidator(options = DEFAULT_AJV_OPTIONS) {
     const ajv = new Ajv(options);
     ajv.addSchema(schema);
     for (const def of defs) {
-        ajv.addSchema({ $ref: def.absoluteRef }, def.defId);
+        ajv.addSchema({ $ref: schema.$id + def.$id }, def.id);
     }
     return ajv;
 }

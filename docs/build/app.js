@@ -34,7 +34,7 @@ module.exports = {
     computed: {
 
         active() {
-            return this.$route.hash === '#' + this.def.relativeId;
+            return this.$route.hash === '#' + this.def.key;
         }
 
     },
@@ -42,7 +42,7 @@ module.exports = {
     methods: {
 
         permalink() {
-            this.$router.replace('#' + this.def.relativeId);
+            this.$router.replace('#' + this.def.key);
         }
 
     }
@@ -52,7 +52,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.relativeId}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.defId))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"def":_vm.def}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.description)}}),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"def":_vm.def}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.description)}}),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -85,7 +85,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.relativeId)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"def":_vm.def}})],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"def":_vm.def}})],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -164,7 +164,7 @@ module.exports = {
         },
 
         ref() {
-            return protocol.resolveRef(this.def.$ref);
+            return protocol.getDef(this.def.$ref.replace('#', ''));
         }
 
     }
@@ -177,10 +177,10 @@ if (__vue__options__.functional) {console.error("[vueify] functional components 
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"schema-type"},[_c('span',{staticClass:"schema-type__literal",attrs:{"if":"def.type"}},[_vm._v("\n        "+_vm._s(_vm.def.type)+"\n    ")]),_vm._v(" "),(_vm.isArray)?_c('span',{staticClass:"schema-type__array"},[_vm._v("\n        of\n        "),_c('schema-type',{attrs:{"def":_vm.def.items}})],1):_vm._e(),_vm._v(" "),(_vm.def.$ref)?_c('span',{staticClass:"schema-type__ref"},[(_vm.ref)?_c('router-link',{attrs:{"to":{
                 name: 'domain',
                 params: {
-                    domainId: _vm.ref.domainId,
+                    domainId: _vm.ref._domainId,
                 },
-                hash: '#' + _vm.ref.relativeId,
-            }}},[_vm._v("\n            "+_vm._s(_vm.ref.defId)+"\n        ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n            "+_vm._s(_vm.def.$ref)+"\n        ")])],1):_vm._e()])}
+                hash: '#' + _vm.ref._key,
+            }}},[_vm._v("\n            "+_vm._s(_vm.ref.id)+"\n        ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n            "+_vm._s(_vm.def.$ref)+"\n        ")])],1):_vm._e()])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -193,7 +193,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-d5945406", __vue__options__)
   }
 })()}
-},{"../../src":66,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],6:[function(require,module,exports){
+},{"../../src":68,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],6:[function(require,module,exports){
 'use strict';
 
 const VueRouter = require('vue-router');
@@ -253,16 +253,16 @@ module.exports = {
             return protocol.getDomain(this.domainId);
         },
 
-        hasInputs() {
-            return Object.keys(this.domain.inputs).length > 0;
+        inputs() {
+            return this.domain.getInputs();
         },
 
-        hasOutputs() {
-            return Object.keys(this.domain.outputs).length > 0;
+        outputs() {
+            return this.domain.getOutputs();
         },
 
-        hasTypes() {
-            return Object.keys(this.domain.types).length > 0;
+        types() {
+            return this.domain.getTypes();
         }
 
     },
@@ -288,7 +288,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.$id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.hasInputs)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.domain.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.hasOutputs)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.domain.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.hasTypes)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.domain.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -300,7 +300,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-7b888ac9", __vue__options__)
   }
 })()}
-},{"../../src":66,"../components/def.vue":2,"../components/oneliner.vue":3,"vue":64,"vue-hot-reload-api":62}],8:[function(require,module,exports){
+},{"../../src":68,"../components/def.vue":2,"../components/oneliner.vue":3,"vue":64,"vue-hot-reload-api":62}],8:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -337,8 +337,8 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__sidebar"},[_c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{ name: 'home' },"exact":""}},[_vm._v("\n            Home\n        ")]),_vm._v(" "),_vm._l((_vm.domains),function(domain){return _c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{
                          name: 'domain',
-                         params: { domainId: domain.$id }
-                     }}},[_vm._v("\n            "+_vm._s(domain.$id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
+                         params: { domainId: domain.id }
+                     }}},[_vm._v("\n            "+_vm._s(domain.id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -351,7 +351,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-4bebe3a2", __vue__options__)
   }
 })()}
-},{"../../src":66,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],10:[function(require,module,exports){
+},{"../../src":68,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],10:[function(require,module,exports){
 'use strict';
 
 const Vue = require('vue');
@@ -18542,9 +18542,61 @@ exports.insert = function (css) {
 },{}],66:[function(require,module,exports){
 'use strict';
 
+module.exports = class Def {
+
+    constructor(domain, ns, key, spec) {
+        this.domain = domain;
+        this.key = key;
+        this.ns = ns;
+        this.id = `${domain.id}.${key}`;
+        spec.$id = '#' + this.id;
+        Object.assign(this, spec);
+    }
+
+};
+
+},{}],67:[function(require,module,exports){
+'use strict';
+
+const Def = require('./def');
+
+module.exports = class Domain {
+
+    constructor(id, spec) {
+        this.$spec = spec;
+        this.id = id;
+        spec.$id = '#' + id;
+        Object.assign(this, spec);
+    }
+
+    getInputs() {
+        return Object.keys(this.inputs).map(key => {
+            return new Def(this, 'inputs', key, this.inputs[key]);
+        });
+    }
+
+    getOutputs() {
+        return Object.keys(this.outputs).map(key => {
+            return new Def(this, 'outputs', key, this.outputs[key]);
+        });
+    }
+
+    getTypes() {
+        return Object.keys(this.types).map(key => {
+            return new Def(this, 'types', key, this.types[key]);
+        });
+    }
+
+};
+
+},{"./def":66}],68:[function(require,module,exports){
+'use strict';
+
 const Ajv = require('ajv');
 const schema = require('./schema');
 const metaSchema = require('./meta.json');
+const Domain = require('./domain');
+const Def = require('./def');
 
 const DEFAULT_AJV_OPTIONS = {
     allErrors: true,
@@ -18556,27 +18608,15 @@ const NAMESPACES = ['inputs', 'outputs', 'types'];
 
 const domainsById = new Map();
 const defsById = new Map();
-const defsByRef = new Map();
 
 for (const domainId of Object.keys(schema.domains)) {
-    const domain = schema.domains[domainId];
-    domain.$id = domainId;
-    domain.domainId = domainId;
+    const domain = new Domain(domainId, schema.domains[domainId]);
     domainsById.set(domainId, domain);
     for (const ns of NAMESPACES) {
         const defs = domain[ns];
-        for (const relativeId of Object.keys(defs)) {
-            const def = defs[relativeId];
-            const id = `${domainId}.${relativeId}`;
-            const relativeRef = `${domainId}#/${ns}/${relativeId}`;
-            def.defId = id;
-            def.ns = ns;
-            def.relativeId = relativeId;
-            def.domainId = domainId;
-            def.relativeRef = relativeRef;
-            def.absoluteRef = `https://ub.io/protocol/${relativeRef}`;
-            defsById.set(id, def);
-            defsByRef.set(relativeRef, def);
+        for (const key of Object.keys(defs)) {
+            const def = new Def(domain, ns, key, defs[key]);
+            defsById.set(def.id, def);
         }
     }
 }
@@ -18593,7 +18633,7 @@ module.exports = {
     defs,
     getDomain,
     getDef,
-    resolveRef,
+    getDefByDomainKey,
     createValidator
 };
 
@@ -18601,25 +18641,24 @@ function getDomain(id) {
     return domainsById.get(id);
 }
 
-function getDef(domainOrDefId, key) {
-    const id = typeof key === 'string' ? domainOrDefId + '.' + key : domainOrDefId;
+function getDef(id) {
     return defsById.get(id);
 }
 
-function resolveRef($ref) {
-    return defsByRef.get($ref);
+function getDefByDomainKey(domainId, key) {
+    return getDef(domainId + '.' + key);
 }
 
 function createValidator(options = DEFAULT_AJV_OPTIONS) {
     const ajv = new Ajv(options);
     ajv.addSchema(schema);
     for (const def of defs) {
-        ajv.addSchema({ $ref: def.absoluteRef }, def.defId);
+        ajv.addSchema({ $ref: schema.$id + def.$id }, def.id);
     }
     return ajv;
 }
 
-},{"./meta.json":67,"./schema":70,"ajv":12}],67:[function(require,module,exports){
+},{"./def":66,"./domain":67,"./meta.json":69,"./schema":72,"ajv":12}],69:[function(require,module,exports){
 module.exports={
     "type": "object",
     "properties": {
@@ -18639,15 +18678,18 @@ module.exports={
     ],
     "additionalProperties": false,
     "definitions": {
-        "Id": {
+        "DomainId": {
             "type": "string",
-            "pattern": "^[A-Z][a-zA-Z0-9]+"
+            "pattern": "^#[A-Z][a-zA-Z0-9]+$"
+        },
+        "RefId": {
+            "type": "string",
+            "pattern": "^#[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
         },
         "Domain": {
             "type": "object",
             "properties": {
-                "$id": { "$ref": "#/definitions/Id" },
-                "domainId": { "$ref": "#/definitions/Id" },
+                "$id": { "$ref": "#/definitions/DomainId" },
                 "description": {
                     "type": "string"
                 },
@@ -18681,66 +18723,45 @@ module.exports={
         },
         "SimpleDef": {
             "properties": {
-                "$ref": {
-                    "type": "string",
-                    "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
-                },
-                "defId": {
-                    "type": "string",
-                    "pattern": "^[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
-                },
-                "domainId": {
-                    "type": "string",
-                    "pattern": "^[A-Z][a-zA-Z0-9]+$"
-                },
-                "ns": {
-                    "type": "string",
-                    "pattern": "^[a-zA-Z0-9]+$"
-                },
-                "relativeId": {
-                    "type": "string",
-                    "pattern": "^[a-zA-Z0-9]+$"
-                },
-                "relativeRef": {
-                    "type": "string",
-                    "pattern": "^[A-Z][a-zA-Z0-9]+#/[a-z]+/[a-zA-Z0-9]+$"
-                },
-                "absoluteRef": {
-                    "type": "string"
-                }
+                "$id": { "$ref": "#/definitions/RefId" },
+                "$ref": { "$ref": "#/definitions/RefId" }
             },
+            "required": ["$id", "$ref"],
             "additionalProperties": false
         },
         "TypeDef": {
+            "properties": {
+                "$id": { "$ref": "#/definitions/RefId" }
+            },
+            "additionalProperties": true
         }
     }
 }
 
 
-},{}],68:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 module.exports={
-    "$id": "FlightBooking",
     "description": "Allows automating airplane tickets booking and collecting related information.",
     "inputs": {
-        "url": { "$ref": "Generic#/types/URL" },
-        "flight": { "$ref": "FlightBooking#/types/Flight" },
-        "account": { "$ref": "Generic#/types/Account" },
-        "passengers": { "$ref": "FlightBooking#/types/Passengers" },
-        "payment": { "$ref": "Generic#/types/Payment" },
-        "selectedSeats": { "$ref": "FlightBooking#/types/SelectedSeats" },
-        "finalPriceConsent": { "$ref": "Generic#/types/FinalPriceConsent" }
+        "url": { "$ref": "#Generic.URL" },
+        "flight": { "$ref": "#FlightBooking.Flight" },
+        "account": { "$ref": "#Generic.Account" },
+        "passengers": { "$ref": "#FlightBooking.Passengers" },
+        "payment": { "$ref": "#Generic.Payment" },
+        "selectedSeats": { "$ref": "#FlightBooking.SelectedSeats" },
+        "finalPriceConsent": { "$ref": "#Generic.FinalPriceConsent" }
     },
     "outputs": {
-        "availableSeats": { "$ref": "FlightBooking#/types/AvailableSeats" },
-        "finalPrice": { "$ref": "Generic#/types/FinalPrice" },
-        "bookingConfirmation": { "$ref": "FlightBooking#/types/BookingConfirmation" }
+        "availableSeats": { "$ref": "#FlightBooking.AvailableSeats" },
+        "finalPrice": { "$ref": "#Generic.FinalPrice" },
+        "bookingConfirmation": { "$ref": "#FlightBooking.BookingConfirmation" }
     },
     "types": {
         "AvailableSeats": {
             "description": "Seat selection metadata extracted from website.",
             "type": "array",
             "items": {
-                "$ref": "FlightBooking#/types/AvailableSeat"
+                "$ref": "#FlightBooking.AvailableSeat"
             },
             "additionalProperties": "false"
         },
@@ -18751,7 +18772,7 @@ module.exports={
                     "description": "Seat identifier."
                 },
                 "price": {
-                    "$ref": "Generic#/types/Price",
+                    "$ref": "#Generic.Price",
                     "description": "Price, if available."
                 }
             },
@@ -18789,7 +18810,7 @@ module.exports={
                     "description": "Message about successful booking."
                 },
                 "price": {
-                    "$ref": "Generic#/types/Price",
+                    "$ref": "#Generic.Price",
                     "description": "Price, if found on the successful booking page."
                 }
             },
@@ -18801,9 +18822,8 @@ module.exports={
     }
 }
 
-},{}],69:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 module.exports={
-    "$id": "Generic",
     "description": "Generic domain contains generic definitions used in other domains.",
     "inputs": {},
     "outputs": {},
@@ -18818,7 +18838,7 @@ module.exports={
             "description": "Emitted immediately before placing order, when final price is available.",
             "properties": {
                 "price": {
-                    "$ref": "Generic#/types/Price",
+                    "$ref": "#Generic.Price",
                     "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
                 }
             },
@@ -18829,7 +18849,7 @@ module.exports={
         "FinalPriceConsent": {
             "description": "Client's consent for final price. Must exactly match the <code>FinalPrice</code> object.",
             "properties": {
-                "price": { "$ref": "Generic#/types/Price" }
+                "price": { "$ref": "#Generic.Price" }
             },
             "additionalProperties": "false",
             "required": [
@@ -18840,7 +18860,7 @@ module.exports={
             "type": "object",
             "properties": {
                 "currencyCode": {
-                    "$ref": "Generic#/types/CurrencyCode"
+                    "$ref": "#Generic.CurrencyCode"
                 },
                 "value": {
                     "type": "integer",
@@ -19232,7 +19252,7 @@ module.exports={
         }
     }
 }
-},{}],70:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -19244,15 +19264,14 @@ module.exports = {
     }
 };
 
-},{"./flight-booking":68,"./generic":69,"./test":71}],71:[function(require,module,exports){
+},{"./flight-booking":70,"./generic":71,"./test":73}],73:[function(require,module,exports){
 module.exports={
-    "$id": "Test",
     "description": "Internal domain for testing platform features.",
     "inputs": {
-        "url": { "$ref": "Generic#/types/URL" }
+        "url": { "$ref": "#Generic.URL" }
     },
     "outputs": {
-        "object": { "$ref": "Test#/types/Object" }
+        "object": { "$ref": "#Test.Object" }
     },
     "types": {
         "Object": {

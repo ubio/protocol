@@ -16,11 +16,11 @@
                 :to="{
                     name: 'domain',
                     params: {
-                        domainId: ref.domainId,
+                        domainId: ref._domainId,
                     },
-                    hash: '#' + ref.relativeId,
+                    hash: '#' + ref._key,
                 }">
-                {{ ref.defId }}
+                {{ ref.id }}
             </router-link>
             <span class="schema-type__broken-ref"
                   v-else>
@@ -48,7 +48,7 @@ module.exports = {
         },
 
         ref() {
-            return protocol.resolveRef(this.def.$ref);
+            return protocol.getDef(this.def.$ref.replace('#', ''));
         },
 
     },
