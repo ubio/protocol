@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [0.3.0] - 2017-11-17
+
 - `Test` -> `Internal`
 - Added draft-06 to meta schema
 
