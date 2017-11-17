@@ -16,11 +16,11 @@
                 :to="{
                     name: 'domain',
                     params: {
-                        domainId: ref._domainId,
+                        domainId: ref._domain._id,
                     },
                     hash: '#' + ref._key,
                 }">
-                {{ ref.id }}
+                {{ ref._id }}
             </router-link>
             <span class="schema-type__broken-ref"
                   v-else>

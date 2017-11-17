@@ -6,7 +6,7 @@ module.exports = class Domain {
 
     constructor(id, spec) {
         this.$spec = spec;
-        this.id = id;
+        this._id = id;
         spec.$id = '#' + id;
         Object.assign(this, spec);
     }

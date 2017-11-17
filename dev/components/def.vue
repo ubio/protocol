@@ -1,11 +1,11 @@
 <template>
     <div class="def"
          :class="{ 'def--active': active }"
-         :id="def.key">
+         :id="def._key">
         <div class="def__header">
             <span class="def__link"
                   @click="permalink">🔗</span>
-            <span class="def__id">{{ def.id }}</span>
+            <span class="def__id">{{ def._id }}</span>
         </div>
         <div class="def__type">
             <schema-type :def="def"/>
@@ -49,7 +49,7 @@ module.exports = {
     computed: {
 
         active() {
-            return this.$route.hash === '#' + this.def.key;
+            return this.$route.hash === '#' + this.def._key;
         },
 
     },
@@ -57,7 +57,7 @@ module.exports = {
     methods: {
 
         permalink() {
-            this.$router.replace('#' + this.def.key);
+            this.$router.replace('#' + this.def._key);
         },
 
     },

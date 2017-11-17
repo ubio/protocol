@@ -3,11 +3,11 @@
 module.exports = class Def {
 
     constructor(domain, ns, key, spec) {
-        this.domain = domain;
-        this.key = key;
-        this.ns = ns;
-        this.id = `${domain.id}.${key}`;
-        spec.$id = '#' + this.id;
+        this._domain = domain;
+        this._key = key;
+        this._ns = ns;
+        this._id = `${domain._id}.${key}`;
+        spec.$id = '#' + this._id;
         Object.assign(this, spec);
     }
 

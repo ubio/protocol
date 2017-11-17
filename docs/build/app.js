@@ -34,7 +34,7 @@ module.exports = {
     computed: {
 
         active() {
-            return this.$route.hash === '#' + this.def.key;
+            return this.$route.hash === '#' + this.def._key;
         }
 
     },
@@ -42,7 +42,7 @@ module.exports = {
     methods: {
 
         permalink() {
-            this.$router.replace('#' + this.def.key);
+            this.$router.replace('#' + this.def._key);
         }
 
     }
@@ -52,7 +52,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"def":_vm.def}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.description)}}),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def._key}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def._id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"def":_vm.def}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.description)}}),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -85,7 +85,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"def":_vm.def}})],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def._key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"def":_vm.def}})],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -177,10 +177,10 @@ if (__vue__options__.functional) {console.error("[vueify] functional components 
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"schema-type"},[_c('span',{staticClass:"schema-type__literal",attrs:{"if":"def.type"}},[_vm._v("\n        "+_vm._s(_vm.def.type)+"\n    ")]),_vm._v(" "),(_vm.isArray)?_c('span',{staticClass:"schema-type__array"},[_vm._v("\n        of\n        "),_c('schema-type',{attrs:{"def":_vm.def.items}})],1):_vm._e(),_vm._v(" "),(_vm.def.$ref)?_c('span',{staticClass:"schema-type__ref"},[(_vm.ref)?_c('router-link',{attrs:{"to":{
                 name: 'domain',
                 params: {
-                    domainId: _vm.ref._domainId,
+                    domainId: _vm.ref._domain._id,
                 },
                 hash: '#' + _vm.ref._key,
-            }}},[_vm._v("\n            "+_vm._s(_vm.ref.id)+"\n        ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n            "+_vm._s(_vm.def.$ref)+"\n        ")])],1):_vm._e()])}
+            }}},[_vm._v("\n            "+_vm._s(_vm.ref._id)+"\n        ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n            "+_vm._s(_vm.def.$ref)+"\n        ")])],1):_vm._e()])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -288,7 +288,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain._id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -337,8 +337,8 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__sidebar"},[_c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{ name: 'home' },"exact":""}},[_vm._v("\n            Home\n        ")]),_vm._v(" "),_vm._l((_vm.domains),function(domain){return _c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{
                          name: 'domain',
-                         params: { domainId: domain.id }
-                     }}},[_vm._v("\n            "+_vm._s(domain.id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
+                         params: { domainId: domain._id }
+                     }}},[_vm._v("\n            "+_vm._s(domain._id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18545,11 +18545,11 @@ exports.insert = function (css) {
 module.exports = class Def {
 
     constructor(domain, ns, key, spec) {
-        this.domain = domain;
-        this.key = key;
-        this.ns = ns;
-        this.id = `${domain.id}.${key}`;
-        spec.$id = '#' + this.id;
+        this._domain = domain;
+        this._key = key;
+        this._ns = ns;
+        this._id = `${domain._id}.${key}`;
+        spec.$id = '#' + this._id;
         Object.assign(this, spec);
     }
 
@@ -18564,7 +18564,7 @@ module.exports = class Domain {
 
     constructor(id, spec) {
         this.$spec = spec;
-        this.id = id;
+        this._id = id;
         spec.$id = '#' + id;
         Object.assign(this, spec);
     }
@@ -18616,7 +18616,7 @@ for (const domainId of Object.keys(schema.domains)) {
         const defs = domain[ns];
         for (const key of Object.keys(defs)) {
             const def = new Def(domain, ns, key, defs[key]);
-            defsById.set(def.id, def);
+            defsById.set(def._id, def);
         }
     }
 }
@@ -18653,7 +18653,7 @@ function createValidator(options = DEFAULT_AJV_OPTIONS) {
     const ajv = new Ajv(options);
     ajv.addSchema(schema);
     for (const def of defs) {
-        ajv.addSchema({ $ref: schema.$id + def.$id }, def.id);
+        ajv.addSchema({ $ref: schema.$id + def.$id }, def._id);
     }
     return ajv;
 }

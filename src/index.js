@@ -24,7 +24,7 @@ for (const domainId of Object.keys(schema.domains)) {
         const defs = domain[ns];
         for (const key of Object.keys(defs)) {
             const def = new Def(domain, ns, key, defs[key]);
-            defsById.set(def.id, def);
+            defsById.set(def._id, def);
         }
     }
 }
@@ -61,7 +61,7 @@ function createValidator(options = DEFAULT_AJV_OPTIONS) {
     const ajv = new Ajv(options);
     ajv.addSchema(schema);
     for (const def of defs) {
-        ajv.addSchema({ $ref: schema.$id + def.$id }, def.id);
+        ajv.addSchema({ $ref: schema.$id + def.$id }, def._id);
     }
     return ajv;
 }

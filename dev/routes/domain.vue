@@ -1,7 +1,7 @@
 <template>
     <div class="domain">
         <div class="domain__intro">
-            <h1>{{ domain.id }}</h1>
+            <h1>{{ domain._id }}</h1>
             <div class="domain__description"
                  v-html="domain.description">
             </div>
