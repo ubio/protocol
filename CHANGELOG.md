@@ -1,5 +1,7 @@
 ## [UNRELEASED]
 
+- FlightBooking: hasHoldLuggage -> addAdditionalLuggage
+- Some unit tests
 
 ## [0.2.0] - 2017-11-17
 

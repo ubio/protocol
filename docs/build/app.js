@@ -18780,12 +18780,11 @@ module.exports={
                     "type": "string",
                     "format": "date"
                 },
-                "hasHoldLuggage": {
-                    "type": "boolean",
-                    "enum": [
-                        true,
-                        false
-                    ]
+                "addAdditionalLuggage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3,
+                    "default": 0
                 },
                 "id": {
                     "type": "object",
