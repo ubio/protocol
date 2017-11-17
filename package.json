@@ -1,6 +1,6 @@
 {
   "name": "@ubio/protocol",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "ubio Automation Protocol",
   "main": "src/index.js",
   "author": "ubio",
@@ -15,8 +15,8 @@
     "watch:js": "watchify -p browserify-hmr dev/ -o docs/build/app.js",
     "test": "mocha",
     "changelog": "node changelog.js",
-    "preversion": "run-s check test build changelog",
-    "version": "git add -A",
+    "preversion": "run-s check test",
+    "version": "run-s build changelog && git add -A",
     "postversion": "npm publish --access public && git push origin master --tags"
   },
   "pre-commit": [

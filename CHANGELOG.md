@@ -1,6 +1,10 @@
 ## [UNRELEASED]
 
 
+## [0.2.3] - 2017-11-17
+
+- Separate `Payment.address` into `Payment.address` and `Payment.person`
+
 ## [0.2.1] - 2017-11-17
 
 - FlightBooking: hasHoldLuggage -> addAdditionalLuggage
