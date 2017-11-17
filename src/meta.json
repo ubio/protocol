@@ -63,7 +63,8 @@
         "SimpleDef": {
             "properties": {
                 "$id": { "$ref": "#/definitions/RefId" },
-                "$ref": { "$ref": "#/definitions/RefId" }
+                "$ref": { "$ref": "#/definitions/RefId" },
+                "description": { "type": "string" }
             },
             "required": ["$id", "$ref"],
             "additionalProperties": false

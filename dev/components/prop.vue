@@ -16,6 +16,10 @@
                 v-if="prop.description"
                 v-html="prop.description">
             </div>
+            <div class="prop__enum"
+                 v-if="prop.enum">
+                {{ prop.enum.join(', ') }}
+            </div>
         </div>
     </div>
 </template>

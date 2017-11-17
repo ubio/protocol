@@ -85,7 +85,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def._key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"def":_vm.def}})],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def._key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"def":_vm.def}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.def.description)}})],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -129,7 +129,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"def":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e()])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"def":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18683,54 +18683,135 @@ module.exports={
         "account": { "$ref": "#Generic.Account" },
         "passengers": { "$ref": "#FlightBooking.Passengers" },
         "payment": { "$ref": "#Generic.Payment" },
-        "selectedSeats": { "$ref": "#FlightBooking.SelectedSeats" },
-        "finalPriceConsent": { "$ref": "#Generic.FinalPriceConsent" }
+        "finalPriceConsent": {
+            "$ref": "#Generic.PriceConsent",
+            "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object."
+        }
     },
     "outputs": {
-        "availableSeats": { "$ref": "#FlightBooking.AvailableSeats" },
-        "finalPrice": { "$ref": "#Generic.FinalPrice" },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.",
+            "$ref": "#Generic.PriceConsent"
+        },
         "bookingConfirmation": { "$ref": "#FlightBooking.BookingConfirmation" }
     },
     "types": {
-        "AvailableSeats": {
-            "description": "Seat selection metadata extracted from website.",
-            "type": "array",
-            "items": {
-                "$ref": "#FlightBooking.AvailableSeat"
-            },
-            "additionalProperties": "false"
-        },
-        "AvailableSeat": {
+        "Flight": {
+            "type": "object",
             "properties": {
-                "seatId": {
-                    "type": "string",
-                    "description": "Seat identifier."
-                },
-                "price": {
-                    "$ref": "#Generic.Price",
-                    "description": "Price, if available."
+                "from": { "$ref": "#FlightBooking.DatePlace" },
+                "to": { "$ref": "#FlightBooking.DatePlace" },
+                "return": { "$ref": "#FlightBooking.ReturnFlight" },
+                "price": { "$ref": "#Generic.Price" },
+                "cabinClass": {
+                    "type": "string"
                 }
             },
-            "additionalProperties": "false",
             "required": [
-                "seatId",
+                "from",
+                "to",
                 "price"
+            ],
+            "additionalProperties": true
+        },
+        "ReturnFlight": {
+            "type": "object",
+            "properties": {
+                "from": { "$ref": "#FlightBooking.DatePlace" },
+                "to": { "$ref": "#FlightBooking.DatePlace" }
+            },
+            "required": [
+                "from",
+                "to"
             ]
         },
-        "SelectedSeats": {
-            "description": "Seats selected for each passenger. Must match identifiers from <code>Flight.availableSeats</code> output.",
+        "DatePlace": {
+            "type": "object",
             "properties": {
-                "seatIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Must match <code>seatId</code> from <code>Flight.availableSeats</code>"
+                "countryCode": {
+                    "$ref": "#Generic.CountryCode"
+                },
+                "dateTime": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
+                    "description": "Date and time of flight (airport local time)"
+                },
+                "airportCode": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "pattern": "^[A-Z]{3}$",
+                    "description": "International Air Transport Association airport code"
                 }
             },
-            "additionalProperties": "false",
             "required": [
-                "seatIds"
+                "dateTime",
+                "airportCode"
+            ]
+        },
+        "Passengers": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#FlightBooking.Passenger" }
+        },
+        "Passenger": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": ""
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "hasHoldLuggage": {
+                    "type": "boolean",
+                    "enum": [
+                        true,
+                        false
+                    ]
+                },
+                "id": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "number": {
+                            "type": "string"
+                        },
+                        "expDate": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "countryCode": {
+                            "$ref": "#Generic.CountryCode"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth",
+                "hasHoldLuggage"
             ]
         },
         "BookingConfirmation": {
@@ -18769,20 +18850,110 @@ module.exports={
             "title": "URL Record",
             "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url"
         },
-        "FinalPrice": {
-            "description": "Emitted immediately before placing order, when final price is available.",
+        "Account": {
+            "type": "object",
             "properties": {
-                "price": {
-                    "$ref": "#Generic.Price",
-                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "password": {
+                    "type": "string",
+                    "default": ""
+                },
+                "phone": {
+                    "$ref": "#Generic.Phone"
+                },
+                "isExisting": {
+                    "type": "boolean"
                 }
             },
             "required": [
-                "price"
+                "email",
+                "phone",
+                "isExisting"
             ]
         },
-        "FinalPriceConsent": {
-            "description": "Client's consent for final price. Must exactly match the <code>FinalPrice</code> object.",
+        "Person": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": ""
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName"
+            ]
+        },
+        "Address": {
+            "type": "object",
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address info"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "postcode": {
+                    "type": "string"
+                },
+                "countryCode": {
+                    "$ref": "#Generic.CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#Generic.CountrySubdivision"
+                }
+            },
+            "required": [
+                "line1",
+                "line2",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ]
+        },
+        "Phone": {
+            "type": "object",
+            "properties": {
+                "countryCode": {
+                    "$ref": "#Generic.CountryCode"
+                },
+                "number": {
+                    "type": "string",
+                    "minLength": 9,
+                    "description": "Mobile phone number (numbers only, excluding country code)"
+                }
+            },
+            "required": [
+                "countryCode",
+                "number"
+            ]
+        },
+        "PriceConsent": {
             "properties": {
                 "price": { "$ref": "#Generic.Price" }
             },
@@ -18808,6 +18979,67 @@ module.exports={
                 "value"
             ],
             "additionalProperties": false
+        },
+        "Payment": {
+            "type": "object",
+            "properties": {
+                "card": {
+                    "$ref": "#Generic.PaymentCard"
+                },
+                "address": {
+                    "$ref": "#Generic.PersonAddress"
+                }
+            },
+            "required": [
+                "card",
+                "address"
+            ]
+        },
+        "PaymentCard": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "debit",
+                        "credit"
+                    ]
+                },
+                "brand": {
+                    "type": "string",
+                    "enum": [
+                        "visa",
+                        "mastercard",
+                        "amex",
+                        "discover"
+                    ]
+                },
+                "panToken": {
+                    "type": "string",
+                    "minLength": 20
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
+                    "minLength": 7,
+                    "maxLength": 7
+                },
+                "name": {
+                    "type": "string"
+                },
+                "cvv": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 4
+                }
+            },
+            "required": [
+                "type",
+                "brand",
+                "expirationDate",
+                "name",
+                "cvv"
+            ]
         },
         "CountryCode": {
             "type": "string",
@@ -19066,6 +19298,10 @@ module.exports={
                 "zm",
                 "zw"
             ]
+        },
+        "CountrySubdivision": {
+            "type": "string",
+            "description": "Depends on country. For the US, the 2 letter state code, lowercased, e.g. 'ca' for California; For Canada, the 2 letter lowercased province code, e.g. 'qc' for Quebec; For Germany, the 2 letter lowercased state code, e.g. 'nw' for Nordrhein-Westfalen; For Romania, the 2 or 1 letter lowercased county code, e.g. 'if' for Ilfov except 'b' for Bucharest; For the United Kingdom, the 2 letter lowecased province, e.g. 'm7' for York; For Spain, the 2 or 1 letter lowercased province code, e.g. 'pm' for Palma, 'o' for Ovideo."
         },
         "CurrencyCode": {
             "type": "string",

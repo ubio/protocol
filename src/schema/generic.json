@@ -9,20 +9,110 @@
             "title": "URL Record",
             "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url"
         },
-        "FinalPrice": {
-            "description": "Emitted immediately before placing order, when final price is available.",
+        "Account": {
+            "type": "object",
             "properties": {
-                "price": {
-                    "$ref": "#Generic.Price",
-                    "description": "Final price (including all surcharges) as displayed on \"Pay Now\" page."
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "password": {
+                    "type": "string",
+                    "default": ""
+                },
+                "phone": {
+                    "$ref": "#Generic.Phone"
+                },
+                "isExisting": {
+                    "type": "boolean"
                 }
             },
             "required": [
-                "price"
+                "email",
+                "phone",
+                "isExisting"
             ]
         },
-        "FinalPriceConsent": {
-            "description": "Client's consent for final price. Must exactly match the <code>FinalPrice</code> object.",
+        "Person": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": ""
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName"
+            ]
+        },
+        "Address": {
+            "type": "object",
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address info"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "postcode": {
+                    "type": "string"
+                },
+                "countryCode": {
+                    "$ref": "#Generic.CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#Generic.CountrySubdivision"
+                }
+            },
+            "required": [
+                "line1",
+                "line2",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ]
+        },
+        "Phone": {
+            "type": "object",
+            "properties": {
+                "countryCode": {
+                    "$ref": "#Generic.CountryCode"
+                },
+                "number": {
+                    "type": "string",
+                    "minLength": 9,
+                    "description": "Mobile phone number (numbers only, excluding country code)"
+                }
+            },
+            "required": [
+                "countryCode",
+                "number"
+            ]
+        },
+        "PriceConsent": {
             "properties": {
                 "price": { "$ref": "#Generic.Price" }
             },
@@ -48,6 +138,67 @@
                 "value"
             ],
             "additionalProperties": false
+        },
+        "Payment": {
+            "type": "object",
+            "properties": {
+                "card": {
+                    "$ref": "#Generic.PaymentCard"
+                },
+                "address": {
+                    "$ref": "#Generic.PersonAddress"
+                }
+            },
+            "required": [
+                "card",
+                "address"
+            ]
+        },
+        "PaymentCard": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "debit",
+                        "credit"
+                    ]
+                },
+                "brand": {
+                    "type": "string",
+                    "enum": [
+                        "visa",
+                        "mastercard",
+                        "amex",
+                        "discover"
+                    ]
+                },
+                "panToken": {
+                    "type": "string",
+                    "minLength": 20
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
+                    "minLength": 7,
+                    "maxLength": 7
+                },
+                "name": {
+                    "type": "string"
+                },
+                "cvv": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 4
+                }
+            },
+            "required": [
+                "type",
+                "brand",
+                "expirationDate",
+                "name",
+                "cvv"
+            ]
         },
         "CountryCode": {
             "type": "string",
@@ -306,6 +457,10 @@
                 "zm",
                 "zw"
             ]
+        },
+        "CountrySubdivision": {
+            "type": "string",
+            "description": "Depends on country. For the US, the 2 letter state code, lowercased, e.g. 'ca' for California; For Canada, the 2 letter lowercased province code, e.g. 'qc' for Quebec; For Germany, the 2 letter lowercased state code, e.g. 'nw' for Nordrhein-Westfalen; For Romania, the 2 or 1 letter lowercased county code, e.g. 'if' for Ilfov except 'b' for Bucharest; For the United Kingdom, the 2 letter lowecased province, e.g. 'm7' for York; For Spain, the 2 or 1 letter lowercased province code, e.g. 'pm' for Palma, 'o' for Ovideo."
         },
         "CurrencyCode": {
             "type": "string",

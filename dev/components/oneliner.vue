@@ -5,6 +5,9 @@
         </div>
         <div class="oneliner__body">
             <schema-type :def="def"/>
+            <div class="oneliner__description"
+                 v-html="def.description">
+            </div>
         </div>
     </div>
 </template>
