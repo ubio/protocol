@@ -116,7 +116,7 @@
             "properties": {
                 "price": { "$ref": "#Generic.Price" }
             },
-            "additionalProperties": "false",
+            "additionalProperties": false,
             "required": [
                 "price"
             ]

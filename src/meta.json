@@ -71,14 +71,14 @@
             "additionalProperties": false
         },
         "TypeDef": {
-            "properties": {
-                "$id": { "$ref": "#/definitions/RefId" }
-            },
-            "additionalProperties": {
-                "anyOf": {
-                    "$ref": "http://json-schema.org/draft-06/schema#/properties/properties"
+            "allOf": [
+                { "$ref": "http://json-schema.org/draft-06/schema" },
+                {
+                    "properties": {
+                        "$id": { "$ref": "#/definitions/RefId" }
+                    }
                 }
-            }
+            ]
         }
     }
 }

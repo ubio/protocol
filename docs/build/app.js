@@ -18829,7 +18829,7 @@ module.exports={
                     "description": "Price, if found on the successful booking page."
                 }
             },
-            "additionalProperties": "false",
+            "additionalProperties": false,
             "required": [
                 "bookingReference"
             ]
@@ -18956,7 +18956,7 @@ module.exports={
             "properties": {
                 "price": { "$ref": "#Generic.Price" }
             },
-            "additionalProperties": "false",
+            "additionalProperties": false,
             "required": [
                 "price"
             ]

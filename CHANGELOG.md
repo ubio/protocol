@@ -1,20 +1,22 @@
 ## [UNRELEASED]
 
+- `Test` -> `Internal`
+- Added draft-06 to meta schema
 
 ## [0.2.3] - 2017-11-17
 
 - Separate `Payment.address` into `Payment.address` and `Payment.person`
 
-## [0.2.1] - 2017-11-17
+## [0.2.2] - 2017-11-17
 
 - FlightBooking: hasHoldLuggage -> addAdditionalLuggage
 - Some unit tests
 
-## [0.2.0] - 2017-11-17
+## [0.2.1] - 2017-11-17
 
 - Finished initial FlightBooking domain.
 
-## [0.1.1] - 2017-11-17
+## [0.2.0] - 2017-11-17
 
 - Draft class-based API, including consumer-friendly validation.
 
