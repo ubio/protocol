@@ -1,4 +1,5 @@
 {
+    "$schema": "http://json-schema.org/draft-06/schema",
     "type": "object",
     "properties": {
         "$id": {
@@ -73,7 +74,7 @@
             "properties": {
                 "$id": { "$ref": "#/definitions/RefId" }
             },
-            "additionalProperties": true
+            "additionalProperties": { "anyOf": { "$ref": "http://json-schema.org/draft-06/schema#/properties/properties" } }
         }
     }
 }
