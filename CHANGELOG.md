@@ -1,6 +1,10 @@
 ## [UNRELEASED]
 
 
+## [0.2.0] - 2017-11-17
+
+- Finished initial FlightBooking domain.
+
 ## [0.1.1] - 2017-11-17
 
 - Draft class-based API, including consumer-friendly validation.

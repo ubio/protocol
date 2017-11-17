@@ -1,6 +1,6 @@
 {
   "name": "@ubio/protocol",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "ubio Automation Protocol",
   "main": "src/index.js",
   "author": "ubio",
@@ -8,7 +8,7 @@
   "scripts": {
     "check": "eslint --ext=js,vue .",
     "dev": "run-p watch:* serve",
-    "build": "run-p build:* && git add docs",
+    "build": "run-p build:* && git add -A",
     "serve": "ws -d docs",
     "build:js": "browserify dev/ -o docs/build/app.js",
     "build:schema": "node ./build-schema.js",
