@@ -18936,6 +18936,61 @@ module.exports={
                 "countrySubdivision"
             ]
         },
+        "PersonAddress": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": ""
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address info"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "postcode": {
+                    "type": "string"
+                },
+                "countryCode": {
+                    "$ref": "#Generic.CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#Generic.CountrySubdivision"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "line1",
+                "line2",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ]
+        },
         "Phone": {
             "type": "object",
             "properties": {
