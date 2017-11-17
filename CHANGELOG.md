@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Add `domain.validate` to public API
 
 ## [0.4.1] - 2017-11-17
 

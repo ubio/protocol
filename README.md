@@ -64,6 +64,14 @@ Returns all definitions of domain.
 
 Returns `Def` instance belonging to this domain by `key`, or `null` if no such definition exists.
 
+### async domain.validate(key: String, object: Any): { valid: Boolean, errors: Array? }
+
+Validates specified `object` against definition JSON schema.
+
+Definition is resolved by definition `key` within this domain.
+
+If object is invalid, `errors` will contain an array of errors in AJV-compatible format.
+
 ### def.validate(object): { valid: Boolean, errors: Array? }
 
 Validates specified `object` against definition JSON schema.

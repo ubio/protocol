@@ -14,9 +14,9 @@ module.exports = class Def {
         Object.assign(this, spec);
     }
 
-    async validate(object, ajv = validator.DEFAULT) {
+    async validate(data, ajv = validator.DEFAULT) {
         const ajvSchema = ajv.getSchema(schema.$id + this.$id);
-        const valid = await ajvSchema(object);
+        const valid = await ajvSchema(data);
         return {
             valid,
             errors: ajvSchema.errors,

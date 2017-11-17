@@ -37,9 +37,9 @@ function getDef(domainId, key) {
     return domain ? domain.getDef(key) : null;
 }
 
-async function validate(domainId, key, object) {
+async function validate(domainId, key, data) {
     if (typeof object === 'undefined') {
-        object = key;
+        data = key;
         const [a,b] = domainId.split('.');
         domainId = a;
         key = b;
@@ -53,14 +53,5 @@ async function validate(domainId, key, object) {
             ],
         };
     }
-    const def = domain.getDef(key);
-    if (!def) {
-        return {
-            valid: false,
-            errors: [
-                { message: `Unsupported definition: ${domainId}.${key}`, domainId, key },
-            ],
-        };
-    }
-    return await def.validate(object);
+    return await domain.validate(key, data);
 }

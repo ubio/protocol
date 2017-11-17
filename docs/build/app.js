@@ -18556,9 +18556,9 @@ module.exports = class Def {
         Object.assign(this, spec);
     }
 
-    async validate(object, ajv = validator.DEFAULT) {
+    async validate(data, ajv = validator.DEFAULT) {
         const ajvSchema = ajv.getSchema(schema.$id + this.$id);
-        const valid = await ajvSchema(object);
+        const valid = await ajvSchema(data);
         return {
             valid,
             errors: ajvSchema.errors
@@ -18608,6 +18608,18 @@ module.exports = class Domain {
         return Object.keys(this[ns]).map(key => new Def(this, ns, key, this[ns][key]));
     }
 
+    async validate(key, data) {
+        const def = this.getDef(key);
+        if (!def) {
+            const domainId = this._id;
+            return {
+                valid: false,
+                errors: [{ message: `Unsupported definition: ${domainId}.${key}`, domainId, key }]
+            };
+        }
+        return await def.validate(data);
+    }
+
 };
 
 },{"./def":66}],68:[function(require,module,exports){
@@ -18650,9 +18662,9 @@ function getDef(domainId, key) {
     return domain ? domain.getDef(key) : null;
 }
 
-async function validate(domainId, key, object) {
+async function validate(domainId, key, data) {
     if (typeof object === 'undefined') {
-        object = key;
+        data = key;
         const [a, b] = domainId.split('.');
         domainId = a;
         key = b;
@@ -18664,14 +18676,7 @@ async function validate(domainId, key, object) {
             errors: [{ message: `Unsupported domain: ${domainId}`, domainId, key }]
         };
     }
-    const def = domain.getDef(key);
-    if (!def) {
-        return {
-            valid: false,
-            errors: [{ message: `Unsupported definition: ${domainId}.${key}`, domainId, key }]
-        };
-    }
-    return await def.validate(object);
+    return await domain.validate(key, data);
 }
 
 },{"./domain":67,"./schema":71}],69:[function(require,module,exports){

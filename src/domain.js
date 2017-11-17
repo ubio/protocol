@@ -41,4 +41,18 @@ module.exports = class Domain {
         return Object.keys(this[ns]).map(key => new Def(this, ns, key, this[ns][key]));
     }
 
+    async validate(key, data) {
+        const def = this.getDef(key);
+        if (!def) {
+            const domainId = this._id;
+            return {
+                valid: false,
+                errors: [
+                    { message: `Unsupported definition: ${domainId}.${key}`, domainId, key },
+                ],
+            };
+        }
+        return await def.validate(data);
+    }
+
 };
