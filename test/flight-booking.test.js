@@ -3,7 +3,7 @@
 const protocol = require('../src');
 const expect = require('expect');
 
-describe.only('FlightBooking', () => {
+describe('FlightBooking', () => {
 
     describe('Flight', () => {
 
