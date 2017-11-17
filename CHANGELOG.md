@@ -1,6 +1,10 @@
 ## [UNRELEASED]
 
 
+## [0.4.1] - 2017-11-17
+
+- Fix broken ref in `Internal`
+
 ## [0.4.0] - 2017-11-17
 
 - `Test` -> `Internal`

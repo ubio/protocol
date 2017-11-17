@@ -816,7 +816,7 @@
       },
       "outputs": {
         "object": {
-          "$ref": "#Test.Object",
+          "$ref": "#Internal.Object",
           "$id": "#Internal.object"
         }
       },

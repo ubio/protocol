@@ -19458,7 +19458,7 @@ module.exports={
         "url": { "$ref": "#Generic.URL" }
     },
     "outputs": {
-        "object": { "$ref": "#Test.Object" }
+        "object": { "$ref": "#Internal.Object" }
     },
     "types": {
         "Object": {
