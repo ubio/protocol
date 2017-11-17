@@ -806,28 +806,28 @@
       },
       "$id": "#FlightBooking"
     },
-    "Test": {
+    "Internal": {
       "description": "Internal domain for testing platform features.",
       "inputs": {
         "url": {
           "$ref": "#Generic.URL",
-          "$id": "#Test.url"
+          "$id": "#Internal.url"
         }
       },
       "outputs": {
         "object": {
           "$ref": "#Test.Object",
-          "$id": "#Test.object"
+          "$id": "#Internal.object"
         }
       },
       "types": {
         "Object": {
           "type": "object",
           "description": "An object of arbitrary structure.",
-          "$id": "#Test.Object"
+          "$id": "#Internal.Object"
         }
       },
-      "$id": "#Test"
+      "$id": "#Internal"
     }
   }
 }

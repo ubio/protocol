@@ -19434,7 +19434,7 @@ const schema = module.exports = {
     domains: {
         Generic: require('./generic'),
         FlightBooking: require('./flight-booking'),
-        Test: require('./test')
+        Internal: require('./internal')
     }
 };
 
@@ -19451,7 +19451,7 @@ for (const domainId of Object.keys(schema.domains)) {
     }
 }
 
-},{"./flight-booking":69,"./generic":70,"./test":72}],72:[function(require,module,exports){
+},{"./flight-booking":69,"./generic":70,"./internal":72}],72:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "inputs": {
