@@ -326,7 +326,7 @@ module.exports = {
 
     data() {
         return {
-            domains: protocol.domains
+            domains: protocol.getAllDomains()
         };
     }
 
@@ -18542,20 +18542,32 @@ exports.insert = function (css) {
 },{}],66:[function(require,module,exports){
 'use strict';
 
+const schema = require('./schema');
+const validator = require('./validator');
+
 module.exports = class Def {
 
     constructor(domain, ns, key, spec) {
+        const id = `${domain._id}.${key}`;
         this._domain = domain;
         this._key = key;
         this._ns = ns;
-        this._id = `${domain._id}.${key}`;
-        spec.$id = '#' + this._id;
+        this._id = id;
         Object.assign(this, spec);
+    }
+
+    async validate(object, ajv = validator.DEFAULT) {
+        const ajvSchema = ajv.getSchema(schema.$id + this.$id);
+        const valid = await ajvSchema(object);
+        return {
+            valid,
+            errors: ajvSchema.errors
+        };
     }
 
 };
 
-},{}],67:[function(require,module,exports){
+},{"./schema":71,"./validator":73}],67:[function(require,module,exports){
 'use strict';
 
 const Def = require('./def');
@@ -18563,28 +18575,37 @@ const Def = require('./def');
 module.exports = class Domain {
 
     constructor(id, spec) {
-        this.$spec = spec;
         this._id = id;
-        spec.$id = '#' + id;
         Object.assign(this, spec);
+
+        this._inputs = this._collectDefs('inputs');
+        this._outputs = this._collectDefs('outputs');
+        this._types = this._collectDefs('types');
+        this._defs = [].concat(this._inputs).concat(this._outputs).concat(this._types);
     }
 
     getInputs() {
-        return Object.keys(this.inputs).map(key => {
-            return new Def(this, 'inputs', key, this.inputs[key]);
-        });
+        return this._inputs;
     }
 
     getOutputs() {
-        return Object.keys(this.outputs).map(key => {
-            return new Def(this, 'outputs', key, this.outputs[key]);
-        });
+        return this._outputs;
     }
 
     getTypes() {
-        return Object.keys(this.types).map(key => {
-            return new Def(this, 'types', key, this.types[key]);
-        });
+        return this._types;
+    }
+
+    getDefs() {
+        return this._defs;
+    }
+
+    getDef(key) {
+        return this.getDefs().find(def => def._key === key);
+    }
+
+    _collectDefs(ns) {
+        return Object.keys(this[ns]).map(key => new Def(this, ns, key, this[ns][key]));
     }
 
 };
@@ -18592,154 +18613,68 @@ module.exports = class Domain {
 },{"./def":66}],68:[function(require,module,exports){
 'use strict';
 
-const Ajv = require('ajv');
 const schema = require('./schema');
-const metaSchema = require('./meta.json');
 const Domain = require('./domain');
-const Def = require('./def');
 
-const DEFAULT_AJV_OPTIONS = {
-    allErrors: true,
-    useDefaults: true,
-    jsonPointers: true,
-    format: 'full'
-};
-const NAMESPACES = ['inputs', 'outputs', 'types'];
-
-const domainsById = new Map();
-const defsById = new Map();
-
-for (const domainId of Object.keys(schema.domains)) {
-    const domain = new Domain(domainId, schema.domains[domainId]);
-    domainsById.set(domainId, domain);
-    for (const ns of NAMESPACES) {
-        const defs = domain[ns];
-        for (const key of Object.keys(defs)) {
-            const def = new Def(domain, ns, key, defs[key]);
-            defsById.set(def._id, def);
-        }
-    }
-}
-
-const domains = Array.from(domainsById.values());
-const defs = Array.from(defsById.values());
+const domainsCache = new Map();
 
 module.exports = {
-    DEFAULT_AJV_OPTIONS,
-    NAMESPACES,
     schema,
-    metaSchema,
-    domains,
-    defs,
+    getAllDomains,
     getDomain,
     getDef,
-    getDefByDomainKey,
-    createValidator
+    validate
 };
 
+function getAllDomains() {
+    return Object.keys(schema.domains).map(id => getDomain(id));
+}
+
 function getDomain(id) {
-    return domainsById.get(id);
-}
-
-function getDef(id) {
-    return defsById.get(id);
-}
-
-function getDefByDomainKey(domainId, key) {
-    return getDef(domainId + '.' + key);
-}
-
-function createValidator(options = DEFAULT_AJV_OPTIONS) {
-    const ajv = new Ajv(options);
-    ajv.addSchema(schema);
-    for (const def of defs) {
-        ajv.addSchema({ $ref: schema.$id + def.$id }, def._id);
+    let cached = domainsCache.get(id);
+    if (typeof cached === 'undefined') {
+        const spec = schema.domains[id];
+        cached = spec ? new Domain(id, spec) : null;
+        domainsCache.set(id, cached);
     }
-    return ajv;
+    return cached;
 }
 
-},{"./def":66,"./domain":67,"./meta.json":69,"./schema":72,"ajv":12}],69:[function(require,module,exports){
-module.exports={
-    "type": "object",
-    "properties": {
-        "$id": {
-            "type": "string"
-        },
-        "domains": {
-            "type": "object",
-            "additionalProperties": {
-                "$ref": "#/definitions/Domain"
-            }
-        }
-    },
-    "required": [
-        "$id",
-        "domains"
-    ],
-    "additionalProperties": false,
-    "definitions": {
-        "DomainId": {
-            "type": "string",
-            "pattern": "^#[A-Z][a-zA-Z0-9]+$"
-        },
-        "RefId": {
-            "type": "string",
-            "pattern": "^#[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
-        },
-        "Domain": {
-            "type": "object",
-            "properties": {
-                "$id": { "$ref": "#/definitions/DomainId" },
-                "description": {
-                    "type": "string"
-                },
-                "inputs": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/SimpleDef"
-                    }
-                },
-                "outputs": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/SimpleDef"
-                    }
-                },
-                "types": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/TypeDef"
-                    }
-                }
-            },
-            "required": [
-                "$id",
-                "description",
-                "inputs",
-                "outputs",
-                "types"
-            ],
-            "additionalProperties": false
-        },
-        "SimpleDef": {
-            "properties": {
-                "$id": { "$ref": "#/definitions/RefId" },
-                "$ref": { "$ref": "#/definitions/RefId" }
-            },
-            "required": ["$id", "$ref"],
-            "additionalProperties": false
-        },
-        "TypeDef": {
-            "properties": {
-                "$id": { "$ref": "#/definitions/RefId" }
-            },
-            "additionalProperties": true
-        }
+function getDef(domainId, key) {
+    if (typeof key === 'undefined') {
+        const [a, b] = domainId.split('.');
+        domainId = a;
+        key = b;
     }
+    const domain = getDomain(domainId);
+    return domain ? domain.getDef(key) : null;
 }
 
+async function validate(domainId, key, object) {
+    if (typeof object === 'undefined') {
+        object = key;
+        const [a, b] = domainId.split('.');
+        domainId = a;
+        key = b;
+    }
+    const domain = getDomain(domainId);
+    if (!domain) {
+        return {
+            valid: false,
+            errors: [{ message: `Unsupported domain: ${domainId}`, domainId, key }]
+        };
+    }
+    const def = domain.getDef(key);
+    if (!def) {
+        return {
+            valid: false,
+            errors: [{ message: `Unsupported definition: ${domainId}.${key}`, domainId, key }]
+        };
+    }
+    return await def.validate(object);
+}
 
-},{}],70:[function(require,module,exports){
+},{"./domain":67,"./schema":71}],69:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking and collecting related information.",
     "inputs": {
@@ -18822,7 +18757,7 @@ module.exports={
     }
 }
 
-},{}],71:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains generic definitions used in other domains.",
     "inputs": {},
@@ -19252,10 +19187,10 @@ module.exports={
         }
     }
 }
-},{}],72:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 'use strict';
 
-module.exports = {
+const schema = module.exports = {
     $id: 'https://ub.io/protocol/',
     domains: {
         Generic: require('./generic'),
@@ -19264,7 +19199,20 @@ module.exports = {
     }
 };
 
-},{"./flight-booking":70,"./generic":71,"./test":73}],73:[function(require,module,exports){
+// Generate $id on domains and defs
+for (const domainId of Object.keys(schema.domains)) {
+    const domain = schema.domains[domainId];
+    domain.$id = '#' + domainId;
+
+    for (const ns of ['inputs', 'outputs', 'types']) {
+        for (const key of Object.keys(domain[ns])) {
+            const def = domain[ns][key];
+            def.$id = '#' + domainId + '.' + key;
+        }
+    }
+}
+
+},{"./flight-booking":69,"./generic":70,"./test":72}],72:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "inputs": {
@@ -19281,4 +19229,31 @@ module.exports={
     }
 }
 
-},{}]},{},[10]);
+},{}],73:[function(require,module,exports){
+'use strict';
+
+const Ajv = require('ajv');
+const schema = require('./schema');
+
+const DEFAULT_OPTIONS = {
+    allErrors: true,
+    useDefaults: true,
+    jsonPointers: true,
+    format: 'full'
+};
+
+const DEFAULT = create();
+
+module.exports = {
+    DEFAULT,
+    DEFAULT_OPTIONS,
+    create
+};
+
+function create(options = DEFAULT_OPTIONS) {
+    const ajv = new Ajv(options);
+    ajv.addSchema(schema);
+    return ajv;
+}
+
+},{"./schema":71,"ajv":12}]},{},[10]);

@@ -5,28 +5,40 @@ const Def = require('./def');
 module.exports = class Domain {
 
     constructor(id, spec) {
-        this.$spec = spec;
         this._id = id;
-        spec.$id = '#' + id;
         Object.assign(this, spec);
+
+        this._inputs = this._collectDefs('inputs');
+        this._outputs = this._collectDefs('outputs');
+        this._types = this._collectDefs('types');
+        this._defs = []
+            .concat(this._inputs)
+            .concat(this._outputs)
+            .concat(this._types);
     }
 
     getInputs() {
-        return Object.keys(this.inputs).map(key => {
-            return new Def(this, 'inputs', key, this.inputs[key]);
-        });
+        return this._inputs;
     }
 
     getOutputs() {
-        return Object.keys(this.outputs).map(key => {
-            return new Def(this, 'outputs', key, this.outputs[key]);
-        });
+        return this._outputs;
     }
 
     getTypes() {
-        return Object.keys(this.types).map(key => {
-            return new Def(this, 'types', key, this.types[key]);
-        });
+        return this._types;
+    }
+
+    getDefs() {
+        return this._defs;
+    }
+
+    getDef(key) {
+        return this.getDefs().find(def => def._key === key);
+    }
+
+    _collectDefs(ns) {
+        return Object.keys(this[ns]).map(key => new Def(this, ns, key, this[ns][key]));
     }
 
 };

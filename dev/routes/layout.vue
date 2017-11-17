@@ -30,7 +30,7 @@ module.exports = {
 
     data() {
         return {
-            domains: protocol.domains,
+            domains: protocol.getAllDomains(),
         };
     },
 

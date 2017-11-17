@@ -1,67 +1,66 @@
 'use strict';
 
-const Ajv = require('ajv');
 const schema = require('./schema');
-const metaSchema = require('./meta.json');
 const Domain = require('./domain');
-const Def = require('./def');
 
-const DEFAULT_AJV_OPTIONS = {
-    allErrors: true,
-    useDefaults: true,
-    jsonPointers: true,
-    format: 'full',
-};
-const NAMESPACES = ['inputs', 'outputs', 'types'];
-
-const domainsById = new Map();
-const defsById = new Map();
-
-for (const domainId of Object.keys(schema.domains)) {
-    const domain = new Domain(domainId, schema.domains[domainId]);
-    domainsById.set(domainId, domain);
-    for (const ns of NAMESPACES) {
-        const defs = domain[ns];
-        for (const key of Object.keys(defs)) {
-            const def = new Def(domain, ns, key, defs[key]);
-            defsById.set(def._id, def);
-        }
-    }
-}
-
-const domains = Array.from(domainsById.values());
-const defs = Array.from(defsById.values());
+const domainsCache = new Map();
 
 module.exports = {
-    DEFAULT_AJV_OPTIONS,
-    NAMESPACES,
     schema,
-    metaSchema,
-    domains,
-    defs,
+    getAllDomains,
     getDomain,
     getDef,
-    getDefByDomainKey,
-    createValidator,
+    validate,
 };
 
+function getAllDomains() {
+    return Object.keys(schema.domains).map(id => getDomain(id));
+}
+
 function getDomain(id) {
-    return domainsById.get(id);
-}
-
-function getDef(id) {
-    return defsById.get(id);
-}
-
-function getDefByDomainKey(domainId, key) {
-    return getDef(domainId + '.' + key);
-}
-
-function createValidator(options = DEFAULT_AJV_OPTIONS) {
-    const ajv = new Ajv(options);
-    ajv.addSchema(schema);
-    for (const def of defs) {
-        ajv.addSchema({ $ref: schema.$id + def.$id }, def._id);
+    let cached = domainsCache.get(id);
+    if (typeof cached === 'undefined') {
+        const spec = schema.domains[id];
+        cached = spec ? new Domain(id, spec) : null;
+        domainsCache.set(id, cached);
     }
-    return ajv;
+    return cached;
+}
+
+function getDef(domainId, key) {
+    if (typeof key === 'undefined') {
+        const [a,b] = domainId.split('.');
+        domainId = a;
+        key = b;
+    }
+    const domain = getDomain(domainId);
+    return domain ? domain.getDef(key) : null;
+}
+
+async function validate(domainId, key, object) {
+    if (typeof object === 'undefined') {
+        object = key;
+        const [a,b] = domainId.split('.');
+        domainId = a;
+        key = b;
+    }
+    const domain = getDomain(domainId);
+    if (!domain) {
+        return {
+            valid: false,
+            errors: [
+                { message: `Unsupported domain: ${domainId}`, domainId, key },
+            ],
+        };
+    }
+    const def = domain.getDef(key);
+    if (!def) {
+        return {
+            valid: false,
+            errors: [
+                { message: `Unsupported definition: ${domainId}.${key}`, domainId, key },
+            ],
+        };
+    }
+    return await def.validate(object);
 }
