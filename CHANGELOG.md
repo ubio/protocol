@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [0.1.1] - 2017-11-17
+
 - Draft class-based API, including consumer-friendly validation.
 
 ## [0.1.0] - 2017-11-17
