@@ -606,6 +606,29 @@
     },
     "FlightBooking": {
       "description": "Allows automating airplane tickets booking and collecting related information.",
+      "input": {
+        "properties": {
+          "url": {
+            "$ref": "#Generic.URL",
+          },
+          "flight": {
+            "$ref": "#FlightBooking.Flight",
+          },
+          "account": {
+            "$ref": "#Generic.Account",
+          },
+          "passengers": {
+            "$ref": "#FlightBooking.Passengers",
+          },
+          "payment": {
+            "$ref": "#Generic.Payment",
+          },
+          "finalPriceConsent": {
+            "$ref": "#Generic.PriceConsent",
+          }
+        },
+        "additionalProperties": false
+      }
       "inputs": {
         "url": {
           "$ref": "#Generic.URL",
