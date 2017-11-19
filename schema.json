@@ -628,7 +628,7 @@
           }
         },
         "additionalProperties": false
-      }
+      },
       "inputs": {
         "url": {
           "$ref": "#Generic.URL",
