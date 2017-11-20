@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Enforce `type` keyword on all type definitions
 
 ## [0.6.0] - 2017-11-20
 

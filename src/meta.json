@@ -75,8 +75,13 @@
                 { "$ref": "http://json-schema.org/draft-06/schema" },
                 {
                     "properties": {
+                        "type": { "$ref": "http://json-schema.org/draft-06/schema#/type" },
                         "$id": { "$ref": "#/definitions/RefId" }
-                    }
+                    },
+                    "required": [
+                        "$id",
+                        "type"
+                    ]
                 }
             ]
         }

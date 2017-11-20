@@ -18820,6 +18820,7 @@ module.exports={
             ]
         },
         "BookingConfirmation": {
+            "type": "object",
             "description": "Emitted on \"Booking success\" page.",
             "properties": {
                 "bookingReference": {
@@ -18959,6 +18960,7 @@ module.exports={
             ]
         },
         "PriceConsent": {
+            "type": "object",
             "properties": {
                 "price": { "$ref": "#Generic.Price" }
             },
