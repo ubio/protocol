@@ -9,7 +9,8 @@
         "finalPriceConsent": {
             "$ref": "#Generic.PriceConsent",
             "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object."
-        }
+        },
+        "panToken": { "$ref": "#Generic.PanToken" }
     },
     "outputs": {
         "finalPrice": {

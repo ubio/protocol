@@ -18691,7 +18691,8 @@ module.exports={
         "finalPriceConsent": {
             "$ref": "#Generic.PriceConsent",
             "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object."
-        }
+        },
+        "panToken": { "$ref": "#Generic.PanToken" }
     },
     "outputs": {
         "finalPrice": {
@@ -19022,10 +19023,6 @@ module.exports={
                         "discover"
                     ]
                 },
-                "panToken": {
-                    "type": "string",
-                    "minLength": 20
-                },
                 "expirationDate": {
                     "type": "string",
                     "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
@@ -19044,10 +19041,15 @@ module.exports={
             "required": [
                 "type",
                 "brand",
+                "panToken",
                 "expirationDate",
                 "name",
                 "cvv"
             ]
+        },
+        "PanToken": {
+            "type": "string",
+            "minLength": 20
         },
         "CountryCode": {
             "type": "string",
@@ -19460,10 +19462,13 @@ for (const domainId of Object.keys(schema.domains)) {
 module.exports={
     "description": "Internal domain for testing platform features.",
     "inputs": {
-        "url": { "$ref": "#Generic.URL" }
+        "url": { "$ref": "#Generic.URL" },
+        "finalPriceConsent": { "$ref": "#Generic.PriceConsent" },
+        "panToken": { "$ref": "#Generic.PanToken" }
     },
     "outputs": {
-        "object": { "$ref": "#Internal.Object" }
+        "object": { "$ref": "#Internal.Object" },
+        "finalPrice": { "$ref": "#Generic.PriceConsent" }
     },
     "types": {
         "Object": {

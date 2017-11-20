@@ -1,5 +1,7 @@
 ## [UNRELEASED]
 
+- Extract `panToken` from `Payment`
+- Add price consent and `panToken` to `Internal` domain
 
 ## [0.5.0] - 2017-11-17
 
@@ -28,11 +30,11 @@
 
 ## [0.2.1] - 2017-11-17
 
-- Finished initial FlightBooking domain.
+- Finished initial FlightBooking domain
 
 ## [0.2.0] - 2017-11-17
 
-- Draft class-based API, including consumer-friendly validation.
+- Draft class-based API, including consumer-friendly validation
 
 ## [0.1.0] - 2017-11-17
 

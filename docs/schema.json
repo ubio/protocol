@@ -190,10 +190,6 @@
                 "discover"
               ]
             },
-            "panToken": {
-              "type": "string",
-              "minLength": 20
-            },
             "expirationDate": {
               "type": "string",
               "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
@@ -212,11 +208,17 @@
           "required": [
             "type",
             "brand",
+            "panToken",
             "expirationDate",
             "name",
             "cvv"
           ],
           "$id": "#Generic.PaymentCard"
+        },
+        "PanToken": {
+          "type": "string",
+          "minLength": 20,
+          "$id": "#Generic.PanToken"
         },
         "CountryCode": {
           "type": "string",
@@ -631,6 +633,10 @@
           "$ref": "#Generic.PriceConsent",
           "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object.",
           "$id": "#FlightBooking.finalPriceConsent"
+        },
+        "panToken": {
+          "$ref": "#Generic.PanToken",
+          "$id": "#FlightBooking.panToken"
         }
       },
       "outputs": {
@@ -812,12 +818,24 @@
         "url": {
           "$ref": "#Generic.URL",
           "$id": "#Internal.url"
+        },
+        "finalPriceConsent": {
+          "$ref": "#Generic.PriceConsent",
+          "$id": "#Internal.finalPriceConsent"
+        },
+        "panToken": {
+          "$ref": "#Generic.PanToken",
+          "$id": "#Internal.panToken"
         }
       },
       "outputs": {
         "object": {
           "$ref": "#Internal.Object",
           "$id": "#Internal.object"
+        },
+        "finalPrice": {
+          "$ref": "#Generic.PriceConsent",
+          "$id": "#Internal.finalPrice"
         }
       },
       "types": {
