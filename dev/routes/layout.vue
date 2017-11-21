@@ -11,9 +11,9 @@
                          v-for="domain in domains"
                          :to="{
                              name: 'domain',
-                             params: { domainId: domain._id }
+                             params: { domainId: domain.id }
                          }">
-                {{ domain._id }}
+                {{ domain.id }}
             </router-link>
         </div>
         <div class="layout__main">
@@ -30,7 +30,7 @@ module.exports = {
 
     data() {
         return {
-            domains: protocol.getAllDomains(),
+            domains: protocol.getDomains(),
         };
     },
 

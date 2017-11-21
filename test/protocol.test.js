@@ -7,10 +7,15 @@ describe('Protocol', () => {
 
     describe('getDomain', () => {
 
-        it('should contain $id', () => {
+        it('should return existing domain', () => {
             const genericDomain = protocol.getDomain('Generic');
             expect(genericDomain).toBeTruthy();
-            expect(genericDomain.$id).toEqual('#Generic');
+            expect(genericDomain.id).toEqual('Generic');
+        });
+
+        it('should return null for unknown domains', () => {
+            const unknown = protocol.getDomain('Unknown');
+            expect(unknown).toNotExist();
         });
 
     });
@@ -18,17 +23,16 @@ describe('Protocol', () => {
     describe('getDef', () => {
 
         it('should return null if not found', () => {
-            const unknown = protocol.getDef('Unknown.def');
+            const unknown = protocol.getDef('Unknown', 'def');
             expect(unknown).toNotExist();
         });
 
         it('should contain identifier fields', () => {
-            const priceDef = protocol.getDef('Generic.Price');
-            expect(priceDef).toBeTruthy();
-            expect(priceDef.$id).toEqual('#Generic.Price');
-            expect(priceDef._id).toEqual('Generic.Price');
-            expect(priceDef._key).toEqual('Price');
-            expect(priceDef._ns).toEqual('types');
+            const priceDef = protocol.getDef('Generic', 'Price');
+            expect(priceDef).toExist();
+            expect(priceDef.id).toEqual('Generic.Price');
+            expect(priceDef.key).toEqual('Price');
+            expect(priceDef.ns).toEqual('types');
         });
 
     });
@@ -36,21 +40,21 @@ describe('Protocol', () => {
     describe('validate', () => {
 
         it('returns error if domain not found', async () => {
-            const { valid, errors } = await protocol.validate('Unknown.smth', {});
+            const { valid, errors } = await protocol.validate('Unknown', 'smth', {});
             expect(valid).toEqual(false);
             expect(errors).toExist();
             expect(errors.length).toEqual(1);
         });
 
         it('returns error if def not found', async () => {
-            const { valid, errors } = await protocol.validate('Generic.smth', {});
+            const { valid, errors } = await protocol.validate('Generic', 'smth', {});
             expect(valid).toEqual(false);
             expect(errors).toExist();
             expect(errors.length).toEqual(1);
         });
 
         it('returns validation errors if object is invalid', async () => {
-            const { valid, errors } = await protocol.validate('Generic.Price', {
+            const { valid, errors } = await protocol.validate('Generic', 'Price', {
                 value: '1200',
                 currencyCode: 'gbp',
             });
@@ -62,7 +66,7 @@ describe('Protocol', () => {
         });
 
         it('returns no errors for valid objects', async () => {
-            const { valid, errors } = await protocol.validate('Generic.Price', {
+            const { valid, errors } = await protocol.validate('Generic', 'Price', {
                 value: 1200,
                 currencyCode: 'gbp',
             });

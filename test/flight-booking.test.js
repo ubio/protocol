@@ -5,10 +5,12 @@ const expect = require('expect');
 
 describe('FlightBooking', () => {
 
+    const FlightBooking = protocol.getDomain('FlightBooking');
+
     describe('Flight', () => {
 
         it('should accept valid flight', async () => {
-            const { valid, errors } = await protocol.validate('FlightBooking.Flight', {
+            const { valid, errors } = await FlightBooking.validate('Flight', {
                 cabinClass: 'Economy',
                 price: {
                     currencyCode: 'usd',
@@ -42,7 +44,7 @@ describe('FlightBooking', () => {
         });
 
         it('should not accept invalid return flight', async () => {
-            const { valid, errors } = await protocol.validate('FlightBooking.Flight', {
+            const { valid, errors } = await FlightBooking.validate('Flight', {
                 cabinClass: 'Economy',
                 price: {
                     currencyCode: 'usd',
@@ -66,7 +68,7 @@ describe('FlightBooking', () => {
         });
 
         it('should not require return flight', async () => {
-            const { valid, errors } = await protocol.validate('FlightBooking.Flight', {
+            const { valid, errors } = await FlightBooking.validate('Flight', {
                 cabinClass: 'Economy',
                 price: {
                     currencyCode: 'usd',
@@ -88,7 +90,7 @@ describe('FlightBooking', () => {
         });
 
         it('should not allow incorrect to/from', async () => {
-            const { valid, errors } = await protocol.validate('FlightBooking.Flight', {
+            const { valid, errors } = await FlightBooking.validate('Flight', {
                 cabinClass: 'Economy',
                 price: {
                     currencyCode: 'usd',
@@ -104,6 +106,5 @@ describe('FlightBooking', () => {
         });
 
     });
-
 
 });

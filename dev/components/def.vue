@@ -1,32 +1,32 @@
 <template>
     <div class="def"
          :class="{ 'def--active': active }"
-         :id="def._key">
+         :id="def.key">
         <div class="def__header">
             <span class="def__link"
                   @click="permalink">🔗</span>
-            <span class="def__id">{{ def._id }}</span>
+            <span class="def__id">{{ def.id }}</span>
         </div>
         <div class="def__type">
-            <schema-type :def="def"/>
+            <schema-type :spec="def.spec"/>
         </div>
 
         <div class="def__description"
-             v-html="def.description">
+             v-html="def.spec.description">
         </div>
 
-        <template v-if="def.enum">
+        <template v-if="def.spec.enum">
             <h4>Allowed values</h4>
             <div class="def__enum">
-                {{ def.enum.join(', ') }}
+                {{ def.spec.enum.join(', ') }}
             </div>
         </template>
 
-        <template v-if="def.properties">
+        <template v-if="def.spec.properties">
             <h4>Properties</h4>
             <prop
                 class="def__prop"
-                v-for="prop,id in def.properties"
+                v-for="prop,id in def.spec.properties"
                 :id="id"
                 :prop="prop"
                 :parent="def"/>
@@ -49,7 +49,7 @@ module.exports = {
     computed: {
 
         active() {
-            return this.$route.hash === '#' + this.def._key;
+            return this.$route.hash === '#' + this.def.key;
         },
 
     },
@@ -57,7 +57,7 @@ module.exports = {
     methods: {
 
         permalink() {
-            this.$router.replace('#' + this.def._key);
+            this.$router.replace('#' + this.def.key);
         },
 
     },

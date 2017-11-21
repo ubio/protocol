@@ -1,54 +1,66 @@
 'use strict';
 
-const Def = require('./def');
+const { InputDef, OutputDef, TypeDef } = require('./defs');
 
 module.exports = class Domain {
 
-    constructor(id, spec) {
-        this._id = id;
-        Object.assign(this, spec);
+    constructor(protocol, id) {
+        this.id = id;
+        this.protocol = protocol;
+        this.spec = protocol.schema.domains[id];
 
-        this._inputs = this._collectDefs('inputs');
-        this._outputs = this._collectDefs('outputs');
-        this._types = this._collectDefs('types');
-        this._defs = []
-            .concat(this._inputs)
-            .concat(this._outputs)
-            .concat(this._types);
+        this.inputs = this._collectInputs();
+        this.outputs = this._collectOutputs();
+        this.types = this._collectTypes();
+        this.defs = []
+            .concat(this.inputs)
+            .concat(this.outputs)
+            .concat(this.types);
     }
 
     getInputs() {
-        return this._inputs;
+        return this.inputs;
     }
 
     getOutputs() {
-        return this._outputs;
+        return this.outputs;
     }
 
     getTypes() {
-        return this._types;
+        return this.types;
     }
 
     getDefs() {
-        return this._defs;
+        return this.defs;
     }
 
     getDef(key) {
-        return this.getDefs().find(def => def._key === key);
+        return this.defs.find(def => def.key === key);
     }
 
-    _collectDefs(ns) {
-        return Object.keys(this[ns]).map(key => new Def(this, ns, key, this[ns][key]));
+    _collectInputs() {
+        return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
+    }
+
+    _collectOutputs() {
+        return Object.keys(this.spec.outputs).map(key => new OutputDef(this, key));
+    }
+
+    _collectTypes() {
+        return Object.keys(this.spec.types).map(key => new TypeDef(this, key));
     }
 
     async validate(key, data) {
         const def = this.getDef(key);
         if (!def) {
-            const domainId = this._id;
             return {
                 valid: false,
                 errors: [
-                    { message: `Unsupported definition: ${domainId}.${key}`, domainId, key },
+                    {
+                        message: `Unsupported definition: ${this.id}.${key}`,
+                        domain: this.id,
+                        key,
+                    },
                 ],
             };
         }

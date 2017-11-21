@@ -13,23 +13,21 @@
         }
     },
     "required": [
-        "$id",
         "domains"
     ],
     "additionalProperties": false,
     "definitions": {
-        "DomainId": {
+        "TypeId": {
             "type": "string",
             "pattern": "^#[A-Z][a-zA-Z0-9]+$"
         },
-        "RefId": {
+        "TypeRef": {
             "type": "string",
-            "pattern": "^#[A-Z][a-zA-Z0-9]+\\.[a-zA-Z0-9]+$"
+            "pattern": "^#/domains/[A-Z][a-zA-Z0-9]+/types/[A-Z][a-zA-Z0-9]+$"
         },
         "Domain": {
             "type": "object",
             "properties": {
-                "$id": { "$ref": "#/definitions/DomainId" },
                 "description": {
                     "type": "string"
                 },
@@ -53,7 +51,6 @@
                 }
             },
             "required": [
-                "$id",
                 "description",
                 "inputs",
                 "outputs",
@@ -63,11 +60,10 @@
         },
         "SimpleDef": {
             "properties": {
-                "$id": { "$ref": "#/definitions/RefId" },
-                "$ref": { "$ref": "#/definitions/RefId" },
+                "typeRef": { "$ref": "#/definitions/TypeRef" },
                 "description": { "type": "string" }
             },
-            "required": ["$id", "$ref"],
+            "required": ["typeRef"],
             "additionalProperties": false
         },
         "TypeDef": {
@@ -75,11 +71,9 @@
                 { "$ref": "http://json-schema.org/draft-06/schema" },
                 {
                     "properties": {
-                        "type": { "$ref": "http://json-schema.org/draft-06/schema#/type" },
-                        "$id": { "$ref": "#/definitions/RefId" }
+                        "type": { "$ref": "http://json-schema.org/draft-06/schema#/type" }
                     },
                     "required": [
-                        "$id",
                         "type"
                     ]
                 }

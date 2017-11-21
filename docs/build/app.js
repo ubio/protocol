@@ -34,7 +34,7 @@ module.exports = {
     computed: {
 
         active() {
-            return this.$route.hash === '#' + this.def._key;
+            return this.$route.hash === '#' + this.def.key;
         }
 
     },
@@ -42,7 +42,7 @@ module.exports = {
     methods: {
 
         permalink() {
-            this.$router.replace('#' + this.def._key);
+            this.$router.replace('#' + this.def.key);
         }
 
     }
@@ -52,7 +52,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def._key}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def._id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"def":_vm.def}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.description)}}),_vm._v(" "),(_vm.def.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -85,7 +85,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def._key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"def":_vm.def}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.def.description)}})],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}})],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -129,7 +129,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"def":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -154,17 +154,21 @@ module.exports = {
     name: 'schema-type',
 
     props: {
-        def: { type: Object, required: true }
+        spec: { type: Object, required: true }
     },
 
     computed: {
 
         isArray() {
-            return this.def.type === 'array';
+            return this.spec.type === 'array';
+        },
+
+        $ref() {
+            return this.spec.$ref || this.spec.typeRef;
         },
 
         ref() {
-            return protocol.getDef(this.def.$ref.replace('#', ''));
+            return protocol.resolveTypeRef(this.$ref);
         }
 
     }
@@ -174,13 +178,13 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"schema-type"},[_c('span',{staticClass:"schema-type__literal",attrs:{"if":"def.type"}},[_vm._v("\n        "+_vm._s(_vm.def.type)+"\n    ")]),_vm._v(" "),(_vm.isArray)?_c('span',{staticClass:"schema-type__array"},[_vm._v("\n        of\n        "),_c('schema-type',{attrs:{"def":_vm.def.items}})],1):_vm._e(),_vm._v(" "),(_vm.def.$ref)?_c('span',{staticClass:"schema-type__ref"},[(_vm.ref)?_c('router-link',{attrs:{"to":{
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"schema-type"},[_c('span',{staticClass:"schema-type__literal",attrs:{"if":"spec.type"}},[_vm._v("\n        "+_vm._s(_vm.spec.type)+"\n    ")]),_vm._v(" "),(_vm.isArray)?_c('span',{staticClass:"schema-type__array"},[_vm._v("\n        of\n        "),_c('schema-type',{attrs:{"spec":_vm.spec.items}})],1):_vm._e(),_vm._v(" "),(_vm.$ref)?_c('span',{staticClass:"schema-type__ref"},[(_vm.ref)?_c('router-link',{attrs:{"to":{
                 name: 'domain',
                 params: {
-                    domainId: _vm.ref._domain._id,
+                    domainId: _vm.ref.domain.id,
                 },
-                hash: '#' + _vm.ref._key,
-            }}},[_vm._v("\n            "+_vm._s(_vm.ref._id)+"\n        ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n            "+_vm._s(_vm.def.$ref)+"\n        ")])],1):_vm._e()])}
+                hash: '#' + _vm.ref.key,
+            }}},[_vm._v("\n            "+_vm._s(_vm.ref.id)+"\n        ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n            "+_vm._s(_vm.$ref)+"\n        ")])],1):_vm._e()])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -288,7 +292,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain._id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -326,7 +330,7 @@ module.exports = {
 
     data() {
         return {
-            domains: protocol.getAllDomains()
+            domains: protocol.getDomains()
         };
     }
 
@@ -337,8 +341,8 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__sidebar"},[_c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{ name: 'home' },"exact":""}},[_vm._v("\n            Home\n        ")]),_vm._v(" "),_vm._l((_vm.domains),function(domain){return _c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{
                          name: 'domain',
-                         params: { domainId: domain._id }
-                     }}},[_vm._v("\n            "+_vm._s(domain._id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
+                         params: { domainId: domain.id }
+                     }}},[_vm._v("\n            "+_vm._s(domain.id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18542,79 +18546,156 @@ exports.insert = function (css) {
 },{}],66:[function(require,module,exports){
 'use strict';
 
-const schema = require('./schema');
-const validator = require('./validator');
+class Def {
 
-module.exports = class Def {
-
-    constructor(domain, ns, key, spec) {
-        const id = `${domain._id}.${key}`;
-        this._domain = domain;
-        this._key = key;
-        this._ns = ns;
-        this._id = id;
-        Object.assign(this, spec);
+    constructor(domain, ns, key) {
+        this.domain = domain;
+        this.spec = domain.spec[ns][key];
+        this.ns = ns;
+        this.key = key;
+        const id = `${domain.id}.${key}`;
+        this.id = id;
     }
 
-    async validate(data, ajv = validator.DEFAULT) {
-        const ajvSchema = ajv.getSchema(schema.$id + this.$id);
-        const valid = await ajvSchema(data);
+    getTypeRef() {
+        return null;
+    }
+
+    getSchema() {
+        return null;
+    }
+
+    async validate(data) {
+        const ajvSchema = this.domain.protocol.validator.getSchema(this.id);
+        if (ajvSchema) {
+            const valid = await ajvSchema(data);
+            return {
+                valid,
+                errors: ajvSchema.errors
+            };
+        }
         return {
-            valid,
-            errors: ajvSchema.errors
+            valid: false,
+            errors: [{
+                message: `Cannot resolve schema for definition: ${this.id}`,
+                domain: this.domain.id,
+                key: this.key
+            }]
         };
     }
 
+}
+
+class TypeDef extends Def {
+
+    constructor(domain, key) {
+        super(domain, 'types', key);
+    }
+
+    getTypeRef() {
+        return `#/domains/${this.domain.id}/types/${this.key}`;
+    }
+
+    getSchema() {
+        return this.spec;
+    }
+
+}
+
+class CustomDef extends Def {
+
+    getTypeRef() {
+        return this.spec.typeRef;
+    }
+
+    getSchema() {
+        return this.domain.protocol.resolveTypeRef(this.getTypeRef());
+    }
+
+}
+
+class InputDef extends CustomDef {
+
+    constructor(domain, key) {
+        super(domain, 'inputs', key);
+    }
+
+}
+
+class OutputDef extends CustomDef {
+
+    constructor(domain, key) {
+        super(domain, 'outputs', key);
+    }
+
+}
+
+module.exports = {
+    InputDef,
+    OutputDef,
+    TypeDef
 };
 
-},{"./schema":71,"./validator":73}],67:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 'use strict';
 
-const Def = require('./def');
+const { InputDef, OutputDef, TypeDef } = require('./defs');
 
 module.exports = class Domain {
 
-    constructor(id, spec) {
-        this._id = id;
-        Object.assign(this, spec);
+    constructor(protocol, id) {
+        this.id = id;
+        this.protocol = protocol;
+        this.spec = protocol.schema.domains[id];
 
-        this._inputs = this._collectDefs('inputs');
-        this._outputs = this._collectDefs('outputs');
-        this._types = this._collectDefs('types');
-        this._defs = [].concat(this._inputs).concat(this._outputs).concat(this._types);
+        this.inputs = this._collectInputs();
+        this.outputs = this._collectOutputs();
+        this.types = this._collectTypes();
+        this.defs = [].concat(this.inputs).concat(this.outputs).concat(this.types);
     }
 
     getInputs() {
-        return this._inputs;
+        return this.inputs;
     }
 
     getOutputs() {
-        return this._outputs;
+        return this.outputs;
     }
 
     getTypes() {
-        return this._types;
+        return this.types;
     }
 
     getDefs() {
-        return this._defs;
+        return this.defs;
     }
 
     getDef(key) {
-        return this.getDefs().find(def => def._key === key);
+        return this.defs.find(def => def.key === key);
     }
 
-    _collectDefs(ns) {
-        return Object.keys(this[ns]).map(key => new Def(this, ns, key, this[ns][key]));
+    _collectInputs() {
+        return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
+    }
+
+    _collectOutputs() {
+        return Object.keys(this.spec.outputs).map(key => new OutputDef(this, key));
+    }
+
+    _collectTypes() {
+        return Object.keys(this.spec.types).map(key => new TypeDef(this, key));
     }
 
     async validate(key, data) {
         const def = this.getDef(key);
         if (!def) {
-            const domainId = this._id;
             return {
                 valid: false,
-                errors: [{ message: `Unsupported definition: ${domainId}.${key}`, domainId, key }]
+                errors: [{
+                    message: `Unsupported definition: ${this.id}.${key}`,
+                    domain: this.id,
+                    key
+                }]
             };
         }
         return await def.validate(data);
@@ -18622,93 +18703,115 @@ module.exports = class Domain {
 
 };
 
-},{"./def":66}],68:[function(require,module,exports){
+},{"./defs":66}],68:[function(require,module,exports){
 'use strict';
 
 const schema = require('./schema');
+const Protocol = require('./protocol');
+
+module.exports = new Protocol(schema);
+
+},{"./protocol":69,"./schema":72}],69:[function(require,module,exports){
+'use strict';
+
 const Domain = require('./domain');
+const { createValidator } = require('./validator');
 
-const domainsCache = new Map();
+module.exports = class Protocol {
 
-module.exports = {
-    schema,
-    getAllDomains,
-    getDomain,
-    getDef,
-    validate
+    constructor(schema) {
+        this.schema = schema;
+        this.domains = this._collectDomains();
+        this.validator = createValidator(schema, this.getAllDefs());
+    }
+
+    _collectDomains() {
+        return Object.keys(this.schema.domains).map(id => new Domain(this, id));
+    }
+
+    getDomains() {
+        return this.domains;
+    }
+
+    getDomain(id) {
+        return this.domains.find(domain => domain.id === id);
+    }
+
+    getAllDefs() {
+        return this.domains.reduce((defs, domain) => defs.concat(domain.defs), []);
+    }
+
+    resolveTypeRef($ref) {
+        const m = /^#\/domains\/(.*?)\/types\/(.*?)$/.exec($ref);
+        return m ? this.getDef(m[1], m[2]) : null;
+    }
+
+    getDef(domainId, key) {
+        const domain = this.getDomain(domainId);
+        return domain ? domain.getDef(key) : null;
+    }
+
+    async validate(domainId, key, data) {
+        const domain = this.getDomain(domainId);
+        if (!domain) {
+            return {
+                valid: false,
+                errors: [{
+                    message: `Unsupported domain: ${domainId}`,
+                    domain: domainId,
+                    key
+                }]
+            };
+        }
+        return await domain.validate(key, data);
+    }
+
 };
 
-function getAllDomains() {
-    return Object.keys(schema.domains).map(id => getDomain(id));
-}
-
-function getDomain(id) {
-    let cached = domainsCache.get(id);
-    if (typeof cached === 'undefined') {
-        const spec = schema.domains[id];
-        cached = spec ? new Domain(id, spec) : null;
-        domainsCache.set(id, cached);
-    }
-    return cached;
-}
-
-function getDef(domainId, key) {
-    if (typeof key === 'undefined') {
-        const [a, b] = domainId.split('.');
-        domainId = a;
-        key = b;
-    }
-    const domain = getDomain(domainId);
-    return domain ? domain.getDef(key) : null;
-}
-
-async function validate(domainId, key, data) {
-    if (typeof object === 'undefined') {
-        data = key;
-        const [a, b] = domainId.split('.');
-        domainId = a;
-        key = b;
-    }
-    const domain = getDomain(domainId);
-    if (!domain) {
-        return {
-            valid: false,
-            errors: [{ message: `Unsupported domain: ${domainId}`, domainId, key }]
-        };
-    }
-    return await domain.validate(key, data);
-}
-
-},{"./domain":67,"./schema":71}],69:[function(require,module,exports){
+},{"./domain":67,"./validator":74}],70:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking and collecting related information.",
     "inputs": {
-        "url": { "$ref": "#Generic.URL" },
-        "flight": { "$ref": "#FlightBooking.Flight" },
-        "account": { "$ref": "#Generic.Account" },
-        "passengers": { "$ref": "#FlightBooking.Passengers" },
-        "payment": { "$ref": "#Generic.Payment" },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL"
+        },
+        "flight": {
+            "typeRef": "#/domains/FlightBooking/types/Flight"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "passengers": {
+            "typeRef": "#/domains/FlightBooking/types/Passengers"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
         "finalPriceConsent": {
-            "$ref": "#Generic.PriceConsent",
+            "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object."
         },
-        "panToken": { "$ref": "#Generic.PanToken" }
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        }
     },
     "outputs": {
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.",
-            "$ref": "#Generic.PriceConsent"
+            "typeRef": "#/domains/Generic/types/PriceConsent"
         },
-        "bookingConfirmation": { "$ref": "#FlightBooking.BookingConfirmation" }
+        "bookingConfirmation": {
+            "typeRef": "#/domains/FlightBooking/types/BookingConfirmation"
+        }
     },
     "types": {
         "Flight": {
             "type": "object",
             "properties": {
-                "from": { "$ref": "#FlightBooking.DatePlace" },
-                "to": { "$ref": "#FlightBooking.DatePlace" },
-                "return": { "$ref": "#FlightBooking.ReturnFlight" },
-                "price": { "$ref": "#Generic.Price" },
+                "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "return": { "$ref": "#/domains/FlightBooking/types/ReturnFlight" },
+                "price": { "$ref": "#/domains/Generic/types/Price" },
                 "cabinClass": {
                     "type": "string"
                 }
@@ -18723,8 +18826,8 @@ module.exports={
         "ReturnFlight": {
             "type": "object",
             "properties": {
-                "from": { "$ref": "#FlightBooking.DatePlace" },
-                "to": { "$ref": "#FlightBooking.DatePlace" }
+                "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
             },
             "required": [
                 "from",
@@ -18735,7 +18838,7 @@ module.exports={
             "type": "object",
             "properties": {
                 "countryCode": {
-                    "$ref": "#Generic.CountryCode"
+                    "$ref": "#/domains/Generic/types/CountryCode"
                 },
                 "dateTime": {
                     "type": "string",
@@ -18759,7 +18862,7 @@ module.exports={
             "type": "array",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#FlightBooking.Passenger" }
+            "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
         },
         "Passenger": {
             "type": "object",
@@ -18806,7 +18909,7 @@ module.exports={
                             "format": "date"
                         },
                         "countryCode": {
-                            "$ref": "#Generic.CountryCode"
+                            "$ref": "#/domains/Generic/types/CountryCode"
                         }
                     }
                 }
@@ -18832,7 +18935,7 @@ module.exports={
                     "description": "Message about successful booking."
                 },
                 "price": {
-                    "$ref": "#Generic.Price",
+                    "$ref": "#/domains/Generic/types/Price",
                     "description": "Price, if found on the successful booking page."
                 }
             },
@@ -18844,7 +18947,7 @@ module.exports={
     }
 }
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains generic definitions used in other domains.",
     "inputs": {},
@@ -18868,7 +18971,7 @@ module.exports={
                     "default": ""
                 },
                 "phone": {
-                    "$ref": "#Generic.Phone"
+                    "$ref": "#/domains/Generic/types/Phone"
                 },
                 "isExisting": {
                     "type": "boolean"
@@ -18927,10 +19030,10 @@ module.exports={
                     "type": "string"
                 },
                 "countryCode": {
-                    "$ref": "#Generic.CountryCode"
+                    "$ref": "#/domains/Generic/types/CountryCode"
                 },
                 "countrySubdivision": {
-                    "$ref": "#Generic.CountrySubdivision"
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
                 }
             },
             "required": [
@@ -18946,7 +19049,7 @@ module.exports={
             "type": "object",
             "properties": {
                 "countryCode": {
-                    "$ref": "#Generic.CountryCode"
+                    "$ref": "#/domains/Generic/types/CountryCode"
                 },
                 "number": {
                     "type": "string",
@@ -18962,7 +19065,7 @@ module.exports={
         "PriceConsent": {
             "type": "object",
             "properties": {
-                "price": { "$ref": "#Generic.Price" }
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "additionalProperties": false,
             "required": [
@@ -18973,7 +19076,7 @@ module.exports={
             "type": "object",
             "properties": {
                 "currencyCode": {
-                    "$ref": "#Generic.CurrencyCode"
+                    "$ref": "#/domains/Generic/types/CurrencyCode"
                 },
                 "value": {
                     "type": "integer",
@@ -18991,13 +19094,13 @@ module.exports={
             "type": "object",
             "properties": {
                 "card": {
-                    "$ref": "#Generic.PaymentCard"
+                    "$ref": "#/domains/Generic/types/PaymentCard"
                 },
                 "person": {
-                    "$ref": "#Generic.Person"
+                    "$ref": "#/domains/Generic/types/Person"
                 },
                 "address": {
-                    "$ref": "#Generic.Address"
+                    "$ref": "#/domains/Generic/types/Address"
                 }
             },
             "required": [
@@ -19435,11 +19538,11 @@ module.exports={
         }
     }
 }
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
-const schema = module.exports = {
-    $id: 'https://ub.io/protocol/',
+module.exports = {
+    $id: 'https://ub.io/protocol/schema',
     domains: {
         Generic: require('./generic'),
         FlightBooking: require('./flight-booking'),
@@ -19447,30 +19550,27 @@ const schema = module.exports = {
     }
 };
 
-// Generate $id on domains and defs
-for (const domainId of Object.keys(schema.domains)) {
-    const domain = schema.domains[domainId];
-    domain.$id = '#' + domainId;
-
-    for (const ns of ['inputs', 'outputs', 'types']) {
-        for (const key of Object.keys(domain[ns])) {
-            const def = domain[ns][key];
-            def.$id = '#' + domainId + '.' + key;
-        }
-    }
-}
-
-},{"./flight-booking":69,"./generic":70,"./internal":72}],72:[function(require,module,exports){
+},{"./flight-booking":70,"./generic":71,"./internal":73}],73:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "inputs": {
-        "url": { "$ref": "#Generic.URL" },
-        "finalPriceConsent": { "$ref": "#Generic.PriceConsent" },
-        "panToken": { "$ref": "#Generic.PanToken" }
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        }
     },
     "outputs": {
-        "object": { "$ref": "#Internal.Object" },
-        "finalPrice": { "$ref": "#Generic.PriceConsent" }
+        "object": {
+            "typeRef": "#/domains/Internal/types/Object"
+        },
+        "finalPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        }
     },
     "types": {
         "Object": {
@@ -19480,11 +19580,10 @@ module.exports={
     }
 }
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');
-const schema = require('./schema');
 
 const DEFAULT_OPTIONS = {
     allErrors: true,
@@ -19493,18 +19592,22 @@ const DEFAULT_OPTIONS = {
     format: 'full'
 };
 
-const DEFAULT = create();
-
 module.exports = {
-    DEFAULT,
     DEFAULT_OPTIONS,
-    create
+    createValidator
 };
 
-function create(options = DEFAULT_OPTIONS) {
+function createValidator(schema, defs, options = DEFAULT_OPTIONS) {
     const ajv = new Ajv(options);
-    ajv.addSchema(schema);
+    const schemaId = schema.$id || 'untitled';
+    ajv.addSchema(schema, schemaId);
+    for (const def of defs) {
+        const typeRef = def.getTypeRef();
+        if (typeRef) {
+            ajv.addSchema({ $ref: schemaId + typeRef }, def.id);
+        }
+    }
     return ajv;
 }
 
-},{"./schema":71,"ajv":12}]},{},[10]);
+},{"ajv":12}]},{},[10]);

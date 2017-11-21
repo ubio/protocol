@@ -1,13 +1,23 @@
 {
     "description": "Internal domain for testing platform features.",
     "inputs": {
-        "url": { "$ref": "#Generic.URL" },
-        "finalPriceConsent": { "$ref": "#Generic.PriceConsent" },
-        "panToken": { "$ref": "#Generic.PanToken" }
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        }
     },
     "outputs": {
-        "object": { "$ref": "#Internal.Object" },
-        "finalPrice": { "$ref": "#Generic.PriceConsent" }
+        "object": {
+            "typeRef": "#/domains/Internal/types/Object"
+        },
+        "finalPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        }
     },
     "types": {
         "Object": {

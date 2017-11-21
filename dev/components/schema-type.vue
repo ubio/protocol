@@ -1,30 +1,30 @@
 <template>
     <span class="schema-type">
         <span class="schema-type__literal"
-              if="def.type">
-            {{ def.type }}
+              if="spec.type">
+            {{ spec.type }}
         </span>
         <span class="schema-type__array"
               v-if="isArray">
             of
-            <schema-type :def="def.items"/>
+            <schema-type :spec="spec.items"/>
         </span>
         <span class="schema-type__ref"
-              v-if="def.$ref">
+              v-if="$ref">
             <router-link
                 v-if="ref"
                 :to="{
                     name: 'domain',
                     params: {
-                        domainId: ref._domain._id,
+                        domainId: ref.domain.id,
                     },
-                    hash: '#' + ref._key,
+                    hash: '#' + ref.key,
                 }">
-                {{ ref._id }}
+                {{ ref.id }}
             </router-link>
             <span class="schema-type__broken-ref"
                   v-else>
-                {{ def.$ref }}
+                {{ $ref }}
             </span>
         </span>
     </span>
@@ -38,17 +38,21 @@ module.exports = {
     name: 'schema-type',
 
     props: {
-        def: { type: Object, required: true },
+        spec: { type: Object, required: true },
     },
 
     computed: {
 
         isArray() {
-            return this.def.type === 'array';
+            return this.spec.type === 'array';
+        },
+
+        $ref() {
+            return this.spec.$ref || this.spec.typeRef;
         },
 
         ref() {
-            return protocol.getDef(this.def.$ref.replace('#', ''));
+            return protocol.resolveTypeRef(this.$ref);
         },
 
     },

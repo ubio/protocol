@@ -5,7 +5,7 @@
         </div>
         <div class="prop__body">
             <div class="prop__type">
-                <schema-type :def="prop"/>
+                <schema-type :spec="prop"/>
             </div>
             <div class="prop__optional"
                 v-if="!required">

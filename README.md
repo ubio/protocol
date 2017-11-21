@@ -12,7 +12,7 @@ Definitions also have `$id` attribute which is a fragment identifier used to uni
 
 ## Public API
 
-### protocol.getAllDomains(): Array<Domain>
+### protocol.getDomains(): Array<Domain>
 
 Returns an array of all `Domain` instances supported by protocol.
 
@@ -23,18 +23,6 @@ Returns `Domain` instance with specified `id`, or `null` if no such domain exist
 ### protocol.getDef(domainId: String, key: String): Def?
 
 Returns `Def` instance by specified `domainId` and `key`, or `null` if no such definition exists.
-
-### protocol.getDef(id: String): Def?
-
-Returns `Def` instance by definition `id` (`domainId` and `key`, separated with dot) or `null` if no such definition exists.
-
-### async protocol.validate(id: String, object: Any): { valid: Boolean, errors: Array? }
-
-Validates specified `object` against definition JSON schema.
-
-Definition is resolved by definition `id`.
-
-If object is invalid, `errors` will contain an array of errors in AJV-compatible format.
 
 ### async protocol.validate(domainId: String, key: String, object: Any): { valid: Boolean, errors: Array? }
 

@@ -1,32 +1,46 @@
 {
     "description": "Allows automating airplane tickets booking and collecting related information.",
     "inputs": {
-        "url": { "$ref": "#Generic.URL" },
-        "flight": { "$ref": "#FlightBooking.Flight" },
-        "account": { "$ref": "#Generic.Account" },
-        "passengers": { "$ref": "#FlightBooking.Passengers" },
-        "payment": { "$ref": "#Generic.Payment" },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL"
+        },
+        "flight": {
+            "typeRef": "#/domains/FlightBooking/types/Flight"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "passengers": {
+            "typeRef": "#/domains/FlightBooking/types/Passengers"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
         "finalPriceConsent": {
-            "$ref": "#Generic.PriceConsent",
+            "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object."
         },
-        "panToken": { "$ref": "#Generic.PanToken" }
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        }
     },
     "outputs": {
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.",
-            "$ref": "#Generic.PriceConsent"
+            "typeRef": "#/domains/Generic/types/PriceConsent"
         },
-        "bookingConfirmation": { "$ref": "#FlightBooking.BookingConfirmation" }
+        "bookingConfirmation": {
+            "typeRef": "#/domains/FlightBooking/types/BookingConfirmation"
+        }
     },
     "types": {
         "Flight": {
             "type": "object",
             "properties": {
-                "from": { "$ref": "#FlightBooking.DatePlace" },
-                "to": { "$ref": "#FlightBooking.DatePlace" },
-                "return": { "$ref": "#FlightBooking.ReturnFlight" },
-                "price": { "$ref": "#Generic.Price" },
+                "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "return": { "$ref": "#/domains/FlightBooking/types/ReturnFlight" },
+                "price": { "$ref": "#/domains/Generic/types/Price" },
                 "cabinClass": {
                     "type": "string"
                 }
@@ -41,8 +55,8 @@
         "ReturnFlight": {
             "type": "object",
             "properties": {
-                "from": { "$ref": "#FlightBooking.DatePlace" },
-                "to": { "$ref": "#FlightBooking.DatePlace" }
+                "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
             },
             "required": [
                 "from",
@@ -53,7 +67,7 @@
             "type": "object",
             "properties": {
                 "countryCode": {
-                    "$ref": "#Generic.CountryCode"
+                    "$ref": "#/domains/Generic/types/CountryCode"
                 },
                 "dateTime": {
                     "type": "string",
@@ -77,7 +91,7 @@
             "type": "array",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#FlightBooking.Passenger" }
+            "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
         },
         "Passenger": {
             "type": "object",
@@ -124,7 +138,7 @@
                             "format": "date"
                         },
                         "countryCode": {
-                            "$ref": "#Generic.CountryCode"
+                            "$ref": "#/domains/Generic/types/CountryCode"
                         }
                     }
                 }
@@ -150,7 +164,7 @@
                     "description": "Message about successful booking."
                 },
                 "price": {
-                    "$ref": "#Generic.Price",
+                    "$ref": "#/domains/Generic/types/Price",
                     "description": "Price, if found on the successful booking page."
                 }
             },

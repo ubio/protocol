@@ -1,12 +1,12 @@
 <template>
     <div class="oneliner">
         <div class="oneliner__id">
-            {{ def._key }}
+            {{ def.key }}
         </div>
         <div class="oneliner__body">
-            <schema-type :def="def"/>
+            <schema-type :spec="def.spec"/>
             <div class="oneliner__description"
-                 v-html="def.description">
+                 v-html="def.spec.description">
             </div>
         </div>
     </div>

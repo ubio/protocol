@@ -1,5 +1,5 @@
 {
-  "$id": "https://ub.io/protocol/",
+  "$id": "https://ub.io/protocol/schema",
   "domains": {
     "Generic": {
       "description": "Generic domain contains generic definitions used in other domains.",
@@ -10,8 +10,7 @@
           "type": "string",
           "format": "url",
           "title": "URL Record",
-          "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url",
-          "$id": "#Generic.URL"
+          "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url"
         },
         "Account": {
           "type": "object",
@@ -25,7 +24,7 @@
               "default": ""
             },
             "phone": {
-              "$ref": "#Generic.Phone"
+              "$ref": "#/domains/Generic/types/Phone"
             },
             "isExisting": {
               "type": "boolean"
@@ -35,8 +34,7 @@
             "email",
             "phone",
             "isExisting"
-          ],
-          "$id": "#Generic.Account"
+          ]
         },
         "Person": {
           "type": "object",
@@ -65,8 +63,7 @@
             "title",
             "firstName",
             "lastName"
-          ],
-          "$id": "#Generic.Person"
+          ]
         },
         "Address": {
           "type": "object",
@@ -86,10 +83,10 @@
               "type": "string"
             },
             "countryCode": {
-              "$ref": "#Generic.CountryCode"
+              "$ref": "#/domains/Generic/types/CountryCode"
             },
             "countrySubdivision": {
-              "$ref": "#Generic.CountrySubdivision"
+              "$ref": "#/domains/Generic/types/CountrySubdivision"
             }
           },
           "required": [
@@ -99,14 +96,13 @@
             "postcode",
             "countryCode",
             "countrySubdivision"
-          ],
-          "$id": "#Generic.Address"
+          ]
         },
         "Phone": {
           "type": "object",
           "properties": {
             "countryCode": {
-              "$ref": "#Generic.CountryCode"
+              "$ref": "#/domains/Generic/types/CountryCode"
             },
             "number": {
               "type": "string",
@@ -117,27 +113,25 @@
           "required": [
             "countryCode",
             "number"
-          ],
-          "$id": "#Generic.Phone"
+          ]
         },
         "PriceConsent": {
           "type": "object",
           "properties": {
             "price": {
-              "$ref": "#Generic.Price"
+              "$ref": "#/domains/Generic/types/Price"
             }
           },
           "additionalProperties": false,
           "required": [
             "price"
-          ],
-          "$id": "#Generic.PriceConsent"
+          ]
         },
         "Price": {
           "type": "object",
           "properties": {
             "currencyCode": {
-              "$ref": "#Generic.CurrencyCode"
+              "$ref": "#/domains/Generic/types/CurrencyCode"
             },
             "value": {
               "type": "integer",
@@ -149,28 +143,26 @@
             "currencyCode",
             "value"
           ],
-          "additionalProperties": false,
-          "$id": "#Generic.Price"
+          "additionalProperties": false
         },
         "Payment": {
           "type": "object",
           "properties": {
             "card": {
-              "$ref": "#Generic.PaymentCard"
+              "$ref": "#/domains/Generic/types/PaymentCard"
             },
             "person": {
-              "$ref": "#Generic.Person"
+              "$ref": "#/domains/Generic/types/Person"
             },
             "address": {
-              "$ref": "#Generic.Address"
+              "$ref": "#/domains/Generic/types/Address"
             }
           },
           "required": [
             "card",
             "person",
             "address"
-          ],
-          "$id": "#Generic.Payment"
+          ]
         },
         "PaymentCard": {
           "type": "object",
@@ -213,13 +205,11 @@
             "expirationDate",
             "name",
             "cvv"
-          ],
-          "$id": "#Generic.PaymentCard"
+          ]
         },
         "PanToken": {
           "type": "string",
-          "minLength": 20,
-          "$id": "#Generic.PanToken"
+          "minLength": 20
         },
         "CountryCode": {
           "type": "string",
@@ -477,13 +467,11 @@
             "ye",
             "zm",
             "zw"
-          ],
-          "$id": "#Generic.CountryCode"
+          ]
         },
         "CountrySubdivision": {
           "type": "string",
-          "description": "Depends on country. For the US, the 2 letter state code, lowercased, e.g. 'ca' for California; For Canada, the 2 letter lowercased province code, e.g. 'qc' for Quebec; For Germany, the 2 letter lowercased state code, e.g. 'nw' for Nordrhein-Westfalen; For Romania, the 2 or 1 letter lowercased county code, e.g. 'if' for Ilfov except 'b' for Bucharest; For the United Kingdom, the 2 letter lowecased province, e.g. 'm7' for York; For Spain, the 2 or 1 letter lowercased province code, e.g. 'pm' for Palma, 'o' for Ovideo.",
-          "$id": "#Generic.CountrySubdivision"
+          "description": "Depends on country. For the US, the 2 letter state code, lowercased, e.g. 'ca' for California; For Canada, the 2 letter lowercased province code, e.g. 'qc' for Quebec; For Germany, the 2 letter lowercased state code, e.g. 'nw' for Nordrhein-Westfalen; For Romania, the 2 or 1 letter lowercased county code, e.g. 'if' for Ilfov except 'b' for Bucharest; For the United Kingdom, the 2 letter lowecased province, e.g. 'm7' for York; For Spain, the 2 or 1 letter lowercased province code, e.g. 'pm' for Palma, 'o' for Ovideo."
         },
         "CurrencyCode": {
           "type": "string",
@@ -601,54 +589,43 @@
             "vnd",
             "yer",
             "zwd"
-          ],
-          "$id": "#Generic.CurrencyCode"
+          ]
         }
-      },
-      "$id": "#Generic"
+      }
     },
     "FlightBooking": {
       "description": "Allows automating airplane tickets booking and collecting related information.",
       "inputs": {
         "url": {
-          "$ref": "#Generic.URL",
-          "$id": "#FlightBooking.url"
+          "typeRef": "#/domains/Generic/types/URL"
         },
         "flight": {
-          "$ref": "#FlightBooking.Flight",
-          "$id": "#FlightBooking.flight"
+          "typeRef": "#/domains/FlightBooking/types/Flight"
         },
         "account": {
-          "$ref": "#Generic.Account",
-          "$id": "#FlightBooking.account"
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "passengers": {
-          "$ref": "#FlightBooking.Passengers",
-          "$id": "#FlightBooking.passengers"
+          "typeRef": "#/domains/FlightBooking/types/Passengers"
         },
         "payment": {
-          "$ref": "#Generic.Payment",
-          "$id": "#FlightBooking.payment"
+          "typeRef": "#/domains/Generic/types/Payment"
         },
         "finalPriceConsent": {
-          "$ref": "#Generic.PriceConsent",
-          "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object.",
-          "$id": "#FlightBooking.finalPriceConsent"
+          "typeRef": "#/domains/Generic/types/PriceConsent",
+          "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object."
         },
         "panToken": {
-          "$ref": "#Generic.PanToken",
-          "$id": "#FlightBooking.panToken"
+          "typeRef": "#/domains/Generic/types/PanToken"
         }
       },
       "outputs": {
         "finalPrice": {
           "description": "Emitted immediately before placing order, when final price is available.",
-          "$ref": "#Generic.PriceConsent",
-          "$id": "#FlightBooking.finalPrice"
+          "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "bookingConfirmation": {
-          "$ref": "#FlightBooking.BookingConfirmation",
-          "$id": "#FlightBooking.bookingConfirmation"
+          "typeRef": "#/domains/FlightBooking/types/BookingConfirmation"
         }
       },
       "types": {
@@ -656,16 +633,16 @@
           "type": "object",
           "properties": {
             "from": {
-              "$ref": "#FlightBooking.DatePlace"
+              "$ref": "#/domains/FlightBooking/types/DatePlace"
             },
             "to": {
-              "$ref": "#FlightBooking.DatePlace"
+              "$ref": "#/domains/FlightBooking/types/DatePlace"
             },
             "return": {
-              "$ref": "#FlightBooking.ReturnFlight"
+              "$ref": "#/domains/FlightBooking/types/ReturnFlight"
             },
             "price": {
-              "$ref": "#Generic.Price"
+              "$ref": "#/domains/Generic/types/Price"
             },
             "cabinClass": {
               "type": "string"
@@ -676,30 +653,28 @@
             "to",
             "price"
           ],
-          "additionalProperties": true,
-          "$id": "#FlightBooking.Flight"
+          "additionalProperties": true
         },
         "ReturnFlight": {
           "type": "object",
           "properties": {
             "from": {
-              "$ref": "#FlightBooking.DatePlace"
+              "$ref": "#/domains/FlightBooking/types/DatePlace"
             },
             "to": {
-              "$ref": "#FlightBooking.DatePlace"
+              "$ref": "#/domains/FlightBooking/types/DatePlace"
             }
           },
           "required": [
             "from",
             "to"
-          ],
-          "$id": "#FlightBooking.ReturnFlight"
+          ]
         },
         "DatePlace": {
           "type": "object",
           "properties": {
             "countryCode": {
-              "$ref": "#Generic.CountryCode"
+              "$ref": "#/domains/Generic/types/CountryCode"
             },
             "dateTime": {
               "type": "string",
@@ -717,17 +692,15 @@
           "required": [
             "dateTime",
             "airportCode"
-          ],
-          "$id": "#FlightBooking.DatePlace"
+          ]
         },
         "Passengers": {
           "type": "array",
           "minItems": 1,
           "maxItems": 9,
           "items": {
-            "$ref": "#FlightBooking.Passenger"
-          },
-          "$id": "#FlightBooking.Passengers"
+            "$ref": "#/domains/FlightBooking/types/Passenger"
+          }
         },
         "Passenger": {
           "type": "object",
@@ -774,7 +747,7 @@
                   "format": "date"
                 },
                 "countryCode": {
-                  "$ref": "#Generic.CountryCode"
+                  "$ref": "#/domains/Generic/types/CountryCode"
                 }
               }
             }
@@ -785,8 +758,7 @@
             "lastName",
             "dateOfBirth",
             "hasHoldLuggage"
-          ],
-          "$id": "#FlightBooking.Passenger"
+          ]
         },
         "BookingConfirmation": {
           "type": "object",
@@ -801,53 +773,44 @@
               "description": "Message about successful booking."
             },
             "price": {
-              "$ref": "#Generic.Price",
+              "$ref": "#/domains/Generic/types/Price",
               "description": "Price, if found on the successful booking page."
             }
           },
           "additionalProperties": false,
           "required": [
             "bookingReference"
-          ],
-          "$id": "#FlightBooking.BookingConfirmation"
+          ]
         }
-      },
-      "$id": "#FlightBooking"
+      }
     },
     "Internal": {
       "description": "Internal domain for testing platform features.",
       "inputs": {
         "url": {
-          "$ref": "#Generic.URL",
-          "$id": "#Internal.url"
+          "typeRef": "#/domains/Generic/types/URL"
         },
         "finalPriceConsent": {
-          "$ref": "#Generic.PriceConsent",
-          "$id": "#Internal.finalPriceConsent"
+          "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "panToken": {
-          "$ref": "#Generic.PanToken",
-          "$id": "#Internal.panToken"
+          "typeRef": "#/domains/Generic/types/PanToken"
         }
       },
       "outputs": {
         "object": {
-          "$ref": "#Internal.Object",
-          "$id": "#Internal.object"
+          "typeRef": "#/domains/Internal/types/Object"
         },
         "finalPrice": {
-          "$ref": "#Generic.PriceConsent",
-          "$id": "#Internal.finalPrice"
+          "typeRef": "#/domains/Generic/types/PriceConsent"
         }
       },
       "types": {
         "Object": {
           "type": "object",
-          "description": "An object of arbitrary structure.",
-          "$id": "#Internal.Object"
+          "description": "An object of arbitrary structure."
         }
-      },
-      "$id": "#Internal"
+      }
     }
   }
 }

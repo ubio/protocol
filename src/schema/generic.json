@@ -21,7 +21,7 @@
                     "default": ""
                 },
                 "phone": {
-                    "$ref": "#Generic.Phone"
+                    "$ref": "#/domains/Generic/types/Phone"
                 },
                 "isExisting": {
                     "type": "boolean"
@@ -80,10 +80,10 @@
                     "type": "string"
                 },
                 "countryCode": {
-                    "$ref": "#Generic.CountryCode"
+                    "$ref": "#/domains/Generic/types/CountryCode"
                 },
                 "countrySubdivision": {
-                    "$ref": "#Generic.CountrySubdivision"
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
                 }
             },
             "required": [
@@ -99,7 +99,7 @@
             "type": "object",
             "properties": {
                 "countryCode": {
-                    "$ref": "#Generic.CountryCode"
+                    "$ref": "#/domains/Generic/types/CountryCode"
                 },
                 "number": {
                     "type": "string",
@@ -115,7 +115,7 @@
         "PriceConsent": {
             "type": "object",
             "properties": {
-                "price": { "$ref": "#Generic.Price" }
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "additionalProperties": false,
             "required": [
@@ -126,7 +126,7 @@
             "type": "object",
             "properties": {
                 "currencyCode": {
-                    "$ref": "#Generic.CurrencyCode"
+                    "$ref": "#/domains/Generic/types/CurrencyCode"
                 },
                 "value": {
                     "type": "integer",
@@ -144,13 +144,13 @@
             "type": "object",
             "properties": {
                 "card": {
-                    "$ref": "#Generic.PaymentCard"
+                    "$ref": "#/domains/Generic/types/PaymentCard"
                 },
                 "person": {
-                    "$ref": "#Generic.Person"
+                    "$ref": "#/domains/Generic/types/Person"
                 },
                 "address": {
-                    "$ref": "#Generic.Address"
+                    "$ref": "#/domains/Generic/types/Address"
                 }
             },
             "required": [

@@ -1,5 +1,9 @@
 ## [UNRELEASED]
 
+- Massive change APIs to full OOP
+- Schema excerpts are moved to `def.spec`
+- Internal Def fields like `id`, `key` are made public
+- Allow for arbitrary metadata on `inputs` and `outputs`, because they are no longer JSON Schema definitions
 
 ## [0.6.1] - 2017-11-20
 

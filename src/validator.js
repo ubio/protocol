@@ -1,7 +1,6 @@
 'use strict';
 
 const Ajv = require('ajv');
-const schema = require('./schema');
 
 const DEFAULT_OPTIONS = {
     allErrors: true,
@@ -10,16 +9,20 @@ const DEFAULT_OPTIONS = {
     format: 'full',
 };
 
-const DEFAULT = create();
-
 module.exports = {
-    DEFAULT,
     DEFAULT_OPTIONS,
-    create,
+    createValidator,
 };
 
-function create(options = DEFAULT_OPTIONS) {
+function createValidator(schema, defs, options = DEFAULT_OPTIONS) {
     const ajv = new Ajv(options);
-    ajv.addSchema(schema);
+    const schemaId = schema.$id || 'untitled';
+    ajv.addSchema(schema, schemaId);
+    for (const def of defs) {
+        const typeRef = def.getTypeRef();
+        if (typeRef) {
+            ajv.addSchema({ $ref: schemaId + typeRef }, def.id);
+        }
+    }
     return ajv;
 }
