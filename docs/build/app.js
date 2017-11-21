@@ -18919,7 +18919,7 @@ module.exports={
                 "firstName",
                 "lastName",
                 "dateOfBirth",
-                "hasHoldLuggage"
+                "addAdditionalLuggage"
             ]
         },
         "BookingConfirmation": {
@@ -19146,7 +19146,6 @@ module.exports={
             "required": [
                 "type",
                 "brand",
-                "panToken",
                 "expirationDate",
                 "name",
                 "cvv"

@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Fix `hasHoldLuggage` requirement
 
 ## [0.7.0] - 2017-11-21
 

@@ -148,7 +148,7 @@
                 "firstName",
                 "lastName",
                 "dateOfBirth",
-                "hasHoldLuggage"
+                "addAdditionalLuggage"
             ]
         },
         "BookingConfirmation": {

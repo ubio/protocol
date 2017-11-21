@@ -196,7 +196,6 @@
             "required": [
                 "type",
                 "brand",
-                "panToken",
                 "expirationDate",
                 "name",
                 "cvv"
