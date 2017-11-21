@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [0.7.0] - 2017-11-21
+
 - Massive change APIs to full OOP
 - Schema excerpts are moved to `def.spec`
 - Internal Def fields like `id`, `key` are made public
