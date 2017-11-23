@@ -2,9 +2,22 @@
     <div class="layout">
         <div class="layout__header">
             <div class="layout__header-container container">
-                <img class="layout__logo"
-                     src="/protocol/img/ubio-logo.png"
-                     height="40"/>
+                <router-link
+                    class="layout__logo"
+                    :to="{ name: 'home' }"
+                    title="ubio Automation Protocol Reference"
+                    exact>
+                    <img
+                        src="/protocol/img/ubio-logo.png"
+                        height="40"/>
+                </router-link>
+                <div class="layout__header-links">
+                    <a target="_blank"
+                        class="layout__header-link"
+                        href="https://docs.automationcloud.net">
+                        Documentation
+                    </a>
+                </div>
             </div>
         </div>
         <div class="layout__content">
@@ -43,7 +56,12 @@ module.exports = {
 .layout__header-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 80px;
+}
+
+.layout__header-link {
+    color: var(--ui-muted);
 }
 
 .layout__content {
@@ -61,4 +79,5 @@ module.exports = {
     flex: 1;
     padding: 1em 4em;
 }
+
 </style>

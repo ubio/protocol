@@ -1,12 +1,6 @@
 <template>
     <div class="sidebar">
         <div class="sidebar__sticky">
-            <router-link
-                class="sidebar__link"
-                :to="{ name: 'home' }"
-                exact>
-                Home
-            </router-link>
             <sidebar__domain v-for="domain in domains"
                              :domain="domain"/>
         </div>
