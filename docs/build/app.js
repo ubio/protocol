@@ -18291,7 +18291,7 @@ module.exports = {
     computed: {
 
         required() {
-            const required = this.parent.required || [];
+            const required = this.parent.spec.required || [];
             return required.includes(this.id);
         }
 
