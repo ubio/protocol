@@ -74,7 +74,8 @@ module.exports = {
         },
 
         types() {
-            return this.domain.getTypes();
+            const types = this.domain.getTypes();
+            return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
         },
 
     },

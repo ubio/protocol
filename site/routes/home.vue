@@ -1,7 +1,6 @@
 <template>
     <div class="home">
-        <h1>ubio Automation Protocol</h1>
-        <p>Please select a domain.</p>
+        <h1>ubio Automation Protocol Reference</h1>
     </div>
 </template>
 

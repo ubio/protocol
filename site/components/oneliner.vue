@@ -31,7 +31,10 @@ module.exports = {
     display: flex;
     flex-flow: row nowrap;
     padding: .5em;
-    border-bottom: 1px solid var(--ui-default);
+}
+
+.oneliner + .oneliner {
+    border-top: 1px solid var(--ui-default);
 }
 
 .oneliner__id {

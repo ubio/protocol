@@ -2,11 +2,11 @@
     <div class="def"
          :class="{ 'def--active': active }"
          :id="def.key">
-        <div class="def__header">
+        <h3 class="def__header">
             <span class="def__link"
                   @click="permalink">🔗</span>
             <span class="def__id">{{ def.id }}</span>
-        </div>
+        </h3>
         <div class="def__type">
             <schema-type :spec="def.spec"/>
         </div>
@@ -71,6 +71,7 @@ module.exports = {
     font-size: 20px;
     display: flex;
     flex-flow: row nowrap;
+    color: var(--heading__color);
 }
 
 .def__link {
