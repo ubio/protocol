@@ -781,6 +781,7 @@
     },
     "Internal": {
       "description": "Internal domain for testing platform features.",
+      "private": true,
       "inputs": {
         "url": {
           "typeRef": "#/domains/Generic/types/URL"

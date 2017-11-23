@@ -1,377 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --ui-default: hsl(204, 10%, 90%);\n    --ui-default--inverse: #222;\n    --ui-primary: hsl(204, 72%, 48%);\n    --ui-primary--inverse: #fff;\n    --ui-muted: hsl(204, 15%, 50%);\n    --ui-muted--inverse: #fff;\n    --ui-failure: hsl(0, 100%, 64%);\n    --ui-failure--inverse: #fff;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/1.5 'Libre Franklin', sans-serif;\n}\n\nh1 {\n    margin: 1em 0;\n}\n\nh2 {\n    margin: 2em 0;\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}")
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c48d487e", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-c48d487e", __vue__options__)
-  }
-})()}
-},{"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],2:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def__header {\n    margin: 2em 0 0 -1.5em;\n    font-size: 20px;\n    display: flex;\n    flex-flow: row nowrap;\n}\n\n.def__link {\n    display: inline-block;\n    flex: 0 0 1.5em;\n    visibility: hidden;\n    cursor: pointer;\n}\n\n.def__header:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}")
-;(function(){
-
-
-module.exports = {
-
-    components: {
-        'schema-type': require('./schema-type.vue'),
-        prop: require('./prop.vue')
-    },
-
-    props: {
-        def: { type: Object, required: true }
-    },
-
-    computed: {
-
-        active() {
-            return this.$route.hash === '#' + this.def.key;
-        }
-
-    },
-
-    methods: {
-
-        permalink() {
-            this.$router.replace('#' + this.def.key);
-        }
-
-    }
-
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-77ab499c", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-77ab499c", __vue__options__)
-  }
-})()}
-},{"./prop.vue":4,"./schema-type.vue":5,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],3:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n    border-bottom: 1px solid var(--ui-default);\n}\n\n.oneliner__id {\n    flex: 0 0 160px;\n}")
-;(function(){
-
-
-module.exports = {
-
-    components: {
-        'schema-type': require('./schema-type.vue')
-    },
-
-    props: {
-        def: { type: Object, required: true }
-    }
-
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}})],1)])}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-09c670d1", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-09c670d1", __vue__options__)
-  }
-})()}
-},{"./schema-type.vue":5,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],4:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".prop {\n    margin: 1em 0;\n    display: flex;\n    flex-flow: row nowrap;\n    align-items: baseline;\n}\n\n.prop__id {\n    flex: 0 0 160px;\n}\n\n.prop__body {\n    flex: 1;\n}\n\n.prop__optional {\n    color: var(--ui-muted);\n}")
-;(function(){
-
-
-module.exports = {
-
-    components: {
-        'schema-type': require('./schema-type.vue')
-    },
-
-    props: {
-        id: { type: String, required: true },
-        prop: { type: Object, required: true },
-        parent: { type: Object, required: true }
-    },
-
-    computed: {
-
-        required() {
-            const required = this.parent.required || [];
-            return required.includes(this.id);
-        }
-
-    }
-
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1ed9fedc", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-1ed9fedc", __vue__options__)
-  }
-})()}
-},{"./schema-type.vue":5,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],5:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".schema-type {\n    font-weight: bold;\n}\n\n.schema-type__broken-ref {\n    color: var(--ui-failure);\n}")
-;(function(){
-
-
-const protocol = require('../../src');
-
-module.exports = {
-
-    name: 'schema-type',
-
-    props: {
-        spec: { type: Object, required: true }
-    },
-
-    computed: {
-
-        isArray() {
-            return this.spec.type === 'array';
-        },
-
-        $ref() {
-            return this.spec.$ref || this.spec.typeRef;
-        },
-
-        ref() {
-            return protocol.resolveTypeRef(this.$ref);
-        }
-
-    }
-
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"schema-type"},[_c('span',{staticClass:"schema-type__literal",attrs:{"if":"spec.type"}},[_vm._v("\n        "+_vm._s(_vm.spec.type)+"\n    ")]),_vm._v(" "),(_vm.isArray)?_c('span',{staticClass:"schema-type__array"},[_vm._v("\n        of\n        "),_c('schema-type',{attrs:{"spec":_vm.spec.items}})],1):_vm._e(),_vm._v(" "),(_vm.$ref)?_c('span',{staticClass:"schema-type__ref"},[(_vm.ref)?_c('router-link',{attrs:{"to":{
-                name: 'domain',
-                params: {
-                    domainId: _vm.ref.domain.id,
-                },
-                hash: '#' + _vm.ref.key,
-            }}},[_vm._v("\n            "+_vm._s(_vm.ref.id)+"\n        ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n            "+_vm._s(_vm.$ref)+"\n        ")])],1):_vm._e()])}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d5945406", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-d5945406", __vue__options__)
-  }
-})()}
-},{"../../src":68,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],6:[function(require,module,exports){
-'use strict';
-
-const VueRouter = require('vue-router');
-
-module.exports = new VueRouter({
-    mode: 'history',
-    base: '/protocol',
-    routes: [{
-        path: '',
-        component: require('./routes/layout.vue'),
-        children: [{
-            name: 'home',
-            path: '/',
-            component: require('./routes/home.vue')
-        }, {
-            name: 'domain',
-            path: '/:domainId',
-            component: require('./routes/domain.vue'),
-            props: true
-        }]
-    }]
-});
-
-},{"./routes/domain.vue":7,"./routes/home.vue":8,"./routes/layout.vue":9,"vue-router":63}],7:[function(require,module,exports){
-;(function(){
-
-
-const protocol = require('../../src');
-
-module.exports = {
-
-    components: {
-        'def': require('../components/def.vue'),
-        'oneliner': require('../components/oneliner.vue')
-    },
-
-    props: {
-        domainId: { type: String, required: true }
-    },
-
-    mounted() {
-        this.scrollToActive();
-    },
-
-    watch: {
-
-        $route({ hash }) {
-            if (hash) {
-                this.scrollToActive();
-            }
-        }
-
-    },
-
-    computed: {
-
-        domain() {
-            return protocol.getDomain(this.domainId);
-        },
-
-        inputs() {
-            return this.domain.getInputs();
-        },
-
-        outputs() {
-            return this.domain.getOutputs();
-        },
-
-        types() {
-            return this.domain.getTypes();
-        }
-
-    },
-
-    methods: {
-
-        scrollToActive() {
-            if (!this.$route.hash) {
-                return;
-            }
-            try {
-                const el = this.$el.querySelector(this.$route.hash);
-                if (el) {
-                    el.scrollIntoViewIfNeeded();
-                }
-            } catch (err) {}
-        }
-
-    }
-
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7b888ac9", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-7b888ac9", __vue__options__)
-  }
-})()}
-},{"../../src":68,"../components/def.vue":2,"../components/oneliner.vue":3,"vue":64,"vue-hot-reload-api":62}],8:[function(require,module,exports){
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"home"},[_c('h1',[_vm._v("ubio Automation Protocol")]),_vm._v(" "),_c('p',[_vm._v("Please select a domain.")])])}]
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-cd42c6b8", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-cd42c6b8", __vue__options__)
-  }
-})()}
-},{"vue":64,"vue-hot-reload-api":62}],9:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout {\n    height: 100vh;\n    display: flex;\n    flex-flow: row no-wrap;\n}\n\n.layout__sidebar {\n    flex: 0 0 160px;\n    background: var(--ui-default);\n    overflow-y: auto;\n}\n\n.layout__main {\n    flex: 1;\n    padding: 1em 4em;\n    overflow: auto;\n}\n\n.layout__sidebar-link {\n    display: block;\n    padding: .5em;\n    color: var(--ui-primary);\n}\n\n.layout__sidebar-link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}")
-;(function(){
-
-
-const protocol = require('../../src');
-
-module.exports = {
-
-    data() {
-        return {
-            domains: protocol.getDomains()
-        };
-    }
-
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__sidebar"},[_c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{ name: 'home' },"exact":""}},[_vm._v("\n            Home\n        ")]),_vm._v(" "),_vm._l((_vm.domains),function(domain){return _c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{
-                         name: 'domain',
-                         params: { domainId: domain.id }
-                     }}},[_vm._v("\n            "+_vm._s(domain.id)+"\n        ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4bebe3a2", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-4bebe3a2", __vue__options__)
-  }
-})()}
-},{"../../src":68,"vue":64,"vue-hot-reload-api":62,"vueify/lib/insert-css":65}],10:[function(require,module,exports){
-'use strict';
-
-const Vue = require('vue');
-const VueRouter = require('vue-router');
-
-Vue.use(VueRouter);
-
-const App = Vue.component('app', require('./app.vue'));
-
-new App({
-    router: require('./router'),
-    el: '#app'
-});
-
-},{"./app.vue":1,"./router":6,"vue":64,"vue-router":63}],11:[function(require,module,exports){
 'use strict';
 
 var KEYWORDS = [
@@ -422,7 +49,7 @@ module.exports = function (metaSchema, keywordsJsonPointers) {
   return metaSchema;
 };
 
-},{}],12:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 'use strict';
 
 var compileSchema = require('./compile')
@@ -901,7 +528,7 @@ function getMetaSchemaOptions(self) {
   return metaOpts;
 }
 
-},{"./$data":11,"./cache":13,"./compile":18,"./compile/async":15,"./compile/error_classes":16,"./compile/formats":17,"./compile/resolve":19,"./compile/rules":20,"./compile/schema_obj":21,"./compile/util":23,"./keyword":47,"./patternGroups":48,"./refs/$data.json":49,"./refs/json-schema-draft-06.json":50,"co":51,"fast-json-stable-stringify":53}],13:[function(require,module,exports){
+},{"./$data":1,"./cache":3,"./compile":8,"./compile/async":5,"./compile/error_classes":6,"./compile/formats":7,"./compile/resolve":9,"./compile/rules":10,"./compile/schema_obj":11,"./compile/util":13,"./keyword":37,"./patternGroups":38,"./refs/$data.json":39,"./refs/json-schema-draft-06.json":40,"co":41,"fast-json-stable-stringify":43}],3:[function(require,module,exports){
 'use strict';
 
 
@@ -929,7 +556,7 @@ Cache.prototype.clear = function Cache_clear() {
   this._cache = {};
 };
 
-},{}],14:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 //all requires must be explicit because browserify won't work with dynamic requires
@@ -962,7 +589,7 @@ module.exports = {
   validate: require('../dotjs/validate')
 };
 
-},{"../dotjs/_limit":24,"../dotjs/_limitItems":25,"../dotjs/_limitLength":26,"../dotjs/_limitProperties":27,"../dotjs/allOf":28,"../dotjs/anyOf":29,"../dotjs/const":30,"../dotjs/contains":31,"../dotjs/dependencies":33,"../dotjs/enum":34,"../dotjs/format":35,"../dotjs/items":36,"../dotjs/multipleOf":37,"../dotjs/not":38,"../dotjs/oneOf":39,"../dotjs/pattern":40,"../dotjs/properties":41,"../dotjs/propertyNames":42,"../dotjs/ref":43,"../dotjs/required":44,"../dotjs/uniqueItems":45,"../dotjs/validate":46}],15:[function(require,module,exports){
+},{"../dotjs/_limit":14,"../dotjs/_limitItems":15,"../dotjs/_limitLength":16,"../dotjs/_limitProperties":17,"../dotjs/allOf":18,"../dotjs/anyOf":19,"../dotjs/const":20,"../dotjs/contains":21,"../dotjs/dependencies":23,"../dotjs/enum":24,"../dotjs/format":25,"../dotjs/items":26,"../dotjs/multipleOf":27,"../dotjs/not":28,"../dotjs/oneOf":29,"../dotjs/pattern":30,"../dotjs/properties":31,"../dotjs/propertyNames":32,"../dotjs/ref":33,"../dotjs/required":34,"../dotjs/uniqueItems":35,"../dotjs/validate":36}],5:[function(require,module,exports){
 'use strict';
 
 var MissingRefError = require('./error_classes').MissingRef;
@@ -1054,7 +681,7 @@ function compileAsync(schema, meta, callback) {
   }
 }
 
-},{"./error_classes":16}],16:[function(require,module,exports){
+},{"./error_classes":6}],6:[function(require,module,exports){
 'use strict';
 
 var resolve = require('./resolve');
@@ -1090,7 +717,7 @@ function errorSubclass(Subclass) {
   return Subclass;
 }
 
-},{"./resolve":19}],17:[function(require,module,exports){
+},{"./resolve":9}],7:[function(require,module,exports){
 'use strict';
 
 var util = require('./util');
@@ -1227,7 +854,7 @@ function regex(str) {
   }
 }
 
-},{"./util":23}],18:[function(require,module,exports){
+},{"./util":13}],8:[function(require,module,exports){
 'use strict';
 
 var resolve = require('./resolve')
@@ -1608,7 +1235,7 @@ function vars(arr, statement) {
   return code;
 }
 
-},{"../dotjs/validate":46,"./error_classes":16,"./resolve":19,"./util":23,"co":51,"fast-deep-equal":52,"fast-json-stable-stringify":53}],19:[function(require,module,exports){
+},{"../dotjs/validate":36,"./error_classes":6,"./resolve":9,"./util":13,"co":41,"fast-deep-equal":42,"fast-json-stable-stringify":43}],9:[function(require,module,exports){
 'use strict';
 
 var url = require('url')
@@ -1881,7 +1508,7 @@ function resolveIds(schema) {
   return localRefs;
 }
 
-},{"./schema_obj":21,"./util":23,"fast-deep-equal":52,"json-schema-traverse":54,"url":60}],20:[function(require,module,exports){
+},{"./schema_obj":11,"./util":13,"fast-deep-equal":42,"json-schema-traverse":44,"url":50}],10:[function(require,module,exports){
 'use strict';
 
 var ruleModules = require('./_rules')
@@ -1941,7 +1568,7 @@ module.exports = function rules() {
   return RULES;
 };
 
-},{"./_rules":14,"./util":23}],21:[function(require,module,exports){
+},{"./_rules":4,"./util":13}],11:[function(require,module,exports){
 'use strict';
 
 var util = require('./util');
@@ -1952,7 +1579,7 @@ function SchemaObject(obj) {
   util.copy(obj, this);
 }
 
-},{"./util":23}],22:[function(require,module,exports){
+},{"./util":13}],12:[function(require,module,exports){
 'use strict';
 
 // https://mathiasbynens.be/notes/javascript-encoding
@@ -1974,7 +1601,7 @@ module.exports = function ucs2length(str) {
   return length;
 };
 
-},{}],23:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 
@@ -2243,7 +1870,7 @@ function unescapeJsonPointer(str) {
   return str.replace(/~1/g, '/').replace(/~0/g, '~');
 }
 
-},{"./ucs2length":22,"fast-deep-equal":52}],24:[function(require,module,exports){
+},{"./ucs2length":12,"fast-deep-equal":42}],14:[function(require,module,exports){
 'use strict';
 module.exports = function generate__limit(it, $keyword, $ruleType) {
   var out = ' ';
@@ -2394,7 +2021,7 @@ module.exports = function generate__limit(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],25:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 module.exports = function generate__limitItems(it, $keyword, $ruleType) {
   var out = ' ';
@@ -2472,7 +2099,7 @@ module.exports = function generate__limitItems(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],26:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 module.exports = function generate__limitLength(it, $keyword, $ruleType) {
   var out = ' ';
@@ -2555,7 +2182,7 @@ module.exports = function generate__limitLength(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],27:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 module.exports = function generate__limitProperties(it, $keyword, $ruleType) {
   var out = ' ';
@@ -2633,7 +2260,7 @@ module.exports = function generate__limitProperties(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],28:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 module.exports = function generate_allOf(it, $keyword, $ruleType) {
   var out = ' ';
@@ -2678,7 +2305,7 @@ module.exports = function generate_allOf(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],29:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 module.exports = function generate_anyOf(it, $keyword, $ruleType) {
   var out = ' ';
@@ -2753,7 +2380,7 @@ module.exports = function generate_anyOf(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],30:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 module.exports = function generate_const(it, $keyword, $ruleType) {
   var out = ' ';
@@ -2810,7 +2437,7 @@ module.exports = function generate_const(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],31:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 module.exports = function generate_contains(it, $keyword, $ruleType) {
   var out = ' ';
@@ -2893,7 +2520,7 @@ module.exports = function generate_contains(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],32:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 module.exports = function generate_custom(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3121,7 +2748,7 @@ module.exports = function generate_custom(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],33:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 module.exports = function generate_dependencies(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3290,7 +2917,7 @@ module.exports = function generate_dependencies(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],34:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 module.exports = function generate_enum(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3357,7 +2984,7 @@ module.exports = function generate_enum(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],35:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 module.exports = function generate_format(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3508,7 +3135,7 @@ module.exports = function generate_format(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],36:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 module.exports = function generate_items(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3650,7 +3277,7 @@ module.exports = function generate_items(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],37:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 module.exports = function generate_multipleOf(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3728,7 +3355,7 @@ module.exports = function generate_multipleOf(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],38:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 module.exports = function generate_not(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3813,7 +3440,7 @@ module.exports = function generate_not(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],39:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 module.exports = function generate_oneOf(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3885,7 +3512,7 @@ module.exports = function generate_oneOf(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],40:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 module.exports = function generate_pattern(it, $keyword, $ruleType) {
   var out = ' ';
@@ -3961,7 +3588,7 @@ module.exports = function generate_pattern(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],41:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 module.exports = function generate_properties(it, $keyword, $ruleType) {
   var out = ' ';
@@ -4431,7 +4058,7 @@ module.exports = function generate_properties(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],42:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 module.exports = function generate_propertyNames(it, $keyword, $ruleType) {
   var out = ' ';
@@ -4514,7 +4141,7 @@ module.exports = function generate_propertyNames(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],43:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 module.exports = function generate_ref(it, $keyword, $ruleType) {
   var out = ' ';
@@ -4639,7 +4266,7 @@ module.exports = function generate_ref(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],44:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 'use strict';
 module.exports = function generate_required(it, $keyword, $ruleType) {
   var out = ' ';
@@ -4909,7 +4536,7 @@ module.exports = function generate_required(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],45:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 module.exports = function generate_uniqueItems(it, $keyword, $ruleType) {
   var out = ' ';
@@ -4982,7 +4609,7 @@ module.exports = function generate_uniqueItems(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],46:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 module.exports = function generate_validate(it, $keyword, $ruleType) {
   var out = '';
@@ -5442,7 +5069,7 @@ module.exports = function generate_validate(it, $keyword, $ruleType) {
   return out;
 }
 
-},{}],47:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 var IDENTIFIER = /^[a-z_$][a-z0-9_$-]*$/i;
@@ -5574,7 +5201,7 @@ function removeKeyword(keyword) {
   }
 }
 
-},{"./dotjs/custom":32}],48:[function(require,module,exports){
+},{"./dotjs/custom":22}],38:[function(require,module,exports){
 'use strict';
 
 var META_SCHEMA_ID = 'http://json-schema.org/draft-06/schema';
@@ -5612,7 +5239,7 @@ module.exports = function (ajv) {
   ajv.RULES.all.properties.implements.push('patternGroups');
 };
 
-},{}],49:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports={
     "$schema": "http://json-schema.org/draft-06/schema#",
     "$id": "https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/$data.json#",
@@ -5631,7 +5258,7 @@ module.exports={
     "additionalProperties": false
 }
 
-},{}],50:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports={
     "$schema": "http://json-schema.org/draft-06/schema#",
     "$id": "http://json-schema.org/draft-06/schema#",
@@ -5783,7 +5410,7 @@ module.exports={
     "default": {}
 }
 
-},{}],51:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 
 /**
  * slice() reference.
@@ -6022,7 +5649,7 @@ function isObject(val) {
   return Object == val.constructor;
 }
 
-},{}],52:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 'use strict';
 
 module.exports = function equal(a, b) {
@@ -6067,7 +5694,7 @@ module.exports = function equal(a, b) {
   return false;
 };
 
-},{}],53:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 'use strict';
 
 module.exports = function (data, opts) {
@@ -6128,7 +5755,7 @@ module.exports = function (data, opts) {
     })(data);
 };
 
-},{}],54:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 'use strict';
 
 var traverse = module.exports = function (schema, opts, cb) {
@@ -6211,7 +5838,7 @@ function escapeJsonPtr(str) {
   return str.replace(/~/g, '~0').replace(/\//g, '~1');
 }
 
-},{}],55:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -6397,7 +6024,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],56:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -6934,7 +6561,7 @@ process.umask = function() { return 0; };
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],57:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -7020,7 +6647,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],58:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -7107,13 +6734,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],59:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":57,"./encode":58}],60:[function(require,module,exports){
+},{"./decode":47,"./encode":48}],50:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -7847,7 +7474,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":61,"punycode":56,"querystring":59}],61:[function(require,module,exports){
+},{"./util":51,"punycode":46,"querystring":49}],51:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -7865,7 +7492,7 @@ module.exports = {
   }
 };
 
-},{}],62:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 var Vue // late bind
 var version
 var map = (window.__VUE_HOT_MAP__ = Object.create(null))
@@ -8092,7 +7719,7 @@ exports.reload = tryWrap(function (id, options) {
   })
 })
 
-},{}],63:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 (function (process){
 /**
   * vue-router v3.0.1
@@ -10721,7 +10348,7 @@ if (inBrowser && window.Vue) {
 module.exports = VueRouter;
 
 }).call(this,require('_process'))
-},{"_process":55}],64:[function(require,module,exports){
+},{"_process":45}],54:[function(require,module,exports){
 (function (process,global){
 /*!
  * Vue.js v2.5.3
@@ -18519,7 +18146,7 @@ Vue$3.nextTick(function () {
 module.exports = Vue$3;
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":55}],65:[function(require,module,exports){
+},{"_process":45}],55:[function(require,module,exports){
 var inserted = exports.cache = {}
 
 function noop () {}
@@ -18544,7 +18171,380 @@ exports.insert = function (css) {
   }
 }
 
-},{}],66:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #d6d6d0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: ##ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nh1 {\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    margin: 1em 0;\n    color: var(--ui-default--inverse);\n}\n\nh2 {\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--ui-default--inverse);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}")
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-435983a2", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-435983a2", __vue__options__)
+  }
+})()}
+},{"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],57:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def__header {\n    margin: 2em 0 0 -1.5em;\n    font-size: 20px;\n    display: flex;\n    flex-flow: row nowrap;\n}\n\n.def__link {\n    display: inline-block;\n    flex: 0 0 1.5em;\n    visibility: hidden;\n    cursor: pointer;\n}\n\n.def__header:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}")
+;(function(){
+
+
+module.exports = {
+
+    components: {
+        'schema-type': require('./schema-type.vue'),
+        prop: require('./prop.vue')
+    },
+
+    props: {
+        def: { type: Object, required: true }
+    },
+
+    computed: {
+
+        active() {
+            return this.$route.hash === '#' + this.def.key;
+        }
+
+    },
+
+    methods: {
+
+        permalink() {
+            this.$router.replace('#' + this.def.key);
+        }
+
+    }
+
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2fc5366e", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-2fc5366e", __vue__options__)
+  }
+})()}
+},{"./prop.vue":59,"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],58:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n    border-bottom: 1px solid var(--ui-default);\n}\n\n.oneliner__id {\n    flex: 0 0 160px;\n}")
+;(function(){
+
+
+module.exports = {
+
+    components: {
+        'schema-type': require('./schema-type.vue')
+    },
+
+    props: {
+        def: { type: Object, required: true }
+    }
+
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}})],1)])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d14c9182", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-d14c9182", __vue__options__)
+  }
+})()}
+},{"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],59:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".prop {\n    margin: 1em 0;\n    display: flex;\n    flex-flow: row nowrap;\n    align-items: baseline;\n}\n\n.prop__id {\n    flex: 0 0 160px;\n}\n\n.prop__body {\n    flex: 1;\n}\n\n.prop__optional {\n    color: var(--ui-muted);\n}")
+;(function(){
+
+
+module.exports = {
+
+    components: {
+        'schema-type': require('./schema-type.vue')
+    },
+
+    props: {
+        id: { type: String, required: true },
+        prop: { type: Object, required: true },
+        parent: { type: Object, required: true }
+    },
+
+    computed: {
+
+        required() {
+            const required = this.parent.required || [];
+            return required.includes(this.id);
+        }
+
+    }
+
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-69fdac4a", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-69fdac4a", __vue__options__)
+  }
+})()}
+},{"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],60:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".schema-type {\n    font-weight: bold;\n}\n\n.schema-type__broken-ref {\n    color: var(--ui-failure);\n}")
+;(function(){
+
+
+const protocol = require('../../src');
+
+module.exports = {
+
+    name: 'schema-type',
+
+    props: {
+        spec: { type: Object, required: true }
+    },
+
+    computed: {
+
+        isArray() {
+            return this.spec.type === 'array';
+        },
+
+        $ref() {
+            return this.spec.$ref || this.spec.typeRef;
+        },
+
+        ref() {
+            return protocol.resolveTypeRef(this.$ref);
+        }
+
+    }
+
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{staticClass:"schema-type"},[_c('span',{staticClass:"schema-type__literal",attrs:{"if":"spec.type"}},[_vm._v("\n        "+_vm._s(_vm.spec.type)+"\n    ")]),_vm._v(" "),(_vm.isArray)?_c('span',{staticClass:"schema-type__array"},[_vm._v("\n        of\n        "),_c('schema-type',{attrs:{"spec":_vm.spec.items}})],1):_vm._e(),_vm._v(" "),(_vm.$ref)?_c('span',{staticClass:"schema-type__ref"},[(_vm.ref)?_c('router-link',{attrs:{"to":{
+                name: 'domain',
+                params: {
+                    domainId: _vm.ref.domain.id,
+                },
+                hash: '#' + _vm.ref.key,
+            }}},[_vm._v("\n            "+_vm._s(_vm.ref.id)+"\n        ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n            "+_vm._s(_vm.$ref)+"\n        ")])],1):_vm._e()])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4a725e62", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-4a725e62", __vue__options__)
+  }
+})()}
+},{"../../src":68,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],61:[function(require,module,exports){
+'use strict';
+
+const VueRouter = require('vue-router');
+
+module.exports = new VueRouter({
+    mode: 'history',
+    base: '/protocol',
+    routes: [{
+        path: '',
+        component: require('./routes/layout.vue'),
+        children: [{
+            name: 'home',
+            path: '/',
+            component: require('./routes/home.vue')
+        }, {
+            name: 'domain',
+            path: '/:domainId',
+            component: require('./routes/domain.vue'),
+            props: true
+        }]
+    }]
+});
+
+},{"./routes/domain.vue":62,"./routes/home.vue":63,"./routes/layout.vue":64,"vue-router":53}],62:[function(require,module,exports){
+;(function(){
+
+
+const protocol = require('../../src');
+
+module.exports = {
+
+    components: {
+        'def': require('../components/def.vue'),
+        'oneliner': require('../components/oneliner.vue')
+    },
+
+    props: {
+        domainId: { type: String, required: true }
+    },
+
+    mounted() {
+        this.scrollToActive();
+    },
+
+    watch: {
+
+        $route({ hash }) {
+            if (hash) {
+                this.scrollToActive();
+            }
+        }
+
+    },
+
+    computed: {
+
+        domain() {
+            return protocol.getDomain(this.domainId);
+        },
+
+        inputs() {
+            return this.domain.getInputs();
+        },
+
+        outputs() {
+            return this.domain.getOutputs();
+        },
+
+        types() {
+            return this.domain.getTypes();
+        }
+
+    },
+
+    methods: {
+
+        scrollToActive() {
+            if (!this.$route.hash) {
+                return;
+            }
+            try {
+                const el = this.$el.querySelector(this.$route.hash);
+                if (el) {
+                    el.scrollIntoViewIfNeeded();
+                }
+            } catch (err) {}
+        }
+
+    }
+
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-70f4bbb7", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-70f4bbb7", __vue__options__)
+  }
+})()}
+},{"../../src":68,"../components/def.vue":57,"../components/oneliner.vue":58,"vue":54,"vue-hot-reload-api":52}],63:[function(require,module,exports){
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"home"},[_c('h1',[_vm._v("ubio Automation Protocol")]),_vm._v(" "),_c('p',[_vm._v("Please select a domain.")])])}]
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-505e3112", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-505e3112", __vue__options__)
+  }
+})()}
+},{"vue":54,"vue-hot-reload-api":52}],64:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout__content {\n    display: flex;\n    flex-flow: row no-wrap;\n}\n\n.layout__sidebar {\n    flex: 0 0 160px;\n    background: var(--ui-default);\n    overflow-y: auto;\n}\n\n.layout__main {\n    flex: 1;\n    padding: 1em 4em;\n    overflow: auto;\n}\n\n.layout__sidebar-link {\n    display: block;\n    padding: .5em;\n    color: var(--ui-primary);\n}\n\n.layout__sidebar-link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}")
+;(function(){
+
+
+const protocol = require('../../src');
+
+module.exports = {
+
+    data() {
+        return {
+            domains: protocol.getDomains().filter(d => !d.spec.private)
+        };
+    }
+
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__header"}),_vm._v(" "),_c('div',{staticClass:"layout__content"},[_c('div',{staticClass:"layout__sidebar"},[_c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{ name: 'home' },"exact":""}},[_vm._v("\n                Home\n            ")]),_vm._v(" "),_vm._l((_vm.domains),function(domain){return _c('router-link',{staticClass:"layout__sidebar-link",attrs:{"to":{
+                    name: 'domain',
+                    params: { domainId: domain.id }
+                }}},[_vm._v("\n                "+_vm._s(domain.id)+"\n            ")])})],2),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-611381c6", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-611381c6", __vue__options__)
+  }
+})()}
+},{"../../src":68,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],65:[function(require,module,exports){
+'use strict';
+
+const Vue = require('vue');
+const VueRouter = require('vue-router');
+
+Vue.use(VueRouter);
+
+const App = Vue.component('app', require('./app.vue'));
+
+new App({
+    router: require('./router'),
+    el: '#app'
+});
+
+},{"./app.vue":56,"./router":61,"vue":54,"vue-router":53}],66:[function(require,module,exports){
 'use strict';
 
 class Def {
@@ -19551,6 +19551,7 @@ module.exports = {
 },{"./flight-booking":70,"./generic":71,"./internal":73}],73:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
+    "private": true,
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL"
@@ -19608,4 +19609,4 @@ function createValidator(schema, defs, options = DEFAULT_OPTIONS) {
     return ajv;
 }
 
-},{"ajv":12}]},{},[10]);
+},{"ajv":2}]},{},[65]);
