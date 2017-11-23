@@ -1,5 +1,5 @@
 {
-  "$id": "https://ub.io/protocol/schema",
+  "$id": "https://protocol.automationcloud.net/schema.json",
   "domains": {
     "Generic": {
       "description": "Generic domain contains type definitions used in other domains.",

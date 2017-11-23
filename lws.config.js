@@ -1,5 +1,7 @@
 'use strict';
 
+/*
+// Use following config for serving with prefix
 module.exports = {
     rewrite: [
         {
@@ -9,4 +11,10 @@ module.exports = {
     ],
     directory: '.',
     spa: '/docs/index.html',
+};
+*/
+
+module.exports = {
+    directory: 'docs',
+    spa: 'index.html',
 };

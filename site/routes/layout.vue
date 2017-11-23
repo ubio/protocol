@@ -8,7 +8,7 @@
                     title="ubio Automation Protocol Reference"
                     exact>
                     <img
-                        src="/protocol/img/ubio-logo.png"
+                        src="/img/ubio-logo.png"
                         height="40"/>
                 </router-link>
                 <div class="layout__header-links">

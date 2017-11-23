@@ -18377,7 +18377,6 @@ const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
     mode: 'history',
-    base: '/protocol',
     routes: [{
         path: '',
         component: require('./routes/layout.vue'),
@@ -18510,7 +18509,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__header"},[_c('div',{staticClass:"layout__header-container container"},[_c('router-link',{staticClass:"layout__logo",attrs:{"to":{ name: 'home' },"title":"ubio Automation Protocol Reference","exact":""}},[_c('img',{attrs:{"src":"/protocol/img/ubio-logo.png","height":"40"}})]),_vm._v(" "),_vm._m(0)],1)]),_vm._v(" "),_c('div',{staticClass:"layout__content"},[_c('div',{staticClass:"layout__content-container container"},[_c('sidebar'),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)],1)])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('div',{staticClass:"layout__header"},[_c('div',{staticClass:"layout__header-container container"},[_c('router-link',{staticClass:"layout__logo",attrs:{"to":{ name: 'home' },"title":"ubio Automation Protocol Reference","exact":""}},[_c('img',{attrs:{"src":"/img/ubio-logo.png","height":"40"}})]),_vm._v(" "),_vm._m(0)],1)]),_vm._v(" "),_c('div',{staticClass:"layout__content"},[_c('div',{staticClass:"layout__content-container container"},[_c('sidebar'),_vm._v(" "),_c('div',{staticClass:"layout__main"},[_c('router-view')],1)],1)])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout__header-links"},[_c('a',{staticClass:"layout__header-link",attrs:{"target":"_blank","href":"https://docs.automationcloud.net"}},[_vm._v("\n                    Documentation\n                ")])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -19626,7 +19625,7 @@ module.exports={
 'use strict';
 
 module.exports = {
-    $id: 'https://ub.io/protocol/schema',
+    $id: 'https://protocol.automationcloud.net/schema.json',
     domains: {
         Generic: require('./generic'),
         FlightBooking: require('./flight-booking'),
