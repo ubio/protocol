@@ -18454,7 +18454,7 @@ module.exports = {
             try {
                 const el = this.$el.querySelector(this.$route.hash);
                 if (el) {
-                    el.scrollIntoViewIfNeeded();
+                    el.scrollIntoView();
                 }
             } catch (err) {}
         }
