@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [0.8.0] - 2017-11-23
+
 - Branding for static site
 - Add `private` flag to `Internal` domain
 

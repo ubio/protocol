@@ -19034,7 +19034,7 @@ module.exports={
 
 },{}],73:[function(require,module,exports){
 module.exports={
-    "description": "Generic domain contains generic definitions used in other domains.",
+    "description": "Generic domain contains type definitions used in other domains.",
     "inputs": {},
     "outputs": {},
     "types": {
