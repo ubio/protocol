@@ -18377,6 +18377,9 @@ const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
     mode: 'history',
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
     routes: [{
         path: '',
         component: require('./routes/layout.vue'),
@@ -18415,13 +18418,12 @@ module.exports = {
     },
 
     watch: {
-
-        $route({ hash }) {
-            if (hash) {
+        $route: {
+            deep: true,
+            handler() {
                 this.scrollToActive();
             }
         }
-
     },
 
     computed: {
@@ -18451,12 +18453,14 @@ module.exports = {
             if (!this.$route.hash) {
                 return;
             }
-            try {
-                const el = this.$el.querySelector(this.$route.hash);
-                if (el) {
-                    el.scrollIntoView();
-                }
-            } catch (err) {}
+            setTimeout(() => {
+                try {
+                    const el = this.$el.querySelector(this.$route.hash);
+                    if (el) {
+                        el.scrollIntoView();
+                    }
+                } catch (err) {}
+            }, 0);
         }
 
     }

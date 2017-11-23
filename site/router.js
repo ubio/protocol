@@ -4,6 +4,9 @@ const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
     mode: 'history',
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
     routes: [
         {
             path: '',

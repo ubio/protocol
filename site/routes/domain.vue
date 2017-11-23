@@ -50,13 +50,12 @@ module.exports = {
     },
 
     watch: {
-
-        $route({ hash }) {
-            if (hash) {
+        $route: {
+            deep: true,
+            handler() {
                 this.scrollToActive();
-            }
+            },
         },
-
     },
 
     computed: {
@@ -86,12 +85,14 @@ module.exports = {
             if (!this.$route.hash) {
                 return;
             }
-            try {
-                const el = this.$el.querySelector(this.$route.hash);
-                if (el) {
-                    el.scrollIntoView();
-                }
-            } catch (err) {}
+            setTimeout(() => {
+                try {
+                    const el = this.$el.querySelector(this.$route.hash);
+                    if (el) {
+                        el.scrollIntoView();
+                    }
+                } catch (err) {}
+            }, 0);
         },
 
     },
