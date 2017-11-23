@@ -3,7 +3,7 @@
 const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
-    mode: 'hash',
+    mode: 'history',
     routes: [
         {
             path: '',

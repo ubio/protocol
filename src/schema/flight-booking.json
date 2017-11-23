@@ -40,15 +40,13 @@
                 "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
                 "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
                 "return": { "$ref": "#/domains/FlightBooking/types/ReturnFlight" },
-                "price": { "$ref": "#/domains/Generic/types/Price" },
                 "cabinClass": {
                     "type": "string"
                 }
             },
             "required": [
                 "from",
-                "to",
-                "price"
+                "to"
             ],
             "additionalProperties": true
         },

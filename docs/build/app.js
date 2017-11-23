@@ -203,7 +203,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
-    mode: 'hash',
+    mode: 'history',
     routes: [{
         path: '',
         component: require('./routes/layout.vue'),
@@ -18811,15 +18811,13 @@ module.exports={
                 "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
                 "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
                 "return": { "$ref": "#/domains/FlightBooking/types/ReturnFlight" },
-                "price": { "$ref": "#/domains/Generic/types/Price" },
                 "cabinClass": {
                     "type": "string"
                 }
             },
             "required": [
                 "from",
-                "to",
-                "price"
+                "to"
             ],
             "additionalProperties": true
         },
