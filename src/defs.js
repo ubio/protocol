@@ -1,5 +1,7 @@
 'use strict';
 
+const util = require('./util');
+
 class Def {
 
     constructor(domain, ns, key) {
@@ -17,6 +19,20 @@ class Def {
 
     getSchema() {
         return null;
+    }
+
+    hasDefault() {
+        return typeof this.spec.default !== 'undefined';
+    }
+
+    applyDefault(object) {
+        if (!this.hasDefault()) {
+            return;
+        }
+        if (typeof object[this.key] !== 'undefined') {
+            return;
+        }
+        object[this.key] = util.deepClone(this.spec.default);
     }
 
     async validate(data) {
