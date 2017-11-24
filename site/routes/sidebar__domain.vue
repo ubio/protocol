@@ -10,21 +10,45 @@
             {{ domain.id }}
         </router-link>
         <template v-if="active">
-            <div class="sidebar__types">
-                <div
-                    class="sidebar__type"
-                    v-for="def of sortedTypes">
-                    <router-link
-                        class="sidebar__sublink"
-                        :to="{
-                            name: 'domain',
-                            params: { domainId: domain.id },
-                            hash: '#' + def.key,
-                        }">
-                        {{ def.key }}
-                    </router-link>
-                </div>
-            </div>
+            <router-link
+                v-if="domain.getInputs().length"
+                class="sidebar__section"
+                :to="{
+                    name: 'domain',
+                    params: { domainId: domain.id },
+                    hash: '#inputs',
+                }">
+                Inputs
+            </router-link>
+            <router-link
+                v-if="domain.getOutputs().length"
+                class="sidebar__section"
+                :to="{
+                    name: 'domain',
+                    params: { domainId: domain.id },
+                    hash: '#outputs',
+                }">
+                Outputs
+            </router-link>
+            <router-link
+                class="sidebar__section"
+                :to="{
+                    name: 'domain',
+                    params: { domainId: domain.id },
+                    hash: '#types',
+                }">
+                Types
+            </router-link>
+            <router-link
+                v-for="def of sortedTypes"
+                class="sidebar__sublink"
+                :to="{
+                    name: 'domain',
+                    params: { domainId: domain.id },
+                    hash: '#' + def.key,
+                }">
+                {{ def.key }}
+            </router-link>
         </template>
     </div>
 </template>
@@ -61,7 +85,7 @@ module.exports = {
 <style>
 .sidebar__link {
     display: block;
-    padding: .25em .5em;
+    padding: .25em 1rem;
     color: var(--ui-primary);
     border-radius: var(--border-radius);
 }
@@ -71,9 +95,18 @@ module.exports = {
     background: var(--ui-primary);
 }
 
+.sidebar__section {
+    display: block;
+    margin-left: 1rem;
+
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: bold;
+}
+
 .sidebar__sublink {
     display: block;
-    margin-left: 1em;
+    margin-left: 2rem;
     color: var(--ui-muted);
     font-size: 12px;
 }

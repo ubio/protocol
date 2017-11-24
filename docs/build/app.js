@@ -18386,7 +18386,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-4a725e62", __vue__options__)
   }
 })()}
-},{"../../src":71,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],61:[function(require,module,exports){
+},{"../../src":72,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],61:[function(require,module,exports){
 ;(function(){
 
 
@@ -18437,12 +18437,18 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 },{"vue":54,"vue-hot-reload-api":52}],62:[function(require,module,exports){
 'use strict';
 
+const util = require('./util');
 const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
     mode: 'history',
-    scrollBehavior() {
-        return { x: 0, y: 0 };
+    scrollBehavior(route) {
+        const { hash } = route;
+        if (hash) {
+            util.scrollToHash(hash);
+        } else {
+            return { x: 0, y: 0 };
+        }
     },
     routes: [{
         path: '',
@@ -18460,10 +18466,11 @@ module.exports = new VueRouter({
     }]
 });
 
-},{"./routes/domain.vue":63,"./routes/home.vue":64,"./routes/layout.vue":65,"vue-router":53}],63:[function(require,module,exports){
+},{"./routes/domain.vue":63,"./routes/home.vue":64,"./routes/layout.vue":65,"./util":68,"vue-router":53}],63:[function(require,module,exports){
 ;(function(){
 
 
+const util = require('../util');
 const protocol = require('../../src');
 
 module.exports = {
@@ -18478,16 +18485,7 @@ module.exports = {
     },
 
     mounted() {
-        this.scrollToActive();
-    },
-
-    watch: {
-        $route: {
-            deep: true,
-            handler() {
-                this.scrollToActive();
-            }
-        }
+        util.scrollToHash(this.$route.hash);
     },
 
     computed: {
@@ -18509,24 +18507,6 @@ module.exports = {
             return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
         }
 
-    },
-
-    methods: {
-
-        scrollToActive() {
-            if (!this.$route.hash) {
-                return;
-            }
-            setTimeout(() => {
-                try {
-                    const el = this.$el.querySelector(this.$route.hash);
-                    if (el) {
-                        el.scrollIntoView();
-                    }
-                } catch (err) {}
-            }, 0);
-        }
-
     }
 
 };
@@ -18534,7 +18514,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18546,7 +18526,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-70f4bbb7", __vue__options__)
   }
 })()}
-},{"../../src":71,"../components/def.vue":57,"../components/oneliner.vue":58,"vue":54,"vue-hot-reload-api":52}],64:[function(require,module,exports){
+},{"../../src":72,"../components/def.vue":57,"../components/oneliner.vue":58,"../util":68,"vue":54,"vue-hot-reload-api":52}],64:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -18627,8 +18607,8 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-dcdf760e", __vue__options__)
   }
 })()}
-},{"../../src":71,"./sidebar__domain.vue":67,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],67:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar__link {\n    display: block;\n    padding: .25em .5em;\n    color: var(--ui-primary);\n    border-radius: var(--border-radius);\n}\n\n.sidebar__link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}\n\n.sidebar__sublink {\n    display: block;\n    margin-left: 1em;\n    color: var(--ui-muted);\n    font-size: 12px;\n}\n\n.sidebar__sublink.router-link-active {\n    color: var(--heading-color);\n}")
+},{"../../src":72,"./sidebar__domain.vue":67,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],67:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar__link {\n    display: block;\n    padding: .25em 1rem;\n    color: var(--ui-primary);\n    border-radius: var(--border-radius);\n}\n\n.sidebar__link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}\n\n.sidebar__section {\n    display: block;\n    margin-left: 1rem;\n\n    text-transform: uppercase;\n    font-size: 10px;\n    font-weight: bold;\n}\n\n.sidebar__sublink {\n    display: block;\n    margin-left: 2rem;\n    color: var(--ui-muted);\n    font-size: 12px;\n}\n\n.sidebar__sublink.router-link-active {\n    color: var(--heading-color);\n}")
 ;(function(){
 
 
@@ -18665,11 +18645,23 @@ if (__vue__options__.functional) {console.error("[vueify] functional components 
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar__domain"},[_c('router-link',{staticClass:"sidebar__link",attrs:{"to":{
             name: 'domain',
             params: { domainId: _vm.domain.id }
-        }}},[_vm._v("\n        "+_vm._s(_vm.domain.id)+"\n    ")]),_vm._v(" "),(_vm.active)?[_c('div',{staticClass:"sidebar__types"},_vm._l((_vm.sortedTypes),function(def){return _c('div',{staticClass:"sidebar__type"},[_c('router-link',{staticClass:"sidebar__sublink",attrs:{"to":{
-                        name: 'domain',
-                        params: { domainId: _vm.domain.id },
-                        hash: '#' + def.key,
-                    }}},[_vm._v("\n                    "+_vm._s(def.key)+"\n                ")])],1)}))]:_vm._e()],2)}
+        }}},[_vm._v("\n        "+_vm._s(_vm.domain.id)+"\n    ")]),_vm._v(" "),(_vm.active)?[(_vm.domain.getInputs().length)?_c('router-link',{staticClass:"sidebar__section",attrs:{"to":{
+                name: 'domain',
+                params: { domainId: _vm.domain.id },
+                hash: '#inputs',
+            }}},[_vm._v("\n            Inputs\n        ")]):_vm._e(),_vm._v(" "),(_vm.domain.getOutputs().length)?_c('router-link',{staticClass:"sidebar__section",attrs:{"to":{
+                name: 'domain',
+                params: { domainId: _vm.domain.id },
+                hash: '#outputs',
+            }}},[_vm._v("\n            Outputs\n        ")]):_vm._e(),_vm._v(" "),_c('router-link',{staticClass:"sidebar__section",attrs:{"to":{
+                name: 'domain',
+                params: { domainId: _vm.domain.id },
+                hash: '#types',
+            }}},[_vm._v("\n            Types\n        ")]),_vm._v(" "),_vm._l((_vm.sortedTypes),function(def){return _c('router-link',{staticClass:"sidebar__sublink",attrs:{"to":{
+                name: 'domain',
+                params: { domainId: _vm.domain.id },
+                hash: '#' + def.key,
+            }}},[_vm._v("\n            "+_vm._s(def.key)+"\n        ")])})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18685,6 +18677,27 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 },{"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],68:[function(require,module,exports){
 'use strict';
 
+module.exports = {
+    scrollToHash
+};
+
+function scrollToHash(hash) {
+    if (!hash) {
+        return;
+    }
+    setTimeout(() => {
+        try {
+            const el = document.querySelector(hash);
+            if (el) {
+                el.scrollIntoView();
+            }
+        } catch (err) {}
+    }, 0);
+}
+
+},{}],69:[function(require,module,exports){
+'use strict';
+
 const Vue = require('vue');
 const VueRouter = require('vue-router');
 
@@ -18697,7 +18710,7 @@ new App({
     el: '#app'
 });
 
-},{"./app.vue":56,"./router":62,"vue":54,"vue-router":53}],69:[function(require,module,exports){
+},{"./app.vue":56,"./router":62,"vue":54,"vue-router":53}],70:[function(require,module,exports){
 'use strict';
 
 const util = require('./util');
@@ -18806,7 +18819,7 @@ module.exports = {
     TypeDef
 };
 
-},{"./util":77}],70:[function(require,module,exports){
+},{"./util":78}],71:[function(require,module,exports){
 'use strict';
 
 const util = require('./util');
@@ -18900,7 +18913,7 @@ module.exports = class Domain {
 
 };
 
-},{"./defs":69,"./util":77}],71:[function(require,module,exports){
+},{"./defs":70,"./util":78}],72:[function(require,module,exports){
 'use strict';
 
 const schema = require('./schema');
@@ -18908,7 +18921,7 @@ const Protocol = require('./protocol');
 
 module.exports = new Protocol(schema);
 
-},{"./protocol":72,"./schema":75}],72:[function(require,module,exports){
+},{"./protocol":73,"./schema":76}],73:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -18965,7 +18978,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":70,"./validator":78}],73:[function(require,module,exports){
+},{"./domain":71,"./validator":79}],74:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "inputs": {
@@ -19170,7 +19183,7 @@ module.exports={
     }
 }
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "inputs": {},
@@ -19773,7 +19786,7 @@ module.exports={
         }
     }
 }
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -19785,7 +19798,7 @@ module.exports = {
     }
 };
 
-},{"./flight-booking":73,"./generic":74,"./internal":76}],76:[function(require,module,exports){
+},{"./flight-booking":74,"./generic":75,"./internal":77}],77:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -19830,7 +19843,7 @@ module.exports={
     }
 }
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -19841,7 +19854,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');
@@ -19871,4 +19884,4 @@ function createValidator(schema, defs, options = DEFAULT_OPTIONS) {
     return ajv;
 }
 
-},{"ajv":2}]},{},[68]);
+},{"ajv":2}]},{},[69]);

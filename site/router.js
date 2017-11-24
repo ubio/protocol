@@ -1,11 +1,17 @@
 'use strict';
 
+const util = require('./util');
 const VueRouter = require('vue-router');
 
 module.exports = new VueRouter({
     mode: 'history',
-    scrollBehavior() {
-        return { x: 0, y: 0 };
+    scrollBehavior(route) {
+        const { hash } = route;
+        if (hash) {
+            util.scrollToHash(hash);
+        } else {
+            return { x: 0, y: 0 };
+        }
     },
     routes: [
         {
