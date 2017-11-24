@@ -19052,7 +19052,7 @@ module.exports={
             "properties": {
                 "email": {
                     "type": "string",
-                    "description": "Account email. Automation may result in registering new user account with this email address.",
+                    "description": "Account email, typically used for user sign up / sign in, as well as contact information.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists.",
                     "format": "email"
                 },
                 "password": {
@@ -19096,7 +19096,7 @@ module.exports={
                 "middleName": {
                     "type": "string",
                     "default": "",
-                    "description": "Middle name, if exists and if it must be entered separately. Certain websites do not support separate entry for middle names, in which they will be appended to <code>firstName</code>."
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
                 },
                 "lastName": {
                     "type": "string",
@@ -19122,10 +19122,12 @@ module.exports={
                     "description": "Additional address information (e.g. flat)."
                 },
                 "city": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of city, town or other settlement."
                 },
                 "postcode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK."
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode"
@@ -19147,9 +19149,7 @@ module.exports={
             "type": "object",
             "description": "Phone information, typically used on contact details pages.",
             "properties": {
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
-                },
+                "countryCode": { "$ref": "#/domains/Generic/types/CountryCode" },
                 "number": {
                     "type": "string",
                     "minLength": 9,
@@ -19176,9 +19176,7 @@ module.exports={
             "type": "object",
             "description": "Basic price information.",
             "properties": {
-                "currencyCode": {
-                    "$ref": "#/domains/Generic/types/CurrencyCode"
-                },
+                "currencyCode": { "$ref": "#/domains/Generic/types/CurrencyCode" },
                 "value": {
                     "type": "integer",
                     "minimum": 0,
@@ -19195,15 +19193,9 @@ module.exports={
             "type": "object",
             "description": "Payment information, including card details and billing address.",
             "properties": {
-                "card": {
-                    "$ref": "#/domains/Generic/types/PaymentCard"
-                },
-                "person": {
-                    "$ref": "#/domains/Generic/types/Person"
-                },
-                "address": {
-                    "$ref": "#/domains/Generic/types/Address"
-                }
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "person": { "$ref": "#/domains/Generic/types/Person" },
+                "address": { "$ref": "#/domains/Generic/types/Address" }
             },
             "required": [
                 "card",
