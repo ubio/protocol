@@ -18172,7 +18172,7 @@ exports.insert = function (css) {
 }
 
 },{}],56:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
@@ -18246,6 +18246,7 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneline
 module.exports = {
 
     components: {
+        'val': require('./val.vue'),
         'schema-type': require('./schema-type.vue')
     },
 
@@ -18254,14 +18255,17 @@ module.exports = {
     },
 
     computed: {
+
         typeDef() {
             return this.def.getTypeDef();
         },
+
         description() {
             const { spec } = this.def;
             const { typeDef } = this;
             return spec.description ? spec.description : typeDef ? typeDef.spec.description : '';
         }
+
     }
 
 };
@@ -18269,7 +18273,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}})],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18282,7 +18286,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-d14c9182", __vue__options__)
   }
 })()}
-},{"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],59:[function(require,module,exports){
+},{"./schema-type.vue":60,"./val.vue":61,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],59:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".prop {\n    margin: 1em 0;\n    display: flex;\n    flex-flow: row nowrap;\n    align-items: baseline;\n}\n\n.prop__id {\n    flex: 0 0 160px;\n}\n\n.prop__body {\n    flex: 1;\n}\n\n.prop__optional {\n    color: var(--ui-muted);\n}")
 ;(function(){
 
@@ -18290,6 +18294,7 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".prop {\
 module.exports = {
 
     components: {
+        'val': require('./val.vue'),
         'schema-type': require('./schema-type.vue')
     },
 
@@ -18304,20 +18309,6 @@ module.exports = {
         required() {
             const required = this.parent.spec.required || [];
             return required.includes(this.id);
-        },
-
-        defaultValue() {
-            const defaultValue = this.prop.default;
-            if (typeof defaultValue === 'undefined') {
-                return null;
-            }
-            if (defaultValue === null) {
-                return 'null';
-            }
-            if (defaultValue === '') {
-                return '(empty string)';
-            }
-            return String(defaultValue);
         }
 
     }
@@ -18327,7 +18318,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.defaultValue)?_c('div',{staticClass:"prop__default"},[_vm._v("\n            Default value: "),_c('strong',[_vm._v(_vm._s(_vm.defaultValue))])]):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(typeof _vm.prop.default !== 'undefined')?_c('div',{staticClass:"prop__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.prop.default}})],1):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18340,7 +18331,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-69fdac4a", __vue__options__)
   }
 })()}
-},{"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],60:[function(require,module,exports){
+},{"./schema-type.vue":60,"./val.vue":61,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],60:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".schema-type {\n    font-weight: bold;\n}\n\n.schema-type__broken-ref {\n    color: var(--ui-failure);\n}")
 ;(function(){
 
@@ -18395,7 +18386,55 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-4a725e62", __vue__options__)
   }
 })()}
-},{"../../src":70,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],61:[function(require,module,exports){
+},{"../../src":71,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],61:[function(require,module,exports){
+;(function(){
+
+
+module.exports = {
+
+    props: {
+        value: {}
+    },
+
+    computed: {
+
+        valueToString() {
+            const { value } = this;
+            if (typeof value === 'undefined') {
+                return null;
+            }
+            if (value === null) {
+                return 'null';
+            }
+            if (value === '') {
+                return '(empty string)';
+            }
+            if (typeof value === 'object') {
+                return JSON.stringify(value);
+            }
+            return String(value);
+        }
+
+    }
+
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('code',[_vm._v(_vm._s(_vm.valueToString))])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d12e8ec", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-3d12e8ec", __vue__options__)
+  }
+})()}
+},{"vue":54,"vue-hot-reload-api":52}],62:[function(require,module,exports){
 'use strict';
 
 const VueRouter = require('vue-router');
@@ -18421,7 +18460,7 @@ module.exports = new VueRouter({
     }]
 });
 
-},{"./routes/domain.vue":62,"./routes/home.vue":63,"./routes/layout.vue":64,"vue-router":53}],62:[function(require,module,exports){
+},{"./routes/domain.vue":63,"./routes/home.vue":64,"./routes/layout.vue":65,"vue-router":53}],63:[function(require,module,exports){
 ;(function(){
 
 
@@ -18507,7 +18546,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-70f4bbb7", __vue__options__)
   }
 })()}
-},{"../../src":70,"../components/def.vue":57,"../components/oneliner.vue":58,"vue":54,"vue-hot-reload-api":52}],63:[function(require,module,exports){
+},{"../../src":71,"../components/def.vue":57,"../components/oneliner.vue":58,"vue":54,"vue-hot-reload-api":52}],64:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -18522,7 +18561,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-505e3112", __vue__options__)
   }
 })()}
-},{"vue":54,"vue-hot-reload-api":52}],64:[function(require,module,exports){
+},{"vue":54,"vue-hot-reload-api":52}],65:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout {\n    display: flex;\n    flex-flow: column nowrap;\n}\n\n.layout__header {\n    flex: 0 0 auto;\n    border-bottom: 5px solid var(--ui-primary);\n}\n\n.layout__header-container {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    height: 80px;\n}\n\n.layout__header-link {\n    color: var(--ui-muted);\n}\n\n.layout__content {\n    flex: 1;\n    display: flex;\n}\n\n.layout__content-container {\n    flex: 1;\n    display: flex;\n    flex-flow: row nowrap;\n}\n\n.layout__main {\n    flex: 1;\n    padding: 1em 4em;\n}")
 ;(function(){
 
@@ -18551,7 +18590,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-611381c6", __vue__options__)
   }
 })()}
-},{"./sidebar.vue":65,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],65:[function(require,module,exports){
+},{"./sidebar.vue":66,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],66:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar {\n    flex: 200px 0 0;\n    padding: 1em 0;\n}\n\n.sidebar__sticky {\n    position: sticky;\n    top: 20px;\n    overflow-y: auto;\n}")
 ;(function(){
 
@@ -18588,7 +18627,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-dcdf760e", __vue__options__)
   }
 })()}
-},{"../../src":70,"./sidebar__domain.vue":66,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],66:[function(require,module,exports){
+},{"../../src":71,"./sidebar__domain.vue":67,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],67:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar__link {\n    display: block;\n    padding: .25em .5em;\n    color: var(--ui-primary);\n    border-radius: var(--border-radius);\n}\n\n.sidebar__link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}\n\n.sidebar__sublink {\n    display: block;\n    margin-left: 1em;\n    color: var(--ui-muted);\n    font-size: 12px;\n}\n\n.sidebar__sublink.router-link-active {\n    color: var(--heading-color);\n}")
 ;(function(){
 
@@ -18643,7 +18682,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-0f4ada9d", __vue__options__)
   }
 })()}
-},{"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],67:[function(require,module,exports){
+},{"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],68:[function(require,module,exports){
 'use strict';
 
 const Vue = require('vue');
@@ -18658,7 +18697,7 @@ new App({
     el: '#app'
 });
 
-},{"./app.vue":56,"./router":61,"vue":54,"vue-router":53}],68:[function(require,module,exports){
+},{"./app.vue":56,"./router":62,"vue":54,"vue-router":53}],69:[function(require,module,exports){
 'use strict';
 
 const util = require('./util');
@@ -18767,7 +18806,7 @@ module.exports = {
     TypeDef
 };
 
-},{"./util":76}],69:[function(require,module,exports){
+},{"./util":77}],70:[function(require,module,exports){
 'use strict';
 
 const util = require('./util');
@@ -18861,7 +18900,7 @@ module.exports = class Domain {
 
 };
 
-},{"./defs":68,"./util":76}],70:[function(require,module,exports){
+},{"./defs":69,"./util":77}],71:[function(require,module,exports){
 'use strict';
 
 const schema = require('./schema');
@@ -18869,7 +18908,7 @@ const Protocol = require('./protocol');
 
 module.exports = new Protocol(schema);
 
-},{"./protocol":71,"./schema":74}],71:[function(require,module,exports){
+},{"./protocol":72,"./schema":75}],72:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -18926,7 +18965,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":69,"./validator":77}],72:[function(require,module,exports){
+},{"./domain":70,"./validator":78}],73:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "inputs": {
@@ -19131,7 +19170,7 @@ module.exports={
     }
 }
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "inputs": {},
@@ -19734,7 +19773,7 @@ module.exports={
         }
     }
 }
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -19746,7 +19785,7 @@ module.exports = {
     }
 };
 
-},{"./flight-booking":72,"./generic":73,"./internal":75}],75:[function(require,module,exports){
+},{"./flight-booking":73,"./generic":74,"./internal":76}],76:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -19791,7 +19830,7 @@ module.exports={
     }
 }
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -19802,7 +19841,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');
@@ -19832,4 +19871,4 @@ function createValidator(schema, defs, options = DEFAULT_OPTIONS) {
     return ajv;
 }
 
-},{"ajv":2}]},{},[67]);
+},{"ajv":2}]},{},[68]);

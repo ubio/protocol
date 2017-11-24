@@ -1,4 +1,6 @@
 :root {
+    --font-monospace: monospace;
+
     --ui-default: #dee5e8;
     --ui-default--inverse: #555;
     --ui-primary: #628395;

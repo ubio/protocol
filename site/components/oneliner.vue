@@ -8,6 +8,11 @@
             <div class="oneliner__description"
                  v-html="description">
             </div>
+            <div
+                class="oneliner__default"
+                v-if="typeof def.spec.default !== 'undefined'">
+                <strong>Default value:</strong> <val :value="def.spec.default"/>
+            </div>
         </div>
     </div>
 </template>
@@ -16,6 +21,7 @@
 module.exports = {
 
     components: {
+        'val': require('./val.vue'),
         'schema-type': require('./schema-type.vue'),
     },
 
@@ -24,15 +30,18 @@ module.exports = {
     },
 
     computed: {
+
         typeDef() {
             return this.def.getTypeDef();
         },
+
         description() {
             const { spec } = this.def;
             const { typeDef } = this;
             return spec.description ? spec.description :
                 typeDef ? typeDef.spec.description : '';
         },
+
     },
 
 };

@@ -16,9 +16,10 @@
                 v-if="prop.description"
                 v-html="prop.description">
             </div>
-            <div class="prop__default"
-                 v-if="defaultValue">
-                Default value: <strong>{{ defaultValue }}</strong>
+            <div
+                class="prop__default"
+                v-if="typeof prop.default !== 'undefined'">
+                <strong>Default value:</strong> <val :value="prop.default"/>
             </div>
             <div class="prop__enum"
                  v-if="prop.enum">
@@ -32,6 +33,7 @@
 module.exports = {
 
     components: {
+        'val': require('./val.vue'),
         'schema-type': require('./schema-type.vue'),
     },
 
@@ -46,20 +48,6 @@ module.exports = {
         required() {
             const required = this.parent.spec.required || [];
             return required.includes(this.id);
-        },
-
-        defaultValue() {
-            const defaultValue = this.prop.default;
-            if (typeof defaultValue === 'undefined') {
-                return null;
-            }
-            if (defaultValue === null) {
-                return 'null';
-            }
-            if (defaultValue === '') {
-                return '(empty string)';
-            }
-            return String(defaultValue);
         },
 
     },
