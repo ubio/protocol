@@ -39,12 +39,17 @@ module.exports = class Domain {
         return this.defs.find(def => def.key === key);
     }
 
-    async createInputsFromObject(inputObject = {}) {
+    async prepareInputs({
+        inputObject,
+        applyDefaults = false,
+    }) {
         const clone = util.deepClone(inputObject);
         const results = [];
         // Apply defaults
-        for (const inputDef of this.getInputs()) {
-            inputDef.applyDefault(clone);
+        if (applyDefaults) {
+            for (const inputDef of this.getInputs()) {
+                inputDef.applyDefault(clone);
+            }
         }
         for (const key of Object.keys(clone)) {
             const data = clone[key];

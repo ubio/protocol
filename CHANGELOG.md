@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- API change: `createInputsFromObject` -> `prepareInputs`, accept `applyDefaults` param.
 
 ## [0.9.0] - 2017-11-24
 
