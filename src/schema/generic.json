@@ -5,25 +5,29 @@
     "types": {
         "URL": {
             "type": "string",
-            "format": "url",
-            "title": "URL Record",
-            "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url"
+            "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url",
+            "format": "url"
         },
         "Account": {
             "type": "object",
+            "description": "Account information, typically required for automating user sign up / sign in flows.",
             "properties": {
                 "email": {
                     "type": "string",
+                    "description": "Account email. Automation may result in registering new user account with this email address.",
                     "format": "email"
                 },
                 "password": {
                     "type": "string",
+                    "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
                     "default": ""
                 },
                 "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
                     "$ref": "#/domains/Generic/types/Phone"
                 },
                 "isExisting": {
+                    "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
                     "type": "boolean"
                 }
             },
@@ -35,9 +39,11 @@
         },
         "Person": {
             "type": "object",
+            "description": "Basic information about person's identity.",
             "properties": {
                 "title": {
                     "type": "string",
+                    "description": "",
                     "enum": [
                         "mr",
                         "miss",
@@ -46,14 +52,17 @@
                     ]
                 },
                 "firstName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID."
                 },
                 "middleName": {
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "description": "Middle name, if exists and if it must be entered separately. Certain websites do not support separate entry for middle names, in which they will be appended to <code>firstName</code>."
                 },
                 "lastName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID."
                 }
             },
             "required": [
@@ -64,14 +73,15 @@
         },
         "Address": {
             "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
             "properties": {
                 "line1": {
                     "type": "string",
-                    "description": "Street name with house number"
+                    "description": "Street name with house number."
                 },
                 "line2": {
                     "type": "string",
-                    "description": "Additional address info"
+                    "description": "Additional address information (e.g. flat)."
                 },
                 "city": {
                     "type": "string"
@@ -97,6 +107,7 @@
         },
         "Phone": {
             "type": "object",
+            "description": "Phone information, typically used on contact details pages.",
             "properties": {
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode"
@@ -104,7 +115,7 @@
                 "number": {
                     "type": "string",
                     "minLength": 9,
-                    "description": "Mobile phone number (numbers only, excluding country code)"
+                    "description": "Mobile phone number (numbers only, excluding country code)."
                 }
             },
             "required": [
@@ -114,6 +125,7 @@
         },
         "PriceConsent": {
             "type": "object",
+            "description": "Price consent object used in final price confirmation flow.<br/>When automation reaches final price (typically happens immediately before placing the order) it will emit <code>finalPrice</code> object in output and will wait for consent from you. You then need to provide the exact copy of this object as <code>finalPriceConsent</code> input.",
             "properties": {
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
@@ -124,6 +136,7 @@
         },
         "Price": {
             "type": "object",
+            "description": "Basic price information.",
             "properties": {
                 "currencyCode": {
                     "$ref": "#/domains/Generic/types/CurrencyCode"
@@ -142,6 +155,7 @@
         },
         "Payment": {
             "type": "object",
+            "description": "Payment information, including card details and billing address.",
             "properties": {
                 "card": {
                     "$ref": "#/domains/Generic/types/PaymentCard"
@@ -161,9 +175,11 @@
         },
         "PaymentCard": {
             "type": "object",
+            "description": "Payment information for card payment. Note: card number should not be submitted in plain text as per PCI DSS. Use <code>panToken</code> to provide it securely instead.",
             "properties": {
                 "type": {
                     "type": "string",
+                    "description": "Card type, debit or credit.",
                     "enum": [
                         "debit",
                         "credit"
@@ -171,6 +187,7 @@
                 },
                 "brand": {
                     "type": "string",
+                    "description": "Card brand, must be one of the supported card brands. Automation may fail if a specific card brand is not supported on a particular website.",
                     "enum": [
                         "visa",
                         "mastercard",
@@ -180,15 +197,18 @@
                 },
                 "expirationDate": {
                     "type": "string",
+                    "description": "Expiration date in YYYY-MM format as written on card. Example: <code>2020-04</code>",
                     "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
                     "minLength": 7,
                     "maxLength": 7
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Cardholder's name as written on card."
                 },
                 "cvv": {
                     "type": "string",
+                    "description": "Security code written on card, 3- or 4-digit number.",
                     "minLength": 3,
                     "maxLength": 4
                 }
@@ -203,6 +223,7 @@
         },
         "PanToken": {
             "type": "string",
+            "description": "An encrypted PAN token, obtained from Automation Cloud Vault. Please consult \"Vaulting Payment Card Information\" section of Documentation for information on how to acquire it.",
             "minLength": 20
         },
         "CountryCode": {
@@ -465,7 +486,7 @@
         },
         "CountrySubdivision": {
             "type": "string",
-            "description": "Depends on country. For the US, the 2 letter state code, lowercased, e.g. 'ca' for California; For Canada, the 2 letter lowercased province code, e.g. 'qc' for Quebec; For Germany, the 2 letter lowercased state code, e.g. 'nw' for Nordrhein-Westfalen; For Romania, the 2 or 1 letter lowercased county code, e.g. 'if' for Ilfov except 'b' for Bucharest; For the United Kingdom, the 2 letter lowecased province, e.g. 'm7' for York; For Spain, the 2 or 1 letter lowercased province code, e.g. 'pm' for Palma, 'o' for Ovideo."
+            "description": "Depends on country.<br/>For the US, the 2 letter state code, lowercased, e.g. 'ca' for California;<br/>For Canada, the 2 letter lowercased province code, e.g. 'qc' for Quebec;<br/>For Germany, the 2 letter lowercased state code, e.g. 'nw' for Nordrhein-Westfalen;<br/>For Romania, the 2 or 1 letter lowercased county code, e.g. 'if' for Ilfov except 'b' for Bucharest;<br/>For the United Kingdom, the 2 letter lowecased province, e.g. 'm7' for York;<br/>For Spain, the 2 or 1 letter lowercased province code, e.g. 'pm' for Palma, 'o' for Ovideo."
         },
         "CurrencyCode": {
             "type": "string",
