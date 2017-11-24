@@ -52,8 +52,8 @@ class TypeDef extends Def {
         return `#/domains/${this.domain.id}/types/${this.key}`;
     }
 
-    getSchema() {
-        return this.spec;
+    getTypeDef() {
+        return this;
     }
 
 }
@@ -64,7 +64,7 @@ class CustomDef extends Def {
         return this.spec.typeRef;
     }
 
-    getSchema() {
+    getTypeDef() {
         return this.domain.protocol.resolveTypeRef(this.getTypeRef());
     }
 

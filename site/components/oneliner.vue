@@ -6,7 +6,7 @@
         <div class="oneliner__body">
             <schema-type :spec="def.spec"/>
             <div class="oneliner__description"
-                 v-html="def.spec.description">
+                 v-html="description">
             </div>
         </div>
     </div>
@@ -21,6 +21,18 @@ module.exports = {
 
     props: {
         def: { type: Object, required: true },
+    },
+
+    computed: {
+        typeDef() {
+            return this.def.getTypeDef();
+        },
+        description() {
+            const { spec } = this.def;
+            const { typeDef } = this;
+            return spec.description ? spec.description :
+                typeDef ? typeDef.spec.description : '';
+        },
     },
 
 };

@@ -5,7 +5,7 @@
     "types": {
         "URL": {
             "type": "string",
-            "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url",
+            "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\">WHATWG URL Standard</a>.",
             "format": "url"
         },
         "Account": {

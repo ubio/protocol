@@ -18251,6 +18251,17 @@ module.exports = {
 
     props: {
         def: { type: Object, required: true }
+    },
+
+    computed: {
+        typeDef() {
+            return this.def.getTypeDef();
+        },
+        description() {
+            const { spec } = this.def;
+            const { typeDef } = this;
+            return spec.description ? spec.description : typeDef ? typeDef.spec.description : '';
+        }
     }
 
 };
@@ -18258,7 +18269,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}})],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}})],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18686,8 +18697,8 @@ class TypeDef extends Def {
         return `#/domains/${this.domain.id}/types/${this.key}`;
     }
 
-    getSchema() {
-        return this.spec;
+    getTypeDef() {
+        return this;
     }
 
 }
@@ -18698,7 +18709,7 @@ class CustomDef extends Def {
         return this.spec.typeRef;
     }
 
-    getSchema() {
+    getTypeDef() {
         return this.domain.protocol.resolveTypeRef(this.getTypeRef());
     }
 
@@ -18860,16 +18871,19 @@ module.exports = class Protocol {
 
 },{"./domain":69,"./validator":76}],72:[function(require,module,exports){
 module.exports={
-    "description": "Allows automating airplane tickets booking and collecting related information.",
+    "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "inputs": {
         "url": {
-            "typeRef": "#/domains/Generic/types/URL"
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
         },
         "flight": {
-            "typeRef": "#/domains/FlightBooking/types/Flight"
+            "typeRef": "#/domains/FlightBooking/types/Flight",
+            "description": "A specification of flights to book. Currently only includes outbound and optional inbound flight."
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/Generic/types/Account",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided."
         },
         "passengers": {
             "typeRef": "#/domains/FlightBooking/types/Passengers"
@@ -18879,7 +18893,7 @@ module.exports={
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price. Must exactly match the <code>finalPrice</code> object."
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -18887,7 +18901,7 @@ module.exports={
     },
     "outputs": {
         "finalPrice": {
-            "description": "Emitted immediately before placing order, when final price is available.",
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "bookingConfirmation": {
@@ -18913,6 +18927,7 @@ module.exports={
         },
         "ReturnFlight": {
             "type": "object",
+            "description": "If specified, return flight will be booked in the same automation.",
             "properties": {
                 "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
                 "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
@@ -18948,6 +18963,7 @@ module.exports={
         },
         "Passengers": {
             "type": "array",
+            "description": "An array with details for each passenger.",
             "minItems": 1,
             "maxItems": 9,
             "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
@@ -18964,17 +18980,21 @@ module.exports={
                     ]
                 },
                 "firstName": {
-                    "type": "string"
-                },
-                "lastName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID."
                 },
                 "middleName": {
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID."
                 },
                 "dateOfBirth": {
                     "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format. Example: <code>1976-01-21</code>.",
                     "format": "date"
                 },
                 "addAdditionalLuggage": {
@@ -18983,24 +19003,7 @@ module.exports={
                     "maximum": 3,
                     "default": 0
                 },
-                "id": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "number": {
-                            "type": "string"
-                        },
-                        "expDate": {
-                            "type": "string",
-                            "format": "date"
-                        },
-                        "countryCode": {
-                            "$ref": "#/domains/Generic/types/CountryCode"
-                        }
-                    }
-                }
+                "id": { "$ref": "#/domains/FlightBooking/types/PassengerId" }
             },
             "required": [
                 "title",
@@ -19010,9 +19013,29 @@ module.exports={
                 "addAdditionalLuggage"
             ]
         },
+        "PassengerId": {
+            "type": "object",
+            "experimental": true,
+            "description": "Passenger ID (passport or other travel document).",
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "expDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                }
+            }
+        },
         "BookingConfirmation": {
             "type": "object",
-            "description": "Emitted on \"Booking success\" page.",
+            "description": "Information gathered on \"Booking success\" page.",
             "properties": {
                 "bookingReference": {
                     "type": "string",
@@ -19043,7 +19066,7 @@ module.exports={
     "types": {
         "URL": {
             "type": "string",
-            "description": "URL Record, as defined by https://url.spec.whatwg.org/#concept-url",
+            "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\">WHATWG URL Standard</a>.",
             "format": "url"
         },
         "Account": {
