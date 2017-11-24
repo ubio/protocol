@@ -19200,7 +19200,7 @@ module.exports={
             "properties": {
                 "email": {
                     "type": "string",
-                    "description": "Account email, typically used for user sign up / sign in, as well as contact information.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists.",
+                    "description": "Account email, typically used for user sign up / sign in, as well as contact information.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\">use an email proxy to mitigate this issue</a>.",
                     "format": "email"
                 },
                 "password": {
@@ -19786,6 +19786,7 @@ module.exports={
         }
     }
 }
+
 },{}],76:[function(require,module,exports){
 'use strict';
 
