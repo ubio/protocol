@@ -37,13 +37,13 @@
                 "inputs": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/definitions/SimpleDef"
+                        "$ref": "#/definitions/InputDef"
                     }
                 },
                 "outputs": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/definitions/SimpleDef"
+                        "$ref": "#/definitions/OutputDef"
                     }
                 },
                 "types": {
@@ -61,7 +61,16 @@
             ],
             "additionalProperties": false
         },
-        "SimpleDef": {
+        "InputDef": {
+            "properties": {
+                "typeRef": { "$ref": "#/definitions/TypeRef" },
+                "description": { "type": "string" },
+                "default": {}
+            },
+            "required": ["typeRef"],
+            "additionalProperties": false
+        },
+        "OutputDef": {
             "properties": {
                 "typeRef": { "$ref": "#/definitions/TypeRef" },
                 "description": { "type": "string" }
