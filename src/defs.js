@@ -1,5 +1,7 @@
 'use strict';
 
+const util = require('./util');
+
 class Def {
 
     constructor(domain, ns, key) {
@@ -19,13 +21,27 @@ class Def {
         return null;
     }
 
+    hasDefault() {
+        return typeof this.spec.default !== 'undefined';
+    }
+
+    applyDefault(object) {
+        if (!this.hasDefault()) {
+            return;
+        }
+        if (typeof object[this.key] !== 'undefined') {
+            return;
+        }
+        object[this.key] = util.deepClone(this.spec.default);
+    }
+
     async validate(data) {
         const ajvSchema = this.domain.protocol.validator.getSchema(this.id);
         if (ajvSchema) {
-            const valid = await ajvSchema(data);
+            const valid = ajvSchema(data);
             return {
                 valid,
-                errors: ajvSchema.errors,
+                errors: !valid ? ajvSchema.errors : [],
             };
         }
         return {

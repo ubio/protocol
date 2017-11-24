@@ -9,6 +9,11 @@
         </h3>
         <div class="def__type">
             <schema-type :spec="def.spec"/>
+            <div
+                class="def__experimental"
+                v-if="def.spec.experimental">
+                experimental
+            </div>
         </div>
 
         <div class="def__description"
@@ -88,5 +93,16 @@ module.exports = {
 
 .def__type {
     margin: 0 0 2em 2em;
+}
+
+.def__experimental {
+    display: inline-block;
+    margin-left: .5em;
+    padding: 0 4px;
+    border-radius: var(--border-radius);
+    background: var(--ui-failure);
+    color: var(--ui-failure--inverse);
+
+    display: none;
 }
 </style>

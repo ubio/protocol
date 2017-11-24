@@ -1,5 +1,6 @@
 'use strict';
 
+const util = require('./util');
 const { InputDef, OutputDef, TypeDef } = require('./defs');
 
 module.exports = class Domain {
@@ -38,6 +39,27 @@ module.exports = class Domain {
         return this.defs.find(def => def.key === key);
     }
 
+    async createInputsFromObject(inputObject = {}) {
+        const clone = util.deepClone(inputObject);
+        const results = [];
+        // Apply defaults
+        for (const inputDef of this.getInputs()) {
+            inputDef.applyDefault(clone);
+        }
+        for (const key of Object.keys(clone)) {
+            const data = clone[key];
+            const { valid, errors } = await this.validate(key, data);
+            const fields = {
+                key,
+                data,
+                valid,
+                errors,
+            };
+            results.push(fields);
+        }
+        return results;
+    }
+
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }
@@ -57,7 +79,7 @@ module.exports = class Domain {
                 valid: false,
                 errors: [
                     {
-                        message: `Unsupported definition: ${this.id}.${key}`,
+                        message: `Unexpected data: ${this.id}.${key}`,
                         domain: this.id,
                         key,
                     },

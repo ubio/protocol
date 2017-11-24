@@ -16,6 +16,10 @@
                 v-if="prop.description"
                 v-html="prop.description">
             </div>
+            <div class="prop__default"
+                 v-if="defaultValue">
+                Default value: <strong>{{ defaultValue }}</strong>
+            </div>
             <div class="prop__enum"
                  v-if="prop.enum">
                 {{ prop.enum.join(', ') }}
@@ -42,6 +46,20 @@ module.exports = {
         required() {
             const required = this.parent.spec.required || [];
             return required.includes(this.id);
+        },
+
+        defaultValue() {
+            const defaultValue = this.prop.default;
+            if (typeof defaultValue === 'undefined') {
+                return null;
+            }
+            if (defaultValue === null) {
+                return 'null';
+            }
+            if (defaultValue === '') {
+                return '(empty string)';
+            }
+            return String(defaultValue);
         },
 
     },

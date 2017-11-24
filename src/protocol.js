@@ -44,7 +44,7 @@ module.exports = class Protocol {
                 valid: false,
                 errors: [
                     {
-                        message: `Unsupported domain: ${domainId}`,
+                        message: `Unexpected domain: ${domainId}`,
                         domain: domainId,
                         key,
                     },

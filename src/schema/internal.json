@@ -2,6 +2,10 @@
     "description": "Internal domain for testing platform features.",
     "private": true,
     "inputs": {
+        "options": {
+            "typeRef": "#/domains/Internal/types/Options",
+            "default": {}
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL"
         },
@@ -24,6 +28,16 @@
         "Object": {
             "type": "object",
             "description": "An object of arbitrary structure."
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for testing optional features.",
+            "properties": {
+                "flag": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
         }
     }
 }

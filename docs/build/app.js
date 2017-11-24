@@ -18172,7 +18172,7 @@ exports.insert = function (css) {
 }
 
 },{}],56:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: ##ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
@@ -18189,7 +18189,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],57:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def__header {\n    margin: 2em 0 0 -1.5em;\n    font-size: 20px;\n    display: flex;\n    flex-flow: row nowrap;\n    color: var(--heading__color);\n}\n\n.def__link {\n    display: inline-block;\n    flex: 0 0 1.5em;\n    visibility: hidden;\n    cursor: pointer;\n}\n\n.def__header:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def__header {\n    margin: 2em 0 0 -1.5em;\n    font-size: 20px;\n    display: flex;\n    flex-flow: row nowrap;\n    color: var(--heading__color);\n}\n\n.def__link {\n    display: inline-block;\n    flex: 0 0 1.5em;\n    visibility: hidden;\n    cursor: pointer;\n}\n\n.def__header:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}\n\n.def__experimental {\n    display: inline-block;\n    margin-left: .5em;\n    padding: 0 4px;\n    border-radius: var(--border-radius);\n    background: var(--ui-failure);\n    color: var(--ui-failure--inverse);\n\n    display: none;\n}")
 ;(function(){
 
 
@@ -18225,7 +18225,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}})],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.def.spec.experimental)?_c('div',{staticClass:"def__experimental"},[_vm._v("\n            experimental\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18304,6 +18304,20 @@ module.exports = {
         required() {
             const required = this.parent.spec.required || [];
             return required.includes(this.id);
+        },
+
+        defaultValue() {
+            const defaultValue = this.prop.default;
+            if (typeof defaultValue === 'undefined') {
+                return null;
+            }
+            if (defaultValue === null) {
+                return 'null';
+            }
+            if (defaultValue === '') {
+                return '(empty string)';
+            }
+            return String(defaultValue);
         }
 
     }
@@ -18313,7 +18327,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.defaultValue)?_c('div',{staticClass:"prop__default"},[_vm._v("\n            Default value: "),_c('strong',[_vm._v(_vm._s(_vm.defaultValue))])]):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18647,6 +18661,8 @@ new App({
 },{"./app.vue":56,"./router":61,"vue":54,"vue-router":53}],68:[function(require,module,exports){
 'use strict';
 
+const util = require('./util');
+
 class Def {
 
     constructor(domain, ns, key) {
@@ -18666,13 +18682,27 @@ class Def {
         return null;
     }
 
+    hasDefault() {
+        return typeof this.spec.default !== 'undefined';
+    }
+
+    applyDefault(object) {
+        if (!this.hasDefault()) {
+            return;
+        }
+        if (typeof object[this.key] !== 'undefined') {
+            return;
+        }
+        object[this.key] = util.deepClone(this.spec.default);
+    }
+
     async validate(data) {
         const ajvSchema = this.domain.protocol.validator.getSchema(this.id);
         if (ajvSchema) {
-            const valid = await ajvSchema(data);
+            const valid = ajvSchema(data);
             return {
                 valid,
-                errors: ajvSchema.errors
+                errors: !valid ? ajvSchema.errors : []
             };
         }
         return {
@@ -18737,9 +18767,10 @@ module.exports = {
     TypeDef
 };
 
-},{}],69:[function(require,module,exports){
+},{"./util":76}],69:[function(require,module,exports){
 'use strict';
 
+const util = require('./util');
 const { InputDef, OutputDef, TypeDef } = require('./defs');
 
 module.exports = class Domain {
@@ -18775,6 +18806,27 @@ module.exports = class Domain {
         return this.defs.find(def => def.key === key);
     }
 
+    async createInputsFromObject(inputObject = {}) {
+        const clone = util.deepClone(inputObject);
+        const results = [];
+        // Apply defaults
+        for (const inputDef of this.getInputs()) {
+            inputDef.applyDefault(clone);
+        }
+        for (const key of Object.keys(clone)) {
+            const data = clone[key];
+            const { valid, errors } = await this.validate(key, data);
+            const fields = {
+                key,
+                data,
+                valid,
+                errors
+            };
+            results.push(fields);
+        }
+        return results;
+    }
+
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }
@@ -18793,7 +18845,7 @@ module.exports = class Domain {
             return {
                 valid: false,
                 errors: [{
-                    message: `Unsupported definition: ${this.id}.${key}`,
+                    message: `Unexpected data: ${this.id}.${key}`,
                     domain: this.id,
                     key
                 }]
@@ -18804,7 +18856,7 @@ module.exports = class Domain {
 
 };
 
-},{"./defs":68}],70:[function(require,module,exports){
+},{"./defs":68,"./util":76}],70:[function(require,module,exports){
 'use strict';
 
 const schema = require('./schema');
@@ -18858,7 +18910,7 @@ module.exports = class Protocol {
             return {
                 valid: false,
                 errors: [{
-                    message: `Unsupported domain: ${domainId}`,
+                    message: `Unexpected domain: ${domainId}`,
                     domain: domainId,
                     key
                 }]
@@ -18869,10 +18921,14 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":69,"./validator":76}],72:[function(require,module,exports){
+},{"./domain":69,"./validator":77}],72:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "inputs": {
+        "options": {
+            "typeRef": "#/domains/FlightBooking/types/Options",
+            "default": {}
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
@@ -18909,6 +18965,18 @@ module.exports={
         }
     },
     "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "experimental": true,
+            "properties": {
+                "seatSelection": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will request <code>selectedSeatIds</code> for seat selection.",
+                    "default": false
+                }
+            }
+        },
         "Flight": {
             "type": "object",
             "properties": {
@@ -19678,6 +19746,10 @@ module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
     "inputs": {
+        "options": {
+            "typeRef": "#/domains/Internal/types/Options",
+            "default": {}
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL"
         },
@@ -19700,11 +19772,32 @@ module.exports={
         "Object": {
             "type": "object",
             "description": "An object of arbitrary structure."
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for testing optional features.",
+            "properties": {
+                "flag": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
         }
     }
 }
 
 },{}],76:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+    deepClone
+};
+
+function deepClone(value) {
+    return JSON.parse(JSON.stringify(value));
+}
+
+},{}],77:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');

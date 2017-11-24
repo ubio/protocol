@@ -1,6 +1,10 @@
 {
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "inputs": {
+        "options": {
+            "typeRef": "#/domains/FlightBooking/types/Options",
+            "default": {}
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
@@ -37,6 +41,18 @@
         }
     },
     "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "experimental": true,
+            "properties": {
+                "seatSelection": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will request <code>selectedSeatIds</code> for seat selection.",
+                    "default": false
+                }
+            }
+        },
         "Flight": {
             "type": "object",
             "properties": {
