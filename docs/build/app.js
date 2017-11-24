@@ -18702,7 +18702,7 @@ class Def {
             const valid = ajvSchema(data);
             return {
                 valid,
-                errors: valid ? ajvSchema.errors : []
+                errors: !valid ? ajvSchema.errors : []
             };
         }
         return {

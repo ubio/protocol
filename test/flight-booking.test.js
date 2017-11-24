@@ -40,7 +40,7 @@ describe('FlightBooking', () => {
                 },
             });
             expect(valid).toEqual(true);
-            expect(errors).toNotExist();
+            expect(errors.length).toEqual(0);
         });
 
         it('should not accept invalid return flight', async () => {
@@ -63,7 +63,7 @@ describe('FlightBooking', () => {
                 return: 'smth',
             });
             expect(valid).toEqual(false);
-            expect(errors).toExist();
+            expect(errors.length).toBeGreaterThan(0);
             expect(errors.find(e => e.dataPath === '/return')).toExist();
         });
 
@@ -86,7 +86,7 @@ describe('FlightBooking', () => {
                 },
             });
             expect(valid).toEqual(true);
-            expect(errors).toNotExist();
+            expect(errors.length).toEqual(0);
         });
 
         it('should not allow incorrect to/from', async () => {
@@ -100,7 +100,7 @@ describe('FlightBooking', () => {
                 to: {},
             });
             expect(valid).toEqual(false);
-            expect(errors).toExist();
+            expect(errors.length).toBeGreaterThan(0);
             expect(errors.find(e => e.dataPath === '/to')).toExist();
             expect(errors.find(e => e.dataPath === '/from')).toExist();
         });
