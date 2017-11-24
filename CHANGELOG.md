@@ -1,6 +1,11 @@
 ## [UNRELEASED]
 
 
+## [0.9.0] - 2017-11-24
+
+- Add `default` to input defintion
+- Add `Domain.createInputsFromObject`
+
 ## [0.8.0] - 2017-11-23
 
 - Branding for static site
