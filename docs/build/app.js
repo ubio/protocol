@@ -18699,10 +18699,10 @@ class Def {
     async validate(data) {
         const ajvSchema = this.domain.protocol.validator.getSchema(this.id);
         if (ajvSchema) {
-            const valid = await ajvSchema(data);
+            const valid = ajvSchema(data);
             return {
                 valid,
-                errors: ajvSchema.errors
+                errors: valid ? ajvSchema.errors : []
             };
         }
         return {
