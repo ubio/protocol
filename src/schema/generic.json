@@ -478,7 +478,7 @@
         },
         "CountrySubdivision": {
             "type": "string",
-            "description": "Depends on country.<br/>For the US, the 2 letter state code, lowercased, e.g. 'ca' for California;<br/>For Canada, the 2 letter lowercased province code, e.g. 'qc' for Quebec;<br/>For Germany, the 2 letter lowercased state code, e.g. 'nw' for Nordrhein-Westfalen;<br/>For Romania, the 2 or 1 letter lowercased county code, e.g. 'if' for Ilfov except 'b' for Bucharest;<br/>For the United Kingdom, the 2 letter lowecased province, e.g. 'm7' for York;<br/>For Spain, the 2 or 1 letter lowercased province code, e.g. 'pm' for Palma, 'o' for Ovideo."
+            "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased."
         },
         "CurrencyCode": {
             "type": "string",
