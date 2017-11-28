@@ -11,7 +11,7 @@ describe('FlightBooking', () => {
 
         it('should accept valid flight', async () => {
             const { valid, errors } = await FlightBooking.validate('Flight', {
-                cabinClass: 'Economy',
+                cabinClass: 'economy',
                 price: {
                     currencyCode: 'usd',
                     value: 40840,
@@ -45,7 +45,7 @@ describe('FlightBooking', () => {
 
         it('should not accept invalid return flight', async () => {
             const { valid, errors } = await FlightBooking.validate('Flight', {
-                cabinClass: 'Economy',
+                cabinClass: 'economy',
                 price: {
                     currencyCode: 'usd',
                     value: 40840,
@@ -69,7 +69,7 @@ describe('FlightBooking', () => {
 
         it('should not require return flight', async () => {
             const { valid, errors } = await FlightBooking.validate('Flight', {
-                cabinClass: 'Economy',
+                cabinClass: 'economy',
                 price: {
                     currencyCode: 'usd',
                     value: 40840,
@@ -91,7 +91,7 @@ describe('FlightBooking', () => {
 
         it('should not allow incorrect to/from', async () => {
             const { valid, errors } = await FlightBooking.validate('Flight', {
-                cabinClass: 'Economy',
+                cabinClass: 'economy',
                 price: {
                     currencyCode: 'usd',
                     value: 40840,

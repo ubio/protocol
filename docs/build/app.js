@@ -19172,7 +19172,7 @@ module.exports={
         },
         "Fare": {
             "type": "object",
-            "additionalProperties": "false",
+            "additionalProperties": false,
             "properties": {
                 "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
                 "fareFamily": {
