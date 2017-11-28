@@ -19062,7 +19062,7 @@ module.exports={
                 },
                 "seatSelection": {
                     "type": "boolean",
-                    "description": "If <code>true</code>, automation will request <code>selectedSeatIds</code> for seat selection.",
+                    "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
                     "default": false
                 }
             }
@@ -19235,9 +19235,13 @@ module.exports={
             "type": "object",
             "description": "Seat selection metadata.",
             "properties": {
-                "seatId": {
+                "seatNumber": {
                     "type": "string",
-                    "description": "Seat identifier as extracted from website. Example: \"07A\""
+                    "description": "Seat number as extracted from website. Example: \"07A\""
+                },
+                "available": {
+                    "type": "boolean",
+                    "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise"
                 },
                 "price": {
                     "$ref": "#/domains/Generic/types/Price",
@@ -19245,7 +19249,7 @@ module.exports={
                 }
             },
             "required": [
-                "seatId"
+                "seatNumber"
             ],
             "additionalProperties": false
         },
