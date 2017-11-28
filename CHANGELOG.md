@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [0.11.0] - 2017-11-28
+
 - `Seat.available` is mandatory
 - `Seat.seatNumber` -> `Seat.seatId`
 - `selectedSeats` -> `selectedSeatIds`
