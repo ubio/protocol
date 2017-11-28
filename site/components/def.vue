@@ -2,10 +2,10 @@
     <div class="def"
          :class="{ 'def--active': active }"
          :id="def.key">
+
         <h3 class="def__header">
-            <span class="def__link"
-                  @click="permalink">🔗</span>
             <span class="def__id">{{ def.id }}</span>
+            <span class="def__link" @click="permalink">🔗</span>
         </h3>
         <div class="def__type">
             <schema-type :spec="def.spec"/>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="def__description"
-             v-html="def.spec.description">
+                v-html="def.spec.description">
         </div>
 
         <template v-if="def.spec.enum">
@@ -71,22 +71,35 @@ module.exports = {
 </script>
 
 <style>
+.def {
+    position: relative;
+}
+
+.def--active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -16px;
+    width: 4px;
+    background: var(--ui-highlight);
+}
+
 .def__header {
-    margin: 2em 0 0 -1.5em;
+    position: relative;
+    margin: 0;
     font-size: 20px;
-    display: flex;
-    flex-flow: row nowrap;
     color: var(--heading__color);
 }
 
 .def__link {
     display: inline-block;
-    flex: 0 0 1.5em;
     visibility: hidden;
     cursor: pointer;
+    z-index: 1;
 }
 
-.def__header:hover .def__link,
+.def:hover .def__link,
 .def--active .def__link {
     visibility: visible;
 }

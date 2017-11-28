@@ -12,6 +12,8 @@
     --ui-failure: #ff5a5f;
     --ui-failure--inverse: #fff;
 
+    --ui-highlight: hsl(210,100%,95%);
+
     --border-radius: 2px;
 
     --body__bg: #fff;

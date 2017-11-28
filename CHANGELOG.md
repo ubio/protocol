@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Prototype schema for fare selection (unconfirmed).
 
 ## [0.9.1] - 2017-11-24
 

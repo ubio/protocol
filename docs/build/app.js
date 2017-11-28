@@ -18172,7 +18172,7 @@ exports.insert = function (css) {
 }
 
 },{}],56:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --ui-highlight: hsl(210,100%,95%);\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
@@ -18189,7 +18189,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],57:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def__header {\n    margin: 2em 0 0 -1.5em;\n    font-size: 20px;\n    display: flex;\n    flex-flow: row nowrap;\n    color: var(--heading__color);\n}\n\n.def__link {\n    display: inline-block;\n    flex: 0 0 1.5em;\n    visibility: hidden;\n    cursor: pointer;\n}\n\n.def__header:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}\n\n.def__experimental {\n    display: inline-block;\n    margin-left: .5em;\n    padding: 0 4px;\n    border-radius: var(--border-radius);\n    background: var(--ui-failure);\n    color: var(--ui-failure--inverse);\n\n    display: none;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    position: relative;\n}\n\n.def--active::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: -16px;\n    width: 4px;\n    background: var(--ui-highlight);\n}\n\n.def__header {\n    position: relative;\n    margin: 0;\n    font-size: 20px;\n    color: var(--heading__color);\n}\n\n.def__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.def:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}\n\n.def__experimental {\n    display: inline-block;\n    margin-left: .5em;\n    padding: 0 4px;\n    border-radius: var(--border-radius);\n    background: var(--ui-failure);\n    color: var(--ui-failure--inverse);\n\n    display: none;\n}")
 ;(function(){
 
 
@@ -18225,7 +18225,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")]),_vm._v(" "),_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.def.spec.experimental)?_c('div',{staticClass:"def__experimental"},[_vm._v("\n            experimental\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.def.spec.experimental)?_c('div',{staticClass:"def__experimental"},[_vm._v("\n            experimental\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18239,7 +18239,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"./prop.vue":59,"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],58:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__id {\n    flex: 0 0 160px;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__term {\n    flex: 0 0 160px;\n}\n\n.oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.oneliner:hover .oneliner__link,\n.oneliner--active .oneliner__link {\n    visibility: visible;\n}")
 ;(function(){
 
 
@@ -18264,6 +18264,18 @@ module.exports = {
             const { spec } = this.def;
             const { typeDef } = this;
             return spec.description ? spec.description : typeDef ? typeDef.spec.description : '';
+        },
+
+        active() {
+            return this.$route.hash === '#' + this.def.key;
+        }
+
+    },
+
+    methods: {
+
+        permalink() {
+            this.$router.replace('#' + this.def.key);
         }
 
     }
@@ -18273,7 +18285,9 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner"},[_c('div',{staticClass:"oneliner__id"},[_vm._v("\n        "+_vm._s(_vm.def.key)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner",class:{
+         'oneliner--active': _vm.active,
+     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('span',{staticClass:"oneliner__link",on:{"click":_vm.permalink}},[_vm._v("🔗")])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18689,7 +18703,7 @@ function scrollToHash(hash) {
         try {
             const el = document.querySelector(hash);
             if (el) {
-                el.scrollIntoView();
+                return typeof el.scrollIntoViewIfNeeded === 'function' ? el.scrollIntoViewIfNeeded() : el.scrollIntoView();
             }
         } catch (err) {}
     }, 0);
@@ -18994,6 +19008,10 @@ module.exports={
             "typeRef": "#/domains/FlightBooking/types/Flight",
             "description": "A specification of flights to book. Currently only includes outbound and optional inbound flight."
         },
+        "selectedFare": {
+            "typeRef": "#/domains/FlightBooking/types/Fare",
+            "description": "Requested once automation collects available fares via <code>availableFares</code> output.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided."
@@ -19013,6 +19031,10 @@ module.exports={
         }
     },
     "outputs": {
+        "availableFares": {
+            "typeRef": "#/domains/FlightBooking/types/AvailableFares",
+            "description": "Emitted when actual fares information is available. Client are then expected to provide <code>selectedFare</code> input which should match one of the items."
+        },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
@@ -19037,14 +19059,13 @@ module.exports={
         "Flight": {
             "type": "object",
             "properties": {
+                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
                 "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
                 "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
-                "return": { "$ref": "#/domains/FlightBooking/types/ReturnFlight" },
-                "cabinClass": {
-                    "type": "string"
-                }
+                "return": { "$ref": "#/domains/FlightBooking/types/ReturnFlight" }
             },
             "required": [
+                "cabinClass",
                 "from",
                 "to"
             ],
@@ -19060,30 +19081,6 @@ module.exports={
             "required": [
                 "from",
                 "to"
-            ]
-        },
-        "DatePlace": {
-            "type": "object",
-            "properties": {
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
-                },
-                "dateTime": {
-                    "type": "string",
-                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
-                    "description": "Date and time of flight (airport local time)"
-                },
-                "airportCode": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 3,
-                    "pattern": "^[A-Z]{3}$",
-                    "description": "International Air Transport Association airport code"
-                }
-            },
-            "required": [
-                "dateTime",
-                "airportCode"
             ]
         },
         "Passengers": {
@@ -19157,6 +19154,57 @@ module.exports={
                     "$ref": "#/domains/Generic/types/CountryCode"
                 }
             }
+        },
+        "CabinClass": {
+            "type": "string",
+            "enum": ["economy", "economy premium", "business", "first"]
+        },
+        "Fare": {
+            "type": "object",
+            "additionalProperties": "false",
+            "properties": {
+                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
+                "fareFamily": {
+                    "type": "string"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "cabinClass",
+                "fareFamily",
+                "price"
+            ]
+        },
+        "AvailableFares": {
+            "type": "array",
+            "description": "A list of available fares found on the website.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": {"$ref": "#/domains/FlightBooking/types/Fare"}
+        },
+        "DatePlace": {
+            "type": "object",
+            "properties": {
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "dateTime": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
+                    "description": "Date and time of flight (airport local time)"
+                },
+                "airportCode": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "pattern": "^[A-Z]{3}$",
+                    "description": "International Air Transport Association airport code"
+                }
+            },
+            "required": [
+                "dateTime",
+                "airportCode"
+            ]
         },
         "BookingConfirmation": {
             "type": "object",

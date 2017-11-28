@@ -1,7 +1,12 @@
 <template>
-    <div class="oneliner">
-        <div class="oneliner__id">
-            {{ def.key }}
+    <div class="oneliner"
+         :class="{
+             'oneliner--active': active,
+         }"
+         :id="def.key">
+        <div class="oneliner__term">
+            <span class="oneliner__key">{{ def.key }}</span>
+            <span class="oneliner__link" @click="permalink">🔗</span>
         </div>
         <div class="oneliner__body">
             <schema-type :spec="def.spec"/>
@@ -42,6 +47,18 @@ module.exports = {
                 typeDef ? typeDef.spec.description : '';
         },
 
+        active() {
+            return this.$route.hash === ('#' + this.def.key);
+        },
+
+    },
+
+    methods: {
+
+        permalink() {
+            this.$router.replace('#' + this.def.key);
+        },
+
     },
 
 };
@@ -54,11 +71,27 @@ module.exports = {
     padding: .5em;
 }
 
+.oneliner--active {
+    background: var(--ui-highlight);
+}
+
 .oneliner + .oneliner {
     border-top: 1px solid var(--ui-default);
 }
 
-.oneliner__id {
+.oneliner__term {
     flex: 0 0 160px;
+}
+
+.oneliner__link {
+    display: inline-block;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.oneliner:hover .oneliner__link,
+.oneliner--active .oneliner__link {
+    visibility: visible;
 }
 </style>

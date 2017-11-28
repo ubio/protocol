@@ -12,7 +12,8 @@ function scrollToHash(hash) {
         try {
             const el = document.querySelector(hash);
             if (el) {
-                el.scrollIntoView();
+                return typeof el.scrollIntoViewIfNeeded === 'function' ?
+                    el.scrollIntoViewIfNeeded() : el.scrollIntoView();
             }
         } catch (err) {}
     }, 0);
