@@ -6,7 +6,10 @@
          :id="def.key">
         <div class="oneliner__term">
             <span class="oneliner__key">{{ def.key }}</span>
-            <span class="oneliner__link" @click="permalink">🔗</span>
+            <img
+                src="/img/link.svg"
+                class="oneliner__link"
+                @click="permalink"/>
         </div>
         <div class="oneliner__body">
             <schema-type :spec="def.spec"/>
@@ -88,6 +91,10 @@ module.exports = {
     visibility: hidden;
     cursor: pointer;
     z-index: 1;
+    width: 16px;
+    height: 16px;
+    opacity: .5;
+    vertical-align: middle;
 }
 
 .oneliner:hover .oneliner__link,

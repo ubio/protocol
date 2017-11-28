@@ -18189,7 +18189,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],57:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    position: relative;\n}\n\n.def--active::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: -16px;\n    width: 4px;\n    background: var(--ui-highlight);\n}\n\n.def__header {\n    position: relative;\n    margin: 2em 0 0;\n    font-size: 20px;\n    color: var(--heading__color);\n}\n\n.def__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.def:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}\n\n.def__experimental {\n    display: inline-block;\n    margin-left: .5em;\n    padding: 0 4px;\n    border-radius: var(--border-radius);\n    background: var(--ui-failure);\n    color: var(--ui-failure--inverse);\n\n    display: none;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    position: relative;\n}\n\n.def--active::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: -16px;\n    width: 4px;\n    background: var(--ui-highlight);\n}\n\n.def__header {\n    position: relative;\n    margin: 2em 0 0;\n    font-size: 20px;\n    color: var(--heading__color);\n}\n\n.def__link {\n    display: inline-block;\n    width: 16px;\n    height: 16px;\n    opacity: .5;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.def:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}\n\n.def__experimental {\n    display: inline-block;\n    margin-left: .5em;\n    padding: 0 4px;\n    border-radius: var(--border-radius);\n    background: var(--ui-failure);\n    color: var(--ui-failure--inverse);\n\n    display: none;\n}")
 ;(function(){
 
 
@@ -18225,7 +18225,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('span',{staticClass:"def__link",on:{"click":_vm.permalink}},[_vm._v("🔗")])]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.def.spec.experimental)?_c('div',{staticClass:"def__experimental"},[_vm._v("\n            experimental\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.def.spec.experimental)?_c('div',{staticClass:"def__experimental"},[_vm._v("\n            experimental\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18239,7 +18239,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"./prop.vue":59,"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],58:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__term {\n    flex: 0 0 160px;\n}\n\n.oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.oneliner:hover .oneliner__link,\n.oneliner--active .oneliner__link {\n    visibility: visible;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__term {\n    flex: 0 0 160px;\n}\n\n.oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n    opacity: .5;\n    vertical-align: middle;\n}\n\n.oneliner:hover .oneliner__link,\n.oneliner--active .oneliner__link {\n    visibility: visible;\n}")
 ;(function(){
 
 
@@ -18287,7 +18287,7 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner",class:{
          'oneliner--active': _vm.active,
-     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('span',{staticClass:"oneliner__link",on:{"click":_vm.permalink}},[_vm._v("🔗")])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
+     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -19020,7 +19020,7 @@ module.exports={
         },
         "selectedFare": {
             "typeRef": "#/domains/FlightBooking/types/Fare",
-            "description": "Requested once automation collects available fares via <code>availableFares</code> output.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+            "description": "Requested when fare selection is required by website.<br/>At this point <code>availableFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
         "selectedSeats": {
             "typeRef": "#/domains/FlightBooking/types/SelectedSeats"
@@ -19055,6 +19055,11 @@ module.exports={
             "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
             "experimental": true,
             "properties": {
+                "fareSelection": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will request <code>selectedFare</code> for fare selection flow.<br/>Automation may fail if deep link points to page where fare selection is mandatory.",
+                    "default": false
+                },
                 "seatSelection": {
                     "type": "boolean",
                     "description": "If <code>true</code>, automation will request <code>selectedSeatIds</code> for seat selection.",

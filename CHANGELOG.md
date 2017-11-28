@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Add `/FlightBooking/options/fareSelection`
 - Prototype schema for seat selection (unconfirmed).
 - Prototype schema for fare selection (unconfirmed).
 

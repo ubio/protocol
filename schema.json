@@ -642,7 +642,7 @@
         },
         "selectedFare": {
           "typeRef": "#/domains/FlightBooking/types/Fare",
-          "description": "Requested once automation collects available fares via <code>availableFares</code> output.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+          "description": "Requested when fare selection is required by website.<br/>At this point <code>availableFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
         "selectedSeats": {
           "typeRef": "#/domains/FlightBooking/types/SelectedSeats"
@@ -677,6 +677,11 @@
           "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
           "experimental": true,
           "properties": {
+            "fareSelection": {
+              "type": "boolean",
+              "description": "If <code>true</code>, automation will request <code>selectedFare</code> for fare selection flow.<br/>Automation may fail if deep link points to page where fare selection is mandatory.",
+              "default": false
+            },
             "seatSelection": {
               "type": "boolean",
               "description": "If <code>true</code>, automation will request <code>selectedSeatIds</code> for seat selection.",

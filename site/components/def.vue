@@ -5,7 +5,10 @@
 
         <h3 class="def__header">
             <span class="def__id">{{ def.id }}</span>
-            <span class="def__link" @click="permalink">🔗</span>
+            <img
+                src="/img/link.svg"
+                class="def__link"
+                @click="permalink"/>
         </h3>
         <div class="def__type">
             <schema-type :spec="def.spec"/>
@@ -94,6 +97,9 @@ module.exports = {
 
 .def__link {
     display: inline-block;
+    width: 16px;
+    height: 16px;
+    opacity: .5;
     visibility: hidden;
     cursor: pointer;
     z-index: 1;
