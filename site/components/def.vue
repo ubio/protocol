@@ -87,7 +87,7 @@ module.exports = {
 
 .def__header {
     position: relative;
-    margin: 0;
+    margin: 2em 0 0;
     font-size: 20px;
     color: var(--heading__color);
 }

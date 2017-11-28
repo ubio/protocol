@@ -18189,7 +18189,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],57:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    position: relative;\n}\n\n.def--active::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: -16px;\n    width: 4px;\n    background: var(--ui-highlight);\n}\n\n.def__header {\n    position: relative;\n    margin: 0;\n    font-size: 20px;\n    color: var(--heading__color);\n}\n\n.def__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.def:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}\n\n.def__experimental {\n    display: inline-block;\n    margin-left: .5em;\n    padding: 0 4px;\n    border-radius: var(--border-radius);\n    background: var(--ui-failure);\n    color: var(--ui-failure--inverse);\n\n    display: none;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".def {\n    position: relative;\n}\n\n.def--active::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: -16px;\n    width: 4px;\n    background: var(--ui-highlight);\n}\n\n.def__header {\n    position: relative;\n    margin: 2em 0 0;\n    font-size: 20px;\n    color: var(--heading__color);\n}\n\n.def__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n}\n\n.def:hover .def__link,\n.def--active .def__link {\n    visibility: visible;\n}\n\n.def__type {\n    margin: 0 0 2em 2em;\n}\n\n.def__experimental {\n    display: inline-block;\n    margin-left: .5em;\n    padding: 0 4px;\n    border-radius: var(--border-radius);\n    background: var(--ui-failure);\n    color: var(--ui-failure--inverse);\n\n    display: none;\n}")
 ;(function(){
 
 
@@ -19008,10 +19008,6 @@ module.exports={
             "typeRef": "#/domains/FlightBooking/types/Flight",
             "description": "A specification of flights to book. Currently only includes outbound and optional inbound flight."
         },
-        "selectedFare": {
-            "typeRef": "#/domains/FlightBooking/types/Fare",
-            "description": "Requested once automation collects available fares via <code>availableFares</code> output.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
-        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided."
@@ -19022,18 +19018,28 @@ module.exports={
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
-        "finalPriceConsent": {
-            "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        "selectedFare": {
+            "typeRef": "#/domains/FlightBooking/types/Fare",
+            "description": "Requested once automation collects available fares via <code>availableFares</code> output.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+        },
+        "selectedSeats": {
+            "typeRef": "#/domains/FlightBooking/types/SelectedSeats"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         }
     },
     "outputs": {
         "availableFares": {
             "typeRef": "#/domains/FlightBooking/types/AvailableFares",
-            "description": "Emitted when actual fares information is available. Client are then expected to provide <code>selectedFare</code> input which should match one of the items."
+            "description": "Emitted when actual fares information is collected. Client is then expected to provide <code>selectedFare</code> input which should match one of the items."
+        },
+        "availableSeats": {
+            "typeRef": "#/domains/FlightBooking/types/AvailableSeats"
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -19180,7 +19186,7 @@ module.exports={
             "description": "A list of available fares found on the website.",
             "minItems": 1,
             "maxItems": 9,
-            "items": {"$ref": "#/domains/FlightBooking/types/Fare"}
+            "items": { "$ref": "#/domains/FlightBooking/types/Fare" }
         },
         "DatePlace": {
             "type": "object",
@@ -19205,6 +19211,38 @@ module.exports={
                 "dateTime",
                 "airportCode"
             ]
+        },
+        "AvailableSeats": {
+            "type": "array",
+            "description": "Emitted when seat availability information is collected. Client is then expected to provide <code>selectedSeats</code> input with selected seats for each passenger.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
+        },
+        "SelectedSeats": {
+            "type": "array",
+            "description": "An array of seats selected per each corresponding passenger.<br/>Automation may fail if provided seat ids are incorrect or no longer available.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
+        },
+        "Seat": {
+            "type": "object",
+            "description": "Seat selection metadata.",
+            "properties": {
+                "seatId": {
+                    "type": "string",
+                    "description": "Seat identifier as extracted from website. Example: \"07A\""
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Seat price, if such information is available."
+                }
+            },
+            "required": [
+                "seatId"
+            ],
+            "additionalProperties": false
         },
         "BookingConfirmation": {
             "type": "object",
