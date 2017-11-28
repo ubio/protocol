@@ -254,7 +254,8 @@
                 }
             },
             "required": [
-                "seatNumber"
+                "seatNumber",
+                "available"
             ],
             "additionalProperties": false
         },

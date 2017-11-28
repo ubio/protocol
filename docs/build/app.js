@@ -19249,7 +19249,8 @@ module.exports={
                 }
             },
             "required": [
-                "seatNumber"
+                "seatNumber",
+                "available"
             ],
             "additionalProperties": false
         },
