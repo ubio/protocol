@@ -644,8 +644,8 @@
           "typeRef": "#/domains/FlightBooking/types/Fare",
           "description": "Requested when fare selection is required by website.<br/>At this point <code>availableFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
-        "selectedSeats": {
-          "typeRef": "#/domains/FlightBooking/types/SelectedSeats"
+        "selectedSeatIds": {
+          "typeRef": "#/domains/FlightBooking/types/SelectedSeatIds"
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
@@ -684,7 +684,7 @@
             },
             "seatSelection": {
               "type": "boolean",
-              "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
+              "description": "If <code>true</code>, automation will request <code>selectedSeatIds</code> for seat selection.",
               "default": false
             }
           }
@@ -869,27 +869,27 @@
         },
         "AvailableSeats": {
           "type": "array",
-          "description": "Emitted when seat availability information is collected. Client is then expected to provide <code>selectedSeats</code> input with selected seats for each passenger.",
+          "description": "Emitted when seat availability information is collected. Client is then expected to provide <code>selectedSeatIds</code> input with selected seats for each passenger.",
           "minItems": 1,
           "maxItems": 9,
           "items": {
             "$ref": "#/domains/FlightBooking/types/Seat"
           }
         },
-        "SelectedSeats": {
+        "SelectedSeatIds": {
           "type": "array",
-          "description": "An array of seats selected per each corresponding passenger.<br/>Automation may fail if provided seat ids are incorrect or no longer available.",
+          "description": "An array of <code>seatId</code> selected per each corresponding passenger.<br/>Automation may fail if provided seat ids are incorrect or no longer available.",
           "minItems": 1,
           "maxItems": 9,
           "items": {
-            "$ref": "#/domains/FlightBooking/types/Seat"
+            "type": "string"
           }
         },
         "Seat": {
           "type": "object",
           "description": "Seat selection metadata.",
           "properties": {
-            "seatNumber": {
+            "seatId": {
               "type": "string",
               "description": "Seat number as extracted from website. Example: \"07A\""
             },
@@ -903,7 +903,7 @@
             }
           },
           "required": [
-            "seatNumber",
+            "seatId",
             "available"
           ],
           "additionalProperties": false
