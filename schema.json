@@ -808,9 +808,10 @@
           "type": "string",
           "enum": [
             "economy",
-            "economy premium",
+            "premium economy",
             "business",
-            "first"
+            "first",
+            "supersonic"
           ]
         },
         "Fare": {

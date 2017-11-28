@@ -19168,7 +19168,7 @@ module.exports={
         },
         "CabinClass": {
             "type": "string",
-            "enum": ["economy", "economy premium", "business", "first"]
+            "enum": ["economy", "premium economy", "business", "first", "supersonic"]
         },
         "Fare": {
             "type": "object",
