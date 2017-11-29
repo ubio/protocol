@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [0.12.0] - 2017-11-29
+
 - `/flight/from` -> `/itinerary/outbound/origin`
 - `/flight/to` -> `/itinerary/outbound/destination`
 - `/flight/return/from` -> `/itinerary/inbound/origin`

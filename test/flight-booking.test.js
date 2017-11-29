@@ -7,32 +7,30 @@ describe('FlightBooking', () => {
 
     const FlightBooking = protocol.getDomain('FlightBooking');
 
-    describe('Flight', () => {
+    describe('Itinerary', () => {
 
         it('should accept valid flight', async () => {
-            const { valid, errors } = await FlightBooking.validate('Flight', {
+            const { valid, errors } = await FlightBooking.validate('Itinerary', {
                 cabinClass: 'economy',
-                price: {
-                    currencyCode: 'usd',
-                    value: 40840,
+                outbound: {
+                    origin: {
+                        countryCode: 'us',
+                        dateTime: '2017-10-20 00:55',
+                        airportCode: 'SFO',
+                    },
+                    destination: {
+                        countryCode: 'us',
+                        dateTime: '2017-10-20 17:14',
+                        airportCode: 'LGA',
+                    },
                 },
-                from: {
-                    countryCode: 'us',
-                    dateTime: '2017-10-20 00:55',
-                    airportCode: 'SFO',
-                },
-                to: {
-                    countryCode: 'us',
-                    dateTime: '2017-10-20 17:14',
-                    airportCode: 'LGA',
-                },
-                return: {
-                    from: {
+                inbound: {
+                    origin: {
                         countryCode: 'us',
                         dateTime: '2017-11-24 17:59',
                         airportCode: 'LGA',
                     },
-                    to: {
+                    destination: {
                         countryCode: 'us',
                         dateTime: '2017-11-25 10:59',
                         airportCode: 'SFO',
@@ -43,66 +41,60 @@ describe('FlightBooking', () => {
             expect(errors.length).toEqual(0);
         });
 
-        it('should not accept invalid return flight', async () => {
-            const { valid, errors } = await FlightBooking.validate('Flight', {
+        it('should not accept invalid inbound flight', async () => {
+            const { valid, errors } = await FlightBooking.validate('Itinerary', {
                 cabinClass: 'economy',
-                price: {
-                    currencyCode: 'usd',
-                    value: 40840,
+                outbound: {
+                    origin: {
+                        countryCode: 'us',
+                        dateTime: '2017-10-20 00:55',
+                        airportCode: 'SFO',
+                    },
+                    destination: {
+                        countryCode: 'us',
+                        dateTime: '2017-10-20 17:14',
+                        airportCode: 'LGA',
+                    },
                 },
-                from: {
-                    countryCode: 'us',
-                    dateTime: '2017-10-20 00:55',
-                    airportCode: 'SFO',
-                },
-                to: {
-                    countryCode: 'us',
-                    dateTime: '2017-10-20 17:14',
-                    airportCode: 'LGA',
-                },
-                return: 'smth',
+                inbound: 'smth',
             });
             expect(valid).toEqual(false);
             expect(errors.length).toBeGreaterThan(0);
-            expect(errors.find(e => e.dataPath === '/return')).toExist();
+            expect(errors.find(e => e.dataPath === '/inbound')).toExist();
         });
 
-        it('should not require return flight', async () => {
-            const { valid, errors } = await FlightBooking.validate('Flight', {
+        it('should not require inbound flight', async () => {
+            const { valid, errors } = await FlightBooking.validate('Itinerary', {
                 cabinClass: 'economy',
-                price: {
-                    currencyCode: 'usd',
-                    value: 40840,
-                },
-                from: {
-                    countryCode: 'us',
-                    dateTime: '2017-10-20 00:55',
-                    airportCode: 'SFO',
-                },
-                to: {
-                    countryCode: 'us',
-                    dateTime: '2017-10-20 17:14',
-                    airportCode: 'LGA',
+                outbound: {
+                    origin: {
+                        countryCode: 'us',
+                        dateTime: '2017-10-20 00:55',
+                        airportCode: 'SFO',
+                    },
+                    destination: {
+                        countryCode: 'us',
+                        dateTime: '2017-10-20 17:14',
+                        airportCode: 'LGA',
+                    },
                 },
             });
             expect(valid).toEqual(true);
             expect(errors.length).toEqual(0);
         });
 
-        it('should not allow incorrect to/from', async () => {
-            const { valid, errors } = await FlightBooking.validate('Flight', {
+        it('should not allow incorrect destination/origin', async () => {
+            const { valid, errors } = await FlightBooking.validate('Itinerary', {
                 cabinClass: 'economy',
-                price: {
-                    currencyCode: 'usd',
-                    value: 40840,
+                outbound: {
+                    origin: {},
+                    destination: {},
                 },
-                from: {},
-                to: {},
             });
             expect(valid).toEqual(false);
             expect(errors.length).toBeGreaterThan(0);
-            expect(errors.find(e => e.dataPath === '/to')).toExist();
-            expect(errors.find(e => e.dataPath === '/from')).toExist();
+            expect(errors.find(e => e.dataPath === '/outbound/destination')).toExist();
+            expect(errors.find(e => e.dataPath === '/outbound/origin')).toExist();
         });
 
     });
