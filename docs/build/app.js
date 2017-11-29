@@ -18172,7 +18172,7 @@ exports.insert = function (css) {
 }
 
 },{}],56:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --ui-highlight: hsl(210,100%,95%);\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --ui-highlight: hsl(210,100%,95%);\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n\n    --column__width: 200px;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
@@ -18239,7 +18239,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"./prop.vue":59,"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],58:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__term {\n    flex: 0 0 160px;\n}\n\n.oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n    opacity: .5;\n    vertical-align: middle;\n}\n\n.oneliner:hover .oneliner__link,\n.oneliner--active .oneliner__link {\n    visibility: visible;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__term {\n    flex: 0 0 var(--column__width);\n}\n\n.oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n    opacity: .5;\n    vertical-align: middle;\n}\n\n.oneliner:hover .oneliner__link,\n.oneliner--active .oneliner__link {\n    visibility: visible;\n}")
 ;(function(){
 
 
@@ -18301,7 +18301,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"./schema-type.vue":60,"./val.vue":61,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],59:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".prop {\n    margin: 1em 0;\n    display: flex;\n    flex-flow: row nowrap;\n    align-items: baseline;\n}\n\n.prop__id {\n    flex: 0 0 160px;\n}\n\n.prop__body {\n    flex: 1;\n}\n\n.prop__optional {\n    color: var(--ui-muted);\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".prop {\n    margin: 1em 0;\n    display: flex;\n    flex-flow: row nowrap;\n    align-items: baseline;\n}\n\n.prop__id {\n    flex: 0 0 var(--column__width);\n}\n\n.prop__body {\n    flex: 1;\n}\n\n.prop__optional {\n    color: var(--ui-muted);\n}")
 ;(function(){
 
 
@@ -19018,12 +19018,13 @@ module.exports={
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
-        "selectedFare": {
-            "typeRef": "#/domains/FlightBooking/types/Fare",
-            "description": "Requested when fare selection is required by website.<br/>At this point <code>availableFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+        "selectedOutboundFare": {
+            "typeRef": "#/domains/FlightBooking/types/FareSelection",
+            "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
-        "selectedSeatIds": {
-            "typeRef": "#/domains/FlightBooking/types/SelectedSeatIds"
+        "selectedInboundFare": {
+            "typeRef": "#/domains/FlightBooking/types/FareSelection",
+            "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -19034,12 +19035,13 @@ module.exports={
         }
     },
     "outputs": {
-        "availableFares": {
+        "availableOutboundFares": {
             "typeRef": "#/domains/FlightBooking/types/AvailableFares",
-            "description": "Emitted when actual fares information is collected. Client is then expected to provide <code>selectedFare</code> input which should match one of the items."
+            "description": "Emitted when actual outbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
-        "availableSeats": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableSeats"
+        "availableInboundFares": {
+            "typeRef": "#/domains/FlightBooking/types/AvailableFares",
+            "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -19092,6 +19094,34 @@ module.exports={
             "required": [
                 "from",
                 "to"
+            ]
+        },
+        "CabinClass": {
+            "type": "string",
+            "enum": ["economy", "premium economy", "business", "first"]
+        },
+        "DatePlace": {
+            "type": "object",
+            "properties": {
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "dateTime": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
+                    "description": "Date and time of flight (airport local time)"
+                },
+                "airportCode": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "pattern": "^[A-Z]{3}$",
+                    "description": "International Air Transport Association airport code"
+                }
+            },
+            "required": [
+                "dateTime",
+                "airportCode"
             ]
         },
         "Passengers": {
@@ -19166,12 +19196,16 @@ module.exports={
                 }
             }
         },
-        "CabinClass": {
-            "type": "string",
-            "enum": ["economy", "premium economy", "business", "first", "supersonic"]
+        "AvailableFares": {
+            "type": "array",
+            "description": "A list of available fares found on the website.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/FlightBooking/types/FareAvailability" }
         },
-        "Fare": {
+        "FareAvailability": {
             "type": "object",
+            "description": "Information about available flight fares extracted from website.",
             "additionalProperties": false,
             "properties": {
                 "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
@@ -19181,40 +19215,23 @@ module.exports={
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
-                "cabinClass",
                 "fareFamily",
+                "cabinClass",
                 "price"
             ]
         },
-        "AvailableFares": {
-            "type": "array",
-            "description": "A list of available fares found on the website.",
-            "minItems": 1,
-            "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/Fare" }
-        },
-        "DatePlace": {
+        "FareSelection": {
             "type": "object",
+            "description": "Selected fare. Values should match <code>FareAvailability</code> object.",
             "properties": {
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
-                },
-                "dateTime": {
-                    "type": "string",
-                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
-                    "description": "Date and time of flight (airport local time)"
-                },
-                "airportCode": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 3,
-                    "pattern": "^[A-Z]{3}$",
-                    "description": "International Air Transport Association airport code"
+                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
+                "fareFamily": {
+                    "type": "string"
                 }
             },
             "required": [
-                "dateTime",
-                "airportCode"
+                "cabinClass",
+                "fareFamily"
             ]
         },
         "AvailableSeats": {

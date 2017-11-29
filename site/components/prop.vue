@@ -64,7 +64,7 @@ module.exports = {
 }
 
 .prop__id {
-    flex: 0 0 160px;
+    flex: 0 0 var(--column__width);
 }
 
 .prop__body {

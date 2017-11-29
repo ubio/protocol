@@ -20,6 +20,8 @@
     --body__color: #747c84;
 
     --heading__color: #555;
+
+    --column__width: 200px;
 }
 
 html, body {
