@@ -1,5 +1,10 @@
 ## [UNRELEASED]
 
+- `/flight/from` -> `/itinerary/outbound/origin`
+- `/flight/to` -> `/itinerary/outbound/destination`
+- `/flight/return/from` -> `/itinerary/inbound/origin`
+- `/flight/return/to` -> `/itinerary/inbound/destination`
+- `/flight/cabinClass` -> `/itinerary/cabinClass`
 
 ## [0.11.0] - 2017-11-28
 

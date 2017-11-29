@@ -19004,9 +19004,8 @@ module.exports={
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
         },
-        "flight": {
-            "typeRef": "#/domains/FlightBooking/types/Flight",
-            "description": "A specification of flights to book. Currently only includes outbound and optional inbound flight."
+        "itinerary": {
+            "typeRef": "#/domains/FlightBooking/types/Itinerary"
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
@@ -19019,11 +19018,11 @@ module.exports={
             "typeRef": "#/domains/Generic/types/Payment"
         },
         "selectedOutboundFare": {
-            "typeRef": "#/domains/FlightBooking/types/FareSelection",
+            "typeRef": "#/domains/FlightBooking/types/Fare",
             "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
         "selectedInboundFare": {
-            "typeRef": "#/domains/FlightBooking/types/FareSelection",
+            "typeRef": "#/domains/FlightBooking/types/Fare",
             "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
         "panToken": {
@@ -19069,31 +19068,39 @@ module.exports={
                 }
             }
         },
-        "Flight": {
+        "Itinerary": {
             "type": "object",
+            "description": "Information about flights and cabin class preference.",
             "properties": {
-                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
-                "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
-                "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
-                "return": { "$ref": "#/domains/FlightBooking/types/ReturnFlight" }
+                "cabinClass": {
+                    "$ref": "#/domains/FlightBooking/types/CabinClass",
+                    "description": "Preferred cabin class, used on flight search forms."
+                },
+                "outbound": {
+                    "$ref": "#/domains/FlightBooking/types/Flight",
+                    "description": "Outbound flight specification."
+                },
+                "inbound": {
+                    "$ref": "#/domains/FlightBooking/types/Flight",
+                    "description": "Inbound (return) flight specification. If omitted, one-way flight booking flow is used."
+                }
             },
             "required": [
                 "cabinClass",
-                "from",
-                "to"
+                "outbound"
             ],
             "additionalProperties": true
         },
-        "ReturnFlight": {
+        "Flight": {
             "type": "object",
-            "description": "If specified, return flight will be booked in the same automation.",
+            "description": "Outbound and inbound flights specification.",
             "properties": {
-                "from": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
-                "to": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
+                "origin": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "destination": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
             },
             "required": [
-                "from",
-                "to"
+                "origin",
+                "destination"
             ]
         },
         "CabinClass": {
@@ -19103,20 +19110,21 @@ module.exports={
         "DatePlace": {
             "type": "object",
             "properties": {
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
-                },
                 "dateTime": {
                     "type": "string",
                     "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
-                    "description": "Date and time of flight (airport local time)"
+                    "description": "Date and time of flight (airport local time)."
                 },
                 "airportCode": {
                     "type": "string",
                     "minLength": 3,
                     "maxLength": 3,
                     "pattern": "^[A-Z]{3}$",
-                    "description": "International Air Transport Association airport code"
+                    "description": "International Air Transport Association airport code."
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of airport."
                 }
             },
             "required": [
@@ -19201,11 +19209,11 @@ module.exports={
             "description": "A list of available fares found on the website.",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/FareAvailability" }
+            "items": { "$ref": "#/domains/FlightBooking/types/Fare" }
         },
-        "FareAvailability": {
+        "Fare": {
             "type": "object",
-            "description": "Information about available flight fares extracted from website.",
+            "description": "Flight fare information.",
             "additionalProperties": false,
             "properties": {
                 "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
@@ -19218,20 +19226,6 @@ module.exports={
                 "fareFamily",
                 "cabinClass",
                 "price"
-            ]
-        },
-        "FareSelection": {
-            "type": "object",
-            "description": "Selected fare. Values should match <code>FareAvailability</code> object.",
-            "properties": {
-                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
-                "fareFamily": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "cabinClass",
-                "fareFamily"
             ]
         },
         "AvailableSeats": {
