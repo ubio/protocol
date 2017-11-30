@@ -1,6 +1,10 @@
 ## [UNRELEASED]
 
 
+## [0.13.2] - 2017-11-30
+
+- Drop `/options/fareSelection` flag
+
 ## [0.13.0] - 2017-11-30
 
 - `fareFamily` -> `fareName`
