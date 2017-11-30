@@ -19056,11 +19056,6 @@ module.exports={
             "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
             "experimental": true,
             "properties": {
-                "fareSelection": {
-                    "type": "boolean",
-                    "description": "If <code>true</code>, automation will request <code>selectedFare</code> for fare selection flow.<br/>Automation may fail if deep link points to page where fare selection is mandatory.",
-                    "default": false
-                },
                 "seatSelection": {
                     "type": "boolean",
                     "description": "If <code>true</code>, automation will request <code>selectedSeatIds</code> for seat selection.",
