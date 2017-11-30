@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- `fareFamily` -> `fareName`
 
 ## [0.12.0] - 2017-11-29
 

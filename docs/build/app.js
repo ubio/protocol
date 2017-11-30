@@ -19217,13 +19217,14 @@ module.exports={
             "additionalProperties": false,
             "properties": {
                 "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
-                "fareFamily": {
-                    "type": "string"
+                "fareName": {
+                    "type": "string",
+                    "description": "Fare marketing name as provided by airline. Example: <code>Business Flex</code>."
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
-                "fareFamily",
+                "fareName",
                 "cabinClass",
                 "price"
             ]
