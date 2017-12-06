@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Staged inputs/outputs are now objects, not arrays.
 
 ## [0.14.0] - 2017-12-6
 

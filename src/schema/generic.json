@@ -189,7 +189,7 @@
                 },
                 "expirationDate": {
                     "type": "string",
-                    "description": "Expiration date in YYYY-MM format as written on card. Example: <code>2020-04</code>",
+                    "description": "Expiration date in YYYY-MM format as written on card.<br/>Example: <code>2020-04</code>",
                     "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
                     "minLength": 7,
                     "maxLength": 7

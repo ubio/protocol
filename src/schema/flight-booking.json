@@ -31,7 +31,7 @@
             "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
         "selectedSeats": {
-            "typeRef": "#/domains/FlightBooking/types/SelectedSeats",
+            "typeRef": "#/domains/FlightBooking/types/SelectedSeatsStage",
             "staged": true
         },
         "panToken": {
@@ -52,7 +52,7 @@
             "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
         "availableSeats": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableSeats",
+            "typeRef": "#/domains/FlightBooking/types/AvailableSeatsStage",
             "staged": true
         },
         "finalPrice": {
@@ -173,7 +173,7 @@
                 },
                 "dateOfBirth": {
                     "type": "string",
-                    "description": "Passenger's date of birth in YYYY-MM-DD format. Example: <code>1976-01-21</code>.",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.<br/>Example: <code>1976-01-21</code>.",
                     "format": "date"
                 },
                 "addAdditionalLuggage": {
@@ -227,7 +227,7 @@
                 "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
                 "fareName": {
                     "type": "string",
-                    "description": "Fare marketing name as provided by airline. Example: <code>Business Flex</code>."
+                    "description": "Fare marketing name as provided by airline.<br/>Example: <code>Business Flex</code>"
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
@@ -237,16 +237,9 @@
                 "price"
             ]
         },
-        "SelectedSeats": {
-            "type": "array",
-            "description": "An array with seat selection stages. Each stage corresponds to a particular flight leg where seat selection is available.<br/>Client provides each stage individually after reading corresponding seat availability information from <code>availableSeats</code> output.",
-            "minItems": 1,
-            "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/SelectedSeatsStage" }
-        },
         "SelectedSeatsStage": {
             "type": "object",
-            "description": "Seat selection stage. Corresponds to a particular flight leg.",
+            "description": "Seat selection stage. Each stage corresponds to a particular flight leg where seat selection is supported. Client provides each stage separately after reading corresponding seat availability information from <code>availableSeats</code> output.",
             "properties": {
                 "seatIds": {
                     "type": "array",
@@ -261,20 +254,13 @@
             ],
             "additionalProperties": false
         },
-        "AvailableSeats": {
-            "type": "array",
-            "description": "An array with seat availability stages. Each stage corresponds to a particular flight leg where seat selection is available.<br/>Each stage is emitted separately when automation reaches corresponding seat selection screen.",
-            "minItems": 1,
-            "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/AvailableSeatsStage" }
-        },
         "AvailableSeatsStage": {
             "type": "object",
-            "description": "Seat availability information for each seat selection stage.",
+            "description": "Seat availability information for each seat selection stage. Each stage corresponds to a particular flight leg where seat selection is supported. Each stage is emitted separately when automation reaches corresponding seat selection screen.",
             "properties": {
                 "leg": {
                     "type": "string",
-                    "description": "Flight leg name as displayed on website. Example: \"LTN to ZRH, Wed 7th Mar\""
+                    "description": "Flight leg name as displayed on website.<br/>Example: <code>LTN to ZRH, Wed 7th Mar</code>"
                 },
                 "seats": {
                     "type": "array",
@@ -293,7 +279,7 @@
             "properties": {
                 "seatId": {
                     "type": "string",
-                    "description": "Seat number as extracted from website. Example: \"07A\""
+                    "description": "Seat number as extracted from website.<br/>Example: <code>07A</code>"
                 },
                 "available": {
                     "type": "boolean",
