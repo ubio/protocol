@@ -19255,6 +19255,9 @@ module.exports={
                     "items": { "type": "string" }
                 }
             },
+            "required": [
+                "seatIds"
+            ],
             "additionalProperties": false
         },
         "AvailableSeats": {
@@ -19277,6 +19280,10 @@ module.exports={
                     "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
                 }
             },
+            "required": [
+                "leg",
+                "seats"
+            ],
             "additionalProperties": false
         },
         "Seat": {
@@ -19289,7 +19296,11 @@ module.exports={
                 },
                 "available": {
                     "type": "boolean",
-                    "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise"
+                    "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "<code>true</code> if seat has restrictions for certain groups of passengers."
                 },
                 "price": {
                     "$ref": "#/domains/Generic/types/Price",

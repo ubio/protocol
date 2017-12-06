@@ -896,6 +896,9 @@
               }
             }
           },
+          "required": [
+            "seatIds"
+          ],
           "additionalProperties": false
         },
         "AvailableSeats": {
@@ -922,6 +925,10 @@
               }
             }
           },
+          "required": [
+            "leg",
+            "seats"
+          ],
           "additionalProperties": false
         },
         "Seat": {
@@ -934,7 +941,11 @@
             },
             "available": {
               "type": "boolean",
-              "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise"
+              "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
+            },
+            "restricted": {
+              "type": "boolean",
+              "description": "<code>true</code> if seat has restrictions for certain groups of passengers."
             },
             "price": {
               "$ref": "#/domains/Generic/types/Price",
