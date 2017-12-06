@@ -1,6 +1,6 @@
 {
   "name": "@ubio/protocol",
-  "version": "0.13.2",
+  "version": "0.14.0",
   "description": "ubio Automation Protocol",
   "main": "src/index.js",
   "author": "ubio",

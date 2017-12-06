@@ -1,6 +1,11 @@
 ## [UNRELEASED]
 
 
+## [0.14.0] - 2017-12-6
+
+- PoC seat selection schema
+- Introduced `staged` parameter to input/output definitions
+
 ## [0.13.2] - 2017-11-30
 
 - Drop `/options/fareSelection` flag
