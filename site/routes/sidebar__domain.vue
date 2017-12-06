@@ -97,7 +97,7 @@ module.exports = {
 
 .sidebar__section {
     display: block;
-    margin-left: 1rem;
+    margin-left: 2rem;
 
     text-transform: uppercase;
     font-size: 10px;

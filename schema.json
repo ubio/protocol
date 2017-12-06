@@ -647,6 +647,10 @@
           "typeRef": "#/domains/FlightBooking/types/Fare",
           "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
+        "selectedSeats": {
+          "typeRef": "#/domains/FlightBooking/types/SelectedSeats",
+          "staged": true
+        },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
         },
@@ -663,6 +667,10 @@
         "availableInboundFares": {
           "typeRef": "#/domains/FlightBooking/types/AvailableFares",
           "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
+        },
+        "availableSeats": {
+          "typeRef": "#/domains/FlightBooking/types/AvailableSeats",
+          "staged": true
         },
         "finalPrice": {
           "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -865,27 +873,60 @@
             "price"
           ]
         },
-        "AvailableSeats": {
+        "SelectedSeats": {
           "type": "array",
-          "description": "Emitted when seat availability information is collected. Client is then expected to provide <code>selectedSeatIds</code> input with selected seats for each passenger.",
+          "description": "An array with seat selection stages. Each stage corresponds to a particular flight leg where seat selection is available.<br/>Client provides each stage individually after reading corresponding seat availability information from <code>availableSeats</code> output.",
           "minItems": 1,
           "maxItems": 9,
           "items": {
-            "$ref": "#/domains/FlightBooking/types/Seat"
+            "$ref": "#/domains/FlightBooking/types/SelectedSeatsStage"
           }
         },
-        "SelectedSeatIds": {
+        "SelectedSeatsStage": {
+          "type": "object",
+          "description": "Seat selection stage. Corresponds to a particular flight leg.",
+          "properties": {
+            "seatIds": {
+              "type": "array",
+              "description": "An array of <code>seatId</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
+              "minItems": 1,
+              "maxItems": 9,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "AvailableSeats": {
           "type": "array",
-          "description": "An array of <code>seatId</code> selected per each corresponding passenger.<br/>Automation may fail if provided seat ids are incorrect or no longer available.",
+          "description": "An array with seat availability stages. Each stage corresponds to a particular flight leg where seat selection is available.<br/>Each stage is emitted separately when automation reaches corresponding seat selection screen.",
           "minItems": 1,
           "maxItems": 9,
           "items": {
-            "type": "string"
+            "$ref": "#/domains/FlightBooking/types/AvailableSeatsStage"
           }
+        },
+        "AvailableSeatsStage": {
+          "type": "object",
+          "description": "Seat availability information for each seat selection stage.",
+          "properties": {
+            "leg": {
+              "type": "string",
+              "description": "Flight leg name as displayed on website. Example: \"LTN to ZRH, Wed 7th Mar\""
+            },
+            "seats": {
+              "type": "array",
+              "items": {
+                "$ref": "#/domains/FlightBooking/types/Seat"
+              }
+            }
+          },
+          "additionalProperties": false
         },
         "Seat": {
           "type": "object",
-          "description": "Seat selection metadata.",
+          "description": "Seat metadata.",
           "properties": {
             "seatId": {
               "type": "string",

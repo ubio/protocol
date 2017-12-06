@@ -65,7 +65,10 @@
             "properties": {
                 "typeRef": { "$ref": "#/definitions/TypeRef" },
                 "description": { "type": "string" },
-                "default": {}
+                "default": {},
+                "staged": {
+                    "type": "boolean"
+                }
             },
             "required": ["typeRef"],
             "additionalProperties": false
@@ -73,7 +76,10 @@
         "OutputDef": {
             "properties": {
                 "typeRef": { "$ref": "#/definitions/TypeRef" },
-                "description": { "type": "string" }
+                "description": { "type": "string" },
+                "staged": {
+                    "type": "boolean"
+                }
             },
             "required": ["typeRef"],
             "additionalProperties": false

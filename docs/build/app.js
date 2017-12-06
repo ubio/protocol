@@ -18239,7 +18239,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"./prop.vue":59,"./schema-type.vue":60,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],58:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__term {\n    flex: 0 0 var(--column__width);\n}\n\n.oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n    opacity: .5;\n    vertical-align: middle;\n}\n\n.oneliner:hover .oneliner__link,\n.oneliner--active .oneliner__link {\n    visibility: visible;\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__term {\n    flex: 0 0 var(--column__width);\n}\n\n.oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n    opacity: .5;\n    vertical-align: middle;\n}\n\n.oneliner:hover .oneliner__link,\n.oneliner--active .oneliner__link {\n    visibility: visible;\n}\n\n.oneliner__staged {\n    padding: 0 .25em;\n    background: var(--ui-primary);\n    color: var(--ui-primary--inverse);\n    border-radius: var(--border-radius);\n}")
 ;(function(){
 
 
@@ -18287,7 +18287,7 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner",class:{
          'oneliner--active': _vm.active,
-     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
+     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.staged)?_c('span',{staticClass:"oneliner__staged"},[_vm._v("\n                staged\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18528,7 +18528,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18622,7 +18622,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../../src":72,"./sidebar__domain.vue":67,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],67:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar__link {\n    display: block;\n    padding: .25em 1rem;\n    color: var(--ui-primary);\n    border-radius: var(--border-radius);\n}\n\n.sidebar__link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}\n\n.sidebar__section {\n    display: block;\n    margin-left: 1rem;\n\n    text-transform: uppercase;\n    font-size: 10px;\n    font-weight: bold;\n}\n\n.sidebar__sublink {\n    display: block;\n    margin-left: 2rem;\n    color: var(--ui-muted);\n    font-size: 12px;\n}\n\n.sidebar__sublink.router-link-active {\n    color: var(--heading-color);\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar__link {\n    display: block;\n    padding: .25em 1rem;\n    color: var(--ui-primary);\n    border-radius: var(--border-radius);\n}\n\n.sidebar__link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}\n\n.sidebar__section {\n    display: block;\n    margin-left: 2rem;\n\n    text-transform: uppercase;\n    font-size: 10px;\n    font-weight: bold;\n}\n\n.sidebar__sublink {\n    display: block;\n    margin-left: 2rem;\n    color: var(--ui-muted);\n    font-size: 12px;\n}\n\n.sidebar__sublink.router-link-active {\n    color: var(--heading-color);\n}")
 ;(function(){
 
 
@@ -18807,6 +18807,10 @@ class CustomDef extends Def {
 
     getTypeDef() {
         return this.domain.protocol.resolveTypeRef(this.getTypeRef());
+    }
+
+    isStaged() {
+        return this.spec.staged || false;
     }
 
 }
@@ -19025,6 +19029,10 @@ module.exports={
             "typeRef": "#/domains/FlightBooking/types/Fare",
             "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
+        "selectedSeats": {
+            "typeRef": "#/domains/FlightBooking/types/SelectedSeats",
+            "staged": true
+        },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
@@ -19041,6 +19049,10 @@ module.exports={
         "availableInboundFares": {
             "typeRef": "#/domains/FlightBooking/types/AvailableFares",
             "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
+        },
+        "availableSeats": {
+            "typeRef": "#/domains/FlightBooking/types/AvailableSeats",
+            "staged": true
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -19224,23 +19236,52 @@ module.exports={
                 "price"
             ]
         },
+        "SelectedSeats": {
+            "type": "array",
+            "description": "An array with seat selection stages. Each stage corresponds to a particular flight leg where seat selection is available.<br/>Client provides each stage individually after reading corresponding seat availability information from <code>availableSeats</code> output.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/FlightBooking/types/SelectedSeatsStage" }
+        },
+        "SelectedSeatsStage": {
+            "type": "object",
+            "description": "Seat selection stage. Corresponds to a particular flight leg.",
+            "properties": {
+                "seatIds": {
+                    "type": "array",
+                    "description": "An array of <code>seatId</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": { "type": "string" }
+                }
+            },
+            "additionalProperties": false
+        },
         "AvailableSeats": {
             "type": "array",
-            "description": "Emitted when seat availability information is collected. Client is then expected to provide <code>selectedSeatIds</code> input with selected seats for each passenger.",
+            "description": "An array with seat availability stages. Each stage corresponds to a particular flight leg where seat selection is available.<br/>Each stage is emitted separately when automation reaches corresponding seat selection screen.",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
+            "items": { "$ref": "#/domains/FlightBooking/types/AvailableSeatsStage" }
         },
-        "SelectedSeatIds": {
-            "type": "array",
-            "description": "An array of <code>seatId</code> selected per each corresponding passenger.<br/>Automation may fail if provided seat ids are incorrect or no longer available.",
-            "minItems": 1,
-            "maxItems": 9,
-            "items": { "type": "string" }
+        "AvailableSeatsStage": {
+            "type": "object",
+            "description": "Seat availability information for each seat selection stage.",
+            "properties": {
+                "leg": {
+                    "type": "string",
+                    "description": "Flight leg name as displayed on website. Example: \"LTN to ZRH, Wed 7th Mar\""
+                },
+                "seats": {
+                    "type": "array",
+                    "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
+                }
+            },
+            "additionalProperties": false
         },
         "Seat": {
             "type": "object",
-            "description": "Seat selection metadata.",
+            "description": "Seat metadata.",
             "properties": {
                 "seatId": {
                     "type": "string",

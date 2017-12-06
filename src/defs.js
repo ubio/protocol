@@ -84,6 +84,10 @@ class CustomDef extends Def {
         return this.domain.protocol.resolveTypeRef(this.getTypeRef());
     }
 
+    isStaged() {
+        return this.spec.staged || false;
+    }
+
 }
 
 class InputDef extends CustomDef {

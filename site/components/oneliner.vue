@@ -10,6 +10,12 @@
                 src="/img/link.svg"
                 class="oneliner__link"
                 @click="permalink"/>
+            <div class="oneliner__details">
+                <span class="oneliner__staged"
+                    v-if="def.spec.staged">
+                    staged
+                </span>
+            </div>
         </div>
         <div class="oneliner__body">
             <schema-type :spec="def.spec"/>
@@ -100,5 +106,12 @@ module.exports = {
 .oneliner:hover .oneliner__link,
 .oneliner--active .oneliner__link {
     visibility: visible;
+}
+
+.oneliner__staged {
+    padding: 0 .25em;
+    background: var(--ui-primary);
+    color: var(--ui-primary--inverse);
+    border-radius: var(--border-radius);
 }
 </style>

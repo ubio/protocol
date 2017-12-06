@@ -22,7 +22,7 @@
         </template>
 
         <template v-if="types.length">
-            <h2>Types</h2>
+            <h2 id="types">Types</h2>
             <def
                 v-for="def of types"
                 :def="def"/>
