@@ -31,3 +31,4 @@ async function validate(domain, key, object) {
     console.log('valid', valid);
     console.log('errors', errors);
 }
+

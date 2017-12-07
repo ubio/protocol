@@ -18,8 +18,13 @@
             </div>
             <div
                 class="prop__default"
-                v-if="typeof prop.default !== 'undefined'">
+                v-if="prop.default !== undefined">
                 <strong>Default value:</strong> <val :value="prop.default"/>
+            </div>
+            <div
+                class="prop__example"
+                v-if="prop.example !== undefined">
+                <strong>Example:</strong> <code>{{ prop.example }}</code>
             </div>
             <div class="prop__enum"
                  v-if="prop.enum">

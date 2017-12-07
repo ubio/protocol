@@ -5,8 +5,9 @@
     "types": {
         "URL": {
             "type": "string",
+            "format": "url",
             "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\">WHATWG URL Standard</a>.",
-            "format": "url"
+            "example": "http://example.com"
         },
         "Account": {
             "type": "object",
@@ -15,7 +16,8 @@
                 "email": {
                     "type": "string",
                     "description": "Account email, typically used for user sign up / sign in, as well as contact information.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\">use an email proxy to mitigate this issue</a>.",
-                    "format": "email"
+                    "format": "email",
+                    "example": "hello@example.com"
                 },
                 "password": {
                     "type": "string",
@@ -53,7 +55,8 @@
                 },
                 "firstName": {
                     "type": "string",
-                    "description": "First name(s) or given name(s), as specified in ID."
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "example": "Bob"
                 },
                 "middleName": {
                     "type": "string",
@@ -62,7 +65,8 @@
                 },
                 "lastName": {
                     "type": "string",
-                    "description": "Last name or surname, as specified in ID."
+                    "description": "Last name or surname, as specified in ID.",
+                    "example": "Smith"
                 }
             },
             "required": [
@@ -77,19 +81,23 @@
             "properties": {
                 "line1": {
                     "type": "string",
-                    "description": "Street name with house number."
+                    "description": "Street name with house number.",
+                    "example": "501 Twin Peaks Blv"
                 },
                 "line2": {
                     "type": "string",
-                    "description": "Additional address information (e.g. flat)."
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
                 },
                 "city": {
                     "type": "string",
-                    "description": "Name of city, town or other settlement."
+                    "description": "Name of city, town or other settlement.",
+                    "example": "San Francisco"
                 },
                 "postcode": {
                     "type": "string",
-                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK."
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode"
@@ -115,7 +123,8 @@
                 "number": {
                     "type": "string",
                     "minLength": 9,
-                    "description": "Mobile phone number (numbers only, excluding country code)."
+                    "description": "Mobile phone number (numbers only, excluding country code).",
+                    "example": "123456789"
                 }
             },
             "required": [
@@ -142,7 +151,8 @@
                 "value": {
                     "type": "integer",
                     "minimum": 0,
-                    "description": "A positive integer in the smallest currency unit (100 for £1.00)."
+                    "description": "A positive integer in the smallest currency unit (100 for £1.00).",
+                    "example": "12300"
                 }
             },
             "required": [
@@ -189,18 +199,21 @@
                 },
                 "expirationDate": {
                     "type": "string",
-                    "description": "Expiration date in YYYY-MM format as written on card.<br/>Example: <code>2020-04</code>",
+                    "description": "Expiration date in YYYY-MM format as written on card.",
+                    "example": "2020-04",
                     "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
                     "minLength": 7,
                     "maxLength": 7
                 },
                 "name": {
                     "type": "string",
-                    "description": "Cardholder's name as written on card."
+                    "description": "Cardholder's name as written on card.",
+                    "example": "Alice Smith"
                 },
                 "cvv": {
                     "type": "string",
                     "description": "Security code written on card, 3- or 4-digit number.",
+                    "example": "123",
                     "minLength": 3,
                     "maxLength": 4
                 }
@@ -216,12 +229,14 @@
         "PanToken": {
             "type": "string",
             "description": "An encrypted PAN token, obtained from Automation Cloud Vault. Please consult \"Vaulting Payment Card Information\" section of Documentation for information on how to acquire it.",
+            "example": "5d41402abc4b2a76b9719d911017c592",
             "minLength": 20
         },
         "CountryCode": {
             "type": "string",
             "title": "ISO 3166-1 alpha-2 Country Code",
             "description": "ISO 3166-1 alpha-2 code representing the country. United Kingdom is officially assigned the alpha-2 code gb rather than uk. Lowercase.",
+            "example": "us",
             "minLength": 2,
             "maxLength": 2,
             "enum": [
@@ -478,7 +493,8 @@
         },
         "CountrySubdivision": {
             "type": "string",
-            "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased."
+            "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased.",
+            "example": "ca"
         },
         "CurrencyCode": {
             "type": "string",
@@ -486,6 +502,7 @@
             "maxLength": 3,
             "title": "ISO 4217 Currency Code",
             "description": "ISO 4217 3-letter code representing the currency. Lowercase.",
+            "example": "usd",
             "enum": [
                 "all",
                 "afn",

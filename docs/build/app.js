@@ -18332,7 +18332,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(typeof _vm.prop.default !== 'undefined')?_c('div',{staticClass:"prop__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.prop.default}})],1):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"prop"},[_c('div',{staticClass:"prop__id"},[_vm._v("\n        "+_vm._s(_vm.id)+"\n    ")]),_vm._v(" "),_c('div',{staticClass:"prop__body"},[_c('div',{staticClass:"prop__type"},[_c('schema-type',{attrs:{"spec":_vm.prop}})],1),_vm._v(" "),(!_vm.required)?_c('div',{staticClass:"prop__optional"},[_vm._v("\n            optional\n        ")]):_vm._e(),_vm._v(" "),(_vm.prop.description)?_c('div',{staticClass:"prop__description",domProps:{"innerHTML":_vm._s(_vm.prop.description)}}):_vm._e(),_vm._v(" "),(_vm.prop.default !== undefined)?_c('div',{staticClass:"prop__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.prop.default}})],1):_vm._e(),_vm._v(" "),(_vm.prop.example !== undefined)?_c('div',{staticClass:"prop__example"},[_c('strong',[_vm._v("Example:")]),_vm._v(" "),_c('code',[_vm._v(_vm._s(_vm.prop.example))])]):_vm._e(),_vm._v(" "),(_vm.prop.enum)?_c('div',{staticClass:"prop__enum"},[_vm._v("\n            "+_vm._s(_vm.prop.enum.join(', '))+"\n        ")]):_vm._e()])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -18400,7 +18400,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-4a725e62", __vue__options__)
   }
 })()}
-},{"../../src":72,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],61:[function(require,module,exports){
+},{"../../src":73,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],61:[function(require,module,exports){
 ;(function(){
 
 
@@ -18540,7 +18540,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-70f4bbb7", __vue__options__)
   }
 })()}
-},{"../../src":72,"../components/def.vue":57,"../components/oneliner.vue":58,"../util":68,"vue":54,"vue-hot-reload-api":52}],64:[function(require,module,exports){
+},{"../../src":73,"../components/def.vue":57,"../components/oneliner.vue":58,"../util":68,"vue":54,"vue-hot-reload-api":52}],64:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -18621,7 +18621,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-dcdf760e", __vue__options__)
   }
 })()}
-},{"../../src":72,"./sidebar__domain.vue":67,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],67:[function(require,module,exports){
+},{"../../src":73,"./sidebar__domain.vue":67,"vue":54,"vue-hot-reload-api":52,"vueify/lib/insert-css":55}],67:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar__link {\n    display: block;\n    padding: .25em 1rem;\n    color: var(--ui-primary);\n    border-radius: var(--border-radius);\n}\n\n.sidebar__link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}\n\n.sidebar__section {\n    display: block;\n    margin-left: 2rem;\n\n    text-transform: uppercase;\n    font-size: 10px;\n    font-weight: bold;\n}\n\n.sidebar__sublink {\n    display: block;\n    margin-left: 2rem;\n    color: var(--ui-muted);\n    font-size: 12px;\n}\n\n.sidebar__sublink.router-link-active {\n    color: var(--heading-color);\n}")
 ;(function(){
 
@@ -18728,6 +18728,7 @@ new App({
 'use strict';
 
 const util = require('./util');
+const createExample = require('./example');
 
 class Def {
 
@@ -18779,6 +18780,10 @@ class Def {
                 key: this.key
             }]
         };
+    }
+
+    createExample() {
+        return createExample(this.domain.protocol, this.spec);
     }
 
 }
@@ -18837,7 +18842,7 @@ module.exports = {
     TypeDef
 };
 
-},{"./util":78}],71:[function(require,module,exports){
+},{"./example":72,"./util":79}],71:[function(require,module,exports){
 'use strict';
 
 const util = require('./util');
@@ -18931,7 +18936,51 @@ module.exports = class Domain {
 
 };
 
-},{"./defs":70,"./util":78}],72:[function(require,module,exports){
+},{"./defs":70,"./util":79}],72:[function(require,module,exports){
+'use strict';
+
+module.exports = function createExample(protocol, spec) {
+    if (spec.$ref) {
+        const typeDef = protocol.resolveTypeRef(spec.$ref);
+        return typeDef ? createExample(protocol, typeDef.spec) : null;
+    }
+    switch (spec.type) {
+        case 'string':
+            if (spec.example) {
+                return spec.example;
+            }
+            if (spec.enum) {
+                return spec.enum[Math.floor(Math.random() * spec.enum.length)];
+            }
+            return '';
+        case 'integer':
+        case 'number':
+            if (spec.example) {
+                return parseInt(spec.example);
+            }
+            if (spec.minimum) {
+                return spec.minimum;
+            }
+            return 0;
+        case 'object':
+            const obj = {};
+            for (const key of Object.keys(spec.properties)) {
+                obj[key] = createExample(protocol, spec.properties[key]);
+            }
+            return obj;
+        case 'array':
+            const arr = [];
+            const items = Array.isArray(spec.items) ? spec.items : [spec.items];
+            for (const item of items) {
+                arr.push(createExample(protocol, item));
+            }
+            return arr;
+        default:
+            return null;
+    }
+};
+
+},{}],73:[function(require,module,exports){
 'use strict';
 
 const schema = require('./schema');
@@ -18939,7 +18988,7 @@ const Protocol = require('./protocol');
 
 module.exports = new Protocol(schema);
 
-},{"./protocol":73,"./schema":76}],73:[function(require,module,exports){
+},{"./protocol":74,"./schema":77}],74:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -18996,7 +19045,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":71,"./validator":79}],74:[function(require,module,exports){
+},{"./domain":71,"./validator":80}],75:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "inputs": {
@@ -19120,18 +19169,21 @@ module.exports={
                 "dateTime": {
                     "type": "string",
                     "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
-                    "description": "Date and time of flight (airport local time)."
+                    "description": "Date and time of flight (airport local time).",
+                    "example": "2018-02-02"
                 },
                 "airportCode": {
                     "type": "string",
                     "minLength": 3,
                     "maxLength": 3,
                     "pattern": "^[A-Z]{3}$",
-                    "description": "International Air Transport Association airport code."
+                    "description": "International Air Transport Association airport code.",
+                    "example": "SFO"
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
-                    "description": "Country code of airport."
+                    "description": "Country code of airport.",
+                    "example": "us"
                 }
             },
             "required": [
@@ -19150,6 +19202,7 @@ module.exports={
             "type": "object",
             "properties": {
                 "title": {
+                    "type": "string",
                     "enum": [
                         "mr",
                         "miss",
@@ -19159,7 +19212,8 @@ module.exports={
                 },
                 "firstName": {
                     "type": "string",
-                    "description": "First name(s) or given name(s), as specified in ID."
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "example": "Bob"
                 },
                 "middleName": {
                     "type": "string",
@@ -19168,12 +19222,14 @@ module.exports={
                 },
                 "lastName": {
                     "type": "string",
-                    "description": "Last name or surname, as specified in ID."
+                    "description": "Last name or surname, as specified in ID.",
+                    "example": "Smith"
                 },
                 "dateOfBirth": {
                     "type": "string",
-                    "description": "Passenger's date of birth in YYYY-MM-DD format.<br/>Example: <code>1976-01-21</code>.",
-                    "format": "date"
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
                 },
                 "addAdditionalLuggage": {
                     "type": "integer",
@@ -19226,7 +19282,8 @@ module.exports={
                 "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
                 "fareName": {
                     "type": "string",
-                    "description": "Fare marketing name as provided by airline.<br/>Example: <code>Business Flex</code>"
+                    "description": "Fare marketing name as provided by airline.",
+                    "example": "Business Flex"
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
@@ -19259,7 +19316,8 @@ module.exports={
             "properties": {
                 "leg": {
                     "type": "string",
-                    "description": "Flight leg name as displayed on website.<br/>Example: <code>LTN to ZRH, Wed 7th Mar</code>"
+                    "description": "Flight leg name as displayed on website.",
+                    "example": "LTN to ZRH, Wed 7th Mar"
                 },
                 "seats": {
                     "type": "array",
@@ -19278,7 +19336,8 @@ module.exports={
             "properties": {
                 "seatId": {
                     "type": "string",
-                    "description": "Seat number as extracted from website.<br/>Example: <code>07A</code>"
+                    "description": "Seat number as extracted from website.",
+                    "example": "07A"
                 },
                 "available": {
                     "type": "boolean",
@@ -19305,11 +19364,13 @@ module.exports={
             "properties": {
                 "bookingReference": {
                     "type": "string",
-                    "description": "Booking reference grabbed from the page."
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
                 },
                 "message": {
                     "type": "string",
-                    "description": "Message about successful booking."
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
                 },
                 "price": {
                     "$ref": "#/domains/Generic/types/Price",
@@ -19324,7 +19385,7 @@ module.exports={
     }
 }
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "inputs": {},
@@ -19332,8 +19393,9 @@ module.exports={
     "types": {
         "URL": {
             "type": "string",
+            "format": "url",
             "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\">WHATWG URL Standard</a>.",
-            "format": "url"
+            "example": "http://example.com"
         },
         "Account": {
             "type": "object",
@@ -19342,7 +19404,8 @@ module.exports={
                 "email": {
                     "type": "string",
                     "description": "Account email, typically used for user sign up / sign in, as well as contact information.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\">use an email proxy to mitigate this issue</a>.",
-                    "format": "email"
+                    "format": "email",
+                    "example": "hello@example.com"
                 },
                 "password": {
                     "type": "string",
@@ -19380,7 +19443,8 @@ module.exports={
                 },
                 "firstName": {
                     "type": "string",
-                    "description": "First name(s) or given name(s), as specified in ID."
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "example": "Bob"
                 },
                 "middleName": {
                     "type": "string",
@@ -19389,7 +19453,8 @@ module.exports={
                 },
                 "lastName": {
                     "type": "string",
-                    "description": "Last name or surname, as specified in ID."
+                    "description": "Last name or surname, as specified in ID.",
+                    "example": "Smith"
                 }
             },
             "required": [
@@ -19404,19 +19469,23 @@ module.exports={
             "properties": {
                 "line1": {
                     "type": "string",
-                    "description": "Street name with house number."
+                    "description": "Street name with house number.",
+                    "example": "501 Twin Peaks Blv"
                 },
                 "line2": {
                     "type": "string",
-                    "description": "Additional address information (e.g. flat)."
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
                 },
                 "city": {
                     "type": "string",
-                    "description": "Name of city, town or other settlement."
+                    "description": "Name of city, town or other settlement.",
+                    "example": "San Francisco"
                 },
                 "postcode": {
                     "type": "string",
-                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK."
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode"
@@ -19442,7 +19511,8 @@ module.exports={
                 "number": {
                     "type": "string",
                     "minLength": 9,
-                    "description": "Mobile phone number (numbers only, excluding country code)."
+                    "description": "Mobile phone number (numbers only, excluding country code).",
+                    "example": "123456789"
                 }
             },
             "required": [
@@ -19469,7 +19539,8 @@ module.exports={
                 "value": {
                     "type": "integer",
                     "minimum": 0,
-                    "description": "A positive integer in the smallest currency unit (100 for £1.00)."
+                    "description": "A positive integer in the smallest currency unit (100 for £1.00).",
+                    "example": "12300"
                 }
             },
             "required": [
@@ -19516,18 +19587,21 @@ module.exports={
                 },
                 "expirationDate": {
                     "type": "string",
-                    "description": "Expiration date in YYYY-MM format as written on card.<br/>Example: <code>2020-04</code>",
+                    "description": "Expiration date in YYYY-MM format as written on card.",
+                    "example": "2020-04",
                     "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
                     "minLength": 7,
                     "maxLength": 7
                 },
                 "name": {
                     "type": "string",
-                    "description": "Cardholder's name as written on card."
+                    "description": "Cardholder's name as written on card.",
+                    "example": "Alice Smith"
                 },
                 "cvv": {
                     "type": "string",
                     "description": "Security code written on card, 3- or 4-digit number.",
+                    "example": "123",
                     "minLength": 3,
                     "maxLength": 4
                 }
@@ -19543,12 +19617,14 @@ module.exports={
         "PanToken": {
             "type": "string",
             "description": "An encrypted PAN token, obtained from Automation Cloud Vault. Please consult \"Vaulting Payment Card Information\" section of Documentation for information on how to acquire it.",
+            "example": "5d41402abc4b2a76b9719d911017c592",
             "minLength": 20
         },
         "CountryCode": {
             "type": "string",
             "title": "ISO 3166-1 alpha-2 Country Code",
             "description": "ISO 3166-1 alpha-2 code representing the country. United Kingdom is officially assigned the alpha-2 code gb rather than uk. Lowercase.",
+            "example": "us",
             "minLength": 2,
             "maxLength": 2,
             "enum": [
@@ -19805,7 +19881,8 @@ module.exports={
         },
         "CountrySubdivision": {
             "type": "string",
-            "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased."
+            "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased.",
+            "example": "ca"
         },
         "CurrencyCode": {
             "type": "string",
@@ -19813,6 +19890,7 @@ module.exports={
             "maxLength": 3,
             "title": "ISO 4217 Currency Code",
             "description": "ISO 4217 3-letter code representing the currency. Lowercase.",
+            "example": "usd",
             "enum": [
                 "all",
                 "afn",
@@ -19928,7 +20006,7 @@ module.exports={
     }
 }
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -19940,7 +20018,7 @@ module.exports = {
     }
 };
 
-},{"./flight-booking":74,"./generic":75,"./internal":77}],77:[function(require,module,exports){
+},{"./flight-booking":75,"./generic":76,"./internal":78}],78:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -19985,7 +20063,7 @@ module.exports={
     }
 }
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -19996,7 +20074,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');

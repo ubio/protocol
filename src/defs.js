@@ -1,6 +1,7 @@
 'use strict';
 
 const util = require('./util');
+const createExample = require('./example');
 
 class Def {
 
@@ -54,6 +55,10 @@ class Def {
                 },
             ],
         };
+    }
+
+    createExample() {
+        return createExample(this.domain.protocol, this.spec);
     }
 
 }
