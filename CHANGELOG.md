@@ -1,9 +1,13 @@
 ## [UNRELEASED]
 
 
+## [0.15.1] - 2017-12-7
+
+- Add data examples
+
 ## [0.15.0] - 2017-12-7
 
-- Staged inputs/outputs are now objects, not arrays.
+- Staged inputs/outputs are now objects, not arrays
 
 ## [0.14.0] - 2017-12-6
 
