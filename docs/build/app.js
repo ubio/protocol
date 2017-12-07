@@ -19175,7 +19175,7 @@ module.exports={
                     "type": "string",
                     "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
                     "description": "Date and time of flight (airport local time).",
-                    "example": "2018-02-02"
+                    "example": "2018-02-02 19:40"
                 },
                 "airportCode": {
                     "type": "string",
