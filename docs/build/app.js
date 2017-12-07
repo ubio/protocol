@@ -18818,6 +18818,11 @@ class CustomDef extends Def {
         return this.spec.staged || false;
     }
 
+    createExample() {
+        const typeDef = this.getTypeDef();
+        return typeDef ? typeDef.createExample() : null;
+    }
+
 }
 
 class InputDef extends CustomDef {
@@ -19302,7 +19307,7 @@ module.exports={
                     "description": "An array of <code>seatId</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
                     "minItems": 1,
                     "maxItems": 9,
-                    "items": { "type": "string" }
+                    "items": { "$ref": "#/domains/FlightBooking/types/SeatId" }
                 }
             },
             "required": [
@@ -19330,15 +19335,16 @@ module.exports={
             ],
             "additionalProperties": false
         },
+        "SeatId": {
+            "type": "string",
+            "description": "Seat number as extracted from website.",
+            "example": "07A"
+        },
         "Seat": {
             "type": "object",
             "description": "Seat metadata.",
             "properties": {
-                "seatId": {
-                    "type": "string",
-                    "description": "Seat number as extracted from website.",
-                    "example": "07A"
-                },
+                "seatId": { "$ref": "#/domains/FlightBooking/types/SeatId" },
                 "available": {
                     "type": "boolean",
                     "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."

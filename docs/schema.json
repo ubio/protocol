@@ -908,7 +908,7 @@
               "minItems": 1,
               "maxItems": 9,
               "items": {
-                "type": "string"
+                "$ref": "#/domains/FlightBooking/types/SeatId"
               }
             }
           },
@@ -939,14 +939,17 @@
           ],
           "additionalProperties": false
         },
+        "SeatId": {
+          "type": "string",
+          "description": "Seat number as extracted from website.",
+          "example": "07A"
+        },
         "Seat": {
           "type": "object",
           "description": "Seat metadata.",
           "properties": {
             "seatId": {
-              "type": "string",
-              "description": "Seat number as extracted from website.",
-              "example": "07A"
+              "$ref": "#/domains/FlightBooking/types/SeatId"
             },
             "available": {
               "type": "boolean",

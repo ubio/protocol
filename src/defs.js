@@ -93,6 +93,11 @@ class CustomDef extends Def {
         return this.spec.staged || false;
     }
 
+    createExample() {
+        const typeDef = this.getTypeDef();
+        return typeDef ? typeDef.createExample() : null;
+    }
+
 }
 
 class InputDef extends CustomDef {
