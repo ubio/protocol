@@ -9,6 +9,8 @@
     --ui-secondary--inverse: #fff;
     --ui-muted: #a6a6a0;
     --ui-muted--inverse: #fff;
+    --ui-warning: #FFE088;
+    --ui-warning--inverse: #765;
     --ui-failure: #ff5a5f;
     --ui-failure--inverse: #fff;
 
@@ -68,4 +70,20 @@ code {
 .container {
     margin: 0 auto;
     max-width: 960px;
+}
+
+.tag {
+    margin: 2px;
+    padding: 0 .25em;
+    border-radius: var(--border-radius);
+}
+
+.tag--primary {
+    background: var(--ui-primary);
+    color: var(--ui-primary--inverse);
+}
+
+.tag--warning {
+    background: var(--ui-warning);
+    color: var(--ui-warning--inverse);
 }

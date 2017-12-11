@@ -658,15 +658,18 @@
         },
         "selectedOutboundFare": {
           "typeRef": "#/domains/FlightBooking/types/Fare",
-          "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+          "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available.",
+          "experimental": true
         },
         "selectedInboundFare": {
           "typeRef": "#/domains/FlightBooking/types/Fare",
-          "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+          "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available.",
+          "experimental": true
         },
         "selectedSeats": {
           "typeRef": "#/domains/FlightBooking/types/SelectedSeatsStage",
-          "staged": true
+          "staged": true,
+          "experimental": true
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
@@ -679,15 +682,18 @@
       "outputs": {
         "availableOutboundFares": {
           "typeRef": "#/domains/FlightBooking/types/AvailableFares",
-          "description": "Emitted when actual outbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
+          "description": "Emitted when actual outbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided.",
+          "experimental": true
         },
         "availableInboundFares": {
           "typeRef": "#/domains/FlightBooking/types/AvailableFares",
-          "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
+          "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided.",
+          "experimental": true
         },
         "availableSeats": {
           "typeRef": "#/domains/FlightBooking/types/AvailableSeatsStage",
-          "staged": true
+          "staged": true,
+          "experimental": true
         },
         "finalPrice": {
           "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -705,7 +711,7 @@
           "properties": {
             "seatSelection": {
               "type": "boolean",
-              "description": "If <code>true</code>, automation will request <code>selectedSeatIds</code> for seat selection.",
+              "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
               "default": false
             }
           }
@@ -868,6 +874,7 @@
         },
         "AvailableFares": {
           "type": "array",
+          "experimental": true,
           "description": "A list of available fares found on the website.",
           "minItems": 1,
           "maxItems": 9,
@@ -877,6 +884,7 @@
         },
         "Fare": {
           "type": "object",
+          "experimental": true,
           "description": "Flight fare information.",
           "additionalProperties": false,
           "properties": {
@@ -900,25 +908,27 @@
         },
         "SelectedSeatsStage": {
           "type": "object",
+          "experimental": true,
           "description": "Seat selection stage. Each stage corresponds to a particular flight leg where seat selection is supported. Client provides each stage separately after reading corresponding seat availability information from <code>availableSeats</code> output.",
           "properties": {
-            "seatIds": {
+            "seatNumbers": {
               "type": "array",
-              "description": "An array of <code>seatId</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
+              "description": "An array of <code>seatNumber</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
               "minItems": 1,
               "maxItems": 9,
               "items": {
-                "$ref": "#/domains/FlightBooking/types/SeatId"
+                "$ref": "#/domains/FlightBooking/types/SeatNumber"
               }
             }
           },
           "required": [
-            "seatIds"
+            "seatNumbers"
           ],
           "additionalProperties": false
         },
         "AvailableSeatsStage": {
           "type": "object",
+          "experimental": true,
           "description": "Seat availability information for each seat selection stage. Each stage corresponds to a particular flight leg where seat selection is supported. Each stage is emitted separately when automation reaches corresponding seat selection screen.",
           "properties": {
             "leg": {
@@ -939,17 +949,19 @@
           ],
           "additionalProperties": false
         },
-        "SeatId": {
+        "SeatNumber": {
           "type": "string",
+          "experimental": true,
           "description": "Seat number as extracted from website.",
-          "example": "07A"
+          "example": "7A"
         },
         "Seat": {
           "type": "object",
+          "experimental": true,
           "description": "Seat metadata.",
           "properties": {
-            "seatId": {
-              "$ref": "#/domains/FlightBooking/types/SeatId"
+            "seatNumber": {
+              "$ref": "#/domains/FlightBooking/types/SeatNumber"
             },
             "available": {
               "type": "boolean",
@@ -965,7 +977,7 @@
             }
           },
           "required": [
-            "seatId",
+            "seatNumber",
             "available"
           ],
           "additionalProperties": false

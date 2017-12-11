@@ -11,9 +11,13 @@
                 class="oneliner__link"
                 @click="permalink"/>
             <div class="oneliner__details">
-                <span class="oneliner__staged"
+                <span class="tag tag--primary"
                     v-if="def.spec.staged">
                     staged
+                </span>
+                <span class="tag tag--warning"
+                    v-if="def.spec.experimental">
+                    experimental
                 </span>
             </div>
         </div>
@@ -108,10 +112,4 @@ module.exports = {
     visibility: visible;
 }
 
-.oneliner__staged {
-    padding: 0 .25em;
-    background: var(--ui-primary);
-    color: var(--ui-primary--inverse);
-    border-radius: var(--border-radius);
-}
 </style>

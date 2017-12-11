@@ -1,8 +1,9 @@
 ## [UNRELEASED]
 
+- Change `SeatId` to `SeatNumber`, amend references
+- Add `experimental` label
 
 ## [0.15.3] - 2017-12-7
-
 
 - Add `SeatId` type
 - Add data examples
