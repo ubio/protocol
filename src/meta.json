@@ -68,6 +68,9 @@
                 "default": {},
                 "staged": {
                     "type": "boolean"
+                },
+                "experimental": {
+                    "type": "boolean"
                 }
             },
             "required": ["typeRef"],
@@ -78,6 +81,9 @@
                 "typeRef": { "$ref": "#/definitions/TypeRef" },
                 "description": { "type": "string" },
                 "staged": {
+                    "type": "boolean"
+                },
+                "experimental": {
                     "type": "boolean"
                 }
             },
