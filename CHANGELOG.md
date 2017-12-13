@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [0.17.0] - 2017-12-13
+
 - `PassengerId` -> `PassengerDocument`, expand definitions.
 
 ## [0.16.0] - 2017-12-12
