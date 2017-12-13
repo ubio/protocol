@@ -19223,7 +19223,7 @@ module.exports={
                 },
                 "firstName": {
                     "type": "string",
-                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
                     "example": "Bob"
                 },
                 "middleName": {
@@ -19233,7 +19233,7 @@ module.exports={
                 },
                 "lastName": {
                     "type": "string",
-                    "description": "Last name or surname, as specified in ID.",
+                    "description": "Last name or surname, as specified in passport or travel document.",
                     "example": "Smith"
                 },
                 "dateOfBirth": {
@@ -19248,7 +19248,7 @@ module.exports={
                     "maximum": 3,
                     "default": 0
                 },
-                "id": { "$ref": "#/domains/FlightBooking/types/PassengerId" }
+                "document": { "$ref": "#/domains/FlightBooking/types/PassengerDocument" }
             },
             "required": [
                 "title",
@@ -19258,23 +19258,34 @@ module.exports={
                 "addAdditionalLuggage"
             ]
         },
-        "PassengerId": {
+        "PassengerDocument": {
             "type": "object",
             "experimental": true,
-            "description": "Passenger ID (passport or other travel document).",
+            "description": "Passenger ID (passport or other travel document). Automation may fail if this information is required by website, but not provided by Client.",
             "properties": {
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Document type.",
+                    "enum": ["passport"]
                 },
                 "number": {
-                    "type": "string"
-                },
-                "expDate": {
                     "type": "string",
-                    "format": "date"
+                    "description": "Document number.",
+                    "example": "75 127001"
                 },
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "issueCountryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Code of country where the document was issued."
                 }
             }
         },
