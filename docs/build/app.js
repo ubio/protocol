@@ -37081,7 +37081,7 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".schema-
 ;(function(){
 
 
-const protocol = require('../../src');
+const { protocol } = require('../../src');
 
 module.exports = {
 
@@ -37216,7 +37216,7 @@ module.exports = new VueRouter({
 
 
 const util = require('../util');
-const protocol = require('../../src');
+const { protocol } = require('../../src');
 
 module.exports = {
 
@@ -37320,7 +37320,7 @@ var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar
 ;(function(){
 
 
-const protocol = require('../../src');
+const { protocol } = require('../../src');
 
 module.exports = {
 

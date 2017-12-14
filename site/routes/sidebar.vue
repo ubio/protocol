@@ -8,7 +8,7 @@
 </template>
 
 <script>
-const protocol = require('../../src');
+const { protocol } = require('../../src');
 
 module.exports = {
 
