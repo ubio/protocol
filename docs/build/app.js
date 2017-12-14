@@ -38926,7 +38926,8 @@ module.exports={
             "staged": true
         },
         "finalPrice": {
-            "typeRef": "#/domains/Generic/types/PriceConsent"
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Used by test-price-consent service."
         }
     },
     "types": {
