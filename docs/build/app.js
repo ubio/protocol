@@ -37844,9 +37844,8 @@ module.exports = class ProtocolProvider {
 
     async fetchLatest() {
         const stale = this.latestFetchedAt + this.ttl < Date.now();
-        const cached = this.latest && !stale;
-        if (cached) {
-            return cached;
+        if (this.latest && !stale) {
+            return this.latest;
         }
         const schema = await this.fetchSchema('master');
         const protocol = new Protocol(schema);
