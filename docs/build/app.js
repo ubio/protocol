@@ -38899,10 +38899,10 @@ module.exports={
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Used by most test services."
         },
-        "selectedValue": {
+        "stagedInput": {
             "typeRef": "#/domains/Internal/types/Value",
-            "staged": true,
-            "description": "Used by test-stages service."
+            "description": "Used by test-stages service.",
+            "staged": true
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
@@ -38920,8 +38920,9 @@ module.exports={
         "value": {
             "typeRef": "#/domains/Internal/types/Value"
         },
-        "availableValues": {
-            "typeRef": "#/domains/Internal/types/Array",
+        "stagedOutput": {
+            "typeRef": "#/domains/Internal/types/Value",
+            "description": "Used by test-stages service.",
             "staged": true
         },
         "finalPrice": {
