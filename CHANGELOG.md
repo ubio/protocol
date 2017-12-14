@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Add more defs to `Internal`
 - Fix static website issues
 - Fix `fetchLatest` when cached
 - Fix autorefresh bug

@@ -4,30 +4,56 @@
     "inputs": {
         "options": {
             "typeRef": "#/domains/Internal/types/Options",
+            "description": "Used by service-api tests.",
             "default": {}
         },
         "url": {
-            "typeRef": "#/domains/Generic/types/URL"
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Used by most test services."
+        },
+        "selectedValue": {
+            "typeRef": "#/domains/Internal/types/Value",
+            "staged": true,
+            "description": "Used by test-stages service."
         },
         "finalPriceConsent": {
-            "typeRef": "#/domains/Generic/types/PriceConsent"
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Used by test-price-consent service."
         },
         "panToken": {
-            "typeRef": "#/domains/Generic/types/PanToken"
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "description": "Used by test-pan-replacement service."
         }
     },
     "outputs": {
         "object": {
             "typeRef": "#/domains/Internal/types/Object"
         },
+        "value": {
+            "typeRef": "#/domains/Internal/types/Value"
+        },
+        "availableValues": {
+            "typeRef": "#/domains/Internal/types/Array",
+            "staged": true
+        },
         "finalPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent"
         }
     },
     "types": {
+        "Value": {
+            "description": "An arbitrary value."
+        },
         "Object": {
             "type": "object",
             "description": "An object of arbitrary structure."
+        },
+        "Array": {
+            "type": "object",
+            "description": "An array of arbitrary values.",
+            "items": {
+                "$ref": "#/domains/Internal/types/Value"
+            }
         },
         "Options": {
             "type": "object",
