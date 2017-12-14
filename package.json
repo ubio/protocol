@@ -41,5 +41,8 @@
     "vue-router": "^3.0.1",
     "vueify": "^9.4.1",
     "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "node-fetch": "^1.7.3"
   }
 }
