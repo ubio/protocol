@@ -38930,6 +38930,14 @@ module.exports={
     },
     "types": {
         "Value": {
+            "type": [
+                "null",
+                "string",
+                "number",
+                "boolean",
+                "object",
+                "array"
+            ],
             "description": "An arbitrary value."
         },
         "Object": {
