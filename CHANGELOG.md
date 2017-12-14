@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [1.1.1] - 2017-12-14
+
 - Add more defs to `Internal`
 - Fix static website issues
 - Fix `fetchLatest` when cached
