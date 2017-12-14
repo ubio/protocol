@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [1.0.2] - 2017-12-14
+
 - Fix autorefresh bug
 
 ## [1.0.1] - 2017-12-14
