@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [1.0.3] - 2017-12-14
+
 - Fix `fetchLatest` when cached
 - Fix autorefresh bug
 - Change option names in `ProtocolProvider`
