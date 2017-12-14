@@ -37798,9 +37798,9 @@ const Protocol = require('./protocol');
 const fetch = require('node-fetch');
 
 const DEFAULT_OPTIONS = {
-    urlTemplate: 'https://raw.githubusercontent.com/universalbasket/protocol/{tag}/schema.json',
-    latestTtl: 3 * 60000,
-    autoRefreshInterval: 0
+    url: 'https://raw.githubusercontent.com/universalbasket/protocol/{tag}/schema.json',
+    ttl: 3 * 60000,
+    autoRefresh: false
 };
 
 module.exports = class ProtocolProvider {
@@ -37810,15 +37810,17 @@ module.exports = class ProtocolProvider {
         this.versionsCache = new Map(); // version -> protocol
         this.latest = null;
         this.latestFetchedAt = 0;
-        this.autoRefresh();
+        this.startAutoRefresh();
     }
 
-    autoRefresh() {
-        const interval = this.autoRefreshInterval;
-        if (!interval) {
+    startAutoRefresh() {
+        if (!this.autoRefresh) {
             return;
         }
-        const repeat = () => this.autoRefreshTimer = setTimeout(() => this.autoRefresh(), interval);
+        const interval = this.ttl;
+        const repeat = () => {
+            this.autoRefreshTimer = setTimeout(() => this.autoRefresh(), interval);
+        };
         this.fetchLatest().then(repeat, repeat);
     }
 
@@ -37841,7 +37843,7 @@ module.exports = class ProtocolProvider {
     }
 
     async fetchLatest() {
-        const stale = this.latestFetchedAt + this.latestTtl < Date.now();
+        const stale = this.latestFetchedAt + this.ttl < Date.now();
         const cached = this.latest && !stale;
         if (cached) {
             return cached;
@@ -37854,7 +37856,7 @@ module.exports = class ProtocolProvider {
     }
 
     async fetchSchema(tag) {
-        const url = this.urlTemplate.replace('{tag}', tag);
+        const url = this.url.replace('{tag}', tag);
         const res = await fetch(url);
         const { status } = res;
         if (res.status >= 400) {
