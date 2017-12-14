@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [1.0.0] - 2017-12-14
+
 - Implement `ProtocolProvider`
 - Change exports of main module
 

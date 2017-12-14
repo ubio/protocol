@@ -1,7 +1,7 @@
 'use strict';
 
 const Ajv = require('ajv');
-const protocol = require('../src');
+const { protocol } = require('../src');
 const expect = require('expect');
 const meta = require('../src/meta.json');
 

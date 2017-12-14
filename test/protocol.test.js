@@ -1,6 +1,6 @@
 'use strict';
 
-const protocol = require('../src');
+const { protocol } = require('../src');
 const expect = require('expect');
 
 describe('Protocol', () => {
