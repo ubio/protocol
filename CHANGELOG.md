@@ -1,6 +1,10 @@
 ## [UNRELEASED]
 
 
+## [1.2.1] - 2017-12-15
+
+- Add `guestAges` to `VacationRental`
+
 ## [1.2.0] - 2017-12-15
 
 - Add `VacationRental` domain
