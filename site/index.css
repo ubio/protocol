@@ -3,6 +3,8 @@
 
     --ui-default: #dee5e8;
     --ui-default--inverse: #555;
+    --ui-success: #4c9172;
+    --ui-success--inverse: #fff;
     --ui-primary: #628395;
     --ui-primary--inverse: #fff;
     --ui-secondary: #27b9cc;
@@ -76,6 +78,12 @@ code {
     margin: 2px;
     padding: 0 .25em;
     border-radius: var(--border-radius);
+    font-size: 12px;
+}
+
+.tag--success {
+    background: var(--ui-success);
+    color: var(--ui-success--inverse);
 }
 
 .tag--primary {

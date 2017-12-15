@@ -36903,7 +36903,7 @@ function extend() {
 }
 
 },{}],138:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-warning: #FFE088;\n    --ui-warning--inverse: #765;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --ui-highlight: hsl(210,100%,95%);\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n\n    --column__width: 200px;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}\n\n.tag {\n    margin: 2px;\n    padding: 0 .25em;\n    border-radius: var(--border-radius);\n}\n\n.tag--primary {\n    background: var(--ui-primary);\n    color: var(--ui-primary--inverse);\n}\n\n.tag--warning {\n    background: var(--ui-warning);\n    color: var(--ui-warning--inverse);\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-success: #4c9172;\n    --ui-success--inverse: #fff;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-warning: #FFE088;\n    --ui-warning--inverse: #765;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --ui-highlight: hsl(210,100%,95%);\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n\n    --column__width: 200px;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}\n\n.tag {\n    margin: 2px;\n    padding: 0 .25em;\n    border-radius: var(--border-radius);\n    font-size: 12px;\n}\n\n.tag--success {\n    background: var(--ui-success);\n    color: var(--ui-success--inverse);\n}\n\n.tag--primary {\n    background: var(--ui-primary);\n    color: var(--ui-primary--inverse);\n}\n\n.tag--warning {\n    background: var(--ui-warning);\n    color: var(--ui-warning--inverse);\n}")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
@@ -37018,7 +37018,7 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner",class:{
          'oneliner--active': _vm.active,
-     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.staged)?_c('span',{staticClass:"tag tag--primary"},[_vm._v("\n                staged\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n                experimental\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
+     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.initial)?_c('span',{staticClass:"tag tag--success"},[_vm._v("\n                initial\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.staged)?_c('span',{staticClass:"tag tag--primary"},[_vm._v("\n                staged\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n                experimental\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37894,24 +37894,30 @@ module.exports={
     "inputs": {
         "options": {
             "typeRef": "#/domains/FlightBooking/types/Options",
-            "default": {}
+            "default": {},
+            "initial": true
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "initial": true
         },
         "itinerary": {
-            "typeRef": "#/domains/FlightBooking/types/Itinerary"
+            "typeRef": "#/domains/FlightBooking/types/Itinerary",
+            "initial": true
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
-            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided."
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "initial": true
         },
         "passengers": {
-            "typeRef": "#/domains/FlightBooking/types/Passengers"
+            "typeRef": "#/domains/FlightBooking/types/Passengers",
+            "initial": true
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
+            "typeRef": "#/domains/Generic/types/Payment",
+            "initial": true
         },
         "selectedOutboundFare": {
             "typeRef": "#/domains/FlightBooking/types/Fare",

@@ -66,6 +66,9 @@
                 "typeRef": { "$ref": "#/definitions/TypeRef" },
                 "description": { "type": "string" },
                 "default": {},
+                "initial": {
+                    "type": "boolean"
+                },
                 "staged": {
                     "type": "boolean"
                 },

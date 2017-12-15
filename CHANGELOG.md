@@ -1,5 +1,7 @@
 ## [UNRELEASED]
 
+- Add `initial` labels to inputs which are expected to be provided
+  when the job is created
 
 ## [1.1.1] - 2017-12-14
 
