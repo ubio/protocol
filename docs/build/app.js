@@ -38983,6 +38983,10 @@ module.exports={
             "description": "Website entry point.",
             "initial": true
         },
+        "guestAges": {
+            "typeRef": "#/domains/VacationRental/types/GuestAges",
+            "initial": true
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
@@ -39010,6 +39014,15 @@ module.exports={
         }
     },
     "types": {
+        "GuestAges": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 200,
+                "example": 42
+            }
+        },
         "BookingConfirmation": {
             "type": "object",
             "description": "Information gathered on \"Booking success\" page.",
