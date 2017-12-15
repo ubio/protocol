@@ -1,0 +1,62 @@
+{
+    "description": "",
+    "experimental": true,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "initial": true
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/VacationRental/types/BookingConfirmation"
+        }
+    },
+    "types": {
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        }
+    }
+}

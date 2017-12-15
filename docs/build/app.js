@@ -37259,7 +37259,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),(_vm.domain.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            experimental\n        ")]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37578,7 +37578,7 @@ module.exports = {
     TypeDef
 };
 
-},{"./example":154,"./util":162}],153:[function(require,module,exports){
+},{"./example":154,"./util":163}],153:[function(require,module,exports){
 'use strict';
 
 const util = require('./util');
@@ -37672,7 +37672,7 @@ module.exports = class Domain {
 
 };
 
-},{"./defs":152,"./util":162}],154:[function(require,module,exports){
+},{"./defs":152,"./util":163}],154:[function(require,module,exports){
 'use strict';
 
 module.exports = function createExample(protocol, spec) {
@@ -37791,7 +37791,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":153,"./validator":163}],157:[function(require,module,exports){
+},{"./domain":153,"./validator":164}],157:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -38887,11 +38887,12 @@ module.exports = {
     domains: {
         Generic: require('./generic'),
         FlightBooking: require('./flight-booking'),
+        VacationRental: require('./vacation-rental'),
         Internal: require('./internal')
     }
 };
 
-},{"./flight-booking":158,"./generic":159,"./internal":161}],161:[function(require,module,exports){
+},{"./flight-booking":158,"./generic":159,"./internal":161,"./vacation-rental":162}],161:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -38973,6 +38974,70 @@ module.exports={
 }
 
 },{}],162:[function(require,module,exports){
+module.exports={
+    "description": "",
+    "experimental": true,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "initial": true
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/VacationRental/types/BookingConfirmation"
+        }
+    },
+    "types": {
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        }
+    }
+}
+
+},{}],163:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -38983,7 +39048,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');

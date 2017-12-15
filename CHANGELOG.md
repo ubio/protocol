@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Add `VacationRental` domain
 
 ## [1.1.2] - 2017-12-15
 

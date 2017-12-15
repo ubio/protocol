@@ -2,6 +2,10 @@
     <div class="domain">
         <div class="domain__intro">
             <h1>{{ domain.id }}</h1>
+            <span class="tag tag--warning"
+                v-if="domain.spec.experimental">
+                experimental
+            </span>
             <div class="domain__description"
                  v-html="domain.spec.description">
             </div>
