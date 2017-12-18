@@ -11,7 +11,7 @@ module.exports = function createExample(protocol, spec) {
                 return spec.example;
             }
             if (spec.enum) {
-                return spec.enum[Math.floor(Math.random() * spec.enum.length)];
+                return spec.enum[0];
             }
             return '';
         case 'integer':
