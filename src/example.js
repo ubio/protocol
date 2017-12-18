@@ -14,6 +14,8 @@ module.exports = function createExample(protocol, spec) {
                 return spec.enum[0];
             }
             return '';
+        case 'boolean':
+            return false;
         case 'integer':
         case 'number':
             if (spec.example) {

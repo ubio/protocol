@@ -13,6 +13,25 @@
 
         <template v-if="inputs.length">
             <h2 id="inputs">Inputs</h2>
+
+            <div class="block"
+                v-if="exampleInput">
+                <template v-if="!showExamples">
+                    <a @click="showExamples = true">
+                        Show example of initial input
+                    </a>
+                </template>
+                <template v-if="showExamples">
+                    <a @click="showExamples = false">
+                        Hide example
+                    </a>
+                    <pre v-text="JSON.stringify(exampleInput, null, 4)"></pre>
+                    <a @click="showExamples = false">
+                        Hide example
+                    </a>
+                </template>
+            </div>
+
             <oneliner
                 v-for="def of inputs"
                 :def="def"/>
@@ -50,6 +69,12 @@ module.exports = {
         domainId: { type: String, required: true },
     },
 
+    data() {
+        return {
+            showExamples: false,
+        };
+    },
+
     mounted() {
         util.scrollToHash(this.$route.hash);
     },
@@ -71,6 +96,19 @@ module.exports = {
         types() {
             const types = this.domain.getTypes();
             return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
+        },
+
+        exampleInput() {
+            if (!this.inputs.length) {
+                return null;
+            }
+            const obj = {};
+            for (const input of this.inputs) {
+                if (input.spec.initial) {
+                    obj[input.key] = input.createExample();
+                }
+            }
+            return obj;
         },
 
     },

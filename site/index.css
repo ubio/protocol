@@ -61,6 +61,7 @@ h2 {
 a {
     color: var(--ui-primary);
     text-decoration: none;
+    cursor: pointer;
 }
 
 code {
@@ -69,9 +70,21 @@ code {
     font: 14px/1.5 monospace;
 }
 
+pre {
+    margin: 0;
+    padding: 4px;
+    border-radius: var(--border-radius);
+    background: var(--ui-default);
+    font: 12px/1.5 monospace;
+}
+
 .container {
     margin: 0 auto;
     max-width: 960px;
+}
+
+.block {
+    margin: 1em 0;
 }
 
 .tag {

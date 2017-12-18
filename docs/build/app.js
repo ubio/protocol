@@ -36903,7 +36903,7 @@ function extend() {
 }
 
 },{}],138:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-success: #4c9172;\n    --ui-success--inverse: #fff;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-warning: #FFE088;\n    --ui-warning--inverse: #765;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --ui-highlight: hsl(210,100%,95%);\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n\n    --column__width: 200px;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}\n\n.tag {\n    margin: 2px;\n    padding: 0 .25em;\n    border-radius: var(--border-radius);\n    font-size: 12px;\n}\n\n.tag--success {\n    background: var(--ui-success);\n    color: var(--ui-success--inverse);\n}\n\n.tag--primary {\n    background: var(--ui-primary);\n    color: var(--ui-primary--inverse);\n}\n\n.tag--warning {\n    background: var(--ui-warning);\n    color: var(--ui-warning--inverse);\n}")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(":root {\n    --font-monospace: monospace;\n\n    --ui-default: #dee5e8;\n    --ui-default--inverse: #555;\n    --ui-success: #4c9172;\n    --ui-success--inverse: #fff;\n    --ui-primary: #628395;\n    --ui-primary--inverse: #fff;\n    --ui-secondary: #27b9cc;\n    --ui-secondary--inverse: #fff;\n    --ui-muted: #a6a6a0;\n    --ui-muted--inverse: #fff;\n    --ui-warning: #FFE088;\n    --ui-warning--inverse: #765;\n    --ui-failure: #ff5a5f;\n    --ui-failure--inverse: #fff;\n\n    --ui-highlight: hsl(210,100%,95%);\n\n    --border-radius: 2px;\n\n    --body__bg: #fff;\n    --body__color: #747c84;\n\n    --heading__color: #555;\n\n    --column__width: 200px;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    font: 14px/24px 'Libre Franklin', sans-serif;\n    background: var(--body__bg);\n    color: var(--body__color);\n}\n\nimg, form {\n    border: 0;\n    margin: 0;\n    padding: 0;\n}\n\nh1 {\n    margin: 1em 0;\n    font-size: 34px;\n    line-height: 40px;\n    font-weight: 300;\n    color: var(--heading__color);\n}\n\nh2 {\n    margin: 2.5em 0;\n    font-size: 24px;\n    line-height: 28px;\n    font-weight: normal;\n    color: var(--heading__color);\n}\n\na {\n    color: var(--ui-primary);\n    text-decoration: none;\n    cursor: pointer;\n}\n\ncode {\n    padding: 0 2px;\n    background: var(--ui-default);\n    font: 14px/1.5 monospace;\n}\n\npre {\n    margin: 0;\n    padding: 4px;\n    border-radius: var(--border-radius);\n    background: var(--ui-default);\n    font: 12px/1.5 monospace;\n}\n\n.container {\n    margin: 0 auto;\n    max-width: 960px;\n}\n\n.block {\n    margin: 1em 0;\n}\n\n.tag {\n    margin: 2px;\n    padding: 0 .25em;\n    border-radius: var(--border-radius);\n    font-size: 12px;\n}\n\n.tag--success {\n    background: var(--ui-success);\n    color: var(--ui-success--inverse);\n}\n\n.tag--primary {\n    background: var(--ui-primary);\n    color: var(--ui-primary--inverse);\n}\n\n.tag--warning {\n    background: var(--ui-warning);\n    color: var(--ui-warning--inverse);\n}")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('router-view')],1)}
@@ -37229,6 +37229,12 @@ module.exports = {
         domainId: { type: String, required: true }
     },
 
+    data() {
+        return {
+            showExamples: false
+        };
+    },
+
     mounted() {
         util.scrollToHash(this.$route.hash);
     },
@@ -37250,6 +37256,19 @@ module.exports = {
         types() {
             const types = this.domain.getTypes();
             return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
+        },
+
+        exampleInput() {
+            if (!this.inputs.length) {
+                return null;
+            }
+            const obj = {};
+            for (const input of this.inputs) {
+                if (input.spec.initial) {
+                    obj[input.key] = input.createExample();
+                }
+            }
+            return obj;
         }
 
     }
@@ -37259,7 +37278,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),(_vm.domain.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            experimental\n        ")]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),(_vm.domain.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            experimental\n        ")]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),(_vm.exampleInput)?_c('div',{staticClass:"block"},[(!_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = true}}},[_vm._v("\n                    Show example of initial input\n                ")])]:_vm._e(),_vm._v(" "),(_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")]),_vm._v(" "),_c('pre',{domProps:{"textContent":_vm._s(JSON.stringify(_vm.exampleInput, null, 4))}}),_vm._v(" "),_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")])]:_vm._e()],2):_vm._e(),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37689,6 +37708,8 @@ module.exports = function createExample(protocol, spec) {
                 return spec.enum[0];
             }
             return '';
+        case 'boolean':
+            return false;
         case 'integer':
         case 'number':
             if (spec.example) {
