@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [1.3.0] - 2017-12-18
+
 - Add cache busting for static content
 - Remove `Domain.prepareInputs` method
 
