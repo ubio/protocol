@@ -1,6 +1,5 @@
 'use strict';
 
-const util = require('./util');
 const { InputDef, OutputDef, TypeDef } = require('./defs');
 
 module.exports = class Domain {
@@ -37,32 +36,6 @@ module.exports = class Domain {
 
     getDef(key) {
         return this.defs.find(def => def.key === key);
-    }
-
-    async prepareInputs({
-        inputObject,
-        applyDefaults = false,
-    }) {
-        const clone = util.deepClone(inputObject);
-        const results = [];
-        // Apply defaults
-        if (applyDefaults) {
-            for (const inputDef of this.getInputs()) {
-                inputDef.applyDefault(clone);
-            }
-        }
-        for (const key of Object.keys(clone)) {
-            const data = clone[key];
-            const { valid, errors } = await this.validate(key, data);
-            const fields = {
-                key,
-                data,
-                valid,
-                errors,
-            };
-            results.push(fields);
-        }
-        return results;
     }
 
     _collectInputs() {

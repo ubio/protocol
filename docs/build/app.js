@@ -37600,7 +37600,6 @@ module.exports = {
 },{"./example":154,"./util":163}],153:[function(require,module,exports){
 'use strict';
 
-const util = require('./util');
 const { InputDef, OutputDef, TypeDef } = require('./defs');
 
 module.exports = class Domain {
@@ -37636,32 +37635,6 @@ module.exports = class Domain {
         return this.defs.find(def => def.key === key);
     }
 
-    async prepareInputs({
-        inputObject,
-        applyDefaults = false
-    }) {
-        const clone = util.deepClone(inputObject);
-        const results = [];
-        // Apply defaults
-        if (applyDefaults) {
-            for (const inputDef of this.getInputs()) {
-                inputDef.applyDefault(clone);
-            }
-        }
-        for (const key of Object.keys(clone)) {
-            const data = clone[key];
-            const { valid, errors } = await this.validate(key, data);
-            const fields = {
-                key,
-                data,
-                valid,
-                errors
-            };
-            results.push(fields);
-        }
-        return results;
-    }
-
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }
@@ -37691,7 +37664,7 @@ module.exports = class Domain {
 
 };
 
-},{"./defs":152,"./util":163}],154:[function(require,module,exports){
+},{"./defs":152}],154:[function(require,module,exports){
 'use strict';
 
 module.exports = function createExample(protocol, spec) {

@@ -12,6 +12,7 @@
     "serve": "ws",
     "build:js": "browserify site/ -o docs/build/app.js",
     "build:schema": "node ./build-schema.js",
+    "build:html-cache": "node ./build-html-cache.js",
     "watch:js": "watchify -p browserify-hmr site/ -o docs/build/app.js",
     "test": "mocha",
     "changelog": "node changelog.js",
