@@ -1,6 +1,11 @@
 ## [UNRELEASED]
 
 
+## [1.2.2] - 2017-12-18
+
+- Add example of initial input
+- Make examples deterministic (no random enum value)
+
 ## [1.2.1] - 2017-12-15
 
 - Add `guestAges` to `VacationRental`
