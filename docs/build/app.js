@@ -36914,9 +36914,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-435983a2", __vue__options__)
+    hotAPI.createRecord("data-v-3a814de9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-435983a2", __vue__options__)
+    hotAPI.reload("data-v-3a814de9", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],139:[function(require,module,exports){
@@ -36969,9 +36969,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2fc5366e", __vue__options__)
+    hotAPI.createRecord("data-v-0a99ee74", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2fc5366e", __vue__options__)
+    hotAPI.reload("data-v-0a99ee74", __vue__options__)
   }
 })()}
 },{"./prop.vue":141,"./schema-type.vue":142,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
@@ -37031,9 +37031,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d14c9182", __vue__options__)
+    hotAPI.createRecord("data-v-66f512f9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-d14c9182", __vue__options__)
+    hotAPI.reload("data-v-66f512f9", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
@@ -37076,9 +37076,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-69fdac4a", __vue__options__)
+    hotAPI.createRecord("data-v-2c8015f8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-69fdac4a", __vue__options__)
+    hotAPI.reload("data-v-2c8015f8", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
@@ -37131,9 +37131,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4a725e62", __vue__options__)
+    hotAPI.createRecord("data-v-4afe22d5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4a725e62", __vue__options__)
+    hotAPI.reload("data-v-4afe22d5", __vue__options__)
   }
 })()}
 },{"../../src":155,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
@@ -37179,9 +37179,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d12e8ec", __vue__options__)
+    hotAPI.createRecord("data-v-876978e0", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3d12e8ec", __vue__options__)
+    hotAPI.reload("data-v-876978e0", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],144:[function(require,module,exports){
@@ -37290,9 +37290,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70f4bbb7", __vue__options__)
+    hotAPI.createRecord("data-v-ff742a1e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-70f4bbb7", __vue__options__)
+    hotAPI.reload("data-v-ff742a1e", __vue__options__)
   }
 })()}
 },{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133}],146:[function(require,module,exports){
@@ -37305,9 +37305,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-505e3112", __vue__options__)
+    hotAPI.createRecord("data-v-5ac5e6cc", __vue__options__)
   } else {
-    hotAPI.reload("data-v-505e3112", __vue__options__)
+    hotAPI.reload("data-v-5ac5e6cc", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],147:[function(require,module,exports){
@@ -37334,9 +37334,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-611381c6", __vue__options__)
+    hotAPI.createRecord("data-v-42712352", __vue__options__)
   } else {
-    hotAPI.reload("data-v-611381c6", __vue__options__)
+    hotAPI.reload("data-v-42712352", __vue__options__)
   }
 })()}
 },{"./sidebar.vue":148,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],148:[function(require,module,exports){
@@ -37371,9 +37371,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dcdf760e", __vue__options__)
+    hotAPI.createRecord("data-v-6c64fcff", __vue__options__)
   } else {
-    hotAPI.reload("data-v-dcdf760e", __vue__options__)
+    hotAPI.reload("data-v-6c64fcff", __vue__options__)
   }
 })()}
 },{"../../src":155,"./sidebar__domain.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
@@ -37438,9 +37438,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f4ada9d", __vue__options__)
+    hotAPI.createRecord("data-v-7f822ca3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0f4ada9d", __vue__options__)
+    hotAPI.reload("data-v-7f822ca3", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
@@ -37602,7 +37602,7 @@ module.exports = {
     TypeDef
 };
 
-},{"./example":154,"./util":163}],153:[function(require,module,exports){
+},{"./example":154,"./util":164}],153:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef } = require('./defs');
@@ -37790,7 +37790,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":153,"./validator":164}],157:[function(require,module,exports){
+},{"./domain":153,"./validator":165}],157:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -37908,7 +37908,6 @@ module.exports={
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
-            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
             "initial": true
         },
         "passengers": {
@@ -38283,7 +38282,7 @@ module.exports={
         },
         "Account": {
             "type": "object",
-            "description": "Account information, typically required for automating user sign up / sign in flows.",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
             "properties": {
                 "email": {
                     "type": "string",
@@ -38905,11 +38904,12 @@ module.exports = {
         Generic: require('./generic'),
         FlightBooking: require('./flight-booking'),
         VacationRental: require('./vacation-rental'),
+        MotorInsurance: require('./motor-insurance'),
         Internal: require('./internal')
     }
 };
 
-},{"./flight-booking":158,"./generic":159,"./internal":161,"./vacation-rental":162}],161:[function(require,module,exports){
+},{"./flight-booking":158,"./generic":159,"./internal":161,"./motor-insurance":162,"./vacation-rental":163}],161:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -38994,6 +38994,157 @@ module.exports={
 module.exports={
     "description": "",
     "experimental": true,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "initial": true
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "options": {
+            "typeRef": "#/domains/MotorInsurance/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "legalCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "experimental": true
+        },
+        "breakdownCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "experimental": true
+        },
+        "personalInjuryCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "experimental": true
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "purchaseConfirmation": {
+            "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation"
+        },
+        "availableLegalCovers": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
+            "experimental": true
+        },
+        "availableBreakdownCovers": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
+            "experimental": true
+        },
+        "availablePersonalInjuryCovers": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
+            "experimental": true
+        }
+    },
+    "types": {
+        "PurchaseConfirmation": {
+            "type": "object",
+            "description": "Information gathered on the \"confirmation\" page.",
+            "properties": {
+                "purchaseReference": {
+                    "type": "string",
+                    "description": "Reference code grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The confirmation message.",
+                    "example": "Thank you for using UBIO Insurance. Your quote is ABC123 and purchase reference is DEF456."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the confirmation page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "purchaseReference"
+            ]
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features such as upsells and additional cover. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "experimental": true,
+            "properties": {
+                "legalCover": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "breakdownCover": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "personalInjuryCover": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "AvailableCovers": {
+            "type": "array",
+            "experimental": true,
+            "description": "A list of available cover options found on the page.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/MotorInsurance/types/Cover" }
+        },
+        "SelectedCover": {
+            "type": "object",
+            "oneOf": [
+                {
+                    "$ref": "#/domains/MotorInsurance/types/Cover"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "Cover": {
+            "type": "object",
+            "experimental": true,
+            "description": "Cover information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Cover marketing name as provided by the insurer.",
+                    "example": "European Plus"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
+            ]
+        }
+    }
+}
+
+},{}],163:[function(require,module,exports){
+module.exports={
+    "description": "",
+    "experimental": true,
     "private": false,
     "inputs": {
         "url": {
@@ -39007,7 +39158,6 @@ module.exports={
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
-            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
             "initial": true
         },
         "payment": {
@@ -39068,7 +39218,7 @@ module.exports={
     }
 }
 
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -39079,7 +39229,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');

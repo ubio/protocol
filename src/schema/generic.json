@@ -12,7 +12,7 @@
         },
         "Account": {
             "type": "object",
-            "description": "Account information, typically required for automating user sign up / sign in flows.",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
             "properties": {
                 "email": {
                     "type": "string",
