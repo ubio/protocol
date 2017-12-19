@@ -120,10 +120,10 @@
             "type": "object",
             "oneOf": [
                 {
-                    "typeRef": "#/domains/MotorInsurance/types/Cover"
+                    "$ref": "#/domains/MotorInsurance/types/Cover"
                 },
                 {
-                    "type": null
+                    "type": "null"
                 }
             ]
         },
