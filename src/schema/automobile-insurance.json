@@ -1,0 +1,139 @@
+{
+    "description": "",
+    "experimental": true,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "initial": true
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "options": {
+            "typeRef": "#/domains/AutomobileInsurance/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "legalCover": {
+            "typeRef": "#/domains/AutomobileInsurance/types/Cover",
+            "experimental": true
+        },
+        "breakdownCover": {
+            "typeRef": "#/domains/AutomobileInsurance/types/Cover",
+            "experimental": true
+        },
+        "personalInjuryCover": {
+            "typeRef": "#/domains/AutomobileInsurance/types/Cover",
+            "experimental": true
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "purchaseConfirmation": {
+            "typeRef": "#/domains/AutomobileInsurance/types/PurchaseConfirmation"
+        },
+        "availableLegalCovers": {
+            "typeRef": "#/domains/FlightBooking/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
+            "experimental": true
+        },
+        "availableBreakdownCovers": {
+            "typeRef": "#/domains/FlightBooking/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
+            "experimental": true
+        },
+        "availablePersonalInjuryCovers": {
+            "typeRef": "#/domains/FlightBooking/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
+            "experimental": true
+        }
+    },
+    "types": {
+        "PurchaseConfirmation": {
+            "type": "object",
+            "description": "Information gathered on the \"confirmation\" page.",
+            "properties": {
+                "purchaseReference": {
+                    "type": "string",
+                    "description": "Reference code grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The confirmation message.",
+                    "example": "Thank you for using UBIO Insurance. Your quote is ABC123 and purchase reference is DEF456."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the confirmation page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "purchaseReference"
+            ]
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features such as upsells and additional cover. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "experimental": true,
+            "properties": {
+                "legalCover": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "breakdownCover": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "personalInjuryCover": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "AvailableCovers": {
+            "type": "array",
+            "experimental": true,
+            "description": "A list of available cover options found on the page.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/AutomobileInsurance/types/Cover" }
+        },
+        "Cover": {
+            "type": "object",
+            "experimental": true,
+            "description": "Flight fare information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Cover marketing name as provided by the insurer.",
+                    "example": "European Plus"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
+            ]
+        }
+    }
+}
