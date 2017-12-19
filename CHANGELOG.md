@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [1.3.1] - 2017-12-19
+
 - Make sure `private` exists in all domains :/
 
 ## [1.3.0] - 2017-12-18
