@@ -16,6 +16,10 @@
                 v-if="def.spec.experimental">
                 experimental
             </span>
+            <span class="tag tag--warning"
+                v-if="loose">
+                allows additional properties
+            </span>
         </div>
 
         <div class="def__description"
@@ -57,6 +61,11 @@ module.exports = {
 
         active() {
             return this.$route.hash === '#' + this.def.key;
+        },
+
+        loose() {
+            const { additionalProperties, type } = this.def.spec;
+            return type === 'object' && additionalProperties !== false;
         },
 
     },

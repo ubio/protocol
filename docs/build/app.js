@@ -36939,6 +36939,11 @@ module.exports = {
 
         active() {
             return this.$route.hash === '#' + this.def.key;
+        },
+
+        loose() {
+            const { additionalProperties, type } = this.def.spec;
+            return type === 'object' && additionalProperties !== false;
         }
 
     },
@@ -36956,7 +36961,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.def.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            experimental\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.def.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            experimental\n        ")]):_vm._e(),_vm._v(" "),(_vm.loose)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            allows additional properties\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37885,6 +37890,7 @@ class RemoteProtocolFetchError extends Error {
 },{"./protocol":156,"node-fetch":82}],158:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+    "private": false,
     "inputs": {
         "options": {
             "typeRef": "#/domains/FlightBooking/types/Options",
@@ -37993,7 +37999,7 @@ module.exports={
                 "cabinClass",
                 "outbound"
             ],
-            "additionalProperties": true
+            "additionalProperties": false
         },
         "Flight": {
             "type": "object",
@@ -38005,7 +38011,8 @@ module.exports={
             "required": [
                 "origin",
                 "destination"
-            ]
+            ],
+            "additionalProperties": false
         },
         "CabinClass": {
             "type": "string",
@@ -38037,7 +38044,8 @@ module.exports={
             "required": [
                 "dateTime",
                 "airportCode"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Passengers": {
             "type": "array",
@@ -38093,7 +38101,8 @@ module.exports={
                 "lastName",
                 "dateOfBirth",
                 "addAdditionalLuggage"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PassengerDocument": {
             "type": "object",
@@ -38124,7 +38133,14 @@ module.exports={
                     "$ref": "#/domains/Generic/types/CountryCode",
                     "description": "Code of country where the document was issued."
                 }
-            }
+            },
+            "required": [
+                "type",
+                "number",
+                "expirationDate",
+                "issueCountryCode"
+            ],
+            "additionalProperties": false
         },
         "AvailableFares": {
             "type": "array",
@@ -38254,6 +38270,7 @@ module.exports={
 },{}],159:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
+    "private": false,
     "inputs": {},
     "outputs": {},
     "types": {
@@ -38291,7 +38308,8 @@ module.exports={
                 "email",
                 "phone",
                 "isExisting"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Person": {
             "type": "object",
@@ -38327,7 +38345,8 @@ module.exports={
                 "title",
                 "firstName",
                 "lastName"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Address": {
             "type": "object",
@@ -38367,7 +38386,8 @@ module.exports={
                 "postcode",
                 "countryCode",
                 "countrySubdivision"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Phone": {
             "type": "object",
@@ -38384,7 +38404,8 @@ module.exports={
             "required": [
                 "countryCode",
                 "number"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PriceConsent": {
             "type": "object",
@@ -38427,7 +38448,8 @@ module.exports={
                 "card",
                 "person",
                 "address"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PaymentCard": {
             "type": "object",
@@ -38478,7 +38500,8 @@ module.exports={
                 "expirationDate",
                 "name",
                 "cvv"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PanToken": {
             "type": "string",
@@ -39122,6 +39145,7 @@ module.exports={
 module.exports={
     "description": "",
     "experimental": true,
+    "private": false,
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
