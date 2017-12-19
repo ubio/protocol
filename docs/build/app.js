@@ -37885,6 +37885,7 @@ class RemoteProtocolFetchError extends Error {
 },{"./protocol":156,"node-fetch":82}],158:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+    "private": false,
     "inputs": {
         "options": {
             "typeRef": "#/domains/FlightBooking/types/Options",
@@ -38255,6 +38256,7 @@ module.exports={
 },{}],159:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
+    "private": false,
     "inputs": {},
     "outputs": {},
     "types": {
@@ -38971,6 +38973,7 @@ module.exports={
 module.exports={
     "description": "",
     "experimental": true,
+    "private": false,
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",

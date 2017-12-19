@@ -1,5 +1,6 @@
 {
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+    "private": false,
     "inputs": {
         "options": {
             "typeRef": "#/domains/FlightBooking/types/Options",

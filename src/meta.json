@@ -60,7 +60,8 @@
                 "description",
                 "inputs",
                 "outputs",
-                "types"
+                "types",
+                "private"
             ],
             "additionalProperties": false
         },
