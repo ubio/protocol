@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Add `additionalProperties: false` to most definitions, except for Options
 
 ## [1.3.1] - 2017-12-19
 

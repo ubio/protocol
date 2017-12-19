@@ -41,7 +41,8 @@
             "email",
             "phone",
             "isExisting"
-          ]
+          ],
+          "additionalProperties": false
         },
         "Person": {
           "type": "object",
@@ -77,7 +78,8 @@
             "title",
             "firstName",
             "lastName"
-          ]
+          ],
+          "additionalProperties": false
         },
         "Address": {
           "type": "object",
@@ -117,7 +119,8 @@
             "postcode",
             "countryCode",
             "countrySubdivision"
-          ]
+          ],
+          "additionalProperties": false
         },
         "Phone": {
           "type": "object",
@@ -136,7 +139,8 @@
           "required": [
             "countryCode",
             "number"
-          ]
+          ],
+          "additionalProperties": false
         },
         "PriceConsent": {
           "type": "object",
@@ -189,7 +193,8 @@
             "card",
             "person",
             "address"
-          ]
+          ],
+          "additionalProperties": false
         },
         "PaymentCard": {
           "type": "object",
@@ -240,7 +245,8 @@
             "expirationDate",
             "name",
             "cvv"
-          ]
+          ],
+          "additionalProperties": false
         },
         "PanToken": {
           "type": "string",
@@ -745,7 +751,7 @@
             "cabinClass",
             "outbound"
           ],
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "Flight": {
           "type": "object",
@@ -761,7 +767,8 @@
           "required": [
             "origin",
             "destination"
-          ]
+          ],
+          "additionalProperties": false
         },
         "CabinClass": {
           "type": "string",
@@ -798,7 +805,8 @@
           "required": [
             "dateTime",
             "airportCode"
-          ]
+          ],
+          "additionalProperties": false
         },
         "Passengers": {
           "type": "array",
@@ -858,7 +866,8 @@
             "lastName",
             "dateOfBirth",
             "addAdditionalLuggage"
-          ]
+          ],
+          "additionalProperties": false
         },
         "PassengerDocument": {
           "type": "object",
@@ -891,7 +900,14 @@
               "$ref": "#/domains/Generic/types/CountryCode",
               "description": "Code of country where the document was issued."
             }
-          }
+          },
+          "required": [
+            "type",
+            "number",
+            "expirationDate",
+            "issueCountryCode"
+          ],
+          "additionalProperties": false
         },
         "AvailableFares": {
           "type": "array",

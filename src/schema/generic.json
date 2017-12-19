@@ -38,7 +38,8 @@
                 "email",
                 "phone",
                 "isExisting"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Person": {
             "type": "object",
@@ -74,7 +75,8 @@
                 "title",
                 "firstName",
                 "lastName"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Address": {
             "type": "object",
@@ -114,7 +116,8 @@
                 "postcode",
                 "countryCode",
                 "countrySubdivision"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Phone": {
             "type": "object",
@@ -131,7 +134,8 @@
             "required": [
                 "countryCode",
                 "number"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PriceConsent": {
             "type": "object",
@@ -174,7 +178,8 @@
                 "card",
                 "person",
                 "address"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PaymentCard": {
             "type": "object",
@@ -225,7 +230,8 @@
                 "expirationDate",
                 "name",
                 "cvv"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PanToken": {
             "type": "string",
