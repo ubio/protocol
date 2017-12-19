@@ -24,20 +24,20 @@
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "options": {
-            "typeRef": "#/domains/AutomobileInsurance/types/Options",
+            "typeRef": "#/domains/MotorInsurance/types/Options",
             "default": {},
             "initial": true
         },
         "legalCover": {
-            "typeRef": "#/domains/AutomobileInsurance/types/Cover",
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
             "experimental": true
         },
         "breakdownCover": {
-            "typeRef": "#/domains/AutomobileInsurance/types/Cover",
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
             "experimental": true
         },
         "personalInjuryCover": {
-            "typeRef": "#/domains/AutomobileInsurance/types/Cover",
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
             "experimental": true
         }
     },
@@ -47,20 +47,20 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "purchaseConfirmation": {
-            "typeRef": "#/domains/AutomobileInsurance/types/PurchaseConfirmation"
+            "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation"
         },
         "availableLegalCovers": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
             "experimental": true
         },
         "availableBreakdownCovers": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
             "experimental": true
         },
         "availablePersonalInjuryCovers": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
             "experimental": true
         }
@@ -115,12 +115,23 @@
             "description": "A list of available cover options found on the page.",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/AutomobileInsurance/types/Cover" }
+            "items": { "$ref": "#/domains/MotorInsurance/types/Cover" }
+        },
+        "SelectedCover": {
+            "type": "object",
+            "oneOf": [
+                {
+                    "typeRef": "#/domains/MotorInsurance/types/Cover"
+                },
+                {
+                    "type": null
+                }
+            ]
         },
         "Cover": {
             "type": "object",
             "experimental": true,
-            "description": "Flight fare information.",
+            "description": "Cover information.",
             "additionalProperties": false,
             "properties": {
                 "name": {

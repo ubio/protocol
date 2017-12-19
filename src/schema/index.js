@@ -6,7 +6,7 @@ module.exports = {
         Generic: require('./generic'),
         FlightBooking: require('./flight-booking'),
         VacationRental: require('./vacation-rental'),
-        AutomobileInsurance: require('./automobile-insurance'),
+        MotorInsurance: require('./motor-insurance'),
         Internal: require('./internal'),
     },
 };
