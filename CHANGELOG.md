@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [1.5.0] - 2017-12-20
+
 - Add `MotorInsurance` domain
 - Remove `experimental` flags
 
