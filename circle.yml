@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/node:8.4
+    steps:
+      - checkout
+      - run:
+          name: yarn install
+          command: yarn install
+      - run:
+          name: yarn run check
+          command: yarn run check
+      - run:
+          name: yarn test
+          command: yarn test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
