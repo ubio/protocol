@@ -1,6 +1,6 @@
 {
     "description": "",
-    "experimental": true,
+    "private": false,
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
@@ -28,16 +28,13 @@
             "initial": true
         },
         "legalCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-            "experimental": true
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         },
         "breakdownCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-            "experimental": true
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         },
         "personalInjuryCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-            "experimental": true
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         }
     },
     "outputs": {
@@ -50,18 +47,15 @@
         },
         "availableLegalCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
-            "experimental": true
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableBreakdownCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
-            "experimental": true
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availablePersonalInjuryCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
-            "experimental": true
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         }
     },
     "types": {
@@ -92,7 +86,6 @@
         "Options": {
             "type": "object",
             "description": "Flags for enabling optional automation features such as upsells and additional cover. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
-            "experimental": true,
             "properties": {
                 "legalCover": {
                     "type": "boolean",
@@ -110,7 +103,6 @@
         },
         "AvailableCovers": {
             "type": "array",
-            "experimental": true,
             "description": "A list of available cover options found on the page.",
             "minItems": 1,
             "maxItems": 9,
@@ -129,7 +121,6 @@
         },
         "Cover": {
             "type": "object",
-            "experimental": true,
             "description": "Cover information.",
             "additionalProperties": false,
             "properties": {

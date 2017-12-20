@@ -1,5 +1,7 @@
 ## [UNRELEASED]
 
+- Add `MotorInsurance` domain
+- Remove `experimental` flags
 
 ## [1.4.0] - 2017-12-19
 
@@ -52,7 +54,6 @@
 ## [0.16.0] - 2017-12-12
 
 - Change `SeatId` to `SeatNumber`, amend references
-- Add `experimental` label
 
 ## [0.15.3] - 2017-12-7
 

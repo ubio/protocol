@@ -36914,9 +36914,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3a814de9", __vue__options__)
+    hotAPI.createRecord("data-v-435983a2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3a814de9", __vue__options__)
+    hotAPI.reload("data-v-435983a2", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],139:[function(require,module,exports){
@@ -36961,7 +36961,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.def.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            experimental\n        ")]):_vm._e(),_vm._v(" "),(_vm.loose)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            allows additional properties\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.loose)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            allows additional properties\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -36969,9 +36969,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a99ee74", __vue__options__)
+    hotAPI.createRecord("data-v-2fc5366e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0a99ee74", __vue__options__)
+    hotAPI.reload("data-v-2fc5366e", __vue__options__)
   }
 })()}
 },{"./prop.vue":141,"./schema-type.vue":142,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
@@ -37023,7 +37023,7 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner",class:{
          'oneliner--active': _vm.active,
-     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.initial)?_c('span',{staticClass:"tag tag--success"},[_vm._v("\n                initial\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.staged)?_c('span',{staticClass:"tag tag--primary"},[_vm._v("\n                staged\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n                experimental\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
+     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.initial)?_c('span',{staticClass:"tag tag--success"},[_vm._v("\n                initial\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.staged)?_c('span',{staticClass:"tag tag--primary"},[_vm._v("\n                staged\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37031,9 +37031,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-66f512f9", __vue__options__)
+    hotAPI.createRecord("data-v-d14c9182", __vue__options__)
   } else {
-    hotAPI.reload("data-v-66f512f9", __vue__options__)
+    hotAPI.reload("data-v-d14c9182", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
@@ -37076,9 +37076,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2c8015f8", __vue__options__)
+    hotAPI.createRecord("data-v-69fdac4a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2c8015f8", __vue__options__)
+    hotAPI.reload("data-v-69fdac4a", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
@@ -37131,9 +37131,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4afe22d5", __vue__options__)
+    hotAPI.createRecord("data-v-4a725e62", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4afe22d5", __vue__options__)
+    hotAPI.reload("data-v-4a725e62", __vue__options__)
   }
 })()}
 },{"../../src":155,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
@@ -37179,9 +37179,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-876978e0", __vue__options__)
+    hotAPI.createRecord("data-v-3d12e8ec", __vue__options__)
   } else {
-    hotAPI.reload("data-v-876978e0", __vue__options__)
+    hotAPI.reload("data-v-3d12e8ec", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],144:[function(require,module,exports){
@@ -37283,16 +37283,16 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),(_vm.domain.spec.experimental)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            experimental\n        ")]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),(_vm.exampleInput)?_c('div',{staticClass:"block"},[(!_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = true}}},[_vm._v("\n                    Show example of initial input\n                ")])]:_vm._e(),_vm._v(" "),(_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")]),_vm._v(" "),_c('pre',{domProps:{"textContent":_vm._s(JSON.stringify(_vm.exampleInput, null, 4))}}),_vm._v(" "),_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")])]:_vm._e()],2):_vm._e(),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),(_vm.exampleInput)?_c('div',{staticClass:"block"},[(!_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = true}}},[_vm._v("\n                    Show example of initial input\n                ")])]:_vm._e(),_vm._v(" "),(_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")]),_vm._v(" "),_c('pre',{domProps:{"textContent":_vm._s(JSON.stringify(_vm.exampleInput, null, 4))}}),_vm._v(" "),_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")])]:_vm._e()],2):_vm._e(),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ff742a1e", __vue__options__)
+    hotAPI.createRecord("data-v-70f4bbb7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-ff742a1e", __vue__options__)
+    hotAPI.reload("data-v-70f4bbb7", __vue__options__)
   }
 })()}
 },{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133}],146:[function(require,module,exports){
@@ -37305,9 +37305,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5ac5e6cc", __vue__options__)
+    hotAPI.createRecord("data-v-505e3112", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5ac5e6cc", __vue__options__)
+    hotAPI.reload("data-v-505e3112", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],147:[function(require,module,exports){
@@ -37334,9 +37334,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-42712352", __vue__options__)
+    hotAPI.createRecord("data-v-611381c6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-42712352", __vue__options__)
+    hotAPI.reload("data-v-611381c6", __vue__options__)
   }
 })()}
 },{"./sidebar.vue":148,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],148:[function(require,module,exports){
@@ -37371,9 +37371,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6c64fcff", __vue__options__)
+    hotAPI.createRecord("data-v-dcdf760e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6c64fcff", __vue__options__)
+    hotAPI.reload("data-v-dcdf760e", __vue__options__)
   }
 })()}
 },{"../../src":155,"./sidebar__domain.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
@@ -37438,9 +37438,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7f822ca3", __vue__options__)
+    hotAPI.createRecord("data-v-0f4ada9d", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7f822ca3", __vue__options__)
+    hotAPI.reload("data-v-0f4ada9d", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
@@ -37920,18 +37920,15 @@ module.exports={
         },
         "selectedOutboundFare": {
             "typeRef": "#/domains/FlightBooking/types/Fare",
-            "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available.",
-            "experimental": true
+            "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
         "selectedInboundFare": {
             "typeRef": "#/domains/FlightBooking/types/Fare",
-            "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available.",
-            "experimental": true
+            "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
         },
         "selectedSeats": {
             "typeRef": "#/domains/FlightBooking/types/SelectedSeatsStage",
-            "staged": true,
-            "experimental": true
+            "staged": true
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -37944,18 +37941,15 @@ module.exports={
     "outputs": {
         "availableOutboundFares": {
             "typeRef": "#/domains/FlightBooking/types/AvailableFares",
-            "description": "Emitted when actual outbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided.",
-            "experimental": true
+            "description": "Emitted when actual outbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
         "availableInboundFares": {
             "typeRef": "#/domains/FlightBooking/types/AvailableFares",
-            "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided.",
-            "experimental": true
+            "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
         "availableSeats": {
             "typeRef": "#/domains/FlightBooking/types/AvailableSeatsStage",
-            "staged": true,
-            "experimental": true
+            "staged": true
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -37969,7 +37963,6 @@ module.exports={
         "Options": {
             "type": "object",
             "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
-            "experimental": true,
             "properties": {
                 "seatSelection": {
                     "type": "boolean",
@@ -38106,7 +38099,6 @@ module.exports={
         },
         "PassengerDocument": {
             "type": "object",
-            "experimental": true,
             "description": "Passenger ID (passport or other travel document). Automation may fail if this information is required by website, but not provided by Client.",
             "properties": {
                 "type": {
@@ -38144,7 +38136,6 @@ module.exports={
         },
         "AvailableFares": {
             "type": "array",
-            "experimental": true,
             "description": "A list of available fares found on the website.",
             "minItems": 1,
             "maxItems": 9,
@@ -38152,7 +38143,6 @@ module.exports={
         },
         "Fare": {
             "type": "object",
-            "experimental": true,
             "description": "Flight fare information.",
             "additionalProperties": false,
             "properties": {
@@ -38172,7 +38162,6 @@ module.exports={
         },
         "SelectedSeatsStage": {
             "type": "object",
-            "experimental": true,
             "description": "Seat selection stage. Each stage corresponds to a particular flight leg where seat selection is supported. Client provides each stage separately after reading corresponding seat availability information from <code>availableSeats</code> output.",
             "properties": {
                 "seatNumbers": {
@@ -38190,7 +38179,6 @@ module.exports={
         },
         "AvailableSeatsStage": {
             "type": "object",
-            "experimental": true,
             "description": "Seat availability information for each seat selection stage. Each stage corresponds to a particular flight leg where seat selection is supported. Each stage is emitted separately when automation reaches corresponding seat selection screen.",
             "properties": {
                 "leg": {
@@ -38211,13 +38199,11 @@ module.exports={
         },
         "SeatNumber": {
             "type": "string",
-            "experimental": true,
             "description": "Seat number as extracted from website.",
             "example": "7A"
         },
         "Seat": {
             "type": "object",
-            "experimental": true,
             "description": "Seat metadata.",
             "properties": {
                 "seatNumber": { "$ref": "#/domains/FlightBooking/types/SeatNumber" },
@@ -38993,7 +38979,7 @@ module.exports={
 },{}],162:[function(require,module,exports){
 module.exports={
     "description": "",
-    "experimental": true,
+    "private": false,
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
@@ -39021,16 +39007,13 @@ module.exports={
             "initial": true
         },
         "legalCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-            "experimental": true
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         },
         "breakdownCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-            "experimental": true
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         },
         "personalInjuryCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-            "experimental": true
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         }
     },
     "outputs": {
@@ -39043,18 +39026,15 @@ module.exports={
         },
         "availableLegalCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
-            "experimental": true
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableBreakdownCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
-            "experimental": true
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availablePersonalInjuryCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided.",
-            "experimental": true
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         }
     },
     "types": {
@@ -39085,7 +39065,6 @@ module.exports={
         "Options": {
             "type": "object",
             "description": "Flags for enabling optional automation features such as upsells and additional cover. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
-            "experimental": true,
             "properties": {
                 "legalCover": {
                     "type": "boolean",
@@ -39103,7 +39082,6 @@ module.exports={
         },
         "AvailableCovers": {
             "type": "array",
-            "experimental": true,
             "description": "A list of available cover options found on the page.",
             "minItems": 1,
             "maxItems": 9,
@@ -39122,7 +39100,6 @@ module.exports={
         },
         "Cover": {
             "type": "object",
-            "experimental": true,
             "description": "Cover information.",
             "additionalProperties": false,
             "properties": {
@@ -39144,7 +39121,6 @@ module.exports={
 },{}],163:[function(require,module,exports){
 module.exports={
     "description": "",
-    "experimental": true,
     "private": false,
     "inputs": {
         "url": {

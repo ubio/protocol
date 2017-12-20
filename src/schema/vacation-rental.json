@@ -1,6 +1,5 @@
 {
     "description": "",
-    "experimental": true,
     "private": false,
     "inputs": {
         "url": {

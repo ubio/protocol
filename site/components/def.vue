@@ -13,10 +13,6 @@
         <div class="def__type">
             <schema-type :spec="def.spec"/>
             <span class="tag tag--warning"
-                v-if="def.spec.experimental">
-                experimental
-            </span>
-            <span class="tag tag--warning"
                 v-if="loose">
                 allows additional properties
             </span>
