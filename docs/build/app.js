@@ -37602,7 +37602,7 @@ module.exports = {
     TypeDef
 };
 
-},{"./example":154,"./util":164}],153:[function(require,module,exports){
+},{"./example":154,"./util":165}],153:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef } = require('./defs');
@@ -37733,7 +37733,7 @@ module.exports = {
     Domain
 };
 
-},{"./domain":153,"./protocol":156,"./provider":157,"./schema":160}],156:[function(require,module,exports){
+},{"./domain":153,"./protocol":156,"./provider":157,"./schema":161}],156:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -37790,7 +37790,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":153,"./validator":165}],157:[function(require,module,exports){
+},{"./domain":153,"./validator":166}],157:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -37888,6 +37888,158 @@ class RemoteProtocolFetchError extends Error {
 }
 
 },{"./protocol":156,"node-fetch":82}],158:[function(require,module,exports){
+module.exports={
+    "description": "",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "initial": true
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "selectedDelivery": {
+            "typeRef": "#/domains/EventBooking/types/Delivery",
+            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking."
+        },
+        "options": {
+            "typeRef": "#/domains/EventBooking/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "selectedRefund": {
+            "typeRef": "#/domains/EventBooking/types/SelectedRefund"
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/EventBooking/types/BookingConfirmation"
+        },
+        "availableDeliveries": {
+            "typeRef": "#/domains/EventBooking/types/AvailableDeliveries",
+            "description": "Emitted when actual delivery information is collected.<br/>Note: on deep links with pre-selected delivery, this output may not be provided."
+        },
+        "availableRefunds": {
+            "typeRef": "#/domains/EventBooking/types/AvailableRefunds",
+            "description": "Emitted when actual refund information is collected.<br/>Note: on deep links with pre-selected refund this output may not be provided."
+        }
+    },
+    "types": {
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        },
+        "Delivery": {
+            "type": "object",
+            "description": "Ticket delivery information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Delivery text as provided by the insurer.",
+                    "example": "Collection from venue, Royal Mail post, Courier delivery"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
+            ]
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "properties": {
+                "refund": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "AvailableDeliveries": {
+            "type": "array",
+            "description": "A list of available delivery options found on the page.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/EventBooking/types/Delivery" }
+        },
+        "AvailableRefunds": {
+            "type": "array",
+            "description": "A list of available refund options found on the page.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/EventBooking/types/Refund" }
+        },
+        "SelectedRefund": {
+            "type": "object",
+            "oneOf": [
+                {
+                    "$ref": "#/domains/EventBooking/types/Refund"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "Refund": {
+            "type": "object",
+            "description": "Refund information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Refund marketing text as provided by the insurer.",
+                    "example": "No-Matter-What, Medical Emergency Only"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
+            ]
+        }
+    }
+}
+
+},{}],159:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "private": false,
@@ -38253,7 +38405,7 @@ module.exports={
     }
 }
 
-},{}],159:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "private": false,
@@ -38881,7 +39033,7 @@ module.exports={
     }
 }
 
-},{}],160:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -38891,11 +39043,12 @@ module.exports = {
         FlightBooking: require('./flight-booking'),
         VacationRental: require('./vacation-rental'),
         MotorInsurance: require('./motor-insurance'),
+        EventBooking: require('./event-booking'),
         Internal: require('./internal')
     }
 };
 
-},{"./flight-booking":158,"./generic":159,"./internal":161,"./motor-insurance":162,"./vacation-rental":163}],161:[function(require,module,exports){
+},{"./event-booking":158,"./flight-booking":159,"./generic":160,"./internal":162,"./motor-insurance":163,"./vacation-rental":164}],162:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -38976,7 +39129,7 @@ module.exports={
     }
 }
 
-},{}],162:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -39118,7 +39271,7 @@ module.exports={
     }
 }
 
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -39194,7 +39347,7 @@ module.exports={
     }
 }
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -39205,7 +39358,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');
