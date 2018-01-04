@@ -1248,6 +1248,164 @@
         }
       }
     },
+    "EventBooking": {
+      "description": "",
+      "private": false,
+      "inputs": {
+        "url": {
+          "typeRef": "#/domains/Generic/types/URL",
+          "description": "Website entry point.",
+          "initial": true
+        },
+        "account": {
+          "typeRef": "#/domains/Generic/types/Account",
+          "initial": true
+        },
+        "payment": {
+          "typeRef": "#/domains/Generic/types/Payment",
+          "initial": true
+        },
+        "panToken": {
+          "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+          "typeRef": "#/domains/Generic/types/PriceConsent",
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "selectedDelivery": {
+          "typeRef": "#/domains/EventBooking/types/Delivery",
+          "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking."
+        },
+        "options": {
+          "typeRef": "#/domains/EventBooking/types/Options",
+          "default": {},
+          "initial": true
+        },
+        "refund": {
+          "typeRef": "#/domains/EventBooking/types/SelectedRefund"
+        }
+      },
+      "outputs": {
+        "finalPrice": {
+          "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+          "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+          "typeRef": "#/domains/EventBooking/types/BookingConfirmation"
+        },
+        "availableDeliveries": {
+          "typeRef": "#/domains/EventBooking/types/AvailableDeliveries",
+          "description": "Emitted when actual delivery information is collected.<br/>Note: on deep links with pre-selected delivery, this output may not be provided."
+        },
+        "availableRefunds": {
+          "typeRef": "#/domains/EventBooking/types/AvailableRefunds",
+          "description": "Emitted when actual refund information is collected.<br/>Note: on deep links with pre-selected refund this output may not be provided."
+        }
+      },
+      "types": {
+        "BookingConfirmation": {
+          "type": "object",
+          "description": "Information gathered on \"Booking success\" page.",
+          "properties": {
+            "bookingReference": {
+              "type": "string",
+              "description": "Booking reference grabbed from the page.",
+              "example": "RL2XYZ"
+            },
+            "message": {
+              "type": "string",
+              "description": "Message about successful booking.",
+              "example": "Your booking was successful."
+            },
+            "price": {
+              "$ref": "#/domains/Generic/types/Price",
+              "description": "Price, if found on the successful booking page."
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "bookingReference"
+          ]
+        },
+        "Delivery": {
+          "type": "object",
+          "description": "Ticket delivery information.",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Delivery text as provided by the insurer.",
+              "example": "Collection from venue, Royal Mail post, Courier delivery"
+            },
+            "price": {
+              "$ref": "#/domains/Generic/types/Price"
+            }
+          },
+          "required": [
+            "name",
+            "price"
+          ]
+        },
+        "Options": {
+          "type": "object",
+          "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+          "properties": {
+            "refund": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "AvailableDeliveries": {
+          "type": "array",
+          "description": "A list of available delivery options found on the page.",
+          "minItems": 1,
+          "maxItems": 9,
+          "items": {
+            "$ref": "#/domains/EventBooking/types/Delivery"
+          }
+        },
+        "AvailableRefunds": {
+          "type": "array",
+          "description": "A list of available refund options found on the page.",
+          "minItems": 1,
+          "maxItems": 9,
+          "items": {
+            "$ref": "#/domains/EventBooking/types/Refund"
+          }
+        },
+        "SelectedRefund": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#/domains/EventBooking/types/Refund"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "Refund": {
+          "type": "object",
+          "description": "Refund information.",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Refund marketing text as provided by the insurer.",
+              "example": "No-Matter-What, Medical Emergency Only"
+            },
+            "price": {
+              "$ref": "#/domains/Generic/types/Price"
+            }
+          },
+          "required": [
+            "name",
+            "price"
+          ]
+        }
+      }
+    },
     "Internal": {
       "description": "Internal domain for testing platform features.",
       "private": true,

@@ -36914,9 +36914,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-435983a2", __vue__options__)
+    hotAPI.createRecord("data-v-3a814de9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-435983a2", __vue__options__)
+    hotAPI.reload("data-v-3a814de9", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],139:[function(require,module,exports){
@@ -36969,9 +36969,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2fc5366e", __vue__options__)
+    hotAPI.createRecord("data-v-0a99ee74", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2fc5366e", __vue__options__)
+    hotAPI.reload("data-v-0a99ee74", __vue__options__)
   }
 })()}
 },{"./prop.vue":141,"./schema-type.vue":142,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
@@ -37031,9 +37031,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d14c9182", __vue__options__)
+    hotAPI.createRecord("data-v-66f512f9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-d14c9182", __vue__options__)
+    hotAPI.reload("data-v-66f512f9", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
@@ -37076,9 +37076,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-69fdac4a", __vue__options__)
+    hotAPI.createRecord("data-v-2c8015f8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-69fdac4a", __vue__options__)
+    hotAPI.reload("data-v-2c8015f8", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
@@ -37131,9 +37131,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4a725e62", __vue__options__)
+    hotAPI.createRecord("data-v-4afe22d5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4a725e62", __vue__options__)
+    hotAPI.reload("data-v-4afe22d5", __vue__options__)
   }
 })()}
 },{"../../src":155,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
@@ -37179,9 +37179,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d12e8ec", __vue__options__)
+    hotAPI.createRecord("data-v-876978e0", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3d12e8ec", __vue__options__)
+    hotAPI.reload("data-v-876978e0", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],144:[function(require,module,exports){
@@ -37290,9 +37290,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70f4bbb7", __vue__options__)
+    hotAPI.createRecord("data-v-ff742a1e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-70f4bbb7", __vue__options__)
+    hotAPI.reload("data-v-ff742a1e", __vue__options__)
   }
 })()}
 },{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133}],146:[function(require,module,exports){
@@ -37305,9 +37305,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-505e3112", __vue__options__)
+    hotAPI.createRecord("data-v-5ac5e6cc", __vue__options__)
   } else {
-    hotAPI.reload("data-v-505e3112", __vue__options__)
+    hotAPI.reload("data-v-5ac5e6cc", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],147:[function(require,module,exports){
@@ -37334,9 +37334,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-611381c6", __vue__options__)
+    hotAPI.createRecord("data-v-42712352", __vue__options__)
   } else {
-    hotAPI.reload("data-v-611381c6", __vue__options__)
+    hotAPI.reload("data-v-42712352", __vue__options__)
   }
 })()}
 },{"./sidebar.vue":148,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],148:[function(require,module,exports){
@@ -37371,9 +37371,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dcdf760e", __vue__options__)
+    hotAPI.createRecord("data-v-6c64fcff", __vue__options__)
   } else {
-    hotAPI.reload("data-v-dcdf760e", __vue__options__)
+    hotAPI.reload("data-v-6c64fcff", __vue__options__)
   }
 })()}
 },{"../../src":155,"./sidebar__domain.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
@@ -37438,9 +37438,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f4ada9d", __vue__options__)
+    hotAPI.createRecord("data-v-7f822ca3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0f4ada9d", __vue__options__)
+    hotAPI.reload("data-v-7f822ca3", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
@@ -37602,7 +37602,7 @@ module.exports = {
     TypeDef
 };
 
-},{"./example":154,"./util":164}],153:[function(require,module,exports){
+},{"./example":154,"./util":165}],153:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef } = require('./defs');
@@ -37733,7 +37733,7 @@ module.exports = {
     Domain
 };
 
-},{"./domain":153,"./protocol":156,"./provider":157,"./schema":160}],156:[function(require,module,exports){
+},{"./domain":153,"./protocol":156,"./provider":157,"./schema":161}],156:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -37790,7 +37790,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":153,"./validator":165}],157:[function(require,module,exports){
+},{"./domain":153,"./validator":166}],157:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -37888,6 +37888,158 @@ class RemoteProtocolFetchError extends Error {
 }
 
 },{"./protocol":156,"node-fetch":82}],158:[function(require,module,exports){
+module.exports={
+    "description": "",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "initial": true
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "selectedDelivery": {
+            "typeRef": "#/domains/EventBooking/types/Delivery",
+            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking."
+        },
+        "options": {
+            "typeRef": "#/domains/EventBooking/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "refund": {
+            "typeRef": "#/domains/EventBooking/types/SelectedRefund"
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/EventBooking/types/BookingConfirmation"
+        },
+        "availableDeliveries": {
+            "typeRef": "#/domains/EventBooking/types/AvailableDeliveries",
+            "description": "Emitted when actual delivery information is collected.<br/>Note: on deep links with pre-selected delivery, this output may not be provided."
+        },
+        "availableRefunds": {
+            "typeRef": "#/domains/EventBooking/types/AvailableRefunds",
+            "description": "Emitted when actual refund information is collected.<br/>Note: on deep links with pre-selected refund this output may not be provided."
+        }
+    },
+    "types": {
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        },
+        "Delivery": {
+            "type": "object",
+            "description": "Ticket delivery information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Delivery text as provided by the insurer.",
+                    "example": "Collection from venue, Royal Mail post, Courier delivery"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
+            ]
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "properties": {
+                "refund": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "AvailableDeliveries": {
+            "type": "array",
+            "description": "A list of available delivery options found on the page.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/EventBooking/types/Delivery" }
+        },
+        "AvailableRefunds": {
+            "type": "array",
+            "description": "A list of available refund options found on the page.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/EventBooking/types/Refund" }
+        },
+        "SelectedRefund": {
+            "type": "object",
+            "oneOf": [
+                {
+                    "$ref": "#/domains/EventBooking/types/Refund"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "Refund": {
+            "type": "object",
+            "description": "Refund information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Refund marketing text as provided by the insurer.",
+                    "example": "No-Matter-What, Medical Emergency Only"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
+            ]
+        }
+    }
+}
+
+},{}],159:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "private": false,
@@ -38253,7 +38405,7 @@ module.exports={
     }
 }
 
-},{}],159:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "private": false,
@@ -38881,7 +39033,7 @@ module.exports={
     }
 }
 
-},{}],160:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -38891,11 +39043,12 @@ module.exports = {
         FlightBooking: require('./flight-booking'),
         VacationRental: require('./vacation-rental'),
         MotorInsurance: require('./motor-insurance'),
+        EventBooking: require('./event-booking'),
         Internal: require('./internal')
     }
 };
 
-},{"./flight-booking":158,"./generic":159,"./internal":161,"./motor-insurance":162,"./vacation-rental":163}],161:[function(require,module,exports){
+},{"./event-booking":158,"./flight-booking":159,"./generic":160,"./internal":162,"./motor-insurance":163,"./vacation-rental":164}],162:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -38976,7 +39129,7 @@ module.exports={
     }
 }
 
-},{}],162:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -39118,7 +39271,7 @@ module.exports={
     }
 }
 
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -39194,7 +39347,7 @@ module.exports={
     }
 }
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -39205,7 +39358,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');
