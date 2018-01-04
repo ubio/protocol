@@ -37921,7 +37921,7 @@ module.exports={
             "default": {},
             "initial": true
         },
-        "refund": {
+        "selectedRefund": {
             "typeRef": "#/domains/EventBooking/types/SelectedRefund"
         }
     },
