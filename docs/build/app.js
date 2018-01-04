@@ -37980,8 +37980,7 @@ module.exports={
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
-                "name",
-                "price"
+                "name"
             ]
         },
         "Options": {
@@ -38032,8 +38031,7 @@ module.exports={
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
-                "name",
-                "price"
+                "name"
             ]
         }
     }

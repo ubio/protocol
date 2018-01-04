@@ -90,8 +90,7 @@
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
-                "name",
-                "price"
+                "name"
             ]
         },
         "Options": {
@@ -142,8 +141,7 @@
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
-                "name",
-                "price"
+                "name"
             ]
         }
     }

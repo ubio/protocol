@@ -1342,8 +1342,7 @@
             }
           },
           "required": [
-            "name",
-            "price"
+            "name"
           ]
         },
         "Options": {
@@ -1400,8 +1399,7 @@
             }
           },
           "required": [
-            "name",
-            "price"
+            "name"
           ]
         }
       }
