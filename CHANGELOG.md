@@ -1,6 +1,11 @@
 ## [UNRELEASED]
 
 
+## [1.6.0] - 2018-1-8
+
+- Add `EventBooking` domain
+- Add support for `oneOf` in docs and examples
+
 ## [1.5.0] - 2017-12-20
 
 - Add `MotorInsurance` domain
