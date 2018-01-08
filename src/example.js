@@ -5,6 +5,9 @@ module.exports = function createExample(protocol, spec) {
         const typeDef = protocol.resolveTypeRef(spec.$ref);
         return typeDef ? createExample(protocol, typeDef.spec) : null;
     }
+    if (spec.oneOf) {
+        return createExample(protocol, spec.oneOf[0]);
+    }
     switch (spec.type) {
         case 'string':
             if (spec.example) {

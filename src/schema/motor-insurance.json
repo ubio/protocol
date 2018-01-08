@@ -109,7 +109,6 @@
             "items": { "$ref": "#/domains/MotorInsurance/types/Cover" }
         },
         "SelectedCover": {
-            "type": "object",
             "oneOf": [
                 {
                     "$ref": "#/domains/MotorInsurance/types/Cover"

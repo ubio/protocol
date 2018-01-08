@@ -118,7 +118,6 @@
             "items": { "$ref": "#/domains/EventBooking/types/Refund" }
         },
         "SelectedRefund": {
-            "type": "object",
             "oneOf": [
                 {
                     "$ref": "#/domains/EventBooking/types/Refund"
