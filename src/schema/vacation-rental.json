@@ -25,6 +25,14 @@
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "options": {
+            "typeRef": "#/domains/VacationRental/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "deposit": {
+            "typeRef": "#/domains/VacationRental/types/Deposit"
         }
     },
     "outputs": {
@@ -34,9 +42,47 @@
         },
         "bookingConfirmation": {
             "typeRef": "#/domains/VacationRental/types/BookingConfirmation"
+        },
+        "availableDeposits": {
+            "typeRef": "#/domains/VacationRental/types/AvailableDeposits",
+            "description": "Emitted when actual deposit information is collected.<br/>Note: on deep links with pre-selected deposits this output may not be provided."
         }
     },
     "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features.",
+            "properties": {
+                "deposit": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "AvailableDeposits": {
+            "type": "array",
+            "description": "A list of available deposits found on the page.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/VacationRental/types/Deposit" }
+        },
+        "Deposit": {
+            "type": "object",
+            "description": "Deposit information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Deposit prompt as provided by the website.",
+                    "example": "Early bird deposit"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
+            ]
+        },
         "GuestAges": {
             "type": "array",
             "items": {
