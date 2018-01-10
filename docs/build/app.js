@@ -39154,8 +39154,8 @@ module.exports={
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
-        "vehicleDetails": {
-            "typeRef": "#/domains/MotorInsurance/types/VehicleDetails"
+        "vehicle": {
+            "typeRef": "#/domains/MotorInsurance/types/Vehicle"
         },
         "options": {
             "typeRef": "#/domains/MotorInsurance/types/Options",
@@ -39218,7 +39218,7 @@ module.exports={
                 "purchaseReference"
             ]
         },
-        "VehicleDetails": {
+        "Vehicle": {
             "type": "object",
             "description": "Information about the vehicle being insured.",
             "properties": {
