@@ -1178,6 +1178,9 @@
           "typeRef": "#/domains/Generic/types/PriceConsent",
           "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
+        "vehicleDetails": {
+          "typeRef": "#/domains/MotorInsurance/types/VehicleDetails"
+        },
         "options": {
           "typeRef": "#/domains/MotorInsurance/types/Options",
           "default": {},
@@ -1237,6 +1240,21 @@
           "additionalProperties": false,
           "required": [
             "purchaseReference"
+          ]
+        },
+        "VehicleDetails": {
+          "type": "object",
+          "description": "Information about the vehicle being insured.",
+          "properties": {
+            "registrationNumber": {
+              "type": "string",
+              "description": "Vehicle registration number (licence plate).",
+              "example": "Y900MCL"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "registrationNumber"
           ]
         },
         "Options": {
