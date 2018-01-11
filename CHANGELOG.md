@@ -1,6 +1,5 @@
 ## [UNRELEASED]
 
-
 ## [1.7.0] - 2018-1-11
 
 - Add `vehicle` to `MotorInsurance`

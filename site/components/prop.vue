@@ -28,6 +28,7 @@
             </div>
             <div class="prop__enum"
                  v-if="prop.enum">
+                Allowed values:
                 {{ prop.enum.join(', ') }}
             </div>
         </div>
