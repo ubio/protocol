@@ -1,6 +1,10 @@
 ## [UNRELEASED]
 
 
+## [1.7.0] - 2018-1-11
+
+- Add `vehicle` to `MotorInsurance`
+
 ## [1.6.0] - 2018-1-8
 
 - Add `EventBooking` domain
