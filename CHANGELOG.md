@@ -1,5 +1,10 @@
 ## [UNRELEASED]
 
+
+## [1.7.1] - 2018-1-11
+
+- Add "Allowed values:" to prop enum docs
+
 ## [1.7.0] - 2018-1-11
 
 - Add `vehicle` to `MotorInsurance`
