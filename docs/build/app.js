@@ -36914,9 +36914,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-435983a2", __vue__options__)
+    hotAPI.createRecord("data-v-2fd09ba2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-435983a2", __vue__options__)
+    hotAPI.reload("data-v-2fd09ba2", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],139:[function(require,module,exports){
@@ -36969,9 +36969,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2fc5366e", __vue__options__)
+    hotAPI.createRecord("data-v-bb1f7b24", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2fc5366e", __vue__options__)
+    hotAPI.reload("data-v-bb1f7b24", __vue__options__)
   }
 })()}
 },{"./prop.vue":141,"./schema-type.vue":142,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
@@ -37031,9 +37031,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d14c9182", __vue__options__)
+    hotAPI.createRecord("data-v-dc93a982", __vue__options__)
   } else {
-    hotAPI.reload("data-v-d14c9182", __vue__options__)
+    hotAPI.reload("data-v-dc93a982", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
@@ -37076,9 +37076,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-69fdac4a", __vue__options__)
+    hotAPI.createRecord("data-v-4cb4204a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-69fdac4a", __vue__options__)
+    hotAPI.reload("data-v-4cb4204a", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
@@ -37131,9 +37131,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4a725e62", __vue__options__)
+    hotAPI.createRecord("data-v-b0b44662", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4a725e62", __vue__options__)
+    hotAPI.reload("data-v-b0b44662", __vue__options__)
   }
 })()}
 },{"../../src":155,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
@@ -37179,9 +37179,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d12e8ec", __vue__options__)
+    hotAPI.createRecord("data-v-5421978a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3d12e8ec", __vue__options__)
+    hotAPI.reload("data-v-5421978a", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],144:[function(require,module,exports){
@@ -37290,9 +37290,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70f4bbb7", __vue__options__)
+    hotAPI.createRecord("data-v-928fa092", __vue__options__)
   } else {
-    hotAPI.reload("data-v-70f4bbb7", __vue__options__)
+    hotAPI.reload("data-v-928fa092", __vue__options__)
   }
 })()}
 },{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133}],146:[function(require,module,exports){
@@ -37305,9 +37305,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-505e3112", __vue__options__)
+    hotAPI.createRecord("data-v-586ea512", __vue__options__)
   } else {
-    hotAPI.reload("data-v-505e3112", __vue__options__)
+    hotAPI.reload("data-v-586ea512", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],147:[function(require,module,exports){
@@ -37334,9 +37334,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-611381c6", __vue__options__)
+    hotAPI.createRecord("data-v-1539b31d", __vue__options__)
   } else {
-    hotAPI.reload("data-v-611381c6", __vue__options__)
+    hotAPI.reload("data-v-1539b31d", __vue__options__)
   }
 })()}
 },{"./sidebar.vue":148,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],148:[function(require,module,exports){
@@ -37371,9 +37371,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dcdf760e", __vue__options__)
+    hotAPI.createRecord("data-v-043b50f9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-dcdf760e", __vue__options__)
+    hotAPI.reload("data-v-043b50f9", __vue__options__)
   }
 })()}
 },{"../../src":155,"./sidebar__domain.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
@@ -37438,9 +37438,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f4ada9d", __vue__options__)
+    hotAPI.createRecord("data-v-47ac32c6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0f4ada9d", __vue__options__)
+    hotAPI.reload("data-v-47ac32c6", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
@@ -38415,8 +38415,64 @@ module.exports={
         "URL": {
             "type": "string",
             "format": "url",
-            "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\">WHATWG URL Standard</a>.",
+            "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
             "example": "http://example.com"
+        },
+        "Cookies": {
+          "type": "array",
+          "description": "An array of cookie definitions.",
+          "items": {
+            "$ref": "#/domains/Generic/types/Cookie"
+          }
+        },
+        "Cookie": {
+          "type": "object",
+          "description": "An object which defines a cookie. For more information on the fields of this object, see <a href=\"https://tools.ietf.org/html/rfc6265#section-5.2\" target=\"_blank\" rel=\"noopener\">RFC 6265 section 5.2</a>.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Cookie name."
+            },
+            "value": {
+              "type": "string",
+              "description": "Cookie value."
+            },
+            "url": {
+              "type": "string",
+              "format": "url",
+              "description": "The URL from which the cookie is set."
+            },
+            "domain": {
+              "type": "string",
+              "description": "Cookie domain."
+            },
+            "path": {
+              "type": "string",
+              "description": "Cookie path."
+            },
+            "secure": {
+              "type": "boolean",
+              "description": "True if cookie is secure."
+            },
+            "httpOnly": {
+              "type": "boolean",
+              "description": "True if cookie is http-only."
+            },
+            "sameSite": {
+              "enum": ["Strict", "Lax"],
+              "description": "Cookie same-site type."
+            },
+            "expires": {
+              "type": "number",
+              "description": "Expiration date in seconds since the epoch (January 1, 1970 UTC)."
+            }
+          },
+          "required": [
+            "name",
+            "value",
+            "url"
+          ],
+          "additionalProperties": false
         },
         "Account": {
             "type": "object",
@@ -38424,7 +38480,7 @@ module.exports={
             "properties": {
                 "email": {
                     "type": "string",
-                    "description": "Account email, typically used for user sign up / sign in, as well as contact information.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\">use an email proxy to mitigate this issue</a>.",
+                    "description": "Account email, typically used for user sign up / sign in, as well as contact information.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
                     "format": "email",
                     "example": "hello@example.com"
                 },
@@ -39170,6 +39226,9 @@ module.exports={
         },
         "personalInjuryCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+        },
+        "cookies": {
+            "typeRef": "#/domains/Generic/types/Cookies"
         }
     },
     "outputs": {
