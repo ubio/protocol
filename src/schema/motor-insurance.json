@@ -38,6 +38,9 @@
         },
         "personalInjuryCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+        },
+        "cookies": {
+            "typeRef": "#/domains/Generic/types/Cookies"
         }
     },
     "outputs": {
