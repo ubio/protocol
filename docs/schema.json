@@ -1254,6 +1254,9 @@
         "personalInjuryCover": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         },
+        "carHireCover": {
+          "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+        },
         "cookies": {
           "typeRef": "#/domains/Generic/types/Cookies"
         }
@@ -1261,6 +1264,10 @@
       "outputs": {
         "finalPrice": {
           "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+          "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "estimatedPrice": {
+          "description": "Emitted before asking for payment information.<br/>This is not usually the final amount to be paid, especially on websites which charge credit and company cards additionally.",
           "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "purchaseConfirmation": {
@@ -1332,6 +1339,10 @@
               "default": false
             },
             "personalInjuryCover": {
+              "type": "boolean",
+              "default": false
+            },
+            "carHireCover": {
               "type": "boolean",
               "default": false
             }
