@@ -52,7 +52,7 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "estimatedPrice": {
-            "description": "Emitted before asking for payment information.<br/>This is not usually the final amount to be paid, especially on websites which charge credit and company cards additionally.",
+            "description": "Emitted before asking for payment information.<br/>This is usually not the final amount to be paid, especially on websites which charge credit and company cards additionally. You will get <code>finalPrice</code> later.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "purchaseConfirmation": {
