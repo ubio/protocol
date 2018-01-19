@@ -39398,6 +39398,9 @@ module.exports={
         },
         "deposit": {
             "typeRef": "#/domains/VacationRental/types/Deposit"
+        },
+        "pets": {
+            "typeRef": "#/domains/VacationRental/types/Pets"
         }
     },
     "outputs": {
@@ -39456,6 +39459,31 @@ module.exports={
                 "maximum": 200,
                 "example": 42
             }
+        },
+        "Pets": {
+            "type": "object",
+            "description": "Pets information.",
+            "additionalProperties": false,
+            "properties": {
+                "total": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 9,
+                    "description": "Total count of pets for the booking, including dogs.",
+                    "example": 0
+                },
+                "dogs": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 9,
+                    "description": "Total count of dogs for the booking.",
+                    "example": 0
+                }
+            },
+            "required": [
+                "total",
+                "dogs"
+            ]
         },
         "BookingConfirmation": {
             "type": "object",
