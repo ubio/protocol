@@ -34,6 +34,11 @@
                     {{ $ref }}
                 </span>
             </span>
+            <span class="tag tag--primary"
+                title="Personally identifiable information"
+                v-if="pii">
+                PII
+            </span>
         </template>
     </span>
 </template>
@@ -61,6 +66,10 @@ module.exports = {
 
         ref() {
             return protocol.resolveTypeRef(this.$ref);
+        },
+
+        pii() {
+            return !!this.ref.spec.pii;
         },
 
     },

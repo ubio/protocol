@@ -153,12 +153,14 @@
         "Passengers": {
             "type": "array",
             "description": "An array with details for each passenger.",
+            "pii": true,
             "minItems": 1,
             "maxItems": 9,
             "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
         },
         "Passenger": {
             "type": "object",
+            "pii": true,
             "properties": {
                 "title": {
                     "type": "string",
@@ -210,6 +212,7 @@
         "PassengerDocument": {
             "type": "object",
             "description": "Passenger ID (passport or other travel document). Automation may fail if this information is required by website, but not provided by Client.",
+            "pii": true,
             "properties": {
                 "type": {
                     "type": "string",
