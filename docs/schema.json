@@ -695,6 +695,119 @@
             "yer",
             "zwd"
           ]
+        },
+        "Error": {
+          "type": "object",
+          "description": "Error object we return when the job failed",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Error category. client: Errors caused by factors which under you control (client of Automation Cloud), server: Errors caused by problems with Automation Cloud, website: Errors caused by factors which neither client nor Automation Cloud can control",
+              "enum": [
+                "client",
+                "server",
+                "website"
+              ]
+            },
+            "message": {
+              "type": "string",
+              "description": "Extra information about the errors",
+              "example": "finalPriceConsent input time out after 10 minutes",
+              "default": ""
+            }
+          }
+        }
+      },
+      "errors": {
+        "JobCancelled": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Job cancelled by client"
+        },
+        "InputTimeout": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Input was not provided within 15 minutes"
+        },
+        "PaymentRejected": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if provided."
+        },
+        "CardDetailsInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Unable to process payment as card details are invalid"
+        },
+        "AddressInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Invalid address provided"
+        },
+        "AccountDetailsInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Cannot sign in as invalid account details provided"
+        },
+        "UrlInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Invalid url provided"
+        },
+        "FinalPriceNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Final price provided does not match expectation"
+        },
+        "PanTokenInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Invalid pan token provided"
+        },
+        "CookieInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Invalid cookie provided"
+        },
+        "PriceChangedAfterConsent": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "website",
+          "description": "Price changed after final price consent."
+        },
+        "WebsiteValidationFailed": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "website",
+          "description": "Website's validation rule doesn't allow the input data"
+        },
+        "SystemUnavailable": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "website",
+          "description": "Website system is down / Website doesn't work at the moment"
+        },
+        "KnownLimitation": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "website",
+          "description": "Cannot process due to known limitation"
+        },
+        "GenericWebsiteError": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "website",
+          "description": "Website threw general error during automation process. A message will be forwarded from the website if provided."
+        },
+        "UnableToContinueProcess": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "website",
+          "description": "Process couldn't reach the final step. Website finished the process early (eg. unable to purchase online)"
+        },
+        "ServerError": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "server",
+          "description": "Server Error"
+        },
+        "JobTimeout": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "server",
+          "description": "Job timeout after an hour of job creation without reaching the final step"
         }
       }
     },
@@ -1087,6 +1200,91 @@
             "bookingReference"
           ]
         }
+      },
+      "errors": {
+        "PassengerDetailsInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client"
+        },
+        "OutboundFlightDateInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Outbound flight date is not accepted by the website e.g. date is too close"
+        },
+        "InboundFlightDateInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Inbound flight date is not accepted by the website e.g. date is too close"
+        },
+        "DateOfBirthInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Date of birth is not accepted by the website e.g. child must be younger than 12"
+        },
+        "DocumentIssueDateInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Document issue date is not accepted by the website e.g. the issue date cannot be after today's date"
+        },
+        "DocumentExpirationDateInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Document expiration date is not accepted by the website e.g. your document should be valid for more than 3 months"
+        },
+        "OutboundFlightNotAvailable": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Outbound flight is not found e.g. flight is not available on given date"
+        },
+        "InboundFlightNotAvailable": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Inbound flight is not found e.g. flight is not available on given date"
+        },
+        "OriginAirportNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Airport is not found with given airport code"
+        },
+        "DestinationAirportNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Airport is not found with given airport code"
+        },
+        "CabinClassNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given cabin class is not found on the website"
+        },
+        "OutboundFareNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given outbound fare does not match one of the options we are expecting"
+        },
+        "InboundFareNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given inbound fare does not match one of the options we are expecting"
+        },
+        "SeatNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given seat does not match one of the options we are expecting"
+        },
+        "SeatSelectionNotAvailable": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Client asked for seat selection but it's not available for the website"
+        },
+        "LuggageCannotBeAdded": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client"
+        },
+        "PassengerDocumentRequired": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Passenger document (passport or other travel document) is required by the website"
+        }
       }
     },
     "VacationRental": {
@@ -1238,6 +1436,33 @@
           "required": [
             "bookingReference"
           ]
+        }
+      },
+      "errors": {
+        "DepositNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given deposit option does not match one of the options we are expecting"
+        },
+        "PetOptionInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given pet option does not match one of the options we are expecting"
+        },
+        "PetOptionNotAvailable": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client/website",
+          "description": "Pet option is not available"
+        },
+        "GuestAgeInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Guest age is not accepted by the website"
+        },
+        "VacationRentalNotAvailable": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Vacation rental is not found e.g. vacation rental unavailable on given date provided"
         }
       }
     },
@@ -1418,6 +1643,33 @@
             "price"
           ]
         }
+      },
+      "errors": {
+        "LegalCoverNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given legal cover does not match one of the options we are expecting"
+        },
+        "BreakdownCoverNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given breakdown cover does not match one of the options we are expecting"
+        },
+        "PersonalInjuryCoverNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given personal injury cover does not match one of the options we are expecting"
+        },
+        "CarHireCoverNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Given car hire cover does not match one of the options we are expecting"
+        },
+        "RegistrationNumberInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Registration number is not accepted by the website"
+        }
       }
     },
     "EventBooking": {
@@ -1573,6 +1825,23 @@
             "name"
           ]
         }
+      },
+      "errors": {
+        "DeliveryOptionInvalid": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Delivery option does not match one of the options we are expecting"
+        },
+        "RefundOptionNotFound": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Refund option does not match one of the options we are expecting"
+        },
+        "EventNotAvailable": {
+          "typeRef": "#/domains/Generic/types/Error",
+          "category": "client",
+          "description": "Requested event is not found"
+        }
       }
     },
     "Internal": {
@@ -1652,7 +1921,8 @@
             }
           }
         }
-      }
+      },
+      "errors": {}
     }
   }
 }

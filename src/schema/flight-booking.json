@@ -108,8 +108,12 @@
             "type": "object",
             "description": "Outbound and inbound flights specification.",
             "properties": {
-                "origin": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
-                "destination": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
+                "origin": {
+                    "$ref": "#/domains/FlightBooking/types/DatePlace"
+                },
+                "destination": {
+                    "$ref": "#/domains/FlightBooking/types/DatePlace"
+                }
             },
             "required": [
                 "origin",
@@ -119,7 +123,12 @@
         },
         "CabinClass": {
             "type": "string",
-            "enum": ["economy", "premium economy", "business", "first"]
+            "enum": [
+                "economy",
+                "premium economy",
+                "business",
+                "first"
+            ]
         },
         "DatePlace": {
             "type": "object",
@@ -155,7 +164,9 @@
             "description": "An array with details for each passenger.",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
+            "items": {
+                "$ref": "#/domains/FlightBooking/types/Passenger"
+            }
         },
         "Passenger": {
             "type": "object",
@@ -196,7 +207,9 @@
                     "maximum": 3,
                     "default": 0
                 },
-                "document": { "$ref": "#/domains/FlightBooking/types/PassengerDocument" }
+                "document": {
+                    "$ref": "#/domains/FlightBooking/types/PassengerDocument"
+                }
             },
             "required": [
                 "title",
@@ -214,7 +227,9 @@
                 "type": {
                     "type": "string",
                     "description": "Document type.",
-                    "enum": ["passport"]
+                    "enum": [
+                        "passport"
+                    ]
                 },
                 "number": {
                     "type": "string",
@@ -249,20 +264,26 @@
             "description": "A list of available fares found on the website.",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/Fare" }
+            "items": {
+                "$ref": "#/domains/FlightBooking/types/Fare"
+            }
         },
         "Fare": {
             "type": "object",
             "description": "Flight fare information.",
             "additionalProperties": false,
             "properties": {
-                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
+                "cabinClass": {
+                    "$ref": "#/domains/FlightBooking/types/CabinClass"
+                },
                 "fareName": {
                     "type": "string",
                     "description": "Fare marketing name as provided by airline.",
                     "example": "Business Flex"
                 },
-                "price": { "$ref": "#/domains/Generic/types/Price" }
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
             },
             "required": [
                 "fareName",
@@ -279,7 +300,9 @@
                     "description": "An array of <code>seatNumber</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
                     "minItems": 1,
                     "maxItems": 9,
-                    "items": { "$ref": "#/domains/FlightBooking/types/SeatNumber" }
+                    "items": {
+                        "$ref": "#/domains/FlightBooking/types/SeatNumber"
+                    }
                 }
             },
             "required": [
@@ -298,7 +321,9 @@
                 },
                 "seats": {
                     "type": "array",
-                    "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
+                    "items": {
+                        "$ref": "#/domains/FlightBooking/types/Seat"
+                    }
                 }
             },
             "required": [
@@ -316,7 +341,9 @@
             "type": "object",
             "description": "Seat metadata.",
             "properties": {
-                "seatNumber": { "$ref": "#/domains/FlightBooking/types/SeatNumber" },
+                "seatNumber": {
+                    "$ref": "#/domains/FlightBooking/types/SeatNumber"
+                },
                 "available": {
                     "type": "boolean",
                     "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
@@ -369,37 +396,37 @@
         "OutboundFlightDateInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Outbound flight date is not accepted by the website. eg) too close date"
+            "description": "Outbound flight date is not accepted by the website e.g. date is too close"
         },
         "InboundFlightDateInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Inbound flight date is not accepted by the website. eg) earlier than outbound date"
+            "description": "Inbound flight date is not accepted by the website e.g. date is too close"
         },
         "DateOfBirthInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Date of birth is not accepted by the website. eg) child must be younger than 12"
+            "description": "Date of birth is not accepted by the website e.g. child must be younger than 12"
         },
         "DocumentIssueDateInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Document issue date is not accepted by the website. eg) the issue date cannot be after today"
+            "description": "Document issue date is not accepted by the website e.g. the issue date cannot be after today's date"
         },
         "DocumentExpirationDateInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Document expiration date is not accepted by the website. eg) your document should be valid for more than 3 months"
+            "description": "Document expiration date is not accepted by the website e.g. your document should be valid for more than 3 months"
         },
         "OutboundFlightNotAvailable": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Outbound flight is not found on the date you requested"
+            "description": "Outbound flight is not found e.g. flight is not available on given date"
         },
         "InboundFlightNotAvailable": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Inbound flight is not found on the date you requested"
+            "description": "Inbound flight is not found e.g. flight is not available on given date"
         },
         "OriginAirportNotFound": {
             "typeRef": "#/domains/Generic/types/Error",
@@ -419,17 +446,17 @@
         "OutboundFareNotFound": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Given Outbound fare is not one of the options we are expecting"
+            "description": "Given outbound fare does not match one of the options we are expecting"
         },
         "InboundFareNotFound": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Given Inbound fare is not one of the options we are expecting"
+            "description": "Given inbound fare does not match one of the options we are expecting"
         },
         "SeatNotFound": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Given Seat is not one of the options we are expecting"
+            "description": "Given seat does not match one of the options we are expecting"
         },
         "SeatSelectionNotAvailable": {
             "typeRef": "#/domains/Generic/types/Error",
@@ -443,7 +470,7 @@
         "PassengerDocumentRequired": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Document is required by the website"
+            "description": "Passenger document (passport or other travel document) is required by the website"
         }
     }
 }

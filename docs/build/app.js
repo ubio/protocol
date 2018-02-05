@@ -36914,9 +36914,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3a814de9", __vue__options__)
+    hotAPI.createRecord("data-v-6bf9ef78", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3a814de9", __vue__options__)
+    hotAPI.reload("data-v-6bf9ef78", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],139:[function(require,module,exports){
@@ -36969,9 +36969,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a99ee74", __vue__options__)
+    hotAPI.createRecord("data-v-3ec5bd39", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0a99ee74", __vue__options__)
+    hotAPI.reload("data-v-3ec5bd39", __vue__options__)
   }
 })()}
 },{"./prop.vue":141,"./schema-type.vue":142,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
@@ -37031,9 +37031,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-66f512f9", __vue__options__)
+    hotAPI.createRecord("data-v-27b69158", __vue__options__)
   } else {
-    hotAPI.reload("data-v-66f512f9", __vue__options__)
+    hotAPI.reload("data-v-27b69158", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
@@ -37076,9 +37076,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2c8015f8", __vue__options__)
+    hotAPI.createRecord("data-v-3b0dfedf", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2c8015f8", __vue__options__)
+    hotAPI.reload("data-v-3b0dfedf", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
@@ -37131,9 +37131,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4afe22d5", __vue__options__)
+    hotAPI.createRecord("data-v-4e255c9a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4afe22d5", __vue__options__)
+    hotAPI.reload("data-v-4e255c9a", __vue__options__)
   }
 })()}
 },{"../../src":155,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
@@ -37179,9 +37179,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-876978e0", __vue__options__)
+    hotAPI.createRecord("data-v-1f11db56", __vue__options__)
   } else {
-    hotAPI.reload("data-v-876978e0", __vue__options__)
+    hotAPI.reload("data-v-1f11db56", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],144:[function(require,module,exports){
@@ -37290,9 +37290,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ff742a1e", __vue__options__)
+    hotAPI.createRecord("data-v-79b2af8c", __vue__options__)
   } else {
-    hotAPI.reload("data-v-ff742a1e", __vue__options__)
+    hotAPI.reload("data-v-79b2af8c", __vue__options__)
   }
 })()}
 },{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133}],146:[function(require,module,exports){
@@ -37305,9 +37305,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5ac5e6cc", __vue__options__)
+    hotAPI.createRecord("data-v-46411627", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5ac5e6cc", __vue__options__)
+    hotAPI.reload("data-v-46411627", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],147:[function(require,module,exports){
@@ -37334,9 +37334,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-42712352", __vue__options__)
+    hotAPI.createRecord("data-v-4f979a1c", __vue__options__)
   } else {
-    hotAPI.reload("data-v-42712352", __vue__options__)
+    hotAPI.reload("data-v-4f979a1c", __vue__options__)
   }
 })()}
 },{"./sidebar.vue":148,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],148:[function(require,module,exports){
@@ -37371,9 +37371,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6c64fcff", __vue__options__)
+    hotAPI.createRecord("data-v-bede6878", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6c64fcff", __vue__options__)
+    hotAPI.reload("data-v-bede6878", __vue__options__)
   }
 })()}
 },{"../../src":155,"./sidebar__domain.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
@@ -37438,9 +37438,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7f822ca3", __vue__options__)
+    hotAPI.createRecord("data-v-faad3330", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7f822ca3", __vue__options__)
+    hotAPI.reload("data-v-faad3330", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
@@ -37596,10 +37596,19 @@ class OutputDef extends CustomDef {
 
 }
 
+class ErrorDef extends CustomDef {
+
+    constructor(domain, key) {
+        super(domain, 'errors', key);
+    }
+
+}
+
 module.exports = {
     InputDef,
     OutputDef,
-    TypeDef
+    TypeDef,
+    ErrorDef
 };
 
 },{"./example":154,"./util":165}],153:[function(require,module,exports){
@@ -38036,6 +38045,23 @@ module.exports={
                 "name"
             ]
         }
+    },
+    "errors": {
+        "DeliveryOptionInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Delivery option does not match one of the options we are expecting"
+        },
+        "RefundOptionNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Refund option does not match one of the options we are expecting"
+        },
+        "EventNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Requested event is not found"
+        }
     }
 }
 
@@ -38150,8 +38176,12 @@ module.exports={
             "type": "object",
             "description": "Outbound and inbound flights specification.",
             "properties": {
-                "origin": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
-                "destination": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
+                "origin": {
+                    "$ref": "#/domains/FlightBooking/types/DatePlace"
+                },
+                "destination": {
+                    "$ref": "#/domains/FlightBooking/types/DatePlace"
+                }
             },
             "required": [
                 "origin",
@@ -38161,7 +38191,12 @@ module.exports={
         },
         "CabinClass": {
             "type": "string",
-            "enum": ["economy", "premium economy", "business", "first"]
+            "enum": [
+                "economy",
+                "premium economy",
+                "business",
+                "first"
+            ]
         },
         "DatePlace": {
             "type": "object",
@@ -38197,7 +38232,9 @@ module.exports={
             "description": "An array with details for each passenger.",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
+            "items": {
+                "$ref": "#/domains/FlightBooking/types/Passenger"
+            }
         },
         "Passenger": {
             "type": "object",
@@ -38238,7 +38275,9 @@ module.exports={
                     "maximum": 3,
                     "default": 0
                 },
-                "document": { "$ref": "#/domains/FlightBooking/types/PassengerDocument" }
+                "document": {
+                    "$ref": "#/domains/FlightBooking/types/PassengerDocument"
+                }
             },
             "required": [
                 "title",
@@ -38256,7 +38295,9 @@ module.exports={
                 "type": {
                     "type": "string",
                     "description": "Document type.",
-                    "enum": ["passport"]
+                    "enum": [
+                        "passport"
+                    ]
                 },
                 "number": {
                     "type": "string",
@@ -38291,20 +38332,26 @@ module.exports={
             "description": "A list of available fares found on the website.",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/Fare" }
+            "items": {
+                "$ref": "#/domains/FlightBooking/types/Fare"
+            }
         },
         "Fare": {
             "type": "object",
             "description": "Flight fare information.",
             "additionalProperties": false,
             "properties": {
-                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
+                "cabinClass": {
+                    "$ref": "#/domains/FlightBooking/types/CabinClass"
+                },
                 "fareName": {
                     "type": "string",
                     "description": "Fare marketing name as provided by airline.",
                     "example": "Business Flex"
                 },
-                "price": { "$ref": "#/domains/Generic/types/Price" }
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
             },
             "required": [
                 "fareName",
@@ -38321,7 +38368,9 @@ module.exports={
                     "description": "An array of <code>seatNumber</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
                     "minItems": 1,
                     "maxItems": 9,
-                    "items": { "$ref": "#/domains/FlightBooking/types/SeatNumber" }
+                    "items": {
+                        "$ref": "#/domains/FlightBooking/types/SeatNumber"
+                    }
                 }
             },
             "required": [
@@ -38340,7 +38389,9 @@ module.exports={
                 },
                 "seats": {
                     "type": "array",
-                    "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
+                    "items": {
+                        "$ref": "#/domains/FlightBooking/types/Seat"
+                    }
                 }
             },
             "required": [
@@ -38358,7 +38409,9 @@ module.exports={
             "type": "object",
             "description": "Seat metadata.",
             "properties": {
-                "seatNumber": { "$ref": "#/domains/FlightBooking/types/SeatNumber" },
+                "seatNumber": {
+                    "$ref": "#/domains/FlightBooking/types/SeatNumber"
+                },
                 "available": {
                     "type": "boolean",
                     "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
@@ -38402,9 +38455,93 @@ module.exports={
                 "bookingReference"
             ]
         }
+    },
+    "errors": {
+        "PassengerDetailsInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client"
+        },
+        "OutboundFlightDateInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Outbound flight date is not accepted by the website e.g. date is too close"
+        },
+        "InboundFlightDateInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Inbound flight date is not accepted by the website e.g. date is too close"
+        },
+        "DateOfBirthInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Date of birth is not accepted by the website e.g. child must be younger than 12"
+        },
+        "DocumentIssueDateInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Document issue date is not accepted by the website e.g. the issue date cannot be after today's date"
+        },
+        "DocumentExpirationDateInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Document expiration date is not accepted by the website e.g. your document should be valid for more than 3 months"
+        },
+        "OutboundFlightNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Outbound flight is not found e.g. flight is not available on given date"
+        },
+        "InboundFlightNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Inbound flight is not found e.g. flight is not available on given date"
+        },
+        "OriginAirportNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Airport is not found with given airport code"
+        },
+        "DestinationAirportNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Airport is not found with given airport code"
+        },
+        "CabinClassNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given cabin class is not found on the website"
+        },
+        "OutboundFareNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given outbound fare does not match one of the options we are expecting"
+        },
+        "InboundFareNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given inbound fare does not match one of the options we are expecting"
+        },
+        "SeatNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given seat does not match one of the options we are expecting"
+        },
+        "SeatSelectionNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Client asked for seat selection but it's not available for the website"
+        },
+        "LuggageCannotBeAdded": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client"
+        },
+        "PassengerDocumentRequired": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Passenger document (passport or other travel document) is required by the website"
+        }
     }
 }
-
 },{}],160:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
@@ -39085,6 +39222,119 @@ module.exports={
                 "yer",
                 "zwd"
             ]
+        },
+        "Error": {
+            "type": "object",
+            "description": "Error object we return when the job failed",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "Error category. client: Errors caused by factors which under you control (client of Automation Cloud), server: Errors caused by problems with Automation Cloud, website: Errors caused by factors which neither client nor Automation Cloud can control",
+                    "enum": [
+                        "client",
+                        "server",
+                        "website"
+                    ]
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Extra information about the errors",
+                    "example": "finalPriceConsent input time out after 10 minutes",
+                    "default": ""
+                }
+            }
+        }
+    },
+    "errors": {
+        "JobCancelled":{
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Job cancelled by client"
+        },
+        "InputTimeout": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Input was not provided within 15 minutes"
+        },
+        "PaymentRejected": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if provided."
+        },
+        "CardDetailsInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Unable to process payment as card details are invalid"
+        },
+        "AddressInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Invalid address provided"
+        },
+        "AccountDetailsInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Cannot sign in as invalid account details provided"
+        },
+        "UrlInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Invalid url provided"
+        },
+        "FinalPriceNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Final price provided does not match expectation"
+        },
+        "PanTokenInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Invalid pan token provided"
+        },
+        "CookieInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Invalid cookie provided"
+        },
+        "PriceChangedAfterConsent": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Price changed after final price consent."
+        },
+        "WebsiteValidationFailed": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Website's validation rule doesn't allow the input data"
+        },
+        "SystemUnavailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Website system is down / Website doesn't work at the moment"
+        },
+        "KnownLimitation": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Cannot process due to known limitation"
+        },
+        "GenericWebsiteError": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Website threw general error during automation process. A message will be forwarded from the website if provided."
+        },
+        "UnableToContinueProcess": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Process couldn't reach the final step. Website finished the process early (eg. unable to purchase online)"
+        },
+        "ServerError": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "server",
+            "description": "Server Error"
+        },
+        "JobTimeout": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "server",
+            "description": "Job timeout after an hour of job creation without reaching the final step"
         }
     }
 }
@@ -39182,7 +39432,8 @@ module.exports={
                 }
             }
         }
-    }
+    },
+    "errors": {}
 }
 
 },{}],163:[function(require,module,exports){
@@ -39359,6 +39610,33 @@ module.exports={
                 "price"
             ]
         }
+    },
+    "errors": {
+        "LegalCoverNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given legal cover does not match one of the options we are expecting"
+        },
+        "BreakdownCoverNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given breakdown cover does not match one of the options we are expecting"
+        },
+        "PersonalInjuryCoverNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given personal injury cover does not match one of the options we are expecting"
+        },
+        "CarHireCoverNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given car hire cover does not match one of the options we are expecting"
+        },
+        "RegistrationNumberInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Registration number is not accepted by the website"
+        }
     }
 }
 
@@ -39508,6 +39786,33 @@ module.exports={
             "required": [
                 "bookingReference"
             ]
+        }
+    },
+    "errors": {
+        "DepositNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given deposit option does not match one of the options we are expecting"
+        },
+        "PetOptionInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given pet option does not match one of the options we are expecting"
+        },
+        "PetOptionNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client/website",
+            "description": "Pet option is not available"
+        },
+        "GuestAgeInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Guest age is not accepted by the website"
+        },
+        "VacationRentalNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Vacation rental is not found e.g. vacation rental unavailable on given date provided"
         }
     }
 }

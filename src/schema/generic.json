@@ -709,22 +709,22 @@
         "InputTimeout": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Input was not provided within certain time"
+            "description": "Input was not provided within 15 minutes"
         },
         "PaymentRejected": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Payment Rejected due to a problem with the card"
+            "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if provided."
         },
         "CardDetailsInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Unable to process payment as card details is invalid"
+            "description": "Unable to process payment as card details are invalid"
         },
         "AddressInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Invalid address is provided"
+            "description": "Invalid address provided"
         },
         "AccountDetailsInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
@@ -734,22 +734,22 @@
         "UrlInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Invalid url is provided"
+            "description": "Invalid url provided"
         },
         "FinalPriceNotFound": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Final price is not one of the options we are expecting"
+            "description": "Final price provided does not match expectation"
         },
         "PanTokenInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Invalid pan token is provided"
+            "description": "Invalid pan token provided"
         },
         "CookieInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
-            "description": "Invalid cookie is provided"
+            "description": "Invalid cookie provided"
         },
         "PriceChangedAfterConsent": {
             "typeRef": "#/domains/Generic/types/Error",
@@ -774,7 +774,7 @@
         "GenericWebsiteError": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "website",
-            "description": "Website threw general error during automation process"
+            "description": "Website threw general error during automation process. A message will be forwarded from the website if provided."
         },
         "UnableToContinueProcess": {
             "typeRef": "#/domains/Generic/types/Error",
