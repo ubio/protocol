@@ -144,5 +144,32 @@
                 "bookingReference"
             ]
         }
+    },
+    "errors": {
+        "DepositNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given deposit option is not one of the options we are expecting"
+        },
+        "PetOptionInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Given pet option is not one of the options we are expecting"
+        },
+        "PetOptionNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client/website",
+            "description": "Pet option is not available"
+        },
+        "GuestAgeInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Guest age is not accepted by website"
+        },
+        "CottageNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Cottage is not found on the date you requested"
+        }
     }
 }

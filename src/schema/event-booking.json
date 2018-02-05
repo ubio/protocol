@@ -143,5 +143,22 @@
                 "name"
             ]
         }
+    },
+    "errors": {
+        "DeliveryOptionInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Delivery Option is not one of the options we are expecting"
+        },
+        "RefundOptionNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Refund option is not one of the options we are expecting"
+        },
+        "EventNotAvailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Requested event is not found"
+        }
     }
 }

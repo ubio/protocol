@@ -51,6 +51,12 @@
                     "additionalProperties": {
                         "$ref": "#/definitions/TypeDef"
                     }
+                },
+                "errors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/ErrorDef"
+                    }
                 }
             },
             "required": [
@@ -58,6 +64,7 @@
                 "inputs",
                 "outputs",
                 "types",
+                "errors",
                 "private"
             ],
             "additionalProperties": false
@@ -112,6 +119,15 @@
                     ]
                 }
             ]
+        },
+        "ErrorDef": {
+            "properties": {
+                "typeRef": { "$ref": "#/definitions/TypeRef" },
+                "category": { "type": "string" },
+                "description": { "type": "string" }
+            },
+            "required": ["typeRef", "category"],
+            "additionalProperties": false
         }
     }
 }

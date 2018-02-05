@@ -677,6 +677,119 @@
                 "yer",
                 "zwd"
             ]
+        },
+        "Error": {
+            "type": "object",
+            "description": "Error object we return when the job failed",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "Error category. client: Errors caused by factors which under you control (client of Automation Cloud), server: Errors caused by problems with Automation Cloud, website: Errors caused by factors which neither client nor Automation Cloud can control",
+                    "enum": [
+                        "client",
+                        "server",
+                        "website"
+                    ]
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Extra information about the errors",
+                    "example": "finalPriceConsent input time out after 10 minutes",
+                    "default": ""
+                }
+            }
+        }
+    },
+    "errors": {
+        "JobCancelled":{
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Job cancelled by client"
+        },
+        "InputTimeout": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Input was not provided within certain time"
+        },
+        "PaymentRejected": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Payment Rejected due to a problem with the card"
+        },
+        "CardDetailsInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Unable to process payment as card details is invalid"
+        },
+        "AddressInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Invalid address is provided"
+        },
+        "AccountDetailsInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Cannot sign in as invalid account details provided"
+        },
+        "UrlInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Invalid url is provided"
+        },
+        "FinalPriceNotFound": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Final price is not one of the options we are expecting"
+        },
+        "PanTokenInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Invalid pan token is provided"
+        },
+        "CookieInvalid": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "client",
+            "description": "Invalid cookie is provided"
+        },
+        "PriceChangedAfterConsent": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Price changed after final price consent."
+        },
+        "WebsiteValidationFailed": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Website's validation rule doesn't allow the input data"
+        },
+        "SystemUnavailable": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Website system is down / Website doesn't work at the moment"
+        },
+        "KnownLimitation": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Cannot process due to known limitation"
+        },
+        "GenericWebsiteError": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Website threw general error during automation process"
+        },
+        "UnableToContinueProcess": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "website",
+            "description": "Process couldn't reach the final step. Website finished the process early (eg. unable to purchase online)"
+        },
+        "ServerError": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "server",
+            "description": "Server Error"
+        },
+        "JobTimeout": {
+            "typeRef": "#/domains/Generic/types/Error",
+            "category": "server",
+            "description": "Job timeout after an hour of job creation without reaching the final step"
         }
     }
 }
