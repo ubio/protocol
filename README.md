@@ -4,7 +4,7 @@ _Note: This repository is under active development. Please expect breaking chang
 
 ## Terminology
 
-**Domain** is a colection of input, output and type definitions. Domains are uniquely identified by `id` which is a PascalCase string. Example: `FlightBooking`.
+**Domain** is a collection of input, output and type definitions. Domains are uniquely identified by `id` which is a PascalCase string. Example: `FlightBooking`.
 
 **Definition** is a JSON Schema object, uniquely identified by `id`, which consists of domain `id` and definition `key`, separated with dot. Example: `Generic.Price`.
 
