@@ -38,6 +38,14 @@ module.exports = class Domain {
         return this.defs.find(def => def.key === key);
     }
 
+    getInputDef(key) {
+        return this.inputs.find(def => def.key === key);
+    }
+
+    getOutputDef(key) {
+        return this.outputs.find(def => def.key === key);
+    }
+
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }
@@ -58,6 +66,40 @@ module.exports = class Domain {
                 errors: [
                     {
                         message: `Unexpected data: ${this.id}.${key}`,
+                        domain: this.id,
+                        key,
+                    },
+                ],
+            };
+        }
+        return await def.validate(data);
+    }
+
+    async validateInput(key, data) {
+        const def = this.getInputDef(key);
+        if (!def) {
+            return {
+                valid: false,
+                errors: [
+                    {
+                        message: `Unexpected input: ${this.id}.${key}`,
+                        domain: this.id,
+                        key,
+                    },
+                ],
+            };
+        }
+        return await def.validate(data);
+    }
+
+    async validateOutput(key, data) {
+        const def = this.getOutputDef(key);
+        if (!def) {
+            return {
+                valid: false,
+                errors: [
+                    {
+                        message: `Unexpected output: ${this.id}.${key}`,
                         domain: this.id,
                         key,
                     },
