@@ -69,6 +69,7 @@
         "Account": {
             "type": "object",
             "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "pii": true,
             "properties": {
                 "email": {
                     "type": "string",
@@ -100,6 +101,7 @@
         "Person": {
             "type": "object",
             "description": "Basic information about person's identity.",
+            "pii": true,
             "properties": {
                 "title": {
                     "type": "string",
@@ -137,6 +139,7 @@
         "Address": {
             "type": "object",
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
             "properties": {
                 "line1": {
                     "type": "string",
@@ -178,6 +181,7 @@
         "Phone": {
             "type": "object",
             "description": "Phone information, typically used on contact details pages.",
+            "pii": true,
             "properties": {
                 "countryCode": { "$ref": "#/domains/Generic/types/CountryCode" },
                 "number": {
@@ -225,6 +229,7 @@
         "Payment": {
             "type": "object",
             "description": "Payment information, including card details and billing address.",
+            "pii": true,
             "properties": {
                 "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
                 "person": { "$ref": "#/domains/Generic/types/Person" },
@@ -240,6 +245,7 @@
         "PaymentCard": {
             "type": "object",
             "description": "Payment information for card payment. Note: card number should not be submitted in plain text as per PCI DSS. Use <code>panToken</code> to provide it securely instead.",
+            "pii": true,
             "properties": {
                 "type": {
                     "type": "string",

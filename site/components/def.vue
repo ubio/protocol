@@ -5,6 +5,11 @@
 
         <h3 class="def__header">
             <span class="def__id">{{ def.id }}</span>
+            <span class="tag tag--primary"
+                title="Personally identifiable information"
+                v-if="pii">
+                PII
+            </span>
             <img
                 src="/img/link.svg"
                 class="def__link"
@@ -64,6 +69,10 @@ module.exports = {
             return type === 'object' && additionalProperties !== false;
         },
 
+        pii() {
+            const { pii } = this.def.spec;
+            return !!pii;
+        },
     },
 
     methods: {
