@@ -37827,19 +37827,14 @@ module.exports = class Protocol {
         return domain ? domain.getDef(key) : null;
     }
 
-    async validate(domainId, key, data) {
+    getInputDef(domainId, key) {
         const domain = this.getDomain(domainId);
-        if (!domain) {
-            return {
-                valid: false,
-                errors: [{
-                    message: `Unexpected domain: ${domainId}`,
-                    domain: domainId,
-                    key
-                }]
-            };
-        }
-        return await domain.validate(key, data);
+        return domain ? domain.getInputDef(key) : null;
+    }
+
+    getOutputDef(domainId, key) {
+        const domain = this.getDomain(domainId);
+        return domain ? domain.getOutputDef(key) : null;
     }
 
 };
