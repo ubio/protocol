@@ -37581,6 +37581,11 @@ class CustomDef extends Def {
         return this.spec.staged || false;
     }
 
+    isPii() {
+        const typeDef = this.getTypeDef();
+        return typeDef && typeDef.spec && typeDef.spec.pii || false;
+    }
+
     createExample() {
         const typeDef = this.getTypeDef();
         return typeDef ? typeDef.createExample() : null;
