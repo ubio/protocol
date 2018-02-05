@@ -684,7 +684,7 @@
             "properties": {
                 "category": {
                     "type": "string",
-                    "description": "Error category. client: Errors caused by factors which under you control (client of Automation Cloud), server: Errors caused by problems with Automation Cloud, website: Errors caused by factors which neither client nor Automation Cloud can control",
+                    "description": "Error category <br/>  <code>client</code> is errors caused by factors which under client's control. <br/><code>server</code> is errors caused by problems with Automation Cloud. <br/> <code> website</code> is errors caused by factors which neither client nor Automation Cloud can control.",
                     "enum": [
                         "client",
                         "server",
@@ -694,10 +694,12 @@
                 "message": {
                     "type": "string",
                     "description": "Extra information about the errors",
-                    "example": "finalPriceConsent input time out after 10 minutes",
+                    "example": "Job cancelled by client",
                     "default": ""
                 }
-            }
+            },
+            "additionalProperties": false,
+            "required": ["category", "message"]
         }
     },
     "errors": {
@@ -764,7 +766,7 @@
         "SystemUnavailable": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "website",
-            "description": "Website system is down / Website doesn't work at the moment"
+            "description": "Website system is down/Website doesn't work at the moment"
         },
         "KnownLimitation": {
             "typeRef": "#/domains/Generic/types/Error",

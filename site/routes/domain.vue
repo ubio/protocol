@@ -47,6 +47,18 @@
                 :def="def"/>
         </template>
 
+        <template v-if="errorsByCategory">
+            <h2 id="errors">Errors</h2>
+            <div
+                v-for="category of Object.keys(errorsByCategory)"
+                class="domain__errors">
+                <h3 class="domain__errors__subheader"> {{ category }} </h3>
+                <oneliner
+                    v-for="def of errorsByCategory[category]"
+                    :def="def"/>
+            </div>
+        </template>
+
     </div>
 </template>
 
@@ -94,6 +106,19 @@ module.exports = {
             return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
         },
 
+        errorsByCategory() {
+            const errors = this.domain.getErrors();
+            const errorsByCategory = {};
+            for (const obj of errors) {
+                const { category } = obj.spec;
+                const list = errorsByCategory[category] || [];
+                list.push(obj);
+                errorsByCategory[category] = list;
+            }
+
+            return errorsByCategory;
+        },
+
         exampleInput() {
             if (!this.inputs.length) {
                 return null;
@@ -113,4 +138,9 @@ module.exports = {
 </script>
 
 <style>
+.domain__errors__subheader {
+    margin: 2em 0 1em;
+    font-size: 20px;
+    color: var(--heading__color);
+}
 </style>

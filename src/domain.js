@@ -1,6 +1,6 @@
 'use strict';
 
-const { InputDef, OutputDef, TypeDef } = require('./defs');
+const { InputDef, OutputDef, TypeDef, ErrorDef } = require('./defs');
 
 module.exports = class Domain {
 
@@ -12,10 +12,12 @@ module.exports = class Domain {
         this.inputs = this._collectInputs();
         this.outputs = this._collectOutputs();
         this.types = this._collectTypes();
+        this.errors = this._collectErrors();
         this.defs = []
             .concat(this.inputs)
             .concat(this.outputs)
-            .concat(this.types);
+            .concat(this.types)
+            .concat(this.errors);
     }
 
     getInputs() {
@@ -28,6 +30,10 @@ module.exports = class Domain {
 
     getTypes() {
         return this.types;
+    }
+
+    getErrors() {
+        return this.errors;
     }
 
     getDefs() {
@@ -48,6 +54,10 @@ module.exports = class Domain {
 
     _collectTypes() {
         return Object.keys(this.spec.types).map(key => new TypeDef(this, key));
+    }
+
+    _collectErrors() {
+        return Object.keys(this.spec.errors).map(key => new ErrorDef(this, key));
     }
 
     async validate(key, data) {

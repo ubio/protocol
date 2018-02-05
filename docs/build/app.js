@@ -37217,6 +37217,7 @@ module.exports = new VueRouter({
 });
 
 },{"./routes/domain.vue":145,"./routes/home.vue":146,"./routes/layout.vue":147,"./util":150,"vue-router":134}],145:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".domain__errors__subheader {\n    margin: 2em 0 1em;\n    font-size: 20px;\n    color: var(--heading__color);\n}")
 ;(function(){
 
 
@@ -37263,6 +37264,19 @@ module.exports = {
             return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
         },
 
+        errorsByCategory() {
+            const errors = this.domain.getErrors();
+            const errorsByCategory = {};
+            for (const obj of errors) {
+                const { category } = obj.spec;
+                const list = errorsByCategory[category] || [];
+                list.push(obj);
+                errorsByCategory[category] = list;
+            }
+
+            return errorsByCategory;
+        },
+
         exampleInput() {
             if (!this.inputs.length) {
                 return null;
@@ -37283,19 +37297,20 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),(_vm.exampleInput)?_c('div',{staticClass:"block"},[(!_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = true}}},[_vm._v("\n                    Show example of initial input\n                ")])]:_vm._e(),_vm._v(" "),(_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")]),_vm._v(" "),_c('pre',{domProps:{"textContent":_vm._s(JSON.stringify(_vm.exampleInput, null, 4))}}),_vm._v(" "),_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")])]:_vm._e()],2):_vm._e(),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),(_vm.exampleInput)?_c('div',{staticClass:"block"},[(!_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = true}}},[_vm._v("\n                    Show example of initial input\n                ")])]:_vm._e(),_vm._v(" "),(_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")]),_vm._v(" "),_c('pre',{domProps:{"textContent":_vm._s(JSON.stringify(_vm.exampleInput, null, 4))}}),_vm._v(" "),_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")])]:_vm._e()],2):_vm._e(),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.errorsByCategory)?[_c('h2',{attrs:{"id":"errors"}},[_vm._v("Errors")]),_vm._v(" "),_vm._l((Object.keys(_vm.errorsByCategory)),function(category){return _c('div',{staticClass:"domain__errors"},[_c('h3',{staticClass:"domain__errors__subheader"},[_vm._v(" "+_vm._s(category)+" ")]),_vm._v(" "),_vm._l((_vm.errorsByCategory[category]),function(def){return _c('oneliner',{attrs:{"def":def}})})],2)})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-79b2af8c", __vue__options__)
   } else {
     hotAPI.reload("data-v-79b2af8c", __vue__options__)
   }
 })()}
-},{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133}],146:[function(require,module,exports){
+},{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],146:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -37430,7 +37445,11 @@ __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createEle
                 name: 'domain',
                 params: { domainId: _vm.domain.id },
                 hash: '#' + def.key,
-            }}},[_vm._v("\n            "+_vm._s(def.key)+"\n        ")])})]:_vm._e()],2)}
+            }}},[_vm._v("\n            "+_vm._s(def.key)+"\n        ")])}),_vm._v(" "),(_vm.domain.getErrors().length)?_c('router-link',{staticClass:"sidebar__section",attrs:{"to":{
+                name: 'domain',
+                params: { domainId: _vm.domain.id },
+                hash: '#errors',
+            }}},[_vm._v("\n            Errors\n        ")]):_vm._e()]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37614,7 +37633,7 @@ module.exports = {
 },{"./example":154,"./util":165}],153:[function(require,module,exports){
 'use strict';
 
-const { InputDef, OutputDef, TypeDef } = require('./defs');
+const { InputDef, OutputDef, TypeDef, ErrorDef } = require('./defs');
 
 module.exports = class Domain {
 
@@ -37626,7 +37645,8 @@ module.exports = class Domain {
         this.inputs = this._collectInputs();
         this.outputs = this._collectOutputs();
         this.types = this._collectTypes();
-        this.defs = [].concat(this.inputs).concat(this.outputs).concat(this.types);
+        this.errors = this._collectErrors();
+        this.defs = [].concat(this.inputs).concat(this.outputs).concat(this.types).concat(this.errors);
     }
 
     getInputs() {
@@ -37639,6 +37659,10 @@ module.exports = class Domain {
 
     getTypes() {
         return this.types;
+    }
+
+    getErrors() {
+        return this.errors;
     }
 
     getDefs() {
@@ -37659,6 +37683,10 @@ module.exports = class Domain {
 
     _collectTypes() {
         return Object.keys(this.spec.types).map(key => new TypeDef(this, key));
+    }
+
+    _collectErrors() {
+        return Object.keys(this.spec.errors).map(key => new ErrorDef(this, key));
     }
 
     async validate(key, data) {
@@ -39229,7 +39257,7 @@ module.exports={
             "properties": {
                 "category": {
                     "type": "string",
-                    "description": "Error category. client: Errors caused by factors which under you control (client of Automation Cloud), server: Errors caused by problems with Automation Cloud, website: Errors caused by factors which neither client nor Automation Cloud can control",
+                    "description": "Error category <br/>  <code>client</code> is errors caused by factors which under client's control. <br/><code>server</code> is errors caused by problems with Automation Cloud. <br/> <code> website</code> is errors caused by factors which neither client nor Automation Cloud can control.",
                     "enum": [
                         "client",
                         "server",
@@ -39239,10 +39267,12 @@ module.exports={
                 "message": {
                     "type": "string",
                     "description": "Extra information about the errors",
-                    "example": "finalPriceConsent input time out after 10 minutes",
+                    "example": "Job cancelled by client",
                     "default": ""
                 }
-            }
+            },
+            "additionalProperties": false,
+            "required": ["category", "message"]
         }
     },
     "errors": {
@@ -39309,7 +39339,7 @@ module.exports={
         "SystemUnavailable": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "website",
-            "description": "Website system is down / Website doesn't work at the moment"
+            "description": "Website system is down/Website doesn't work at the moment"
         },
         "KnownLimitation": {
             "typeRef": "#/domains/Generic/types/Error",
