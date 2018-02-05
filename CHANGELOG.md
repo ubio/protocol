@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [1.8.0] - 2018-2-5
+
 - Add `Def.isPII` method and `PII` label for Types
 
 ## [1.7.1] - 2018-1-11
