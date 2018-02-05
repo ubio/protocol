@@ -36944,8 +36944,12 @@ module.exports = {
         loose() {
             const { additionalProperties, type } = this.def.spec;
             return type === 'object' && additionalProperties !== false;
-        }
+        },
 
+        pii() {
+            const { pii } = this.def.spec;
+            return !!pii;
+        }
     },
 
     methods: {
@@ -36961,7 +36965,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.loose)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            allows additional properties\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),(_vm.pii)?_c('span',{staticClass:"tag tag--primary",attrs:{"title":"Personally identifiable information"}},[_vm._v("\n            PII\n        ")]):_vm._e(),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.loose)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            allows additional properties\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37108,6 +37112,10 @@ module.exports = {
 
         ref() {
             return protocol.resolveTypeRef(this.$ref);
+        },
+
+        pii() {
+            return !!this.ref.spec.pii;
         }
 
     }
@@ -37123,7 +37131,7 @@ __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createEle
                         domainId: _vm.ref.domain.id,
                     },
                     hash: '#' + _vm.ref.key,
-                }}},[_vm._v("\n                "+_vm._s(_vm.ref.id)+"\n            ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n                "+_vm._s(_vm.$ref)+"\n            ")])],1):_vm._e()]],2)}
+                }}},[_vm._v("\n                "+_vm._s(_vm.ref.id)+"\n            ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n                "+_vm._s(_vm.$ref)+"\n            ")])],1):_vm._e(),_vm._v(" "),(_vm.pii)?_c('span',{staticClass:"tag tag--primary",attrs:{"title":"Personally identifiable information"}},[_vm._v("\n            PII\n        ")]):_vm._e()]],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37592,6 +37600,11 @@ class CustomDef extends Def {
         return this.spec.staged || false;
     }
 
+    isPii() {
+        const typeDef = this.getTypeDef();
+        return typeDef && typeDef.spec && typeDef.spec.pii || false;
+    }
+
     createExample() {
         const typeDef = this.getTypeDef();
         return typeDef ? typeDef.createExample() : null;
@@ -37673,6 +37686,14 @@ module.exports = class Domain {
         return this.defs.find(def => def.key === key);
     }
 
+    getInputDef(key) {
+        return this.inputs.find(def => def.key === key);
+    }
+
+    getOutputDef(key) {
+        return this.outputs.find(def => def.key === key);
+    }
+
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }
@@ -37696,6 +37717,36 @@ module.exports = class Domain {
                 valid: false,
                 errors: [{
                     message: `Unexpected data: ${this.id}.${key}`,
+                    domain: this.id,
+                    key
+                }]
+            };
+        }
+        return await def.validate(data);
+    }
+
+    async validateInput(key, data) {
+        const def = this.getInputDef(key);
+        if (!def) {
+            return {
+                valid: false,
+                errors: [{
+                    message: `Unexpected input: ${this.id}.${key}`,
+                    domain: this.id,
+                    key
+                }]
+            };
+        }
+        return await def.validate(data);
+    }
+
+    async validateOutput(key, data) {
+        const def = this.getOutputDef(key);
+        if (!def) {
+            return {
+                valid: false,
+                errors: [{
+                    message: `Unexpected output: ${this.id}.${key}`,
                     domain: this.id,
                     key
                 }]
@@ -37813,19 +37864,14 @@ module.exports = class Protocol {
         return domain ? domain.getDef(key) : null;
     }
 
-    async validate(domainId, key, data) {
+    getInputDef(domainId, key) {
         const domain = this.getDomain(domainId);
-        if (!domain) {
-            return {
-                valid: false,
-                errors: [{
-                    message: `Unexpected domain: ${domainId}`,
-                    domain: domainId,
-                    key
-                }]
-            };
-        }
-        return await domain.validate(key, data);
+        return domain ? domain.getInputDef(key) : null;
+    }
+
+    getOutputDef(domainId, key) {
+        const domain = this.getDomain(domainId);
+        return domain ? domain.getOutputDef(key) : null;
     }
 
 };
@@ -38258,6 +38304,7 @@ module.exports={
         "Passengers": {
             "type": "array",
             "description": "An array with details for each passenger.",
+            "pii": true,
             "minItems": 1,
             "maxItems": 9,
             "items": {
@@ -38266,6 +38313,7 @@ module.exports={
         },
         "Passenger": {
             "type": "object",
+            "pii": true,
             "properties": {
                 "title": {
                     "type": "string",
@@ -38319,6 +38367,7 @@ module.exports={
         "PassengerDocument": {
             "type": "object",
             "description": "Passenger ID (passport or other travel document). Automation may fail if this information is required by website, but not provided by Client.",
+            "pii": true,
             "properties": {
                 "type": {
                     "type": "string",
@@ -38642,6 +38691,7 @@ module.exports={
         "Account": {
             "type": "object",
             "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "pii": true,
             "properties": {
                 "email": {
                     "type": "string",
@@ -38673,6 +38723,7 @@ module.exports={
         "Person": {
             "type": "object",
             "description": "Basic information about person's identity.",
+            "pii": true,
             "properties": {
                 "title": {
                     "type": "string",
@@ -38710,6 +38761,7 @@ module.exports={
         "Address": {
             "type": "object",
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
             "properties": {
                 "line1": {
                     "type": "string",
@@ -38751,6 +38803,7 @@ module.exports={
         "Phone": {
             "type": "object",
             "description": "Phone information, typically used on contact details pages.",
+            "pii": true,
             "properties": {
                 "countryCode": { "$ref": "#/domains/Generic/types/CountryCode" },
                 "number": {
@@ -38798,6 +38851,7 @@ module.exports={
         "Payment": {
             "type": "object",
             "description": "Payment information, including card details and billing address.",
+            "pii": true,
             "properties": {
                 "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
                 "person": { "$ref": "#/domains/Generic/types/Person" },
@@ -38813,6 +38867,7 @@ module.exports={
         "PaymentCard": {
             "type": "object",
             "description": "Payment information for card payment. Note: card number should not be submitted in plain text as per PCI DSS. Use <code>panToken</code> to provide it securely instead.",
+            "pii": true,
             "properties": {
                 "type": {
                     "type": "string",
@@ -39572,6 +39627,7 @@ module.exports={
         "Vehicle": {
             "type": "object",
             "description": "Information about the vehicle being insured.",
+            "pii": true,
             "properties": {
                 "registrationNumber": {
                     "type": "string",

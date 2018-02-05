@@ -103,6 +103,7 @@
         "Vehicle": {
             "type": "object",
             "description": "Information about the vehicle being insured.",
+            "pii": true,
             "properties": {
                 "registrationNumber": {
                     "type": "string",
