@@ -37694,6 +37694,10 @@ module.exports = class Domain {
         return this.outputs.find(def => def.key === key);
     }
 
+    getErrorDef(key) {
+        return this.errors.find(def => def.key === key);
+    }
+
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }
@@ -38558,7 +38562,7 @@ module.exports={
             "category": "client",
             "description": "Document issue date is not accepted by the website e.g. the issue date cannot be after today's date"
         },
-        "DocumentExpirationDateInvalid": {
+        "DocumentExpiryDateInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
             "description": "Document expiration date is not accepted by the website e.g. your document should be valid for more than 3 months"
@@ -39516,9 +39520,30 @@ module.exports={
                     "default": false
                 }
             }
+        },
+        "Error": {
+            "type": "object",
+            "description": "Error object we return when the job failed",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "Error category"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Extra information about the errors",
+                    "default": ""
+                }
+            }
         }
     },
-    "errors": {}
+    "errors": {
+        "InternalError": {
+            "typeRef": "#/domains/Internal/types/Error",
+            "category": "client",
+            "description": "Internal error occurred"
+        }
+    }
 }
 
 },{}],163:[function(require,module,exports){

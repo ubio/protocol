@@ -416,7 +416,7 @@
             "category": "client",
             "description": "Document issue date is not accepted by the website e.g. the issue date cannot be after today's date"
         },
-        "DocumentExpirationDateInvalid": {
+        "DocumentExpiryDateInvalid": {
             "typeRef": "#/domains/Generic/types/Error",
             "category": "client",
             "description": "Document expiration date is not accepted by the website e.g. your document should be valid for more than 3 months"

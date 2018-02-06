@@ -52,6 +52,10 @@ module.exports = class Domain {
         return this.outputs.find(def => def.key === key);
     }
 
+    getErrorDef(key) {
+        return this.errors.find(def => def.key === key);
+    }
+
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }

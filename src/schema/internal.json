@@ -74,7 +74,28 @@
                     "default": false
                 }
             }
+        },
+        "Error": {
+            "type": "object",
+            "description": "Error object we return when the job failed",
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "description": "Error category"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Extra information about the errors",
+                    "default": ""
+                }
+            }
         }
     },
-    "errors": {}
+    "errors": {
+        "InternalError": {
+            "typeRef": "#/domains/Internal/types/Error",
+            "category": "client",
+            "description": "Internal error occurred"
+        }
+    }
 }
