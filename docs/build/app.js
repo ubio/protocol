@@ -37753,7 +37753,7 @@ module.exports = function createExample(protocol, spec) {
             return 0;
         case 'object':
             const obj = {};
-            for (const key of Object.keys(spec.properties)) {
+            for (const key of Object.keys(spec.properties || {})) {
                 obj[key] = createExample(protocol, spec.properties[key]);
             }
             return obj;
