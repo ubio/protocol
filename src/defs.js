@@ -105,6 +105,7 @@ class CustomDef extends Def {
 
 }
 
+
 class InputDef extends CustomDef {
 
     constructor(domain, key) {
@@ -121,17 +122,8 @@ class OutputDef extends CustomDef {
 
 }
 
-class ErrorDef extends CustomDef {
-
-    constructor(domain, key) {
-        super(domain, 'errors', key);
-    }
-
-}
-
 module.exports = {
     InputDef,
     OutputDef,
     TypeDef,
-    ErrorDef,
 };

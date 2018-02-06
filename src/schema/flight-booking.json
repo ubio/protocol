@@ -391,89 +391,90 @@
             ]
         }
     },
-    "errors": {
-        "PassengerDetailsInvalid": {
-            "typeRef": "#/domains/Generic/types/Error",
-            "category": "client"
+    "errors": [
+        {
+            "code": "PassengerDetailsInvalid",
+            "category": "client",
+            "description":"Passenger details invalid"
         },
-        "OutboundFlightDateInvalid": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "OutboundFlightDateInvalid",
             "category": "client",
             "description": "Outbound flight date is not accepted by the website e.g. date is too close"
         },
-        "InboundFlightDateInvalid": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "InboundFlightDateInvalid",
             "category": "client",
             "description": "Inbound flight date is not accepted by the website e.g. date is too close"
         },
-        "DateOfBirthInvalid": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "DateOfBirthInvalid",
             "category": "client",
             "description": "Date of birth is not accepted by the website e.g. child must be younger than 12"
         },
-        "DocumentIssueDateInvalid": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "DocumentIssueDateInvalid",
             "category": "client",
             "description": "Document issue date is not accepted by the website e.g. the issue date cannot be after today's date"
         },
-        "DocumentExpiryDateInvalid": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "DocumentExpiryDateInvalid",
             "category": "client",
             "description": "Document expiration date is not accepted by the website e.g. your document should be valid for more than 3 months"
         },
-        "OutboundFlightNotAvailable": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "OutboundFlightNotAvailable",
             "category": "client",
             "description": "Outbound flight is not found e.g. flight is not available on given date"
         },
-        "InboundFlightNotAvailable": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "InboundFlightNotAvailable",
             "category": "client",
             "description": "Inbound flight is not found e.g. flight is not available on given date"
         },
-        "OriginAirportNotFound": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "OriginAirportNotFound",
             "category": "client",
             "description": "Airport is not found with given airport code"
         },
-        "DestinationAirportNotFound": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "DestinationAirportNotFound",
             "category": "client",
             "description": "Airport is not found with given airport code"
         },
-        "CabinClassNotFound": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "CabinClassNotFound",
             "category": "client",
             "description": "Given cabin class is not found on the website"
         },
-        "OutboundFareNotFound": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "OutboundFareNotFound",
             "category": "client",
             "description": "Given outbound fare does not match one of the options we are expecting"
         },
-        "InboundFareNotFound": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "InboundFareNotFound",
             "category": "client",
             "description": "Given inbound fare does not match one of the options we are expecting"
         },
-        "SeatNotFound": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "SeatNotFound",
             "category": "client",
             "description": "Given seat does not match one of the options we are expecting"
         },
-        "SeatSelectionNotAvailable": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "SeatSelectionNotAvailable",
             "category": "client",
             "description": "Client asked for seat selection but it's not available for the website"
         },
-        "LuggageCannotBeAdded": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "LuggageCannotBeAdded",
             "category": "client"
         },
-        "PassengerDocumentRequired": {
-            "typeRef": "#/domains/Generic/types/Error",
+        {
+            "code": "PassengerDocumentRequired",
             "category": "client",
             "description": "Passenger document (passport or other travel document) is required by the website"
         }
-    }
+    ]
 }

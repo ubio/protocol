@@ -53,10 +53,7 @@
                     }
                 },
                 "errors": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/ErrorDef"
-                    }
+                    "type": "array"
                 }
             },
             "required": [
@@ -119,15 +116,6 @@
                     ]
                 }
             ]
-        },
-        "ErrorDef": {
-            "properties": {
-                "typeRef": { "$ref": "#/definitions/TypeRef" },
-                "category": { "type": "string" },
-                "description": { "type": "string" }
-            },
-            "required": ["typeRef", "category"],
-            "additionalProperties": false
         }
     }
 }

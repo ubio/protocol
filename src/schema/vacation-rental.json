@@ -145,31 +145,31 @@
             ]
         }
     },
-    "errors": {
-        "DepositNotFound": {
-            "typeRef": "#/domains/Generic/types/Error",
+    "errors": [
+        {
+            "code": "DepositNotFound",
             "category": "client",
             "description": "Given deposit option does not match one of the options we are expecting"
-        },
-        "PetOptionInvalid": {
-            "typeRef": "#/domains/Generic/types/Error",
+        }, 
+        {
+            "code": "PetOptionInvalid",
             "category": "client",
             "description": "Given pet option does not match one of the options we are expecting"
-        },
-        "PetOptionNotAvailable": {
-            "typeRef": "#/domains/Generic/types/Error",
+        }, 
+        {
+            "code": "PetOptionNotAvailable",
             "category": "client/website",
             "description": "Pet option is not available"
-        },
-        "GuestAgeInvalid": {
-            "typeRef": "#/domains/Generic/types/Error",
+        }, 
+        {
+            "code": "GuestAgeInvalid",
             "category": "client",
             "description": "Guest age is not accepted by the website"
-        },
-        "VacationRentalNotAvailable": {
-            "typeRef": "#/domains/Generic/types/Error",
+        }, 
+        {
+            "code": "VacationRentalNotAvailable",
             "category": "client",
             "description": "Vacation rental is not found e.g. vacation rental unavailable on given date provided"
         }
-    }
+    ]
 }

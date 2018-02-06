@@ -55,16 +55,25 @@ describe('Domain', () => {
 
     });
 
-    describe('getErrorDef', () => {
+    describe('getErrors', () => {
 
-        it('should resolve error definition', () => {
-            const def = Internal.getErrorDef('InternalError');
-            expect(def).toExist();
+        it('should resolve error lists', () => {
+            const errors = Internal.getErrors();
+            expect(errors).toExist();
+        });
+
+    });
+
+    describe('getErrorByCode', () => {
+
+        it('should resolve error', () => {
+            const error = Internal.getErrorByCode('InternalError');
+            expect(error).toExist();
         });
 
         it('should return null for unknown error definitions', () => {
-            expect(Internal.getOutputDef('none')).toNotExist();
-            expect(Internal.getOutputDef('unknownError')).toNotExist();
+            expect(Internal.getErrorByCode('none')).toNotExist();
+            expect(Internal.getErrorByCode('unknownError')).toNotExist();
         });
 
     });
