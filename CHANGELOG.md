@@ -1,6 +1,10 @@
 ## [UNRELEASED]
 
 
+## [1.9.1] - 2018-2-6
+
+- Fix `createExample` when object doesn't have `properties`
+
 ## [1.9.0] - 2018-2-5
 
 - Add `Domain#validateInput` and `Domain#validateOutput` methods
