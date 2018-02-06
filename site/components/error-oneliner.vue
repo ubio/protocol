@@ -5,7 +5,7 @@
          }"
          :id="error.code">
         <div class="error-oneliner__term">
-            <span class="error-oneliner__key">{{ error.code }}</span>
+            <span class="error-oneliner__code">{{ error.code }}</span>
             <img
                 src="/img/link.svg"
                 class="error-oneliner__link"

@@ -108,12 +108,8 @@
             "type": "object",
             "description": "Outbound and inbound flights specification.",
             "properties": {
-                "origin": {
-                    "$ref": "#/domains/FlightBooking/types/DatePlace"
-                },
-                "destination": {
-                    "$ref": "#/domains/FlightBooking/types/DatePlace"
-                }
+                "origin": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "destination": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
             },
             "required": [
                 "origin",
@@ -123,12 +119,7 @@
         },
         "CabinClass": {
             "type": "string",
-            "enum": [
-                "economy",
-                "premium economy",
-                "business",
-                "first"
-            ]
+            "enum": ["economy", "premium economy", "business", "first"]
         },
         "DatePlace": {
             "type": "object",
@@ -165,9 +156,7 @@
             "pii": true,
             "minItems": 1,
             "maxItems": 9,
-            "items": {
-                "$ref": "#/domains/FlightBooking/types/Passenger"
-            }
+            "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
         },
         "Passenger": {
             "type": "object",
@@ -230,9 +219,7 @@
                 "type": {
                     "type": "string",
                     "description": "Document type.",
-                    "enum": [
-                        "passport"
-                    ]
+                    "enum": ["passport"]
                 },
                 "number": {
                     "type": "string",
@@ -267,26 +254,20 @@
             "description": "A list of available fares found on the website.",
             "minItems": 1,
             "maxItems": 9,
-            "items": {
-                "$ref": "#/domains/FlightBooking/types/Fare"
-            }
+            "items": { "$ref": "#/domains/FlightBooking/types/Fare" }
         },
         "Fare": {
             "type": "object",
             "description": "Flight fare information.",
             "additionalProperties": false,
             "properties": {
-                "cabinClass": {
-                    "$ref": "#/domains/FlightBooking/types/CabinClass"
-                },
+                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
                 "fareName": {
                     "type": "string",
                     "description": "Fare marketing name as provided by airline.",
                     "example": "Business Flex"
                 },
-                "price": {
-                    "$ref": "#/domains/Generic/types/Price"
-                }
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
                 "fareName",
@@ -303,9 +284,7 @@
                     "description": "An array of <code>seatNumber</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
                     "minItems": 1,
                     "maxItems": 9,
-                    "items": {
-                        "$ref": "#/domains/FlightBooking/types/SeatNumber"
-                    }
+                    "items": { "$ref": "#/domains/FlightBooking/types/SeatNumber" }
                 }
             },
             "required": [
@@ -324,9 +303,7 @@
                 },
                 "seats": {
                     "type": "array",
-                    "items": {
-                        "$ref": "#/domains/FlightBooking/types/Seat"
-                    }
+                    "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
                 }
             },
             "required": [

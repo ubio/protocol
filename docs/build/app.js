@@ -37012,7 +37012,7 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"error-oneliner",class:{
          'error-oneliner--active': _vm.active,
-     },attrs:{"id":_vm.error.code}},[_c('div',{staticClass:"error-oneliner__term"},[_c('span',{staticClass:"error-oneliner__key"},[_vm._v(_vm._s(_vm.error.code))]),_vm._v(" "),_c('img',{staticClass:"error-oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"error-oneliner__body"},[_c('div',{staticClass:"error-oneliner__description",domProps:{"innerHTML":_vm._s(_vm.error.description)}}),_vm._v(" "),(_vm.error.example !== undefined)?_c('div',{staticClass:"error-oneliner__example"},[_c('strong',[_vm._v("Example:")]),_vm._v(" "),_c('code',[_vm._v(_vm._s(_vm.error.example))])]):_vm._e()])])}
+     },attrs:{"id":_vm.error.code}},[_c('div',{staticClass:"error-oneliner__term"},[_c('span',{staticClass:"error-oneliner__code"},[_vm._v(_vm._s(_vm.error.code))]),_vm._v(" "),_c('img',{staticClass:"error-oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"error-oneliner__body"},[_c('div',{staticClass:"error-oneliner__description",domProps:{"innerHTML":_vm._s(_vm.error.description)}}),_vm._v(" "),(_vm.error.example !== undefined)?_c('div',{staticClass:"error-oneliner__example"},[_c('strong',[_vm._v("Example:")]),_vm._v(" "),_c('code',[_vm._v(_vm._s(_vm.error.example))])]):_vm._e()])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -38293,12 +38293,8 @@ module.exports={
             "type": "object",
             "description": "Outbound and inbound flights specification.",
             "properties": {
-                "origin": {
-                    "$ref": "#/domains/FlightBooking/types/DatePlace"
-                },
-                "destination": {
-                    "$ref": "#/domains/FlightBooking/types/DatePlace"
-                }
+                "origin": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
+                "destination": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
             },
             "required": [
                 "origin",
@@ -38308,12 +38304,7 @@ module.exports={
         },
         "CabinClass": {
             "type": "string",
-            "enum": [
-                "economy",
-                "premium economy",
-                "business",
-                "first"
-            ]
+            "enum": ["economy", "premium economy", "business", "first"]
         },
         "DatePlace": {
             "type": "object",
@@ -38350,9 +38341,7 @@ module.exports={
             "pii": true,
             "minItems": 1,
             "maxItems": 9,
-            "items": {
-                "$ref": "#/domains/FlightBooking/types/Passenger"
-            }
+            "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
         },
         "Passenger": {
             "type": "object",
@@ -38415,9 +38404,7 @@ module.exports={
                 "type": {
                     "type": "string",
                     "description": "Document type.",
-                    "enum": [
-                        "passport"
-                    ]
+                    "enum": ["passport"]
                 },
                 "number": {
                     "type": "string",
@@ -38452,26 +38439,20 @@ module.exports={
             "description": "A list of available fares found on the website.",
             "minItems": 1,
             "maxItems": 9,
-            "items": {
-                "$ref": "#/domains/FlightBooking/types/Fare"
-            }
+            "items": { "$ref": "#/domains/FlightBooking/types/Fare" }
         },
         "Fare": {
             "type": "object",
             "description": "Flight fare information.",
             "additionalProperties": false,
             "properties": {
-                "cabinClass": {
-                    "$ref": "#/domains/FlightBooking/types/CabinClass"
-                },
+                "cabinClass": { "$ref": "#/domains/FlightBooking/types/CabinClass" },
                 "fareName": {
                     "type": "string",
                     "description": "Fare marketing name as provided by airline.",
                     "example": "Business Flex"
                 },
-                "price": {
-                    "$ref": "#/domains/Generic/types/Price"
-                }
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
                 "fareName",
@@ -38488,9 +38469,7 @@ module.exports={
                     "description": "An array of <code>seatNumber</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
                     "minItems": 1,
                     "maxItems": 9,
-                    "items": {
-                        "$ref": "#/domains/FlightBooking/types/SeatNumber"
-                    }
+                    "items": { "$ref": "#/domains/FlightBooking/types/SeatNumber" }
                 }
             },
             "required": [
@@ -38509,9 +38488,7 @@ module.exports={
                 },
                 "seats": {
                     "type": "array",
-                    "items": {
-                        "$ref": "#/domains/FlightBooking/types/Seat"
-                    }
+                    "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
                 }
             },
             "required": [
