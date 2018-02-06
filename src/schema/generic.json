@@ -764,7 +764,8 @@
         {
             "code": "UnableToContinueProcess",
             "category": "website",
-            "description": "Process couldn't reach the final step. Website finished the process early (eg. unable to purchase online)"
+            "description": "Process couldn't reach the final step. Website finished the process early",
+            "example": "Unable to purchase online"
         },
         {
             "code": "ServerError",

@@ -400,37 +400,44 @@
         {
             "code": "OutboundFlightDateInvalid",
             "category": "client",
-            "description": "Outbound flight date is not accepted by the website e.g. date is too close"
+            "description": "Outbound flight date is not accepted by the website",
+            "example": "Selected date is too close"
         },
         {
             "code": "InboundFlightDateInvalid",
             "category": "client",
-            "description": "Inbound flight date is not accepted by the website e.g. date is too close"
+            "description": "Inbound flight date is not accepted by the website",
+            "example": "Selected date is too close"
         },
         {
             "code": "DateOfBirthInvalid",
             "category": "client",
-            "description": "Date of birth is not accepted by the website e.g. child must be younger than 12"
+            "description": "Date of birth is not accepted by the website",
+            "example": "Child must be younger than 12"
         },
         {
             "code": "DocumentIssueDateInvalid",
             "category": "client",
-            "description": "Document issue date is not accepted by the website e.g. the issue date cannot be after today's date"
+            "description": "Document issue date is not accepted by the website",
+            "example": "The issue date cannot be after today's date"
         },
         {
             "code": "DocumentExpiryDateInvalid",
             "category": "client",
-            "description": "Document expiration date is not accepted by the website e.g. your document should be valid for more than 3 months"
+            "description": "Document expiration date is not accepted by the website",
+            "example": "Document should be valid for more than 3 months"
         },
         {
             "code": "OutboundFlightNotAvailable",
             "category": "client",
-            "description": "Outbound flight is not found e.g. flight is not available on given date"
+            "description": "Outbound flight is not found",
+            "example": "Flight is not available on given date"
         },
         {
             "code": "InboundFlightNotAvailable",
             "category": "client",
-            "description": "Inbound flight is not found e.g. flight is not available on given date"
+            "description": "Inbound flight is not found",
+            "example": "Flight is not available on given date"
         },
         {
             "code": "OriginAirportNotFound",
@@ -469,7 +476,8 @@
         },
         {
             "code": "LuggageCannotBeAdded",
-            "category": "client"
+            "category": "client",
+            "description": "Luggage cannot be added"
         },
         {
             "code": "PassengerDocumentRequired",

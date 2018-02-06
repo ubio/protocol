@@ -85,7 +85,7 @@
         {
             "code": "ClientError",
             "category": "client",
-            "description": "client caused error"
+            "description": "Client caused error"
         }
     ]
 }
