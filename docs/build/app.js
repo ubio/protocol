@@ -39741,6 +39741,11 @@ module.exports={
             "code": "RegistrationNumberInvalid",
             "category": "client",
             "description": "Registration number is not accepted by the website"
+        },
+        {
+            "code": "RegistrationNumberRequired",
+            "category": "client",
+            "description": "Registration number is required by the website"
         }
     ]
 }
