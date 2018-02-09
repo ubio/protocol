@@ -38602,6 +38602,11 @@ module.exports={
             "example": "Flight is not available on given date"
         },
         {
+            "code": "FlightNotCombinable",
+            "category": "client",
+            "description": "Flight not combinable"
+        },
+        {
             "code": "OriginAirportNotFound",
             "category": "client",
             "description": "Airport is not found with given airport code"
@@ -39911,7 +39916,7 @@ module.exports={
         }, 
         {
             "code": "PetOptionNotAvailable",
-            "category": "client/website",
+            "category": "client",
             "description": "Pet option is not available"
         }, 
         {

@@ -158,7 +158,7 @@
         }, 
         {
             "code": "PetOptionNotAvailable",
-            "category": "client/website",
+            "category": "client",
             "description": "Pet option is not available"
         }, 
         {
