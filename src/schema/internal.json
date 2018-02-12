@@ -75,5 +75,17 @@
                 }
             }
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "InternalError",
+            "category": "server",
+            "description": "Internal error occurred"
+        },
+        {
+            "code": "ClientError",
+            "category": "client",
+            "description": "Client caused error"
+        }
+    ]
 }

@@ -55,6 +55,29 @@ describe('Domain', () => {
 
     });
 
+    describe('getErrors', () => {
+
+        it('should resolve error lists', () => {
+            const errors = Internal.getErrors();
+            expect(errors).toExist();
+        });
+
+    });
+
+    describe('getError', () => {
+
+        it('should resolve error', () => {
+            const error = Internal.getError('InternalError');
+            expect(error).toExist();
+        });
+
+        it('should return null for unknown error definitions', () => {
+            expect(Internal.getError('none')).toNotExist();
+            expect(Internal.getError('unknownError')).toNotExist();
+        });
+
+    });
+
     describe('validateInput', () => {
 
         it('should allow valid data', async () => {

@@ -47,6 +47,18 @@
                 :def="def"/>
         </template>
 
+        <template v-if="errorsByCategory">
+            <h2 id="errors">Errors</h2>
+            <div
+                v-for="category of Object.keys(errorsByCategory)"
+                class="domain__errors">
+                <h3 class="domain__errors-subheader"> {{ category }} </h3>
+                <error-oneliner
+                    v-for="error of errorsByCategory[category]"
+                    :error="error"/>
+            </div>
+        </template>
+
     </div>
 </template>
 
@@ -59,6 +71,7 @@ module.exports = {
     components: {
         'def': require('../components/def.vue'),
         'oneliner': require('../components/oneliner.vue'),
+        'error-oneliner': require('../components/error-oneliner.vue'),
     },
 
     props: {
@@ -94,6 +107,19 @@ module.exports = {
             return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
         },
 
+        errorsByCategory() {
+            const errors = this.domain.getErrors();
+            const errorsByCategory = {};
+
+            errors.forEach(error => {
+                const { category } = error;
+                const list = errorsByCategory[category] || [];
+                list.push(error);
+                errorsByCategory[category] = list;
+            });
+            return errorsByCategory;
+        },
+
         exampleInput() {
             if (!this.inputs.length) {
                 return null;
@@ -113,4 +139,9 @@ module.exports = {
 </script>
 
 <style>
+.domain__errors-subheader {
+    margin: 2em 0 1em;
+    font-size: 20px;
+    color: var(--heading__color);
+}
 </style>

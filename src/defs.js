@@ -105,6 +105,7 @@ class CustomDef extends Def {
 
 }
 
+
 class InputDef extends CustomDef {
 
     constructor(domain, key) {

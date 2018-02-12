@@ -702,7 +702,100 @@
             "zwd"
           ]
         }
-      }
+      },
+      "errors": [
+        {
+          "code": "JobCancelled",
+          "category": "client",
+          "description": "Job cancelled by client"
+        },
+        {
+          "code": "InputTimeout",
+          "category": "client",
+          "description": "Input was not provided within 15 minutes"
+        },
+        {
+          "code": "PaymentRejected",
+          "category": "client",
+          "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if provided."
+        },
+        {
+          "code": "CardDetailsInvalid",
+          "category": "client",
+          "description": "Unable to process payment as card details are invalid"
+        },
+        {
+          "code": "AddressInvalid",
+          "category": "client",
+          "description": "Invalid address provided"
+        },
+        {
+          "code": "AccountDetailsInvalid",
+          "category": "client",
+          "description": "Cannot sign in as invalid account details provided"
+        },
+        {
+          "code": "UrlInvalid",
+          "category": "client",
+          "description": "Invalid url provided"
+        },
+        {
+          "code": "FinalPriceNotFound",
+          "category": "client",
+          "description": "Final price provided does not match expectation"
+        },
+        {
+          "code": "PanTokenInvalid",
+          "category": "client",
+          "description": "Invalid pan token provided"
+        },
+        {
+          "code": "CookieInvalid",
+          "category": "client",
+          "description": "Invalid cookie provided"
+        },
+        {
+          "code": "PriceChangedAfterConsent",
+          "category": "website",
+          "description": "Price changed after final price consent."
+        },
+        {
+          "code": "WebsiteValidationFailed",
+          "category": "website",
+          "description": "Website's validation rule doesn't allow the input data"
+        },
+        {
+          "code": "SystemUnavailable",
+          "category": "website",
+          "description": "Website system is down/Website doesn't work at the moment"
+        },
+        {
+          "code": "KnownLimitation",
+          "category": "website",
+          "description": "Cannot process due to known limitation"
+        },
+        {
+          "code": "GenericWebsiteError",
+          "category": "website",
+          "description": "Website threw general error during automation process. A message will be forwarded from the website if provided."
+        },
+        {
+          "code": "UnableToContinueProcess",
+          "category": "website",
+          "description": "Process couldn't reach the final step. Website finished the process early",
+          "example": "Unable to purchase online"
+        },
+        {
+          "code": "ServerError",
+          "category": "server",
+          "description": "Server Error"
+        },
+        {
+          "code": "JobTimeout",
+          "category": "server",
+          "description": "Job timeout after an hour of job creation without reaching the final step"
+        }
+      ]
     },
     "FlightBooking": {
       "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
@@ -1130,7 +1223,106 @@
             "price"
           ]
         }
-      }
+      },
+      "errors": [
+        {
+          "code": "PassengerDetailsInvalid",
+          "category": "client",
+          "description": "Passenger details invalid"
+        },
+        {
+          "code": "OutboundFlightDateInvalid",
+          "category": "client",
+          "description": "Outbound flight date is not accepted by the website",
+          "example": "Selected date is too close"
+        },
+        {
+          "code": "InboundFlightDateInvalid",
+          "category": "client",
+          "description": "Inbound flight date is not accepted by the website",
+          "example": "Selected date is too close"
+        },
+        {
+          "code": "DateOfBirthInvalid",
+          "category": "client",
+          "description": "Date of birth is not accepted by the website",
+          "example": "Child must be younger than 12"
+        },
+        {
+          "code": "DocumentIssueDateInvalid",
+          "category": "client",
+          "description": "Document issue date is not accepted by the website",
+          "example": "The issue date cannot be after today's date"
+        },
+        {
+          "code": "DocumentExpiryDateInvalid",
+          "category": "client",
+          "description": "Document expiration date is not accepted by the website",
+          "example": "Document should be valid for more than 3 months"
+        },
+        {
+          "code": "OutboundFlightNotAvailable",
+          "category": "client",
+          "description": "Outbound flight is not found",
+          "example": "Flight is not available on given date"
+        },
+        {
+          "code": "InboundFlightNotAvailable",
+          "category": "client",
+          "description": "Inbound flight is not found",
+          "example": "Flight is not available on given date"
+        },
+        {
+          "code": "FlightNotCombinable",
+          "category": "client",
+          "description": "Flight not combinable"
+        },
+        {
+          "code": "OriginAirportNotFound",
+          "category": "client",
+          "description": "Airport is not found with given airport code"
+        },
+        {
+          "code": "DestinationAirportNotFound",
+          "category": "client",
+          "description": "Airport is not found with given airport code"
+        },
+        {
+          "code": "CabinClassNotFound",
+          "category": "client",
+          "description": "Given cabin class is not found on the website"
+        },
+        {
+          "code": "OutboundFareNotFound",
+          "category": "client",
+          "description": "Given outbound fare does not match one of the options we are expecting"
+        },
+        {
+          "code": "InboundFareNotFound",
+          "category": "client",
+          "description": "Given inbound fare does not match one of the options we are expecting"
+        },
+        {
+          "code": "SeatNotFound",
+          "category": "client",
+          "description": "Given seat does not match one of the options we are expecting"
+        },
+        {
+          "code": "SeatSelectionNotAvailable",
+          "category": "client",
+          "description": "Client asked for seat selection but it's not available for the website"
+        },
+        {
+          "code": "LuggageCannotBeAdded",
+          "category": "client",
+          "description": "Luggage cannot be added"
+        },
+        {
+          "code": "PassengerDocumentRequired",
+          "category": "client",
+          "description": "Passenger document (passport or other travel document) is required by the website"
+        }
+      ]
     },
     "VacationRental": {
       "description": "",
@@ -1282,7 +1474,35 @@
             "bookingReference"
           ]
         }
-      }
+      },
+      "errors": [
+        {
+          "code": "DepositNotFound",
+          "category": "client",
+          "description": "Given deposit option does not match one of the options we are expecting"
+        },
+        {
+          "code": "PetOptionInvalid",
+          "category": "client",
+          "description": "Given pet option does not match one of the options we are expecting"
+        },
+        {
+          "code": "PetOptionNotAvailable",
+          "category": "client",
+          "description": "Pet option is not available"
+        },
+        {
+          "code": "GuestAgeInvalid",
+          "category": "client",
+          "description": "Guest age is not accepted by the website"
+        },
+        {
+          "code": "VacationRentalNotAvailable",
+          "category": "client",
+          "description": "Vacation rental is not found",
+          "example": "Vacation rental unavailable on given date provided"
+        }
+      ]
     },
     "MotorInsurance": {
       "description": "",
@@ -1462,7 +1682,39 @@
             "price"
           ]
         }
-      }
+      },
+      "errors": [
+        {
+          "code": "LegalCoverNotFound",
+          "category": "client",
+          "description": "Given legal cover does not match one of the options we are expecting"
+        },
+        {
+          "code": "BreakdownCoverNotFound",
+          "category": "client",
+          "description": "Given breakdown cover does not match one of the options we are expecting"
+        },
+        {
+          "code": "PersonalInjuryCoverNotFound",
+          "category": "client",
+          "description": "Given personal injury cover does not match one of the options we are expecting"
+        },
+        {
+          "code": "CarHireCoverNotFound",
+          "category": "client",
+          "description": "Given car hire cover does not match one of the options we are expecting"
+        },
+        {
+          "code": "RegistrationNumberInvalid",
+          "category": "client",
+          "description": "Registration number is not accepted by the website"
+        },
+        {
+          "code": "RegistrationNumberRequired",
+          "category": "client",
+          "description": "Registration number is required by the website"
+        }
+      ]
     },
     "EventBooking": {
       "description": "",
@@ -1617,7 +1869,24 @@
             "name"
           ]
         }
-      }
+      },
+      "errors": [
+        {
+          "code": "DeliveryOptionInvalid",
+          "category": "client",
+          "description": "Delivery option does not match one of the options we are expecting"
+        },
+        {
+          "code": "RefundOptionNotFound",
+          "category": "client",
+          "description": "Refund option does not match one of the options we are expecting"
+        },
+        {
+          "code": "EventNotAvailable",
+          "category": "client",
+          "description": "Requested event is not found"
+        }
+      ]
     },
     "Internal": {
       "description": "Internal domain for testing platform features.",
@@ -1696,7 +1965,19 @@
             }
           }
         }
-      }
+      },
+      "errors": [
+        {
+          "code": "InternalError",
+          "category": "server",
+          "description": "Internal error occurred"
+        },
+        {
+          "code": "ClientError",
+          "category": "client",
+          "description": "Client caused error"
+        }
+      ]
     }
   }
 }
