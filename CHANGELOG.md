@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Add error lists
 
 ## [1.9.1] - 2018-2-6
 
