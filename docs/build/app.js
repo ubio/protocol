@@ -37697,7 +37697,7 @@ module.exports = class Domain {
         this.inputs = this._collectInputs();
         this.outputs = this._collectOutputs();
         this.types = this._collectTypes();
-        this.errors = this._collectErrors();
+        this.errors = this._collectErrors() || [];
         this.defs = [].concat(this.inputs).concat(this.outputs).concat(this.types);
     }
 
@@ -37733,7 +37733,7 @@ module.exports = class Domain {
         return this.outputs.find(def => def.key === key);
     }
 
-    getErrorByCode(code) {
+    getError(code) {
         return this.errors.find(error => error.code === code);
     }
 
@@ -37917,6 +37917,10 @@ module.exports = class Protocol {
         return domain ? domain.getOutputDef(key) : null;
     }
 
+    getError(domainId, code) {
+        const domain = this.getDomain(domainId);
+        return domain ? domain.getError(code) : null;
+    }
 };
 
 },{"./domain":154,"./validator":167}],158:[function(require,module,exports){

@@ -12,7 +12,7 @@ module.exports = class Domain {
         this.inputs = this._collectInputs();
         this.outputs = this._collectOutputs();
         this.types = this._collectTypes();
-        this.errors = this._collectErrors();
+        this.errors = this._collectErrors() || [];
         this.defs = []
             .concat(this.inputs)
             .concat(this.outputs)
@@ -51,7 +51,7 @@ module.exports = class Domain {
         return this.outputs.find(def => def.key === key);
     }
 
-    getErrorByCode(code) {
+    getError(code) {
         return this.errors.find(error => error.code === code);
     }
 

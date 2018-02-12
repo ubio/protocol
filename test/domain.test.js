@@ -64,16 +64,16 @@ describe('Domain', () => {
 
     });
 
-    describe('getErrorByCode', () => {
+    describe('getError', () => {
 
         it('should resolve error', () => {
-            const error = Internal.getErrorByCode('InternalError');
+            const error = Internal.getError('InternalError');
             expect(error).toExist();
         });
 
         it('should return null for unknown error definitions', () => {
-            expect(Internal.getErrorByCode('none')).toNotExist();
-            expect(Internal.getErrorByCode('unknownError')).toNotExist();
+            expect(Internal.getError('none')).toNotExist();
+            expect(Internal.getError('unknownError')).toNotExist();
         });
 
     });
