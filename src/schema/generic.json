@@ -4,6 +4,16 @@
     "inputs": {},
     "outputs": {},
     "types": {
+        "Ages": {
+            "type": "array",
+            "description": "A list of ages of persons.",
+            "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 200,
+                "example": 42
+            }
+        },
         "URL": {
             "type": "string",
             "format": "url",

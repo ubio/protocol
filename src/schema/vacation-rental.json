@@ -8,7 +8,8 @@
             "initial": true
         },
         "guestAges": {
-            "typeRef": "#/domains/VacationRental/types/GuestAges",
+            "typeRef": "#/domains/Generic/types/Ages",
+            "description": "Ages of all guests.",
             "initial": true
         },
         "account": {
@@ -85,15 +86,6 @@
                 "name",
                 "price"
             ]
-        },
-        "GuestAges": {
-            "type": "array",
-            "items": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 200,
-                "example": 42
-            }
         },
         "Pets": {
             "type": "object",

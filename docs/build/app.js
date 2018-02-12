@@ -38100,6 +38100,16 @@ module.exports={
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
             "initial": true
         },
+        "search": {
+            "typeRef": "#/domains/FlightBooking/types/Search",
+            "initial": true
+        },
+        "selectedOutboundFlight": {
+            "typeRef": "#/domains/FlightBooking/types/Flight"
+        },
+        "selectedInboundFlight": {
+            "typeRef": "#/domains/FlightBooking/types/Flight"
+        },
         "itinerary": {
             "typeRef": "#/domains/FlightBooking/types/Itinerary",
             "initial": true
@@ -38200,6 +38210,48 @@ module.exports={
             ],
             "additionalProperties": false
         },
+        "Search": {
+            "type": "object",
+            "description": "Information about flights and cabin class preference.",
+            "properties": {
+                "cabinClass": {
+                    "$ref": "#/domains/FlightBooking/types/CabinClass",
+                    "description": "Preferred cabin class, used on flight search forms."
+                },
+                "outbound": {
+                    "$ref": "#/domains/FlightBooking/types/FlightSearch",
+                    "description": "Outbound flight specification."
+                },
+                "inbound": {
+                    "$ref": "#/domains/FlightBooking/types/FlightSearch",
+                    "description": "Inbound (return) flight specification. If omitted, one-way flight booking flow is used."
+                },
+                "passengerAges": {
+                    "typeRef": "#/domains/Generic/types/Ages",
+                    "description": "Ages of all passengers.",
+                    "example": [34, 31, 9]
+                }
+            },
+            "required": [
+                "cabinClass",
+                "outbound",
+                "passengerAges"
+            ],
+            "additionalProperties": false
+        },
+        "FlightSearch": {
+            "type": "object",
+            "description": "Outbound and inbound flights specification.",
+            "properties": {
+                "origin": { "$ref": "#/domains/FlightBooking/types/DateAirport" },
+                "destination": { "$ref": "#/domains/FlightBooking/types/DateAirport" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ],
+            "additionalProperties": false
+        },
         "Flight": {
             "type": "object",
             "description": "Outbound and inbound flights specification.",
@@ -38216,6 +38268,35 @@ module.exports={
         "CabinClass": {
             "type": "string",
             "enum": ["economy", "premium economy", "business", "first"]
+        },
+        "DateAirport": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of flight (airport local date).",
+                    "example": "2019-01-01"
+                },
+                "airportCode": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "pattern": "^[A-Z]{3}$",
+                    "description": "International Air Transport Association airport code.",
+                    "example": "SFO"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of airport.",
+                    "example": "us"
+                }
+            },
+            "required": [
+                "date",
+                "airportCode"
+            ],
+            "additionalProperties": false
         },
         "DatePlace": {
             "type": "object",
@@ -38491,6 +38572,16 @@ module.exports={
     "inputs": {},
     "outputs": {},
     "types": {
+        "Ages": {
+            "type": "array",
+            "description": "A list of ages of persons.",
+            "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 200,
+                "example": 42
+            }
+        },
         "URL": {
             "type": "string",
             "format": "url",
@@ -39459,7 +39550,8 @@ module.exports={
             "initial": true
         },
         "guestAges": {
-            "typeRef": "#/domains/VacationRental/types/GuestAges",
+            "typeRef": "#/domains/Generic/types/Ages",
+            "description": "Ages of all guests.",
             "initial": true
         },
         "account": {
@@ -39536,15 +39628,6 @@ module.exports={
                 "name",
                 "price"
             ]
-        },
-        "GuestAges": {
-            "type": "array",
-            "items": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 200,
-                "example": 42
-            }
         },
         "Pets": {
             "type": "object",
