@@ -38330,8 +38330,8 @@ module.exports={
             "type": "object",
             "description": "Outbound and inbound flights specification.",
             "properties": {
-                "origin": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
-                "destination": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
+                "origin": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
+                "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" }
             },
             "required": [
                 "origin",
@@ -38372,7 +38372,7 @@ module.exports={
             ],
             "additionalProperties": false
         },
-        "DatePlace": {
+        "DateTimeAirport": {
             "type": "object",
             "properties": {
                 "dateTime": {

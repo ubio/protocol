@@ -959,10 +959,10 @@
           "description": "Outbound and inbound flights specification.",
           "properties": {
             "origin": {
-              "$ref": "#/domains/FlightBooking/types/DatePlace"
+              "$ref": "#/domains/FlightBooking/types/DateTimeAirport"
             },
             "destination": {
-              "$ref": "#/domains/FlightBooking/types/DatePlace"
+              "$ref": "#/domains/FlightBooking/types/DateTimeAirport"
             }
           },
           "required": [
@@ -1009,7 +1009,7 @@
           ],
           "additionalProperties": false
         },
-        "DatePlace": {
+        "DateTimeAirport": {
           "type": "object",
           "properties": {
             "dateTime": {
