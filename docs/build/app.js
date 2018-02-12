@@ -36914,9 +36914,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-435983a2", __vue__options__)
+    hotAPI.createRecord("data-v-3a814de9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-435983a2", __vue__options__)
+    hotAPI.reload("data-v-3a814de9", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],139:[function(require,module,exports){
@@ -36973,9 +36973,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2fc5366e", __vue__options__)
+    hotAPI.createRecord("data-v-0a99ee74", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2fc5366e", __vue__options__)
+    hotAPI.reload("data-v-0a99ee74", __vue__options__)
   }
 })()}
 },{"./prop.vue":141,"./schema-type.vue":142,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
@@ -37035,9 +37035,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d14c9182", __vue__options__)
+    hotAPI.createRecord("data-v-66f512f9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-d14c9182", __vue__options__)
+    hotAPI.reload("data-v-66f512f9", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
@@ -37080,9 +37080,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-69fdac4a", __vue__options__)
+    hotAPI.createRecord("data-v-2c8015f8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-69fdac4a", __vue__options__)
+    hotAPI.reload("data-v-2c8015f8", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
@@ -37139,9 +37139,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4a725e62", __vue__options__)
+    hotAPI.createRecord("data-v-4afe22d5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4a725e62", __vue__options__)
+    hotAPI.reload("data-v-4afe22d5", __vue__options__)
   }
 })()}
 },{"../../src":155,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
@@ -37187,9 +37187,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d12e8ec", __vue__options__)
+    hotAPI.createRecord("data-v-876978e0", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3d12e8ec", __vue__options__)
+    hotAPI.reload("data-v-876978e0", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],144:[function(require,module,exports){
@@ -37298,9 +37298,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70f4bbb7", __vue__options__)
+    hotAPI.createRecord("data-v-ff742a1e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-70f4bbb7", __vue__options__)
+    hotAPI.reload("data-v-ff742a1e", __vue__options__)
   }
 })()}
 },{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133}],146:[function(require,module,exports){
@@ -37313,9 +37313,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-505e3112", __vue__options__)
+    hotAPI.createRecord("data-v-5ac5e6cc", __vue__options__)
   } else {
-    hotAPI.reload("data-v-505e3112", __vue__options__)
+    hotAPI.reload("data-v-5ac5e6cc", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],147:[function(require,module,exports){
@@ -37342,9 +37342,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-611381c6", __vue__options__)
+    hotAPI.createRecord("data-v-42712352", __vue__options__)
   } else {
-    hotAPI.reload("data-v-611381c6", __vue__options__)
+    hotAPI.reload("data-v-42712352", __vue__options__)
   }
 })()}
 },{"./sidebar.vue":148,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],148:[function(require,module,exports){
@@ -37379,9 +37379,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dcdf760e", __vue__options__)
+    hotAPI.createRecord("data-v-6c64fcff", __vue__options__)
   } else {
-    hotAPI.reload("data-v-dcdf760e", __vue__options__)
+    hotAPI.reload("data-v-6c64fcff", __vue__options__)
   }
 })()}
 },{"../../src":155,"./sidebar__domain.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
@@ -37446,9 +37446,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f4ada9d", __vue__options__)
+    hotAPI.createRecord("data-v-7f822ca3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0f4ada9d", __vue__options__)
+    hotAPI.reload("data-v-7f822ca3", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
@@ -38149,6 +38149,14 @@ module.exports={
             "typeRef": "#/domains/FlightBooking/types/AvailableSeatsStage",
             "staged": true
         },
+        "estimatedPrice": {
+            "typeRef": "#/domains/Generic/types/Price",
+            "description": "Price shown by the website prior to requiring passenger information.<br/>On many flight booking websites, it is possible to view an estimated price without entering passenger details, provided that the deeplink works and goes past the home page, where the count of passengers and their ages are usually required. This estimated price is emitted when the automation reaches a page where passenger or billing information is required, as long as the price is displayed.<br/>This is likely not the final price, as flight ancilliaries may be added as requested, or additional credit card charges may be applied."
+        },
+        "priceBreakdown": {
+            "typeRef": "#/domains/FlightBooking/types/PriceBreakdown",
+            "description": "The list of price components, as found on the website."
+        },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
@@ -38449,6 +38457,28 @@ module.exports={
             "additionalProperties": false,
             "required": [
                 "bookingReference"
+            ]
+        },
+        "PriceBreakdown": {
+            "type": "array",
+            "description": "The list of price components, as found on the website.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/FlightBooking/types/PriceBreakdownItem" }
+        },
+        "PriceBreakdownItem": {
+            "type": "object",
+            "description": "A component of the price breakdown.",
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The description of an item on the price breakdown list, as found on the website.",
+                    "example": "Credit card charge"
+                },
+                "price": { "typeRef": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "text",
+                "price"
             ]
         }
     }
