@@ -38110,10 +38110,6 @@ module.exports={
         "selectedInboundFlight": {
             "typeRef": "#/domains/FlightBooking/types/Flight"
         },
-        "itinerary": {
-            "typeRef": "#/domains/FlightBooking/types/Itinerary",
-            "initial": true
-        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "initial": true
@@ -38186,29 +38182,6 @@ module.exports={
                     "default": false
                 }
             }
-        },
-        "Itinerary": {
-            "type": "object",
-            "description": "Information about flights and cabin class preference.",
-            "properties": {
-                "cabinClass": {
-                    "$ref": "#/domains/FlightBooking/types/CabinClass",
-                    "description": "Preferred cabin class, used on flight search forms."
-                },
-                "outbound": {
-                    "$ref": "#/domains/FlightBooking/types/Flight",
-                    "description": "Outbound flight specification."
-                },
-                "inbound": {
-                    "$ref": "#/domains/FlightBooking/types/Flight",
-                    "description": "Inbound (return) flight specification. If omitted, one-way flight booking flow is used."
-                }
-            },
-            "required": [
-                "cabinClass",
-                "outbound"
-            ],
-            "additionalProperties": false
         },
         "Search": {
             "type": "object",
