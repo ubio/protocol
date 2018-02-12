@@ -260,7 +260,9 @@
                     "maximum": 3,
                     "default": 0
                 },
-                "document": { "$ref": "#/domains/FlightBooking/types/PassengerDocument" }
+                "document": {
+                    "$ref": "#/domains/FlightBooking/types/PassengerDocument"
+                }
             },
             "required": [
                 "title",
@@ -381,7 +383,9 @@
             "type": "object",
             "description": "Seat metadata.",
             "properties": {
-                "seatNumber": { "$ref": "#/domains/FlightBooking/types/SeatNumber" },
+                "seatNumber": {
+                    "$ref": "#/domains/FlightBooking/types/SeatNumber"
+                },
                 "available": {
                     "type": "boolean",
                     "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
@@ -447,5 +451,104 @@
                 "price"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "PassengerDetailsInvalid",
+            "category": "client",
+            "description":"Passenger details invalid"
+        },
+        {
+            "code": "OutboundFlightDateInvalid",
+            "category": "client",
+            "description": "Outbound flight date is not accepted by the website",
+            "example": "Selected date is too close"
+        },
+        {
+            "code": "InboundFlightDateInvalid",
+            "category": "client",
+            "description": "Inbound flight date is not accepted by the website",
+            "example": "Selected date is too close"
+        },
+        {
+            "code": "DateOfBirthInvalid",
+            "category": "client",
+            "description": "Date of birth is not accepted by the website",
+            "example": "Child must be younger than 12"
+        },
+        {
+            "code": "DocumentIssueDateInvalid",
+            "category": "client",
+            "description": "Document issue date is not accepted by the website",
+            "example": "The issue date cannot be after today's date"
+        },
+        {
+            "code": "DocumentExpiryDateInvalid",
+            "category": "client",
+            "description": "Document expiration date is not accepted by the website",
+            "example": "Document should be valid for more than 3 months"
+        },
+        {
+            "code": "OutboundFlightNotAvailable",
+            "category": "client",
+            "description": "Outbound flight is not found",
+            "example": "Flight is not available on given date"
+        },
+        {
+            "code": "InboundFlightNotAvailable",
+            "category": "client",
+            "description": "Inbound flight is not found",
+            "example": "Flight is not available on given date"
+        },
+        {
+            "code": "FlightNotCombinable",
+            "category": "client",
+            "description": "Flight not combinable"
+        },
+        {
+            "code": "OriginAirportNotFound",
+            "category": "client",
+            "description": "Airport is not found with given airport code"
+        },
+        {
+            "code": "DestinationAirportNotFound",
+            "category": "client",
+            "description": "Airport is not found with given airport code"
+        },
+        {
+            "code": "CabinClassNotFound",
+            "category": "client",
+            "description": "Given cabin class is not found on the website"
+        },
+        {
+            "code": "OutboundFareNotFound",
+            "category": "client",
+            "description": "Given outbound fare does not match one of the options we are expecting"
+        },
+        {
+            "code": "InboundFareNotFound",
+            "category": "client",
+            "description": "Given inbound fare does not match one of the options we are expecting"
+        },
+        {
+            "code": "SeatNotFound",
+            "category": "client",
+            "description": "Given seat does not match one of the options we are expecting"
+        },
+        {
+            "code": "SeatSelectionNotAvailable",
+            "category": "client",
+            "description": "Client asked for seat selection but it's not available for the website"
+        },
+        {
+            "code": "LuggageCannotBeAdded",
+            "category": "client",
+            "description": "Luggage cannot be added"
+        },
+        {
+            "code": "PassengerDocumentRequired",
+            "category": "client",
+            "description": "Passenger document (passport or other travel document) is required by the website"
+        }
+    ]
 }

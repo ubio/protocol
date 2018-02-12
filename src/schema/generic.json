@@ -694,5 +694,98 @@
                 "zwd"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "JobCancelled",
+            "category": "client",
+            "description": "Job cancelled by client"
+        },
+        {
+            "code": "InputTimeout",
+            "category": "client",
+            "description": "Input was not provided within 15 minutes"
+        },
+        {
+            "code": "PaymentRejected",
+            "category": "client",
+            "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if provided."
+        },
+        {
+            "code": "CardDetailsInvalid",
+            "category": "client",
+            "description": "Unable to process payment as card details are invalid"
+        },
+        {
+            "code": "AddressInvalid",
+            "category": "client",
+            "description": "Invalid address provided"
+        },
+        {
+            "code": "AccountDetailsInvalid",
+            "category": "client",
+            "description": "Cannot sign in as invalid account details provided"
+        },
+        {
+            "code": "UrlInvalid",
+            "category": "client",
+            "description": "Invalid url provided"
+        },
+        {
+            "code": "FinalPriceNotFound",
+            "category": "client",
+            "description": "Final price provided does not match expectation"
+        },
+        {
+            "code": "PanTokenInvalid",
+            "category": "client",
+            "description": "Invalid pan token provided"
+        },
+        {
+            "code": "CookieInvalid",
+            "category": "client",
+            "description": "Invalid cookie provided"
+        },
+        {
+            "code": "PriceChangedAfterConsent",
+            "category": "website",
+            "description": "Price changed after final price consent."
+        },
+        {
+            "code": "WebsiteValidationFailed",
+            "category": "website",
+            "description": "Website's validation rule doesn't allow the input data"
+        },
+        {
+            "code": "SystemUnavailable",
+            "category": "website",
+            "description": "Website system is down/Website doesn't work at the moment"
+        },
+        {
+            "code": "KnownLimitation",
+            "category": "website",
+            "description": "Cannot process due to known limitation"
+        },
+        {
+            "code": "GenericWebsiteError",
+            "category": "website",
+            "description": "Website threw general error during automation process. A message will be forwarded from the website if provided."
+        },
+        {
+            "code": "UnableToContinueProcess",
+            "category": "website",
+            "description": "Process couldn't reach the final step. Website finished the process early",
+            "example": "Unable to purchase online"
+        },
+        {
+            "code": "ServerError",
+            "category": "server",
+            "description": "Server Error"
+        },
+        {
+            "code": "JobTimeout",
+            "category": "server",
+            "description": "Job timeout after an hour of job creation without reaching the final step"
+        }
+    ]
 }

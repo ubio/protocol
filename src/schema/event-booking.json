@@ -143,5 +143,22 @@
                 "name"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "DeliveryOptionInvalid",
+            "category": "client",
+            "description": "Delivery option does not match one of the options we are expecting"
+        },
+        {
+            "code": "RefundOptionNotFound",
+            "category": "client",
+            "description": "Refund option does not match one of the options we are expecting"
+        },
+        {
+            "code": "EventNotAvailable",
+            "category": "client",
+            "description": "Requested event is not found"
+        }
+    ]
 }

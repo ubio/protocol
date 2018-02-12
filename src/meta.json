@@ -51,6 +51,9 @@
                     "additionalProperties": {
                         "$ref": "#/definitions/TypeDef"
                     }
+                },
+                "errors": {
+                    "type": "array"
                 }
             },
             "required": [
@@ -58,6 +61,7 @@
                 "inputs",
                 "outputs",
                 "types",
+                "errors",
                 "private"
             ],
             "additionalProperties": false

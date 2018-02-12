@@ -47,4 +47,8 @@ module.exports = class Protocol {
         return domain ? domain.getOutputDef(key) : null;
     }
 
+    getError(domainId, code) {
+        const domain = this.getDomain(domainId);
+        return domain ? domain.getError(code) : null;
+    }
 };

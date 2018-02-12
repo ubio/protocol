@@ -1,6 +1,10 @@
 ## [UNRELEASED]
 
 
+## [2.0.0] - 2018-2-12
+
+- Add error lists
+
 ## [1.9.1] - 2018-2-6
 
 - Fix `createExample` when object doesn't have `properties`

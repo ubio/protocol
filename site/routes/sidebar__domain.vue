@@ -49,6 +49,16 @@
                 }">
                 {{ def.key }}
             </router-link>
+            <router-link
+                v-if="domain.getErrors().length"
+                class="sidebar__section"
+                :to="{
+                    name: 'domain',
+                    params: { domainId: domain.id },
+                    hash: '#errors',
+                }">
+                Errors
+            </router-link>
         </template>
     </div>
 </template>

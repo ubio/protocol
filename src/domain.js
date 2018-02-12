@@ -12,6 +12,7 @@ module.exports = class Domain {
         this.inputs = this._collectInputs();
         this.outputs = this._collectOutputs();
         this.types = this._collectTypes();
+        this.errors = this._collectErrors() || [];
         this.defs = []
             .concat(this.inputs)
             .concat(this.outputs)
@@ -30,6 +31,10 @@ module.exports = class Domain {
         return this.types;
     }
 
+    getErrors() {
+        return this.errors;
+    }
+
     getDefs() {
         return this.defs;
     }
@@ -46,6 +51,10 @@ module.exports = class Domain {
         return this.outputs.find(def => def.key === key);
     }
 
+    getError(code) {
+        return this.errors.find(error => error.code === code);
+    }
+
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }
@@ -56,6 +65,10 @@ module.exports = class Domain {
 
     _collectTypes() {
         return Object.keys(this.spec.types).map(key => new TypeDef(this, key));
+    }
+
+    _collectErrors() {
+        return this.spec.errors;
     }
 
     async validate(key, data) {

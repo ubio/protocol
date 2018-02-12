@@ -36978,7 +36978,54 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-0a99ee74", __vue__options__)
   }
 })()}
-},{"./prop.vue":141,"./schema-type.vue":142,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
+},{"./prop.vue":142,"./schema-type.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".error-oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.error-oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.error-oneliner + .error-oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.error-oneliner__term {\n    flex: 0 0 var(--column__width);\n}\n\n.error-oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n    opacity: .5;\n    vertical-align: middle;\n}\n\n.error-oneliner:hover .error-oneliner__link,\n.error-oneliner--active .error-oneliner__link {\n    visibility: visible;\n}")
+;(function(){
+
+
+module.exports = {
+
+    props: {
+        error: { type: Object, required: true }
+    },
+
+    computed: {
+
+        active() {
+            return this.$route.hash === '#' + this.error.code;
+        }
+
+    },
+
+    methods: {
+
+        permalink() {
+            this.$router.replace('#' + this.error.code);
+        }
+
+    }
+
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"error-oneliner",class:{
+         'error-oneliner--active': _vm.active,
+     },attrs:{"id":_vm.error.code}},[_c('div',{staticClass:"error-oneliner__term"},[_c('span',{staticClass:"error-oneliner__code"},[_vm._v(_vm._s(_vm.error.code))]),_vm._v(" "),_c('img',{staticClass:"error-oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"error-oneliner__body"},[_c('div',{staticClass:"error-oneliner__description",domProps:{"innerHTML":_vm._s(_vm.error.description)}}),_vm._v(" "),(_vm.error.example !== undefined)?_c('div',{staticClass:"error-oneliner__example"},[_c('strong',[_vm._v("Example:")]),_vm._v(" "),_c('code',[_vm._v(_vm._s(_vm.error.example))])]):_vm._e()])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-127f07de", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-127f07de", __vue__options__)
+  }
+})()}
+},{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".oneliner {\n    display: flex;\n    flex-flow: row nowrap;\n    padding: .5em;\n}\n\n.oneliner--active {\n    background: var(--ui-highlight);\n}\n\n.oneliner + .oneliner {\n    border-top: 1px solid var(--ui-default);\n}\n\n.oneliner__term {\n    flex: 0 0 var(--column__width);\n}\n\n.oneliner__link {\n    display: inline-block;\n    visibility: hidden;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n    opacity: .5;\n    vertical-align: middle;\n}\n\n.oneliner:hover .oneliner__link,\n.oneliner--active .oneliner__link {\n    visibility: visible;\n}")
 ;(function(){
 
@@ -37040,7 +37087,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-66f512f9", __vue__options__)
   }
 })()}
-},{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
+},{"./schema-type.vue":143,"./val.vue":144,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".prop {\n    margin: 1em 0;\n    display: flex;\n    flex-flow: row nowrap;\n    align-items: baseline;\n}\n\n.prop__id {\n    flex: 0 0 var(--column__width);\n}\n\n.prop__body {\n    flex: 1;\n}\n\n.prop__optional {\n    color: var(--ui-muted);\n}")
 ;(function(){
 
@@ -37085,7 +37132,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-2c8015f8", __vue__options__)
   }
 })()}
-},{"./schema-type.vue":142,"./val.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
+},{"./schema-type.vue":143,"./val.vue":144,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".schema-type {\n    font-weight: bold;\n}\n\n.schema-type__broken-ref {\n    color: var(--ui-failure);\n}")
 ;(function(){
 
@@ -37144,7 +37191,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-4afe22d5", __vue__options__)
   }
 })()}
-},{"../../src":155,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
+},{"../../src":156,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],144:[function(require,module,exports){
 ;(function(){
 
 
@@ -37192,7 +37239,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-876978e0", __vue__options__)
   }
 })()}
-},{"vue":135,"vue-hot-reload-api":133}],144:[function(require,module,exports){
+},{"vue":135,"vue-hot-reload-api":133}],145:[function(require,module,exports){
 'use strict';
 
 const util = require('./util');
@@ -37224,7 +37271,8 @@ module.exports = new VueRouter({
     }]
 });
 
-},{"./routes/domain.vue":145,"./routes/home.vue":146,"./routes/layout.vue":147,"./util":150,"vue-router":134}],145:[function(require,module,exports){
+},{"./routes/domain.vue":146,"./routes/home.vue":147,"./routes/layout.vue":148,"./util":151,"vue-router":134}],146:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".domain__errors-subheader {\n    margin: 2em 0 1em;\n    font-size: 20px;\n    color: var(--heading__color);\n}")
 ;(function(){
 
 
@@ -37235,7 +37283,8 @@ module.exports = {
 
     components: {
         'def': require('../components/def.vue'),
-        'oneliner': require('../components/oneliner.vue')
+        'oneliner': require('../components/oneliner.vue'),
+        'error-oneliner': require('../components/error-oneliner.vue')
     },
 
     props: {
@@ -37271,6 +37320,19 @@ module.exports = {
             return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
         },
 
+        errorsByCategory() {
+            const errors = this.domain.getErrors();
+            const errorsByCategory = {};
+
+            errors.forEach(error => {
+                const { category } = error;
+                const list = errorsByCategory[category] || [];
+                list.push(error);
+                errorsByCategory[category] = list;
+            });
+            return errorsByCategory;
+        },
+
         exampleInput() {
             if (!this.inputs.length) {
                 return null;
@@ -37291,19 +37353,20 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),(_vm.exampleInput)?_c('div',{staticClass:"block"},[(!_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = true}}},[_vm._v("\n                    Show example of initial input\n                ")])]:_vm._e(),_vm._v(" "),(_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")]),_vm._v(" "),_c('pre',{domProps:{"textContent":_vm._s(JSON.stringify(_vm.exampleInput, null, 4))}}),_vm._v(" "),_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")])]:_vm._e()],2):_vm._e(),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"domain"},[_c('div',{staticClass:"domain__intro"},[_c('h1',[_vm._v(_vm._s(_vm.domain.id))]),_vm._v(" "),_c('div',{staticClass:"domain__description",domProps:{"innerHTML":_vm._s(_vm.domain.spec.description)}})]),_vm._v(" "),(_vm.inputs.length)?[_c('h2',{attrs:{"id":"inputs"}},[_vm._v("Inputs")]),_vm._v(" "),(_vm.exampleInput)?_c('div',{staticClass:"block"},[(!_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = true}}},[_vm._v("\n                    Show example of initial input\n                ")])]:_vm._e(),_vm._v(" "),(_vm.showExamples)?[_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")]),_vm._v(" "),_c('pre',{domProps:{"textContent":_vm._s(JSON.stringify(_vm.exampleInput, null, 4))}}),_vm._v(" "),_c('a',{on:{"click":function($event){_vm.showExamples = false}}},[_vm._v("\n                    Hide example\n                ")])]:_vm._e()],2):_vm._e(),_vm._v(" "),_vm._l((_vm.inputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.outputs.length)?[_c('h2',{attrs:{"id":"outputs"}},[_vm._v("Outputs")]),_vm._v(" "),_vm._l((_vm.outputs),function(def){return _c('oneliner',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.types.length)?[_c('h2',{attrs:{"id":"types"}},[_vm._v("Types")]),_vm._v(" "),_vm._l((_vm.types),function(def){return _c('def',{attrs:{"def":def}})})]:_vm._e(),_vm._v(" "),(_vm.errorsByCategory)?[_c('h2',{attrs:{"id":"errors"}},[_vm._v("Errors")]),_vm._v(" "),_vm._l((Object.keys(_vm.errorsByCategory)),function(category){return _c('div',{staticClass:"domain__errors"},[_c('h3',{staticClass:"domain__errors-subheader"},[_vm._v(" "+_vm._s(category)+" ")]),_vm._v(" "),_vm._l((_vm.errorsByCategory[category]),function(error){return _c('error-oneliner',{attrs:{"error":error}})})],2)})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-ff742a1e", __vue__options__)
   } else {
     hotAPI.reload("data-v-ff742a1e", __vue__options__)
   }
 })()}
-},{"../../src":155,"../components/def.vue":139,"../components/oneliner.vue":140,"../util":150,"vue":135,"vue-hot-reload-api":133}],146:[function(require,module,exports){
+},{"../../src":156,"../components/def.vue":139,"../components/error-oneliner.vue":140,"../components/oneliner.vue":141,"../util":151,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],147:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -37318,7 +37381,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-5ac5e6cc", __vue__options__)
   }
 })()}
-},{"vue":135,"vue-hot-reload-api":133}],147:[function(require,module,exports){
+},{"vue":135,"vue-hot-reload-api":133}],148:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".layout {\n    display: flex;\n    flex-flow: column nowrap;\n}\n\n.layout__header {\n    flex: 0 0 auto;\n    border-bottom: 5px solid var(--ui-primary);\n}\n\n.layout__header-container {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    height: 80px;\n}\n\n.layout__header-link {\n    color: var(--ui-muted);\n}\n\n.layout__content {\n    flex: 1;\n    display: flex;\n}\n\n.layout__content-container {\n    flex: 1;\n    display: flex;\n    flex-flow: row nowrap;\n}\n\n.layout__main {\n    flex: 1;\n    padding: 1em 4em;\n}")
 ;(function(){
 
@@ -37347,7 +37410,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-42712352", __vue__options__)
   }
 })()}
-},{"./sidebar.vue":148,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],148:[function(require,module,exports){
+},{"./sidebar.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar {\n    flex: 200px 0 0;\n    padding: 1em 0;\n}\n\n.sidebar__sticky {\n    position: sticky;\n    top: 20px;\n    overflow-y: auto;\n}")
 ;(function(){
 
@@ -37384,7 +37447,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-6c64fcff", __vue__options__)
   }
 })()}
-},{"../../src":155,"./sidebar__domain.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
+},{"../../src":156,"./sidebar__domain.vue":150,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert(".sidebar__link {\n    display: block;\n    padding: .25em 1rem;\n    color: var(--ui-primary);\n    border-radius: var(--border-radius);\n}\n\n.sidebar__link.router-link-active {\n    color: var(--ui-primary--inverse);\n    background: var(--ui-primary);\n}\n\n.sidebar__section {\n    display: block;\n    margin-left: 2rem;\n\n    text-transform: uppercase;\n    font-size: 10px;\n    font-weight: bold;\n}\n\n.sidebar__sublink {\n    display: block;\n    margin-left: 2rem;\n    color: var(--ui-muted);\n    font-size: 12px;\n}\n\n.sidebar__sublink.router-link-active {\n    color: var(--heading-color);\n}")
 ;(function(){
 
@@ -37438,7 +37501,11 @@ __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createEle
                 name: 'domain',
                 params: { domainId: _vm.domain.id },
                 hash: '#' + def.key,
-            }}},[_vm._v("\n            "+_vm._s(def.key)+"\n        ")])})]:_vm._e()],2)}
+            }}},[_vm._v("\n            "+_vm._s(def.key)+"\n        ")])}),_vm._v(" "),(_vm.domain.getErrors().length)?_c('router-link',{staticClass:"sidebar__section",attrs:{"to":{
+                name: 'domain',
+                params: { domainId: _vm.domain.id },
+                hash: '#errors',
+            }}},[_vm._v("\n            Errors\n        ")]):_vm._e()]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37451,7 +37518,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-7f822ca3", __vue__options__)
   }
 })()}
-},{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
+},{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],151:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -37472,7 +37539,7 @@ function scrollToHash(hash) {
     }, 0);
 }
 
-},{}],151:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 'use strict';
 
 const Vue = require('vue');
@@ -37487,7 +37554,7 @@ new App({
     el: '#app'
 });
 
-},{"./app.vue":138,"./router":144,"vue":135,"vue-router":134}],152:[function(require,module,exports){
+},{"./app.vue":138,"./router":145,"vue":135,"vue-router":134}],153:[function(require,module,exports){
 'use strict';
 
 const util = require('./util');
@@ -37615,7 +37682,7 @@ module.exports = {
     TypeDef
 };
 
-},{"./example":154,"./util":165}],153:[function(require,module,exports){
+},{"./example":155,"./util":166}],154:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef } = require('./defs');
@@ -37630,6 +37697,7 @@ module.exports = class Domain {
         this.inputs = this._collectInputs();
         this.outputs = this._collectOutputs();
         this.types = this._collectTypes();
+        this.errors = this._collectErrors() || [];
         this.defs = [].concat(this.inputs).concat(this.outputs).concat(this.types);
     }
 
@@ -37643,6 +37711,10 @@ module.exports = class Domain {
 
     getTypes() {
         return this.types;
+    }
+
+    getErrors() {
+        return this.errors;
     }
 
     getDefs() {
@@ -37661,6 +37733,10 @@ module.exports = class Domain {
         return this.outputs.find(def => def.key === key);
     }
 
+    getError(code) {
+        return this.errors.find(error => error.code === code);
+    }
+
     _collectInputs() {
         return Object.keys(this.spec.inputs).map(key => new InputDef(this, key));
     }
@@ -37671,6 +37747,10 @@ module.exports = class Domain {
 
     _collectTypes() {
         return Object.keys(this.spec.types).map(key => new TypeDef(this, key));
+    }
+
+    _collectErrors() {
+        return this.spec.errors;
     }
 
     async validate(key, data) {
@@ -37720,7 +37800,7 @@ module.exports = class Domain {
 
 };
 
-},{"./defs":152}],154:[function(require,module,exports){
+},{"./defs":153}],155:[function(require,module,exports){
 'use strict';
 
 module.exports = function createExample(protocol, spec) {
@@ -37769,7 +37849,7 @@ module.exports = function createExample(protocol, spec) {
     }
 };
 
-},{}],155:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 'use strict';
 
 const schema = require('./schema');
@@ -37787,7 +37867,7 @@ module.exports = {
     Domain
 };
 
-},{"./domain":153,"./protocol":156,"./provider":157,"./schema":161}],156:[function(require,module,exports){
+},{"./domain":154,"./protocol":157,"./provider":158,"./schema":162}],157:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -37837,9 +37917,13 @@ module.exports = class Protocol {
         return domain ? domain.getOutputDef(key) : null;
     }
 
+    getError(domainId, code) {
+        const domain = this.getDomain(domainId);
+        return domain ? domain.getError(code) : null;
+    }
 };
 
-},{"./domain":153,"./validator":166}],157:[function(require,module,exports){
+},{"./domain":154,"./validator":167}],158:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -37936,7 +38020,7 @@ class RemoteProtocolFetchError extends Error {
     }
 }
 
-},{"./protocol":156,"node-fetch":82}],158:[function(require,module,exports){
+},{"./protocol":157,"node-fetch":82}],159:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -38082,10 +38166,27 @@ module.exports={
                 "name"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "DeliveryOptionInvalid",
+            "category": "client",
+            "description": "Delivery option does not match one of the options we are expecting"
+        },
+        {
+            "code": "RefundOptionNotFound",
+            "category": "client",
+            "description": "Refund option does not match one of the options we are expecting"
+        },
+        {
+            "code": "EventNotAvailable",
+            "category": "client",
+            "description": "Requested event is not found"
+        }
+    ]
 }
 
-},{}],159:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "private": false,
@@ -38348,7 +38449,9 @@ module.exports={
                     "maximum": 3,
                     "default": 0
                 },
-                "document": { "$ref": "#/domains/FlightBooking/types/PassengerDocument" }
+                "document": {
+                    "$ref": "#/domains/FlightBooking/types/PassengerDocument"
+                }
             },
             "required": [
                 "title",
@@ -38469,7 +38572,9 @@ module.exports={
             "type": "object",
             "description": "Seat metadata.",
             "properties": {
-                "seatNumber": { "$ref": "#/domains/FlightBooking/types/SeatNumber" },
+                "seatNumber": {
+                    "$ref": "#/domains/FlightBooking/types/SeatNumber"
+                },
                 "available": {
                     "type": "boolean",
                     "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
@@ -38535,10 +38640,109 @@ module.exports={
                 "price"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "PassengerDetailsInvalid",
+            "category": "client",
+            "description":"Passenger details invalid"
+        },
+        {
+            "code": "OutboundFlightDateInvalid",
+            "category": "client",
+            "description": "Outbound flight date is not accepted by the website",
+            "example": "Selected date is too close"
+        },
+        {
+            "code": "InboundFlightDateInvalid",
+            "category": "client",
+            "description": "Inbound flight date is not accepted by the website",
+            "example": "Selected date is too close"
+        },
+        {
+            "code": "DateOfBirthInvalid",
+            "category": "client",
+            "description": "Date of birth is not accepted by the website",
+            "example": "Child must be younger than 12"
+        },
+        {
+            "code": "DocumentIssueDateInvalid",
+            "category": "client",
+            "description": "Document issue date is not accepted by the website",
+            "example": "The issue date cannot be after today's date"
+        },
+        {
+            "code": "DocumentExpiryDateInvalid",
+            "category": "client",
+            "description": "Document expiration date is not accepted by the website",
+            "example": "Document should be valid for more than 3 months"
+        },
+        {
+            "code": "OutboundFlightNotAvailable",
+            "category": "client",
+            "description": "Outbound flight is not found",
+            "example": "Flight is not available on given date"
+        },
+        {
+            "code": "InboundFlightNotAvailable",
+            "category": "client",
+            "description": "Inbound flight is not found",
+            "example": "Flight is not available on given date"
+        },
+        {
+            "code": "FlightNotCombinable",
+            "category": "client",
+            "description": "Flight not combinable"
+        },
+        {
+            "code": "OriginAirportNotFound",
+            "category": "client",
+            "description": "Airport is not found with given airport code"
+        },
+        {
+            "code": "DestinationAirportNotFound",
+            "category": "client",
+            "description": "Airport is not found with given airport code"
+        },
+        {
+            "code": "CabinClassNotFound",
+            "category": "client",
+            "description": "Given cabin class is not found on the website"
+        },
+        {
+            "code": "OutboundFareNotFound",
+            "category": "client",
+            "description": "Given outbound fare does not match one of the options we are expecting"
+        },
+        {
+            "code": "InboundFareNotFound",
+            "category": "client",
+            "description": "Given inbound fare does not match one of the options we are expecting"
+        },
+        {
+            "code": "SeatNotFound",
+            "category": "client",
+            "description": "Given seat does not match one of the options we are expecting"
+        },
+        {
+            "code": "SeatSelectionNotAvailable",
+            "category": "client",
+            "description": "Client asked for seat selection but it's not available for the website"
+        },
+        {
+            "code": "LuggageCannotBeAdded",
+            "category": "client",
+            "description": "Luggage cannot be added"
+        },
+        {
+            "code": "PassengerDocumentRequired",
+            "category": "client",
+            "description": "Passenger document (passport or other travel document) is required by the website"
+        }
+    ]
 }
 
-},{}],160:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "private": false,
@@ -39235,10 +39439,103 @@ module.exports={
                 "zwd"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "JobCancelled",
+            "category": "client",
+            "description": "Job cancelled by client"
+        },
+        {
+            "code": "InputTimeout",
+            "category": "client",
+            "description": "Input was not provided within 15 minutes"
+        },
+        {
+            "code": "PaymentRejected",
+            "category": "client",
+            "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if provided."
+        },
+        {
+            "code": "CardDetailsInvalid",
+            "category": "client",
+            "description": "Unable to process payment as card details are invalid"
+        },
+        {
+            "code": "AddressInvalid",
+            "category": "client",
+            "description": "Invalid address provided"
+        },
+        {
+            "code": "AccountDetailsInvalid",
+            "category": "client",
+            "description": "Cannot sign in as invalid account details provided"
+        },
+        {
+            "code": "UrlInvalid",
+            "category": "client",
+            "description": "Invalid url provided"
+        },
+        {
+            "code": "FinalPriceNotFound",
+            "category": "client",
+            "description": "Final price provided does not match expectation"
+        },
+        {
+            "code": "PanTokenInvalid",
+            "category": "client",
+            "description": "Invalid pan token provided"
+        },
+        {
+            "code": "CookieInvalid",
+            "category": "client",
+            "description": "Invalid cookie provided"
+        },
+        {
+            "code": "PriceChangedAfterConsent",
+            "category": "website",
+            "description": "Price changed after final price consent."
+        },
+        {
+            "code": "WebsiteValidationFailed",
+            "category": "website",
+            "description": "Website's validation rule doesn't allow the input data"
+        },
+        {
+            "code": "SystemUnavailable",
+            "category": "website",
+            "description": "Website system is down/Website doesn't work at the moment"
+        },
+        {
+            "code": "KnownLimitation",
+            "category": "website",
+            "description": "Cannot process due to known limitation"
+        },
+        {
+            "code": "GenericWebsiteError",
+            "category": "website",
+            "description": "Website threw general error during automation process. A message will be forwarded from the website if provided."
+        },
+        {
+            "code": "UnableToContinueProcess",
+            "category": "website",
+            "description": "Process couldn't reach the final step. Website finished the process early",
+            "example": "Unable to purchase online"
+        },
+        {
+            "code": "ServerError",
+            "category": "server",
+            "description": "Server Error"
+        },
+        {
+            "code": "JobTimeout",
+            "category": "server",
+            "description": "Job timeout after an hour of job creation without reaching the final step"
+        }
+    ]
 }
 
-},{}],161:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -39253,7 +39550,7 @@ module.exports = {
     }
 };
 
-},{"./event-booking":158,"./flight-booking":159,"./generic":160,"./internal":162,"./motor-insurance":163,"./vacation-rental":164}],162:[function(require,module,exports){
+},{"./event-booking":159,"./flight-booking":160,"./generic":161,"./internal":163,"./motor-insurance":164,"./vacation-rental":165}],163:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -39331,10 +39628,22 @@ module.exports={
                 }
             }
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "InternalError",
+            "category": "server",
+            "description": "Internal error occurred"
+        },
+        {
+            "code": "ClientError",
+            "category": "client",
+            "description": "Client caused error"
+        }
+    ]
 }
 
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -39509,10 +39818,42 @@ module.exports={
                 "price"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "LegalCoverNotFound",
+            "category": "client",
+            "description": "Given legal cover does not match one of the options we are expecting"
+        },
+        {
+            "code": "BreakdownCoverNotFound",
+            "category": "client",
+            "description": "Given breakdown cover does not match one of the options we are expecting"
+        },
+        {
+            "code": "PersonalInjuryCoverNotFound",
+            "category": "client",
+            "description": "Given personal injury cover does not match one of the options we are expecting"
+        },
+        {
+            "code": "CarHireCoverNotFound",
+            "category": "client",
+            "description": "Given car hire cover does not match one of the options we are expecting"
+        },
+        {
+            "code": "RegistrationNumberInvalid",
+            "category": "client",
+            "description": "Registration number is not accepted by the website"
+        },
+        {
+            "code": "RegistrationNumberRequired",
+            "category": "client",
+            "description": "Registration number is required by the website"
+        }
+    ]
 }
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -39651,10 +39992,38 @@ module.exports={
                 "bookingReference"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "DepositNotFound",
+            "category": "client",
+            "description": "Given deposit option does not match one of the options we are expecting"
+        }, 
+        {
+            "code": "PetOptionInvalid",
+            "category": "client",
+            "description": "Given pet option does not match one of the options we are expecting"
+        }, 
+        {
+            "code": "PetOptionNotAvailable",
+            "category": "client",
+            "description": "Pet option is not available"
+        }, 
+        {
+            "code": "GuestAgeInvalid",
+            "category": "client",
+            "description": "Guest age is not accepted by the website"
+        }, 
+        {
+            "code": "VacationRentalNotAvailable",
+            "category": "client",
+            "description": "Vacation rental is not found",
+            "example": "Vacation rental unavailable on given date provided"
+        }
+    ]
 }
 
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -39665,7 +40034,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],166:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');
@@ -39695,4 +40064,4 @@ function createValidator(schema, defs, options = DEFAULT_OPTIONS) {
     return ajv;
 }
 
-},{"ajv":2}]},{},[151]);
+},{"ajv":2}]},{},[152]);

@@ -172,5 +172,37 @@
                 "price"
             ]
         }
-    }
+    },
+    "errors": [
+        {
+            "code": "LegalCoverNotFound",
+            "category": "client",
+            "description": "Given legal cover does not match one of the options we are expecting"
+        },
+        {
+            "code": "BreakdownCoverNotFound",
+            "category": "client",
+            "description": "Given breakdown cover does not match one of the options we are expecting"
+        },
+        {
+            "code": "PersonalInjuryCoverNotFound",
+            "category": "client",
+            "description": "Given personal injury cover does not match one of the options we are expecting"
+        },
+        {
+            "code": "CarHireCoverNotFound",
+            "category": "client",
+            "description": "Given car hire cover does not match one of the options we are expecting"
+        },
+        {
+            "code": "RegistrationNumberInvalid",
+            "category": "client",
+            "description": "Registration number is not accepted by the website"
+        },
+        {
+            "code": "RegistrationNumberRequired",
+            "category": "client",
+            "description": "Registration number is required by the website"
+        }
+    ]
 }
