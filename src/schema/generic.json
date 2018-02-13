@@ -573,6 +573,7 @@
             "description": "ISO 4217 3-letter code representing the currency. Lowercase.",
             "example": "usd",
             "enum": [
+                "aed",
                 "all",
                 "afn",
                 "ars",
