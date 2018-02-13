@@ -10,6 +10,10 @@
                 v-if="pii">
                 PII
             </span>
+            <span class="tag tag--warning"
+                v-if="deprecated">
+                deprecated
+            </span>
             <img
                 src="/img/link.svg"
                 class="def__link"
@@ -72,6 +76,11 @@ module.exports = {
         pii() {
             const { pii } = this.def.spec;
             return !!pii;
+        },
+
+        deprecated() {
+            const { deprecated } = this.def.spec;
+            return !!deprecated;
         },
     },
 

@@ -19,6 +19,10 @@
                     v-if="def.spec.staged">
                     staged
                 </span>
+                <span class="tag tag--warning"
+                    v-if="def.spec.deprecated">
+                    deprecated
+                </span>
             </div>
         </div>
         <div class="oneliner__body">

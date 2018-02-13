@@ -833,7 +833,8 @@
         },
         "itinerary": {
           "typeRef": "#/domains/FlightBooking/types/Itinerary",
-          "initial": true
+          "initial": true,
+          "deprecated": true
         },
         "account": {
           "typeRef": "#/domains/Generic/types/Account",
@@ -911,6 +912,7 @@
         "Itinerary": {
           "type": "object",
           "description": "Information about flights and cabin class preference.",
+          "deprecated": true,
           "properties": {
             "cabinClass": {
               "$ref": "#/domains/FlightBooking/types/CabinClass",
