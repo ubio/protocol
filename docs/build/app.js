@@ -38223,6 +38223,7 @@ module.exports={
         "itinerary": {
             "typeRef": "#/domains/FlightBooking/types/Itinerary",
             "initial": true,
+            "description": "Deprecated. See <a href=\"#search\">/search</a> and <a href=\"#selectedOutboundFlight\">/selectedOutboundFlight</a>.",
             "deprecated": true
         },
         "account": {
@@ -38300,7 +38301,7 @@ module.exports={
         },
         "Itinerary": {
             "type": "object",
-            "description": "Information about flights and cabin class preference.",
+            "description": "Deprecated. See <a href=\"#Search\">Search</a> and <a href=\"#FlightSearch\">FlightSearch</a> instead.<br/>Information about flights and cabin class preference.",
             "deprecated": true,
             "properties": {
                 "cabinClass": {
