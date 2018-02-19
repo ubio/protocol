@@ -37,4 +37,21 @@ describe('Protocol', () => {
 
     });
 
+    describe('getAllErrors', () => {
+
+        it('should return all errors', () => {
+            const allErrors = protocol.getAllErrors();
+
+            const domains = protocol.getDomains();
+
+            let errors = [];
+            domains.forEach(domain => {
+                errors = errors.concat(domain.getErrors());
+            });
+
+            expect(allErrors.length).toBe(errors.length);
+
+        });
+
+    });
 });

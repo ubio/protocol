@@ -51,4 +51,8 @@ module.exports = class Protocol {
         const domain = this.getDomain(domainId);
         return domain ? domain.getError(code) : null;
     }
+
+    getAllErrors() {
+        return this.domains.reduce((errors, domain) => errors.concat(domain.errors), []);
+    }
 };

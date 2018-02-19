@@ -710,7 +710,7 @@
         {
             "code": "PaymentRejected",
             "category": "client",
-            "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if provided."
+            "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if available"
         },
         {
             "code": "CardDetailsInvalid",
@@ -770,7 +770,7 @@
         {
             "code": "GenericWebsiteError",
             "category": "website",
-            "description": "Website threw general error during automation process. A message will be forwarded from the website if provided."
+            "description": "Website threw general error during automation process. A message will be forwarded from the website if available"
         },
         {
             "code": "UnableToContinueProcess",
