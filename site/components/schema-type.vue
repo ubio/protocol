@@ -39,6 +39,10 @@
                 v-if="pii">
                 PII
             </span>
+            <span class="tag tag--warning"
+                v-if="deprecated">
+                deprecated
+            </span>
         </template>
     </span>
 </template>
@@ -70,6 +74,10 @@ module.exports = {
 
         pii() {
             return !!this.ref.spec.pii;
+        },
+
+        deprecated() {
+            return !!this.ref.spec.deprecated;
         },
 
     },

@@ -36914,9 +36914,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-435983a2", __vue__options__)
+    hotAPI.createRecord("data-v-3a814de9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-435983a2", __vue__options__)
+    hotAPI.reload("data-v-3a814de9", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],139:[function(require,module,exports){
@@ -36949,6 +36949,11 @@ module.exports = {
         pii() {
             const { pii } = this.def.spec;
             return !!pii;
+        },
+
+        deprecated() {
+            const { deprecated } = this.def.spec;
+            return !!deprecated;
         }
     },
 
@@ -36965,7 +36970,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),(_vm.pii)?_c('span',{staticClass:"tag tag--primary",attrs:{"title":"Personally identifiable information"}},[_vm._v("\n            PII\n        ")]):_vm._e(),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.loose)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            allows additional properties\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"def",class:{ 'def--active': _vm.active },attrs:{"id":_vm.def.key}},[_c('h3',{staticClass:"def__header"},[_c('span',{staticClass:"def__id"},[_vm._v(_vm._s(_vm.def.id))]),_vm._v(" "),(_vm.pii)?_c('span',{staticClass:"tag tag--primary",attrs:{"title":"Personally identifiable information"}},[_vm._v("\n            PII\n        ")]):_vm._e(),_vm._v(" "),(_vm.deprecated)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            deprecated\n        ")]):_vm._e(),_vm._v(" "),_c('img',{staticClass:"def__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}})]),_vm._v(" "),_c('div',{staticClass:"def__type"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),(_vm.loose)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            allows additional properties\n        ")]):_vm._e()],1),_vm._v(" "),_c('div',{staticClass:"def__description",domProps:{"innerHTML":_vm._s(_vm.def.spec.description)}}),_vm._v(" "),(_vm.def.spec.enum)?[_c('h4',[_vm._v("Allowed values")]),_vm._v(" "),_c('div',{staticClass:"def__enum"},[_vm._v("\n            "+_vm._s(_vm.def.spec.enum.join(', '))+"\n        ")])]:_vm._e(),_vm._v(" "),(_vm.def.spec.properties)?[_c('h4',[_vm._v("Properties")]),_vm._v(" "),_vm._l((_vm.def.spec.properties),function(prop,id){return _c('prop',{staticClass:"def__prop",attrs:{"id":id,"prop":prop,"parent":_vm.def}})})]:_vm._e()],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -36973,9 +36978,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2fc5366e", __vue__options__)
+    hotAPI.createRecord("data-v-0a99ee74", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2fc5366e", __vue__options__)
+    hotAPI.reload("data-v-0a99ee74", __vue__options__)
   }
 })()}
 },{"./prop.vue":142,"./schema-type.vue":143,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],140:[function(require,module,exports){
@@ -37020,9 +37025,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5cccdfa4", __vue__options__)
+    hotAPI.createRecord("data-v-127f07de", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5cccdfa4", __vue__options__)
+    hotAPI.reload("data-v-127f07de", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],141:[function(require,module,exports){
@@ -37074,7 +37079,7 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner",class:{
          'oneliner--active': _vm.active,
-     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.initial)?_c('span',{staticClass:"tag tag--success"},[_vm._v("\n                initial\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.staged)?_c('span',{staticClass:"tag tag--primary"},[_vm._v("\n                staged\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
+     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.initial)?_c('span',{staticClass:"tag tag--success"},[_vm._v("\n                initial\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.staged)?_c('span',{staticClass:"tag tag--primary"},[_vm._v("\n                staged\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.deprecated)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n                deprecated\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37082,9 +37087,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d14c9182", __vue__options__)
+    hotAPI.createRecord("data-v-66f512f9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-d14c9182", __vue__options__)
+    hotAPI.reload("data-v-66f512f9", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":143,"./val.vue":144,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],142:[function(require,module,exports){
@@ -37127,9 +37132,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-69fdac4a", __vue__options__)
+    hotAPI.createRecord("data-v-2c8015f8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-69fdac4a", __vue__options__)
+    hotAPI.reload("data-v-2c8015f8", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":143,"./val.vue":144,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],143:[function(require,module,exports){
@@ -37163,6 +37168,10 @@ module.exports = {
 
         pii() {
             return !!this.ref.spec.pii;
+        },
+
+        deprecated() {
+            return !!this.ref.spec.deprecated;
         }
 
     }
@@ -37178,7 +37187,7 @@ __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createEle
                         domainId: _vm.ref.domain.id,
                     },
                     hash: '#' + _vm.ref.key,
-                }}},[_vm._v("\n                "+_vm._s(_vm.ref.id)+"\n            ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n                "+_vm._s(_vm.$ref)+"\n            ")])],1):_vm._e(),_vm._v(" "),(_vm.pii)?_c('span',{staticClass:"tag tag--primary",attrs:{"title":"Personally identifiable information"}},[_vm._v("\n            PII\n        ")]):_vm._e()]],2)}
+                }}},[_vm._v("\n                "+_vm._s(_vm.ref.id)+"\n            ")]):_c('span',{staticClass:"schema-type__broken-ref"},[_vm._v("\n                "+_vm._s(_vm.$ref)+"\n            ")])],1):_vm._e(),_vm._v(" "),(_vm.pii)?_c('span',{staticClass:"tag tag--primary",attrs:{"title":"Personally identifiable information"}},[_vm._v("\n            PII\n        ")]):_vm._e(),_vm._v(" "),(_vm.deprecated)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n            deprecated\n        ")]):_vm._e()]],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37186,9 +37195,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4a725e62", __vue__options__)
+    hotAPI.createRecord("data-v-4afe22d5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4a725e62", __vue__options__)
+    hotAPI.reload("data-v-4afe22d5", __vue__options__)
   }
 })()}
 },{"../../src":156,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],144:[function(require,module,exports){
@@ -37234,9 +37243,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d12e8ec", __vue__options__)
+    hotAPI.createRecord("data-v-876978e0", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3d12e8ec", __vue__options__)
+    hotAPI.reload("data-v-876978e0", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],145:[function(require,module,exports){
@@ -37361,9 +37370,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70f4bbb7", __vue__options__)
+    hotAPI.createRecord("data-v-ff742a1e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-70f4bbb7", __vue__options__)
+    hotAPI.reload("data-v-ff742a1e", __vue__options__)
   }
 })()}
 },{"../../src":156,"../components/def.vue":139,"../components/error-oneliner.vue":140,"../components/oneliner.vue":141,"../util":151,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],147:[function(require,module,exports){
@@ -37376,9 +37385,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-505e3112", __vue__options__)
+    hotAPI.createRecord("data-v-5ac5e6cc", __vue__options__)
   } else {
-    hotAPI.reload("data-v-505e3112", __vue__options__)
+    hotAPI.reload("data-v-5ac5e6cc", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133}],148:[function(require,module,exports){
@@ -37405,9 +37414,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-611381c6", __vue__options__)
+    hotAPI.createRecord("data-v-42712352", __vue__options__)
   } else {
-    hotAPI.reload("data-v-611381c6", __vue__options__)
+    hotAPI.reload("data-v-42712352", __vue__options__)
   }
 })()}
 },{"./sidebar.vue":149,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],149:[function(require,module,exports){
@@ -37442,9 +37451,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-dcdf760e", __vue__options__)
+    hotAPI.createRecord("data-v-6c64fcff", __vue__options__)
   } else {
-    hotAPI.reload("data-v-dcdf760e", __vue__options__)
+    hotAPI.reload("data-v-6c64fcff", __vue__options__)
   }
 })()}
 },{"../../src":156,"./sidebar__domain.vue":150,"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],150:[function(require,module,exports){
@@ -37513,9 +37522,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f4ada9d", __vue__options__)
+    hotAPI.createRecord("data-v-7f822ca3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0f4ada9d", __vue__options__)
+    hotAPI.reload("data-v-7f822ca3", __vue__options__)
   }
 })()}
 },{"vue":135,"vue-hot-reload-api":133,"vueify/lib/insert-css":136}],151:[function(require,module,exports){
@@ -38201,9 +38210,21 @@ module.exports={
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
             "initial": true
         },
+        "search": {
+            "typeRef": "#/domains/FlightBooking/types/Search",
+            "initial": true
+        },
+        "selectedOutboundFlight": {
+            "typeRef": "#/domains/FlightBooking/types/Flight"
+        },
+        "selectedInboundFlight": {
+            "typeRef": "#/domains/FlightBooking/types/Flight"
+        },
         "itinerary": {
             "typeRef": "#/domains/FlightBooking/types/Itinerary",
-            "initial": true
+            "initial": true,
+            "description": "Deprecated. See <a href=\"#search\">/search</a> and <a href=\"#selectedOutboundFlight\">/selectedOutboundFlight</a>.",
+            "deprecated": true
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
@@ -38280,7 +38301,8 @@ module.exports={
         },
         "Itinerary": {
             "type": "object",
-            "description": "Information about flights and cabin class preference.",
+            "description": "Deprecated. See <a href=\"#Search\">Search</a> and <a href=\"#FlightSearch\">FlightSearch</a> instead.<br/>Information about flights and cabin class preference.",
+            "deprecated": true,
             "properties": {
                 "cabinClass": {
                     "$ref": "#/domains/FlightBooking/types/CabinClass",
@@ -38301,12 +38323,54 @@ module.exports={
             ],
             "additionalProperties": false
         },
+        "Search": {
+            "type": "object",
+            "description": "Information about flights and cabin class preference.",
+            "properties": {
+                "cabinClass": {
+                    "$ref": "#/domains/FlightBooking/types/CabinClass",
+                    "description": "Preferred cabin class, used on flight search forms."
+                },
+                "outbound": {
+                    "$ref": "#/domains/FlightBooking/types/FlightSearch",
+                    "description": "Outbound flight specification."
+                },
+                "inbound": {
+                    "$ref": "#/domains/FlightBooking/types/FlightSearch",
+                    "description": "Inbound (return) flight specification. If omitted, one-way flight booking flow is used."
+                },
+                "passengerAges": {
+                    "typeRef": "#/domains/Generic/types/Ages",
+                    "description": "Ages of all passengers.",
+                    "example": [34, 31, 9]
+                }
+            },
+            "required": [
+                "cabinClass",
+                "outbound",
+                "passengerAges"
+            ],
+            "additionalProperties": false
+        },
+        "FlightSearch": {
+            "type": "object",
+            "description": "Outbound and inbound flights specification.",
+            "properties": {
+                "origin": { "$ref": "#/domains/FlightBooking/types/DateAirport" },
+                "destination": { "$ref": "#/domains/FlightBooking/types/DateAirport" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ],
+            "additionalProperties": false
+        },
         "Flight": {
             "type": "object",
             "description": "Outbound and inbound flights specification.",
             "properties": {
-                "origin": { "$ref": "#/domains/FlightBooking/types/DatePlace" },
-                "destination": { "$ref": "#/domains/FlightBooking/types/DatePlace" }
+                "origin": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
+                "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" }
             },
             "required": [
                 "origin",
@@ -38318,7 +38382,36 @@ module.exports={
             "type": "string",
             "enum": ["economy", "premium economy", "business", "first"]
         },
-        "DatePlace": {
+        "DateAirport": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of flight (airport local date).",
+                    "example": "2019-01-01"
+                },
+                "airportCode": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3,
+                    "pattern": "^[A-Z]{3}$",
+                    "description": "International Air Transport Association airport code.",
+                    "example": "SFO"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of airport.",
+                    "example": "us"
+                }
+            },
+            "required": [
+                "date",
+                "airportCode"
+            ],
+            "additionalProperties": false
+        },
+        "DateTimeAirport": {
             "type": "object",
             "properties": {
                 "dateTime": {
@@ -38695,6 +38788,16 @@ module.exports={
     "inputs": {},
     "outputs": {},
     "types": {
+        "Ages": {
+            "type": "array",
+            "description": "A list of ages of persons.",
+            "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 200,
+                "example": 42
+            }
+        },
         "URL": {
             "type": "string",
             "format": "url",
@@ -39801,7 +39904,8 @@ module.exports={
             "initial": true
         },
         "guestAges": {
-            "typeRef": "#/domains/VacationRental/types/GuestAges",
+            "typeRef": "#/domains/Generic/types/Ages",
+            "description": "Ages of all guests.",
             "initial": true
         },
         "account": {
@@ -39878,15 +39982,6 @@ module.exports={
                 "name",
                 "price"
             ]
-        },
-        "GuestAges": {
-            "type": "array",
-            "items": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 200,
-                "example": 42
-            }
         },
         "Pets": {
             "type": "object",
