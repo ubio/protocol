@@ -447,11 +447,6 @@
             "example": "Flight is not available on given date"
         },
         {
-            "code": "FlightNotCombinable",
-            "category": "client",
-            "description": "Flight not combinable"
-        },
-        {
             "code": "OriginAirportNotFound",
             "category": "client",
             "description": "Airport is not found with given airport code"
@@ -489,7 +484,8 @@
         {
             "code": "LuggageCannotBeAdded",
             "category": "client",
-            "description": "Luggage cannot be added"
+            "description": "Luggage cannot be added",
+            "example": "Infant can not have luggage. This fare doesn’t allow to have additional luggage"
         },
         {
             "code": "PassengerDocumentRequired",
