@@ -38771,7 +38771,7 @@ module.exports={
             "code": "LuggageCannotBeAdded",
             "category": "client",
             "description": "Luggage cannot be added",
-            "example": "Infant can not have luggage. This fare doesn’t allow to have additional luggage"
+            "example": "Cannot add an additional luggage for selected fare."
         },
         {
             "code": "PassengerDocumentRequired",
@@ -39560,7 +39560,7 @@ module.exports={
             "code": "UnableToContinueProcess",
             "category": "website",
             "description": "Process couldn't reach the final step. Website finished the process early",
-            "example": "Call to the provider to continue your purchase"
+            "example": "Unable to purchase online"
         },
         {
             "code": "ServerError",

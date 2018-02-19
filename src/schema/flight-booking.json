@@ -569,7 +569,7 @@
             "code": "LuggageCannotBeAdded",
             "category": "client",
             "description": "Luggage cannot be added",
-            "example": "Infant can not have luggage. This fare doesn’t allow to have additional luggage"
+            "example": "Cannot add an additional luggage for selected fare."
         },
         {
             "code": "PassengerDocumentRequired",
