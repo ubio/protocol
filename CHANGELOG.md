@@ -1,5 +1,6 @@
 ## [UNRELEASED]
 
+- Add `getAllErrors` method
 
 ## [2.0.0] - 2018-2-12
 
