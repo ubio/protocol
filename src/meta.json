@@ -74,6 +74,9 @@
                 "initial": {
                     "type": "boolean"
                 },
+                "deprecated": {
+                    "type": "boolean"
+                },
                 "staged": {
                     "type": "boolean"
                 }
