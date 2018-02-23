@@ -33,15 +33,15 @@
                     v-else>
                     {{ $ref }}
                 </span>
-            </span>
-            <span class="tag tag--primary"
-                title="Personally identifiable information"
-                v-if="pii">
-                PII
-            </span>
-            <span class="tag tag--warning"
-                v-if="deprecated">
-                deprecated
+                <span class="tag tag--primary"
+                    title="Personally identifiable information"
+                    v-if="pii">
+                    PII
+                </span>
+                <span class="tag tag--warning"
+                    v-if="deprecated">
+                    deprecated
+                </span>
             </span>
         </template>
     </span>
