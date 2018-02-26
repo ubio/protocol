@@ -68,7 +68,7 @@ module.exports = class Domain {
     }
 
     _collectErrors() {
-        return this.spec.errors;
+        return this.spec.errors.map(error => Object.assign({}, { domain: this.id }, error));
     }
 
     async validate(key, data) {
