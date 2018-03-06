@@ -283,6 +283,15 @@
                 "credit"
               ]
             },
+            "holderType": {
+              "type": "string",
+              "description": "Card's holder type, personal or corporate.",
+              "enum": [
+                "personal",
+                "corporate"
+              ],
+              "default": "corporate"
+            },
             "brand": {
               "type": "string",
               "description": "Card brand, must be one of the supported card brands. Automation may fail if a specific card brand is not supported on a particular website.",
