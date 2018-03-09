@@ -38192,9 +38192,9 @@ module.exports={
             "description": "Refund option does not match one of the options we are expecting"
         },
         {
-            "code": "SeatsUnavailable",
+            "code": "SeatSelectionNotAvailable",
             "category": "client",
-            "description": "The seats are no longer available"
+            "description": "The seats are not available"
         },
         {
             "code": "EventNotAvailable",
@@ -39516,11 +39516,6 @@ module.exports={
             "description": "Unable to process payment as card details are invalid"
         },
         {
-            "code": "CvvInvalid",
-            "category": "client",
-            "description": "Unable to process payment because the CVV is not valid"
-        },
-        {
             "code": "AddressInvalid",
             "category": "client",
             "description": "Invalid address provided"
@@ -39534,11 +39529,6 @@ module.exports={
             "code": "UrlInvalid",
             "category": "client",
             "description": "Invalid url provided"
-        },
-        {
-            "code": "DomainUnexpected",
-            "category": "client",
-            "description": "Automation ended up on a different web domain than expected. Usually caused by a bad url or deeplink."
         },
         {
             "code": "FinalPriceNotFound",

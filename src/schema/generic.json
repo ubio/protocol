@@ -727,11 +727,6 @@
             "description": "Unable to process payment as card details are invalid"
         },
         {
-            "code": "CvvInvalid",
-            "category": "client",
-            "description": "Unable to process payment because the CVV is not valid"
-        },
-        {
             "code": "AddressInvalid",
             "category": "client",
             "description": "Invalid address provided"
@@ -745,11 +740,6 @@
             "code": "UrlInvalid",
             "category": "client",
             "description": "Invalid url provided"
-        },
-        {
-            "code": "DomainUnexpected",
-            "category": "client",
-            "description": "Automation ended up on a different web domain than expected. Usually caused by a bad url or deeplink."
         },
         {
             "code": "FinalPriceNotFound",
