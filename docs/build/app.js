@@ -38192,6 +38192,11 @@ module.exports={
             "description": "Refund option does not match one of the options we are expecting"
         },
         {
+            "code": "SeatsUnavailable",
+            "category": "client",
+            "description": "The seats are no longer available"
+        },
+        {
             "code": "EventNotAvailable",
             "category": "client",
             "description": "Requested event is not found"
@@ -39511,6 +39516,11 @@ module.exports={
             "description": "Unable to process payment as card details are invalid"
         },
         {
+            "code": "CvvInvalid",
+            "category": "client",
+            "description": "Unable to process payment because the CVV is not valid"
+        },
+        {
             "code": "AddressInvalid",
             "category": "client",
             "description": "Invalid address provided"
@@ -39524,6 +39534,11 @@ module.exports={
             "code": "UrlInvalid",
             "category": "client",
             "description": "Invalid url provided"
+        },
+        {
+            "code": "DomainUnexpected",
+            "category": "client",
+            "description": "Automation ended up on a different web domain than expected. Usually caused by a bad url or deeplink."
         },
         {
             "code": "FinalPriceNotFound",
@@ -40047,22 +40062,27 @@ module.exports={
             "code": "DepositNotFound",
             "category": "client",
             "description": "Given deposit option does not match one of the options we are expecting"
-        }, 
+        },
         {
             "code": "PetOptionInvalid",
             "category": "client",
             "description": "Given pet option does not match one of the options we are expecting"
-        }, 
+        },
         {
             "code": "PetOptionNotAvailable",
             "category": "client",
             "description": "Pet option is not available"
-        }, 
+        },
+        {
+            "code": "GuestCountInvalid",
+            "category": "client",
+            "description": "Number of guests is not accepted by the website"
+        },
         {
             "code": "GuestAgeInvalid",
             "category": "client",
             "description": "Guest age is not accepted by the website"
-        }, 
+        },
         {
             "code": "VacationRentalNotAvailable",
             "category": "client",

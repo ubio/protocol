@@ -156,6 +156,11 @@
             "description": "Refund option does not match one of the options we are expecting"
         },
         {
+            "code": "SeatsUnavailable",
+            "category": "client",
+            "description": "The seats are no longer available"
+        },
+        {
             "code": "EventNotAvailable",
             "category": "client",
             "description": "Requested event is not found"
