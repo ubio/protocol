@@ -38048,8 +38048,7 @@ module.exports={
             "initial": true
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
