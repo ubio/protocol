@@ -1,5 +1,9 @@
 ## [UNRELEASED]
 
+## [3.1.3] - 2018-03-19
+
+- Fix MotorInsurance policy group reference
+
 ## [3.1.2] - 2018-03-19
 
 - Added policy documents outputs for motor insurance
