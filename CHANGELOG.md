@@ -1,5 +1,11 @@
 ## [UNRELEASED]
 
+
+## [3.1.4] - 2018-3-19
+
+- Add unresolved refs test case
+- Add `ProtocolProvider.forceRefreshLatest`
+
 ## [3.1.3] - 2018-03-19
 
 - Fix MotorInsurance policy group reference
