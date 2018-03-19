@@ -39767,6 +39767,26 @@ module.exports={
         "availableCarHireCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "policyDetails": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "policyHoldersAddress": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "driverDetails": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "excesses": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "policyInfo": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         }
     },
     "types": {
@@ -39865,6 +39885,33 @@ module.exports={
                 "name",
                 "price"
             ]
+        },
+        "PolicyGroupInfo": {
+            "type": "array",
+            "description": "Group of information about the policy.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/FlightBooking/types/PolicyGroupItem" }
+        },
+        "PolicyGroupItem": {
+            "type": "object",
+            "description": "Piece of information about the policy.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Type of information as provided by the insurer.",
+                    "example": "Policy details"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Information details or url, where available.",
+                    "example": "https://www.example.com/documents/policy-details.pdf"
+                }
+            },
+            "required": [
+                "name",
+                "value"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
