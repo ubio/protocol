@@ -1,5 +1,9 @@
 ## [UNRELEASED]
 
+## [3.1.2] - 2018-03-19
+
+- Added policy documents outputs for motor insurance
+
 
 ## [3.1.1] - 2018-2-26
 
