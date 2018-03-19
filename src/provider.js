@@ -25,6 +25,7 @@ module.exports = class ProtocolProvider {
         }
         const interval = this.ttl;
         const repeat = () => {
+            clearTimeout(this.autoRefreshTimer);
             this.autoRefreshTimer = setTimeout(() => this.startAutoRefresh(), interval);
         };
         this.fetchLatest()
@@ -59,6 +60,11 @@ module.exports = class ProtocolProvider {
         this.latest = protocol;
         this.latestFetchedAt = Date.now();
         return protocol;
+    }
+
+    async forceRefreshLatest() {
+        this.latestFetchedAt = 0;
+        return await this.fetchLatest();
     }
 
     async fetchSchema(tag) {
