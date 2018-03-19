@@ -39770,23 +39770,23 @@ module.exports={
         },
         "policyDetails": {
             "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
         },
         "policyHoldersAddress": {
             "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
         },
         "driverDetails": {
             "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
         },
         "excesses": {
             "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
         },
         "policyInfo": {
             "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
         }
     },
     "types": {
