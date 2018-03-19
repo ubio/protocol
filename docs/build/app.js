@@ -39890,7 +39890,7 @@ module.exports={
             "type": "array",
             "description": "Group of information about the policy.",
             "minItems": 1,
-            "items": { "$ref": "#/domains/FlightBooking/types/PolicyGroupItem" }
+            "items": { "$ref": "#/domains/MotorInsurance/types/PolicyGroupItem" }
         },
         "PolicyGroupItem": {
             "type": "object",
