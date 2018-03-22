@@ -3,7 +3,7 @@
 const { protocol } = require('../src');
 const expect = require('expect');
 
-describe.only('Integrity checks', () => {
+describe('Integrity checks', () => {
 
     describe('refs', () => {
 
