@@ -37079,7 +37079,7 @@ var __vue__options__ = (typeof module.exports === "function"? module.exports.opt
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"oneliner",class:{
          'oneliner--active': _vm.active,
-     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.initial)?_c('span',{staticClass:"tag tag--success"},[_vm._v("\n                initial\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.staged)?_c('span',{staticClass:"tag tag--primary"},[_vm._v("\n                staged\n            ")]):_vm._e(),_vm._v(" "),(_vm.def.spec.deprecated)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n                deprecated\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
+     },attrs:{"id":_vm.def.key}},[_c('div',{staticClass:"oneliner__term"},[_c('span',{staticClass:"oneliner__key"},[_vm._v(_vm._s(_vm.def.key))]),_vm._v(" "),_c('img',{staticClass:"oneliner__link",attrs:{"src":"/img/link.svg"},on:{"click":_vm.permalink}}),_vm._v(" "),_c('div',{staticClass:"oneliner__details"},[(_vm.def.spec.deprecated)?_c('span',{staticClass:"tag tag--warning"},[_vm._v("\n                deprecated\n            ")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"oneliner__body"},[_c('schema-type',{attrs:{"spec":_vm.def.spec}}),_vm._v(" "),_c('div',{staticClass:"oneliner__description",domProps:{"innerHTML":_vm._s(_vm.description)}}),_vm._v(" "),(typeof _vm.def.spec.default !== 'undefined')?_c('div',{staticClass:"oneliner__default"},[_c('strong',[_vm._v("Default value:")]),_vm._v(" "),_c('val',{attrs:{"value":_vm.def.spec.default}})],1):_vm._e()],1)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -37653,10 +37653,6 @@ class CustomDef extends Def {
         return this.domain.protocol.resolveTypeRef(this.getTypeRef());
     }
 
-    isStaged() {
-        return this.spec.staged || false;
-    }
-
     isPii() {
         const typeDef = this.getTypeDef();
         return typeDef && typeDef.spec && typeDef.spec.pii || false;
@@ -37673,6 +37669,10 @@ class InputDef extends CustomDef {
 
     constructor(domain, key) {
         super(domain, 'inputs', key);
+    }
+
+    get flow() {
+        return this.spec.flow;
     }
 
 }
@@ -38059,36 +38059,60 @@ module.exports={
     "description": "",
     "private": false,
     "inputs": {
-        "url": {
-            "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
-        },
-        "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
-        },
-        "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
-        },
-        "panToken": {
-            "typeRef": "#/domains/Generic/types/PanToken"
-        },
-        "finalPriceConsent": {
-            "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
-        },
-        "selectedDelivery": {
-            "typeRef": "#/domains/EventBooking/types/Delivery",
-            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking."
-        },
         "options": {
             "typeRef": "#/domains/EventBooking/types/Options",
             "default": {},
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "flow": {
+                "type": "initial"
+            }
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
+        },
+        "selectedDelivery": {
+            "typeRef": "#/domains/EventBooking/types/Delivery",
+            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking.",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableDeliveries"
+            }
         },
         "selectedRefund": {
-            "typeRef": "#/domains/EventBooking/types/SelectedRefund"
+            "typeRef": "#/domains/EventBooking/types/SelectedRefund",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableRefunds"
+            }
         }
     },
     "outputs": {
@@ -38227,59 +38251,97 @@ module.exports={
         "options": {
             "typeRef": "#/domains/FlightBooking/types/Options",
             "default": {},
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
         },
         "search": {
             "typeRef": "#/domains/FlightBooking/types/Search",
-            "initial": true
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "selectedOutboundFlight": {
-            "typeRef": "#/domains/FlightBooking/types/Flight"
+            "typeRef": "#/domains/FlightBooking/types/Flight",
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "selectedInboundFlight": {
-            "typeRef": "#/domains/FlightBooking/types/Flight"
+            "typeRef": "#/domains/FlightBooking/types/Flight",
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "itinerary": {
             "typeRef": "#/domains/FlightBooking/types/Itinerary",
-            "initial": true,
             "description": "Deprecated. See <a href=\"#search\">/search</a> and <a href=\"#selectedOutboundFlight\">/selectedOutboundFlight</a>.",
-            "deprecated": true
+            "deprecated": true,
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "passengers": {
             "typeRef": "#/domains/FlightBooking/types/Passengers",
-            "initial": true
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "selectedOutboundFare": {
             "typeRef": "#/domains/FlightBooking/types/Fare",
-            "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+            "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available.",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableOutboundFares"
+            }
         },
         "selectedInboundFare": {
             "typeRef": "#/domains/FlightBooking/types/Fare",
-            "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+            "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available.",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableInboundFares"
+            }
         },
         "selectedSeats": {
             "typeRef": "#/domains/FlightBooking/types/SelectedSeatsStage",
-            "staged": true
+            "flow": {
+                "type": "multiStage",
+                "outputKey": "availableSeats"
+            }
         },
         "panToken": {
-            "typeRef": "#/domains/Generic/types/PanToken"
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
         }
     },
     "outputs": {
@@ -38292,8 +38354,7 @@ module.exports={
             "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
         "availableSeats": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableSeatsStage",
-            "staged": true
+            "typeRef": "#/domains/FlightBooking/types/AvailableSeatsStage"
         },
         "estimatedPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
@@ -39627,24 +39688,40 @@ module.exports={
         "options": {
             "typeRef": "#/domains/Internal/types/Options",
             "description": "Used by service-api tests.",
-            "default": {}
+            "default": {},
+            "flow": {
+                "type": "initial"
+            }
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Used by most test services."
+            "description": "Used by most test services.",
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "stagedInput": {
             "typeRef": "#/domains/Internal/types/Value",
             "description": "Used by test-stages service.",
-            "staged": true
+            "flow": {
+                "type": "multiStage",
+                "outputKey": "stagedOutput"
+            }
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Used by test-price-consent service."
+            "description": "Used by test-price-consent service.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken",
-            "description": "Used by test-pan-replacement service."
+            "description": "Used by test-pan-replacement service.",
+            "flow": {
+                "type": "deferrable"
+            }
         }
     },
     "outputs": {
@@ -39656,8 +39733,7 @@ module.exports={
         },
         "stagedOutput": {
             "typeRef": "#/domains/Internal/types/Value",
-            "description": "Used by test-stages service.",
-            "staged": true
+            "description": "Used by test-stages service."
         },
         "finalPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
@@ -39717,48 +39793,85 @@ module.exports={
     "description": "",
     "private": false,
     "inputs": {
-        "url": {
-            "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
-        },
-        "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
-        },
-        "payment": {
-            "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
-        },
-        "panToken": {
-            "typeRef": "#/domains/Generic/types/PanToken"
-        },
-        "finalPriceConsent": {
-            "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
-        },
-        "vehicle": {
-            "typeRef": "#/domains/MotorInsurance/types/Vehicle"
-        },
         "options": {
             "typeRef": "#/domains/MotorInsurance/types/Options",
             "default": {},
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "flow": {
+                "type": "initial"
+            }
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
+        },
+        "vehicle": {
+            "typeRef": "#/domains/MotorInsurance/types/Vehicle",
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "legalCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableLegalCovers"
+            }
         },
         "breakdownCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableBreakdownCovers"
+            }
         },
         "personalInjuryCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availablePersonalInjuryCovers"
+            }
         },
         "carHireCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableCarHireCovers"
+            }
         },
         "cookies": {
-            "typeRef": "#/domains/Generic/types/Cookies"
+            "typeRef": "#/domains/Generic/types/Cookies",
+            "flow": {
+                "type": "deferrable"
+            }
         }
     },
     "outputs": {
@@ -39974,41 +40087,65 @@ module.exports={
     "description": "",
     "private": false,
     "inputs": {
+        "options": {
+            "typeRef": "#/domains/VacationRental/types/Options",
+            "default": {},
+            "flow": {
+                "type": "initial"
+            }
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point.",
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
         },
         "guestAges": {
             "typeRef": "#/domains/Generic/types/Ages",
             "description": "Ages of all guests.",
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "panToken": {
-            "typeRef": "#/domains/Generic/types/PanToken"
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "flow": {
+                "type": "initial"
+            }
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
-        },
-        "options": {
-            "typeRef": "#/domains/VacationRental/types/Options",
-            "default": {},
-            "initial": true
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
         },
         "deposit": {
-            "typeRef": "#/domains/VacationRental/types/Deposit"
+            "typeRef": "#/domains/VacationRental/types/Deposit",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableDeposits"
+            }
         },
         "pets": {
-            "typeRef": "#/domains/VacationRental/types/Pets"
+            "typeRef": "#/domains/VacationRental/types/Pets",
+            "flow": {
+                "type": "deferrable"
+            }
         }
     },
     "outputs": {
@@ -40114,22 +40251,22 @@ module.exports={
             "code": "DepositNotFound",
             "category": "client",
             "description": "Given deposit option does not match one of the options we are expecting"
-        }, 
+        },
         {
             "code": "PetOptionInvalid",
             "category": "client",
             "description": "Given pet option does not match one of the options we are expecting"
-        }, 
+        },
         {
             "code": "PetOptionNotAvailable",
             "category": "client",
             "description": "Pet option is not available"
-        }, 
+        },
         {
             "code": "GuestAgeInvalid",
             "category": "client",
             "description": "Guest age is not accepted by the website"
-        }, 
+        },
         {
             "code": "VacationRentalNotAvailable",
             "category": "client",

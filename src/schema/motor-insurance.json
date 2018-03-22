@@ -2,48 +2,85 @@
     "description": "",
     "private": false,
     "inputs": {
-        "url": {
-            "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
-        },
-        "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
-        },
-        "payment": {
-            "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
-        },
-        "panToken": {
-            "typeRef": "#/domains/Generic/types/PanToken"
-        },
-        "finalPriceConsent": {
-            "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
-        },
-        "vehicle": {
-            "typeRef": "#/domains/MotorInsurance/types/Vehicle"
-        },
         "options": {
             "typeRef": "#/domains/MotorInsurance/types/Options",
             "default": {},
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "flow": {
+                "type": "initial"
+            }
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
+        },
+        "vehicle": {
+            "typeRef": "#/domains/MotorInsurance/types/Vehicle",
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "legalCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableLegalCovers"
+            }
         },
         "breakdownCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableBreakdownCovers"
+            }
         },
         "personalInjuryCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availablePersonalInjuryCovers"
+            }
         },
         "carHireCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableCarHireCovers"
+            }
         },
         "cookies": {
-            "typeRef": "#/domains/Generic/types/Cookies"
+            "typeRef": "#/domains/Generic/types/Cookies",
+            "flow": {
+                "type": "deferrable"
+            }
         }
     },
     "outputs": {

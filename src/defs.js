@@ -89,10 +89,6 @@ class CustomDef extends Def {
         return this.domain.protocol.resolveTypeRef(this.getTypeRef());
     }
 
-    isStaged() {
-        return this.spec.staged || false;
-    }
-
     isPii() {
         const typeDef = this.getTypeDef();
         return typeDef && typeDef.spec && typeDef.spec.pii || false;
@@ -110,6 +106,10 @@ class InputDef extends CustomDef {
 
     constructor(domain, key) {
         super(domain, 'inputs', key);
+    }
+
+    get flow() {
+        return this.spec.flow;
     }
 
 }
