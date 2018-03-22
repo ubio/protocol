@@ -11,14 +11,6 @@
                 class="oneliner__link"
                 @click="permalink"/>
             <div class="oneliner__details">
-                <span class="tag tag--success"
-                    v-if="def.spec.initial">
-                    initial
-                </span>
-                <span class="tag tag--primary"
-                    v-if="def.spec.staged">
-                    staged
-                </span>
                 <span class="tag tag--warning"
                     v-if="def.spec.deprecated">
                     deprecated

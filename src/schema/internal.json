@@ -5,24 +5,40 @@
         "options": {
             "typeRef": "#/domains/Internal/types/Options",
             "description": "Used by service-api tests.",
-            "default": {}
+            "default": {},
+            "flow": {
+                "type": "initial"
+            }
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Used by most test services."
+            "description": "Used by most test services.",
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "stagedInput": {
             "typeRef": "#/domains/Internal/types/Value",
             "description": "Used by test-stages service.",
-            "staged": true
+            "flow": {
+                "type": "multiStage",
+                "outputKey": "stagedOutput"
+            }
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Used by test-price-consent service."
+            "description": "Used by test-price-consent service.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken",
-            "description": "Used by test-pan-replacement service."
+            "description": "Used by test-pan-replacement service.",
+            "flow": {
+                "type": "deferrable"
+            }
         }
     },
     "outputs": {
@@ -34,8 +50,7 @@
         },
         "stagedOutput": {
             "typeRef": "#/domains/Internal/types/Value",
-            "description": "Used by test-stages service.",
-            "staged": true
+            "description": "Used by test-stages service."
         },
         "finalPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent",

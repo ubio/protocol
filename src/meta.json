@@ -71,17 +71,12 @@
                 "typeRef": { "$ref": "#/definitions/TypeRef" },
                 "description": { "type": "string" },
                 "default": {},
-                "initial": {
-                    "type": "boolean"
-                },
                 "deprecated": {
                     "type": "boolean"
                 },
-                "staged": {
-                    "type": "boolean"
-                }
+                "flow": { "$ref": "#/definitions/Flow" }
             },
-            "required": ["typeRef"],
+            "required": ["typeRef", "flow"],
             "additionalProperties": false
         },
         "OutputDef": {
@@ -117,6 +112,43 @@
                             ]
                         }
                     ]
+                }
+            ]
+        },
+        "Flow": {
+            "oneOf": [
+                {
+                    "properties": {
+                        "type": { "type": "string", "const": "initial" }
+                    },
+                    "required": [ "type" ]
+                },
+                {
+                    "properties": {
+                        "type": { "type": "string", "const": "deferrable" }
+                    },
+                    "required": [ "type" ]
+                },
+                {
+                    "properties": {
+                        "type": { "type": "string", "const": "selectOne" },
+                        "outputKey": { "type": "string" }
+                    },
+                    "required": [ "type", "outputKey" ]
+                },
+                {
+                    "properties": {
+                        "type": { "type": "string", "const": "multiStage" },
+                        "outputKey": { "type": "string" }
+                    },
+                    "required": [ "type", "outputKey" ]
+                },
+                {
+                    "properties": {
+                        "type": { "type": "string", "const": "consent" },
+                        "outputKey": { "type": "string" }
+                    },
+                    "required": [ "type", "outputKey" ]
                 }
             ]
         }

@@ -2,36 +2,60 @@
     "description": "",
     "private": false,
     "inputs": {
-        "url": {
-            "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
-        },
-        "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
-        },
-        "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
-        },
-        "panToken": {
-            "typeRef": "#/domains/Generic/types/PanToken"
-        },
-        "finalPriceConsent": {
-            "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
-        },
-        "selectedDelivery": {
-            "typeRef": "#/domains/EventBooking/types/Delivery",
-            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking."
-        },
         "options": {
             "typeRef": "#/domains/EventBooking/types/Options",
             "default": {},
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "flow": {
+                "type": "initial"
+            }
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "flow": {
+                "type": "deferrable"
+            }
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
+        },
+        "selectedDelivery": {
+            "typeRef": "#/domains/EventBooking/types/Delivery",
+            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking.",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableDeliveries"
+            }
         },
         "selectedRefund": {
-            "typeRef": "#/domains/EventBooking/types/SelectedRefund"
+            "typeRef": "#/domains/EventBooking/types/SelectedRefund",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableRefunds"
+            }
         }
     },
     "outputs": {

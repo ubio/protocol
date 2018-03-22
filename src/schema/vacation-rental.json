@@ -2,41 +2,65 @@
     "description": "",
     "private": false,
     "inputs": {
+        "options": {
+            "typeRef": "#/domains/VacationRental/types/Options",
+            "default": {},
+            "flow": {
+                "type": "initial"
+            }
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point.",
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
         },
         "guestAges": {
             "typeRef": "#/domains/Generic/types/Ages",
             "description": "Ages of all guests.",
-            "initial": true
+            "flow": {
+                "type": "initial"
+            }
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "flow": {
+                "type": "deferrable"
+            }
         },
         "panToken": {
-            "typeRef": "#/domains/Generic/types/PanToken"
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "flow": {
+                "type": "initial"
+            }
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
-        },
-        "options": {
-            "typeRef": "#/domains/VacationRental/types/Options",
-            "default": {},
-            "initial": true
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "flow": {
+                "type": "consent",
+                "outputKey": "finalPrice"
+            }
         },
         "deposit": {
-            "typeRef": "#/domains/VacationRental/types/Deposit"
+            "typeRef": "#/domains/VacationRental/types/Deposit",
+            "flow": {
+                "type": "selectOne",
+                "outputKey": "availableDeposits"
+            }
         },
         "pets": {
-            "typeRef": "#/domains/VacationRental/types/Pets"
+            "typeRef": "#/domains/VacationRental/types/Pets",
+            "flow": {
+                "type": "deferrable"
+            }
         }
     },
     "outputs": {
@@ -142,22 +166,22 @@
             "code": "DepositNotFound",
             "category": "client",
             "description": "Given deposit option does not match one of the options we are expecting"
-        }, 
+        },
         {
             "code": "PetOptionInvalid",
             "category": "client",
             "description": "Given pet option does not match one of the options we are expecting"
-        }, 
+        },
         {
             "code": "PetOptionNotAvailable",
             "category": "client",
             "description": "Pet option is not available"
-        }, 
+        },
         {
             "code": "GuestAgeInvalid",
             "category": "client",
             "description": "Guest age is not accepted by the website"
-        }, 
+        },
         {
             "code": "VacationRentalNotAvailable",
             "category": "client",
