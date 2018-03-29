@@ -1,5 +1,7 @@
 ## [UNRELEASED]
 
+- Add domain attributes
+
 ## [4.0.0] - 2018-03-29
 
 - Change `input.initial` meaning to a bit opposite.
@@ -16,7 +18,6 @@
 ## [3.1.2] - 2018-03-19
 
 - Added policy documents outputs for motor insurance
-
 
 ## [3.1.1] - 2018-02-26
 
