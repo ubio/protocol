@@ -815,7 +815,15 @@
           "category": "server",
           "description": "Job timeout after an hour of job creation without reaching the final step"
         }
-      ]
+      ],
+      "attributes": {
+        "url": {
+          "type": "string",
+          "format": "url",
+          "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
+          "example": "http://example.com"
+        }
+      }
     },
     "FlightBooking": {
       "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
@@ -1429,7 +1437,16 @@
           "category": "client",
           "description": "Passenger document (passport or other travel document) is required by the website"
         }
-      ]
+      ],
+      "attributes": {
+        "airlineCode": {
+          "type": "string",
+          "description": "IATA reservation code, two-character codes assigned by the International Air Transport Association (IATA) to the airline.",
+          "minLength": 2,
+          "maxLength": 4,
+          "example": "AA"
+        }
+      }
     },
     "VacationRental": {
       "description": "",
@@ -1597,7 +1614,8 @@
           "description": "Vacation rental is not found",
           "example": "Vacation rental unavailable on given date provided"
         }
-      ]
+      ],
+      "attributes": {}
     },
     "MotorInsurance": {
       "description": "",
@@ -1855,7 +1873,8 @@
           "category": "client",
           "description": "Registration number is required by the website"
         }
-      ]
+      ],
+      "attributes": {}
     },
     "EventBooking": {
       "description": "",
@@ -2024,7 +2043,8 @@
           "category": "client",
           "description": "Requested event is not found"
         }
-      ]
+      ],
+      "attributes": {}
     },
     "Internal": {
       "description": "Internal domain for testing platform features.",
@@ -2115,7 +2135,8 @@
           "category": "client",
           "description": "Client caused error"
         }
-      ]
+      ],
+      "attributes": {}
     }
   }
 }

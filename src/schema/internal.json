@@ -87,5 +87,6 @@
             "category": "client",
             "description": "Client caused error"
         }
-    ]
+    ],
+    "attributes": {}
 }

@@ -797,5 +797,13 @@
             "category": "server",
             "description": "Job timeout after an hour of job creation without reaching the final step"
         }
-    ]
+    ],
+    "attributes": {
+        "url": {
+            "type": "string",
+            "format": "url",
+            "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
+            "example": "http://example.com"
+        }
+    }
 }

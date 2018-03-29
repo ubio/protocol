@@ -122,8 +122,22 @@ class OutputDef extends CustomDef {
 
 }
 
+class AttributeDef extends Def {
+
+    constructor(domain, key) {
+        super(domain, 'attributes', key);
+        this.id = `attributes::${domain.id}.${key}`;
+    }
+
+    getTypeRef() {
+        return `#/domains/${this.domain.id}/attributes/${this.key}`;
+    }
+
+}
+
 module.exports = {
     InputDef,
     OutputDef,
     TypeDef,
+    AttributeDef,
 };

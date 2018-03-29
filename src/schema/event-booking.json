@@ -157,5 +157,6 @@
             "category": "client",
             "description": "Requested event is not found"
         }
-    ]
+    ],
+    "attributes": {}
 }
