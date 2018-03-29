@@ -4,12 +4,10 @@
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
+            "description": "Website entry point."
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
