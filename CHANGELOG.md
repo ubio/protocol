@@ -1,7 +1,10 @@
 ## [UNRELEASED]
 
+## [4.0.0] - 2018-03-29
 
-## [3.1.4] - 2018-3-19
+- Change `input.initial` meaning to a bit opposite.
+
+## [3.1.4] - 2018-03-19
 
 - Add unresolved refs test case
 - Add `ProtocolProvider.forceRefreshLatest`
@@ -15,40 +18,40 @@
 - Added policy documents outputs for motor insurance
 
 
-## [3.1.1] - 2018-2-26
+## [3.1.1] - 2018-02-26
 
 - Add `domainId` to error
 
-## [3.1.0] - 2018-2-19
+## [3.1.0] - 2018-02-19
 
 - Add `getAllErrors` method
 
-## [2.0.0] - 2018-2-12
+## [2.0.0] - 2018-02-12
 
 - Add error lists
 
-## [1.9.1] - 2018-2-6
+## [1.9.1] - 2018-02-06
 
 - Fix `createExample` when object doesn't have `properties`
 
-## [1.9.0] - 2018-2-5
+## [1.9.0] - 2018-02-05
 
 - Add `Domain#validateInput` and `Domain#validateOutput` methods
 - Remove ambiguous `protocol#validate` method
 
-## [1.8.0] - 2018-2-5
+## [1.8.0] - 2018-02-05
 
 - Add `Def.isPII` method and `PII` label for Types
 
-## [1.7.1] - 2018-1-11
+## [1.7.1] - 2018-01-011
 
 - Add "Allowed values:" to prop enum docs
 
-## [1.7.0] - 2018-1-11
+## [1.7.0] - 2018-01-11
 
 - Add `vehicle` to `MotorInsurance`
 
-## [1.6.0] - 2018-1-8
+## [1.6.0] - 2018-01-08
 
 - Add `EventBooking` domain
 - Add support for `oneOf` in docs and examples

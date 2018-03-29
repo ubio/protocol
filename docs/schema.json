@@ -828,18 +828,19 @@
         },
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
-          "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
-          "initial": true
+          "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
         },
         "search": {
           "typeRef": "#/domains/FlightBooking/types/Search",
           "initial": true
         },
         "selectedOutboundFlight": {
-          "typeRef": "#/domains/FlightBooking/types/Flight"
+          "typeRef": "#/domains/FlightBooking/types/Flight",
+          "initial": true
         },
         "selectedInboundFlight": {
-          "typeRef": "#/domains/FlightBooking/types/Flight"
+          "typeRef": "#/domains/FlightBooking/types/Flight",
+          "initial": true
         },
         "itinerary": {
           "typeRef": "#/domains/FlightBooking/types/Itinerary",
@@ -848,16 +849,14 @@
           "deprecated": true
         },
         "account": {
-          "typeRef": "#/domains/Generic/types/Account",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "passengers": {
           "typeRef": "#/domains/FlightBooking/types/Passengers",
           "initial": true
         },
         "payment": {
-          "typeRef": "#/domains/Generic/types/Payment",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Payment"
         },
         "selectedOutboundFare": {
           "typeRef": "#/domains/FlightBooking/types/Fare",
@@ -1438,21 +1437,17 @@
       "inputs": {
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
-          "description": "Website entry point.",
-          "initial": true
+          "description": "Website entry point."
         },
         "guestAges": {
           "typeRef": "#/domains/Generic/types/Ages",
-          "description": "Ages of all guests.",
-          "initial": true
+          "description": "Ages of all guests."
         },
         "account": {
-          "typeRef": "#/domains/Generic/types/Account",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-          "typeRef": "#/domains/Generic/types/Payment",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
@@ -1610,16 +1605,13 @@
       "inputs": {
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
-          "description": "Website entry point.",
-          "initial": true
+          "description": "Website entry point."
         },
         "account": {
-          "typeRef": "#/domains/Generic/types/Account",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-          "typeRef": "#/domains/Generic/types/Payment",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
@@ -1871,12 +1863,10 @@
       "inputs": {
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
-          "description": "Website entry point.",
-          "initial": true
+          "description": "Website entry point."
         },
         "account": {
-          "typeRef": "#/domains/Generic/types/Account",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
           "typeRef": "#/domains/Generic/types/Payment"
