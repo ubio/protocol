@@ -150,6 +150,11 @@
             "description": "Pet option is not available"
         },
         {
+            "code": "GuestCountInvalid",
+            "category": "client",
+            "description": "Number of guests is not accepted by the website"
+        },
+        {
             "code": "GuestAgeInvalid",
             "category": "client",
             "description": "Guest age is not accepted by the website"

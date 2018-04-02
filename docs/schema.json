@@ -1604,6 +1604,11 @@
           "description": "Pet option is not available"
         },
         {
+          "code": "GuestCountInvalid",
+          "category": "client",
+          "description": "Number of guests is not accepted by the website"
+        },
+        {
           "code": "GuestAgeInvalid",
           "category": "client",
           "description": "Guest age is not accepted by the website"
@@ -2037,6 +2042,11 @@
           "code": "RefundOptionNotFound",
           "category": "client",
           "description": "Refund option does not match one of the options we are expecting"
+        },
+        {
+          "code": "SeatSelectionNotAvailable",
+          "category": "client",
+          "description": "The seats are not available"
         },
         {
           "code": "EventNotAvailable",
