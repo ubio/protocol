@@ -38113,6 +38113,10 @@ module.exports={
         }
     },
     "outputs": {
+        "ticketsCount": {
+            "description": "Emitted before finalPrice output. Count of tickets about to be purchased by the job.",
+            "typeRef": "#/domains/EventBooking/types/TicketsCount"
+        },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
@@ -38219,6 +38223,12 @@ module.exports={
             "required": [
                 "name"
             ]
+        },
+        "TicketsCount": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Count of tickets",
+            "example": 2
         }
     },
     "errors": [
