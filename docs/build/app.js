@@ -37685,16 +37685,30 @@ class OutputDef extends CustomDef {
 
 }
 
+class AttributeDef extends Def {
+
+    constructor(domain, key) {
+        super(domain, 'attributes', key);
+        this.id = `attributes::${domain.id}.${key}`;
+    }
+
+    getTypeRef() {
+        return `#/domains/${this.domain.id}/attributes/${this.key}`;
+    }
+
+}
+
 module.exports = {
     InputDef,
     OutputDef,
-    TypeDef
+    TypeDef,
+    AttributeDef
 };
 
 },{"./example":155,"./util":166}],154:[function(require,module,exports){
 'use strict';
 
-const { InputDef, OutputDef, TypeDef } = require('./defs');
+const { InputDef, OutputDef, TypeDef, AttributeDef } = require('./defs');
 
 module.exports = class Domain {
 
@@ -37707,7 +37721,8 @@ module.exports = class Domain {
         this.outputs = this._collectOutputs();
         this.types = this._collectTypes();
         this.errors = this._collectErrors() || [];
-        this.defs = [].concat(this.inputs).concat(this.outputs).concat(this.types);
+        this.attributes = this._collectAttributes();
+        this.defs = [].concat(this.inputs).concat(this.outputs).concat(this.types).concat(this.attributes);
     }
 
     getInputs() {
@@ -37724,6 +37739,10 @@ module.exports = class Domain {
 
     getErrors() {
         return this.errors;
+    }
+
+    getAttributes() {
+        return this.attributes;
     }
 
     getDefs() {
@@ -37756,6 +37775,10 @@ module.exports = class Domain {
 
     _collectTypes() {
         return Object.keys(this.spec.types).map(key => new TypeDef(this, key));
+    }
+
+    _collectAttributes() {
+        return Object.keys(this.spec.attributes || {}).map(key => new AttributeDef(this, key));
     }
 
     _collectErrors() {
@@ -37934,6 +37957,21 @@ module.exports = class Protocol {
     getAllErrors() {
         return this.domains.reduce((errors, domain) => errors.concat(domain.errors), []);
     }
+
+    getUnresolvedRefs() {
+        const unresolvedRefs = new Set();
+        JSON.stringify(this.schema, (key, value) => {
+            if (['typeRef', '$ref'].includes(key)) {
+                const ref = this.resolveTypeRef(value);
+                if (!ref) {
+                    unresolvedRefs.add(value);
+                }
+            }
+            return value;
+        });
+        return Array.from(unresolvedRefs);
+    }
+
 };
 
 },{"./domain":154,"./validator":167}],158:[function(require,module,exports){
@@ -37964,6 +38002,7 @@ module.exports = class ProtocolProvider {
         }
         const interval = this.ttl;
         const repeat = () => {
+            clearTimeout(this.autoRefreshTimer);
             this.autoRefreshTimer = setTimeout(() => this.startAutoRefresh(), interval);
         };
         this.fetchLatest().then(repeat, repeat);
@@ -37997,6 +38036,11 @@ module.exports = class ProtocolProvider {
         this.latest = protocol;
         this.latestFetchedAt = Date.now();
         return protocol;
+    }
+
+    async forceRefreshLatest() {
+        this.latestFetchedAt = 0;
+        return await this.fetchLatest();
     }
 
     async fetchSchema(tag) {
@@ -38040,16 +38084,13 @@ module.exports={
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
+            "description": "Website entry point."
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -38201,7 +38242,8 @@ module.exports={
             "category": "client",
             "description": "Requested event is not found"
         }
-    ]
+    ],
+    "attributes": {}
 }
 
 },{}],160:[function(require,module,exports){
@@ -38216,18 +38258,19 @@ module.exports={
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
-            "initial": true
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
         },
         "search": {
             "typeRef": "#/domains/FlightBooking/types/Search",
             "initial": true
         },
         "selectedOutboundFlight": {
-            "typeRef": "#/domains/FlightBooking/types/Flight"
+            "typeRef": "#/domains/FlightBooking/types/Flight",
+            "initial": true
         },
         "selectedInboundFlight": {
-            "typeRef": "#/domains/FlightBooking/types/Flight"
+            "typeRef": "#/domains/FlightBooking/types/Flight",
+            "initial": true
         },
         "itinerary": {
             "typeRef": "#/domains/FlightBooking/types/Itinerary",
@@ -38236,16 +38279,14 @@ module.exports={
             "deprecated": true
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Account"
         },
         "passengers": {
             "typeRef": "#/domains/FlightBooking/types/Passengers",
             "initial": true
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Payment"
         },
         "selectedOutboundFare": {
             "typeRef": "#/domains/FlightBooking/types/Fare",
@@ -38783,7 +38824,16 @@ module.exports={
             "category": "client",
             "description": "Passenger document (passport or other travel document) is required by the website"
         }
-    ]
+    ],
+    "attributes": {
+        "airlineCode": {
+            "type": "string",
+            "description": "IATA reservation code, two-character codes assigned by the International Air Transport Association (IATA) to the airline.",
+            "minLength": 2,
+            "maxLength": 4,
+            "example": "AA"
+        }
+    }
 }
 
 },{}],161:[function(require,module,exports){
@@ -39586,7 +39636,15 @@ module.exports={
             "category": "server",
             "description": "Job timeout after an hour of job creation without reaching the final step"
         }
-    ]
+    ],
+    "attributes": {
+        "url": {
+            "type": "string",
+            "format": "url",
+            "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
+            "example": "http://example.com"
+        }
+    }
 }
 
 },{}],162:[function(require,module,exports){
@@ -39694,7 +39752,8 @@ module.exports={
             "category": "client",
             "description": "Client caused error"
         }
-    ]
+    ],
+    "attributes": {}
 }
 
 },{}],164:[function(require,module,exports){
@@ -39704,16 +39763,13 @@ module.exports={
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
+            "description": "Website entry point."
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -39773,6 +39829,26 @@ module.exports={
         "availableCarHireCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "policyDetails": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "policyHoldersAddress": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "driverDetails": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "excesses": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "policyInfo": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
         }
     },
     "types": {
@@ -39871,6 +39947,33 @@ module.exports={
                 "name",
                 "price"
             ]
+        },
+        "PolicyGroupInfo": {
+            "type": "array",
+            "description": "Group of information about the policy.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/MotorInsurance/types/PolicyGroupItem" }
+        },
+        "PolicyGroupItem": {
+            "type": "object",
+            "description": "Piece of information about the policy.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Type of information as provided by the insurer.",
+                    "example": "Policy details"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Information details or url, where available.",
+                    "example": "https://www.example.com/documents/policy-details.pdf"
+                }
+            },
+            "required": [
+                "name",
+                "value"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
@@ -39904,7 +40007,8 @@ module.exports={
             "category": "client",
             "description": "Registration number is required by the website"
         }
-    ]
+    ],
+    "attributes": {}
 }
 
 },{}],165:[function(require,module,exports){
@@ -39914,21 +40018,17 @@ module.exports={
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
+            "description": "Website entry point."
         },
         "guestAges": {
             "typeRef": "#/domains/Generic/types/Ages",
-            "description": "Ages of all guests.",
-            "initial": true
+            "description": "Ages of all guests."
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -40079,7 +40179,8 @@ module.exports={
             "description": "Vacation rental is not found",
             "example": "Vacation rental unavailable on given date provided"
         }
-    ]
+    ],
+    "attributes": {}
 }
 
 },{}],166:[function(require,module,exports){

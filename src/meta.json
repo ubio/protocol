@@ -54,6 +54,12 @@
                 },
                 "errors": {
                     "type": "array"
+                },
+                "attributes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/TypeDef"
+                    }
                 }
             },
             "required": [
@@ -62,6 +68,7 @@
                 "outputs",
                 "types",
                 "errors",
+                "attributes",
                 "private"
             ],
             "additionalProperties": false
@@ -72,7 +79,9 @@
                 "description": { "type": "string" },
                 "default": {},
                 "initial": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Initial input MUST be supplied at job creation, when initial flag set to false input may be supplied at job creation but may be deferred until explicit request using job.awaitingInputKey=INPUT_KEY",
+                    "default": false
                 },
                 "deprecated": {
                     "type": "boolean"
@@ -122,4 +131,3 @@
         }
     }
 }
-

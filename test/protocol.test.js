@@ -5,6 +5,12 @@ const expect = require('expect');
 
 describe('Protocol', () => {
 
+    it('should not contain unresolved references', () => {
+        const unresolvedRefs = protocol.getUnresolvedRefs();
+        expect(unresolvedRefs.length).toEqual(0,
+            `Unresolved references are not allowed: ${unresolvedRefs}`);
+    });
+
     describe('getDomain', () => {
 
         it('should return existing domain', () => {

@@ -4,16 +4,13 @@
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point.",
-            "initial": true
+            "description": "Website entry point."
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -73,6 +70,26 @@
         "availableCarHireCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "policyDetails": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "policyHoldersAddress": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "driverDetails": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "excesses": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "policyInfo": {
+            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
         }
     },
     "types": {
@@ -171,6 +188,33 @@
                 "name",
                 "price"
             ]
+        },
+        "PolicyGroupInfo": {
+            "type": "array",
+            "description": "Group of information about the policy.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/MotorInsurance/types/PolicyGroupItem" }
+        },
+        "PolicyGroupItem": {
+            "type": "object",
+            "description": "Piece of information about the policy.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Type of information as provided by the insurer.",
+                    "example": "Policy details"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Information details or url, where available.",
+                    "example": "https://www.example.com/documents/policy-details.pdf"
+                }
+            },
+            "required": [
+                "name",
+                "value"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
@@ -204,5 +248,6 @@
             "category": "client",
             "description": "Registration number is required by the website"
         }
-    ]
+    ],
+    "attributes": {}
 }

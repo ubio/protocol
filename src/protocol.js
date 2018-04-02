@@ -55,4 +55,19 @@ module.exports = class Protocol {
     getAllErrors() {
         return this.domains.reduce((errors, domain) => errors.concat(domain.errors), []);
     }
+
+    getUnresolvedRefs() {
+        const unresolvedRefs = new Set();
+        JSON.stringify(this.schema, (key, value) => {
+            if (['typeRef', '$ref'].includes(key)) {
+                const ref = this.resolveTypeRef(value);
+                if (!ref) {
+                    unresolvedRefs.add(value);
+                }
+            }
+            return value;
+        });
+        return Array.from(unresolvedRefs);
+    }
+
 };

@@ -815,7 +815,15 @@
           "category": "server",
           "description": "Job timeout after an hour of job creation without reaching the final step"
         }
-      ]
+      ],
+      "attributes": {
+        "url": {
+          "type": "string",
+          "format": "url",
+          "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
+          "example": "http://example.com"
+        }
+      }
     },
     "FlightBooking": {
       "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
@@ -828,18 +836,19 @@
         },
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
-          "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
-          "initial": true
+          "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
         },
         "search": {
           "typeRef": "#/domains/FlightBooking/types/Search",
           "initial": true
         },
         "selectedOutboundFlight": {
-          "typeRef": "#/domains/FlightBooking/types/Flight"
+          "typeRef": "#/domains/FlightBooking/types/Flight",
+          "initial": true
         },
         "selectedInboundFlight": {
-          "typeRef": "#/domains/FlightBooking/types/Flight"
+          "typeRef": "#/domains/FlightBooking/types/Flight",
+          "initial": true
         },
         "itinerary": {
           "typeRef": "#/domains/FlightBooking/types/Itinerary",
@@ -848,16 +857,14 @@
           "deprecated": true
         },
         "account": {
-          "typeRef": "#/domains/Generic/types/Account",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "passengers": {
           "typeRef": "#/domains/FlightBooking/types/Passengers",
           "initial": true
         },
         "payment": {
-          "typeRef": "#/domains/Generic/types/Payment",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Payment"
         },
         "selectedOutboundFare": {
           "typeRef": "#/domains/FlightBooking/types/Fare",
@@ -1430,7 +1437,16 @@
           "category": "client",
           "description": "Passenger document (passport or other travel document) is required by the website"
         }
-      ]
+      ],
+      "attributes": {
+        "airlineCode": {
+          "type": "string",
+          "description": "IATA reservation code, two-character codes assigned by the International Air Transport Association (IATA) to the airline.",
+          "minLength": 2,
+          "maxLength": 4,
+          "example": "AA"
+        }
+      }
     },
     "VacationRental": {
       "description": "",
@@ -1438,21 +1454,17 @@
       "inputs": {
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
-          "description": "Website entry point.",
-          "initial": true
+          "description": "Website entry point."
         },
         "guestAges": {
           "typeRef": "#/domains/Generic/types/Ages",
-          "description": "Ages of all guests.",
-          "initial": true
+          "description": "Ages of all guests."
         },
         "account": {
-          "typeRef": "#/domains/Generic/types/Account",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-          "typeRef": "#/domains/Generic/types/Payment",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
@@ -1607,7 +1619,8 @@
           "description": "Vacation rental is not found",
           "example": "Vacation rental unavailable on given date provided"
         }
-      ]
+      ],
+      "attributes": {}
     },
     "MotorInsurance": {
       "description": "",
@@ -1615,16 +1628,13 @@
       "inputs": {
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
-          "description": "Website entry point.",
-          "initial": true
+          "description": "Website entry point."
         },
         "account": {
-          "typeRef": "#/domains/Generic/types/Account",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-          "typeRef": "#/domains/Generic/types/Payment",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
@@ -1684,6 +1694,26 @@
         "availableCarHireCovers": {
           "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
           "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "policyDetails": {
+          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "policyHoldersAddress": {
+          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "driverDetails": {
+          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "excesses": {
+          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        },
+        "policyInfo": {
+          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
+          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
         }
       },
       "types": {
@@ -1786,6 +1816,35 @@
             "name",
             "price"
           ]
+        },
+        "PolicyGroupInfo": {
+          "type": "array",
+          "description": "Group of information about the policy.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/domains/MotorInsurance/types/PolicyGroupItem"
+          }
+        },
+        "PolicyGroupItem": {
+          "type": "object",
+          "description": "Piece of information about the policy.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Type of information as provided by the insurer.",
+              "example": "Policy details"
+            },
+            "value": {
+              "type": "string",
+              "description": "Information details or url, where available.",
+              "example": "https://www.example.com/documents/policy-details.pdf"
+            }
+          },
+          "required": [
+            "name",
+            "value"
+          ],
+          "additionalProperties": false
         }
       },
       "errors": [
@@ -1819,7 +1878,8 @@
           "category": "client",
           "description": "Registration number is required by the website"
         }
-      ]
+      ],
+      "attributes": {}
     },
     "EventBooking": {
       "description": "",
@@ -1827,16 +1887,13 @@
       "inputs": {
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
-          "description": "Website entry point.",
-          "initial": true
+          "description": "Website entry point."
         },
         "account": {
-          "typeRef": "#/domains/Generic/types/Account",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-          "typeRef": "#/domains/Generic/types/Payment",
-          "initial": true
+          "typeRef": "#/domains/Generic/types/Payment"
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
@@ -1996,7 +2053,8 @@
           "category": "client",
           "description": "Requested event is not found"
         }
-      ]
+      ],
+      "attributes": {}
     },
     "Internal": {
       "description": "Internal domain for testing platform features.",
@@ -2087,7 +2145,8 @@
           "category": "client",
           "description": "Client caused error"
         }
-      ]
+      ],
+      "attributes": {}
     }
   }
 }
