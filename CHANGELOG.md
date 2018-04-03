@@ -1,5 +1,9 @@
 ## [UNRELEASED]
 
+## [4.1.3] - 2018-04-03
+
+- Added ajv to dependencies
+
 ## [4.1.2] - 2018-04-03
 
 - Renamed TicketsCount to Tickets.
@@ -8,7 +12,7 @@
 
 - Added tickets count output for EventBooking.
 
-## [4.1.0] - 2018-3-29
+## [4.1.0] - 2018-03-29
 
 - Add domain attributes
 
