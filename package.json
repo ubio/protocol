@@ -25,7 +25,6 @@
     "build"
   ],
   "devDependencies": {
-    "ajv": "^5.3.0",
     "babel-core": "^6.26.0",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
@@ -44,6 +43,7 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
+    "ajv": "^5.3.0",
     "node-fetch": "^1.7.3"
   }
 }
