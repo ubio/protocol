@@ -132,6 +132,7 @@
             "firstName": {
               "type": "string",
               "description": "First name(s) or given name(s), as specified in ID.",
+              "minLength": 1,
               "example": "Bob"
             },
             "middleName": {
@@ -142,6 +143,7 @@
             "lastName": {
               "type": "string",
               "description": "Last name or surname, as specified in ID.",
+              "minLength": 1,
               "example": "Smith"
             }
           },
@@ -160,6 +162,7 @@
             "line1": {
               "type": "string",
               "description": "Street name with house number.",
+              "minLength": 1,
               "example": "501 Twin Peaks Blv"
             },
             "line2": {
@@ -170,11 +173,13 @@
             "city": {
               "type": "string",
               "description": "Name of city, town or other settlement.",
+              "minLength": 1,
               "example": "San Francisco"
             },
             "postcode": {
               "type": "string",
               "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+              "minLength": 1,
               "example": "94581"
             },
             "countryCode": {
@@ -600,6 +605,7 @@
         "CountrySubdivision": {
           "type": "string",
           "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased.",
+          "minLength": 1,
           "example": "ca"
         },
         "CurrencyCode": {
