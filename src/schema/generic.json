@@ -587,7 +587,6 @@
         "CountrySubdivision": {
             "type": "string",
             "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased.",
-            "minLength": 1,
             "example": "ca"
         },
         "CurrencyCode": {
