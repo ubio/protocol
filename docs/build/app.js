@@ -39651,6 +39651,12 @@ module.exports={
             "example": "Unable to purchase online"
         },
         {
+            "code": "SessionExpired",
+            "category": "website",
+            "description": "The website timed out the session. Each website has its own timeout settings, usually after inactivity such as waiting too long for an input.",
+            "example": "Your basket has expired, you must complete the purchase within 5 minutes."
+        },
+        {
             "code": "ServerError",
             "category": "server",
             "description": "Server Error"
