@@ -38325,9 +38325,6 @@ module.exports={
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
-        },
-        "frequentFlyer": {
-            "typeRef": "#/domains/FlightBooking/types/FrequentFlyer"
         }
     },
     "outputs": {
@@ -38562,6 +38559,9 @@ module.exports={
                 },
                 "document": {
                     "$ref": "#/domains/FlightBooking/types/PassengerDocument"
+                },
+                "frequentFlyer": {
+                    "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"
                 }
             },
             "required": [
@@ -38751,7 +38751,7 @@ module.exports={
                 "price"
             ]
         },
-        "FrequentFlyer": {
+        "PassengerFrequentFlyer": {
             "type": "object",
             "description": "Frequent flyer identification information",
             "properties": {
