@@ -38325,6 +38325,9 @@ module.exports={
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "frequentFlyer": {
+            "typeRef": "#/domains/FlightBooking/types/FrequentFlyer"
         }
     },
     "outputs": {
@@ -38746,6 +38749,30 @@ module.exports={
             "required": [
                 "text",
                 "price"
+            ]
+        },
+        "FrequentFlyer": {
+            "type": "object",
+            "description": "Frequent flyer identification information",
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Frequent flyer number",
+                    "example": "abc123456789"
+                },
+                "airlineName": {
+                    "type": "string",
+                    "description": "Complete English name of the airline",
+                    "example": "British Airways"
+                },
+                "programName": {
+                    "type": "string",
+                    "description": "Branding name of the frequent flyer programme, as defined by the airline",
+                    "example": "Avios Travel Rewards Programme"
+                }
+            },
+            "required": [
+                "number"
             ]
         }
     },
