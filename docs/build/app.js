@@ -38941,9 +38941,15 @@ module.exports={
             "properties": {
                 "email": {
                     "type": "string",
-                    "description": "Account email, typically used for user sign up / sign in, as well as contact information.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
+                    "description": "Account email, typically used for user sign up / sign in.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully. Use contactEmail when different.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
                     "format": "email",
                     "example": "hello@example.com"
+                },
+                "contactEmail": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
                 },
                 "password": {
                     "type": "string",
