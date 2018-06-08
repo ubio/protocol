@@ -38559,6 +38559,9 @@ module.exports={
                 },
                 "document": {
                     "$ref": "#/domains/FlightBooking/types/PassengerDocument"
+                },
+                "frequentFlyer": {
+                    "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"
                 }
             },
             "required": [
@@ -38746,6 +38749,30 @@ module.exports={
             "required": [
                 "text",
                 "price"
+            ]
+        },
+        "PassengerFrequentFlyer": {
+            "type": "object",
+            "description": "Frequent flyer identification information",
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Frequent flyer number",
+                    "example": "abc123456789"
+                },
+                "airlineName": {
+                    "type": "string",
+                    "description": "Complete English name of the airline",
+                    "example": "British Airways"
+                },
+                "programName": {
+                    "type": "string",
+                    "description": "Branding name of the frequent flyer programme, as defined by the airline",
+                    "example": "Avios Travel Rewards Programme"
+                }
+            },
+            "required": [
+                "number"
             ]
         }
     },
