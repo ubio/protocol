@@ -786,6 +786,11 @@
           "description": "Invalid cookie provided"
         },
         {
+          "code": "BadInput",
+          "category": "client",
+          "description": "Failed to create a job due to bad input"
+        },
+        {
           "code": "PriceChangedAfterConsent",
           "category": "website",
           "description": "Price changed after final price consent."
