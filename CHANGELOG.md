@@ -1,5 +1,7 @@
 ## [UNRELEASED]
 
+- Added Generic.InputInvalid error
+
 ## [4.1.3] - 2018-04-03
 
 - Added ajv to dependencies
