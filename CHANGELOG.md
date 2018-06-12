@@ -1,5 +1,8 @@
 ## [UNRELEASED]
 
+
+## [4.2.0] - 2018-6-12
+
 - Added Generic.InputInvalid error
 
 ## [4.1.3] - 2018-04-03
