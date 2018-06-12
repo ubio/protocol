@@ -718,6 +718,11 @@
     },
     "errors": [
         {
+            "code": "InputInvalid",
+            "category": "client",
+            "description": "Failed to create a job due to invalid input"
+        },
+        {
             "code": "JobCancelled",
             "category": "client",
             "description": "Job cancelled by client"
