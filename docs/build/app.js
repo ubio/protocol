@@ -38754,7 +38754,6 @@ module.exports={
                 }
             },
             "required": [
-                "cabinClass",
                 "outbound",
                 "passengerAges"
             ],
