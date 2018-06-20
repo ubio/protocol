@@ -37523,9 +37523,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6bf9ef78", __vue__options__)
+    hotAPI.createRecord("data-v-3a814de9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6bf9ef78", __vue__options__)
+    hotAPI.reload("data-v-3a814de9", __vue__options__)
   }
 })()}
 },{"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],142:[function(require,module,exports){
@@ -37587,9 +37587,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3ec5bd39", __vue__options__)
+    hotAPI.createRecord("data-v-0a99ee74", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3ec5bd39", __vue__options__)
+    hotAPI.reload("data-v-0a99ee74", __vue__options__)
   }
 })()}
 },{"./prop.vue":145,"./schema-type.vue":146,"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],143:[function(require,module,exports){
@@ -37634,9 +37634,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-043abbf9", __vue__options__)
+    hotAPI.createRecord("data-v-127f07de", __vue__options__)
   } else {
-    hotAPI.reload("data-v-043abbf9", __vue__options__)
+    hotAPI.reload("data-v-127f07de", __vue__options__)
   }
 })()}
 },{"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],144:[function(require,module,exports){
@@ -37696,9 +37696,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-27b69158", __vue__options__)
+    hotAPI.createRecord("data-v-66f512f9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-27b69158", __vue__options__)
+    hotAPI.reload("data-v-66f512f9", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":146,"./val.vue":147,"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],145:[function(require,module,exports){
@@ -37741,9 +37741,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3b0dfedf", __vue__options__)
+    hotAPI.createRecord("data-v-2c8015f8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3b0dfedf", __vue__options__)
+    hotAPI.reload("data-v-2c8015f8", __vue__options__)
   }
 })()}
 },{"./schema-type.vue":146,"./val.vue":147,"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],146:[function(require,module,exports){
@@ -37804,9 +37804,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4e255c9a", __vue__options__)
+    hotAPI.createRecord("data-v-4afe22d5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4e255c9a", __vue__options__)
+    hotAPI.reload("data-v-4afe22d5", __vue__options__)
   }
 })()}
 },{"../../src":159,"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],147:[function(require,module,exports){
@@ -37852,9 +37852,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1f11db56", __vue__options__)
+    hotAPI.createRecord("data-v-876978e0", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1f11db56", __vue__options__)
+    hotAPI.reload("data-v-876978e0", __vue__options__)
   }
 })()}
 },{"vue":138,"vue-hot-reload-api":136}],148:[function(require,module,exports){
@@ -37979,9 +37979,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-79b2af8c", __vue__options__)
+    hotAPI.createRecord("data-v-ff742a1e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-79b2af8c", __vue__options__)
+    hotAPI.reload("data-v-ff742a1e", __vue__options__)
   }
 })()}
 },{"../../src":159,"../components/def.vue":142,"../components/error-oneliner.vue":143,"../components/oneliner.vue":144,"../util":154,"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],150:[function(require,module,exports){
@@ -37994,9 +37994,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-46411627", __vue__options__)
+    hotAPI.createRecord("data-v-5ac5e6cc", __vue__options__)
   } else {
-    hotAPI.reload("data-v-46411627", __vue__options__)
+    hotAPI.reload("data-v-5ac5e6cc", __vue__options__)
   }
 })()}
 },{"vue":138,"vue-hot-reload-api":136}],151:[function(require,module,exports){
@@ -38023,9 +38023,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4f979a1c", __vue__options__)
+    hotAPI.createRecord("data-v-42712352", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4f979a1c", __vue__options__)
+    hotAPI.reload("data-v-42712352", __vue__options__)
   }
 })()}
 },{"./sidebar.vue":152,"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],152:[function(require,module,exports){
@@ -38060,9 +38060,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bede6878", __vue__options__)
+    hotAPI.createRecord("data-v-6c64fcff", __vue__options__)
   } else {
-    hotAPI.reload("data-v-bede6878", __vue__options__)
+    hotAPI.reload("data-v-6c64fcff", __vue__options__)
   }
 })()}
 },{"../../src":159,"./sidebar__domain.vue":153,"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],153:[function(require,module,exports){
@@ -38131,9 +38131,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-faad3330", __vue__options__)
+    hotAPI.createRecord("data-v-7f822ca3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-faad3330", __vue__options__)
+    hotAPI.reload("data-v-7f822ca3", __vue__options__)
   }
 })()}
 },{"vue":138,"vue-hot-reload-api":136,"vueify/lib/insert-css":139}],154:[function(require,module,exports){
@@ -38314,7 +38314,7 @@ module.exports = {
     AttributeDef
 };
 
-},{"./example":158,"./util":169}],157:[function(require,module,exports){
+},{"./example":158,"./util":170}],157:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef, AttributeDef } = require('./defs');
@@ -38508,7 +38508,7 @@ module.exports = {
     Domain
 };
 
-},{"./domain":157,"./protocol":160,"./provider":161,"./schema":165}],160:[function(require,module,exports){
+},{"./domain":157,"./protocol":160,"./provider":161,"./schema":166}],160:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -38583,7 +38583,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":157,"./validator":170}],161:[function(require,module,exports){
+},{"./domain":157,"./validator":171}],161:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -38687,6 +38687,269 @@ class RemoteProtocolFetchError extends Error {
 }
 
 },{"./protocol":160,"node-fetch":84}],162:[function(require,module,exports){
+module.exports={
+    "description": "Automates bus and chack tickets booking on websites.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to one of the checkout flow pages."
+        },
+        "search": {
+            "typeRef": "#/domains/CoachBooking/types/Search",
+            "initial": true
+        },
+        "selectedOutboundTrip": {
+            "typeRef": "#/domains/CoachBooking/types/Trip",
+            "initial": true
+        },
+        "selectedInboundTrip": {
+            "typeRef": "#/domains/CoachBooking/types/Trip",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "passengers": {
+            "typeRef": "#/domains/CoachBooking/types/Passengers",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/FlightBooking/types/BookingConfirmation"
+        }
+    },
+    "types": {
+        "Search": {
+            "type": "object",
+            "description": "Information about the trip.",
+            "properties": {
+                "outbound": {
+                    "$ref": "#/domains/CoachBooking/types/CoachSearch",
+                    "description": "Outbound trip specification."
+                },
+                "inbound": {
+                    "$ref": "#/domains/CoachBooking/types/CoachSearch",
+                    "description": "Inbound (return) trip specification. If omitted, one-way trip booking flow is used."
+                },
+                "passengerAges": {
+                    "typeRef": "#/domains/Generic/types/Ages",
+                    "description": "Ages of all passengers.",
+                    "example": [34, 31, 9]
+                }
+            },
+            "required": [
+                "cabinClass",
+                "outbound",
+                "passengerAges"
+            ],
+            "additionalProperties": false
+        },
+        "CoachSearch": {
+            "type": "object",
+            "description": "Outbound and inbound trips specification.",
+            "properties": {
+                "origin": { "$ref": "#/domains/CoachBooking/types/DateTerminal" },
+                "destination": { "$ref": "#/domains/CoachBooking/types/DateTerminal" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ],
+            "additionalProperties": false
+        },
+        "DateTerminal": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of trip (terminal local date).",
+                    "example": "2019-01-01"
+                },
+                "terminalLocality": {
+                    "type": "string",
+                    "description": "Terminal locality, usually city name.",
+                    "example": "London"
+                },
+                "terminalName": {
+                    "type": "string",
+                    "description": "Name of the terminal as found on the booking website.",
+                    "example": "London Liverpool Street"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of the terminal.",
+                    "example": "gb"
+                }
+            },
+            "required": [
+                "date",
+                "terminalLocality",
+                "terminalName"
+            ],
+            "additionalProperties": false
+        },
+        "Trip": {
+            "type": "object",
+            "description": "Outbound and inbound specification.",
+            "properties": {
+                "origin": { "$ref": "#/domains/CoachBooking/types/DateTimeTerminal" },
+                "destination": { "$ref": "#/domains/CoachBooking/types/DateTimeTerminal" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ],
+            "additionalProperties": false
+        },
+        "DateTimeTerminal": {
+            "type": "object",
+            "properties": {
+                "dateTime": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
+                    "description": "Date and time (terminal local time).",
+                    "example": "2018-02-02 19:40"
+                },
+                "terminalLocality": {
+                    "type": "string",
+                    "description": "Terminal locality, usually city name.",
+                    "example": "London"
+                },
+                "terminalName": {
+                    "type": "string",
+                    "description": "Name of the terminal as found on the booking website.",
+                    "example": "London Liverpool Street"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of the terminal.",
+                    "example": "gb"
+                }
+            },
+            "required": [
+                "dateTime",
+                "terminalLocality",
+                "terminalName"
+            ],
+            "additionalProperties": false
+        },
+        "Passengers": {
+            "type": "array",
+            "description": "An array with details for each passenger.",
+            "pii": true,
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/CoachBooking/types/Passenger" }
+        },
+        "Passenger": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "document": {
+                    "$ref": "#/domains/CoachBooking/types/PassengerDocument"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "PassengerDocument": {
+            "type": "object",
+            "description": "Passenger ID (passport or other travel document). Automation may fail if this information is required by website, but not provided by Client.",
+            "pii": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Document type.",
+                    "enum": ["passport"]
+                },
+                "number": {
+                    "type": "string",
+                    "description": "Document number.",
+                    "example": "75 127001"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "issueCountryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Code of country where the document was issued."
+                }
+            },
+            "required": [
+                "type",
+                "number",
+                "expirationDate",
+                "issueCountryCode"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+    ],
+    "attributes": {
+    }
+}
+
+},{}],163:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -38874,7 +39137,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "private": false,
@@ -39491,7 +39754,7 @@ module.exports={
     }
 }
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "private": false,
@@ -40324,7 +40587,7 @@ module.exports={
     }
 }
 
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -40332,6 +40595,7 @@ module.exports = {
     domains: {
         Generic: require('./generic'),
         FlightBooking: require('./flight-booking'),
+        CoachBooking: require('./coach-booking'),
         VacationRental: require('./vacation-rental'),
         MotorInsurance: require('./motor-insurance'),
         EventBooking: require('./event-booking'),
@@ -40339,7 +40603,7 @@ module.exports = {
     }
 };
 
-},{"./event-booking":162,"./flight-booking":163,"./generic":164,"./internal":166,"./motor-insurance":167,"./vacation-rental":168}],166:[function(require,module,exports){
+},{"./coach-booking":162,"./event-booking":163,"./flight-booking":164,"./generic":165,"./internal":167,"./motor-insurance":168,"./vacation-rental":169}],167:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -40433,7 +40697,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],167:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -40688,7 +40952,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],168:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -40860,7 +41124,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -40871,7 +41135,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],170:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');
