@@ -38891,6 +38891,12 @@ module.exports={
                     "format": "date",
                     "example": "1976-01-27"
                 },
+                "addAdditionalLuggage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3,
+                    "default": 0
+                },
                 "document": {
                     "$ref": "#/domains/CoachBooking/types/PassengerDocument"
                 }
@@ -38899,7 +38905,8 @@ module.exports={
                 "title",
                 "firstName",
                 "lastName",
-                "dateOfBirth"
+                "dateOfBirth",
+                "addAdditionalLuggage"
             ],
             "additionalProperties": false
         },
