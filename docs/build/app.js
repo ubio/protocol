@@ -39429,7 +39429,7 @@ module.exports={
                     "default": 0
                 },
                 "document": {
-                    "$ref": "#/domains/FlightBooking/types/PassengerDocument"
+                    "$ref": "#/domains/Generic/types/Document"
                 },
                 "frequentFlyer": {
                     "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"
@@ -39441,44 +39441,6 @@ module.exports={
                 "lastName",
                 "dateOfBirth",
                 "addAdditionalLuggage"
-            ],
-            "additionalProperties": false
-        },
-        "PassengerDocument": {
-            "type": "object",
-            "description": "Passenger ID (passport or other travel document). Automation may fail if this information is required by website, but not provided by Client.",
-            "pii": true,
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "description": "Document type.",
-                    "enum": ["passport"]
-                },
-                "number": {
-                    "type": "string",
-                    "description": "Document number.",
-                    "example": "75 127001"
-                },
-                "issueDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2008-01-01"
-                },
-                "expirationDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2028-01-01"
-                },
-                "issueCountryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode",
-                    "description": "Code of country where the document was issued."
-                }
-            },
-            "required": [
-                "type",
-                "number",
-                "expirationDate",
-                "issueCountryCode"
             ],
             "additionalProperties": false
         },
