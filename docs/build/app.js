@@ -39436,7 +39436,7 @@ module.exports={
                     "default": 0
                 },
                 "document": {
-                    "$ref": "#/domains/FlightBooking/types/PassengerDocument"
+                    "$ref": "#/domains/Generic/types/Document"
                 },
                 "frequentFlyer": {
                     "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"
@@ -39448,44 +39448,6 @@ module.exports={
                 "lastName",
                 "dateOfBirth",
                 "addAdditionalLuggage"
-            ],
-            "additionalProperties": false
-        },
-        "PassengerDocument": {
-            "type": "object",
-            "description": "Passenger ID (passport or other travel document). Automation may fail if this information is required by website, but not provided by Client.",
-            "pii": true,
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "description": "Document type.",
-                    "enum": ["passport"]
-                },
-                "number": {
-                    "type": "string",
-                    "description": "Document number.",
-                    "example": "75 127001"
-                },
-                "issueDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2008-01-01"
-                },
-                "expirationDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2028-01-01"
-                },
-                "issueCountryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode",
-                    "description": "Code of country where the document was issued."
-                }
-            },
-            "required": [
-                "type",
-                "number",
-                "expirationDate",
-                "issueCountryCode"
             ],
             "additionalProperties": false
         },
@@ -39784,60 +39746,60 @@ module.exports={
             "example": "http://example.com"
         },
         "Cookies": {
-          "type": "array",
-          "description": "An array of cookie definitions.",
-          "items": {
-            "$ref": "#/domains/Generic/types/Cookie"
-          }
+            "type": "array",
+            "description": "An array of cookie definitions.",
+            "items": {
+                "$ref": "#/domains/Generic/types/Cookie"
+            }
         },
         "Cookie": {
-          "type": "object",
-          "description": "An object which defines a cookie. For more information on the fields of this object, see <a href=\"https://tools.ietf.org/html/rfc6265#section-5.2\" target=\"_blank\" rel=\"noopener\">RFC 6265 section 5.2</a>.",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Cookie name."
+            "type": "object",
+            "description": "An object which defines a cookie. For more information on the fields of this object, see <a href=\"https://tools.ietf.org/html/rfc6265#section-5.2\" target=\"_blank\" rel=\"noopener\">RFC 6265 section 5.2</a>.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Cookie name."
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Cookie value."
+                },
+                "url": {
+                    "type": "string",
+                    "format": "url",
+                    "description": "The URL from which the cookie is set."
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Cookie domain."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Cookie path."
+                },
+                "secure": {
+                    "type": "boolean",
+                    "description": "True if cookie is secure."
+                },
+                "httpOnly": {
+                    "type": "boolean",
+                    "description": "True if cookie is http-only."
+                },
+                "sameSite": {
+                    "enum": ["Strict", "Lax"],
+                    "description": "Cookie same-site type."
+                },
+                "expires": {
+                    "type": "number",
+                    "description": "Expiration date in seconds since the epoch (January 1, 1970 UTC)."
+                }
             },
-            "value": {
-              "type": "string",
-              "description": "Cookie value."
-            },
-            "url": {
-              "type": "string",
-              "format": "url",
-              "description": "The URL from which the cookie is set."
-            },
-            "domain": {
-              "type": "string",
-              "description": "Cookie domain."
-            },
-            "path": {
-              "type": "string",
-              "description": "Cookie path."
-            },
-            "secure": {
-              "type": "boolean",
-              "description": "True if cookie is secure."
-            },
-            "httpOnly": {
-              "type": "boolean",
-              "description": "True if cookie is http-only."
-            },
-            "sameSite": {
-              "enum": ["Strict", "Lax"],
-              "description": "Cookie same-site type."
-            },
-            "expires": {
-              "type": "number",
-              "description": "Expiration date in seconds since the epoch (January 1, 1970 UTC)."
-            }
-          },
-          "required": [
-            "name",
-            "value",
-            "url"
-          ],
-          "additionalProperties": false
+            "required": [
+                "name",
+                "value",
+                "url"
+            ],
+            "additionalProperties": false
         },
         "Account": {
             "type": "object",
@@ -39908,12 +39870,53 @@ module.exports={
                     "description": "Last name or surname, as specified in ID.",
                     "minLength": 1,
                     "example": "Smith"
+                },
+                "document": {
+                    "$ref": "#/domains/Generic/types/Document"
                 }
             },
             "required": [
                 "title",
                 "firstName",
                 "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "Document": {
+            "type": "object",
+            "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
+            "pii": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Document type.",
+                    "enum": ["passport"]
+                },
+                "number": {
+                    "type": "string",
+                    "description": "Document number.",
+                    "example": "75 127001"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "issueCountryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Code of country where the document was issued."
+                }
+            },
+            "required": [
+                "type",
+                "number",
+                "expirationDate",
+                "issueCountryCode"
             ],
             "additionalProperties": false
         },
