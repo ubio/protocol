@@ -40519,6 +40519,11 @@ module.exports={
             "description": "Cannot sign in as invalid account details provided"
         },
         {
+            "code": "PaymentDetailsInvalid",
+            "category": "client",
+            "description": "Cannot submit or process the payment because the payment details provided are invalid."
+        },
+        {
             "code": "UrlInvalid",
             "category": "client",
             "description": "Invalid url provided"
@@ -41010,6 +41015,14 @@ module.exports={
         "availableDeposits": {
             "typeRef": "#/domains/VacationRental/types/AvailableDeposits",
             "description": "Emitted when actual deposit information is collected.<br/>Note: on deep links with pre-selected deposits this output may not be provided."
+        },
+        "estimatedPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Price shown by the website prior to requiring guest information."
+        },
+        "estimatedDepositPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Where available, deposit price shown by the website prior to requiring guest information."
         }
     },
     "types": {

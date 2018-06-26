@@ -794,6 +794,11 @@
             "description": "Cannot sign in as invalid account details provided"
         },
         {
+            "code": "PaymentDetailsInvalid",
+            "category": "client",
+            "description": "Cannot submit or process the payment because the payment details provided are invalid."
+        },
+        {
             "code": "UrlInvalid",
             "category": "client",
             "description": "Invalid url provided"
