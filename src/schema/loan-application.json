@@ -1,0 +1,301 @@
+{
+    "description": "",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point."
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "loan": {
+            "typeRef": "#/domains/LoanApplication/types/Loan",
+        },
+        "applicant": {
+            "typeRef": "#/domains/LoanApplication/types/Applicant",
+        },
+        "addresses": {
+            "typeRef": "#/domains/LoanApplication/types/Addresses",
+        },
+        "employment": {
+            "typeRef": "#/domains/LoanApplication/types/Employment",
+        },
+        "bankAccount": {
+            "typeRef": "#/domains/LoanApplication/types/BankAccount",
+        },
+        "options": {
+            "typeRef": "#/domains/LoanApplication/types/Options",
+            "default": {},
+            "initial": true
+        }
+    },
+    "outputs": {
+
+    },
+    "types": {
+        "Loan": {
+            "type": "object",
+            "description": "Loan criteria",
+            "properties": {
+                "purpose": {
+                    "type": "string",
+                    "description": "Purpose of the loan.",
+                    "example": "buy a car"
+                },
+                "amount": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The loan amount required."
+                },
+                "repaymentMonths": {
+                    "type": "number",
+                    "description": "The number of months to repay the loan.",
+                    "example": 48
+                },
+                "existingLoan": {
+                    "type": "boolean",
+                    "description": "Existing loan with this provider."
+                },
+                "promotionCode": {
+                    "type": "string",
+                    "description": "Promotion code."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "purpose", "amount", "repaymentMonths"
+            ]
+        },
+        "Applicant": {
+            "type": "object",
+            "description": "The person applying for the loan.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                },
+                "document": {
+                    "$ref": "#/domains/Generic/types/Document"
+                },
+                "dateOfBirth": {
+                    "type": "date",
+                    "description": "Date of birth YYYY-MM-DD.",
+                    "example": "1980-01-01"
+                },
+                "relationshipStatus": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "single",
+                        "married",
+                        "divorced",
+                        "cohabiting",
+                        "widower"
+                    ]
+                },
+                "nationality": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Nationality according to passport."
+                },
+                "countryOfBirth": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country of birth."
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth",
+                "relationshipStatus",
+                "nationality",
+                "countryOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "Addresses": {
+            "type": "array",
+            "description": "A list of addresses for the applicant.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/LoanApplicant/types/Address" }
+        },
+        "Address": {
+            "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "minLength": 1,
+                    "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "minLength": 1,
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                },
+                "dateMovedIn": {
+                    "type": "date",
+                    "description": "Date at which the applicant moved into this address."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "own",
+                        "rent"
+                    ]
+                },
+                "mortgage": {
+                    "$ref": "#/domains/LoanApplication/types/Mortgage"
+                },
+            },
+            "required": [
+                "line1",
+                "line2",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
+        },
+        "Mortgage": {
+            "type": "object",
+            "description": "Mortgage information for the associated address.",
+            "properties": {
+                "monthlyPayment": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The amount paid per month by the loan applicant."
+                },
+                "jointMonthlyPayment": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The amount paid per month for a joint mortgage."
+                },
+                "required": [
+                    "monthlyPayment"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "Employment": {
+            "type": "object",
+            "description": "Applicant employment details.",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "employed-fulltime",
+                        "employed-parttime",
+                        "unemployed",
+                        "self-employed",
+                        "on-benefits",
+                        "retired"
+                    ]
+                },
+                "grossIncome": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Applicant's total annual gross salary (before tax)."
+                },
+                "netIncome": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Applicant's total annual net salary (after tax)."
+                },
+                "required": [
+                    "status"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "BankAccount": {
+            "type": "object",
+            "description": "Bank account information - where the loan is paid into.",
+            "pii": true,
+            "properties": {
+                "sortCode": {
+                    "type": "string",
+                    "description": "Account sort code.",
+                    "example": "001122",
+                    "minLength": 6,
+                    "maxLength": 6
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "description": "Account number.",
+                    "example": "44556677",
+                    "minLength": 8,
+                    "maxLength": 8
+                },
+                "repaymentDay": {
+                    "type": "number",
+                    "description": "Day of month on which loan is repaid.",
+                    "example": 1,
+                    "min": 1,
+                    "max": 31
+                }
+            },
+            "required": [
+                "sortCode",
+                "accountNumber",
+                "repaymentDay"
+            ],
+            "additionalProperties": false
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features.",
+            "properties": {
+
+            }
+        }
+    },
+    "errors": [
+
+    ],
+    "attributes": {}
+}
