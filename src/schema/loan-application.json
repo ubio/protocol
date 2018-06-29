@@ -18,11 +18,27 @@
         "addresses": {
             "typeRef": "#/domains/LoanApplication/types/Addresses",
         },
+        "loanConsent": {
+            "typeRef": "#/domains/LoanApplication/types/Quote",
+            "description": "Client's consent for the loan, should exactly match the <code>quote</code> object from output.<br/>Automation will not proceed with the loan application until the consent is provided."
+        },
         "employment": {
             "typeRef": "#/domains/LoanApplication/types/Employment",
         },
         "bankAccount": {
             "typeRef": "#/domains/LoanApplication/types/BankAccount",
+        },
+        "mobilePinConfirmation": {
+            "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation",
+        },
+        "emailVerification": {
+            "typeRef": "#/domains/LoanApplication/types/EmailVerification",
+        },
+        "proofOfIncome": {
+            "typeRef": "#/domains/LoanApplication/types/Files",
+        },
+        "bankStatements": {
+            "typeRef": "#/domains/LoanApplication/types/Files",
         },
         "options": {
             "typeRef": "#/domains/LoanApplication/types/Options",
@@ -31,7 +47,18 @@
         }
     },
     "outputs": {
-
+        "quote": {
+            "typeRef": "#/domains/LoanApplication/types/Quote",
+        },
+        "documents": {
+            "typeRef": "#/domains/LoanApplication/types/Documents",
+        },
+        "requirements": {
+            "typeRef": "#/domains/LoanApplication/types/Requirements",
+        },
+        "confirmation": {
+            "typeRef": "#/domains/LoanApplication/types/Confirmation",
+        }
     },
     "types": {
         "Loan": {
@@ -286,6 +313,155 @@
             ],
             "additionalProperties": false
         },
+        "MobilePinConfirmation": {
+            "type": "object",
+            "description": "Mobile pin confirmation to confirm the applicant's mobile number.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "pin confirmation code.",
+                    "example": "1234",
+                    "minLength": 3,
+                    "maxLength": 10
+                },
+            },
+            "required": [
+                "code"
+            ],
+            "additionalProperties": false
+        },
+        "EmailVerification": {
+            "type": "object",
+            "description": "Confirmation that email verification is done.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Confirmation code.",
+                    "example": "1234",
+                    "minLength": 3,
+                    "maxLength": 100
+                },
+            },
+            "required": [
+
+            ],
+            "additionalProperties": false
+        },
+        "Files": {
+            "type": "array",
+            "description": "A list of uploaded files.",
+            "minItems": 1,
+            "maxItems": 99,
+            "items": { "$ref": "#/domains/LoanApplicant/types/File" }
+        },
+        "File": {
+            "type": "object",
+            "description": "An uploaded file.",
+            "properties": {
+                "filename": {
+                    "type": "string",
+                    "description": "Filename of uploaded file.",
+                    "example": "photo.jpg"
+                },
+                "data": {
+                    "type": "string",
+                    "description": "File data.",
+                    "example": "BASE64STRING"
+                }
+            }
+        },
+        "Requirements": {
+            "type": "array",
+            "description": "A list of requirements.",
+            "minItems": 0,
+            "maxItems": 99,
+            "items": { "$ref": "#/domains/LoanApplicant/types/Requirement" }
+        },
+        "Requirement": {
+            "type": "object",
+            "description": "A required input for proof - e.g. of income.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of requirement.",
+                    "example": "income"
+                }
+            }
+        },
+        "Quote": {
+            "type": "object",
+            "description": "Loan quote",
+            "properties": {
+                "amount": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The loan amount required."
+                },
+                "repaymentMonths": {
+                    "type": "number",
+                    "description": "The number of months to repay the loan.",
+                    "example": 48
+                },
+                "apr": {
+                    "type": "number",
+                    "description": "The number of months to repay the loan.",
+                    "example": 48
+                },
+                "fee": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Additional loan fee (if applicable)."
+                },
+            },
+            "additionalProperties": false,
+            "required": [
+                "amount", "repaymentMonths", "apr"
+            ]
+        },
+        "Documents": {
+            "type": "array",
+            "description": "A list of downloadable documents.",
+            "minItems": 0,
+            "maxItems": 99,
+            "items": { "$ref": "#/domains/LoanApplicant/types/Document" }
+        },
+        "Document": {
+            "type": "object",
+            "description": "A document available to download/view.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of document.",
+                    "example": "Loan agreement"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Document url.",
+                    "example": "https://www.example-lender.com/loan-agreement.pdf"
+                }
+            }
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Confirmation of the loan.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Loan confirmation code",
+                    "example": "1234"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Confirmation message from the web page.",
+                    "example": "Your loan is confirmed."
+                }
+            },
+            "required": [
+
+            ],
+            "additionalProperties": false
+        },
         "Options": {
             "type": "object",
             "description": "Flags for enabling optional automation features.",
@@ -295,7 +471,7 @@
         }
     },
     "errors": [
-
+        "loanApplicationDeclined"
     ],
     "attributes": {}
 }
