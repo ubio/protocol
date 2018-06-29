@@ -37705,7 +37705,7 @@ module.exports = {
     AttributeDef
 };
 
-},{"./example":155,"./util":167}],154:[function(require,module,exports){
+},{"./example":155,"./util":168}],154:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef, AttributeDef } = require('./defs');
@@ -37974,7 +37974,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":154,"./validator":168}],158:[function(require,module,exports){
+},{"./domain":154,"./validator":169}],158:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -40003,12 +40003,13 @@ module.exports = {
         CoachBooking: require('./coach-booking'),
         VacationRental: require('./vacation-rental'),
         MotorInsurance: require('./motor-insurance'),
+        LoanApplication: require('./loan-application'),
         EventBooking: require('./event-booking'),
         Internal: require('./internal')
     }
 };
 
-},{"./coach-booking":159,"./event-booking":160,"./flight-booking":161,"./generic":162,"./internal":164,"./motor-insurance":165,"./vacation-rental":166}],164:[function(require,module,exports){
+},{"./coach-booking":159,"./event-booking":160,"./flight-booking":161,"./generic":162,"./internal":164,"./loan-application":165,"./motor-insurance":166,"./vacation-rental":167}],164:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -40103,6 +40104,522 @@ module.exports={
 }
 
 },{}],165:[function(require,module,exports){
+module.exports={
+    "description": "",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "initial": true
+        },
+        "loan": {
+            "typeRef": "#/domains/LoanApplication/types/Loan",
+            "initial": true
+        },
+        "applicant": {
+            "typeRef": "#/domains/LoanApplication/types/Applicant",
+            "initial": true
+        },
+        "addresses": {
+            "typeRef": "#/domains/LoanApplication/types/Addresses",
+            "initial": true
+        },
+        "loanConsent": {
+            "typeRef": "#/domains/LoanApplication/types/Quote",
+            "description": "Client's consent for the loan, should exactly match the <code>quote</code> object from output.<br/>Automation will not proceed with the loan application until the consent is provided."
+        },
+        "employment": {
+            "typeRef": "#/domains/LoanApplication/types/Employment"
+        },
+        "bankAccount": {
+            "typeRef": "#/domains/LoanApplication/types/BankAccount"
+        },
+        "mobilePinConfirmation": {
+            "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
+        },
+        "emailVerification": {
+            "typeRef": "#/domains/LoanApplication/types/EmailVerification"
+        },
+        "proofOfIncome": {
+            "typeRef": "#/domains/LoanApplication/types/Files"
+        },
+        "bankStatements": {
+            "typeRef": "#/domains/LoanApplication/types/Files"
+        },
+        "options": {
+            "typeRef": "#/domains/LoanApplication/types/Options",
+            "default": {},
+            "initial": true
+        }
+    },
+    "outputs": {
+        "quote": {
+            "typeRef": "#/domains/LoanApplication/types/Quote"
+        },
+        "documents": {
+            "typeRef": "#/domains/LoanApplication/types/Documents"
+        },
+        "requirements": {
+            "typeRef": "#/domains/LoanApplication/types/Requirements"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/LoanApplication/types/Confirmation"
+        }
+    },
+    "types": {
+        "Loan": {
+            "type": "object",
+            "description": "Loan criteria",
+            "properties": {
+                "purpose": {
+                    "type": "string",
+                    "description": "Purpose of the loan.",
+                    "example": "buy a car"
+                },
+                "amount": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The loan amount required."
+                },
+                "repaymentMonths": {
+                    "type": "number",
+                    "description": "The number of months to repay the loan.",
+                    "example": 48
+                },
+                "existingLoan": {
+                    "type": "boolean",
+                    "description": "Existing loan with this provider."
+                },
+                "promotionCode": {
+                    "type": "string",
+                    "description": "Promotion code."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "purpose", "amount", "repaymentMonths"
+            ]
+        },
+        "Applicant": {
+            "type": "object",
+            "description": "The person applying for the loan.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                },
+                "document": {
+                    "$ref": "#/domains/Generic/types/Document"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of birth YYYY-MM-DD.",
+                    "example": "1980-01-01"
+                },
+                "relationshipStatus": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "single",
+                        "married",
+                        "divorced",
+                        "cohabiting",
+                        "widower"
+                    ]
+                },
+                "nationality": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Nationality according to passport."
+                },
+                "countryOfBirth": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country of birth."
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth",
+                "relationshipStatus",
+                "nationality",
+                "countryOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "Addresses": {
+            "type": "array",
+            "description": "A list of addresses for the applicant.",
+            "pii": true,
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/LoanApplication/types/Address" }
+        },
+        "Address": {
+            "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "minLength": 1,
+                    "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "minLength": 1,
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                },
+                "dateMovedIn": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date at which the applicant moved into this address."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "own",
+                        "rent"
+                    ]
+                },
+                "mortgage": {
+                    "$ref": "#/domains/LoanApplication/types/Mortgage"
+                }
+            },
+            "required": [
+                "line1",
+                "line2",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
+        },
+        "Mortgage": {
+            "type": "object",
+            "description": "Mortgage information for the associated address.",
+            "pii": true,
+            "properties": {
+                "monthlyPayment": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The amount paid per month by the loan applicant."
+                },
+                "jointMonthlyPayment": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The amount paid per month for a joint mortgage."
+                }
+            },
+            "required": [
+                "monthlyPayment"
+            ],
+            "additionalProperties": false
+        },
+        "Employment": {
+            "type": "object",
+            "description": "Applicant employment details.",
+            "pii": true,
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "employed-fulltime",
+                        "employed-parttime",
+                        "unemployed",
+                        "self-employed",
+                        "on-benefits",
+                        "retired"
+                    ]
+                },
+                "grossIncome": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Applicant's total annual gross salary (before tax)."
+                },
+                "netIncome": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Applicant's total annual net salary (after tax)."
+                }
+            },
+            "required": [
+                "status"
+            ],
+            "additionalProperties": false
+        },
+        "BankAccount": {
+            "type": "object",
+            "description": "Bank account information - where the loan is paid into.",
+            "pii": true,
+            "properties": {
+                "sortCode": {
+                    "type": "string",
+                    "description": "Account sort code.",
+                    "example": "001122",
+                    "minLength": 6,
+                    "maxLength": 6
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "description": "Account number.",
+                    "example": "44556677",
+                    "minLength": 8,
+                    "maxLength": 8
+                },
+                "repaymentDay": {
+                    "type": "number",
+                    "description": "Day of month on which loan is repaid.",
+                    "example": 1,
+                    "min": 1,
+                    "max": 31
+                }
+            },
+            "required": [
+                "sortCode",
+                "accountNumber",
+                "repaymentDay"
+            ],
+            "additionalProperties": false
+        },
+        "MobilePinConfirmation": {
+            "type": "object",
+            "description": "Mobile pin confirmation to confirm the applicant's mobile number.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "pin confirmation code.",
+                    "example": "1234",
+                    "minLength": 3,
+                    "maxLength": 10
+                }
+            },
+            "required": [
+                "code"
+            ],
+            "additionalProperties": false
+        },
+        "EmailVerification": {
+            "type": "object",
+            "description": "Confirmation that email verification is done.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Confirmation code.",
+                    "example": "1234",
+                    "minLength": 3,
+                    "maxLength": 100
+                }
+            },
+            "required": [
+
+            ],
+            "additionalProperties": false
+        },
+        "Files": {
+            "type": "array",
+            "description": "A list of uploaded files.",
+            "pii": true,
+            "minItems": 1,
+            "maxItems": 99,
+            "items": { "$ref": "#/domains/LoanApplication/types/File" }
+        },
+        "File": {
+            "type": "object",
+            "description": "An uploaded file.",
+            "pii": true,
+            "properties": {
+                "filename": {
+                    "type": "string",
+                    "description": "Filename of uploaded file.",
+                    "example": "photo.jpg"
+                },
+                "data": {
+                    "type": "string",
+                    "description": "File data.",
+                    "example": "BASE64STRING"
+                }
+            },
+            "required": [
+                "filename",
+                "data"
+            ],
+            "additionalProperties": false
+        },
+        "Requirements": {
+            "type": "array",
+            "description": "A list of requirements.",
+            "minItems": 0,
+            "maxItems": 99,
+            "items": { "$ref": "#/domains/LoanApplication/types/Requirement" }
+        },
+        "Requirement": {
+            "type": "object",
+            "description": "A required input for proof - e.g. of income.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of requirement.",
+                    "example": "income"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "Quote": {
+            "type": "object",
+            "description": "Loan quote",
+            "pii": true,
+            "properties": {
+                "amount": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The loan amount required."
+                },
+                "monthlyPayment": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The amount repayable per month."
+                },
+                "repaymentMonths": {
+                    "type": "number",
+                    "description": "The number of months to repay the loan.",
+                    "example": 48
+                },
+                "apr": {
+                    "type": "number",
+                    "description": "The number of months to repay the loan.",
+                    "example": 48
+                },
+                "fee": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Additional loan fee (if applicable)."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "amount", "repaymentMonths", "apr"
+            ]
+        },
+        "Documents": {
+            "type": "array",
+            "description": "A list of downloadable documents.",
+            "pii": true,
+            "minItems": 0,
+            "maxItems": 99,
+            "items": { "$ref": "#/domains/LoanApplication/types/Document" }
+        },
+        "Document": {
+            "type": "object",
+            "description": "A document available to download/view.",
+            "pii": true,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of document.",
+                    "example": "Loan agreement"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Document url.",
+                    "example": "https://www.example-lender.com/loan-agreement.pdf"
+                }
+            },
+            "additionalProperties": false
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Confirmation of the loan.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Loan confirmation code",
+                    "example": "1234"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Confirmation message from the web page.",
+                    "example": "Your loan is confirmed."
+                }
+            },
+            "required": [
+
+            ],
+            "additionalProperties": false
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features.",
+            "properties": {
+
+            },
+            "required": [
+
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+        {
+            "code": "loanApplicationDeclined",
+            "category": "client",
+            "description":"Loan application denied by lender"
+        }
+    ],
+    "attributes": {}
+}
+
+},{}],166:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -40357,7 +40874,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],166:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -40537,7 +41054,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],167:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -40548,7 +41065,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],168:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');

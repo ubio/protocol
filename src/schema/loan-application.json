@@ -4,41 +4,46 @@
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point."
+            "description": "Website entry point.",
+            "initial": true
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/Generic/types/Account",
+            "initial": true
         },
         "loan": {
             "typeRef": "#/domains/LoanApplication/types/Loan",
+            "initial": true
         },
         "applicant": {
             "typeRef": "#/domains/LoanApplication/types/Applicant",
+            "initial": true
         },
         "addresses": {
             "typeRef": "#/domains/LoanApplication/types/Addresses",
+            "initial": true
         },
         "loanConsent": {
             "typeRef": "#/domains/LoanApplication/types/Quote",
             "description": "Client's consent for the loan, should exactly match the <code>quote</code> object from output.<br/>Automation will not proceed with the loan application until the consent is provided."
         },
         "employment": {
-            "typeRef": "#/domains/LoanApplication/types/Employment",
+            "typeRef": "#/domains/LoanApplication/types/Employment"
         },
         "bankAccount": {
-            "typeRef": "#/domains/LoanApplication/types/BankAccount",
+            "typeRef": "#/domains/LoanApplication/types/BankAccount"
         },
         "mobilePinConfirmation": {
-            "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation",
+            "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
         },
         "emailVerification": {
-            "typeRef": "#/domains/LoanApplication/types/EmailVerification",
+            "typeRef": "#/domains/LoanApplication/types/EmailVerification"
         },
         "proofOfIncome": {
-            "typeRef": "#/domains/LoanApplication/types/Files",
+            "typeRef": "#/domains/LoanApplication/types/Files"
         },
         "bankStatements": {
-            "typeRef": "#/domains/LoanApplication/types/Files",
+            "typeRef": "#/domains/LoanApplication/types/Files"
         },
         "options": {
             "typeRef": "#/domains/LoanApplication/types/Options",
@@ -48,16 +53,16 @@
     },
     "outputs": {
         "quote": {
-            "typeRef": "#/domains/LoanApplication/types/Quote",
+            "typeRef": "#/domains/LoanApplication/types/Quote"
         },
         "documents": {
-            "typeRef": "#/domains/LoanApplication/types/Documents",
+            "typeRef": "#/domains/LoanApplication/types/Documents"
         },
         "requirements": {
-            "typeRef": "#/domains/LoanApplication/types/Requirements",
+            "typeRef": "#/domains/LoanApplication/types/Requirements"
         },
         "confirmation": {
-            "typeRef": "#/domains/LoanApplication/types/Confirmation",
+            "typeRef": "#/domains/LoanApplication/types/Confirmation"
         }
     },
     "types": {
@@ -129,7 +134,8 @@
                     "$ref": "#/domains/Generic/types/Document"
                 },
                 "dateOfBirth": {
-                    "type": "date",
+                    "type": "string",
+                    "format": "date",
                     "description": "Date of birth YYYY-MM-DD.",
                     "example": "1980-01-01"
                 },
@@ -167,9 +173,10 @@
         "Addresses": {
             "type": "array",
             "description": "A list of addresses for the applicant.",
+            "pii": true,
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/LoanApplicant/types/Address" }
+            "items": { "$ref": "#/domains/LoanApplication/types/Address" }
         },
         "Address": {
             "type": "object",
@@ -206,7 +213,8 @@
                     "$ref": "#/domains/Generic/types/CountrySubdivision"
                 },
                 "dateMovedIn": {
-                    "type": "date",
+                    "type": "string",
+                    "format": "date",
                     "description": "Date at which the applicant moved into this address."
                 },
                 "status": {
@@ -219,7 +227,7 @@
                 },
                 "mortgage": {
                     "$ref": "#/domains/LoanApplication/types/Mortgage"
-                },
+                }
             },
             "required": [
                 "line1",
@@ -234,6 +242,7 @@
         "Mortgage": {
             "type": "object",
             "description": "Mortgage information for the associated address.",
+            "pii": true,
             "properties": {
                 "monthlyPayment": {
                     "$ref": "#/domains/Generic/types/Price",
@@ -242,16 +251,17 @@
                 "jointMonthlyPayment": {
                     "$ref": "#/domains/Generic/types/Price",
                     "description": "The amount paid per month for a joint mortgage."
-                },
-                "required": [
-                    "monthlyPayment"
-                ],
-                "additionalProperties": false
-            }
+                }
+            },
+            "required": [
+                "monthlyPayment"
+            ],
+            "additionalProperties": false
         },
         "Employment": {
             "type": "object",
             "description": "Applicant employment details.",
+            "pii": true,
             "properties": {
                 "status": {
                     "type": "string",
@@ -272,12 +282,12 @@
                 "netIncome": {
                     "$ref": "#/domains/Generic/types/Price",
                     "description": "Applicant's total annual net salary (after tax)."
-                },
-                "required": [
-                    "status"
-                ],
-                "additionalProperties": false
-            }
+                }
+            },
+            "required": [
+                "status"
+            ],
+            "additionalProperties": false
         },
         "BankAccount": {
             "type": "object",
@@ -324,7 +334,7 @@
                     "example": "1234",
                     "minLength": 3,
                     "maxLength": 10
-                },
+                }
             },
             "required": [
                 "code"
@@ -342,7 +352,7 @@
                     "example": "1234",
                     "minLength": 3,
                     "maxLength": 100
-                },
+                }
             },
             "required": [
 
@@ -352,13 +362,15 @@
         "Files": {
             "type": "array",
             "description": "A list of uploaded files.",
+            "pii": true,
             "minItems": 1,
             "maxItems": 99,
-            "items": { "$ref": "#/domains/LoanApplicant/types/File" }
+            "items": { "$ref": "#/domains/LoanApplication/types/File" }
         },
         "File": {
             "type": "object",
             "description": "An uploaded file.",
+            "pii": true,
             "properties": {
                 "filename": {
                     "type": "string",
@@ -370,14 +382,19 @@
                     "description": "File data.",
                     "example": "BASE64STRING"
                 }
-            }
+            },
+            "required": [
+                "filename",
+                "data"
+            ],
+            "additionalProperties": false
         },
         "Requirements": {
             "type": "array",
             "description": "A list of requirements.",
             "minItems": 0,
             "maxItems": 99,
-            "items": { "$ref": "#/domains/LoanApplicant/types/Requirement" }
+            "items": { "$ref": "#/domains/LoanApplication/types/Requirement" }
         },
         "Requirement": {
             "type": "object",
@@ -388,15 +405,24 @@
                     "description": "Name of requirement.",
                     "example": "income"
                 }
-            }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
         },
         "Quote": {
             "type": "object",
             "description": "Loan quote",
+            "pii": true,
             "properties": {
                 "amount": {
                     "$ref": "#/domains/Generic/types/Price",
                     "description": "The loan amount required."
+                },
+                "monthlyPayment": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The amount repayable per month."
                 },
                 "repaymentMonths": {
                     "type": "number",
@@ -411,7 +437,7 @@
                 "fee": {
                     "$ref": "#/domains/Generic/types/Price",
                     "description": "Additional loan fee (if applicable)."
-                },
+                }
             },
             "additionalProperties": false,
             "required": [
@@ -421,13 +447,15 @@
         "Documents": {
             "type": "array",
             "description": "A list of downloadable documents.",
+            "pii": true,
             "minItems": 0,
             "maxItems": 99,
-            "items": { "$ref": "#/domains/LoanApplicant/types/Document" }
+            "items": { "$ref": "#/domains/LoanApplication/types/Document" }
         },
         "Document": {
             "type": "object",
             "description": "A document available to download/view.",
+            "pii": true,
             "properties": {
                 "name": {
                     "type": "string",
@@ -439,7 +467,8 @@
                     "description": "Document url.",
                     "example": "https://www.example-lender.com/loan-agreement.pdf"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "Confirmation": {
             "type": "object",
@@ -467,11 +496,19 @@
             "description": "Flags for enabling optional automation features.",
             "properties": {
 
-            }
+            },
+            "required": [
+
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
-        "loanApplicationDeclined"
+        {
+            "code": "loanApplicationDeclined",
+            "category": "client",
+            "description":"Loan application denied by lender"
+        }
     ],
     "attributes": {}
 }
