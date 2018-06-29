@@ -40381,6 +40381,11 @@ module.exports={
                         "retired"
                     ]
                 },
+                "jobTitle": {
+                    "type": "string",
+                    "description": "Job title.",
+                    "example": "Computer programmer"
+                },
                 "grossIncome": {
                     "$ref": "#/domains/Generic/types/Price",
                     "description": "Applicant's total annual gross salary (before tax)."
@@ -40391,7 +40396,8 @@ module.exports={
                 }
             },
             "required": [
-                "status"
+                "status",
+                "jobTitle"
             ],
             "additionalProperties": false
         },
