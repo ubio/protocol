@@ -40480,6 +40480,140 @@ module.exports={
                 "yer",
                 "zwd"
             ]
+        },
+        "StructuredText": {
+            "type": "object",
+            "description": "A list of structured text.",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "StructuredText",
+                        "Document",
+                        "Link",
+                        "NamedText",
+                        "HTML"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the text grouping."
+                },
+                "contents": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/domains/Generic/types/StructuredText"
+                        },
+                        {
+                            "$ref": "#/domains/Generic/types/Document"
+                        },
+                        {
+                            "$ref": "#/domains/Generic/types/Link"
+                        },
+                        {
+                            "$ref": "#/domains/Generic/types/NamedText"
+                        },
+                        {
+                            "$ref": "#/domains/Generic/types/HTML"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "contents"
+            ]
+        },
+        "Document": {
+            "type": "object",
+            "description": "A document downloaded from the target website.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "value": "Document"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the document."
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "Location of the resource."
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "uri"
+            ]
+        },
+        "Link": {
+            "type": "object",
+            "description": "A document accessible on the target website.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "value": "Link"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the document."
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "Location of the resource."
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "uri"
+            ]
+        },
+        "NamedText": {
+            "type": "object",
+            "description": "A document accessible on the target website.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "value": "NamedText"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the text."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "Location of the resource."
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "uri"
+            ]
+        },
+        "HTML": {
+            "type": "object",
+            "description": "Inner HTML contents of an element.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "value": "HTML"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Optional name or title of the HTML section."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "Location of the resource."
+                }
+            },
+            "required": [
+                "type",
+                "html"
+            ]
         }
     },
     "errors": [
@@ -40785,25 +40919,9 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
-        "policyDetails": {
-            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
-        },
-        "policyHoldersAddress": {
-            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
-        },
-        "driverDetails": {
-            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
-        },
-        "excesses": {
-            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
-        },
-        "policyInfo": {
-            "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-            "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        "dataReview": {
+            "typeRef": "#/domains/Generic/types/StructuredText",
+            "description": "Emitted when on the final review page, where all the compliance information is presented."
         }
     },
     "types": {

@@ -165,43 +165,26 @@
         },
         "Document": {
           "type": "object",
-          "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
-          "pii": true,
+          "description": "A document downloaded from the target website.",
           "properties": {
             "type": {
               "type": "string",
-              "description": "Document type.",
-              "enum": [
-                "passport"
-              ]
+              "value": "Document"
             },
-            "number": {
+            "name": {
               "type": "string",
-              "description": "Document number.",
-              "example": "75 127001"
+              "description": "The name or title of the document."
             },
-            "issueDate": {
+            "uri": {
               "type": "string",
-              "format": "date",
-              "example": "2008-01-01"
-            },
-            "expirationDate": {
-              "type": "string",
-              "format": "date",
-              "example": "2028-01-01"
-            },
-            "issueCountryCode": {
-              "$ref": "#/domains/Generic/types/CountryCode",
-              "description": "Code of country where the document was issued."
+              "description": "Location of the resource."
             }
           },
           "required": [
             "type",
-            "number",
-            "expirationDate",
-            "issueCountryCode"
-          ],
-          "additionalProperties": false
+            "name",
+            "uri"
+          ]
         },
         "Address": {
           "type": "object",
@@ -774,6 +757,117 @@
             "vnd",
             "yer",
             "zwd"
+          ]
+        },
+        "StructuredText": {
+          "type": "object",
+          "description": "A list of structured text.",
+          "properties": {
+            "type": {
+              "enum": [
+                "StructuredText",
+                "Document",
+                "Link",
+                "NamedText",
+                "HTML"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "description": "The name or title of the text grouping."
+            },
+            "contents": {
+              "oneOf": [
+                {
+                  "$ref": "#/domains/Generic/types/StructuredText"
+                },
+                {
+                  "$ref": "#/domains/Generic/types/Document"
+                },
+                {
+                  "$ref": "#/domains/Generic/types/Link"
+                },
+                {
+                  "$ref": "#/domains/Generic/types/NamedText"
+                },
+                {
+                  "$ref": "#/domains/Generic/types/HTML"
+                }
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "contents"
+          ]
+        },
+        "Link": {
+          "type": "object",
+          "description": "A document accessible on the target website.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "value": "Link"
+            },
+            "name": {
+              "type": "string",
+              "description": "The name or title of the document."
+            },
+            "uri": {
+              "type": "string",
+              "description": "Location of the resource."
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "uri"
+          ]
+        },
+        "NamedText": {
+          "type": "object",
+          "description": "A document accessible on the target website.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "value": "NamedText"
+            },
+            "name": {
+              "type": "string",
+              "description": "The name or title of the text."
+            },
+            "text": {
+              "type": "string",
+              "description": "Location of the resource."
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "uri"
+          ]
+        },
+        "HTML": {
+          "type": "object",
+          "description": "Inner HTML contents of an element.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "value": "HTML"
+            },
+            "name": {
+              "type": "string",
+              "description": "Optional name or title of the HTML section."
+            },
+            "text": {
+              "type": "string",
+              "description": "Location of the resource."
+            }
+          },
+          "required": [
+            "type",
+            "html"
           ]
         }
       },
@@ -2041,25 +2135,9 @@
           "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
           "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
-        "policyDetails": {
-          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
-        },
-        "policyHoldersAddress": {
-          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
-        },
-        "driverDetails": {
-          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
-        },
-        "excesses": {
-          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
-        },
-        "policyInfo": {
-          "typeRef": "#/domains/MotorInsurance/types/PolicyGroupInfo",
-          "description": "Emitted when actual information is collected.<br/>Note: It may be a link to a document."
+        "dataReview": {
+          "typeRef": "#/domains/Generic/types/StructuredText",
+          "description": "Emitted when on the final review page, where all the compliance information is presented."
         }
       },
       "types": {
