@@ -40486,13 +40486,8 @@ module.exports={
             "description": "A list of structured text.",
             "properties": {
                 "type": {
-                    "enum": [
-                        "StructuredText",
-                        "Document",
-                        "Link",
-                        "NamedText",
-                        "HTML"
-                    ]
+                    "type": "string",
+                    "value": "StructuredText"
                 },
                 "name": {
                     "type": "string",
