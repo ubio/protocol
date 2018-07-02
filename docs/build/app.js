@@ -40534,6 +40534,9 @@ module.exports={
                 },
                 {
                     "$ref": "#/domains/Generic/types/HTML"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/Text"
                 }
             ]
         },
@@ -40613,7 +40616,53 @@ module.exports={
                 "text"
             ],
             "additionalProperties": false
-
+        },
+        "Text": {
+            "type": "object",
+            "description": "A document accessible on the target website.",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "Text"
+                    ]
+                },
+                "text": {
+                    "type": "string",
+                    "description": "Location of the resource."
+                }
+            },
+            "required": [
+                "type",
+                "text"
+            ],
+            "additionalProperties": false
+        },
+        "NamedContents": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "NamedContents"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the text."
+                },
+                "contents": {
+                    "type": "array",
+                    "description": "An array of structured text items.",
+                    "items": {
+                        "$ref": "#/domains/Generic/types/StructuredTextItem"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "contents"
+            ],
+            "additionalProperties": false
         },
         "HTML": {
             "type": "object",
