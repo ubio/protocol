@@ -38723,6 +38723,11 @@ module.exports={
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "options": {
+            "typeRef": "#/domains/CoachBooking/types/Options",
+            "default": {},
+            "initial": true
         }
     },
     "outputs": {
@@ -38947,6 +38952,10 @@ module.exports={
                 "issueCountryCode"
             ],
             "additionalProperties": false
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end."
         }
     },
     "errors": [
