@@ -40506,7 +40506,8 @@ module.exports={
                 "type",
                 "name",
                 "contents"
-            ]
+            ],
+            "additionalProperties": false
         },
         "StructuredTextItem": {
             "oneOf": [
@@ -40549,7 +40550,9 @@ module.exports={
                 "type",
                 "name",
                 "uri"
-            ]
+            ],
+            "additionalProperties": false
+
         },
         "Link": {
             "type": "object",
@@ -40573,7 +40576,9 @@ module.exports={
                 "type",
                 "name",
                 "uri"
-            ]
+            ],
+            "additionalProperties": false
+
         },
         "NamedText": {
             "type": "object",
@@ -40597,7 +40602,9 @@ module.exports={
                 "type",
                 "name",
                 "text"
-            ]
+            ],
+            "additionalProperties": false
+
         },
         "HTML": {
             "type": "object",
@@ -40620,7 +40627,9 @@ module.exports={
             "required": [
                 "type",
                 "html"
-            ]
+            ],
+            "additionalProperties": false
+
         }
     },
     "errors": [

@@ -185,7 +185,8 @@
             "type",
             "name",
             "uri"
-          ]
+          ],
+          "additionalProperties": false
         },
         "Address": {
           "type": "object",
@@ -785,7 +786,8 @@
             "type",
             "name",
             "contents"
-          ]
+          ],
+          "additionalProperties": false
         },
         "StructuredTextItem": {
           "oneOf": [
@@ -828,7 +830,8 @@
             "type",
             "name",
             "uri"
-          ]
+          ],
+          "additionalProperties": false
         },
         "NamedText": {
           "type": "object",
@@ -852,7 +855,8 @@
             "type",
             "name",
             "text"
-          ]
+          ],
+          "additionalProperties": false
         },
         "HTML": {
           "type": "object",
@@ -875,7 +879,8 @@
           "required": [
             "type",
             "html"
-          ]
+          ],
+          "additionalProperties": false
         }
       },
       "errors": [
