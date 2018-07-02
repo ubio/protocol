@@ -851,7 +851,7 @@
           "required": [
             "type",
             "name",
-            "uri"
+            "text"
           ]
         },
         "HTML": {

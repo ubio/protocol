@@ -40596,7 +40596,7 @@ module.exports={
             "required": [
                 "type",
                 "name",
-                "uri"
+                "text"
             ]
         },
         "HTML": {
