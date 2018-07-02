@@ -40499,7 +40499,11 @@ module.exports={
                     "description": "The name or title of the text grouping."
                 },
                 "contents": {
-                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                    "type": "array",
+                    "description": "An array of structured text items.",
+                    "items": {
+                        "$ref": "#/domains/Generic/types/StructuredTextItem"
+                    }
                 }
             },
             "required": [
