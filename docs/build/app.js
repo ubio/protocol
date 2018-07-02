@@ -40499,29 +40499,32 @@ module.exports={
                     "description": "The name or title of the text grouping."
                 },
                 "contents": {
-                    "oneOf": [
-                        {
-                            "$ref": "#/domains/Generic/types/StructuredText"
-                        },
-                        {
-                            "$ref": "#/domains/Generic/types/Document"
-                        },
-                        {
-                            "$ref": "#/domains/Generic/types/Link"
-                        },
-                        {
-                            "$ref": "#/domains/Generic/types/NamedText"
-                        },
-                        {
-                            "$ref": "#/domains/Generic/types/HTML"
-                        }
-                    ]
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
                 }
             },
             "required": [
                 "type",
                 "name",
                 "contents"
+            ]
+        },
+        "StructuredTextItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/StructuredText"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/Document"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/Link"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/NamedText"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/HTML"
+                }
             ]
         },
         "Document": {
