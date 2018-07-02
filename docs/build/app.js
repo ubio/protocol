@@ -41410,9 +41410,9 @@ module.exports={
         "carHireCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         },
-        "selectedExcess": {
+        "selectedVoluntaryExcess": {
             "typeRef": "#/domains/MotorInsurance/types/TextItem",
-            "description": "Selected excess"
+            "description": "Selected voluntary excess"
         },
         "cookies": {
             "typeRef": "#/domains/Generic/types/Cookies"
@@ -41446,9 +41446,9 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
-        "availableExcesses": {
+        "availableVoluntaryExcesses": {
             "typeRef": "#/domains/MotorInsurance/types/TextList",
-            "description": "List of excesses to choose from."
+            "description": "List of voluntary excesses to choose from."
         },
         "dataReview": {
             "typeRef": "#/domains/Generic/types/StructuredText",
