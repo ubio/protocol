@@ -8,6 +8,7 @@ module.exports = {
         CoachBooking: require('./coach-booking'),
         VacationRental: require('./vacation-rental'),
         MotorInsurance: require('./motor-insurance'),
+        LoanApplication: require('./loan-application'),
         EventBooking: require('./event-booking'),
         Internal: require('./internal'),
     },
