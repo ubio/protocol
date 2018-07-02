@@ -40486,8 +40486,9 @@ module.exports={
             "description": "A list of structured text.",
             "properties": {
                 "type": {
-                    "type": "string",
-                    "value": "StructuredText"
+                    "enum": [
+                        "StructuredText"
+                    ]
                 },
                 "name": {
                     "type": "string",
@@ -40531,8 +40532,9 @@ module.exports={
             "description": "A document downloaded from the target website.",
             "properties": {
                 "type": {
-                    "type": "string",
-                    "value": "Document"
+                    "enum": [
+                        "Document"
+                    ]
                 },
                 "name": {
                     "type": "string",
@@ -40554,8 +40556,9 @@ module.exports={
             "description": "A document accessible on the target website.",
             "properties": {
                 "type": {
-                    "type": "string",
-                    "value": "Link"
+                    "enum": [
+                        "Link"
+                    ]
                 },
                 "name": {
                     "type": "string",
@@ -40577,8 +40580,9 @@ module.exports={
             "description": "A document accessible on the target website.",
             "properties": {
                 "type": {
-                    "type": "string",
-                    "value": "NamedText"
+                    "enum": [
+                        "NamedText"
+                    ]
                 },
                 "name": {
                     "type": "string",
@@ -40600,8 +40604,9 @@ module.exports={
             "description": "Inner HTML contents of an element.",
             "properties": {
                 "type": {
-                    "type": "string",
-                    "value": "HTML"
+                    "enum": [
+                        "HTML"
+                    ]
                 },
                 "name": {
                     "type": "string",
