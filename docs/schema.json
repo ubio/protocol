@@ -2103,6 +2103,10 @@
         "carHireCover": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
         },
+        "selectedExcess": {
+          "typeRef": "#/domains/MotorInsurance/types/TextItem",
+          "description": "Selected excess"
+        },
         "cookies": {
           "typeRef": "#/domains/Generic/types/Cookies"
         }
@@ -2134,6 +2138,10 @@
         "availableCarHireCovers": {
           "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
           "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "availableExcesses": {
+          "typeRef": "#/domains/MotorInsurance/types/TextList",
+          "description": "List of excesses to choose from."
         },
         "dataReview": {
           "typeRef": "#/domains/Generic/types/StructuredText",
@@ -2269,6 +2277,16 @@
             "value"
           ],
           "additionalProperties": false
+        },
+        "TextList": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/domains/MotorInsurance/types/TextItem"
+          }
+        },
+        "TextItem": {
+          "type": "string"
         }
       },
       "errors": [
