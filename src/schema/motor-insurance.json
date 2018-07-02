@@ -79,9 +79,29 @@
             "typeRef": "#/domains/MotorInsurance/types/TextList",
             "description": "List of voluntary excesses to choose from."
         },
-        "dataReview": {
+        "coverSummary": {
             "typeRef": "#/domains/Generic/types/StructuredText",
-            "description": "Emitted when on the final review page, where all the compliance information is presented."
+            "description": "Emitted when the cover summary is presented."
+        },
+        "assumptions": {
+            "typeRef": "#/domains/Generic/types/StructuredText",
+            "description": "Emitted when the assumptions are presented."
+        },
+        "statements": {
+            "typeRef": "#/domains/Generic/types/StructuredText",
+            "description": "Emitted when the statements are presented."
+        },
+        "feesSummary": {
+            "typeRef": "#/domains/Generic/types/StructuredText",
+            "description": "Emitted when the fees are presented."
+        },
+        "policyWording": {
+            "typeRef": "#/domains/Generic/types/StructuredText",
+            "description": "Emitted when the policy wording is presented."
+        },
+        "statementOfFact": {
+            "typeRef": "#/domains/Generic/types/StructuredText",
+            "description": "Emitted when the statement of fact is presented."
         }
     },
     "types": {
