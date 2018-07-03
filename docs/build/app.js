@@ -41482,18 +41482,6 @@ module.exports={
             "default": {},
             "initial": true
         },
-        "legalCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
-        },
-        "breakdownCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
-        },
-        "personalInjuryCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
-        },
-        "carHireCover": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedCover"
-        },
         "selectedVoluntaryExcess": {
             "typeRef": "#/domains/MotorInsurance/types/TextItem",
             "description": "Selected voluntary excess"
@@ -41514,29 +41502,9 @@ module.exports={
         "purchaseConfirmation": {
             "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation"
         },
-        "availableLegalCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
-        },
-        "availableBreakdownCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
-        },
-        "availablePersonalInjuryCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
-        },
-        "availableCarHireCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
-        },
         "availableVoluntaryExcesses": {
             "typeRef": "#/domains/MotorInsurance/types/TextList",
             "description": "List of voluntary excesses to choose from."
-        },
-        "coverSummary": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItem",
-            "description": "Emitted when the cover summary is presented."
         },
         "assumptions": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
