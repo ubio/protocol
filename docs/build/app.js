@@ -40687,7 +40687,7 @@ module.exports={
                     "type": "string",
                     "description": "Optional name or title of the HTML section."
                 },
-                "text": {
+                "html": {
                     "type": "string",
                     "description": "Location of the resource."
                 }
