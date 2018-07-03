@@ -38959,6 +38959,16 @@ module.exports={
         }
     },
     "errors": [
+        {
+            "code": "TripInvalid",
+            "category": "client",
+            "description": "Trip details are invalid."
+        },
+        {
+            "code": "OutboundTripNotAvailable",
+            "category": "client",
+            "description": "Outbound trip dates/times are not available, either sold out or not found."
+        }
     ],
     "attributes": {
     }
