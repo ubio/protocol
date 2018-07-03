@@ -41557,6 +41557,10 @@ module.exports={
         "statementOfFact": {
             "typeRef": "#/domains/Generic/types/StructuredText",
             "description": "Emitted when the statement of fact is presented."
+        },
+        "privacyPolicy": {
+            "typeRef": "#/domains/Generic/types/StructuredText",
+            "description": "Emitted when the privacy policy is presented."
         }
     },
     "types": {
