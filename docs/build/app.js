@@ -41506,6 +41506,10 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/TextList",
             "description": "List of voluntary excesses to choose from."
         },
+        "coverSummary": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when the cover summary is presented."
+        },
         "assumptions": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the assumptions are presented."
