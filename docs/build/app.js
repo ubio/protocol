@@ -40534,7 +40534,7 @@ module.exports={
                     "$ref": "#/domains/Generic/types/StructuredText"
                 },
                 {
-                    "$ref": "#/domains/Generic/types/Document"
+                    "$ref": "#/domains/Generic/types/File"
                 },
                 {
                     "$ref": "#/domains/Generic/types/Link"
@@ -40550,13 +40550,13 @@ module.exports={
                 }
             ]
         },
-        "Document": {
+        "File": {
             "type": "object",
             "description": "A document downloaded from the target website.",
             "properties": {
                 "type": {
                     "enum": [
-                        "Document"
+                        "File"
                     ]
                 },
                 "name": {
