@@ -290,7 +290,7 @@
                     "default": 0
                 },
                 "document": {
-                    "$ref": "#/domains/Generic/types/Document"
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
                 },
                 "frequentFlyer": {
                     "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"

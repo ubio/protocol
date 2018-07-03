@@ -153,7 +153,7 @@
               "example": "Smith"
             },
             "document": {
-              "$ref": "#/domains/Generic/types/Document"
+              "$ref": "#/domains/Generic/types/IdentityDocument"
             }
           },
           "required": [
@@ -163,28 +163,43 @@
           ],
           "additionalProperties": false
         },
-        "Document": {
+        "IdentityDocument": {
           "type": "object",
-          "description": "A document downloaded from the target website.",
+          "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
+          "pii": true,
           "properties": {
             "type": {
+              "type": "string",
+              "description": "Document type.",
               "enum": [
-                "Document"
+                "passport"
               ]
             },
-            "name": {
+            "number": {
               "type": "string",
-              "description": "The name or title of the document."
+              "description": "Document number.",
+              "example": "75 127001"
             },
-            "uri": {
+            "issueDate": {
               "type": "string",
-              "description": "Location of the resource."
+              "format": "date",
+              "example": "2008-01-01"
+            },
+            "expirationDate": {
+              "type": "string",
+              "format": "date",
+              "example": "2028-01-01"
+            },
+            "issueCountryCode": {
+              "$ref": "#/domains/Generic/types/CountryCode",
+              "description": "Code of country where the document was issued."
             }
           },
           "required": [
             "type",
-            "name",
-            "uri"
+            "number",
+            "expirationDate",
+            "issueCountryCode"
           ],
           "additionalProperties": false
         },
@@ -811,6 +826,31 @@
             }
           ]
         },
+        "Document": {
+          "type": "object",
+          "description": "A document downloaded from the target website.",
+          "properties": {
+            "type": {
+              "enum": [
+                "Document"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "description": "The name or title of the document."
+            },
+            "uri": {
+              "type": "string",
+              "description": "Location of the resource."
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "uri"
+          ],
+          "additionalProperties": false
+        },
         "Link": {
           "type": "object",
           "description": "A document accessible on the target website.",
@@ -1362,7 +1402,7 @@
               "default": 0
             },
             "document": {
-              "$ref": "#/domains/Generic/types/Document"
+              "$ref": "#/domains/Generic/types/IdentityDocument"
             },
             "frequentFlyer": {
               "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"

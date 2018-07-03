@@ -39445,7 +39445,7 @@ module.exports={
                     "default": 0
                 },
                 "document": {
-                    "$ref": "#/domains/Generic/types/Document"
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
                 },
                 "frequentFlyer": {
                     "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"
@@ -39881,7 +39881,7 @@ module.exports={
                     "example": "Smith"
                 },
                 "document": {
-                    "$ref": "#/domains/Generic/types/Document"
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
                 }
             },
             "required": [
@@ -39891,7 +39891,7 @@ module.exports={
             ],
             "additionalProperties": false
         },
-        "Document": {
+        "IdentityDocument": {
             "type": "object",
             "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
             "pii": true,
