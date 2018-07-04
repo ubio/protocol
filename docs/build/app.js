@@ -40880,6 +40880,10 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/TextItem",
             "description": "Selected voluntary excess"
         },
+        "selectedNoClaimsDiscountProtection": {
+            "typeRef": "#/domains/MotorInsurance/types/Cover",
+            "description": "Selecged no claims discount protection."
+        },
         "cookies": {
             "typeRef": "#/domains/Generic/types/Cookies"
         }
@@ -40963,6 +40967,10 @@ module.exports={
         "supportedPaymentCards": {
             "typeRef": "#/domains/MotorInsurance/types/TextList",
             "description": "List of payment cards supported by this insurer."
+        },
+        "availableNoClaimsDiscountProtection": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "List of no claims discount protection options supported by this insurer."
         }
     },
     "types": {
