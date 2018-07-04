@@ -40955,6 +40955,10 @@ module.exports={
         "privacyPolicy": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the privacy policy is presented."
+        },
+        "vehicleDetails": {
+            "typeRef": "#/domains/MotorInsurance/types/Vehicle",
+            "description": "Emitted when the vehicle information is presented."
         }
     },
     "types": {
@@ -41025,6 +41029,21 @@ module.exports={
                     "type": "string",
                     "description": "Vehicle registration number (licence plate).",
                     "example": "Y900MCL"
+                },
+                "make": {
+                    "type": "string",
+                    "description": "Vehicle make.",
+                    "example": "Audi"
+                },
+                "model": {
+                    "type": "string",
+                    "description": "Vehicle model.",
+                    "example": "SQ5 TDI"
+                },
+                "makeModel": {
+                    "type": "string",
+                    "description": "Vehicle combined make+model.",
+                    "example": "Audi SQ5 TDI"
                 }
             },
             "additionalProperties": false,
@@ -41081,7 +41100,8 @@ module.exports={
                     "description": "Cover marketing name as provided by the insurer.",
                     "example": "European Plus"
                 },
-                "price": { "$ref": "#/domains/Generic/types/Price" }
+                "price": { "$ref": "#/domains/Generic/types/Price" },
+                "details": { "$ref": "#/domains/Generic/types/StructuredTextItem" }
             },
             "required": [
                 "name",
