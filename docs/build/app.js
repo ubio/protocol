@@ -41064,7 +41064,7 @@ module.exports={
                     "example": "Smith"
                 },
                 "document": {
-                    "$ref": "#/domains/Generic/types/Document"
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
                 },
                 "dateOfBirth": {
                     "type": "string",
@@ -41389,9 +41389,9 @@ module.exports={
             "pii": true,
             "minItems": 0,
             "maxItems": 99,
-            "items": { "$ref": "#/domains/LoanApplication/types/Document" }
+            "items": { "$ref": "#/domains/LoanApplication/types/File" }
         },
-        "Document": {
+        "File": {
             "type": "object",
             "description": "A document available to download/view.",
             "pii": true,
@@ -41403,7 +41403,7 @@ module.exports={
                 },
                 "url": {
                     "type": "string",
-                    "description": "Document url.",
+                    "description": "File url.",
                     "example": "https://www.example-lender.com/loan-agreement.pdf"
                 }
             },

@@ -2613,7 +2613,7 @@
               "example": "Smith"
             },
             "document": {
-              "$ref": "#/domains/Generic/types/Document"
+              "$ref": "#/domains/Generic/types/IdentityDocument"
             },
             "dateOfBirth": {
               "type": "string",
@@ -2859,24 +2859,20 @@
         },
         "File": {
           "type": "object",
-          "description": "An uploaded file.",
+          "description": "A document available to download/view.",
           "pii": true,
           "properties": {
-            "filename": {
+            "name": {
               "type": "string",
-              "description": "Filename of uploaded file.",
-              "example": "photo.jpg"
+              "description": "Name of document.",
+              "example": "Loan agreement"
             },
-            "data": {
+            "url": {
               "type": "string",
-              "description": "File data.",
-              "example": "BASE64STRING"
+              "description": "File url.",
+              "example": "https://www.example-lender.com/loan-agreement.pdf"
             }
           },
-          "required": [
-            "filename",
-            "data"
-          ],
           "additionalProperties": false
         },
         "Requirements": {
@@ -2945,26 +2941,8 @@
           "minItems": 0,
           "maxItems": 99,
           "items": {
-            "$ref": "#/domains/LoanApplication/types/Document"
+            "$ref": "#/domains/LoanApplication/types/File"
           }
-        },
-        "Document": {
-          "type": "object",
-          "description": "A document available to download/view.",
-          "pii": true,
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of document.",
-              "example": "Loan agreement"
-            },
-            "url": {
-              "type": "string",
-              "description": "Document url.",
-              "example": "https://www.example-lender.com/loan-agreement.pdf"
-            }
-          },
-          "additionalProperties": false
         },
         "Confirmation": {
           "type": "object",
