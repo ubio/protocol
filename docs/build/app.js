@@ -41461,6 +41461,9 @@ module.exports={
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point."
         },
+        "quote": {
+            "typeRef": "#/domains/MotorInsurance/types/Quote"
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
@@ -41536,6 +41539,40 @@ module.exports={
         }
     },
     "types": {
+        "Quote": {
+            "type": "object",
+            "description": "Existing quote retrieval information.",
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "description": "Reference code.",
+                    "example": "ABC123"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "UK post code",
+                    "example": "EC1R0AT"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Proposer's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address used to retrieve the quote.",
+                    "format": "email",
+                    "example": "client@example.com"
+                }
+            },
+            "required": [
+                "reference",
+                "postcode",
+                "email",
+                "dateOfBirth"
+            ]
+        },
         "PurchaseConfirmation": {
             "type": "object",
             "description": "Information gathered on the \"confirmation\" page.",
