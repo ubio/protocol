@@ -40959,6 +40959,10 @@ module.exports={
         "vehicleDetails": {
             "typeRef": "#/domains/MotorInsurance/types/Vehicle",
             "description": "Emitted when the vehicle information is presented."
+        },
+        "supportedPaymentCards": {
+            "typeRef": "#/domains/MotorInsurance/types/TextList",
+            "description": "List of payment cards supported by this insurer."
         }
     },
     "types": {
