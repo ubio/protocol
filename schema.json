@@ -2240,6 +2240,34 @@
           "typeRef": "#/domains/MotorInsurance/types/TextList",
           "description": "List of voluntary excesses to choose from."
         },
+        "contactInfo": {
+          "typeRef": "#/domains/Generic/types/StructuredTextItem",
+          "description": "Emitted when the contact info is presented."
+        },
+        "openingHours": {
+          "typeRef": "#/domains/Generic/types/StructuredTextItem",
+          "description": "Emitted when the opening hours are presented."
+        },
+        "quoteReference": {
+          "typeRef": "#/domains/Generic/types/StructuredTextItem",
+          "description": "Emitted when the quote reference is presented."
+        },
+        "excessBreakdown": {
+          "typeRef": "#/domains/Generic/types/StructuredTextItem",
+          "description": "Emitted when the excess breakdown is presented."
+        },
+        "priceBreakdown": {
+          "typeRef": "#/domains/Generic/types/StructuredTextItem",
+          "description": "Emitted when the price breakdown is presented."
+        },
+        "footerText": {
+          "typeRef": "#/domains/Generic/types/StructuredTextItem",
+          "description": "Emitted when the footer text is presented."
+        },
+        "links": {
+          "typeRef": "#/domains/Generic/types/StructuredTextItem",
+          "description": "Emitted when the site links are presented."
+        },
         "coverSummary": {
           "typeRef": "#/domains/Generic/types/StructuredTextItem",
           "description": "Emitted when the cover summary is presented."
