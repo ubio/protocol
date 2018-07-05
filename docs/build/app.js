@@ -38986,6 +38986,11 @@ module.exports={
             "code": "passengerDetailsInvalid",
             "category": "client",
             "description": "The website invalidates some of the passenger details."
+        },
+        {
+            "code": "documentDetailsInavlid",
+            "category": "client",
+            "description": "The website invalidates the document details."
         }
     ],
     "attributes": {
