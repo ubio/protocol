@@ -125,6 +125,10 @@
         "availableNoClaimsDiscountProtection": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "List of no claims discount protection options supported by this insurer."
+        },
+        "noClaimsDiscountProtectionInfo": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when the no claims discount protection info is presented."
         }
     },
     "types": {
