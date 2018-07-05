@@ -1998,6 +1998,21 @@
           "code": "OutboundTripNotAvailable",
           "category": "client",
           "description": "Outbound trip dates/times are not available, either sold out or not found."
+        },
+        {
+          "code": "extraLuggageNotAvailable",
+          "category": "client",
+          "description": "The website does not allow adding additional luggage."
+        },
+        {
+          "code": "extraLuggageLimitExceeded",
+          "category": "client",
+          "description": "The website does not allow adding the amount of additional luggage specified in the input."
+        },
+        {
+          "code": "passengerDetailsInvalid",
+          "category": "client",
+          "description": "The website invalidates some of the passenger details."
         }
       ],
       "attributes": {}
