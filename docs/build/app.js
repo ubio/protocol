@@ -40770,6 +40770,11 @@ module.exports={
             "description": "Invalid url provided"
         },
         {
+            "code": "UnsupportedWebsiteLanguage",
+            "category": "client",
+            "description": "The deeplink or url landed on a page in an unsupported language."
+        },
+        {
             "code": "FinalPriceNotFound",
             "category": "client",
             "description": "Final price provided does not match expectation"
