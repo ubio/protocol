@@ -40575,7 +40575,7 @@ module.exports={
         },
         "File": {
             "type": "object",
-            "description": "A document downloaded from the target website.",
+            "description": "A document downloaded from the target website.<br/>To retrieve this document, you must include the <strong>SECRET_KEY</strong> authorisation header with your request.",
             "properties": {
                 "type": {
                     "enum": [
