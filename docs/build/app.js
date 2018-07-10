@@ -38973,22 +38973,22 @@ module.exports={
             "description": "Outbound trip dates/times are not available, either sold out or not found."
         },
         {
-            "code": "extraLuggageNotAvailable",
+            "code": "ExtraLuggageNotAvailable",
             "category": "client",
             "description": "The website does not allow adding additional luggage."
         },
         {
-            "code": "extraLuggageLimitExceeded",
+            "code": "ExtraLuggageLimitExceeded",
             "category": "client",
             "description": "The website does not allow adding the amount of additional luggage specified in the input."
         },
         {
-            "code": "passengerDetailsInvalid",
+            "code": "PassengerDetailsInvalid",
             "category": "client",
             "description": "The website invalidates some of the passenger details."
         },
         {
-            "code": "documentDetailsInavlid",
+            "code": "DocumentDetailsInavlid",
             "category": "client",
             "description": "The website invalidates the document details."
         }
@@ -41472,7 +41472,7 @@ module.exports={
     },
     "errors": [
         {
-            "code": "loanApplicationDeclined",
+            "code": "LoanApplicationDeclined",
             "category": "client",
             "description":"Loan application denied by lender"
         }

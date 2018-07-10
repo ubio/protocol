@@ -511,7 +511,7 @@
     },
     "errors": [
         {
-            "code": "loanApplicationDeclined",
+            "code": "LoanApplicationDeclined",
             "category": "client",
             "description":"Loan application denied by lender"
         }
