@@ -41702,6 +41702,11 @@ module.exports={
                     "type": "string",
                     "description": "Vehicle combined make+model.",
                     "example": "Audi SQ5 TDI"
+                },
+                "yearOfManufacture": {
+                    "type": "string",
+                    "description": "Vehicle year of manufacture",
+                    "example": "2013"
                 }
             },
             "additionalProperties": false,
