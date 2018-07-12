@@ -39142,6 +39142,11 @@ module.exports={
             "code": "PassengerDocumentRequired",
             "category": "client",
             "description": "Passenger document (passport or other travel document) is required by the website"
+        },
+        {
+            "code": "DuplicateBooking",
+            "category": "client",
+            "description": "The website claims this is a duplicate booking attempt."
         }
     ],
     "attributes": {
@@ -40937,7 +40942,7 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/TextList",
             "description": "List of voluntary excesses to choose from."
         },
-        "contactInfo": {
+        "contactUs": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the contact info is presented."
         },
@@ -40946,7 +40951,7 @@ module.exports={
             "description": "Emitted when the opening hours are presented."
         },
         "quoteReference": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "typeRef": "#/domains/MotorInsurance/types/QuoteReference",
             "description": "Emitted when the quote reference is presented."
         },
         "excessBreakdown": {
@@ -40957,13 +40962,13 @@ module.exports={
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the price breakdown is presented."
         },
-        "footerText": {
+        "statuatoryStatusDisclosure": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
-            "description": "Emitted when the footer text is presented."
+            "description": "Emitted when the statuatory status disclosure text is presented."
         },
-        "links": {
+        "faq": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
-            "description": "Emitted when the site links are presented."
+            "description": "Emitted when the FAQ link or document is presented."
         },
         "coverSummary": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
@@ -41011,6 +41016,11 @@ module.exports={
         }
     },
     "types": {
+        "QuoteReference": {
+            "type": "string",
+            "description": "Existing quote retrieval information.",
+            "example": "ABC123"
+        },
         "Quote": {
             "type": "object",
             "description": "Existing quote retrieval information.",
@@ -41093,6 +41103,11 @@ module.exports={
                     "type": "string",
                     "description": "Vehicle combined make+model.",
                     "example": "Audi SQ5 TDI"
+                },
+                "yearOfManufacture": {
+                    "type": "string",
+                    "description": "Vehicle year of manufacture",
+                    "example": "2013"
                 }
             },
             "additionalProperties": false,
