@@ -41555,7 +41555,7 @@ module.exports={
             "description": "Emitted when the opening hours are presented."
         },
         "quoteReference": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "typeRef": "#/domains/MotorInsurance/types/QuoteReference",
             "description": "Emitted when the quote reference is presented."
         },
         "excessBreakdown": {
@@ -41620,6 +41620,11 @@ module.exports={
         }
     },
     "types": {
+        "QuoteReference": {
+            "type": "string",
+            "description": "Existing quote retrieval information.",
+            "example": "ABC123"
+        },
         "Quote": {
             "type": "object",
             "description": "Existing quote retrieval information.",
