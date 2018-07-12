@@ -39989,7 +39989,8 @@ module.exports={
             "required": [
                 "type",
                 "name",
-                "uri"
+                "uri",
+                "filename"
             ],
             "additionalProperties": false
 
