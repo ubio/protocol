@@ -40594,12 +40594,17 @@ module.exports={
                 "uri": {
                     "type": "string",
                     "description": "Location of the resource."
+                },
+                "filename": {
+                    "type": "string",
+                    "description": "The name of the file, including the extension."
                 }
             },
             "required": [
                 "type",
                 "name",
-                "uri"
+                "uri",
+                "filename"
             ],
             "additionalProperties": false
 
@@ -40717,7 +40722,7 @@ module.exports={
                 },
                 "html": {
                     "type": "string",
-                    "description": "Location of the resource."
+                    "description": "HTML contents."
                 }
             },
             "required": [
