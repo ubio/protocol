@@ -58,7 +58,7 @@
             "typeRef": "#/domains/MotorInsurance/types/TextList",
             "description": "List of voluntary excesses to choose from."
         },
-        "contactInfo": {
+        "contactUs": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the contact info is presented."
         },
@@ -78,13 +78,13 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the price breakdown is presented."
         },
-        "footerText": {
+        "statuatoryStatusDisclosure": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
-            "description": "Emitted when the footer text is presented."
+            "description": "Emitted when the statuatory status disclosure text is presented."
         },
-        "links": {
+        "faq": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
-            "description": "Emitted when the site links are presented."
+            "description": "Emitted when the FAQ link or document is presented."
         },
         "coverSummary": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
