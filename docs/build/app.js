@@ -39751,6 +39751,11 @@ module.exports={
             "code": "PassengerDocumentRequired",
             "category": "client",
             "description": "Passenger document (passport or other travel document) is required by the website"
+        },
+        {
+            "code": "DuplicateBooking",
+            "category": "client",
+            "description": "The website claims this is a duplicate booking attempt."
         }
     ],
     "attributes": {
