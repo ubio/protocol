@@ -41620,7 +41620,7 @@ module.exports={
             "description": "List of no claims discount protection options supported by this insurer."
         },
         "noClaimsDiscountProtectionInfo": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "typeRef": "#/domains/Generic/types/HTML",
             "description": "Emitted when the no claims discount protection info is presented."
         }
     },
