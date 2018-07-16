@@ -40591,7 +40591,7 @@ module.exports={
                     "type": "string",
                     "description": "The name or title of the document."
                 },
-                "uri": {
+                "url": {
                     "type": "string",
                     "description": "Location of the resource."
                 },
@@ -40602,8 +40602,7 @@ module.exports={
             },
             "required": [
                 "type",
-                "name",
-                "uri",
+                "url",
                 "filename"
             ],
             "additionalProperties": false
@@ -40622,7 +40621,7 @@ module.exports={
                     "type": "string",
                     "description": "The name or title of the document."
                 },
-                "uri": {
+                "url": {
                     "type": "string",
                     "description": "Location of the resource."
                 }
@@ -40630,7 +40629,7 @@ module.exports={
             "required": [
                 "type",
                 "name",
-                "uri"
+                "url"
             ],
             "additionalProperties": false
 
