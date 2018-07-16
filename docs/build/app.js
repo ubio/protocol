@@ -41766,7 +41766,7 @@ module.exports={
             "type": "array",
             "description": "A list of available cover options found on the page.",
             "minItems": 1,
-            "maxItems": 20,
+            "maxItems": 40,
             "items": { "$ref": "#/domains/MotorInsurance/types/Cover" }
         },
         "SelectedCover": {
