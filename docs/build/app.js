@@ -41632,7 +41632,7 @@ module.exports={
             "description": "Emitted when the vehicle information is presented."
         },
         "supportedPaymentCards": {
-            "typeRef": "#/domains/MotorInsurance/types/TextList",
+            "typeRef": "#/domains/MotorInsurance/types/PaymentCardTypes",
             "description": "List of payment cards supported by this insurer."
         },
         "noClaimsDiscountProtectionInfo": {
@@ -41820,6 +41820,42 @@ module.exports={
             "required": [
                 "name",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "PaymentCardTypes": {
+            "type": "array",
+            "description": "List of payment card types.",
+            "items": {
+                "$ref": "#/domains/MotorInsurance/types/PaymentCardType"
+            }
+        },
+        "PaymentCardType": {
+            "type": "string",
+            "description": "Type of card.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Card type, debit or credit.",
+                    "enum": [
+                        "debit",
+                        "credit"
+                    ]
+                },
+                "brand": {
+                    "type": "string",
+                    "description": "Card brand, must be one of the supported card brands. Automation may fail if a specific card brand is not supported on a particular website.",
+                    "enum": [
+                        "visa",
+                        "mastercard",
+                        "amex",
+                        "discover"
+                    ]
+                }
+            },
+            "required": [
+                "type",
+                "brand"
             ],
             "additionalProperties": false
         }
