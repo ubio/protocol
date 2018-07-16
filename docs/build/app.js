@@ -41551,6 +41551,10 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "List of voluntary excesses to choose from."
         },
+        "availableExcessProtectCovers": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
         "availableLegalCovers": {
             "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
