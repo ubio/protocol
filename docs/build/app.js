@@ -41831,7 +41831,7 @@ module.exports={
             }
         },
         "PaymentCardType": {
-            "type": "string",
+            "type": "object",
             "description": "Type of card.",
             "properties": {
                 "type": {
