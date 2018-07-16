@@ -41524,11 +41524,11 @@ module.exports={
             "initial": true
         },
         "selectedVoluntaryExcess": {
-            "typeRef": "#/domains/MotorInsurance/types/TextItem",
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
             "description": "Selected voluntary excess"
         },
         "selectedNoClaimsDiscountProtection": {
-            "typeRef": "#/domains/MotorInsurance/types/Cover",
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
             "description": "Selecged no claims discount protection."
         },
         "cookies": {
@@ -41548,8 +41548,28 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation"
         },
         "availableVoluntaryExcesses": {
-            "typeRef": "#/domains/MotorInsurance/types/TextList",
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
             "description": "List of voluntary excesses to choose from."
+        },
+        "availableLegalCovers": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "availableBreakdownCovers": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "availablePersonalInjuryCovers": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "availableCarHireCovers": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
+        },
+        "availableNoClaimsDiscountProtection": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "description": "List of no claims discount protection options supported by this insurer."
         },
         "contactUs": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
@@ -41614,10 +41634,6 @@ module.exports={
         "supportedPaymentCards": {
             "typeRef": "#/domains/MotorInsurance/types/TextList",
             "description": "List of payment cards supported by this insurer."
-        },
-        "availableNoClaimsDiscountProtection": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
-            "description": "List of no claims discount protection options supported by this insurer."
         },
         "noClaimsDiscountProtectionInfo": {
             "typeRef": "#/domains/Generic/types/HTML",
@@ -41750,7 +41766,7 @@ module.exports={
             "type": "array",
             "description": "A list of available cover options found on the page.",
             "minItems": 1,
-            "maxItems": 9,
+            "maxItems": 20,
             "items": { "$ref": "#/domains/MotorInsurance/types/Cover" }
         },
         "SelectedCover": {
@@ -41777,8 +41793,7 @@ module.exports={
                 "details": { "$ref": "#/domains/Generic/types/StructuredTextItem" }
             },
             "required": [
-                "name",
-                "price"
+                "name"
             ]
         },
         "PolicyGroupInfo": {
@@ -41807,14 +41822,6 @@ module.exports={
                 "value"
             ],
             "additionalProperties": false
-        },
-        "TextList": {
-            "type": "array",
-            "minItems": 1,
-            "items": { "$ref": "#/domains/MotorInsurance/types/TextItem" }
-        },
-        "TextItem": {
-            "type": "string"
         }
     },
     "errors": [
