@@ -41631,7 +41631,7 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/Vehicle",
             "description": "Emitted when the vehicle information is presented."
         },
-        "supportedPaymentCards": {
+        "supportedPaymentCardTypes": {
             "typeRef": "#/domains/MotorInsurance/types/PaymentCardTypes",
             "description": "List of payment cards supported by this insurer."
         },
