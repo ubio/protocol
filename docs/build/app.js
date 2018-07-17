@@ -41526,9 +41526,29 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
             "description": "Selected voluntary excess"
         },
+        "selectedLegalCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected legal cover."
+        },
+        "selectedExcessProtectCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected excess protection cover."
+        },
+        "selectedPersonalInjuryCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected personal injury cover."
+        },
+        "selectedCarHireCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected car hire cover."
+        },
+        "selectedBreakdownCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected breakdown cover."
+        },
         "selectedNoClaimsDiscountProtection": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-            "description": "Selecged no claims discount protection."
+            "description": "Selected no claims discount protection."
         },
         "cookies": {
             "typeRef": "#/domains/Generic/types/Cookies"
