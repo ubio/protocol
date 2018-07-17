@@ -41676,6 +41676,14 @@ module.exports={
         "noClaimsDiscountProtectionInfo": {
             "typeRef": "#/domains/Generic/types/HTML",
             "description": "Emitted when the no claims discount protection info is presented."
+        },
+        "financialPromotionRepresentativeExample": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when a representative example is presented, usually when paying in monthly installments as part of a financial promotion."
+        },
+        "financialPromotionContactAddress": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when a representative example is presented, usually when paying in monthly installments as part of a financial promotion. According to CONC 3.5.3 R, this is the postal address at which the person making the financial promotion may be contacted."
         }
     },
     "types": {
