@@ -37877,7 +37877,10 @@ module.exports = function createExample(protocol, spec, visitedRefs = new Set())
             const arr = [];
             const items = Array.isArray(spec.items) ? spec.items : [spec.items];
             for (const item of items) {
-                arr.push(createExample(protocol, item, visitedRefs));
+                const ex = createExample(protocol, item, visitedRefs);
+                if (ex != null) {
+                    arr.push(ex);
+                }
             }
             return arr;
         default:
