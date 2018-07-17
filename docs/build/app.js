@@ -41557,6 +41557,10 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
             "description": "Selected no claims discount protection."
         },
+        "selectedPaymentTerm": {
+            "typeRef": "#/domains/MotorInsurance/types/PaymentTerm",
+            "description": "Payment term to be used."
+        },
         "cookies": {
             "typeRef": "#/domains/Generic/types/Cookies"
         }
@@ -41664,6 +41668,10 @@ module.exports={
         "supportedPaymentCardTypes": {
             "typeRef": "#/domains/MotorInsurance/types/PaymentCardTypes",
             "description": "List of payment cards supported by this insurer."
+        },
+        "availablePaymentTerms": {
+            "typeRef": "#/domains/MotorInsurance/types/PaymentTerms",
+            "description": "List of payment terms supported by the insurer."
         },
         "noClaimsDiscountProtectionInfo": {
             "typeRef": "#/domains/Generic/types/HTML",
@@ -41896,6 +41904,22 @@ module.exports={
                 "brand"
             ],
             "additionalProperties": false
+        },
+        "PaymentTerms": {
+            "type": "array",
+            "description": "List of payment terms.",
+            "items": {
+                "$ref": "#/domains/MotorInsurance/types/PaymentTerm"
+            }
+        },
+        "PaymentTerm": {
+            "type": "string",
+            "description": "Payment term.",
+            "enum": [
+                "annual-card",
+                "monthly-card",
+                "monthly-directdebit"
+            ]
         }
     },
     "errors": [
