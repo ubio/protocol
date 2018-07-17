@@ -2500,6 +2500,10 @@
               "type": "boolean",
               "default": false
             },
+            "excessProtectCover": {
+              "type": "boolean",
+              "default": false
+            },
             "breakdownCover": {
               "type": "boolean",
               "default": false
@@ -2509,6 +2513,10 @@
               "default": false
             },
             "carHireCover": {
+              "type": "boolean",
+              "default": false
+            },
+            "noClaimsDiscountProtection": {
               "type": "boolean",
               "default": false
             }
