@@ -62,6 +62,10 @@
             "typeRef": "#/domains/MotorInsurance/types/PaymentTerm",
             "description": "Payment term to be used."
         },
+        "selectedMarketingContactOptions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "List of marketing contact options to be selected."
+        },
         "cookies": {
             "typeRef": "#/domains/Generic/types/Cookies"
         }
@@ -185,6 +189,10 @@
         "financialPromotionContactAddress": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when a representative example is presented, usually when paying in monthly installments as part of a financial promotion. According to CONC 3.5.3 R, this is the postal address at which the person making the financial promotion may be contacted."
+        },
+        "availableMarketingContactOptions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "List of marketing contact options provided by the insurer."
         }
     },
     "types": {

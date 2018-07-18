@@ -40589,6 +40589,13 @@ module.exports={
                 }
             ]
         },
+        "StructuredTextItems": {
+            "type": "array",
+            "description": "List of available structured text items.",
+            "items": {
+                "$ref": "#/domains/Generic/types/StructuredTextItem"
+            }
+        },
         "File": {
             "type": "object",
             "description": "A document downloaded from the target website.<br/>To retrieve this document, you must include the <strong>SECRET_KEY</strong> authorisation header with your request.",
@@ -41565,6 +41572,10 @@ module.exports={
             "typeRef": "#/domains/MotorInsurance/types/PaymentTerm",
             "description": "Payment term to be used."
         },
+        "selectedMarketingContactOptions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "List of marketing contact options to be selected."
+        },
         "cookies": {
             "typeRef": "#/domains/Generic/types/Cookies"
         }
@@ -41688,6 +41699,10 @@ module.exports={
         "financialPromotionContactAddress": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when a representative example is presented, usually when paying in monthly installments as part of a financial promotion. According to CONC 3.5.3 R, this is the postal address at which the person making the financial promotion may be contacted."
+        },
+        "availableMarketingContactOptions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "List of marketing contact options provided by the insurer."
         }
     },
     "types": {
