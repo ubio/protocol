@@ -38727,6 +38727,10 @@ module.exports={
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
+        "estimatedPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Price shown by the website prior to requiring passenger information.<br/>This is likely not the final price, as flight ancilliaries may be added as requested, or additional credit card charges may be applied."
+        },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
