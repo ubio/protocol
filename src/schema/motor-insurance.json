@@ -193,6 +193,10 @@
         "availableMarketingContactOptions": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems",
             "description": "List of marketing contact options provided by the insurer."
+        },
+        "secciForm": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Standard European consumer credit information form, where applicable."
         }
     },
     "types": {
