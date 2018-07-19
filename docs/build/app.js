@@ -41707,6 +41707,10 @@ module.exports={
         "secciForm": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Standard European consumer credit information form, where applicable."
+        },
+        "creditAgreement": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Credit agreement."
         }
     },
     "types": {
