@@ -130,9 +130,9 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the price breakdown is presented."
         },
-        "statuatoryStatusDisclosure": {
+        "statutoryStatusDisclosure": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
-            "description": "Emitted when the statuatory status disclosure text is presented."
+            "description": "Emitted when the statutory status disclosure text is presented."
         },
         "faq": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
