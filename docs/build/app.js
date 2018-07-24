@@ -41867,7 +41867,7 @@ module.exports={
         "SelectedItem": {
             "oneOf": [
                 {
-                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                    "$ref": "#/domains/Generic/types/StructuredTextItems"
                 },
                 {
                     "type": "null"
