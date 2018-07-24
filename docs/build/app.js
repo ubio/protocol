@@ -41573,7 +41573,7 @@ module.exports={
             "description": "Payment term to be used."
         },
         "selectedMarketingContactOptions": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "typeRef": "#/domains/MotorInsurance/types/SelectedItem",
             "description": "List of marketing contact options to be selected."
         },
         "cookies": {
@@ -41854,6 +41854,16 @@ module.exports={
             "oneOf": [
                 {
                     "$ref": "#/domains/MotorInsurance/types/Cover"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "SelectedItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
                 },
                 {
                     "type": "null"
