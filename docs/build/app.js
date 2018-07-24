@@ -39279,6 +39279,10 @@ module.exports={
             "typeRef": "#/domains/FlightBooking/types/PriceBreakdown",
             "description": "The list of price components, as found on the website."
         },
+        "estimatedPriceBreakdown": {
+            "typeRef": "#/domains/FlightBooking/types/PriceBreakdown",
+            "description": "The list of estimated price components, as found on the website."
+        },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
