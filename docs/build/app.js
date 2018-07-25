@@ -41715,6 +41715,10 @@ module.exports={
         "creditAgreement": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Credit agreement."
+        },
+        "insurerSpecificDocuments": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "Dynamic list of documents and links insusrers add which may or not already be present in other outputs."
         }
     },
     "types": {
