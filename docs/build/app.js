@@ -41527,7 +41527,10 @@ module.exports={
             "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-            "typeRef": "#/domains/MotorInsurance/types/Payment"
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "directDebit": {
+            "typeRef": "#/domains/MotorInsurance/types/DirectDebitPayment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -41974,17 +41977,7 @@ module.exports={
                 "monthly-directdebit"
             ]
         },
-        "Payment": {
-            "oneOf": [
-                {
-                    "$ref": "#/domains/Generic/types/Payment"
-                },
-                {
-                    "$ref": "#/domains/MotorInsurance/types/GBDirectDebitPayment"
-                }
-            ]
-        },
-        "GBDirectDebitPayment": {
+        "DirectDebitPayment": {
             "type": "object",
             "description": "Account details for direct debit.",
             "properties": {
