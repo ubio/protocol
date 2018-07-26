@@ -13,7 +13,7 @@
             "typeRef": "#/domains/Generic/types/Account"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
+            "typeRef": "#/domains/MotorInsurance/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -458,6 +458,40 @@
                 "annual-card",
                 "monthly-card",
                 "monthly-directdebit"
+            ]
+        },
+        "Payment": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/Payment"
+                },
+                {
+                    "$ref": "#/domains/MotorInsurance/types/GBDirectDebitPayment"
+                }
+            ]
+        },
+        "GBDirectDebitPayment": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "properties": {
+                "sortCode": {
+                    "type": "string",
+                    "description": "Bank sort code",
+                    "example": "04-00-04"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "description": "Cover marketing name as provided by the insurer.",
+                    "example": "30889978"
+                },
+                "accountHolder": { "$ref": "#/domains/Generic/types/Person" },
+                "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" }
+            },
+            "required": [
+                "sortCode",
+                "accountNumber",
+                "accountHolder",
+                "accountHolderAddress"
             ]
         }
     },
