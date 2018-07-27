@@ -41529,6 +41529,9 @@ module.exports={
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
+        "directDebit": {
+            "typeRef": "#/domains/MotorInsurance/types/DirectDebitPayment"
+        },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
@@ -41967,11 +41970,36 @@ module.exports={
         },
         "PaymentTerm": {
             "type": "string",
-            "description": "Payment term.",
+            "description": "Payment term. The outlier is <strong>monthly-directdebit-card</strong>, which specifies that card payment must be used to pay the initial deposit, but direct debit must be set up for recurring monthly payments.",
             "enum": [
                 "annual-card",
                 "monthly-card",
-                "monthly-directdebit"
+                "monthly-directdebit",
+                "monthly-directdebit-card"
+            ]
+        },
+        "DirectDebitPayment": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "properties": {
+                "sortCode": {
+                    "type": "string",
+                    "description": "Bank sort code",
+                    "example": "04-00-04"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "description": "Cover marketing name as provided by the insurer.",
+                    "example": "30889978"
+                },
+                "accountHolder": { "$ref": "#/domains/Generic/types/Person" },
+                "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" }
+            },
+            "required": [
+                "sortCode",
+                "accountNumber",
+                "accountHolder",
+                "accountHolderAddress"
             ]
         }
     },
