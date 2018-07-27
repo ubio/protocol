@@ -41970,11 +41970,12 @@ module.exports={
         },
         "PaymentTerm": {
             "type": "string",
-            "description": "Payment term.",
+            "description": "Payment term. The outlier is <strong>monthly-directdebit-card</strong>, which specifies that card payment must be used to pay the initial deposit, but direct debit must be set up for recurring monthly payments.",
             "enum": [
                 "annual-card",
                 "monthly-card",
-                "monthly-directdebit"
+                "monthly-directdebit",
+                "monthly-directdebit-card"
             ]
         },
         "DirectDebitPayment": {
