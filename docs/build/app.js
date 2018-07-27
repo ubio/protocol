@@ -41985,12 +41985,12 @@ module.exports={
                 "sortCode": {
                     "type": "string",
                     "description": "Bank sort code",
-                    "example": "04-00-04"
+                    "example": "56-00-29"
                 },
                 "accountNumber": {
                     "type": "string",
                     "description": "Cover marketing name as provided by the insurer.",
-                    "example": "30889978"
+                    "example": "26207729"
                 },
                 "accountHolder": { "$ref": "#/domains/Generic/types/Person" },
                 "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" }
