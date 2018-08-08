@@ -2788,6 +2788,10 @@
           "typeRef": "#/domains/LoanApplication/types/Loan",
           "initial": true
         },
+        "existingApplication": {
+          "typeRef": "#/domains/LoanApplication/types/ExistingApplication",
+          "initial": true
+        },
         "applicant": {
           "typeRef": "#/domains/LoanApplication/types/Applicant",
           "initial": true
@@ -2814,6 +2818,9 @@
         },
         "proofOfIncome": {
           "typeRef": "#/domains/LoanApplication/types/Files"
+        },
+        "proofOfId": {
+          "typeRef": "#/domains/LoanApplication/types/File"
         },
         "bankStatements": {
           "typeRef": "#/domains/LoanApplication/types/Files"
@@ -2871,6 +2878,27 @@
             "purpose",
             "amount",
             "repaymentMonths"
+          ]
+        },
+        "ExistingApplication": {
+          "type": "object",
+          "description": "Existing loan application",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "loan applicaton id.",
+              "example": "12345"
+            },
+            "token": {
+              "type": "string",
+              "description": "Loan application token.",
+              "example": "abcde"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "token"
           ]
         },
         "Applicant": {
@@ -3212,8 +3240,8 @@
             },
             "apr": {
               "type": "number",
-              "description": "The number of months to repay the loan.",
-              "example": 48
+              "description": "The APR of the loan.",
+              "example": 0.5
             },
             "fee": {
               "$ref": "#/domains/Generic/types/Price",
