@@ -40399,7 +40399,7 @@ module.exports={
             "initial": true
         },
         "existingApplication": {
-            "typeRef": "#/domains/LoanApplication/types/ExistingApplication",
+            "typeRef": "#/domains/LoanApplication/types/OptionalExistingApplication",
             "initial": true
         },
         "applicant": {
@@ -40486,6 +40486,16 @@ module.exports={
             "additionalProperties": false,
             "required": [
                 "purpose", "amount", "repaymentMonths"
+            ]
+        },
+        "OptionalExistingApplication": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/LoanApplication/types/ExistingApplication"
+                },
+                {
+                    "type": "null"
+                }
             ]
         },
         "ExistingApplication": {
