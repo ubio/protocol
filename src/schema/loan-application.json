@@ -49,8 +49,8 @@
         "proofOfId": {
             "typeRef": "#/domains/LoanApplication/types/File"
         },
-        "bankStatements": {
-            "typeRef": "#/domains/LoanApplication/types/Files"
+        "proofOfAddress": {
+            "typeRef": "#/domains/LoanApplication/types/File"
         },
         "options": {
             "typeRef": "#/domains/LoanApplication/types/Options",
@@ -408,29 +408,7 @@
             "pii": true,
             "minItems": 1,
             "maxItems": 99,
-            "items": { "$ref": "#/domains/LoanApplication/types/File" }
-        },
-        "File": {
-            "type": "object",
-            "description": "An uploaded file.",
-            "pii": true,
-            "properties": {
-                "filename": {
-                    "type": "string",
-                    "description": "Filename of uploaded file.",
-                    "example": "photo.jpg"
-                },
-                "data": {
-                    "type": "string",
-                    "description": "File data.",
-                    "example": "BASE64STRING"
-                }
-            },
-            "required": [
-                "filename",
-                "data"
-            ],
-            "additionalProperties": false
+            "items": { "$ref": "#/domains/Generic/types/File" }
         },
         "Requirements": {
             "type": "array",
