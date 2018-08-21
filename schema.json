@@ -2835,10 +2835,10 @@
           "typeRef": "#/domains/LoanApplication/types/Files"
         },
         "proofOfId": {
-          "typeRef": "#/domains/LoanApplication/types/File"
+          "typeRef": "#/domains/Generic/types/File"
         },
         "proofOfAddress": {
-          "typeRef": "#/domains/LoanApplication/types/File"
+          "typeRef": "#/domains/Generic/types/File"
         },
         "options": {
           "typeRef": "#/domains/LoanApplication/types/Options",
@@ -3269,26 +3269,8 @@
           "minItems": 0,
           "maxItems": 99,
           "items": {
-            "$ref": "#/domains/LoanApplication/types/File"
+            "$ref": "#/domains/Generic/types/File"
           }
-        },
-        "File": {
-          "type": "object",
-          "description": "A document available to download/view.",
-          "pii": true,
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Name of document.",
-              "example": "Loan agreement"
-            },
-            "url": {
-              "type": "string",
-              "description": "File url.",
-              "example": "https://www.example-lender.com/loan-agreement.pdf"
-            }
-          },
-          "additionalProperties": false
         },
         "Confirmation": {
           "type": "object",
