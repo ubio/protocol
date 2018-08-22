@@ -76,6 +76,22 @@
             "typeRef": "#/domains/FlightBooking/types/AvailableFrequentFlyerProgrammes",
             "description": "Where available, the list of frequent flyer programmes available on the website."
         },
+        "fareRules": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when fare rules are presented."
+        },
+        "conditionsOfCarriage": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when conditions of carriage is presented."
+        },
+        "bookingTermsAndConditions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when booking T&Cs are presented."
+        },
+        "privacyPolicy": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when the privacy policy is presented."
+        },
         "estimatedPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Price shown by the website prior to requiring passenger information.<br/>On many flight booking websites, it is possible to view an estimated price without entering passenger details, provided that the deeplink works and goes past the home page, where the count of passengers and their ages are usually required. This estimated price is emitted when the automation reaches a page where passenger or billing information is required, as long as the price is displayed.<br/>This is likely not the final price, as flight ancilliaries may be added as requested, or additional credit card charges may be applied."
