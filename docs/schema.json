@@ -1110,6 +1110,7 @@
     "FlightBooking": {
       "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
       "private": false,
+      "dataExtractionDomainId": "FlightBookingExtraction",
       "inputs": {
         "options": {
           "typeRef": "#/domains/FlightBooking/types/Options",
