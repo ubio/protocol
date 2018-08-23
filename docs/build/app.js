@@ -39284,7 +39284,7 @@ module.exports={
         },
         "Day": {
             "type": "string",
-            "pattern": "^(?:0[1-9]|[1-3][0-9])"
+            "pattern": "\\d{1,2}"
         }
     },
     "errors": [
