@@ -39224,7 +39224,7 @@ module.exports={
             "typeRef": "#/domains/FlightBookingExtraction/types/MonthYear"
         },
         "inboundMonthYear": {
-            "typeRef": "#/domains/FlightBookingExtraction/types/MonthYear"
+            "typeRef": "#/domains/FlightBookingExtraction/types/MonthYearOrNull"
         },
         "selectedOutboundDay": {
             "typeRef": "#/domains/FlightBookingExtraction/types/Day"
@@ -39271,6 +39271,16 @@ module.exports={
         "MonthYear": {
             "type": "string",
             "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])"
+        },
+        "MonthYearOrNull": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/FlightBookingExtraction/types/MonthYear"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "Day": {
             "type": "string",
