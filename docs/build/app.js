@@ -39041,6 +39041,9 @@ module.exports={
         },
         "selectedRefund": {
             "typeRef": "#/domains/EventBooking/types/SelectedRefund"
+        },
+        "selectedSeats": {
+            "typeRef": "#/domains/EventBooking/types/SelectedSeats"
         }
     },
     "outputs": {
@@ -39154,6 +39157,16 @@ module.exports={
             "required": [
                 "name"
             ]
+        },
+        "SelectedSeats": {
+            "type": "array",
+            "description": "A list of seats to be selected.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": {
+                "type": "string",
+                "example": "A10"
+            }
         },
         "Tickets": {
             "type": "object",
