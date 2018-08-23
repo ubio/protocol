@@ -38314,7 +38314,7 @@ module.exports = {
     AttributeDef
 };
 
-},{"./example":158,"./util":171}],157:[function(require,module,exports){
+},{"./example":158,"./util":172}],157:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef, AttributeDef } = require('./defs');
@@ -38515,7 +38515,7 @@ module.exports = {
     Domain
 };
 
-},{"./domain":157,"./protocol":160,"./provider":161,"./schema":166}],160:[function(require,module,exports){
+},{"./domain":157,"./protocol":160,"./provider":161,"./schema":167}],160:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -38590,7 +38590,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":157,"./validator":172}],161:[function(require,module,exports){
+},{"./domain":157,"./validator":173}],161:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -39211,6 +39211,81 @@ module.exports={
 
 },{}],164:[function(require,module,exports){
 module.exports={
+    "description": "Internal domain for generating FlightBooking inputs.",
+    "private": true,
+    "inputs": {
+        "selectedOriginAirportCode": {
+            "typeRef": "#/domains/FlightBooking/types/AirportCode"
+        },
+        "selectedDestinationAirportCode": {
+            "typeRef": "#/domains/FlightBooking/types/AirportCode"
+        },
+        "outboundMonthYear": {
+            "typeRef": "#/domains/FlightBookingExtraction/types/MonthYear"
+        },
+        "inboundMonthYear": {
+            "typeRef": "#/domains/FlightBookingExtraction/types/MonthYear"
+        },
+        "selectedOutboundDay": {
+            "typeRef": "#/domains/FlightBookingExtraction/types/Day"
+        },
+        "selectedInboundDay": {
+            "typeRef": "#/domains/FlightBookingExtraction/types/Day"
+        },
+        "passengerAges": {
+            "typeRef": "#/domains/Generic/types/Ages"
+        }
+    },
+    "outputs": {
+        "availableOriginAirportCodes": {
+            "typeRef": "#/domains/FlightBookingExtraction/types/AirportCodes"
+        },
+        "availableDestinationAirportCodes": {
+            "typeRef": "#/domains/FlightBookingExtraction/types/AirportCodes"
+        },
+        "availableOutboundDays": {
+            "typeRef": "#/domains/FlightBookingExtraction/types/Days"
+        },
+        "availableInboundDays": {
+            "typeRef": "#/domains/FlightBookingExtraction/types/Days"
+        },
+        "search": {
+            "typeRef": "#/domains/FlightBooking/types/Search"
+        },
+        "selectedOutboundFlight": {
+            "typeRef": "#/domains/FlightBooking/types/Flight"
+        },
+        "selectedInboundFlight": {
+            "typeRef": "#/domains/FlightBooking/types/Flight"
+        }
+    },
+    "types": {
+        "AirportCodes": {
+            "type": "array",
+            "items": { "$ref": "#/domains/FlightBooking/types/AirportCode" }
+        },
+        "Days": {
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "MonthYear": {
+            "type": "string",
+            "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])"
+        },
+        "Day": {
+            "type": "string",
+            "pattern": "^(?:0[1-9]|[1-3][0-9])"
+        }
+    },
+    "errors": [
+    ],
+    "attributes": {
+    }
+}
+
+
+},{}],165:[function(require,module,exports){
+module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "private": false,
     "inputs": {
@@ -39429,12 +39504,7 @@ module.exports={
                     "example": "2019-01-01"
                 },
                 "airportCode": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 3,
-                    "pattern": "^[A-Z]{3}$",
-                    "description": "International Air Transport Association airport code.",
-                    "example": "SFO"
+                    "$ref": "#/domains/FlightBooking/types/AirportCode"
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
@@ -39458,12 +39528,7 @@ module.exports={
                     "example": "2018-02-02 19:40"
                 },
                 "airportCode": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 3,
-                    "pattern": "^[A-Z]{3}$",
-                    "description": "International Air Transport Association airport code.",
-                    "example": "SFO"
+                    "$ref": "#/domains/FlightBooking/types/AirportCode"
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
@@ -39476,6 +39541,14 @@ module.exports={
                 "airportCode"
             ],
             "additionalProperties": false
+        },
+        "AirportCode": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "pattern": "^[A-Z]{3}$",
+            "description": "International Air Transport Association airport code.",
+            "example": "SFO"
         },
         "Passengers": {
             "type": "array",
@@ -39823,7 +39896,7 @@ module.exports={
     }
 }
 
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "private": false,
@@ -40917,7 +40990,7 @@ module.exports={
     }
 }
 
-},{}],166:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -40930,11 +41003,12 @@ module.exports = {
         MotorInsurance: require('./motor-insurance'),
         LoanApplication: require('./loan-application'),
         EventBooking: require('./event-booking'),
-        Internal: require('./internal')
+        Internal: require('./internal'),
+        FlightBookingExtraction: require('./flight-booking-extraction.json')
     }
 };
 
-},{"./coach-booking":162,"./event-booking":163,"./flight-booking":164,"./generic":165,"./internal":167,"./loan-application":168,"./motor-insurance":169,"./vacation-rental":170}],167:[function(require,module,exports){
+},{"./coach-booking":162,"./event-booking":163,"./flight-booking":165,"./flight-booking-extraction.json":164,"./generic":166,"./internal":168,"./loan-application":169,"./motor-insurance":170,"./vacation-rental":171}],168:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -41028,7 +41102,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],168:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -41547,7 +41621,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -42074,7 +42148,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],170:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -42254,7 +42328,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -42265,7 +42339,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');

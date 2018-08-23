@@ -11,5 +11,6 @@ module.exports = {
         LoanApplication: require('./loan-application'),
         EventBooking: require('./event-booking'),
         Internal: require('./internal'),
+        FlightBookingExtraction: require('./flight-booking-extraction.json'),
     },
 };

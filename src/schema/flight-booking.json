@@ -217,12 +217,7 @@
                     "example": "2019-01-01"
                 },
                 "airportCode": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 3,
-                    "pattern": "^[A-Z]{3}$",
-                    "description": "International Air Transport Association airport code.",
-                    "example": "SFO"
+                    "$ref": "#/domains/FlightBooking/types/AirportCode"
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
@@ -246,12 +241,7 @@
                     "example": "2018-02-02 19:40"
                 },
                 "airportCode": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 3,
-                    "pattern": "^[A-Z]{3}$",
-                    "description": "International Air Transport Association airport code.",
-                    "example": "SFO"
+                    "$ref": "#/domains/FlightBooking/types/AirportCode"
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
@@ -264,6 +254,14 @@
                 "airportCode"
             ],
             "additionalProperties": false
+        },
+        "AirportCode": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "pattern": "^[A-Z]{3}$",
+            "description": "International Air Transport Association airport code.",
+            "example": "SFO"
         },
         "Passengers": {
             "type": "array",
