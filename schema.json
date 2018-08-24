@@ -3626,6 +3626,9 @@
       "description": "Internal domain for generating FlightBooking inputs.",
       "private": true,
       "inputs": {
+        "options": {
+          "typeRef": "#/domains/FlightBooking/types/Options"
+        },
         "selectedOriginAirportCode": {
           "typeRef": "#/domains/FlightBooking/types/AirportCode"
         },
@@ -3672,6 +3675,10 @@
         }
       },
       "types": {
+        "Options": {
+          "type": "object",
+          "additionalProperties": false
+        },
         "AirportCodes": {
           "type": "array",
           "items": {
