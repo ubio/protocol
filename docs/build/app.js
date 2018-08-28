@@ -40926,6 +40926,11 @@ module.exports={
             "description": "Cannot submit or process the payment because the payment details provided are invalid."
         },
         {
+            "code": "CardTypeNotSupported",
+            "category": "client",
+            "description": "Cannot submit or process the payment because the card type is not supported by this supplier."
+        },
+        {
             "code": "UrlInvalid",
             "category": "client",
             "description": "Invalid url provided"
