@@ -42138,6 +42138,11 @@ module.exports={
     },
     "errors": [
         {
+            "code": "QuoteNotFound",
+            "category": "client",
+            "description": "Given quote was not found by the insurer."
+        },
+        {
             "code": "LegalCoverNotFound",
             "category": "client",
             "description": "Given legal cover does not match one of the options we are expecting"
