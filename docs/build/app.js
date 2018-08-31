@@ -38745,7 +38745,10 @@ module.exports={
         "installation": {
             "typeRef": "#/domains/BroadbandSignup/types/Object"
         },
-        "setup": {
+        "selectedTvSetupDate": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "selectedBroadbandSetupDate": {
             "typeRef": "#/domains/BroadbandSignup/types/Object"
         }
     },
@@ -38755,6 +38758,10 @@ module.exports={
         },
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/Packages"
+        },
+        "availableTvSetupDates": {
+        },
+        "availableBroadbandSetupDates": {
         }
     },
     "types": {
