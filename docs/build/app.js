@@ -38314,7 +38314,7 @@ module.exports = {
     AttributeDef
 };
 
-},{"./example":158,"./util":172}],157:[function(require,module,exports){
+},{"./example":158,"./util":173}],157:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef, AttributeDef } = require('./defs');
@@ -38515,7 +38515,7 @@ module.exports = {
     Domain
 };
 
-},{"./domain":157,"./protocol":160,"./provider":161,"./schema":167}],160:[function(require,module,exports){
+},{"./domain":157,"./protocol":160,"./provider":161,"./schema":168}],160:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -38590,7 +38590,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":157,"./validator":173}],161:[function(require,module,exports){
+},{"./domain":157,"./validator":174}],161:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -38694,6 +38694,262 @@ class RemoteProtocolFetchError extends Error {
 }
 
 },{"./protocol":160,"node-fetch":84}],162:[function(require,module,exports){
+module.exports={
+    "description": "Allows automating broadband package signups in the UK.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "options": {
+            "typeRef": "#/domains/BroadbandSignup/types/Options"
+        },
+        "landlineCheck": {
+            "typeRef": "#/domains/BroadbandSignup/types/LandlineCheck"
+        },
+        "property": {
+            "typeRef": "#/domains/BroadbandSignup/types/Property"
+        },
+        "selectedTvPackage": {
+            "typeRef": "#/domains/BroadbandSignup/types/Package"
+        },
+        "selectedBroadbandPackage": {
+            "typeRef": "#/domains/BroadbandSignup/types/Package"
+        },
+        "selectedPhonePackage": {
+            "typeRef": "#/domains/BroadbandSignup/types/Package"
+        },
+        "contactPerson": {
+            "typeRef": "#/domains/BroadbandSignup/types/PersonDob"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "directDebit": {
+            "typeRef": "#/domains/BroadbandSignup/types/DirectDebitPayment"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "landlineOptions": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "installation": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "setup": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        }
+    },
+    "outputs": {
+        "availableTvPackages": {
+            "typeRef": "#/domains/BroadbandSignup/types/Packages"
+        },
+        "availableBroadbandPackages": {
+            "typeRef": "#/domains/BroadbandSignup/types/Packages"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object"
+        },
+        "LandlineCheck": {
+            "type": "object",
+            "description": "Information required to check existing landlines",
+            "pii": true,
+            "properties": {
+                "postcode": {
+                    "typeRef": "#/domains/BroadbandSignup/types/Postcode"
+                },
+                "landline": {
+                    "type": "string",
+                    "minLength": 9,
+                    "description": "Landline number (numbers only, excluding country code).",
+                    "example": "123456789",
+                    "pattern": "^0[0-9]{8,10}"
+                },
+                "billpayer": {
+                    "type": "boolean",
+                    "description": "Whether the user is also the bill payer of the landline check phone number."
+                }
+            },
+            "required": [
+                "postcode",
+                "billpayer"
+            ],
+            "additionalProperties": false
+        },
+        "Property": {
+            "type": "object",
+            "description": "Information about the property to be serviced.",
+            "pii": true,
+            "properties": {
+                "address": {
+                    "type": "object",
+                    "properties": {
+                        "houseName": {
+                            "type": "string",
+                            "example": "Da house"
+                        },
+                        "streetNumber": {
+                            "type": "string",
+                            "minLength": 1,
+                            "example": "93"
+                        },
+                        "streetName": {
+                            "type": "string",
+                            "minLength": 1,
+                            "example": "Clerkenwell Close"
+                        },
+                        "postcode": {
+                            "typeRef": "#/domains/BroadbandSignup/types/Postcode"
+                        },
+                        "city": {
+                            "type": "string",
+                            "minLength": 1,
+                            "example": "Dagenham"
+                        },
+                        "countrySubdivision": {
+                            "type": "string",
+                            "example": "Greater London"
+                        }
+                    },
+                    "required": [
+                        "houseName",
+                        "streetNumber",
+                        "streetName",
+                        "postcode",
+                        "city",
+                        "countrySubdivision"
+                    ]
+                }
+            },
+            "required": [
+                "address"
+            ],
+            "additionalProperties": false
+        },
+        "Packages": {
+            "type": "array",
+            "description": "A list of packages.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignup/types/Package" }
+        },
+        "Package": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "All in One Package"
+                },
+                "description": {
+                    "typeRef": "#/domains/Generic/types/StructuredTextItem"
+                },
+                "price": {
+                    "typeRef": "#/domains/Generic/types/Price"
+                },
+                "image": {
+                    "typeRef": "#/domains/Generic/types/Link"
+                }
+            },
+            "required": [
+                "name",
+                "description",
+                "price"
+            ]
+        },
+        "PersonDob": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "DirectDebitPayment": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "properties": {
+                "sortCode": {
+                    "type": "string",
+                    "description": "Bank sort code",
+                    "example": "56-00-29"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "description": "Cover marketing name as provided by the insurer.",
+                    "example": "26207729"
+                },
+                "accountHolder": { "$ref": "#/domains/Generic/types/Person" },
+                "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" }
+            },
+            "required": [
+                "sortCode",
+                "accountNumber",
+                "accountHolder",
+                "accountHolderAddress"
+            ]
+        },
+        "Postcode": {
+            "type": "string",
+            "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+            "minLength": 4,
+            "example": "RM108DE"
+        },
+        "Object": {
+            "type": "object"
+        }
+    },
+    "errors": [
+    ],
+    "attributes": {
+    }
+}
+
+},{}],163:[function(require,module,exports){
 module.exports={
     "description": "Automates bus and chack tickets booking on websites.",
     "private": false,
@@ -39008,7 +39264,7 @@ module.exports={
     }
 }
 
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -39209,7 +39465,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for generating FlightBooking inputs.",
     "private": true,
@@ -39301,7 +39557,7 @@ module.exports={
 }
 
 
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 module.exports={
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "private": false,
@@ -39914,7 +40170,7 @@ module.exports={
     }
 }
 
-},{}],166:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 module.exports={
     "description": "Generic domain contains type definitions used in other domains.",
     "private": false,
@@ -41013,7 +41269,7 @@ module.exports={
     }
 }
 
-},{}],167:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -41026,12 +41282,13 @@ module.exports = {
         MotorInsurance: require('./motor-insurance'),
         LoanApplication: require('./loan-application'),
         EventBooking: require('./event-booking'),
+        BroadbandSignup: require('./broadband-signup'),
         Internal: require('./internal'),
         FlightBookingExtraction: require('./flight-booking-extraction.json')
     }
 };
 
-},{"./coach-booking":162,"./event-booking":163,"./flight-booking":165,"./flight-booking-extraction.json":164,"./generic":166,"./internal":168,"./loan-application":169,"./motor-insurance":170,"./vacation-rental":171}],168:[function(require,module,exports){
+},{"./broadband-signup":162,"./coach-booking":163,"./event-booking":164,"./flight-booking":166,"./flight-booking-extraction.json":165,"./generic":167,"./internal":169,"./loan-application":170,"./motor-insurance":171,"./vacation-rental":172}],169:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -41125,7 +41382,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -41644,7 +41901,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],170:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -42176,7 +42433,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -42356,7 +42613,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -42367,7 +42624,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],173:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');

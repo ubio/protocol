@@ -10,6 +10,7 @@ module.exports = {
         MotorInsurance: require('./motor-insurance'),
         LoanApplication: require('./loan-application'),
         EventBooking: require('./event-booking'),
+        BroadbandSignup: require('./broadband-signup'),
         Internal: require('./internal'),
         FlightBookingExtraction: require('./flight-booking-extraction.json'),
     },
