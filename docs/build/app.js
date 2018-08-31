@@ -38949,6 +38949,7 @@ module.exports={
         "DirectDebitPayment": {
             "type": "object",
             "description": "Account details for direct debit.",
+            "pii": true,
             "properties": {
                 "sortCode": {
                     "type": "string",
@@ -42419,6 +42420,7 @@ module.exports={
         "DirectDebitPayment": {
             "type": "object",
             "description": "Account details for direct debit.",
+            "pii": true,
             "properties": {
                 "sortCode": {
                     "type": "string",
