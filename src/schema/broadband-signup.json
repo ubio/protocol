@@ -63,9 +63,35 @@
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/Packages"
         },
+        "availableAddresses": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
         "availableTvSetupDates": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
         },
         "availableBroadbandSetupDates": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "availablePhonePackages": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "estimatedPriceBreakdown": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "monthlyCosts": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "oneOffCosts": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "upfrontPayment": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "totalOneOffPrice": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
+        },
+        "monthlyPayments": {
+            "typeRef": "#/domains/BroadbandSignup/types/Object"
         }
     },
     "types": {
