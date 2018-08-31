@@ -175,7 +175,8 @@
                 "name",
                 "description",
                 "price"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PersonDob": {
             "type": "object",
@@ -242,7 +243,8 @@
                 "accountNumber",
                 "accountHolder",
                 "accountHolderAddress"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Postcode": {
             "type": "string",

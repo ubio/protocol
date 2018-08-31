@@ -38871,7 +38871,8 @@ module.exports={
                 "name",
                 "description",
                 "price"
-            ]
+            ],
+            "additionalProperties": false
         },
         "PersonDob": {
             "type": "object",
@@ -38938,7 +38939,8 @@ module.exports={
                 "accountNumber",
                 "accountHolder",
                 "accountHolderAddress"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Postcode": {
             "type": "string",
@@ -42397,7 +42399,8 @@ module.exports={
                 "accountNumber",
                 "accountHolder",
                 "accountHolderAddress"
-            ]
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [

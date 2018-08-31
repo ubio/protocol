@@ -486,7 +486,8 @@
                 "accountNumber",
                 "accountHolder",
                 "accountHolderAddress"
-            ]
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
