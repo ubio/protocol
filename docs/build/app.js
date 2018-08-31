@@ -38788,6 +38788,9 @@ module.exports={
         },
         "monthlyPayments": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
+        },
+        "estimatedSpeed": {
+            "typeRef": "#/domains/BroadbandSignup/types/Anything"
         }
     },
     "types": {
