@@ -3587,16 +3587,16 @@
           "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "landlineOptions": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "installation": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "selectedTvSetupDate": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "selectedBroadbandSetupDate": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         }
       },
       "outputs": {
@@ -3607,34 +3607,34 @@
           "typeRef": "#/domains/BroadbandSignup/types/Packages"
         },
         "availableAddresses": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "availableTvSetupDates": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "availableBroadbandSetupDates": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "availablePhonePackages": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "estimatedPriceBreakdown": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "monthlyCosts": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "oneOffCosts": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "upfrontPayment": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "totalOneOffPrice": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "monthlyPayments": {
-          "typeRef": "#/domains/BroadbandSignup/types/Object"
+          "typeRef": "#/domains/BroadbandSignup/types/Anything"
         }
       },
       "types": {
@@ -3827,8 +3827,18 @@
           "minLength": 4,
           "example": "RM108DE"
         },
-        "Object": {
-          "type": "object"
+        "Anything": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array"
+            },
+            {
+              "type": "object"
+            }
+          ]
         }
       },
       "errors": [],
