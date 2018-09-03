@@ -38711,8 +38711,8 @@ module.exports={
         "property": {
             "typeRef": "#/domains/BroadbandSignup/types/Property"
         },
-        "selectedTvPackage": {
-            "typeRef": "#/domains/BroadbandSignup/types/Package"
+        "selectedTvPackages": {
+            "typeRef": "#/domains/BroadbandSignup/types/Packages"
         },
         "selectedBroadbandPackage": {
             "typeRef": "#/domains/BroadbandSignup/types/Package"
