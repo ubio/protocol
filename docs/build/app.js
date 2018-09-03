@@ -38715,7 +38715,7 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/Packages"
         },
         "selectedBroadbandPackage": {
-            "typeRef": "#/domains/BroadbandSignup/types/Package"
+            "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage"
         },
         "selectedPhonePackage": {
             "typeRef": "#/domains/BroadbandSignup/types/Package"
@@ -38876,6 +38876,16 @@ module.exports={
                 "address"
             ],
             "additionalProperties": false
+        },
+        "SelectedPackage": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignup/types/Package"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "Packages": {
             "type": "array",
