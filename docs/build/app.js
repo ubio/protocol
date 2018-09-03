@@ -38954,6 +38954,7 @@ module.exports={
                 "sortCode": {
                     "type": "string",
                     "description": "Bank sort code",
+                    "pattern": "\\d{2}-?\\d{2}-?\\d{2}",
                     "example": "56-00-29"
                 },
                 "accountNumber": {
@@ -42425,6 +42426,7 @@ module.exports={
                 "sortCode": {
                     "type": "string",
                     "description": "Bank sort code",
+                    "pattern": "\\d{2}-?\\d{2}-?\\d{2}",
                     "example": "56-00-29"
                 },
                 "accountNumber": {
