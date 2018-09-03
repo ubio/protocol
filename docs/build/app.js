@@ -39058,6 +39058,12 @@ module.exports={
         }
     },
     "outputs": {
+        "availableOutboundTrips": {
+            "typeRef": "#/domains/CoachBooking/types/Trips"
+        },
+        "availableInboundTrips": {
+            "typeRef": "#/domains/CoachBooking/types/Trips"
+        },
         "estimatedPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Price shown by the website prior to requiring passenger information.<br/>This is likely not the final price, as flight ancilliaries may be added as requested, or additional credit card charges may be applied."
@@ -39139,6 +39145,12 @@ module.exports={
                 "terminalName"
             ],
             "additionalProperties": false
+        },
+        "Trips": {
+            "type": "array",
+            "description": "An array of trips.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/CoachBooking/types/Trip" }
         },
         "Trip": {
             "type": "object",
