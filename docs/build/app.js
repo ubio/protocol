@@ -38740,7 +38740,7 @@ module.exports={
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "landlineOptions": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+            "typeRef": "#/domains/BroadbandSignup/types/LandlineOptions"
         },
         "installation": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
@@ -38875,6 +38875,27 @@ module.exports={
                 "address"
             ],
             "additionalProperties": false
+        },
+        "LandlineOptions": {
+            "type": "object",
+            "description": "Owner details in relation to the address.",
+            "pii": true,
+            "properties": {
+                "justMoved": {
+                    "type": "boolean"
+                },
+                "sharedProperty": {
+                    "type": "boolean"
+                },
+                "restartLine": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "justMoved",
+                "sharedProperty",
+                "restartLine"
+            ]
         },
         "SelectedPackages": {
             "oneOf": [
