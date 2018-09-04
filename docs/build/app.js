@@ -38746,10 +38746,10 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/Installation"
         },
         "selectedTvSetupDate": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+            "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
         },
         "selectedBroadbandSetupDate": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+            "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
         }
     },
     "outputs": {
@@ -39075,6 +39075,21 @@ module.exports={
                 "accountNumber",
                 "accountHolder",
                 "accountHolderAddress"
+            ],
+            "additionalProperties": false
+        },
+        "SetupDate": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2019-01-01"
+                }
+            },
+            "required": [
+                "date"
             ],
             "additionalProperties": false
         },
