@@ -38911,9 +38911,7 @@ module.exports={
                 }
             },
             "required": [
-                "name",
-                "description",
-                "price"
+                "name"
             ],
             "additionalProperties": false
         },
