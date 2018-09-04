@@ -38929,8 +38929,7 @@ module.exports={
             "required": [
                 "propertyType",
                 "accessRestrictions",
-                "parkingRestrictions",
-                "buildingType"
+                "parkingRestrictions"
             ],
             "additionalProperties": false
         },
@@ -38954,8 +38953,7 @@ module.exports={
             "required": [
                 "propertyType",
                 "accessRestrictions",
-                "parkingRestrictions",
-                "buildingType"
+                "parkingRestrictions"
             ],
             "additionalProperties": false
         },

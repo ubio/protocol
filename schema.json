@@ -3800,8 +3800,7 @@
           "required": [
             "propertyType",
             "accessRestrictions",
-            "parkingRestrictions",
-            "buildingType"
+            "parkingRestrictions"
           ],
           "additionalProperties": false
         },
@@ -3825,8 +3824,7 @@
           "required": [
             "propertyType",
             "accessRestrictions",
-            "parkingRestrictions",
-            "buildingType"
+            "parkingRestrictions"
           ],
           "additionalProperties": false
         },
