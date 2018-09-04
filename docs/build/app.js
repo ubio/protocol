@@ -38712,7 +38712,7 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/Property"
         },
         "selectedTvPackages": {
-            "typeRef": "#/domains/BroadbandSignup/types/Packages"
+            "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage"
         },
         "selectedBroadbandPackage": {
             "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage"
