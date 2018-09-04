@@ -38763,7 +38763,7 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/InstallationOptions"
         },
         "availableAddresses": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableAddresses"
         },
         "availableTvSetupDates": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
@@ -39098,6 +39098,12 @@ module.exports={
             "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
             "minLength": 4,
             "example": "RM108DE"
+        },
+        "AvailableAddresses": {
+            "type": "array",
+            "description": "A list of addresses.",
+            "minItems": 1,
+            "items": { "type": "string" }
         },
         "Anything": {
             "oneOf": [
