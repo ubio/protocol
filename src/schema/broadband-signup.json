@@ -126,8 +126,7 @@
                 }
             },
             "required": [
-                "postcode",
-                "billpayer"
+                "postcode"
             ],
             "additionalProperties": false
         },

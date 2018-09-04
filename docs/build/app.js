@@ -38822,8 +38822,7 @@ module.exports={
                 }
             },
             "required": [
-                "postcode",
-                "billpayer"
+                "postcode"
             ],
             "additionalProperties": false
         },
