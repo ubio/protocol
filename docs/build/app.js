@@ -38908,6 +38908,9 @@ module.exports={
                 },
                 "image": {
                     "typeRef": "#/domains/Generic/types/Link"
+                },
+                "estimatedSpeed": {
+                    "type": "string"
                 }
             },
             "required": [
