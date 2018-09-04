@@ -38743,7 +38743,7 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/LandlineOptions"
         },
         "installation": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+            "typeRef": "#/domains/BroadbandSignup/types/Installation"
         },
         "selectedTvSetupDate": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
@@ -38758,6 +38758,9 @@ module.exports={
         },
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/Packages"
+        },
+        "installationOptions": {
+            "typeRef": "#/domains/BroadbandSignup/types/InstallationOptions"
         },
         "availableAddresses": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
@@ -38895,7 +38898,66 @@ module.exports={
                 "justMoved",
                 "sharedProperty",
                 "restartLine"
-            ]
+            ],
+            "additionalProperties": false
+        },
+        "InstallationOptions": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "propertyType": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" }
+                },
+                "accessRestrictions": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" }
+                },
+                "parkingRestrictions": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" }
+                },
+                "buildingType": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" }
+                }
+            },
+            "required": [
+                "propertyType",
+                "accessRestrictions",
+                "parkingRestrictions",
+                "buildingType"
+            ],
+            "additionalProperties": false
+        },
+        "Installation": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "propertyType": {
+                    "type": "string"
+                },
+                "accessRestrictions": {
+                    "type": "string"
+                },
+                "parkingRestrictions": {
+                    "type": "string"
+                },
+                "buildingType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "propertyType",
+                "accessRestrictions",
+                "parkingRestrictions",
+                "buildingType"
+            ],
+            "additionalProperties": false
         },
         "SelectedPackages": {
             "oneOf": [
