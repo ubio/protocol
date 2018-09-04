@@ -38759,6 +38759,9 @@ module.exports={
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/Packages"
         },
+        "availablePhonePackages": {
+            "typeRef": "#/domains/BroadbandSignup/types/Packages"
+        },
         "installationOptions": {
             "typeRef": "#/domains/BroadbandSignup/types/InstallationOptions"
         },
@@ -38770,9 +38773,6 @@ module.exports={
         },
         "availableBroadbandSetupDates": {
             "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
-        },
-        "availablePhonePackages": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
