@@ -38905,7 +38905,7 @@ module.exports={
             "type": "object",
             "pii": true,
             "properties": {
-                "propertyType": {
+                "propertyTypes": {
                     "type": "array",
                     "minItems": 1,
                     "items": { "type": "string" }
@@ -38920,7 +38920,7 @@ module.exports={
                     "minItems": 1,
                     "items": { "type": "string" }
                 },
-                "buildingType": {
+                "buildingTypes": {
                     "type": "array",
                     "minItems": 1,
                     "items": { "type": "string" }

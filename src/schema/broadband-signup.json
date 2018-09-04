@@ -209,7 +209,7 @@
             "type": "object",
             "pii": true,
             "properties": {
-                "propertyType": {
+                "propertyTypes": {
                     "type": "array",
                     "minItems": 1,
                     "items": { "type": "string" }
@@ -224,7 +224,7 @@
                     "minItems": 1,
                     "items": { "type": "string" }
                 },
-                "buildingType": {
+                "buildingTypes": {
                     "type": "array",
                     "minItems": 1,
                     "items": { "type": "string" }
