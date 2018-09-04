@@ -38766,10 +38766,10 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/AvailableAddresses"
         },
         "availableTvSetupDates": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
         },
         "availableBroadbandSetupDates": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
         },
         "availablePhonePackages": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
@@ -39092,6 +39092,12 @@ module.exports={
                 "date"
             ],
             "additionalProperties": false
+        },
+        "AvailableSetupDates": {
+            "type": "array",
+            "description": "A list of setup dates.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignup/types/SetupDate" }
         },
         "Postcode": {
             "type": "string",
