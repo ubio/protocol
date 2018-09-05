@@ -38798,6 +38798,9 @@ module.exports={
         "estimatedSpeed": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
+        "confirmation": {
+            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+        },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
