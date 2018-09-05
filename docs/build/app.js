@@ -38745,6 +38745,9 @@ module.exports={
         "installation": {
             "typeRef": "#/domains/BroadbandSignup/types/Installation"
         },
+        "monthlyPaymentMethod": {
+            "typeRef": "#/domains/BroadbandSignup/types/PaymentMethod"
+        },
         "selectedTvSetupDate": {
             "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
         },
@@ -39110,6 +39113,13 @@ module.exports={
             "description": "A list of addresses.",
             "minItems": 1,
             "items": { "type": "string" }
+        },
+        "PaymentMethod": {
+            "type": "string",
+            "enum": [
+                "card",
+                "directdebit"
+            ]
         },
         "Anything": {
             "oneOf": [

@@ -3608,6 +3608,9 @@
         "installation": {
           "typeRef": "#/domains/BroadbandSignup/types/Installation"
         },
+        "monthlyPaymentMethod": {
+          "typeRef": "#/domains/BroadbandSignup/types/PaymentMethod"
+        },
         "selectedTvSetupDate": {
           "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
         },
@@ -3991,6 +3994,13 @@
           "items": {
             "type": "string"
           }
+        },
+        "PaymentMethod": {
+          "type": "string",
+          "enum": [
+            "card",
+            "directdebit"
+          ]
         },
         "Anything": {
           "oneOf": [
