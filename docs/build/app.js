@@ -38936,7 +38936,6 @@ module.exports={
                 }
             },
             "required": [
-                "propertyType",
                 "accessRestrictions",
                 "parkingRestrictions"
             ],

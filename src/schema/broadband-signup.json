@@ -240,7 +240,6 @@
                 }
             },
             "required": [
-                "propertyType",
                 "accessRestrictions",
                 "parkingRestrictions"
             ],
