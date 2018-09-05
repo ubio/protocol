@@ -38804,6 +38804,10 @@ module.exports={
         "setupRequired": {
             "typeRef": "#/domains/BroadbandSignup/types/Boolean"
         },
+        "serviceTermsAndConditions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when T&Cs are presented."
+        },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
