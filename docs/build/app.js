@@ -42332,6 +42332,10 @@ module.exports={
         "insurerSpecificDocuments": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems",
             "description": "Dynamic list of documents and links insusrers add which may or not already be present in other outputs."
+        },
+        "availableDirectDebitPaymentDays": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailableDirectDebitPaymentDays",
+            "description": "List of available DD payment days."
         }
     },
     "types": {
@@ -42605,7 +42609,12 @@ module.exports={
                     "example": "26207729"
                 },
                 "accountHolder": { "$ref": "#/domains/Generic/types/Person" },
-                "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" }
+                "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" },
+                "selectedPaymentDay": {
+                    "type": "string",
+                    "description": "Preferred payment day, one of availableDirectDebitPaymentDays.",
+                    "example": "10th"
+                }
             },
             "required": [
                 "sortCode",
@@ -42614,6 +42623,11 @@ module.exports={
                 "accountHolderAddress"
             ],
             "additionalProperties": false
+        },
+        "AvailableDirectDebitPaymentDays": {
+            "type": "array",
+            "description": "Account details for direct debit.",
+            "items": { "type": "string" }
         }
     },
     "errors": [
