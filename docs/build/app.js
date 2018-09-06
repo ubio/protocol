@@ -42613,7 +42613,7 @@ module.exports={
                 "selectedPaymentDay": {
                     "type": "string",
                     "description": "Preferred payment day, one of availableDirectDebitPaymentDays.",
-                    "example": "10th"
+                    "example": "10"
                 }
             },
             "required": [
