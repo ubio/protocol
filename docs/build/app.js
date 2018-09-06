@@ -38781,7 +38781,7 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "monthlyCosts": {
-            "typeRef": "#/domains/BroadbandSignup/types/Anything"
+            "typeRef": "#/domains/BroadbandSignup/types/StructuredText"
         },
         "oneOffCosts": {
             "typeRef": "#/domains/Generic/types/StructuredText"
@@ -39135,7 +39135,11 @@ module.exports={
             ]
         },
         "Boolean": {
-            "type": "boolean"
+            "type": "boolean",
+            "enum": [
+                true,
+                false
+            ]
         },
         "Anything": {
             "oneOf": [
