@@ -41194,6 +41194,9 @@ module.exports={
                     "$ref": "#/domains/Generic/types/NamedText"
                 },
                 {
+                    "$ref": "#/domains/Generic/types/NamedPrice"
+                },
+                {
                     "$ref": "#/domains/Generic/types/HTML"
                 },
                 {
@@ -41266,7 +41269,6 @@ module.exports={
         },
         "NamedText": {
             "type": "object",
-            "description": "A document accessible on the target website.",
             "properties": {
                 "type": {
                     "enum": [
@@ -41289,9 +41291,29 @@ module.exports={
             ],
             "additionalProperties": false
         },
+        "NamedPrice": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "NamedPrice"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the price."
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "type",
+                "name",
+                "price"
+            ],
+            "additionalProperties": false
+        },
         "Text": {
             "type": "object",
-            "description": "A document accessible on the target website.",
             "properties": {
                 "type": {
                     "enum": [

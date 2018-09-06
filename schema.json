@@ -819,6 +819,9 @@
               "$ref": "#/domains/Generic/types/NamedText"
             },
             {
+              "$ref": "#/domains/Generic/types/NamedPrice"
+            },
+            {
               "$ref": "#/domains/Generic/types/HTML"
             },
             {
@@ -889,7 +892,6 @@
         },
         "NamedText": {
           "type": "object",
-          "description": "A document accessible on the target website.",
           "properties": {
             "type": {
               "enum": [
@@ -912,9 +914,31 @@
           ],
           "additionalProperties": false
         },
+        "NamedPrice": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "NamedPrice"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "description": "The name or title of the price."
+            },
+            "price": {
+              "$ref": "#/domains/Generic/types/Price"
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "price"
+          ],
+          "additionalProperties": false
+        },
         "Text": {
           "type": "object",
-          "description": "A document accessible on the target website.",
           "properties": {
             "type": {
               "enum": [
