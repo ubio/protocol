@@ -38781,7 +38781,7 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "monthlyCosts": {
-            "typeRef": "#/domains/BroadbandSignup/types/StructuredText"
+            "typeRef": "#/domains/Generic/types/StructuredText"
         },
         "oneOffCosts": {
             "typeRef": "#/domains/Generic/types/StructuredText"
