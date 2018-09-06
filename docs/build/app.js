@@ -38784,13 +38784,13 @@ module.exports={
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "oneOffCosts": {
-            "typeRef": "#/domains/Generic/types/Anything"
+            "typeRef": "#/domains/Generic/types/StructuredText"
         },
         "equipmentCosts": {
-            "typeRef": "#/domains/Generic/types/Anything"
+            "typeRef": "#/domains/Generic/types/StructuredText"
         },
         "extrasCosts": {
-            "typeRef": "#/domains/Generic/types/Anything"
+            "typeRef": "#/domains/Generic/types/StructuredText"
         },
         "upfrontPayment": {
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
