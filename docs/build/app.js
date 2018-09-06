@@ -38884,8 +38884,6 @@ module.exports={
                         }
                     },
                     "required": [
-                        "houseName",
-                        "streetNumber",
                         "streetName",
                         "postcode",
                         "city",

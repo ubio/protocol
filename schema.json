@@ -3791,8 +3791,6 @@
                 }
               },
               "required": [
-                "houseName",
-                "streetNumber",
                 "streetName",
                 "postcode",
                 "city",
