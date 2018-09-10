@@ -39156,6 +39156,11 @@ module.exports={
         }
     },
     "errors": [
+        {
+            "code": "AlreadyACustomer",
+            "category": "client",
+            "description": "The user being signed up is already a customer of this service."
+        }
     ],
     "attributes": {
     }
