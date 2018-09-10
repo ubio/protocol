@@ -39516,7 +39516,6 @@ module.exports={
         },
         "options": {
             "typeRef": "#/domains/EventBooking/types/Options",
-            "default": {},
             "initial": true
         },
         "selectedRefund": {
@@ -39524,6 +39523,10 @@ module.exports={
         },
         "selectedSeats": {
             "typeRef": "#/domains/EventBooking/types/SelectedSeats"
+        },
+        "selectedMarketingContactOptions": {
+            "typeRef": "#/domains/EventBooking/types/SelectedItem",
+            "description": "List of marketing contact options to be selected."
         }
     },
     "outputs": {
@@ -39537,6 +39540,10 @@ module.exports={
         },
         "bookingConfirmation": {
             "typeRef": "#/domains/EventBooking/types/BookingConfirmation"
+        },
+        "availableMarketingContactOptions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "List of marketing contact options provided."
         },
         "availableDeliveries": {
             "typeRef": "#/domains/EventBooking/types/AvailableDeliveries",
@@ -39595,6 +39602,10 @@ module.exports={
                 "refund": {
                     "type": "boolean",
                     "default": false
+                },
+                "marketingContact": {
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
@@ -39647,6 +39658,16 @@ module.exports={
                 "type": "string",
                 "example": "A10"
             }
+        },
+        "SelectedItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/StructuredTextItems"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "Tickets": {
             "type": "object",
