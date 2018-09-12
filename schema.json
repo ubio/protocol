@@ -4116,10 +4116,17 @@
       "inputs": {
         "url": {
           "typeRef": "#/domains/Generic/types/URL",
+          "initial": true,
           "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
         "options": {
-          "typeRef": "#/domains/HotelBooking/types/Options"
+          "typeRef": "#/domains/HotelBooking/types/Options",
+          "initial": true,
+          "description": "A set of options that define the automation's behaviour."
+        },
+        "selectedRooms": {
+          "typeRef": "#/domains/HotelBooking/types/Rooms",
+          "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed."
         }
       },
       "outputs": {
