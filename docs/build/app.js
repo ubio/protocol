@@ -39720,6 +39720,9 @@ module.exports={
     "description": "Internal domain for generating FlightBooking inputs.",
     "private": true,
     "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL"
+        },
         "options": {
             "typeRef": "#/domains/FlightBooking/types/Options"
         },
