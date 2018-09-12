@@ -4128,6 +4128,18 @@
           "typeRef": "#/domains/HotelBooking/types/Rooms",
           "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed."
         },
+        "guestAges": {
+          "typeRef": "#/domains/Generic/types/Ages",
+          "description": "List of guest ages."
+        },
+        "mainGuest": {
+          "typeRef": "#/domains/Generic/types/Person",
+          "description": "Personal details about the main guest."
+        },
+        "account": {
+          "typeRef": "#/domains/Generic/types/Account",
+          "description": "Account details, includes contact information."
+        },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
           "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
