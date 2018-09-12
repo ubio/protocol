@@ -41559,12 +41559,24 @@ module.exports={
         "selectedRooms": {
             "typeRef": "#/domains/HotelBooking/types/Rooms",
             "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed."
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         }
     },
     "outputs": {
         "availableRooms": {
             "typeRef": "#/domains/HotelBooking/types/Rooms",
             "description": "List of rooms found on the supplier's website."
+        },
+        "priceBreakdown": {
+            "typeRef": "#/domains/HotelBooking/types/PriceBreakdown",
+            "description": "Total price breakdown."
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
         }
     },
     "types": {
@@ -41644,6 +41656,12 @@ module.exports={
                 "price"
             ],
             "additionalProperties": false
+        },
+        "PriceBreakdown": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/Generic/types/NamedPrice"
+            }
         }
     },
     "errors": [
