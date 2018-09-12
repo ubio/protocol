@@ -44,21 +44,55 @@
                     "example": "Standard Single Room"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price"
+                    "typeRef": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 20600,
+                        "currency": "gbp"
+                    }
                 },
                 "cancellationSummary": {
                     "type": "string",
                     "example": "Free cancellation"
                 },
                 "cancellationDetails": {
-                    "typeRef": "#/domains/Generic/types/StructuredText"
+                    "typeRef": "#/domains/Generic/types/StructuredText",
+                    "example": {
+                        "type": "Text",
+                        "text": "Free cancellation up to 24h before. Cancellation not allowed afterwards."
+                    }
                 },
                 "boarding": {
                     "type": "string",
                     "example": "breakfast incl."
                 },
                 "amenities": {
-                    "typeRef": "#/domains/Generic/types/StructuredText"
+                    "typeRef": "#/domains/Generic/types/StructuredText",
+                    "example": {
+                        "type": "StructuredText",
+                        "name": "Options",
+                        "contents": [
+                            {
+                                "type": "Text",
+                                "text": "FREE cancellation"
+                            },
+                            {
+                                "type": "Text",
+                                "text": "Book now, pay later"
+                            },
+                            {
+                                "type": "Text",
+                                "text": "FREE internet"
+                            },
+                            {
+                                "type": "Text",
+                                "text": "full board included"
+                            },
+                            {
+                                "type": "Text",
+                                "text": "last room"
+                            }
+                        ]
+                    }
                 }
             },
             "required": [
