@@ -41543,7 +41543,7 @@ module.exports={
 
 },{}],168:[function(require,module,exports){
 module.exports={
-    "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+    "description": "Allows automating hotel booking on individual suppliers and OTAs.",
     "private": false,
     "inputs": {
         "url": {
