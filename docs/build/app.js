@@ -38314,7 +38314,7 @@ module.exports = {
     AttributeDef
 };
 
-},{"./example":158,"./util":173}],157:[function(require,module,exports){
+},{"./example":158,"./util":174}],157:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef, AttributeDef } = require('./defs');
@@ -38515,7 +38515,7 @@ module.exports = {
     Domain
 };
 
-},{"./domain":157,"./protocol":160,"./provider":161,"./schema":168}],160:[function(require,module,exports){
+},{"./domain":157,"./protocol":160,"./provider":161,"./schema":169}],160:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -38590,7 +38590,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":157,"./validator":174}],161:[function(require,module,exports){
+},{"./domain":157,"./validator":175}],161:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -41542,6 +41542,76 @@ module.exports={
 }
 
 },{}],168:[function(require,module,exports){
+module.exports={
+    "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "options": {
+            "typeRef": "#/domains/HotelBooking/types/Options"
+        }
+    },
+    "outputs": {
+        "availableRooms": {
+            "typeRef": "#/domains/HotelBooking/types/Rooms",
+            "description": "List of rooms found on the supplier's website."
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "default": {}
+        },
+        "Rooms": {
+            "type": "array",
+            "description": "A list of rooms.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/HotelBooking/types/Room"
+            }
+        },
+        "Room": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "Standard Single Room"
+                },
+                "price": {
+                    "typeRef": "#/domains/Generic/types/Price"
+                },
+                "cancellationSummary": {
+                    "type": "string",
+                    "example": "Free cancellation"
+                },
+                "cancellationDetails": {
+                    "typeRef": "#/domains/Generic/types/StructuredText"
+                },
+                "boarding": {
+                    "type": "string",
+                    "example": "breakfast incl."
+                },
+                "amenities": {
+                    "typeRef": "#/domains/Generic/types/StructuredText"
+                }
+            },
+            "required": [
+                "type",
+                "price"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+    ],
+    "attributes": {
+    }
+}
+
+},{}],169:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -41555,12 +41625,13 @@ module.exports = {
         LoanApplication: require('./loan-application'),
         EventBooking: require('./event-booking'),
         BroadbandSignup: require('./broadband-signup'),
+        HotelBooking: require('./hotel-booking'),
         Internal: require('./internal'),
         FlightBookingExtraction: require('./flight-booking-extraction.json')
     }
 };
 
-},{"./broadband-signup":162,"./coach-booking":163,"./event-booking":164,"./flight-booking":166,"./flight-booking-extraction.json":165,"./generic":167,"./internal":169,"./loan-application":170,"./motor-insurance":171,"./vacation-rental":172}],169:[function(require,module,exports){
+},{"./broadband-signup":162,"./coach-booking":163,"./event-booking":164,"./flight-booking":166,"./flight-booking-extraction.json":165,"./generic":167,"./hotel-booking":168,"./internal":170,"./loan-application":171,"./motor-insurance":172,"./vacation-rental":173}],170:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -41654,7 +41725,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],170:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -42173,7 +42244,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -42726,7 +42797,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -42906,7 +42977,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],173:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -42917,7 +42988,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],174:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');

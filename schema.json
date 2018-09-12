@@ -4110,6 +4110,72 @@
       ],
       "attributes": {}
     },
+    "HotelBooking": {
+      "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+      "private": false,
+      "inputs": {
+        "url": {
+          "typeRef": "#/domains/Generic/types/URL",
+          "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "options": {
+          "typeRef": "#/domains/HotelBooking/types/Options"
+        }
+      },
+      "outputs": {
+        "availableRooms": {
+          "typeRef": "#/domains/HotelBooking/types/Rooms",
+          "description": "List of rooms found on the supplier's website."
+        }
+      },
+      "types": {
+        "Options": {
+          "type": "object",
+          "default": {}
+        },
+        "Rooms": {
+          "type": "array",
+          "description": "A list of rooms.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/domains/HotelBooking/types/Room"
+          }
+        },
+        "Room": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "example": "Standard Single Room"
+            },
+            "price": {
+              "typeRef": "#/domains/Generic/types/Price"
+            },
+            "cancellationSummary": {
+              "type": "string",
+              "example": "Free cancellation"
+            },
+            "cancellationDetails": {
+              "typeRef": "#/domains/Generic/types/StructuredText"
+            },
+            "boarding": {
+              "type": "string",
+              "example": "breakfast incl."
+            },
+            "amenities": {
+              "typeRef": "#/domains/Generic/types/StructuredText"
+            }
+          },
+          "required": [
+            "type",
+            "price"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "errors": [],
+      "attributes": {}
+    },
     "Internal": {
       "description": "Internal domain for testing platform features.",
       "private": true,
