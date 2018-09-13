@@ -41595,6 +41595,9 @@ module.exports={
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/HotelBooking/types/BookingConfirmation"
         }
     },
     "types": {
@@ -41680,6 +41683,30 @@ module.exports={
             "items": {
                 "$ref": "#/domains/Generic/types/NamedPrice"
             }
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
         }
     },
     "errors": [
