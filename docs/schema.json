@@ -172,7 +172,8 @@
               "type": "string",
               "description": "Document type.",
               "enum": [
-                "passport"
+                "passport",
+                "national-id"
               ]
             },
             "number": {

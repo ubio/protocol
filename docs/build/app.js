@@ -40591,7 +40591,10 @@ module.exports={
                 "type": {
                     "type": "string",
                     "description": "Document type.",
-                    "enum": ["passport"]
+                    "enum": [
+                        "passport",
+                        "national-id"
+                    ]
                 },
                 "number": {
                     "type": "string",
