@@ -41575,6 +41575,9 @@ module.exports={
             "typeRef": "#/domains/Generic/types/Account",
             "description": "Account details, includes contact information."
         },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
