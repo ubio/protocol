@@ -38748,6 +38748,10 @@ module.exports={
         "monthlyPaymentMethod": {
             "typeRef": "#/domains/BroadbandSignup/types/PaymentMethod"
         },
+        "selectedMarketingContactOptions": {
+            "typeRef": "#/domains/BroadbandSignup/types/SelectedItem",
+            "description": "List of marketing contact options to be selected."
+        },
         "selectedTvSetupDate": {
             "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
         },
@@ -38756,6 +38760,10 @@ module.exports={
         }
     },
     "outputs": {
+        "availableMarketingContactOptions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "List of marketing contact options provided by the insurer."
+        },
         "availableTvPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/Packages"
         },
@@ -39139,6 +39147,16 @@ module.exports={
             "enum": [
                 true,
                 false
+            ]
+        },
+        "SelectedItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/StructuredTextItems"
+                },
+                {
+                    "type": "null"
+                }
             ]
         },
         "Anything": {
