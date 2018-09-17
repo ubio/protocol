@@ -41592,6 +41592,10 @@ module.exports={
             "typeRef": "#/domains/HotelBooking/types/MainGuest",
             "description": "Personal details about the main guest."
         },
+        "guests": {
+            "typeRef": "#/domains/HotelBooking/types/Guests",
+            "description": "Personal details about the guests."
+        },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
@@ -41648,16 +41652,30 @@ module.exports={
                         "currency": "gbp"
                     }
                 },
-                "cancellationSummary": {
-                    "type": "string",
-                    "example": "Free cancellation"
-                },
-                "cancellationDetails": {
-                    "typeRef": "#/domains/Generic/types/StructuredText",
-                    "example": {
-                        "type": "Text",
-                        "text": "Free cancellation up to 24h before. Cancellation not allowed afterwards."
-                    }
+                "cancellation": {
+                    "type": "object",
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "enum": [
+                                "full-refundable",
+                                "flexible-refundable",
+                                "non-refundable",
+                                "unknown"
+                            ]
+                        },
+                        "details": {
+                            "typeRef": "#/domains/Generic/types/StructuredText",
+                            "example": {
+                                "type": "Text",
+                                "text": "Free cancellation up to 24h before. Cancellation not allowed afterwards."
+                            }
+                        }
+                    },
+                    "required": [
+                        "code"
+                    ],
+                    "additionalProperties": false
                 },
                 "boarding": {
                     "type": "string",
@@ -41792,6 +41810,14 @@ module.exports={
                 "email"
             ],
             "additionalProperties": false
+        },
+        "Guests": {
+            "type": "array",
+            "description": "A list of guests.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/Generic/types/Person"
+            }
         },
         "BookingConfirmation": {
             "type": "object",
