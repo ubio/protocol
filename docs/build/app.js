@@ -41763,10 +41763,10 @@ module.exports={
             "type": "object",
             "properties": {
                 "person": {
-                    "typeRef": "#/domains/Generic/types/Person"
+                    "$ref": "#/domains/Generic/types/Person"
                 },
                 "contact": {
-                    "typeRef": "#/domains/HotelBooking/types/GuestContact"
+                    "$ref": "#/domains/HotelBooking/types/GuestContact"
                 }
             },
             "required": [
