@@ -41684,7 +41684,8 @@ module.exports={
                         "breakfast",
                         "half",
                         "full",
-                        "all-inclusive"
+                        "all-inclusive",
+                        "unknown"
                     ]
                 },
                 "amenities": {
@@ -41719,7 +41720,9 @@ module.exports={
             },
             "required": [
                 "type",
-                "price"
+                "price",
+                "cancellation",
+                "boarding"
             ],
             "additionalProperties": false
         },

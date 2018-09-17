@@ -4247,7 +4247,8 @@
                 "breakfast",
                 "half",
                 "full",
-                "all-inclusive"
+                "all-inclusive",
+                "unknown"
               ]
             },
             "amenities": {
@@ -4282,7 +4283,9 @@
           },
           "required": [
             "type",
-            "price"
+            "price",
+            "cancellation",
+            "boarding"
           ],
           "additionalProperties": false
         },
