@@ -41609,6 +41609,10 @@ module.exports={
             "typeRef": "#/domains/HotelBooking/types/Rooms",
             "description": "List of rooms found on the supplier's website."
         },
+        "availablePaymentMethods": {
+            "typeRef": "#/domains/HotelBooking/types/PaymentMethods",
+            "description": "List of payment methods found on the supplier's website."
+        },
         "priceBreakdown": {
             "typeRef": "#/domains/HotelBooking/types/PriceBreakdown",
             "description": "Total price breakdown."
@@ -41704,6 +41708,22 @@ module.exports={
             "items": {
                 "$ref": "#/domains/Generic/types/NamedPrice"
             }
+        },
+        "PaymentMethods": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/HotelBooking/types/PaymentMethod"
+            }
+        },
+        "PaymentMethod": {
+            "type": "string",
+            "enume": [
+                "card",
+                "paypal",
+                "direct-debit",
+                "bank-transfer",
+                "no-prepayment"
+            ]
         },
         "BookingConfirmation": {
             "type": "object",
