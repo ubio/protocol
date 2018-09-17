@@ -41679,7 +41679,13 @@ module.exports={
                 },
                 "boarding": {
                     "type": "string",
-                    "example": "breakfast incl."
+                    "enum": [
+                        "none",
+                        "breakfast",
+                        "half",
+                        "full",
+                        "all-inclusive"
+                    ]
                 },
                 "amenities": {
                     "typeRef": "#/domains/Generic/types/StructuredText",
