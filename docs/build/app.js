@@ -41779,10 +41779,12 @@ module.exports={
             "type": "object",
             "properties": {
                 "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "+447474447447"
                 },
                 "email": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "test@example.com"
                 }
             },
             "required": [
