@@ -41589,12 +41589,8 @@ module.exports={
             "description": "List of guest ages."
         },
         "mainGuest": {
-            "typeRef": "#/domains/Generic/types/Person",
+            "typeRef": "#/domains/HotelBooking/types/MainGuest",
             "description": "Personal details about the main guest."
-        },
-        "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "description": "Account details, includes contact information."
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
@@ -41706,8 +41702,46 @@ module.exports={
         "PriceBreakdown": {
             "type": "array",
             "items": {
-                "$ref": "#/domains/Generic/types/NamedPrice"
+                "$ref": "#/domains/HotelBooking/types/PriceLineItem"
             }
+        },
+        "PriceLineItem": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "net-rate",
+                        "city-tax",
+                        "vat",
+                        "hotel-fee",
+                        "resort-fee",
+                        "service-fee",
+                        "booking-fee",
+                        "total-now",
+                        "total-later",
+                        "total-overall",
+                        "others"
+                    ]
+                },
+                "paidAtHotel": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "price": {
+                    "typeRef": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 20600,
+                        "currency": "gbp"
+                    }
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "additionalProperties": false
         },
         "PaymentMethods": {
             "type": "array",
@@ -41724,6 +41758,38 @@ module.exports={
                 "bank-transfer",
                 "no-prepayment"
             ]
+        },
+        "MainGuest": {
+            "type": "object",
+            "properties": {
+                "person": {
+                    "typeRef": "#/domains/Generic/types/Person"
+                },
+                "contact": {
+                    "typeRef": "#/domains/HotelBooking/types/GuestContact"
+                }
+            },
+            "required": [
+                "person",
+                "contact"
+            ],
+            "additionalProperties": false
+        },
+        "GuestContact": {
+            "type": "object",
+            "properties": {
+                "phone": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "phone",
+                "email"
+            ],
+            "additionalProperties": false
         },
         "BookingConfirmation": {
             "type": "object",
