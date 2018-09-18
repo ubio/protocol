@@ -38917,6 +38917,9 @@ module.exports={
                 },
                 "restartLine": {
                     "type": "boolean"
+                },
+                "landline": {
+                    "type": "string"
                 }
             },
             "required": [
