@@ -34,4 +34,7 @@ async function copyFiles(src, dest) {
 }
 
 copyFiles(join(__dirname, 'docs'), join(__dirname, 'public'))
-    .catch(error => console.error(error)); // eslint-disable-line no-console
+    .catch(error => {
+        console.error(error); // eslint-disable-line no-console
+        process.exit(1);
+    });
