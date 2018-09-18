@@ -41652,6 +41652,13 @@ module.exports={
                         "currency": "gbp"
                     }
                 },
+                "strikePrice": {
+                    "typeRef": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 30600,
+                        "currency": "gbp"
+                    }
+                },
                 "cancellation": {
                     "type": "object",
                     "properties": {
