@@ -40698,7 +40698,7 @@ module.exports={
                 "countryCode": { "$ref": "#/domains/Generic/types/CountryCode" },
                 "number": {
                     "type": "string",
-                    "minLength": 9,
+                    "minLength": 8,
                     "description": "Mobile phone number (numbers only, excluding country code).",
                     "example": "123456789"
                 }
