@@ -41695,34 +41695,14 @@ module.exports={
                         "unknown"
                     ]
                 },
-                "amenities": {
-                    "typeRef": "#/domains/Generic/types/StructuredText",
-                    "example": {
-                        "type": "StructuredText",
-                        "name": "Options",
-                        "contents": [
-                            {
-                                "type": "Text",
-                                "text": "FREE cancellation"
-                            },
-                            {
-                                "type": "Text",
-                                "text": "Book now, pay later"
-                            },
-                            {
-                                "type": "Text",
-                                "text": "FREE internet"
-                            },
-                            {
-                                "type": "Text",
-                                "text": "full board included"
-                            },
-                            {
-                                "type": "Text",
-                                "text": "last room"
-                            }
-                        ]
+                "valueAdditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/HotelBooking/types/ValueAddition"
                     }
+                },
+                "amenities": {
+                    "typeRef": "#/domains/Generic/types/StructuredText"
                 }
             },
             "required": [
@@ -41732,6 +41712,17 @@ module.exports={
                 "boarding"
             ],
             "additionalProperties": false
+        },
+        "ValueAddition": {
+            "type": "string",
+            "enum": [
+                "free-breakfast",
+                "free-half-board",
+                "free-full-board",
+                "free-all-inclusive",
+                "free-parking",
+                "free-internet"
+            ]
         },
         "PriceBreakdown": {
             "type": "array",
