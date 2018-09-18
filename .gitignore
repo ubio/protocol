@@ -1,6 +1,7 @@
 node_modules/
+public
 *.log
-package-lock.json
+yarn.lock
 .eslintcache
 .DS_Store
 
