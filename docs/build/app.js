@@ -41712,17 +41712,6 @@ module.exports={
                     ],
                     "additionalProperties": false
                 },
-                "boarding": {
-                    "type": "string",
-                    "enum": [
-                        "none",
-                        "breakfast",
-                        "half",
-                        "full",
-                        "all-inclusive",
-                        "unknown"
-                    ]
-                },
                 "valueAdditions": {
                     "type": "array",
                     "items": {
@@ -41737,7 +41726,7 @@ module.exports={
                 "type",
                 "price",
                 "cancellation",
-                "boarding"
+                "valueAdditions"
             ],
             "additionalProperties": false
         },
