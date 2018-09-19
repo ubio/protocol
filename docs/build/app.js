@@ -41617,7 +41617,7 @@ module.exports={
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
-        "selctedPaymentMethods": {
+        "selectedPaymentMethod": {
             "typeRef": "#/domains/HotelBooking/types/PaymentMethod"
         },
         "panToken": {
