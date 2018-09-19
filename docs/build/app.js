@@ -38925,7 +38925,11 @@ module.exports={
                     "type": "boolean"
                 },
                 "landline": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 9,
+                    "description": "Landline number (numbers only, excluding country code).",
+                    "example": "123456789",
+                    "pattern": "^0[0-9]{8,10}"
                 }
             },
             "required": [
