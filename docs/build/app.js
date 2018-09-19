@@ -38757,6 +38757,9 @@ module.exports={
         },
         "selectedBroadbandSetupDate": {
             "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
+        },
+        "selectedActiveLandlineOption": {
+            "typeRef": "#/domains/BroadbandSignup/types/String"
         }
     },
     "outputs": {
@@ -38817,6 +38820,9 @@ module.exports={
         },
         "setupRequired": {
             "typeRef": "#/domains/BroadbandSignup/types/Boolean"
+        },
+        "availableActiveLandlineOptions": {
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableActiveLandlineOptions"
         },
         "serviceTermsAndConditions": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
@@ -39161,6 +39167,15 @@ module.exports={
                     "type": "null"
                 }
             ]
+        },
+        "AvailableActiveLandlineOptions": {
+            "type": "array",
+            "description": "A list of options.",
+            "minItems": 1,
+            "items": { "type": "string" }
+        },
+        "String": {
+            "type": "string"
         },
         "Anything": {
             "oneOf": [
