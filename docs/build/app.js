@@ -41779,7 +41779,9 @@ module.exports={
                 }
             },
             "required": [
-                "type"
+                "type",
+                "description",
+                "price"
             ],
             "additionalProperties": false
         },
