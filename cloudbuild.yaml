@@ -13,4 +13,4 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-
+images: ['gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
