@@ -42079,7 +42079,7 @@ module.exports={
             "type": "object",
             "properties": {
                 "person": {
-                    "$ref": "#/domains/Generic/types/Person"
+                    "$ref": "#/domains/HotelBooking/types/Person"
                 },
                 "contact": {
                     "$ref": "#/domains/HotelBooking/types/GuestContact"
@@ -42114,8 +42114,37 @@ module.exports={
             "description": "A list of guests.",
             "minItems": 1,
             "items": {
-                "$ref": "#/domains/Generic/types/Person"
+                "$ref": "#/domains/HotelBooking/types/Person"
             }
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
+            "pii": true,
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
         },
         "BookingConfirmation": {
             "type": "object",
