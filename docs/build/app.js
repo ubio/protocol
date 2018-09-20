@@ -38314,7 +38314,7 @@ module.exports = {
     AttributeDef
 };
 
-},{"./example":158,"./util":174}],157:[function(require,module,exports){
+},{"./example":158,"./util":175}],157:[function(require,module,exports){
 'use strict';
 
 const { InputDef, OutputDef, TypeDef, AttributeDef } = require('./defs');
@@ -38515,7 +38515,7 @@ module.exports = {
     Domain
 };
 
-},{"./domain":157,"./protocol":160,"./provider":161,"./schema":169}],160:[function(require,module,exports){
+},{"./domain":157,"./protocol":160,"./provider":161,"./schema":170}],160:[function(require,module,exports){
 'use strict';
 
 const Domain = require('./domain');
@@ -38590,7 +38590,7 @@ module.exports = class Protocol {
 
 };
 
-},{"./domain":157,"./validator":175}],161:[function(require,module,exports){
+},{"./domain":157,"./validator":176}],161:[function(require,module,exports){
 'use strict';
 
 const Protocol = require('./protocol');
@@ -41589,6 +41589,280 @@ module.exports={
 
 },{}],168:[function(require,module,exports){
 module.exports={
+    "description": "Allows automating holiday package booking on individual suppliers and OTAs.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "options": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/Options",
+            "initial": true,
+            "description": "A set of options that define the automation's behaviour."
+        },
+        "selectedBoard": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/Board",
+            "description": "One of availableBoards."
+        },
+        "selectedFlightBundle": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/FlightBundle",
+            "description": "One of availableFlightBundles."
+        },
+        "selectedRoomType": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/RoomType",
+            "description": "One of availableRoomTypes."
+        },
+        "selectedHotelTransfer": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/HotelTransfer",
+            "description": "One of availableHotelTransfers."
+        },
+        "passengers": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/Passengers",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        }
+    },
+    "outputs": {
+        "estimatedPriceBreakdown": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/PriceBreakdown",
+            "description": "The list of price components, as found on the website."
+        },
+        "estimatedTotalPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "finalPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "priceBreakdown": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/PriceBreakdown",
+            "description": "The list of price components, as found on the website."
+        },
+        "availableBoards": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/Boards"
+        },
+        "availableFlightBundles": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/FlightBundles"
+        },
+        "availableRoomTypes": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/RoomTypes"
+        },
+        "availableHotelTransfers": {
+            "typeRef": "#/domains/HolidayPackageBooking/types/HotelTransfers"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "default": {}
+        },
+        "PriceBreakdown": {
+            "type": "array",
+            "description": "The list of price components, as found on the website.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/HolidayPackageBooking/types/PriceBreakdownItem" }
+        },
+        "PriceBreakdownItem": {
+            "type": "object",
+            "description": "A component of the price breakdown.",
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The description of an item on the price breakdown list, as found on the website.",
+                    "example": "Credit card charge"
+                },
+                "price": { "typeRef": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "text",
+                "price"
+            ]
+        },
+        "HotelTransfers": {
+            "type": "array",
+            "items": { "$ref": "#/domains/HolidayPackageBooking/types/HotelTransfer" }
+        },
+        "HotelTransfer": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "type"
+            ],
+            "additionalProperties": false
+        },
+        "RoomTypes": {
+            "type": "array",
+            "items": { "$ref": "#/domains/HolidayPackageBooking/types/RoomType" }
+        },
+        "RoomType": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "type"
+            ],
+            "additionalProperties": false
+        },
+        "FlightBundles": {
+            "type": "array",
+            "items": { "$ref": "#/domains/HolidayPackageBooking/types/FlightBundle" }
+        },
+        "FlightBundle": {
+            "type": "object",
+            "description": "Outbound and inbound flights specification.",
+            "properties": {
+                "origin": { "$ref": "#/domains/HolidayPackageBooking/types/DateTimeAirport" },
+                "destination": { "$ref": "#/domains/HolidayPackageBooking/types/DateTimeAirport" },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "origin",
+                "destination",
+                "price"
+            ],
+            "additionalProperties": false
+        },
+        "DateTimeAirport": {
+            "type": "object",
+            "properties": {
+                "dateTime": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
+                    "description": "Date and time of flight (airport local time).",
+                    "example": "2018-02-02 19:40"
+                },
+                "airportCode": {
+                    "$ref": "#/domains/HolidayPackageBooking/types/AirportCode"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of airport.",
+                    "example": "us"
+                }
+            },
+            "required": [
+                "dateTime",
+                "airportCode"
+            ],
+            "additionalProperties": false
+        },
+        "AirportCode": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "pattern": "^[A-Z]{3}$",
+            "description": "International Air Transport Association airport code.",
+            "example": "SFO"
+        },
+        "Boards": {
+            "type": "array",
+            "items": { "$ref": "#/domains/HolidayPackageBooking/types/Board" }
+        },
+        "Board": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "type"
+            ],
+            "additionalProperties": false
+        },
+        "Passengers": {
+            "type": "array",
+            "description": "An array with details for each passenger.",
+            "pii": true,
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/HolidayPackageBooking/types/Passenger" }
+        },
+        "Passenger": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "addAdditionalLuggage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3,
+                    "default": 0
+                },
+                "document": {
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth",
+                "addAdditionalLuggage"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+    ],
+    "attributes": {
+    }
+}
+
+},{}],169:[function(require,module,exports){
+module.exports={
     "description": "Allows automating hotel booking on individual suppliers and OTAs.",
     "private": false,
     "inputs": {
@@ -41874,7 +42148,7 @@ module.exports={
     }
 }
 
-},{}],169:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -41889,12 +42163,13 @@ module.exports = {
         EventBooking: require('./event-booking'),
         BroadbandSignup: require('./broadband-signup'),
         HotelBooking: require('./hotel-booking'),
+        HolidayPackageBooking: require('./holiday-package-booking.json'),
         Internal: require('./internal'),
         FlightBookingExtraction: require('./flight-booking-extraction.json')
     }
 };
 
-},{"./broadband-signup":162,"./coach-booking":163,"./event-booking":164,"./flight-booking":166,"./flight-booking-extraction.json":165,"./generic":167,"./hotel-booking":168,"./internal":170,"./loan-application":171,"./motor-insurance":172,"./vacation-rental":173}],170:[function(require,module,exports){
+},{"./broadband-signup":162,"./coach-booking":163,"./event-booking":164,"./flight-booking":166,"./flight-booking-extraction.json":165,"./generic":167,"./holiday-package-booking.json":168,"./hotel-booking":169,"./internal":171,"./loan-application":172,"./motor-insurance":173,"./vacation-rental":174}],171:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,
@@ -41988,7 +42263,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -42507,7 +42782,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],172:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -43060,7 +43335,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],173:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 module.exports={
     "description": "",
     "private": false,
@@ -43240,7 +43515,7 @@ module.exports={
     "attributes": {}
 }
 
-},{}],174:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -43251,7 +43526,7 @@ function deepClone(value) {
     return JSON.parse(JSON.stringify(value));
 }
 
-},{}],175:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 'use strict';
 
 const Ajv = require('ajv');
