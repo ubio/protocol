@@ -11,6 +11,6 @@ steps:
   - protocol
   - protocol=gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=default'
+  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
