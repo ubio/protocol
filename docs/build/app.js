@@ -41598,28 +41598,28 @@ module.exports={
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
         "options": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/Options",
+            "typeRef": "#/domains/HolidayBooking/types/Options",
             "initial": true,
             "description": "A set of options that define the automation's behaviour."
         },
         "selectedBoard": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/Board",
+            "typeRef": "#/domains/HolidayBooking/types/Board",
             "description": "One of availableBoards."
         },
         "selectedFlightBundle": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/FlightBundle",
+            "typeRef": "#/domains/HolidayBooking/types/FlightBundle",
             "description": "One of availableFlightBundles."
         },
         "selectedRoomType": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/RoomType",
+            "typeRef": "#/domains/HolidayBooking/types/RoomType",
             "description": "One of availableRoomTypes."
         },
         "selectedHotelTransfer": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/HotelTransfer",
+            "typeRef": "#/domains/HolidayBooking/types/HotelTransfer",
             "description": "One of availableHotelTransfers."
         },
         "passengers": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/Passengers",
+            "typeRef": "#/domains/HolidayBooking/types/Passengers",
             "initial": true
         },
         "payment": {
@@ -41638,7 +41638,7 @@ module.exports={
     },
     "outputs": {
         "estimatedPriceBreakdown": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/PriceBreakdown",
+            "typeRef": "#/domains/HolidayBooking/types/PriceBreakdown",
             "description": "The list of price components, as found on the website."
         },
         "estimatedTotalPrice": {
@@ -41648,20 +41648,20 @@ module.exports={
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "priceBreakdown": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/PriceBreakdown",
+            "typeRef": "#/domains/HolidayBooking/types/PriceBreakdown",
             "description": "The list of price components, as found on the website."
         },
         "availableBoards": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/Boards"
+            "typeRef": "#/domains/HolidayBooking/types/Boards"
         },
         "availableFlightBundles": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/FlightBundles"
+            "typeRef": "#/domains/HolidayBooking/types/FlightBundles"
         },
         "availableRoomTypes": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/RoomTypes"
+            "typeRef": "#/domains/HolidayBooking/types/RoomTypes"
         },
         "availableHotelTransfers": {
-            "typeRef": "#/domains/HolidayPackageBooking/types/HotelTransfers"
+            "typeRef": "#/domains/HolidayBooking/types/HotelTransfers"
         }
     },
     "types": {
@@ -41673,7 +41673,7 @@ module.exports={
             "type": "array",
             "description": "The list of price components, as found on the website.",
             "minItems": 1,
-            "items": { "$ref": "#/domains/HolidayPackageBooking/types/PriceBreakdownItem" }
+            "items": { "$ref": "#/domains/HolidayBooking/types/PriceBreakdownItem" }
         },
         "PriceBreakdownItem": {
             "type": "object",
@@ -41693,7 +41693,7 @@ module.exports={
         },
         "HotelTransfers": {
             "type": "array",
-            "items": { "$ref": "#/domains/HolidayPackageBooking/types/HotelTransfer" }
+            "items": { "$ref": "#/domains/HolidayBooking/types/HotelTransfer" }
         },
         "HotelTransfer": {
             "type": "object",
@@ -41710,7 +41710,7 @@ module.exports={
         },
         "RoomTypes": {
             "type": "array",
-            "items": { "$ref": "#/domains/HolidayPackageBooking/types/RoomType" }
+            "items": { "$ref": "#/domains/HolidayBooking/types/RoomType" }
         },
         "RoomType": {
             "type": "object",
@@ -41727,14 +41727,14 @@ module.exports={
         },
         "FlightBundles": {
             "type": "array",
-            "items": { "$ref": "#/domains/HolidayPackageBooking/types/FlightBundle" }
+            "items": { "$ref": "#/domains/HolidayBooking/types/FlightBundle" }
         },
         "FlightBundle": {
             "type": "object",
             "description": "Outbound and inbound flights specification.",
             "properties": {
-                "origin": { "$ref": "#/domains/HolidayPackageBooking/types/DateTimeAirport" },
-                "destination": { "$ref": "#/domains/HolidayPackageBooking/types/DateTimeAirport" },
+                "origin": { "$ref": "#/domains/HolidayBooking/types/DateTimeAirport" },
+                "destination": { "$ref": "#/domains/HolidayBooking/types/DateTimeAirport" },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
@@ -41754,7 +41754,7 @@ module.exports={
                     "example": "2018-02-02 19:40"
                 },
                 "airportCode": {
-                    "$ref": "#/domains/HolidayPackageBooking/types/AirportCode"
+                    "$ref": "#/domains/HolidayBooking/types/AirportCode"
                 },
                 "countryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
@@ -41778,7 +41778,7 @@ module.exports={
         },
         "Boards": {
             "type": "array",
-            "items": { "$ref": "#/domains/HolidayPackageBooking/types/Board" }
+            "items": { "$ref": "#/domains/HolidayBooking/types/Board" }
         },
         "Board": {
             "type": "object",
@@ -41799,7 +41799,7 @@ module.exports={
             "pii": true,
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/HolidayPackageBooking/types/Passenger" }
+            "items": { "$ref": "#/domains/HolidayBooking/types/Passenger" }
         },
         "Passenger": {
             "type": "object",
@@ -42163,13 +42163,13 @@ module.exports = {
         EventBooking: require('./event-booking'),
         BroadbandSignup: require('./broadband-signup'),
         HotelBooking: require('./hotel-booking'),
-        HolidayPackageBooking: require('./holiday-package-booking.json'),
+        HolidayBooking: require('./holiday-booking.json'),
         Internal: require('./internal'),
         FlightBookingExtraction: require('./flight-booking-extraction.json')
     }
 };
 
-},{"./broadband-signup":162,"./coach-booking":163,"./event-booking":164,"./flight-booking":166,"./flight-booking-extraction.json":165,"./generic":167,"./holiday-package-booking.json":168,"./hotel-booking":169,"./internal":171,"./loan-application":172,"./motor-insurance":173,"./vacation-rental":174}],171:[function(require,module,exports){
+},{"./broadband-signup":162,"./coach-booking":163,"./event-booking":164,"./flight-booking":166,"./flight-booking-extraction.json":165,"./generic":167,"./holiday-booking.json":168,"./hotel-booking":169,"./internal":171,"./loan-application":172,"./motor-insurance":173,"./vacation-rental":174}],171:[function(require,module,exports){
 module.exports={
     "description": "Internal domain for testing platform features.",
     "private": true,

@@ -4436,7 +4436,7 @@
       "errors": [],
       "attributes": {}
     },
-    "HolidayPackageBooking": {
+    "HolidayBooking": {
       "description": "Allows automating holiday package booking on individual suppliers and OTAs.",
       "private": false,
       "inputs": {
@@ -4446,28 +4446,28 @@
           "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
         "options": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/Options",
+          "typeRef": "#/domains/HolidayBooking/types/Options",
           "initial": true,
           "description": "A set of options that define the automation's behaviour."
         },
         "selectedBoard": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/Board",
+          "typeRef": "#/domains/HolidayBooking/types/Board",
           "description": "One of availableBoards."
         },
         "selectedFlightBundle": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/FlightBundle",
+          "typeRef": "#/domains/HolidayBooking/types/FlightBundle",
           "description": "One of availableFlightBundles."
         },
         "selectedRoomType": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/RoomType",
+          "typeRef": "#/domains/HolidayBooking/types/RoomType",
           "description": "One of availableRoomTypes."
         },
         "selectedHotelTransfer": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/HotelTransfer",
+          "typeRef": "#/domains/HolidayBooking/types/HotelTransfer",
           "description": "One of availableHotelTransfers."
         },
         "passengers": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/Passengers",
+          "typeRef": "#/domains/HolidayBooking/types/Passengers",
           "initial": true
         },
         "payment": {
@@ -4486,7 +4486,7 @@
       },
       "outputs": {
         "estimatedPriceBreakdown": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/PriceBreakdown",
+          "typeRef": "#/domains/HolidayBooking/types/PriceBreakdown",
           "description": "The list of price components, as found on the website."
         },
         "estimatedTotalPrice": {
@@ -4496,20 +4496,20 @@
           "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "priceBreakdown": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/PriceBreakdown",
+          "typeRef": "#/domains/HolidayBooking/types/PriceBreakdown",
           "description": "The list of price components, as found on the website."
         },
         "availableBoards": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/Boards"
+          "typeRef": "#/domains/HolidayBooking/types/Boards"
         },
         "availableFlightBundles": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/FlightBundles"
+          "typeRef": "#/domains/HolidayBooking/types/FlightBundles"
         },
         "availableRoomTypes": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/RoomTypes"
+          "typeRef": "#/domains/HolidayBooking/types/RoomTypes"
         },
         "availableHotelTransfers": {
-          "typeRef": "#/domains/HolidayPackageBooking/types/HotelTransfers"
+          "typeRef": "#/domains/HolidayBooking/types/HotelTransfers"
         }
       },
       "types": {
@@ -4522,7 +4522,7 @@
           "description": "The list of price components, as found on the website.",
           "minItems": 1,
           "items": {
-            "$ref": "#/domains/HolidayPackageBooking/types/PriceBreakdownItem"
+            "$ref": "#/domains/HolidayBooking/types/PriceBreakdownItem"
           }
         },
         "PriceBreakdownItem": {
@@ -4546,7 +4546,7 @@
         "HotelTransfers": {
           "type": "array",
           "items": {
-            "$ref": "#/domains/HolidayPackageBooking/types/HotelTransfer"
+            "$ref": "#/domains/HolidayBooking/types/HotelTransfer"
           }
         },
         "HotelTransfer": {
@@ -4567,7 +4567,7 @@
         "RoomTypes": {
           "type": "array",
           "items": {
-            "$ref": "#/domains/HolidayPackageBooking/types/RoomType"
+            "$ref": "#/domains/HolidayBooking/types/RoomType"
           }
         },
         "RoomType": {
@@ -4588,7 +4588,7 @@
         "FlightBundles": {
           "type": "array",
           "items": {
-            "$ref": "#/domains/HolidayPackageBooking/types/FlightBundle"
+            "$ref": "#/domains/HolidayBooking/types/FlightBundle"
           }
         },
         "FlightBundle": {
@@ -4596,10 +4596,10 @@
           "description": "Outbound and inbound flights specification.",
           "properties": {
             "origin": {
-              "$ref": "#/domains/HolidayPackageBooking/types/DateTimeAirport"
+              "$ref": "#/domains/HolidayBooking/types/DateTimeAirport"
             },
             "destination": {
-              "$ref": "#/domains/HolidayPackageBooking/types/DateTimeAirport"
+              "$ref": "#/domains/HolidayBooking/types/DateTimeAirport"
             },
             "price": {
               "$ref": "#/domains/Generic/types/Price"
@@ -4622,7 +4622,7 @@
               "example": "2018-02-02 19:40"
             },
             "airportCode": {
-              "$ref": "#/domains/HolidayPackageBooking/types/AirportCode"
+              "$ref": "#/domains/HolidayBooking/types/AirportCode"
             },
             "countryCode": {
               "$ref": "#/domains/Generic/types/CountryCode",
@@ -4647,7 +4647,7 @@
         "Boards": {
           "type": "array",
           "items": {
-            "$ref": "#/domains/HolidayPackageBooking/types/Board"
+            "$ref": "#/domains/HolidayBooking/types/Board"
           }
         },
         "Board": {
@@ -4672,7 +4672,7 @@
           "minItems": 1,
           "maxItems": 9,
           "items": {
-            "$ref": "#/domains/HolidayPackageBooking/types/Passenger"
+            "$ref": "#/domains/HolidayBooking/types/Passenger"
           }
         },
         "Passenger": {
