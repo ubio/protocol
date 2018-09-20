@@ -38599,6 +38599,7 @@ const fetch = require('node-fetch');
 const DEFAULT_OPTIONS = {
     url: 'https://raw.githubusercontent.com/universalbasket/protocol/{tag}/schema.json',
     ttl: 3 * 60000,
+    interval: 1 * 60000,
     autoRefresh: false
 };
 
@@ -38616,7 +38617,7 @@ module.exports = class ProtocolProvider {
         if (!this.autoRefresh) {
             return;
         }
-        const interval = this.ttl;
+        const interval = this.interval;
         const repeat = () => {
             clearTimeout(this.autoRefreshTimer);
             this.autoRefreshTimer = setTimeout(() => this.startAutoRefresh(), interval);
