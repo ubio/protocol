@@ -41717,9 +41717,6 @@ module.exports={
                     "items": {
                         "$ref": "#/domains/HotelBooking/types/ValueAddition"
                     }
-                },
-                "amenities": {
-                    "typeRef": "#/domains/Generic/types/StructuredText"
                 }
             },
             "required": [
@@ -41733,6 +41730,7 @@ module.exports={
         "ValueAddition": {
             "type": "string",
             "enum": [
+                "pay-later",
                 "free-breakfast",
                 "free-half-board",
                 "free-full-board",
