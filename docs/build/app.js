@@ -39025,7 +39025,8 @@ module.exports={
             "properties": {
                 "name": {
                     "type": "string",
-                    "example": "All in One Package"
+                    "example": "All in One Package",
+                    "minLength": 1
                 },
                 "description": {
                     "typeRef": "#/domains/Generic/types/StructuredTextItem"
