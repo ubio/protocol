@@ -4624,20 +4624,37 @@
           "type": "object",
           "description": "Outbound and inbound flights specification.",
           "properties": {
-            "origin": {
-              "$ref": "#/domains/HolidayBooking/types/DateTimeAirport"
+            "outbound": {
+              "$ref": "#/domains/HolidayBooking/types/Flight"
             },
-            "destination": {
-              "$ref": "#/domains/HolidayBooking/types/DateTimeAirport"
+            "inbound": {
+              "$ref": "#/domains/HolidayBooking/types/Flight"
             },
             "price": {
               "$ref": "#/domains/Generic/types/Price"
             }
           },
           "required": [
-            "origin",
-            "destination",
+            "outbound",
+            "inbound",
             "price"
+          ],
+          "additionalProperties": false
+        },
+        "Flight": {
+          "type": "object",
+          "description": "Outbound and inbound flights specification.",
+          "properties": {
+            "origin": {
+              "$ref": "#/domains/FlightBooking/types/DateTimeAirport"
+            },
+            "destination": {
+              "$ref": "#/domains/FlightBooking/types/DateTimeAirport"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
           ],
           "additionalProperties": false
         },
