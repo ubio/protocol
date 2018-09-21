@@ -41748,8 +41748,8 @@ module.exports={
             "type": "object",
             "description": "Outbound and inbound flights specification.",
             "properties": {
-                "origin": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
-                "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" }
+                "origin": { "$ref": "#/domains/HolidayBooking/types/DateTimeAirport" },
+                "destination": { "$ref": "#/domains/HolidayBooking/types/DateTimeAirport" }
             },
             "required": [
                 "origin",
