@@ -16,8 +16,7 @@ async function lazyMkdir(path) {
 async function copyFiles(src, dest) {
     await lazyMkdir(dest);
 
-    // TODO remove withTypes when 10.10.1 or above is released.
-    const dirents = await readdir(src, { withFileTypes: true, withTypes: true });
+    const dirents = await readdir(src, { withFileTypes: true });
 
     await dirents.map(async dirent => {
         if (dirent.isFile()) {

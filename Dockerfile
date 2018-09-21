@@ -1,4 +1,4 @@
-FROM node:10.10.0-alpine as builder
+FROM node:10.11.0-alpine as builder
 
 WORKDIR /src
 COPY . .
