@@ -1,7 +1,7 @@
 'use strict';
 
 const Protocol = require('./protocol');
-const fetch = require('node-fetch');
+const fetch = require('./fetch');
 
 const DEFAULT_OPTIONS = {
     url: 'https://protocol.automationcloud.net/schema.json',
@@ -69,7 +69,7 @@ module.exports = class ProtocolProvider {
 
     async fetchSchema(tag) {
         const url = this.url.replace('{tag}', tag);
-        const res = await fetch(url);
+        const res = await fetch(url, { mode: 'cors' });
         const { status } = res;
         if (res.status >= 400) {
             throw new RemoteProtocolFetchError(`server returned ${status}`, {

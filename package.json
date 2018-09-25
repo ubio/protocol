@@ -8,6 +8,9 @@
   "files": [
     "src/"
   ],
+  "browser": {
+    "./src/fetch.js": "src/fetch-browser.js"
+  },
   "scripts": {
     "check": "eslint --ext=js,vue .",
     "dev": "run-p watch:* serve",
