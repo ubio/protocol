@@ -1,26 +1,26 @@
 <template>
     <div class="sidebar">
         <div class="sidebar__sticky">
-            <sidebar__domain v-for="domain in domains"
-                             :domain="domain"/>
+            <sidebar__domain
+                v-for="domain in domains"
+                :domain="domain"/>
         </div>
     </div>
 </template>
 
 <script>
-const { protocol } = require('../../src');
-
 module.exports = {
 
     components: {
         'sidebar__domain': require('./sidebar__domain.vue'),
     },
 
-    data() {
-        return {
-            domains: protocol.getDomains()
-                .filter(d => !d.spec.private),
-        };
+    computed: {
+
+        domains() {
+            return this.$protocol.getDomains().filter(d => !d.spec.private);
+        },
+
     },
 
 };

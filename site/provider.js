@@ -1,27 +1,12 @@
 'use strict';
 
-const { ProtocolProvider, protocol } = require('../src');
+const { ProtocolProvider } = require('../src');
 
 const provider = module.exports = new ProtocolProvider({
-    ttl: 5 * 60000,
     autoRefresh: true,
+    ttl: 60000,
 });
 
-module.exports = {
-    install,
-};
+provider.startAutoRefresh();
 
-function install(Vue) {
-    Vue.mixin({
-        beforeCreate() {
-            this._provider = provider;
-        },
-    });
-    Object.defineProperty(Vue.prototype, '$protocol', {
-        get() {
-            return this._provider.latest;
-        },
-    });
-}
-
-provider.latest = protocol;
+module.exports = provider;
