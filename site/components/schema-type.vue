@@ -48,8 +48,6 @@
 </template>
 
 <script>
-const { protocol } = require('../../src');
-
 module.exports = {
 
     name: 'schema-type',
@@ -69,7 +67,7 @@ module.exports = {
         },
 
         ref() {
-            return protocol.resolveTypeRef(this.$ref);
+            return this.$protocol.resolveTypeRef(this.$ref);
         },
 
         pii() {
