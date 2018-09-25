@@ -20,7 +20,8 @@
                 </div>
             </div>
         </div>
-        <div class="layout__content">
+        <div class="layout__content"
+            v-if="$protocol">
             <div class="layout__content-container container">
                 <sidebar/>
                 <div class="layout__main">
@@ -28,6 +29,9 @@
                     </router-view>
                 </div>
             </div>
+        </div>
+        <div class="layout__loading" v-else>
+            Fetching latest protocol...
         </div>
     </div>
 </template>
@@ -80,4 +84,9 @@ module.exports = {
     padding: 1em 4em;
 }
 
+.layout__loading {
+    align-self: center;
+    padding: 4em;
+    font-size: 20px;
+}
 </style>

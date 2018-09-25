@@ -1,5 +1,6 @@
 <template>
-    <div class="domain">
+    <div class="domain"
+        v-if="domain">
         <div class="domain__intro">
             <h1>{{ domain.id }}</h1>
             <div class="domain__description"
@@ -64,7 +65,6 @@
 
 <script>
 const util = require('../util');
-const { protocol } = require('../../src');
 
 module.exports = {
 
@@ -91,7 +91,7 @@ module.exports = {
     computed: {
 
         domain() {
-            return protocol.getDomain(this.domainId);
+            return this.$protocol.getDomain(this.domainId);
         },
 
         inputs() {
