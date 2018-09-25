@@ -5,6 +5,11 @@
   "main": "src/index.js",
   "author": "ubio",
   "license": "MIT",
+  "files": [
+    "package.json",
+    "src/*.js",
+    "src/meta.json"
+  ],
   "scripts": {
     "check": "eslint --ext=js,vue .",
     "dev": "run-p watch:* serve",
