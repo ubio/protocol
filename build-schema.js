@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const protocol = require('./src');
+const schema = require('./schema');
 
-const schemaJson = JSON.stringify(protocol.schema, filterPrivateKeys, 2);
+const schemaJson = JSON.stringify(schema, filterPrivateKeys, 2);
 
 function filterPrivateKeys(key, value) {
     return key.indexOf('_') === 0 ? undefined : value;

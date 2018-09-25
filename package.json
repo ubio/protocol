@@ -6,9 +6,7 @@
   "author": "ubio",
   "license": "MIT",
   "files": [
-    "package.json",
-    "src/*.js",
-    "src/meta.json"
+    "src/"
   ],
   "scripts": {
     "check": "eslint --ext=js,vue .",
