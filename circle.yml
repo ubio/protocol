@@ -2,18 +2,18 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/node:8.4
+      - image: circleci/node:10.10
     steps:
       - checkout
       - run:
-          name: yarn install
-          command: yarn install
+          name: npm install
+          command: npm install
       - run:
-          name: yarn run check
-          command: yarn run check
+          name: npm run check
+          command: npm run check
       - run:
-          name: yarn test
-          command: yarn test
+          name: npm test
+          command: npm test
 
 workflows:
   version: 2

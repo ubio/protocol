@@ -4,7 +4,7 @@ const Protocol = require('./protocol');
 const fetch = require('node-fetch');
 
 const DEFAULT_OPTIONS = {
-    url: 'https://raw.githubusercontent.com/universalbasket/protocol/{tag}/schema.json',
+    url: 'https://protocol.automationcloud.net/schema.json',
     ttl: 3 * 60000,
     autoRefresh: false,
 };
