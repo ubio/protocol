@@ -1,7 +1,7 @@
 'use strict';
 
 const Protocol = require('./protocol');
-const fetch = require('./fetch');
+const fetch = require('node-fetch');
 
 const DEFAULT_OPTIONS = {
     url: 'https://protocol.automationcloud.net/schema.json',
