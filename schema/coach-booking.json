@@ -35,6 +35,10 @@
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
+        "smsConfirmation": {
+            "typeRef": "#/domains/CoachBooking/types/VerificationCode",
+            "description": "An SMS confirmation for authorizing the payment. Occurs in some of the transactions in place of 3dsecure."
+        },
         "options": {
             "typeRef": "#/domains/CoachBooking/types/Options",
             "default": {},
@@ -282,6 +286,19 @@
                 "issueCountryCode"
             ],
             "additionalProperties": false
+        },
+        "VerificationCode": {
+            "type": "object",
+            "description": "Verification code",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "example": "1234"
+                }
+            },
+            "required": [
+                "code"
+            ]
         },
         "Options": {
             "type": "object",
