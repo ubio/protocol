@@ -129,6 +129,10 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the excess breakdown is presented."
         },
+        "excessInfo": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when the excess information is presented."
+        },
         "priceBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the price breakdown is presented."
