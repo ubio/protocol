@@ -231,12 +231,13 @@
             "type": "object",
             "properties": {
                 "phone": {
-                    "type": "string",
-                    "example": "+447474447447"
+                    "$ref": "#/domains/Generic/types/AnyPhoneString"
                 },
                 "email": {
                     "type": "string",
-                    "example": "test@example.com"
+                    "description": "Email address used for contact.",
+                    "format": "email",
+                    "example": "client@example.com"
                 }
             },
             "required": [

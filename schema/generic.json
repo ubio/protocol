@@ -989,6 +989,11 @@
                 "html"
             ],
             "additionalProperties": false
+        },
+        "AnyPhoneString": {
+            "type": "string",
+            "description": "Any phone-like string. Must only contain digits and symbol separators (parens, dashes, plus sign, spaces, other common phone number separators.",
+            "example": "+44 (0) 747-444-7447"
         }
     },
     "errors": [
