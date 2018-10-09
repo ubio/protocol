@@ -1130,10 +1130,8 @@
       ],
       "attributes": {
         "url": {
-          "type": "string",
-          "format": "url",
-          "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
-          "example": "http://example.com"
+          "typeRef": "#/domains/Generic/types/URL",
+          "description": "Website entry point."
         }
       }
     },
@@ -1157,11 +1155,13 @@
         },
         "selectedOutboundFlight": {
           "typeRef": "#/domains/FlightBooking/types/Flight",
-          "initial": true
+          "initial": true,
+          "fooBarBaz": ""
         },
         "selectedInboundFlight": {
           "typeRef": "#/domains/FlightBooking/types/Flight",
-          "initial": true
+          "initial": true,
+          "fooBarBaz": ""
         },
         "itinerary": {
           "typeRef": "#/domains/FlightBooking/types/Itinerary",
@@ -1181,22 +1181,26 @@
         },
         "selectedOutboundFare": {
           "typeRef": "#/domains/FlightBooking/types/Fare",
-          "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+          "description": "Requested when fare selection for outbound flight is required by website.<br/>At this point <code>availableOutboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available.",
+          "fooBarBaz": "availableOutboundFares"
         },
         "selectedInboundFare": {
           "typeRef": "#/domains/FlightBooking/types/Fare",
-          "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available."
+          "description": "Requested when fare selection for inbound flight is required by website.<br/>At this point <code>availableInboundFares</code> output should contain information about available fares.<br/>Note: on deep links with pre-selected flight this input is not required.<br/>Automation may fail if incorrect fare is specified, or if fare is no longer available.",
+          "fooBarBaz": "availableInboundFares"
         },
         "selectedSeats": {
           "typeRef": "#/domains/FlightBooking/types/SelectedSeatsStage",
-          "staged": true
+          "staged": true,
+          "fooBarBaz": ""
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
         },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
-          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+          "fooBarBaz": "finalPrice"
         }
       },
       "outputs": {
@@ -1800,10 +1804,12 @@
         },
         "selectedOutboundTrip": {
           "typeRef": "#/domains/CoachBooking/types/Trip",
+          "fooBarBaz": "availableOutboundTrips",
           "initial": true
         },
         "selectedInboundTrip": {
           "typeRef": "#/domains/CoachBooking/types/Trip",
+          "fooBarBaz": "availableInboundTrips",
           "initial": true
         },
         "account": {
@@ -1821,7 +1827,8 @@
         },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
-          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+          "fooBarBaz": "finalPrice"
         },
         "options": {
           "typeRef": "#/domains/CoachBooking/types/Options",
@@ -2149,7 +2156,8 @@
         },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
-          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+          "fooBarBaz": "finalPriceConsent"
         },
         "options": {
           "typeRef": "#/domains/VacationRental/types/Options",
@@ -2157,7 +2165,8 @@
           "initial": true
         },
         "deposit": {
-          "typeRef": "#/domains/VacationRental/types/Deposit"
+          "typeRef": "#/domains/VacationRental/types/Deposit",
+          "fooBarBaz": "availableDeposits"
         },
         "pets": {
           "typeRef": "#/domains/VacationRental/types/Pets"
@@ -2333,7 +2342,8 @@
         },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
-          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+          "fooBarBaz": "finalPrice"
         },
         "vehicle": {
           "typeRef": "#/domains/MotorInsurance/types/Vehicle"
@@ -2345,39 +2355,48 @@
         },
         "selectedVoluntaryExcess": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-          "description": "Selected voluntary excess"
+          "description": "Selected voluntary excess",
+          "fooBarBaz": "availableVoluntaryExcesses"
         },
         "selectedLegalCover": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-          "description": "Selected legal cover."
+          "description": "Selected legal cover.",
+          "fooBarBaz": "availableLegalCovers"
         },
         "selectedExcessProtectCover": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-          "description": "Selected excess protection cover."
+          "description": "Selected excess protection cover.",
+          "fooBarBaz": "availableExcessProtectCovers"
         },
         "selectedPersonalInjuryCover": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-          "description": "Selected personal injury cover."
+          "description": "Selected personal injury cover.",
+          "fooBarBaz": "availablePersonalInjuryCovers"
         },
         "selectedCarHireCover": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-          "description": "Selected car hire cover."
+          "description": "Selected car hire cover.",
+          "fooBarBaz": "availableCarHireCovers"
         },
         "selectedBreakdownCover": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-          "description": "Selected breakdown cover."
+          "description": "Selected breakdown cover.",
+          "fooBarBaz": "availableBreakdownCovers"
         },
         "selectedNoClaimsDiscountProtection": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
-          "description": "Selected no claims discount protection."
+          "description": "Selected no claims discount protection.",
+          "fooBarBaz": "availableNoClaimsDiscountProtection"
         },
         "selectedPaymentTerm": {
           "typeRef": "#/domains/MotorInsurance/types/PaymentTerm",
-          "description": "Payment term to be used."
+          "description": "Payment term to be used.",
+          "fooBarBaz": "availablePaymentTerms"
         },
         "selectedMarketingContactOptions": {
           "typeRef": "#/domains/MotorInsurance/types/SelectedItem",
-          "description": "List of marketing contact options to be selected."
+          "description": "List of marketing contact options to be selected.",
+          "fooBarBaz": "availableMarketingContactOptions"
         },
         "cookies": {
           "typeRef": "#/domains/Generic/types/Cookies"
@@ -2904,7 +2923,8 @@
         },
         "loanConsent": {
           "typeRef": "#/domains/LoanApplication/types/Quote",
-          "description": "Client's consent for the loan, should exactly match the <code>quote</code> object from output.<br/>Automation will not proceed with the loan application until the consent is provided."
+          "description": "Client's consent for the loan, should exactly match the <code>quote</code> object from output.<br/>Automation will not proceed with the loan application until the consent is provided.",
+          "fooBarBaz": "quote"
         },
         "employment": {
           "typeRef": "#/domains/LoanApplication/types/Employment"
@@ -3414,25 +3434,30 @@
         },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
-          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+          "fooBarBaz": "finalPrice"
         },
         "selectedDelivery": {
           "typeRef": "#/domains/EventBooking/types/Delivery",
-          "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking."
+          "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking.",
+          "fooBarBaz": "availableDeliveries"
         },
         "options": {
           "typeRef": "#/domains/EventBooking/types/Options",
           "initial": true
         },
         "selectedRefund": {
-          "typeRef": "#/domains/EventBooking/types/SelectedRefund"
+          "typeRef": "#/domains/EventBooking/types/SelectedRefund",
+          "fooBarBaz": "availableRefunds"
         },
         "selectedSeats": {
-          "typeRef": "#/domains/EventBooking/types/SelectedSeats"
+          "typeRef": "#/domains/EventBooking/types/SelectedSeats",
+          "fooBarBaz": ""
         },
         "selectedMarketingContactOptions": {
           "typeRef": "#/domains/EventBooking/types/SelectedItem",
-          "description": "List of marketing contact options to be selected."
+          "description": "List of marketing contact options to be selected.",
+          "fooBarBaz": "availableMarketingContactOptions"
         }
       },
       "outputs": {
@@ -3641,13 +3666,16 @@
           "typeRef": "#/domains/BroadbandSignup/types/Property"
         },
         "selectedTvPackages": {
-          "typeRef": "#/domains/BroadbandSignup/types/SelectedPackages"
+          "typeRef": "#/domains/BroadbandSignup/types/SelectedPackages",
+          "fooBarBaz": "availableTvPackages"
         },
         "selectedBroadbandPackage": {
-          "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage"
+          "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage",
+          "fooBarBaz": "availableBroadbandPackages"
         },
         "selectedPhonePackage": {
-          "typeRef": "#/domains/BroadbandSignup/types/Package"
+          "typeRef": "#/domains/BroadbandSignup/types/Package",
+          "fooBarBaz": "availablePhonePackages"
         },
         "contactPerson": {
           "typeRef": "#/domains/BroadbandSignup/types/PersonDob"
@@ -3666,7 +3694,8 @@
         },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
-          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+          "fooBarBaz": "finalPrice"
         },
         "landlineOptions": {
           "typeRef": "#/domains/BroadbandSignup/types/LandlineOptions"
@@ -3682,13 +3711,16 @@
           "description": "List of marketing contact options to be selected."
         },
         "selectedTvSetupDate": {
-          "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
+          "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
+          "fooBarBaz": "availableTvSetupDates"
         },
         "selectedBroadbandSetupDate": {
-          "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
+          "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
+          "fooBarBaz": "availableBroadbandSetupDates"
         },
         "selectedActiveLandlineOption": {
-          "typeRef": "#/domains/BroadbandSignup/types/String"
+          "typeRef": "#/domains/BroadbandSignup/types/String",
+          "fooBarBaz": "availableActiveLandlineOptions"
         }
       },
       "outputs": {
@@ -4170,7 +4202,8 @@
         },
         "selectedRooms": {
           "typeRef": "#/domains/HotelBooking/types/Rooms",
-          "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed."
+          "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed.",
+          "fooBarBaz": "availableRooms"
         },
         "guestAges": {
           "typeRef": "#/domains/Generic/types/Ages",
@@ -4188,14 +4221,16 @@
           "typeRef": "#/domains/Generic/types/Payment"
         },
         "selectedPaymentMethod": {
-          "typeRef": "#/domains/HotelBooking/types/PaymentMethod"
+          "typeRef": "#/domains/HotelBooking/types/PaymentMethod",
+          "fooBarBaz": "availablePaymentMethods"
         },
         "panToken": {
           "typeRef": "#/domains/Generic/types/PanToken"
         },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
-          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+          "fooBarBaz": "finalPrice"
         }
       },
       "outputs": {
@@ -4482,19 +4517,23 @@
         },
         "selectedBoard": {
           "typeRef": "#/domains/HolidayBooking/types/Board",
-          "description": "One of availableBoards."
+          "description": "One of availableBoards.",
+          "fooBarBaz": "availableBoards"
         },
         "selectedFlightBundle": {
           "typeRef": "#/domains/HolidayBooking/types/FlightBundle",
-          "description": "One of availableFlightBundles."
+          "description": "One of availableFlightBundles.",
+          "fooBarBaz": "availableFlightBundles"
         },
         "selectedRoomType": {
           "typeRef": "#/domains/HolidayBooking/types/RoomType",
-          "description": "One of availableRoomTypes."
+          "description": "One of availableRoomTypes.",
+          "fooBarBaz": "availableRoomTypes"
         },
         "selectedHotelTransfer": {
           "typeRef": "#/domains/HolidayBooking/types/HotelTransfer",
-          "description": "One of availableHotelTransfers."
+          "description": "One of availableHotelTransfers.",
+          "fooBarBaz": "availableHotelTransfers"
         },
         "passengers": {
           "typeRef": "#/domains/HolidayBooking/types/Passengers",
@@ -4511,7 +4550,8 @@
         },
         "finalPriceConsent": {
           "typeRef": "#/domains/Generic/types/PriceConsent",
-          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+          "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+          "fooBarBaz": "finalPrice"
         }
       },
       "outputs": {
