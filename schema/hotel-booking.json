@@ -235,7 +235,9 @@
                 },
                 "email": {
                     "type": "string",
-                    "example": "test@example.com"
+                    "description": "Email address used for contact.",
+                    "format": "email",
+                    "example": "client@example.com"
                 }
             },
             "required": [
