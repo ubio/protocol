@@ -230,6 +230,10 @@
             "example": {
                 "extractionServiceId": "e44a4f1b-aa5c-4b36-8db3-a7c78c404b90"
             }
+        },
+        "showInGuidedDocs": {
+            "type": "boolean",
+            "default": false
         }
     }
 }

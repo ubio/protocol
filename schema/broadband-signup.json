@@ -515,6 +515,10 @@
         "generatorInput": {
             "type": "object",
             "description": "Job Input Bundler config"
+        },
+        "showInGuidedDocs": {
+            "type": "boolean",
+            "default": false
         }
     }
 }
