@@ -23,6 +23,7 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "vehicle": {
@@ -35,38 +36,47 @@
         },
         "selectedVoluntaryExcess": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableVoluntaryExcesses",
             "description": "Selected voluntary excess"
         },
         "selectedLegalCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableLegalCovers",
             "description": "Selected legal cover."
         },
         "selectedExcessProtectCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableExcessProtectCovers",
             "description": "Selected excess protection cover."
         },
         "selectedPersonalInjuryCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availablePersonalInjuryCovers",
             "description": "Selected personal injury cover."
         },
         "selectedCarHireCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableCarHireCovers",
             "description": "Selected car hire cover."
         },
         "selectedBreakdownCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableBreakdownCovers",
             "description": "Selected breakdown cover."
         },
         "selectedNoClaimsDiscountProtection": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableNoClaimsDiscountProtection",
             "description": "Selected no claims discount protection."
         },
         "selectedPaymentTerm": {
             "typeRef": "#/domains/MotorInsurance/types/PaymentTerm",
+            "sourceOutputKey": "availablePaymentTerms",
             "description": "Payment term to be used."
         },
         "selectedMarketingContactOptions": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedItem",
+            "sourceOutputKey": "availableMarketingContactOptions",
             "description": "List of marketing contact options to be selected."
         },
         "cookies": {
