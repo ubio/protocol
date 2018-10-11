@@ -174,5 +174,20 @@
             "example": "Vacation rental unavailable on given date provided"
         }
     ],
-    "attributes": {}
+    "attributes": {
+        "staticData": {
+            "type": "object",
+            "description": "Static input data for QA jobs",
+            "example": {
+                "url": "https://playground.automationcloud.net"
+            }
+        },
+        "generatorInput": {
+            "type": "object",
+            "description": "Job Input Bundler config",
+            "example": {
+                "extractionServiceId": "e44a4f1b-aa5c-4b36-8db3-a7c78c404b90"
+            }
+        }
+    }
 }

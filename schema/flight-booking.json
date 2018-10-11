@@ -609,55 +609,15 @@
         },
         "staticData": {
             "type": "object",
-            "description": "Input mocks for QA perposes",
+            "description": "Static input data for QA jobs",
             "example": {
-                "url": "https://playground.automationcloud.net",
-                "search": {
-                    "cabinClass": "economy",
-                    "passengerAges": [
-                        39
-                    ],
-                    "outbound": {
-                        "origin": {
-                            "date": "2018-11-22",
-                            "airportCode": "JFK",
-                            "countryCode": "us"
-                        },
-                        "destination": {
-                            "date": "2018-11-22",
-                            "airportCode": "LHR",
-                            "countryCode": "gb"
-                        }
-                    },
-                    "inbound": {
-                        "origin": {
-                            "date": "2018-12-24",
-                            "airportCode": "LHR",
-                            "countryCode": "gb"
-                        },
-                        "destination": {
-                            "date": "2018-12-24",
-                            "airportCode": "JFK",
-                            "countryCode": "us"
-                        }
-                    }
-                }
+                "url": "https://playground.automationcloud.net"
             }
         },
         "generatorInput": {
             "type": "object",
-            "description": "Input generator configuration",
+            "description": "Job Input Bundler config",
             "example": {
-                "inboundMonthYear": 10,
-                "outboundMonthYear": 20,
-                "passengers": {
-                    "items": [
-                        {
-                            "dateOfBirth": { "age": 33 },
-                            "document": { "number": "123" }
-                        }
-                    ]
-                },
                 "extractionServiceId": "e44a4f1b-aa5c-4b36-8db3-a7c78c404b90"
             }
         }
