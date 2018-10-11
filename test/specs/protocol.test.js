@@ -60,4 +60,21 @@ describe('Protocol', () => {
         });
 
     });
+
+    describe('sourceOutputKey', () => {
+
+        it('should not contain unresolved output keys', () => {
+            for (const domain of protocol.getDomains()) {
+                for (const inputDef of domain.getInputs()) {
+                    const { sourceOutputKey } = inputDef.spec;
+                    if (sourceOutputKey) {
+                        const output = domain.getOutputDef(sourceOutputKey);
+                        expect(output).toExist(`Cannot resource sourceOutputKey="${sourceOutputKey}" of input ${inputDef.id}`);
+                    }
+                }
+            }
+        });
+
+    });
+
 });
