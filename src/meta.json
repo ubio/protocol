@@ -94,7 +94,8 @@
                     "type": "boolean"
                 },
                 "sourceOutputKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Output key associated with this input key"
                 }
             },
             "required": ["typeRef"],
