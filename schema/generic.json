@@ -266,10 +266,7 @@
             "type": "object",
             "description": "Price consent object used in final price confirmation flow.<br/>When automation reaches final price (typically happens immediately before placing the order) it will emit <code>finalPrice</code> object in output and will wait for consent from you. You then need to provide the exact copy of this object as <code>finalPriceConsent</code> input.",
             "properties": {
-                "price": { "$ref": "#/domains/Generic/types/Price" },
-                "sourceOutputKey": {
-                    "type": "string"
-                }
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "additionalProperties": false,
             "required": [

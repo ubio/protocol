@@ -350,13 +350,6 @@
                     "description": "Fare marketing name as provided by airline.",
                     "example": "Business Flex"
                 },
-                "sourceOutputKey": {
-                    "type": "string",
-                    "enum": [
-                        "availableOutboundFares",
-                        "availableInboundFares"
-                    ]
-                },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
