@@ -18,12 +18,10 @@
         },
         "selectedOutboundFlight": {
             "typeRef": "#/domains/FlightBooking/types/Flight",
-            "sourceOutputKey": "",
             "initial": true
         },
         "selectedInboundFlight": {
             "typeRef": "#/domains/FlightBooking/types/Flight",
-            "sourceOutputKey": "",
             "initial": true
         },
         "itinerary": {
@@ -352,6 +350,13 @@
                     "description": "Fare marketing name as provided by airline.",
                     "example": "Business Flex"
                 },
+                "sourceOutputKey": {
+                    "type": "string",
+                    "enum": [
+                        "availableOutboundFares",
+                        "availableInboundFares"
+                    ]
+                },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
@@ -369,6 +374,9 @@
                     "description": "An array of <code>seatNumber</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
                     "minItems": 1,
                     "maxItems": 9,
+                    "sourceOutputKey": {
+                        "type": "string"
+                    },
                     "items": { "$ref": "#/domains/FlightBooking/types/SeatNumber" }
                 }
             },

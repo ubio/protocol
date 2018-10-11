@@ -147,6 +147,13 @@
             "type": "object",
             "description": "Outbound and inbound specification.",
             "properties": {
+                "sourceOutputKey": {
+                    "type": "string",
+                    "enum": [
+                        "availableOutboundTrips",
+                        "availableInboundTrips"
+                    ]
+                },
                 "origin": { "$ref": "#/domains/CoachBooking/types/DateTimeTerminal" },
                 "destination": { "$ref": "#/domains/CoachBooking/types/DateTimeTerminal" }
             },
