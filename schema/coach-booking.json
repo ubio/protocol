@@ -12,10 +12,12 @@
         },
         "selectedOutboundTrip": {
             "typeRef": "#/domains/CoachBooking/types/Trip",
+            "sourceOutputKey": "availableOutboundTrips",
             "initial": true
         },
         "selectedInboundTrip": {
             "typeRef": "#/domains/CoachBooking/types/Trip",
+            "sourceOutputKey": "availableInboundTrips",
             "initial": true
         },
         "account": {
@@ -33,6 +35,7 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "smsConfirmation": {
