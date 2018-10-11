@@ -14,18 +14,22 @@
         },
         "selectedBoard": {
             "typeRef": "#/domains/HolidayBooking/types/Board",
+            "sourceOutputKey": "availableBoards",
             "description": "One of availableBoards."
         },
         "selectedFlightBundle": {
             "typeRef": "#/domains/HolidayBooking/types/FlightBundle",
+            "sourceOutputKey": "availableFlightBundles",
             "description": "One of availableFlightBundles."
         },
         "selectedRoomType": {
             "typeRef": "#/domains/HolidayBooking/types/RoomType",
+            "sourceOutputKey": "availableRoomTypes",
             "description": "One of availableRoomTypes."
         },
         "selectedHotelTransfer": {
             "typeRef": "#/domains/HolidayBooking/types/HotelTransfer",
+            "sourceOutputKey": "availableHotelTransfers",
             "description": "One of availableHotelTransfers."
         },
         "passengers": {
@@ -43,6 +47,7 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         }
     },
