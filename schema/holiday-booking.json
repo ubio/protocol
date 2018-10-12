@@ -28,6 +28,10 @@
             "typeRef": "#/domains/HolidayBooking/types/HotelTransfer",
             "description": "One of availableHotelTransfers."
         },
+        "selectedDeposit": {
+            "typeRef": "#/domains/HolidayBooking/types/Deposit",
+            "description": "One of availableDeposits."
+        },
         "passengers": {
             "typeRef": "#/domains/HolidayBooking/types/Passengers",
             "initial": true
@@ -72,6 +76,9 @@
         },
         "availableHotelTransfers": {
             "typeRef": "#/domains/HolidayBooking/types/HotelTransfers"
+        },
+        "availableDeposits": {
+            "typeRef": "#/domains/HolidayBooking/types/Deposits"
         }
     },
     "types": {
@@ -213,6 +220,24 @@
             },
             "required": [
                 "type"
+            ],
+            "additionalProperties": false
+        },
+        "Deposits": {
+            "type": "array",
+            "items": { "$ref": "#/domains/HolidayBooking/types/Deposit" }
+        },
+        "Deposit": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
             ],
             "additionalProperties": false
         },
