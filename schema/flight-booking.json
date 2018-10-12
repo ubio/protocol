@@ -606,24 +606,6 @@
             "minLength": 2,
             "maxLength": 4,
             "example": "AA"
-        },
-        "staticData": {
-            "type": "object",
-            "description": "Static input data for QA jobs",
-            "example": {
-                "url": "https://playground.automationcloud.net"
-            }
-        },
-        "generatorInput": {
-            "type": "object",
-            "description": "Job Input Bundler config",
-            "example": {
-                "extractionServiceId": "e44a4f1b-aa5c-4b36-8db3-a7c78c404b90"
-            }
-        },
-        "showInGuidedDocs": {
-            "type": "boolean",
-            "default": false
         }
     }
 }

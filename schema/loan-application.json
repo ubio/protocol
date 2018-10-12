@@ -513,18 +513,5 @@
             "description":"Loan application denied by lender"
         }
     ],
-    "attributes": {
-        "staticData": {
-            "type": "object",
-            "description": "Static input data for QA jobs"
-        },
-        "generatorInput": {
-            "type": "object",
-            "description": "Job Input Bundler config"
-        },
-        "showInGuidedDocs": {
-            "type": "boolean",
-            "default": false
-        }
-    }
+    "attributes": {}
 }
