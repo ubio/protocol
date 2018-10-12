@@ -16,13 +16,16 @@
             "typeRef": "#/domains/BroadbandSignup/types/Property"
         },
         "selectedTvPackages": {
-            "typeRef": "#/domains/BroadbandSignup/types/SelectedPackages"
+            "typeRef": "#/domains/BroadbandSignup/types/SelectedPackages",
+            "sourceOutputKey": "availableTvPackages"
         },
         "selectedBroadbandPackage": {
-            "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage"
+            "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage",
+            "sourceOutputKey": "availableBroadbandPackages"
         },
         "selectedPhonePackage": {
-            "typeRef": "#/domains/BroadbandSignup/types/Package"
+            "typeRef": "#/domains/BroadbandSignup/types/Package",
+            "sourceOutputKey": "availablePhonePackages"
         },
         "contactPerson": {
             "typeRef": "#/domains/BroadbandSignup/types/PersonDob"
@@ -41,6 +44,7 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "landlineOptions": {
@@ -54,16 +58,20 @@
         },
         "selectedMarketingContactOptions": {
             "typeRef": "#/domains/BroadbandSignup/types/SelectedItem",
+            "sourceOutputKey": "availableMarketingContactOptions",
             "description": "List of marketing contact options to be selected."
         },
         "selectedTvSetupDate": {
-            "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
+            "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
+            "sourceOutputKey": "availableTvSetupDates"
         },
         "selectedBroadbandSetupDate": {
-            "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
+            "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
+            "sourceOutputKey": "availableBroadbandSetupDates"
         },
         "selectedActiveLandlineOption": {
-            "typeRef": "#/domains/BroadbandSignup/types/String"
+            "typeRef": "#/domains/BroadbandSignup/types/String",
+            "sourceOutputKey": "availableActiveLandlineOptions"
         }
     },
     "outputs": {
