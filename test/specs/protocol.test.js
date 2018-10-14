@@ -77,7 +77,7 @@ describe('Protocol', () => {
 
     });
 
-    describe.only('dataExtractionDomainId', () => {
+    describe('dataExtractionDomainId', () => {
 
         it('references existing domain', () => {
             protocol.getDomains()
