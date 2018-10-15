@@ -510,6 +510,11 @@
     },
     "errors": [
         {
+            "code": "ContactUsToContinue",
+            "category": "client",
+            "description": "The user being asked to contact the supplier to continue the purchase."
+        },
+        {
             "code": "AlreadyACustomer",
             "category": "client",
             "description": "The user being signed up is already a customer of this service."
