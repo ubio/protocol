@@ -12,7 +12,8 @@ module.exports = function createExample(protocol, spec, visitedRefs = new Set())
     if (spec.oneOf) {
         return createExample(protocol, spec.oneOf[0], visitedRefs);
     }
-    switch (spec.type) {
+    const type = Array.isArray(spec.type) ? spec.type[0] : spec.type;
+    switch (type) {
         case 'string':
             if (spec.example) {
                 return spec.example;
