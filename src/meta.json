@@ -106,6 +106,10 @@
                 },
                 "staged": {
                     "type": "boolean"
+                },
+                "sourceOutputKey": {
+                    "type": "string",
+                    "description": "Output key associated with this input key"
                 }
             },
             "required": ["typeRef"],

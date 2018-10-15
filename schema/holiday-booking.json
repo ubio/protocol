@@ -14,19 +14,27 @@
         },
         "selectedBoard": {
             "typeRef": "#/domains/HolidayBooking/types/Board",
+            "sourceOutputKey": "availableBoards",
             "description": "One of availableBoards."
         },
         "selectedFlightBundle": {
             "typeRef": "#/domains/HolidayBooking/types/FlightBundle",
+            "sourceOutputKey": "availableFlightBundles",
             "description": "One of availableFlightBundles."
         },
         "selectedRoomType": {
             "typeRef": "#/domains/HolidayBooking/types/RoomType",
+            "sourceOutputKey": "availableRoomTypes",
             "description": "One of availableRoomTypes."
         },
         "selectedHotelTransfer": {
             "typeRef": "#/domains/HolidayBooking/types/HotelTransfer",
+            "sourceOutputKey": "availableHotelTransfers",
             "description": "One of availableHotelTransfers."
+        },
+        "selectedDeposit": {
+            "typeRef": "#/domains/HolidayBooking/types/Deposit",
+            "description": "One of availableDeposits."
         },
         "passengers": {
             "typeRef": "#/domains/HolidayBooking/types/Passengers",
@@ -43,6 +51,7 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         }
     },
@@ -72,6 +81,9 @@
         },
         "availableHotelTransfers": {
             "typeRef": "#/domains/HolidayBooking/types/HotelTransfers"
+        },
+        "availableDeposits": {
+            "typeRef": "#/domains/HolidayBooking/types/Deposits"
         }
     },
     "types": {
@@ -213,6 +225,24 @@
             },
             "required": [
                 "type"
+            ],
+            "additionalProperties": false
+        },
+        "Deposits": {
+            "type": "array",
+            "items": { "$ref": "#/domains/HolidayBooking/types/Deposit" }
+        },
+        "Deposit": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
             ],
             "additionalProperties": false
         },

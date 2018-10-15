@@ -14,6 +14,7 @@
         },
         "selectedRooms": {
             "typeRef": "#/domains/HotelBooking/types/Rooms",
+            "sourceOutputKey": "availableRooms",
             "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed."
         },
         "guestAges": {
@@ -32,13 +33,15 @@
             "typeRef": "#/domains/Generic/types/Payment"
         },
         "selectedPaymentMethod": {
-            "typeRef": "#/domains/HotelBooking/types/PaymentMethod"
+            "typeRef": "#/domains/HotelBooking/types/PaymentMethod",
+            "sourceOutputKey": "availablePaymentMethods"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         }
     },
