@@ -329,7 +329,6 @@
             },
             "additionalProperties": false,
             "required": [
-                "registrationNumber"
             ]
         },
         "Options": {
