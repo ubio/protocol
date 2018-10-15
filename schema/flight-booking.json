@@ -610,6 +610,18 @@
             "minLength": 2,
             "maxLength": 4,
             "example": "AA"
+        },
+        "staticData": {
+            "type": "object",
+            "description": "Static input data for QA jobs"
+        },
+        "generatorInput": {
+            "type": "object",
+            "description": "Job Input Bundler config"
+        },
+        "showInGuidedDocs": {
+            "type": "boolean",
+            "default": false
         }
     }
 }
