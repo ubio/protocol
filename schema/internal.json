@@ -18,6 +18,7 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
             "description": "Used by test-price-consent service."
         },
         "panToken": {
