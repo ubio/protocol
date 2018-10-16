@@ -152,7 +152,7 @@
             "description": "Emitted when the statutory status disclosure text is presented."
         },
         "faq": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "typeRef": "#/domains/MotorInsurance/types/NullableStructuredTextItem",
             "description": "Emitted when the FAQ link or document is presented."
         },
         "coverSummary": {
@@ -521,6 +521,16 @@
             "type": "array",
             "description": "Account details for direct debit.",
             "items": { "type": "string" }
+        },
+        "NullableStructuredTextItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         }
     },
     "errors": [
