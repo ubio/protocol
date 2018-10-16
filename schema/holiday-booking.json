@@ -84,6 +84,9 @@
         },
         "availableDeposits": {
             "typeRef": "#/domains/HolidayBooking/types/Deposits"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/HolidayBooking/types/BookingConfirmation"
         }
     },
     "types": {
@@ -306,6 +309,30 @@
                 "addAdditionalLuggage"
             ],
             "additionalProperties": false
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
         }
     },
     "errors": [
