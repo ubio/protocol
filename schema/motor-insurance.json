@@ -100,39 +100,39 @@
             "description": "List of voluntary excesses to choose from."
         },
         "availableExcessProtectCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableLegalCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableBreakdownCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availablePersonalInjuryCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableCarHireCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableWindscreenCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableKeyReplacementCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableMisfuelCovers": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "Emitted when actual cover information is collected.<br/>Note: on deep links with pre-selected additional cover this output may not be provided."
         },
         "availableNoClaimsDiscountProtection": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "List of no claims discount protection options supported by this insurer."
         },
         "contactUs": {
