@@ -27,7 +27,26 @@
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "vehicle": {
-            "typeRef": "#/domains/MotorInsurance/types/Vehicle"
+            "typeRef": "#/domains/MotorInsurance/types/Vehicle",
+            "dataGenerationInstruction": {
+                "method": "DataGenerationApi",
+                "generatorRequestSchema": {
+                    "type": "object",
+                    "properties": {
+                        "vehicle": {
+                            "type": "object",
+                            "properties": {
+                                "registrationNumber": { "type": "string" },
+                                "make": { "type": "string" },
+                                "model": { "type": "string" },
+                                "makeModel": { "type": "string" },
+                                "yearOfManufacture": { "type": "string" }
+                            }
+                        }
+                    }
+                },
+                "responseKey": "vehicle"
+            }
         },
         "options": {
             "typeRef": "#/domains/MotorInsurance/types/Options",

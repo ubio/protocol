@@ -96,6 +96,15 @@
                 "sourceOutputKey": {
                     "type": "string",
                     "description": "Output key associated with this input key"
+                },
+                "dataGenerationInstruction": {
+                    "type": "object",
+                    "properties": {
+                        "method": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["method"]
                 }
             },
             "required": ["typeRef"],
