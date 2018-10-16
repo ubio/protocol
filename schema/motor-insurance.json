@@ -96,7 +96,7 @@
             "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation"
         },
         "availableVoluntaryExcesses": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableCovers",
+            "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",
             "description": "List of voluntary excesses to choose from."
         },
         "availableExcessProtectCovers": {
@@ -360,6 +360,16 @@
                     "default": false
                 }
             }
+        },
+        "NullableAvailableCovers": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/MotorInsurance/types/AvailableCovers"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "AvailableCovers": {
             "type": "array",
