@@ -3,7 +3,7 @@
 const Ajv = require('ajv');
 const protocol = require('../protocol');
 const expect = require('expect');
-const meta = require('../../src/meta.json');
+const meta = require('../../src/schema-meta.json');
 
 describe('Schema', () => {
 
