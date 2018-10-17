@@ -1,0 +1,91 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema",
+    "type": "array",
+    "items": { "$ref": "#/definitions/protocolExtension" },
+    "definitions": {
+        "protocolExtension": {
+            "properties": {
+                "typeRef": { "type": "string" },
+                "instructionTemplate": { "$ref": "#/definitions/instructionBody" }
+            }
+        },
+        "instructionBody": {
+            "oneOf": [
+                { "$ref": "#/definitions/api" },
+                { "$ref": "#/definitions/mixin" },
+                { "$ref": "#/definitions/panExchange" },
+                { "$ref": "#/definitions/anyPhoneString" },
+                { "$ref": "#/definitions/randomDate" },
+                { "$ref": "#/definitions/randomInt" }
+            ]
+        },
+        "api": {
+            "properties": {
+                "method": { "const": "DataGeneration" },
+                "target": {
+                    "description": "Target data generation api endpoint",
+                    "type": "string",
+                    "enum": [
+                        "Generic/Account",
+                        "Generic/Address",
+                        "Generic/Person",
+                        "Generic/BankDetails",
+                        "Generic/PaymentCard",
+                        "Generic/IdentityDocument",
+                        "MotorInsurance/Vehicle"
+                    ]
+                },
+                "pick": {
+                    "description": "Array of keys to pick from generated object, whole object picked when nothing specified. Use case: you want Generic/Person but only need firstName and lastName",
+                    "items": { "type": "string" },
+                    "minItems": 1
+                },
+                "args": { "additionalProperties": { "type": "string" } }
+            },
+            "required": ["method", "target"]
+        },
+        "mixin": {
+            "properties": {
+                "method": { "const": "Mixin" },
+                "components": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "allOf": [
+                            { "$ref": "#/definitions/instructionBody" },
+                            { "properties": { "key": { "type": "string" } }, "required": [ "key" ] }
+                        ]
+                    }
+                }
+            },
+            "required": ["method", "components"]
+        },
+        "panExchange": {
+            "properties": {
+                "method": { "const": "PanExchange" },
+                "args": { "additionalProperties": { "type": "string" } }
+            },
+            "required": ["method", "args"]
+        },
+        "anyPhoneString": {
+            "properties": {
+                "method": { "const": "AnyPhoneString" }
+            },
+            "required": ["method"]
+        },
+        "randomDate": {
+            "properties": {
+                "method": { "const": "RandomDate" }
+            },
+            "required": ["method"]
+        },
+        "randomInt": {
+            "properties": {
+                "method": { "const": "RandomInt" },
+                "min": { "type": "integer", "default": 0 },
+                "max": { "type": "integer", "default": 2 }
+            },
+            "required": ["method"]
+        }
+    }
+}

@@ -33,6 +33,10 @@ async function copyFiles(src, dest) {
 }
 
 copyFiles(join(__dirname, 'docs'), join(__dirname, 'public'))
+    .then(() => copyFile(
+        join(__dirname, 'src', 'data-generation.json'),
+        join(__dirname, 'public', 'data-generation.json')
+    ))
     .catch(error => {
         console.error(error); // eslint-disable-line no-console
         process.exit(1);
