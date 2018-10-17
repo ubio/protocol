@@ -1,206 +1,206 @@
 [
-  {
-    "typeRef": "#/domains/Generic/types/Person",
-    "instructionTemplate": {
-      "method": "Mixin",
-      "base": "person",
-      "components": [
-        {
-          "method": "DataGeneration",
-          "key": "person",
-          "stash": "person",
-          "target": "Generic/Person"
+    {
+        "typeRef": "#/domains/Generic/types/Person",
+        "instructionTemplate": {
+            "method": "Mixin",
+            "base": "person",
+            "components": [
+                {
+                    "method": "DataGeneration",
+                    "key": "person",
+                    "stash": "person",
+                    "target": "Generic/Person"
+                },
+                {
+                    "method": "DataGeneration",
+                    "key": "document",
+                    "target": "Generic/IdentityDocument"
+                }
+            ]
         },
-        {
-          "method": "DataGeneration",
-          "key": "document",
-          "target": "Generic/IdentityDocument"
-        }
-      ]
-    },
-    "provides": [
-      "firstName",
-      "lastName",
-      "middleName",
-      "document",
-      "title"
-    ]
-  },
-  {
-    "typeRef": "#/domains/Generic/types/Payment",
-    "instructionTemplate": {
-      "method": "Mixin",
-      "components": [
-        {
-          "method": "DataGeneration",
-          "key": "person",
-          "stash": "person",
-          "target": "Generic/Person"
-        },
-        {
-          "method": "DataGeneration",
-          "key": "card",
-          "stash": "pan",
-          "target": "Generic/PaymentCard",
-          "args": {
-            "name": "{person.firstName} {person.lastName}"
-          }
-        },
-        {
-          "method": "DataGeneration",
-          "key": "address",
-          "target": "Generic/Address"
-        }
-      ]
-    }
-  },
-  {
-    "typeRef": "#/domains/Generic/types/Account",
-    "instructionTemplate": {
-      "method": "DataGeneration",
-      "target": "Generic/Account"
-    }
-  },
-  {
-    "typeRef": "#/domains/Generic/types/PanToken",
-    "instructionTemplate": {
-      "method": "PanExchange",
-      "args": {
-        "pan": "{pan}"
-      }
-    }
-  },
-  {
-    "typeRef": "#/domains/Generic/types/AnyPhoneString",
-    "instructionTemplate": {
-      "method": "AnyPhoneString"
-    }
-  },
-  {
-    "typeRef": "#/domains/Generic/types/Person",
-    "instructionTemplate": {
-      "method": "DataGeneration",
-      "target": "Generic/Person"
-    }
-  },
-  {
-    "typeRef": "#/domains/Generic/types/IdentityDocument",
-    "instructionTemplate": {
-      "method": "DataGeneration",
-      "target": "Generic/IdentityDocument"
-    }
-  },
-  {
-    "typeRef": "#/domains/FlightBooking/types/Passenger",
-    "instructionTemplate": {
-      "method": "Mixin",
-      "base": "person",
-      "components": [
-        {
-          "method": "DataGeneration",
-          "key": "person",
-          "target": "Generic/Person"
-        },
-        {
-          "method": "RandomDate",
-          "key": "dateOfBirth"
-        },
-        {
-          "method": "RandomInt",
-          "key": "addAdditionalLuggage"
-        },
-        {
-          "method": "DataGeneration",
-          "key": "document",
-          "target": "Generic/IdentityDocument"
-        }
-      ]
-    }
-  },
-  {
-    "typeRef": "#/domains/MotorInsurance/types/Vehicle",
-    "instructionTemplate": {
-      "method": "DataGeneration",
-      "target": "MotorInsurance/Vehicle"
-    }
-  },
-  {
-    "typeRef": "#/domains/Generic/types/Address",
-    "instructionTemplate": {
-      "method": "DataGeneration",
-      "target": "Generic/Address"
-    }
-  },
-  {
-    "typeRef": "#/domains/BroadbandSignup/types/DirectDebitPayment",
-    "instructionTemplate": {
-      "method": "Mixin",
-      "base": "bankDetails",
-      "components": [
-        {
-          "method": "DataGeneration",
-          "key": "bankDetails",
-          "target": "Generic/BankDetails"
-        },
-        {
-          "method": "DataGeneration",
-          "key": "accountHolder",
-          "target": "Generic/Person"
-        },
-        {
-          "method": "DataGeneration",
-          "key": "accountHolderAddress",
-          "target": "Generic/Address"
-        }
-      ]
-    }
-  },
-  {
-    "typeRef": "#/domains/BroadbandSignup/types/PersonDob",
-    "instructionTemplate": {
-      "method": "Mixin",
-      "base": "person",
-      "components": [
-        {
-          "method": "DataGeneration",
-          "key": "person",
-          "target": "Generic/Person",
-          "pick": [
-            "title",
+        "provides": [
             "firstName",
+            "lastName",
             "middleName",
-            "lastName"
-          ]
-        },
-        {
-          "method": "RandomDate",
-          "key": "dateOfBirth"
+            "document",
+            "title"
+        ]
+    },
+    {
+        "typeRef": "#/domains/Generic/types/Payment",
+        "instructionTemplate": {
+            "method": "Mixin",
+            "components": [
+                {
+                    "method": "DataGeneration",
+                    "key": "person",
+                    "stash": "person",
+                    "target": "Generic/Person"
+                },
+                {
+                    "method": "DataGeneration",
+                    "key": "card",
+                    "stash": "pan",
+                    "target": "Generic/PaymentCard",
+                    "args": {
+                        "name": "{person.firstName} {person.lastName}"
+                    }
+                },
+                {
+                    "method": "DataGeneration",
+                    "key": "address",
+                    "target": "Generic/Address"
+                }
+            ]
         }
-      ]
-    }
-  },
-  {
-    "typeRef": "#/domains/MotorInsurance/types/DirectDebitPayment",
-    "instructionTemplate": {
-      "method": "Mixin",
-      "base": "bankDetails",
-      "components": [
-        {
-          "method": "DataGeneration",
-          "key": "bankDetails",
-          "target": "Generic/BankDetails"
-        },
-        {
-          "method": "DataGeneration",
-          "key": "accountHolder",
-          "target": "Generic/Person"
-        },
-        {
-          "method": "DataGeneration",
-          "key": "accountHolderAddress",
-          "target": "Generic/Address"
+    },
+    {
+        "typeRef": "#/domains/Generic/types/Account",
+        "instructionTemplate": {
+            "method": "DataGeneration",
+            "target": "Generic/Account"
         }
-      ]
+    },
+    {
+        "typeRef": "#/domains/Generic/types/PanToken",
+        "instructionTemplate": {
+            "method": "PanExchange",
+            "args": {
+                "pan": "{pan}"
+            }
+        }
+    },
+    {
+        "typeRef": "#/domains/Generic/types/AnyPhoneString",
+        "instructionTemplate": {
+            "method": "AnyPhoneString"
+        }
+    },
+    {
+        "typeRef": "#/domains/Generic/types/Person",
+        "instructionTemplate": {
+            "method": "DataGeneration",
+            "target": "Generic/Person"
+        }
+    },
+    {
+        "typeRef": "#/domains/Generic/types/IdentityDocument",
+        "instructionTemplate": {
+            "method": "DataGeneration",
+            "target": "Generic/IdentityDocument"
+        }
+    },
+    {
+        "typeRef": "#/domains/FlightBooking/types/Passenger",
+        "instructionTemplate": {
+            "method": "Mixin",
+            "base": "person",
+            "components": [
+                {
+                    "method": "DataGeneration",
+                    "key": "person",
+                    "target": "Generic/Person"
+                },
+                {
+                    "method": "RandomDate",
+                    "key": "dateOfBirth"
+                },
+                {
+                    "method": "RandomInt",
+                    "key": "addAdditionalLuggage"
+                },
+                {
+                    "method": "DataGeneration",
+                    "key": "document",
+                    "target": "Generic/IdentityDocument"
+                }
+            ]
+        }
+    },
+    {
+        "typeRef": "#/domains/MotorInsurance/types/Vehicle",
+        "instructionTemplate": {
+            "method": "DataGeneration",
+            "target": "MotorInsurance/Vehicle"
+        }
+    },
+    {
+        "typeRef": "#/domains/Generic/types/Address",
+        "instructionTemplate": {
+            "method": "DataGeneration",
+            "target": "Generic/Address"
+        }
+    },
+    {
+        "typeRef": "#/domains/BroadbandSignup/types/DirectDebitPayment",
+        "instructionTemplate": {
+            "method": "Mixin",
+            "base": "bankDetails",
+            "components": [
+                {
+                    "method": "DataGeneration",
+                    "key": "bankDetails",
+                    "target": "Generic/BankDetails"
+                },
+                {
+                    "method": "DataGeneration",
+                    "key": "accountHolder",
+                    "target": "Generic/Person"
+                },
+                {
+                    "method": "DataGeneration",
+                    "key": "accountHolderAddress",
+                    "target": "Generic/Address"
+                }
+            ]
+        }
+    },
+    {
+        "typeRef": "#/domains/BroadbandSignup/types/PersonDob",
+        "instructionTemplate": {
+            "method": "Mixin",
+            "base": "person",
+            "components": [
+                {
+                    "method": "DataGeneration",
+                    "key": "person",
+                    "target": "Generic/Person",
+                    "pick": [
+                        "title",
+                        "firstName",
+                        "middleName",
+                        "lastName"
+                    ]
+                },
+                {
+                    "method": "RandomDate",
+                    "key": "dateOfBirth"
+                }
+            ]
+        }
+    },
+    {
+        "typeRef": "#/domains/MotorInsurance/types/DirectDebitPayment",
+        "instructionTemplate": {
+            "method": "Mixin",
+            "base": "bankDetails",
+            "components": [
+                {
+                    "method": "DataGeneration",
+                    "key": "bankDetails",
+                    "target": "Generic/BankDetails"
+                },
+                {
+                    "method": "DataGeneration",
+                    "key": "accountHolder",
+                    "target": "Generic/Person"
+                },
+                {
+                    "method": "DataGeneration",
+                    "key": "accountHolderAddress",
+                    "target": "Generic/Address"
+                }
+            ]
+        }
     }
-  }
 ]
