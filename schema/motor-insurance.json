@@ -69,6 +69,21 @@
             "sourceOutputKey": "availableNoClaimsDiscountProtection",
             "description": "Selected no claims discount protection."
         },
+        "selectedWindscreenCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableWindscreenCovers",
+            "description": "Selected no claims discount protection."
+        },
+        "selectedKeyReplacementCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableKeyReplacementCovers",
+            "description": "Selected no claims discount protection."
+        },
+        "selectedMisfuelCover": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "sourceOutputKey": "availableMisfuelCovers",
+            "description": "Selected no claims discount protection."
+        },
         "selectedPaymentTerm": {
             "typeRef": "#/domains/MotorInsurance/types/PaymentTerm",
             "sourceOutputKey": "availablePaymentTerms",
