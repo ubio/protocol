@@ -527,6 +527,16 @@
             "code": "PackageNotAvailable",
             "category": "client",
             "description": "The package is not avaialbe."
+        },
+        {
+            "code": "BankDetailsInvalid",
+            "category": "client",
+            "description": "The package is not avaialbe."
+        },
+        {
+            "code": "DirectDebitRejected",
+            "category": "client",
+            "description": "The package is not avaialbe."
         }
     ],
     "attributes": {
