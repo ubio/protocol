@@ -370,6 +370,18 @@
                 "noClaimsDiscountProtection": {
                     "type": "boolean",
                     "default": false
+                },
+                "windscreenCover": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "keyReplacementCover": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "misfuelCover": {
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
