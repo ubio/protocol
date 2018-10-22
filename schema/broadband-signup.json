@@ -72,6 +72,10 @@
         "selectedActiveLandlineOption": {
             "typeRef": "#/domains/BroadbandSignup/types/String",
             "sourceOutputKey": "availableActiveLandlineOptions"
+        },
+        "selectedAddress": {
+            "typeRef": "#/domains/BroadbandSignup/types/String",
+            "sourceOutputKey": "availableAddresses"
         }
     },
     "outputs": {
