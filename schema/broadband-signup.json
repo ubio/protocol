@@ -214,7 +214,6 @@
                         }
                     },
                     "required": [
-                        "streetName",
                         "postcode",
                         "city",
                         "countrySubdivision"
