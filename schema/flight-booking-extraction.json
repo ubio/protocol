@@ -9,9 +9,11 @@
             "typeRef": "#/domains/FlightBooking/types/Options"
         },
         "selectedOriginAirportCode": {
+            "sourceOutputKey": "availableOriginAirportCodes",
             "typeRef": "#/domains/FlightBooking/types/AirportCode"
         },
         "selectedDestinationAirportCode": {
+            "sourceOutputKey": "availableDestinationAirportCodes",
             "typeRef": "#/domains/FlightBooking/types/AirportCode"
         },
         "outboundMonthYear": {
@@ -21,9 +23,11 @@
             "typeRef": "#/domains/FlightBookingExtraction/types/MonthYearOrNull"
         },
         "selectedOutboundDay": {
+            "sourceOutputKey": "availableOutboundDays",
             "typeRef": "#/domains/FlightBookingExtraction/types/Day"
         },
         "selectedInboundDay": {
+            "sourceOutputKey": "availableInboundDays",
             "typeRef": "#/domains/FlightBookingExtraction/types/Day"
         },
         "passengerAges": {
