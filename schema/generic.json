@@ -787,6 +787,36 @@
             ],
             "additionalProperties": false
         },
+        "StructuredPrice": {
+            "type": "object",
+            "description": "A list of structured text.",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "StructuredPrice"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the text grouping."
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" },
+                "contents": {
+                    "type": "array",
+                    "description": "An array of structured text items.",
+                    "items": {
+                        "$ref": "#/domains/Generic/types/StructuredTextItem"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "price",
+                "contents"
+            ],
+            "additionalProperties": false
+        },
         "StructuredTextItem": {
             "oneOf": [
                 {
@@ -800,6 +830,9 @@
                 },
                 {
                     "$ref": "#/domains/Generic/types/NamedText"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/StructuredPrice"
                 },
                 {
                     "$ref": "#/domains/Generic/types/NamedPrice"
