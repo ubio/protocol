@@ -167,7 +167,7 @@
             "description": "Emitted when the excess breakdown is presented."
         },
         "excessInfo": {
-            "typeRef": "#/domains/Generic/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/MotorInsurance/types/NullableStructuredTextItem",
             "description": "Emitted when the excess information is presented."
         },
         "priceBreakdown": {
@@ -207,7 +207,7 @@
             "description": "Emitted when the statement of fact is presented."
         },
         "privacyPolicy": {
-            "typeRef": "#/domains/Generic/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/MotorInsurance/types/NullableStructuredTextItem",
             "description": "Emitted when the privacy policy is presented."
         },
         "vehicleDetails": {
@@ -239,7 +239,7 @@
             "description": "List of marketing contact options provided by the insurer."
         },
         "secciForm": {
-            "typeRef": "#/domains/Generic/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/MotorInsurance/types/NullableStructuredTextItem",
             "description": "Standard European consumer credit information form, where applicable."
         },
         "creditAgreement": {
@@ -247,7 +247,7 @@
             "description": "Credit agreement."
         },
         "productInformation": {
-            "typeRef": "#/domains/Generic/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/MotorInsurance/types/NullableStructuredTextItem",
             "description": "Information about the product."
         },
         "insurerSpecificDocuments": {
