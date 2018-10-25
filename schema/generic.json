@@ -1046,6 +1046,11 @@
             "description": "Input was not provided within 15 minutes"
         },
         {
+            "code": "TdsTimeout",
+            "category": "client",
+            "description": "3D Secure was not completed by the card holder"
+        },
+        {
             "code": "PaymentRejected",
             "category": "client",
             "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if available"
