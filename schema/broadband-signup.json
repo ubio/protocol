@@ -105,7 +105,7 @@
             "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
         },
         "estimatedPriceBreakdown": {
-            "typeRef": "#/domains/BroadbandSignup/types/StructuredTextItems"
+            "typeRef": "#/domains/Generic/types/StructuredTextItems"
         },
         "monthlyCosts": {
             "typeRef": "#/domains/Generic/types/StructuredText"
