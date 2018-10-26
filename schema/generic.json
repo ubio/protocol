@@ -1051,6 +1051,11 @@
             "description": "3D Secure was not completed by the card holder"
         },
         {
+            "code": "InputRejected",
+            "category": "client",
+            "description": "Replacement for rejected input was not provided within 15 minutes"
+        },
+        {
             "code": "PaymentRejected",
             "category": "client",
             "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if available"
