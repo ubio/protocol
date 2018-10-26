@@ -30,7 +30,7 @@
             "description": "Personal details about the guests."
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
+            "typeRef": "#/domains/HotelBooking/types/Payment"
         },
         "selectedPaymentMethod": {
             "typeRef": "#/domains/HotelBooking/types/PaymentMethod",
@@ -309,6 +309,22 @@
             "required": [
                 "bookingReference"
             ]
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "person": { "$ref": "#/domains/HotelBooking/types/Person" },
+                "address": { "$ref": "#/domains/Generic/types/Address" }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
