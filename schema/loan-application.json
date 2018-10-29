@@ -86,6 +86,7 @@
             "properties": {
                 "purpose": {
                     "type": "string",
+                    "minLength": 1,
                     "description": "Purpose of the loan.",
                     "example": "buy a car"
                 },
@@ -104,6 +105,7 @@
                 },
                 "promotionCode": {
                     "type": "string",
+                    "minLength": 1,
                     "description": "Promotion code."
                 }
             },
@@ -328,6 +330,7 @@
                 },
                 "jobTitle": {
                     "type": "string",
+                    "minLength": 1,
                     "description": "Job title.",
                     "example": "Computer programmer"
                 },
@@ -348,8 +351,7 @@
                 }
             },
             "required": [
-                "status",
-                "jobTitle"
+                "status"
             ],
             "additionalProperties": false
         },
@@ -444,6 +446,7 @@
             "properties": {
                 "name": {
                     "type": "string",
+                    "minLength": 1,
                     "description": "Name of requirement.",
                     "example": "income"
                 }
@@ -536,10 +539,12 @@
             "properties": {
                 "key": {
                     "type": "string",
+                    "minLength": 1,
                     "example": "How much do you earn per month?"
                 },
                 "value": {
                     "type": "string",
+                    "minLength": 1,
                     "example": "2000"
                 }
             },
