@@ -77,6 +77,9 @@
         },
         "confirmation": {
             "typeRef": "#/domains/LoanApplication/types/Confirmation"
+        },
+        "expenseTypes": {
+            "typeRef": "#/domains/LoanApplication/types/ExpenseTypes"
         }
     },
     "types": {
@@ -551,6 +554,26 @@
             "required": [
                 "key",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "ExpenseTypes": {
+            "type": "array",
+            "description": "A list of available cover options found on the page.",
+            "minItems": 1,
+            "maxItems": 40,
+            "items": { "$ref": "#/domains/LoanApplication/types/ExpenseType" }
+        },
+        "ExpenseType": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "key"
             ],
             "additionalProperties": false
         }
