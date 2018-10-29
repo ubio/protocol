@@ -35,6 +35,9 @@
         "employment": {
             "typeRef": "#/domains/LoanApplication/types/Employment"
         },
+        "guarantor": {
+            "typeRef": "#/domains/LoanApplication/types/Applicant"
+        },
         "bankAccount": {
             "typeRef": "#/domains/LoanApplication/types/BankAccount"
         },
@@ -168,9 +171,6 @@
                     "minLength": 1,
                     "example": "Smith"
                 },
-                "document": {
-                    "$ref": "#/domains/Generic/types/IdentityDocument"
-                },
                 "dateOfBirth": {
                     "type": "string",
                     "format": "date",
@@ -195,6 +195,16 @@
                 "countryOfBirth": {
                     "$ref": "#/domains/Generic/types/CountryCode",
                     "description": "Country of birth."
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "phone": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "residentialStatus": {
                 }
             },
             "required": [
@@ -325,6 +335,13 @@
                 "netIncome": {
                     "$ref": "#/domains/Generic/types/Price",
                     "description": "Applicant's total annual net salary (after tax)."
+                },
+                "payFrequency": {
+                    "type": "string",
+                    "enum": [
+                        "monthly",
+                        "weekly"
+                    ]
                 }
             },
             "required": [
