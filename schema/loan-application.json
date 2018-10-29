@@ -56,6 +56,9 @@
         "proofOfAddress": {
             "typeRef": "#/domains/Generic/types/File"
         },
+        "expenses": {
+            "typeRef": "#/domains/LoanApplication/types/Expenses"
+        },
         "options": {
             "typeRef": "#/domains/LoanApplication/types/Options",
             "default": {},
@@ -516,10 +519,33 @@
             "type": "object",
             "description": "Flags for enabling optional automation features.",
             "properties": {
-
             },
             "required": [
-
+            ],
+            "additionalProperties": false
+        },
+        "Expenses": {
+            "type": "array",
+            "description": "A list of available cover options found on the page.",
+            "minItems": 1,
+            "maxItems": 40,
+            "items": { "$ref": "#/domains/LoanApplication/types/Expense" }
+        },
+        "Expense": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "example": "How much do you earn per month?"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "2000"
+                }
+            },
+            "required": [
+                "key",
+                "value"
             ],
             "additionalProperties": false
         }
