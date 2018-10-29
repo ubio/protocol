@@ -452,6 +452,9 @@
                     "minLength": 1,
                     "description": "Name of requirement.",
                     "example": "income"
+                },
+                "url": {
+                    "type": "string"
                 }
             },
             "required": [
