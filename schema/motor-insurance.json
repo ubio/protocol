@@ -10,7 +10,7 @@
             "typeRef": "#/domains/MotorInsurance/types/Quote"
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/MotorInsurance/types/NullableAccount"
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
@@ -571,6 +571,16 @@
             "oneOf": [
                 {
                     "$ref": "#/domains/Generic/types/StructuredTextItem"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "NullableAccount": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/Account"
                 },
                 {
                     "type": "null"
