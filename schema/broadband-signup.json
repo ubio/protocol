@@ -168,7 +168,7 @@
                     "type": "boolean",
                     "default": false
                 },
-                "address": {
+                "addressSelection": {
                     "type": "boolean",
                     "default": false
                 }
