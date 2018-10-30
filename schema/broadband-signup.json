@@ -154,7 +154,25 @@
     },
     "types": {
         "Options": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "marketingContact": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "directoryListing": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "address": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
         },
         "LandlineCheck": {
             "type": "object",
