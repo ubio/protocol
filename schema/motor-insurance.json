@@ -154,10 +154,6 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the contact info is presented."
         },
-        "openingHours": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItem",
-            "description": "Emitted when the opening hours are presented."
-        },
         "quoteReference": {
             "typeRef": "#/domains/MotorInsurance/types/QuoteReference",
             "description": "Emitted when the quote reference is presented."
