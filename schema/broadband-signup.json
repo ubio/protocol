@@ -557,6 +557,11 @@
             "code": "DirectDebitRejected",
             "category": "client",
             "description": "The package is not avaialbe."
+        },
+        {
+            "code": "LandlineMandatory",
+            "category": "client",
+            "description": "The landline is mandatory, but not either not provided or not valid."
         }
     ],
     "attributes": {
