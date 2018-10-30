@@ -397,6 +397,10 @@
                 "account": {
                     "type": "boolean",
                     "default": false
+                },
+                "customerIpAddress": {
+                    "type": "string",
+                    "default": ""
                 }
             }
         },
