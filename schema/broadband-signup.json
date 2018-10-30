@@ -76,6 +76,9 @@
         "selectedAddress": {
             "typeRef": "#/domains/BroadbandSignup/types/String",
             "sourceOutputKey": "availableAddresses"
+        },
+        "landlineChallenge": {
+            "typeRef": "#/domains/BroadbandSignup/types/String"
         }
     },
     "outputs": {
