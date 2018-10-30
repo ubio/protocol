@@ -565,6 +565,11 @@
             "code": "LandlineMandatory",
             "category": "client",
             "description": "The landline is mandatory, but not either not provided or not valid."
+        },
+        {
+            "code": "LandlineInvalid",
+            "category": "client",
+            "description": "The landline is not valid."
         }
     ],
     "attributes": {
