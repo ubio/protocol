@@ -79,6 +79,9 @@
         },
         "landlineChallenge": {
             "typeRef": "#/domains/BroadbandSignup/types/String"
+        },
+        "directoryListing": {
+            "typeRef": "#/domains/BroadbandSignup/types/Boolean"
         }
     },
     "outputs": {
