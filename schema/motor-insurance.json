@@ -451,6 +451,11 @@
                     "description": "Cover marketing name as provided by the insurer.",
                     "example": "European Plus"
                 },
+                "priceLine": {
+                    "type": "string",
+                    "description": "Cover price line.",
+                    "example": "Included."
+                },
                 "price": { "$ref": "#/domains/Generic/types/Price" },
                 "details": { "$ref": "#/domains/Generic/types/StructuredTextItem" }
             },
