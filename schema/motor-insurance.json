@@ -578,9 +578,16 @@
             "additionalProperties": false
         },
         "AvailableDirectDebitPaymentDays": {
-            "type": "array",
-            "description": "Account details for direct debit.",
-            "items": { "type": "string" }
+            "oneOf": [
+                {
+                    "type": "array",
+                    "description": "Account details for direct debit.",
+                    "items": { "type": "string" }
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "NullableStructuredTextItem": {
             "oneOf": [
