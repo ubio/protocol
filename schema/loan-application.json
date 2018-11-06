@@ -44,6 +44,12 @@
         "mobilePinConfirmation": {
             "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
         },
+        "mobilePinConfirmationRetry1": {
+            "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
+        },
+        "mobilePinConfirmationRetry2": {
+            "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
+        },
         "emailVerification": {
             "typeRef": "#/domains/LoanApplication/types/EmailVerification"
         },
@@ -585,7 +591,12 @@
         {
             "code": "LoanApplicationDeclined",
             "category": "client",
-            "description":"Loan application denied by lender"
+            "description":"Loan application denied by lender."
+        },
+        {
+            "code": "MobilePinVerificationFailed",
+            "category": "client",
+            "description":"Pin verification failed."
         }
     ],
     "attributes": {}
