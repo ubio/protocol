@@ -69,6 +69,10 @@
             "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
             "sourceOutputKey": "availableBroadbandSetupDates"
         },
+        "selectedMoveInDate": {
+            "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
+            "sourceOutputKey": "availableMoveInDates"
+        },
         "selectedActiveLandlineOption": {
             "typeRef": "#/domains/BroadbandSignup/types/String",
             "sourceOutputKey": "availableActiveLandlineOptions"
@@ -109,6 +113,9 @@
         },
         "availableBroadbandSetupDates": {
             "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
+        },
+        "availableMoveInDates": {
+            "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
         },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
@@ -175,6 +182,10 @@
                     "default": false
                 },
                 "addressSelection": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "moveInDateSelection": {
                     "type": "boolean",
                     "default": false
                 }
