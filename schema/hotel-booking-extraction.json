@@ -1,0 +1,67 @@
+{
+    "description": "Internal domain for generating HotelBooking inputs.",
+    "private": true,
+    "inputs": {
+        "options": {
+            "typeRef": "#/domains/HotelBookingExtraction/types/Options"
+        },
+        "selectedDestination": {
+            "sourceOutputKey": "availableDestinations",
+            "typeRef": "#/domains/HotelBookingExtraction/types/Destination"
+        },
+        "checkinDate": {
+            "typeRef": "#/domains/HotelBookingExtraction/types/Date"
+        },
+        "checkoutDate": {
+            "typeRef": "#/domains/HotelBookingExtraction/types/Date"
+        },
+        "selectedHotel": {
+            "sourceOutputKey": "availableHotels",
+            "typeRef": "#/domains/HotelBookingExtraction/types/Hotel"
+        },
+        "guestAges": {
+            "typeRef": "#/domains/Generic/types/Ages"
+        }
+    },
+    "outputs": {
+        "availableDestinations": {
+            "typeRef": "#/domains/HotelBookingExtraction/types/Destinations"
+        },
+        "availableHotels": {
+            "typeRef": "#/domains/HotelBookingExtraction/types/Hotels"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "additionalProperties": false
+        },
+        "Destination": {
+            "type": "string",
+            "minLength": 3
+        },
+        "Destinations": {
+            "type": "array",
+            "items": { "$ref": "#/domains/HotelBookingExtraction/types/Destination" }
+        },
+        "Hotel": {
+            "type": "string",
+            "minLength": 3
+        },
+        "Hotels": {
+            "type": "array",
+            "items": { "$ref": "#/domains/HotelBookingExtraction/types/Hotel" }
+        },
+        "Date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date (hotel local date).",
+            "example": "2019-01-01"
+        }
+    },
+    "errors": [
+    ],
+    "attributes": {
+    }
+}
+
