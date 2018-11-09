@@ -24,6 +24,10 @@
         }
     },
     "outputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
+        },
         "availableDestinations": {
             "typeRef": "#/domains/HotelBookingExtraction/types/Destinations"
         },
