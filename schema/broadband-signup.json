@@ -115,7 +115,7 @@
             "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
         },
         "availableMoveInDates": {
-            "typeRef": "#/domains/BroadbandSignup/types/SetupDate"
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
         },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
