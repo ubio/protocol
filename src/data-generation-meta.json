@@ -16,7 +16,8 @@
                 { "$ref": "#/definitions/panExchange" },
                 { "$ref": "#/definitions/anyPhoneString" },
                 { "$ref": "#/definitions/randomDate" },
-                { "$ref": "#/definitions/randomInt" }
+                { "$ref": "#/definitions/randomInt" },
+                { "$ref": "#/definitions/passengerAges" }
             ]
         },
         "api": {
@@ -84,6 +85,12 @@
                 "method": { "const": "RandomInt" },
                 "min": { "type": "integer", "default": 0 },
                 "max": { "type": "integer", "default": 2 }
+            },
+            "required": ["method"]
+        },
+        "passengerAges": {
+            "properties": {
+                "method": { "const": "CalcPassengerAges" }
             },
             "required": ["method"]
         }
