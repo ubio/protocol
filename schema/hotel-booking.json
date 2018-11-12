@@ -1,6 +1,7 @@
 {
     "description": "Allows automating hotel booking on individual suppliers and OTAs.",
     "private": false,
+    "dataExtractionDomainId": "HotelBookingExtraction",
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
