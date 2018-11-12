@@ -78,7 +78,7 @@
             "sourceOutputKey": "availableActiveLandlineOptions"
         },
         "selectedAddress": {
-            "typeRef": "#/domains/BroadbandSignup/types/String",
+            "typeRef": "#/domains/BroadbandSignup/types/PIIString",
             "sourceOutputKey": "availableAddresses"
         },
         "landlineChallenge": {
@@ -533,6 +533,10 @@
             "description": "A list of options.",
             "minItems": 1,
             "items": { "type": "string" }
+        },
+        "PIIString": {
+            "type": "string",
+            "pii": true
         },
         "String": {
             "type": "string"
