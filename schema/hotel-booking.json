@@ -207,7 +207,7 @@
         },
         "PaymentMethod": {
             "type": "string",
-            "enume": [
+            "enum": [
                 "card",
                 "paypal",
                 "direct-debit",
