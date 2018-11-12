@@ -86,6 +86,9 @@
         },
         "directoryListing": {
             "typeRef": "#/domains/BroadbandSignup/types/Boolean"
+        },
+        "alternativeCorrespondence": {
+            "typeRef": "#/domains/BroadbandSignup/types/NullableProperty"
         }
     },
     "outputs": {
@@ -215,6 +218,16 @@
                 "postcode"
             ],
             "additionalProperties": false
+        },
+        "NullableProperty": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignup/types/Property"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "Property": {
             "type": "object",
