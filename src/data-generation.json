@@ -202,5 +202,23 @@
                 }
             ]
         }
+    },
+    {
+        "typeRef": "#/domains/FlightBookingExtraction/types/MonthYear",
+        "instructionTemplate": {
+            "method": "RandomDate"
+        }
+    },
+    {
+        "typeRef": "#/domains/FlightBookingExtraction/types/MonthYearOrNull",
+        "instructionTemplate": {
+            "method": "RandomDate"
+        }
+    },
+    {
+        "typeRef": "#/domains/Generic/types/Ages",
+        "instructionTemplate": {
+            "method": "CalcPassengerAges"
+        }
     }
 ]
