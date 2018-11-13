@@ -216,6 +216,12 @@
         }
     },
     {
+        "typeRef": "#/domains/HotelBookingExtraction/types/Date",
+        "instructionTemplate": {
+            "method": "RandomDate"
+        }
+    },
+    {
         "typeRef": "#/domains/Generic/types/Ages",
         "instructionTemplate": {
             "method": "CalcPassengerAges"
