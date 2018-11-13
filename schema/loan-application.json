@@ -284,6 +284,7 @@
                     "description": "",
                     "enum": [
                         "own",
+                        "family",
                         "rent"
                     ]
                 },
