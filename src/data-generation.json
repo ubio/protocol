@@ -206,13 +206,19 @@
     {
         "typeRef": "#/domains/FlightBookingExtraction/types/MonthYear",
         "instructionTemplate": {
-            "method": "RandomDate"
+            "method": "FutureDate"
         }
     },
     {
         "typeRef": "#/domains/FlightBookingExtraction/types/MonthYearOrNull",
         "instructionTemplate": {
-            "method": "RandomDate"
+            "method": "FutureDate"
+        }
+    },
+    {
+        "typeRef": "#/domains/HotelBookingExtraction/types/Date",
+        "instructionTemplate": {
+            "method": "FutureDate"
         }
     },
     {

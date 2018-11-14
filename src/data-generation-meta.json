@@ -16,6 +16,8 @@
                 { "$ref": "#/definitions/panExchange" },
                 { "$ref": "#/definitions/anyPhoneString" },
                 { "$ref": "#/definitions/randomDate" },
+                { "$ref": "#/definitions/futureDate" },
+                { "$ref": "#/definitions/pastDate" },
                 { "$ref": "#/definitions/randomInt" },
                 { "$ref": "#/definitions/passengerAges" }
             ]
@@ -77,6 +79,18 @@
         "randomDate": {
             "properties": {
                 "method": { "const": "RandomDate" }
+            },
+            "required": ["method"]
+        },
+        "futureDate": {
+            "properties": {
+                "method": { "const": "FutureDate" }
+            },
+            "required": ["method"]
+        },
+        "pastDate": {
+            "properties": {
+                "method": { "const": "PastDate" }
             },
             "required": ["method"]
         },
