@@ -8,6 +8,9 @@
             "initial": true,
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
+        "search": {
+            "typeRef": "#/domains/HotelBooking/types/Search"
+        },
         "options": {
             "typeRef": "#/domains/HotelBooking/types/Options",
             "initial": true,
@@ -71,6 +74,56 @@
         "Options": {
             "type": "object",
             "default": {}
+        },
+        "Search": {
+            "type": "object",
+            "properties": {
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "rooms": {
+                    "type": "array",
+                    "minLength": 1,
+                    "items": {
+                        "$ref": "#/domains/HotelBooking/types/SearchRoom"
+                    }
+                },
+                "text": {
+                    "type": "string",
+                    "minLength": 3
+                }
+            },
+            "required": [
+                "checkInDate",
+                "checkOutDate",
+                "rooms",
+                "text"
+            ],
+            "additionalProperties": false
+        },
+        "SearchRoom": {
+            "type": "object",
+            "properties": {
+                "ages": {
+                    "type": "array",
+                    "minLength": 1,
+                    "items": {
+                        "type": "number",
+                        "exmaple": 31
+                    }
+                }
+            },
+            "required": [
+                "ages"
+            ],
+            "additionalProperties": false
         },
         "Rooms": {
             "type": "array",
