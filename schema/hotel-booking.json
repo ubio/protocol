@@ -21,6 +21,11 @@
             "sourceOutputKey": "availableRooms",
             "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed."
         },
+        "selectedHotel": {
+            "typeRef": "#/domains/HotelBooking/types/Hotel",
+            "sourceOutputKey": "availableHotels",
+            "description": "Selected hotel."
+        },
         "guestAges": {
             "typeRef": "#/domains/Generic/types/Ages",
             "description": "List of guest ages."
@@ -50,6 +55,10 @@
         }
     },
     "outputs": {
+        "availableHotels": {
+            "typeRef": "#/domains/HotelBooking/types/Hotels",
+            "description": "List of hotels found on the supplier's website."
+        },
         "availableRooms": {
             "typeRef": "#/domains/HotelBooking/types/Rooms",
             "description": "List of rooms found on the supplier's website."
@@ -122,6 +131,28 @@
             },
             "required": [
                 "ages"
+            ],
+            "additionalProperties": false
+        },
+        "Hotels": {
+            "type": "array",
+            "description": "A list of hotels.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/HotelBooking/types/Hotel"
+            }
+        },
+        "Hotel": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "My Hotel"
+                }
+            },
+            "required": [
+                "name"
             ],
             "additionalProperties": false
         },
