@@ -296,8 +296,8 @@
             "description": "Payment information, including card details and billing address.",
             "pii": true,
             "properties": {
-                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
                 "person": { "$ref": "#/domains/Generic/types/Person" },
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
                 "address": { "$ref": "#/domains/Generic/types/Address" }
             },
             "required": [
