@@ -99,7 +99,7 @@
                 },
                 "rooms": {
                     "type": "array",
-                    "minLength": 1,
+                    "minItems": 1,
                     "items": {
                         "$ref": "#/domains/HotelBooking/types/SearchRoom"
                     }
@@ -123,7 +123,7 @@
             "properties": {
                 "ages": {
                     "type": "array",
-                    "minLength": 1,
+                    "minItems": 1,
                     "items": {
                         "type": "number",
                         "minimum": 0,
