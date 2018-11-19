@@ -26,6 +26,10 @@
             "sourceOutputKey": "availableHotels",
             "description": "Selected hotel."
         },
+        "selectedSearchRate": {
+            "typeRef": "#/domains/HotelBooking/types/SearchRate",
+            "description": "Selected search rate."
+        },
         "guestAges": {
             "typeRef": "#/domains/Generic/types/Ages",
             "description": "List of guest ages."
@@ -55,6 +59,10 @@
         }
     },
     "outputs": {
+        "availableSearchRates": {
+            "typeRef": "#/domains/HotelBooking/types/SearchRates",
+            "description": "List of room rates."
+        },
         "availableHotels": {
             "typeRef": "#/domains/HotelBooking/types/Hotels",
             "description": "List of hotels found on the supplier's website."
@@ -82,7 +90,38 @@
     "types": {
         "Options": {
             "type": "object",
-            "default": {}
+            "properties": {
+                "searchRates": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, enables special rates output and input at search.",
+                    "default": false
+                }
+            }
+        },
+        "SearchRates": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+                "$ref": "#/domains/HotelBooking/types/SearchRate"
+            }
+        },
+        "SearchRate": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Senior Discount"
+                },
+                "text": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
         },
         "Search": {
             "type": "object",
