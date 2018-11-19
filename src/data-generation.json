@@ -27,31 +27,15 @@
         ]
     },
     {
-        "typeRef": "#/domains/Generic/types/Payment",
-        "instructionTemplate": {
-            "method": "Mixin",
-            "components": [
-                {
-                    "method": "DataGeneration",
-                    "key": "person",
-                    "stash": "person",
-                    "target": "Generic/Person"
-                },
-                {
-                    "method": "DataGeneration",
-                    "key": "card",
-                    "stash": "pan",
-                    "target": "Generic/PaymentCard",
-                    "args": {
-                        "name": "{person.firstName} {person.lastName}"
-                    }
-                },
-                {
-                    "method": "DataGeneration",
-                    "key": "address",
-                    "target": "Generic/Address"
-                }
-            ]
+        "typeRef": "#/domains/Generic/types/PaymentCard",
+        "instructionTemplate":
+        {
+          "method": "DataGeneration",
+          "stash": "pan",
+          "target": "Generic/PaymentCard",
+          "args": {
+            "name": "{person.firstName} {person.lastName}"
+          }
         }
     },
     {
@@ -206,13 +190,19 @@
     {
         "typeRef": "#/domains/FlightBookingExtraction/types/MonthYear",
         "instructionTemplate": {
-            "method": "RandomDate"
+            "method": "FutureDate"
         }
     },
     {
         "typeRef": "#/domains/FlightBookingExtraction/types/MonthYearOrNull",
         "instructionTemplate": {
-            "method": "RandomDate"
+            "method": "FutureDate"
+        }
+    },
+    {
+        "typeRef": "#/domains/HotelBookingExtraction/types/Date",
+        "instructionTemplate": {
+            "method": "FutureDate"
         }
     },
     {
