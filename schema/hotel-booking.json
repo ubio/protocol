@@ -191,6 +191,11 @@
                     "type": "string",
                     "minLength": 1,
                     "example": "My Hotel"
+                },
+                "priceLine": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "From 188 GBP Avg./night"
                 }
             },
             "required": [
