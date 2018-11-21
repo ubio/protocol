@@ -24,6 +24,9 @@
         }
     },
     "outputs": {
+        "search": {
+            "typeRef": "#/domains/HotelBooking/types/Search"
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
@@ -38,7 +41,13 @@
     "types": {
         "Options": {
             "type": "object",
-            "additionalProperties": false
+            "properties": {
+                "searchRates": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, enables special rates output and input at search.",
+                    "default": false
+                }
+            }
         },
         "Destination": {
             "type": "string",
