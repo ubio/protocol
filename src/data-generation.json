@@ -86,7 +86,7 @@
                     "target": "Generic/Person"
                 },
                 {
-                    "method": "RandomDate",
+                    "method": "PastDate",
                     "key": "dateOfBirth"
                 },
                 {
@@ -157,7 +157,7 @@
                     ]
                 },
                 {
-                    "method": "RandomDate",
+                    "method": "PastDate",
                     "key": "dateOfBirth"
                 }
             ]
@@ -208,7 +208,7 @@
     {
         "typeRef": "#/domains/HotelBookingExtraction/types/Date",
         "instructionTemplate": {
-            "method": "RandomDate"
+            "method": "FutureDate"
         }
     },
     {
