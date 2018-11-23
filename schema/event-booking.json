@@ -177,7 +177,7 @@
         "Seat": {
             "type": "object",
             "properties": {
-                "number" {
+                "number": {
                     "type": "string",
                     "minLength": 1,
                     "example": "A10"
