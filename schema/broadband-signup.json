@@ -576,7 +576,7 @@
                             "pattern": "^0[0-9]{8,10}"
                         },
                         "provider": {
-                            "type": "boolean",
+                            "type": "string",
                             "description": "Landline provider"
                         }
                     },
