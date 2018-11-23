@@ -89,6 +89,9 @@
         },
         "alternativeCorrespondence": {
             "typeRef": "#/domains/BroadbandSignup/types/NullableProperty"
+        },
+        "existingLandline": {
+            "typeRef": "#/domains/BroadbandSignup/types/ExistingLandline"
         }
     },
     "outputs": {
@@ -189,6 +192,10 @@
                     "default": false
                 },
                 "moveInDateSelection": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "keepLandlineNumber": {
                     "type": "boolean",
                     "default": false
                 },
@@ -550,6 +557,40 @@
             "description": "A list of options.",
             "minItems": 1,
             "items": { "type": "string" }
+        },
+        "ExistingLandline": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "description": "Information required to check existing landlines",
+                    "pii": true,
+                    "properties": {
+                        "postcode": {
+                            "typeRef": "#/domains/BroadbandSignup/types/Postcode"
+                        },
+                        "landline": {
+                            "type": "string",
+                            "minLength": 9,
+                            "description": "Landline number (numbers only, excluding country code).",
+                            "example": "123456789",
+                            "pattern": "^0[0-9]{8,10}"
+                        },
+                        "provider": {
+                            "type": "boolean",
+                            "description": "Landline provider"
+                        }
+                    },
+                    "required": [
+                        "postcode",
+                        "landline",
+                        "provider"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "PIIString": {
             "type": "string",
