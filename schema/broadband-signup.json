@@ -191,6 +191,10 @@
                 "moveInDateSelection": {
                     "type": "boolean",
                     "default": false
+                },
+                "screenshots": {
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
