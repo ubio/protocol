@@ -171,7 +171,7 @@
             "minItems": 1,
             "maxItems": 9,
             "items": {
-                "$ref": "#/domains/Generic/types/Price"
+                "$ref": "#/domains/EventBooking/types/Seat"
             }
         },
         "Seat": {
