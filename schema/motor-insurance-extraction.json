@@ -3,7 +3,7 @@
     "private": true,
     "inputs": {
         "options": {
-            "typeRef": "#/domains/FlightBooking/types/Options"
+            "typeRef": "#/domains/MotorInsuranceExtraction/types/Options"
         }
     },
     "outputs": {
