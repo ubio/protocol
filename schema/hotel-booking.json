@@ -196,6 +196,14 @@
                     "type": "string",
                     "minLength": 1,
                     "example": "From 188 GBP Avg./night"
+                },
+                "images": {
+                    "type": "array",
+                    "description": "A list of images.",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/Generic/types/Link"
+                    }
                 }
             },
             "required": [
