@@ -9,6 +9,9 @@
     "outputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL"
+        },
+        "cookies": {
+            "typeRef": "#/domains/Generic/types/Cookies"
         }
     },
     "types": {
