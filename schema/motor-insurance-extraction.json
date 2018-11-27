@@ -1,0 +1,25 @@
+{
+    "description": "Internal domain for generating MotorInsurance inputs.",
+    "private": true,
+    "inputs": {
+        "options": {
+            "typeRef": "#/domains/FlightBooking/types/Options"
+        }
+    },
+    "outputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+    ],
+    "attributes": {
+    }
+}
+
