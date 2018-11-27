@@ -1,6 +1,7 @@
 {
     "description": "",
     "private": false,
+    "dataExtractionDomainId": "MotorInsuranceExtraction",
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
