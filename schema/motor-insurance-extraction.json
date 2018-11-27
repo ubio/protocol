@@ -3,7 +3,7 @@
     "private": true,
     "inputs": {
         "options": {
-            "typeRef": "#/domains/MotorInsuranceExtraction/types/Options"
+            "typeRef": "#/domains/MotorInsurance/types/Options"
         }
     },
     "outputs": {
@@ -12,10 +12,6 @@
         }
     },
     "types": {
-        "Options": {
-            "type": "object",
-            "additionalProperties": false
-        }
     },
     "errors": [
     ],
