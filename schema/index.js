@@ -16,6 +16,6 @@ module.exports = {
         Internal: require('./internal'),
         FlightBookingExtraction: require('./flight-booking-extraction.json'),
         HotelBookingExtraction: require('./hotel-booking-extraction.json'),
-        MotorInsuranceExtraction: require('./hotel-booking-extraction.json'),
+        MotorInsuranceExtraction: require('./motor-insurance-extraction.json'),
     },
 };
