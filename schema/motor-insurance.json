@@ -15,7 +15,7 @@
             "typeRef": "#/domains/MotorInsurance/types/NullableAccount"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
+            "typeRef": "#/domains/MotorInsurance/types/Payment"
         },
         "directDebit": {
             "typeRef": "#/domains/MotorInsurance/types/DirectDebitPayment"
