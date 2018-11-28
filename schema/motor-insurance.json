@@ -5,7 +5,8 @@
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point."
+            "description": "Website entry point.",
+            "initial": true
         },
         "quote": {
             "typeRef": "#/domains/MotorInsurance/types/Quote"

@@ -8,24 +8,19 @@
             "initial": true
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
-            "initial": true
+            "typeRef": "#/domains/Generic/types/Account"
         },
         "loan": {
-            "typeRef": "#/domains/LoanApplication/types/Loan",
-            "initial": true
+            "typeRef": "#/domains/LoanApplication/types/Loan"
         },
         "existingApplication": {
-            "typeRef": "#/domains/LoanApplication/types/OptionalExistingApplication",
-            "initial": true
+            "typeRef": "#/domains/LoanApplication/types/OptionalExistingApplication"
         },
         "applicant": {
-            "typeRef": "#/domains/LoanApplication/types/Applicant",
-            "initial": true
+            "typeRef": "#/domains/LoanApplication/types/Applicant"
         },
         "addresses": {
-            "typeRef": "#/domains/LoanApplication/types/Addresses",
-            "initial": true
+            "typeRef": "#/domains/LoanApplication/types/Addresses"
         },
         "loanConsent": {
             "typeRef": "#/domains/LoanApplication/types/Quote",

@@ -12,20 +12,17 @@
         },
         "selectedOutboundTrip": {
             "typeRef": "#/domains/CoachBooking/types/Trip",
-            "sourceOutputKey": "availableOutboundTrips",
-            "initial": true
+            "sourceOutputKey": "availableOutboundTrips"
         },
         "selectedInboundTrip": {
             "typeRef": "#/domains/CoachBooking/types/Trip",
-            "sourceOutputKey": "availableInboundTrips",
-            "initial": true
+            "sourceOutputKey": "availableInboundTrips"
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
         "passengers": {
-            "typeRef": "#/domains/CoachBooking/types/Passengers",
-            "initial": true
+            "typeRef": "#/domains/CoachBooking/types/Passengers"
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"

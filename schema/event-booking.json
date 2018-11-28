@@ -4,7 +4,8 @@
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point."
+            "description": "Website entry point.",
+            "initial": true
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"

@@ -10,7 +10,8 @@
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point. Should be a deep link to either flight page or flight selection page."
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "initial": true
         },
         "search": {
             "typeRef": "#/domains/FlightBooking/types/Search",
