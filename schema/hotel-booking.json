@@ -197,6 +197,11 @@
                     "minLength": 1,
                     "example": "From 188 GBP Avg./night"
                 },
+                "addressLine": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "21 Piccadilly London, United Kingdom W1J 0BH"
+                },
                 "images": {
                     "type": "array",
                     "description": "A list of images.",
