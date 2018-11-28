@@ -253,8 +253,12 @@
             "description": "Dynamic list of documents and links insusrers add which may or not already be present in other outputs."
         },
         "availableDirectDebitPaymentDays": {
-            "typeRef": "#/domains/MotorInsurance/types/AvailableDirectDebitPaymentDays",
+            "typeRef": "#/domains/MotorInsurance/types/AvailablePaymentDays",
             "description": "List of available DD payment days."
+        },
+        "availableCardPaymentDays": {
+            "typeRef": "#/domains/MotorInsurance/types/AvailablePaymentDays",
+            "description": "List of available card payment days."
         }
     },
     "types": {
@@ -545,6 +549,27 @@
                 "monthly-directdebit-card"
             ]
         },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "person": { "$ref": "#/domains/Generic/types/Person" },
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "address": { "$ref": "#/domains/Generic/types/Address" },
+                "selectedPaymentDay": {
+                    "type": "string",
+                    "description": "Preferred payment day, one of availableCardPaymentDays.",
+                    "example": "10"
+                }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
+        },
         "DirectDebitPayment": {
             "type": "object",
             "description": "Account details for direct debit.",
@@ -579,11 +604,11 @@
             ],
             "additionalProperties": false
         },
-        "AvailableDirectDebitPaymentDays": {
+        "AvailablePaymentDays": {
             "oneOf": [
                 {
                     "type": "array",
-                    "description": "Account details for direct debit.",
+                    "description": "List of payment days.",
                     "items": { "type": "string" }
                 },
                 {
