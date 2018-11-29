@@ -97,7 +97,8 @@
             "description": "List of marketing contact options to be selected."
         },
         "cookies": {
-            "typeRef": "#/domains/Generic/types/Cookies"
+            "typeRef": "#/domains/Generic/types/Cookies",
+            "initial": true
         }
     },
     "outputs": {
