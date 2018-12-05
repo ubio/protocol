@@ -112,7 +112,7 @@
                 "name": {
                     "type": "string",
                     "minLength": 1,
-                    "example": "Senior Discount"
+                    "example": "Senior Discounts"
                 },
                 "text": {
                     "type": "string",
