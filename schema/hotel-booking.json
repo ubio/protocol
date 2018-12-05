@@ -28,6 +28,7 @@
         },
         "selectedSearchRate": {
             "typeRef": "#/domains/HotelBooking/types/SearchRate",
+            "sourceOutputKey": "availableSearchRates",
             "description": "Selected search rate."
         },
         "guestAges": {
