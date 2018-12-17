@@ -233,6 +233,9 @@
                     "type": "string",
                     "example": "Standard Single Room"
                 },
+                "description": {
+                    "typeRef": "#/domains/Generic/types/StructuredTextItem"
+                },
                 "price": {
                     "typeRef": "#/domains/Generic/types/Price",
                     "example": {
@@ -260,7 +263,7 @@
                             ]
                         },
                         "details": {
-                            "typeRef": "#/domains/Generic/types/StructuredText",
+                            "typeRef": "#/domains/Generic/types/StructuredTextItem",
                             "example": {
                                 "type": "Text",
                                 "text": "Free cancellation up to 24h before. Cancellation not allowed afterwards."
