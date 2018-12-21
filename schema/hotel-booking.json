@@ -38,7 +38,8 @@
         },
         "mainGuest": {
             "typeRef": "#/domains/HotelBooking/types/MainGuest",
-            "description": "Personal details about the main guest."
+            "description": "Personal details about the main guest.",
+            "canonical": true
         },
         "guests": {
             "typeRef": "#/domains/HotelBooking/types/Guests",
@@ -485,5 +486,10 @@
         }
     ],
     "attributes": {
+        "canonicalGroupingPeriod": {
+            "type": "number",
+            "description": "Canonical grouping period in minute",
+            "value": 1440
+        }
     }
 }

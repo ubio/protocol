@@ -8,7 +8,8 @@
             "initial": true
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": true
         },
         "accountPassword": {
             "typeRef": "#/domains/EventBooking/types/AccountPassword"
@@ -258,5 +259,11 @@
             "description": "Requested event is not found"
         }
     ],
-    "attributes": {}
+    "attributes": {
+        "canonicalGroupingPeriod": {
+            "type": "number",
+            "description": "Canonical grouping period in minute",
+            "value": 1440
+        }
+    }
 }

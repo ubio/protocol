@@ -34,7 +34,8 @@
             "typeRef": "#/domains/Generic/types/Account"
         },
         "passengers": {
-            "typeRef": "#/domains/FlightBooking/types/Passengers"
+            "typeRef": "#/domains/FlightBooking/types/Passengers",
+            "canonical": true
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
@@ -280,6 +281,7 @@
         "Passenger": {
             "type": "object",
             "pii": true,
+            "canonicalFields": ["title", "firstName", "lastName"],
             "properties": {
                 "title": {
                     "type": "string",
@@ -611,6 +613,11 @@
             "minLength": 2,
             "maxLength": 4,
             "example": "AA"
+        },
+        "canonicalGroupingPeriod": {
+            "type": "number",
+            "description": "Canonical grouping period in minute",
+            "value": 1440
         }
     }
 }

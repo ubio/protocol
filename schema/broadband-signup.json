@@ -13,7 +13,8 @@
             "typeRef": "#/domains/BroadbandSignup/types/LandlineCheck"
         },
         "property": {
-            "typeRef": "#/domains/BroadbandSignup/types/Property"
+            "typeRef": "#/domains/BroadbandSignup/types/Property",
+            "canonical": true
         },
         "selectedTvPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/SelectedPackages",
@@ -651,5 +652,10 @@
         }
     ],
     "attributes": {
+        "canonicalGroupingPeriod": {
+            "type": "number",
+            "description": "Canonical grouping period in minute",
+            "value": 1440
+        }
     }
 }

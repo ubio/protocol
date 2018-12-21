@@ -19,7 +19,8 @@
             "sourceOutputKey": "availableInboundTrips"
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": true
         },
         "passengers": {
             "typeRef": "#/domains/CoachBooking/types/Passengers"
@@ -343,5 +344,10 @@
         }
     ],
     "attributes": {
+        "canonicalGroupingPeriod": {
+            "type": "number",
+            "description": "Canonical grouping period in minute",
+            "value": 1440
+        }
     }
 }

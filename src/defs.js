@@ -2,6 +2,7 @@
 
 const util = require('./util');
 const createExample = require('./example');
+const getCanonicalFields = require('./canonical-fields');
 
 class Def {
 
@@ -96,6 +97,15 @@ class CustomDef extends Def {
     isPii() {
         const typeDef = this.getTypeDef();
         return typeDef && typeDef.spec && typeDef.spec.pii || false;
+    }
+
+    isCanonical() {
+        return this.spec.canonical || false;
+    }
+
+    getCanonicalFields() {
+        const typeDef = this.getTypeDef();
+        return getCanonicalFields(typeDef) || null;
     }
 
     createExample() {

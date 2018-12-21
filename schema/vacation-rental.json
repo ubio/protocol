@@ -12,7 +12,8 @@
             "description": "Ages of all guests."
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": true
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
@@ -177,5 +178,11 @@
             "example": "Vacation rental unavailable on given date provided"
         }
     ],
-    "attributes": {}
+    "attributes": {
+        "canonicalGroupingPeriod": {
+            "type": "number",
+            "description": "Canonical grouping period in minute",
+            "value": 1440
+        }
+    }
 }
