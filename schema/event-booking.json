@@ -8,7 +8,11 @@
             "initial": true
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": [
+                "/email",
+                "/phone"
+            ]
         },
         "accountPassword": {
             "typeRef": "#/domains/EventBooking/types/AccountPassword"

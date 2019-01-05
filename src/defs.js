@@ -98,6 +98,10 @@ class CustomDef extends Def {
         return typeDef && typeDef.spec && typeDef.spec.pii || false;
     }
 
+    getCanonical() {
+        return this.spec.canonical || [];
+    }
+
     createExample() {
         const typeDef = this.getTypeDef();
         return typeDef ? typeDef.createExample() : null;

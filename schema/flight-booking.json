@@ -34,7 +34,12 @@
             "typeRef": "#/domains/Generic/types/Account"
         },
         "passengers": {
-            "typeRef": "#/domains/FlightBooking/types/Passengers"
+            "typeRef": "#/domains/FlightBooking/types/Passengers",
+            "canonical": [
+                "/0/firstName",
+                "/0/lastName",
+                "/0/dateOfBirth"
+            ]
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"

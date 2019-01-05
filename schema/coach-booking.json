@@ -19,7 +19,11 @@
             "sourceOutputKey": "availableInboundTrips"
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": [
+                "/email",
+                "/phone"
+            ]
         },
         "passengers": {
             "typeRef": "#/domains/CoachBooking/types/Passengers"

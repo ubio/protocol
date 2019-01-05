@@ -10,10 +10,18 @@
             "typeRef": "#/domains/BroadbandSignup/types/Options"
         },
         "landlineCheck": {
-            "typeRef": "#/domains/BroadbandSignup/types/LandlineCheck"
+            "typeRef": "#/domains/BroadbandSignup/types/LandlineCheck",
+            "canonical": [
+                "/postcode"
+            ]
         },
         "property": {
-            "typeRef": "#/domains/BroadbandSignup/types/Property"
+            "typeRef": "#/domains/BroadbandSignup/types/Property",
+            "canonical": [
+                "/postcode",
+                "/city",
+                "/countrySubdivision"
+            ]
         },
         "selectedTvPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/SelectedPackages",
