@@ -673,6 +673,11 @@
             "code": "RegistrationNumberRequired",
             "category": "client",
             "description": "Registration number is required by the website"
+        },
+        {
+            "code": "DirectDebitRejected",
+            "category": "client",
+            "description": "Direct debit details provided have been rejected by the website."
         }
     ],
     "attributes": {}
