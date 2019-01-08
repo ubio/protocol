@@ -93,6 +93,10 @@
                 "staged": {
                     "type": "boolean"
                 },
+                "canonical": {
+                    "type": "array",
+                    "description": "Array of json pointers for canonical fields"
+                },
                 "sourceOutputKey": {
                     "type": "string",
                     "description": "Output key associated with this input key"
@@ -111,6 +115,10 @@
                 "description": { "type": "string" },
                 "staged": {
                     "type": "boolean"
+                },
+                "canonical": {
+                    "type": "array",
+                    "description": "Array of json pointers for canonical fields"
                 }
             },
             "required": ["typeRef"],
