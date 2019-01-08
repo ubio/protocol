@@ -137,6 +137,22 @@ class OutputDef extends CustomDef {
         super(domain, 'outputs', key);
     }
 
+    /**
+     * @returns {Array<string> | null} array of canonical pointers or null if not defined
+     */
+    getCanonicalPointers() {
+        return this.spec.canonical || null;
+    }
+
+    /**
+     * @param {any} object input object
+     * @returns {Array<any> | null} array of canonical values or null if no canonical pointers defined
+     */
+    getCanonicalValues(object) {
+        const pointers = this.getCanonicalPointers();
+        return pointers ? pointers.map(ptr => jsonPointer.get(object, ptr)) : null;
+    }
+
 }
 
 class AttributeDef extends Def {
