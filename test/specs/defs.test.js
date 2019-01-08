@@ -7,6 +7,11 @@ const inputDefs = protocol.getDomains()
     .map(d => d.getInputs())
     .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
 
+const typeDefs = protocol.getDomains()
+    .map(d => d.getTypes())
+    .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
+
+
 describe('InputDef', () => {
 
     describe('getCanonicalValues', () => {
@@ -35,6 +40,27 @@ describe('InputDef', () => {
             }
         });
 
+    });
+
+});
+
+describe('TypeDef', () => {
+
+    it('should not contain typeDef key', () => {
+        // Reason: it's easy to confuse $ref from JSON schema with our custom
+        // typeDef. Due to the way JSON Schema is designed, things like these
+        // result in validation being silently bypassed, which is never a good thing.
+        for (const typeDef of typeDefs) {
+            const keys = new Set();
+            JSON.stringify(typeDef.spec, (k, v) => {
+                keys.add(k);
+                return v;
+            });
+            assert.equal(keys.has('typeDef'), false,
+                `Type def ${typeDef.id} contains forbidden typeDef key`);
+            assert.equal(keys.has('$typeDef'), false,
+                `Type def ${typeDef.id} contains forbidden $typeDef key`);
+        }
     });
 
 });
