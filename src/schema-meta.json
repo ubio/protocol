@@ -58,12 +58,6 @@
                 },
                 "errors": {
                     "type": "array"
-                },
-                "attributes": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/TypeDef"
-                    }
                 }
             },
             "required": [
@@ -72,7 +66,6 @@
                 "outputs",
                 "types",
                 "errors",
-                "attributes",
                 "private"
             ],
             "additionalProperties": false

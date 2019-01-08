@@ -682,6 +682,5 @@
             "category": "client",
             "description": "Direct debit details provided have been rejected by the website."
         }
-    ],
-    "attributes": {}
+    ]
 }
