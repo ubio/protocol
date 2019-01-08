@@ -50,7 +50,7 @@ describe('Protocol', () => {
 
             const errors = domains
                 .map(d => d.getErrors())
-                .reduce((curr, arr) => curr.concat(arr), []); // TODO replace with .flat in 2020
+                .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
             assert.equal(allErrors.length, errors.length);
         });
 
