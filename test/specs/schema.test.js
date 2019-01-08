@@ -2,7 +2,7 @@
 
 const Ajv = require('ajv');
 const protocol = require('../protocol');
-const expect = require('expect');
+const assert = require('assert');
 const meta = require('../../src/schema-meta.json');
 
 describe('Schema', () => {
@@ -15,7 +15,7 @@ describe('Schema', () => {
             // eslint-disable-next-line no-console
             console.log('Validation errors:', validate.errors);
         }
-        expect(valid).toEqual(true);
+        assert.ok(valid);
     });
 
 });

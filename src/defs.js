@@ -2,6 +2,7 @@
 
 const util = require('./util');
 const createExample = require('./example');
+const jsonPointer = require('jsonpointer');
 
 class Def {
 
@@ -98,13 +99,18 @@ class CustomDef extends Def {
         return typeDef && typeDef.spec && typeDef.spec.pii || false;
     }
 
-    getCanonical() {
-        return this.spec.canonical || [];
-    }
-
     createExample() {
         const typeDef = this.getTypeDef();
         return typeDef ? typeDef.createExample() : null;
+    }
+
+    getCanonicalPointers() {
+        return this.spec.canonical || [];
+    }
+
+    getCanonicalValues(object) {
+        return this.getCanonicalPointers()
+            .map(ptr => jsonPointer.get(object, ptr));
     }
 
 }
