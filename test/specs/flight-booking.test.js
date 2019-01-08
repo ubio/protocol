@@ -1,7 +1,7 @@
 'use strict';
 
 const protocol = require('../protocol');
-const expect = require('expect');
+const assert = require('assert');
 
 describe('FlightBooking', () => {
 
@@ -38,8 +38,8 @@ describe('FlightBooking', () => {
                 },
                 passengerAges: [31, 32, 9],
             });
-            expect(valid).toEqual(true);
-            expect(errors.length).toEqual(0);
+            assert.ok(valid);
+            assert.equal(errors.length, 0);
         });
 
         it('should not accept invalid inbound flight', async () => {
@@ -60,9 +60,9 @@ describe('FlightBooking', () => {
                 inbound: 'smth',
                 passengerAges: [31, 32, 9],
             });
-            expect(valid).toEqual(false);
-            expect(errors.length).toBeGreaterThan(0);
-            expect(errors.find(e => e.dataPath === '/inbound')).toExist();
+            assert.equal(valid, false);
+            assert.ok(errors.length > 0);
+            assert.ok(errors.find(e => e.dataPath === '/inbound'));
         });
 
         it('should not require inbound flight', async () => {
@@ -82,8 +82,8 @@ describe('FlightBooking', () => {
                 },
                 passengerAges: [31, 32, 9],
             });
-            expect(valid).toEqual(true);
-            expect(errors.length).toEqual(0);
+            assert.ok(valid);
+            assert.equal(errors.length, 0);
         });
 
         it('should not allow incorrect destination/origin', async () => {
@@ -95,10 +95,10 @@ describe('FlightBooking', () => {
                 },
                 passengerAges: [31, 32, 9],
             });
-            expect(valid).toEqual(false);
-            expect(errors.length).toBeGreaterThan(0);
-            expect(errors.find(e => e.dataPath === '/outbound/destination')).toExist();
-            expect(errors.find(e => e.dataPath === '/outbound/origin')).toExist();
+            assert.equal(valid, false);
+            assert.ok(errors.length > 0);
+            assert.ok(errors.find(e => e.dataPath === '/outbound/destination'));
+            assert.ok(errors.find(e => e.dataPath === '/outbound/origin'));
         });
 
     });

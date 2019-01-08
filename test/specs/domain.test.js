@@ -1,7 +1,7 @@
 'use strict';
 
 const protocol = require('../protocol');
-const expect = require('expect');
+const assert = require('assert');
 const Internal = protocol.getDomain('Internal');
 
 describe('Domain', () => {
@@ -10,17 +10,17 @@ describe('Domain', () => {
 
         it('should resolve input definition', () => {
             const def = Internal.getDef('url');
-            expect(def).toExist();
+            assert.ok(def);
         });
 
         it('should resolve output definition', () => {
             const def = Internal.getDef('object');
-            expect(def).toExist();
+            assert.ok(def);
         });
 
         it('should resolve type definition', () => {
             const def = Internal.getDef('Value');
-            expect(def).toExist();
+            assert.ok(def);
         });
 
     });
@@ -29,13 +29,13 @@ describe('Domain', () => {
 
         it('should resolve input definition', () => {
             const def = Internal.getInputDef('url');
-            expect(def).toExist();
+            assert.ok(def);
         });
 
         it('should return null for unknown input definitions', () => {
-            expect(Internal.getInputDef('object')).toNotExist();
-            expect(Internal.getInputDef('Value')).toNotExist();
-            expect(Internal.getInputDef('nonsense')).toNotExist();
+            assert.equal(Internal.getInputDef('object'), null);
+            assert.equal(Internal.getInputDef('Value'), null);
+            assert.equal(Internal.getInputDef('nonsense'), null);
         });
 
     });
@@ -44,13 +44,13 @@ describe('Domain', () => {
 
         it('should resolve output definition', () => {
             const def = Internal.getOutputDef('object');
-            expect(def).toExist();
+            assert.ok(def);
         });
 
         it('should return null for unknown input definitions', () => {
-            expect(Internal.getOutputDef('url')).toNotExist();
-            expect(Internal.getOutputDef('Value')).toNotExist();
-            expect(Internal.getOutputDef('nonsense')).toNotExist();
+            assert.equal(Internal.getOutputDef('url'), null);
+            assert.equal(Internal.getOutputDef('Value'), null);
+            assert.equal(Internal.getOutputDef('nonsense'), null);
         });
 
     });
@@ -59,7 +59,7 @@ describe('Domain', () => {
 
         it('should resolve error lists', () => {
             const errors = Internal.getErrors();
-            expect(errors).toExist();
+            assert.ok(errors);
         });
 
     });
@@ -68,12 +68,12 @@ describe('Domain', () => {
 
         it('should resolve error', () => {
             const error = Internal.getError('InternalError');
-            expect(error).toExist();
+            assert.ok(error);
         });
 
         it('should return null for unknown error definitions', () => {
-            expect(Internal.getError('none')).toNotExist();
-            expect(Internal.getError('unknownError')).toNotExist();
+            assert.equal(Internal.getError('none'), null);
+            assert.equal(Internal.getError('unknownError'), null);
         });
 
     });
@@ -82,19 +82,20 @@ describe('Domain', () => {
 
         it('should allow valid data', async () => {
             const { valid } = await Internal.validateInput('url', 'https://github.com');
-            expect(valid).toBe(true);
+            assert.ok(valid);
         });
 
         it('should report errors for invalid data', async () => {
             const { valid, errors } = await Internal.validateInput('url', {});
-            expect(valid).toBe(false);
-            expect(errors).toBeAn(Array);
+            assert.equal(valid, false);
+            assert.ok(Array.isArray(errors));
         });
 
         it('should report error for unknown input', async () => {
             const { valid, errors } = await Internal.validateInput('Value', {});
-            expect(valid).toBe(false);
-            expect(errors.length).toEqual(1);
+            assert.equal(valid, false);
+            assert.ok(Array.isArray(errors));
+            assert.equal(errors.length, 1);
         });
 
     });
@@ -105,19 +106,20 @@ describe('Domain', () => {
             const { valid } = await Internal.validateOutput('finalPrice', {
                 price: { value: 0, currencyCode: 'usd' },
             });
-            expect(valid).toBe(true);
+            assert.ok(valid);
         });
 
         it('should report errors for invalid data', async () => {
             const { valid, errors } = await Internal.validateOutput('finalPrice', { value: 0 });
-            expect(valid).toBe(false);
-            expect(errors).toBeAn(Array);
+            assert.equal(valid, false);
+            assert.ok(Array.isArray(errors));
         });
 
         it('should report error for unknown input', async () => {
             const { valid, errors } = await Internal.validateOutput('url', 'https://github.com');
-            expect(valid).toBe(false);
-            expect(errors.length).toEqual(1);
+            assert.equal(valid, false);
+            assert.ok(Array.isArray(errors));
+            assert.equal(errors.length, 1);
         });
 
     });

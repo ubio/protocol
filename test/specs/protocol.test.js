@@ -1,27 +1,26 @@
 'use strict';
 
 const protocol = require('../protocol');
-const expect = require('expect');
+const assert = require('assert');
 
 describe('Protocol', () => {
 
     it('should not contain unresolved references', () => {
         const unresolvedRefs = protocol.getUnresolvedRefs();
-        expect(unresolvedRefs.length).toEqual(0,
-            `Unresolved references are not allowed: ${unresolvedRefs}`);
+        assert.equal(unresolvedRefs.length, 0, `Unresolved references are not allowed: ${unresolvedRefs}`);
     });
 
     describe('getDomain', () => {
 
         it('should return existing domain', () => {
             const genericDomain = protocol.getDomain('Generic');
-            expect(genericDomain).toBeTruthy();
-            expect(genericDomain.id).toEqual('Generic');
+            assert.ok(genericDomain);
+            assert.equal(genericDomain.id, 'Generic');
         });
 
         it('should return null for unknown domains', () => {
             const unknown = protocol.getDomain('Unknown');
-            expect(unknown).toNotExist();
+            assert.equal(unknown, null);
         });
 
     });
@@ -30,15 +29,15 @@ describe('Protocol', () => {
 
         it('should return null if not found', () => {
             const unknown = protocol.getDef('Unknown', 'def');
-            expect(unknown).toNotExist();
+            assert.equal(unknown, null);
         });
 
         it('should contain identifier fields', () => {
             const priceDef = protocol.getDef('Generic', 'Price');
-            expect(priceDef).toExist();
-            expect(priceDef.id).toEqual('Generic.Price');
-            expect(priceDef.key).toEqual('Price');
-            expect(priceDef.ns).toEqual('types');
+            assert.ok(priceDef);
+            assert.equal(priceDef.id, 'Generic.Price');
+            assert.equal(priceDef.key, 'Price');
+            assert.equal(priceDef.ns, 'types');
         });
 
     });
@@ -47,16 +46,12 @@ describe('Protocol', () => {
 
         it('should return all errors', () => {
             const allErrors = protocol.getAllErrors();
-
             const domains = protocol.getDomains();
 
-            let errors = [];
-            domains.forEach(domain => {
-                errors = errors.concat(domain.getErrors());
-            });
-
-            expect(allErrors.length).toBe(errors.length);
-
+            const errors = domains
+                .map(d => d.getErrors())
+                .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
+            assert.equal(allErrors.length, errors.length);
         });
 
     });
@@ -69,7 +64,8 @@ describe('Protocol', () => {
                     const { sourceOutputKey } = inputDef.spec;
                     if (sourceOutputKey) {
                         const output = domain.getOutputDef(sourceOutputKey);
-                        expect(output).toExist(`Cannot resource sourceOutputKey="${sourceOutputKey}" of input ${inputDef.id}`);
+                        assert.ok(output,
+                            `Cannot resolve sourceOutputKey="${sourceOutputKey}" of input ${inputDef.id}`);
                     }
                 }
             }
@@ -80,47 +76,49 @@ describe('Protocol', () => {
     describe('dataExtractionDomainId', () => {
 
         it('references existing domain', () => {
-            protocol.getDomains()
-                .filter(targetDomain => targetDomain.spec.dataExtractionDomainId)
-                .forEach(targetDomain => {
-                    const dataExtractionDomain = protocol.getDomain(targetDomain.spec.dataExtractionDomainId);
-                    expect(dataExtractionDomain).toExist(
-                        `dataExtractionDomainId property of ${targetDomain.id} domain should reference existing domain`
-                    );
-                });
+            for (const domain of protocol.getDomains()) {
+                const { dataExtractionDomainId } = domain.spec;
+                if (!dataExtractionDomainId) {
+                    continue;
+                }
+                const dataExtractionDomain = protocol.getDomain(dataExtractionDomainId);
+                assert.ok(dataExtractionDomain,
+                    `dataExtractionDomainId property of ${domain.id} domain should reference existing domain`);
+            }
         });
 
         it('requires at least one extraction output to match target input', () => {
-            protocol.getDomains()
-                .filter(targetDomain => targetDomain.spec.dataExtractionDomainId)
-                .forEach(targetDomain => {
-                    const dataExtractionDomain = protocol.getDomain(targetDomain.spec.dataExtractionDomainId);
-                    const numberOfExtractionOutputs = dataExtractionDomain.getOutputs()
-                        .filter(dataExtractionOutput => targetDomain.getInputDef(dataExtractionOutput.key))
-                        .length;
+            for (const domain of protocol.getDomains()) {
+                const { dataExtractionDomainId } = domain.spec;
+                if (!dataExtractionDomainId) {
+                    continue;
+                }
+                const dataExtractionDomain = protocol.getDomain(dataExtractionDomainId);
+                const numberOfExtractionOutputs = dataExtractionDomain.getOutputs()
+                    .filter(dataExtractionOutput => domain.getInputDef(dataExtractionOutput.key))
+                    .length;
 
-                    expect(numberOfExtractionOutputs).toBeMoreThan(0,
-                        `Data extraction domain ${dataExtractionDomain.id} should have at least one output matching target input by name`);
-                });
+                assert.ok(numberOfExtractionOutputs > 0,
+                    `Data extraction domain ${dataExtractionDomain.id} should have at least one output matching target input`);
+            }
         });
 
         it('enforces parity of typeRefs for outputs matching inputs by key', () => {
-            protocol.getDomains()
-                .filter(targetDomain => targetDomain.spec.dataExtractionDomainId)
-                .forEach(targetDomain => {
-                    const dataExtractionDomain = protocol.getDomain(targetDomain.spec.dataExtractionDomainId);
-                    dataExtractionDomain.getOutputs()
-                        .forEach(dataExtractionOutput => {
-                            const targetInput = targetDomain.getInputDef(dataExtractionOutput.key);
-                            if (targetInput) {
-                                expect(targetInput.spec.typeRef)
-                                    .toEqual(dataExtractionOutput.spec.typeRef,
-                                        `Type of ${dataExtractionDomain.id}/outputs/${dataExtractionOutput.key} do not match type of ${targetDomain.id}/inputs/${targetInput.key}`);
-                            }
-                        });
-                });
+            for (const domain of protocol.getDomains()) {
+                const { dataExtractionDomainId } = domain.spec;
+                if (!dataExtractionDomainId) {
+                    continue;
+                }
+                const dataExtractionDomain = protocol.getDomain(dataExtractionDomainId);
+                for (const extractionOutput of dataExtractionDomain.getOutputs()) {
+                    const targetInput = domain.getInputDef(extractionOutput.key);
+                    if (targetInput) {
+                        assert.equal(targetInput.spec.typeRef, extractionOutput.spec.typeRef,
+                            `Type of ${dataExtractionDomain.id}/outputs/${extractionOutput.key} does not match type of ${domain.id}/inputs/${targetInput.key}`);
+                    }
+                }
+            }
         });
-
 
     });
 

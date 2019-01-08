@@ -2,6 +2,7 @@
 
 const util = require('./util');
 const createExample = require('./example');
+const jsonPointer = require('jsonpointer');
 
 class Def {
 
@@ -98,10 +99,6 @@ class CustomDef extends Def {
         return typeDef && typeDef.spec && typeDef.spec.pii || false;
     }
 
-    getCanonical() {
-        return this.spec.canonical || [];
-    }
-
     createExample() {
         const typeDef = this.getTypeDef();
         return typeDef ? typeDef.createExample() : null;
@@ -114,6 +111,22 @@ class InputDef extends CustomDef {
 
     constructor(domain, key) {
         super(domain, 'inputs', key);
+    }
+
+    /**
+     * @returns {Array<string> | null} array of canonical pointers or null if not defined
+     */
+    getCanonicalPointers() {
+        return this.spec.canonical || null;
+    }
+
+    /**
+     * @param {any} object input object
+     * @returns {Array<any> | null} array of canonical values or null if no canonical pointers defined
+     */
+    getCanonicalValues(object) {
+        const pointers = this.getCanonicalPointers();
+        return pointers ? pointers.map(ptr => jsonPointer.get(object, ptr)) : null;
     }
 
 }
