@@ -14,8 +14,7 @@
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "canonical": [
-                "/email",
-                "/phone"
+                "/email"
             ]
         },
         "payment": {
