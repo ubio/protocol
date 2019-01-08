@@ -12,7 +12,10 @@
             "description": "Ages of all guests."
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account"
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": [
+                "/email"
+            ]
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"

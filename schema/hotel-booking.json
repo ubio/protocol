@@ -38,7 +38,11 @@
         },
         "mainGuest": {
             "typeRef": "#/domains/HotelBooking/types/MainGuest",
-            "description": "Personal details about the main guest."
+            "description": "Personal details about the main guest.",
+            "canonical": [
+                "/person",
+                "/contact/email"
+            ]
         },
         "guests": {
             "typeRef": "#/domains/HotelBooking/types/Guests",

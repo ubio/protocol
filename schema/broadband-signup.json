@@ -10,10 +10,18 @@
             "typeRef": "#/domains/BroadbandSignup/types/Options"
         },
         "landlineCheck": {
-            "typeRef": "#/domains/BroadbandSignup/types/LandlineCheck"
+            "typeRef": "#/domains/BroadbandSignup/types/LandlineCheck",
+            "canonical": [
+                "/postcode"
+            ]
         },
         "property": {
-            "typeRef": "#/domains/BroadbandSignup/types/Property"
+            "typeRef": "#/domains/BroadbandSignup/types/Property",
+            "canonical": [
+                "/address/postcode",
+                "/address/city",
+                "/address/countrySubdivision"
+            ]
         },
         "selectedTvPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/SelectedPackages",
@@ -211,7 +219,7 @@
             "pii": true,
             "properties": {
                 "postcode": {
-                    "typeRef": "#/domains/BroadbandSignup/types/Postcode"
+                    "$ref": "#/domains/BroadbandSignup/types/Postcode"
                 },
                 "landline": {
                     "type": "string",
@@ -263,7 +271,7 @@
                             "example": "Clerkenwell Close"
                         },
                         "postcode": {
-                            "typeRef": "#/domains/BroadbandSignup/types/Postcode"
+                            "$ref": "#/domains/BroadbandSignup/types/Postcode"
                         },
                         "city": {
                             "type": "string",
@@ -406,13 +414,13 @@
                     "minLength": 1
                 },
                 "description": {
-                    "typeRef": "#/domains/Generic/types/StructuredTextItem"
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price"
+                    "$ref": "#/domains/Generic/types/Price"
                 },
                 "image": {
-                    "typeRef": "#/domains/Generic/types/Link"
+                    "$ref": "#/domains/Generic/types/Link"
                 },
                 "estimatedSpeed": {
                     "type": "string"
@@ -566,7 +574,7 @@
                     "pii": true,
                     "properties": {
                         "postcode": {
-                            "typeRef": "#/domains/BroadbandSignup/types/Postcode"
+                            "$ref": "#/domains/BroadbandSignup/types/Postcode"
                         },
                         "landline": {
                             "type": "string",

@@ -9,7 +9,10 @@
             "initial": true
         },
         "quote": {
-            "typeRef": "#/domains/MotorInsurance/types/Quote"
+            "typeRef": "#/domains/MotorInsurance/types/Quote",
+            "canonical": [
+                "/reference"
+            ]
         },
         "account": {
             "typeRef": "#/domains/MotorInsurance/types/NullableAccount"
