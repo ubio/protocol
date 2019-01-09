@@ -416,7 +416,7 @@
                 "description": {
                     "oneOf": [
                         {
-                            "$ref": "#/domains/Generic/types/StructuredTextItems"
+                            "$ref": "#/domains/Generic/types/StructuredTextItem"
                         },
                         {
                             "type": "string"
