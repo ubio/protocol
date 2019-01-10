@@ -104,15 +104,6 @@ class CustomDef extends Def {
         return typeDef ? typeDef.createExample() : null;
     }
 
-}
-
-
-class InputDef extends CustomDef {
-
-    constructor(domain, key) {
-        super(domain, 'inputs', key);
-    }
-
     /**
      * @returns {Array<string> | null} array of canonical pointers or null if not defined
      */
@@ -129,6 +120,14 @@ class InputDef extends CustomDef {
         return pointers ? pointers.map(ptr => jsonPointer.get(object, ptr)) : null;
     }
 
+}
+
+
+class InputDef extends CustomDef {
+
+    constructor(domain, key) {
+        super(domain, 'inputs', key);
+    }
 }
 
 class OutputDef extends CustomDef {
