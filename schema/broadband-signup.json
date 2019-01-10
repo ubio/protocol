@@ -414,7 +414,14 @@
                     "minLength": 1
                 },
                 "description": {
-                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                    "oneOf": [
+                        {
+                            "$ref": "#/domains/Generic/types/StructuredTextItem"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 },
                 "price": {
                     "$ref": "#/domains/Generic/types/Price"
