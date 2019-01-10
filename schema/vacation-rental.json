@@ -179,6 +179,5 @@
             "description": "Vacation rental is not found",
             "example": "Vacation rental unavailable on given date provided"
         }
-    ],
-    "attributes": {}
+    ]
 }

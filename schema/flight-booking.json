@@ -608,14 +608,5 @@
             "category": "client",
             "description": "The website claims this is a duplicate booking attempt."
         }
-    ],
-    "attributes": {
-        "airlineCode": {
-            "type": "string",
-            "description": "IATA reservation code, two-character codes assigned by the International Air Transport Association (IATA) to the airline.",
-            "minLength": 2,
-            "maxLength": 4,
-            "example": "AA"
-        }
-    }
+    ]
 }

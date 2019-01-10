@@ -664,7 +664,5 @@
             "category": "client",
             "description": "The landline is not valid."
         }
-    ],
-    "attributes": {
-    }
+    ]
 }

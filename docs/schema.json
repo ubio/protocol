@@ -1127,15 +1127,7 @@
           "category": "server",
           "description": "Job timeout after an hour of job creation without reaching the final step"
         }
-      ],
-      "attributes": {
-        "url": {
-          "type": "string",
-          "format": "url",
-          "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
-          "example": "http://example.com"
-        }
-      }
+      ]
     },
     "FlightBooking": {
       "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
@@ -1775,16 +1767,7 @@
           "category": "client",
           "description": "The website claims this is a duplicate booking attempt."
         }
-      ],
-      "attributes": {
-        "airlineCode": {
-          "type": "string",
-          "description": "IATA reservation code, two-character codes assigned by the International Air Transport Association (IATA) to the airline.",
-          "minLength": 2,
-          "maxLength": 4,
-          "example": "AA"
-        }
-      }
+      ]
     },
     "CoachBooking": {
       "description": "Automates bus and chack tickets booking on websites.",
@@ -2123,8 +2106,7 @@
           "category": "client",
           "description": "The website invalidates the document details."
         }
-      ],
-      "attributes": {}
+      ]
     },
     "VacationRental": {
       "description": "",
@@ -2305,8 +2287,7 @@
           "description": "Vacation rental is not found",
           "example": "Vacation rental unavailable on given date provided"
         }
-      ],
-      "attributes": {}
+      ]
     },
     "MotorInsurance": {
       "description": "",
@@ -2870,8 +2851,7 @@
           "category": "client",
           "description": "Registration number is required by the website"
         }
-      ],
-      "attributes": {}
+      ]
     },
     "LoanApplication": {
       "description": "",
@@ -3392,8 +3372,7 @@
           "category": "client",
           "description": "Loan application denied by lender"
         }
-      ],
-      "attributes": {}
+      ]
     },
     "EventBooking": {
       "description": "",
@@ -3620,8 +3599,7 @@
           "category": "client",
           "description": "Requested event is not found"
         }
-      ],
-      "attributes": {}
+      ]
     },
     "BroadbandSignup": {
       "description": "Allows automating broadband package signups in the UK.",
@@ -4151,8 +4129,7 @@
           "category": "client",
           "description": "The user being signed up is already a customer of this service."
         }
-      ],
-      "attributes": {}
+      ]
     },
     "HotelBooking": {
       "description": "Allows automating hotel booking on individual suppliers and OTAs.",
@@ -4463,8 +4440,7 @@
           ]
         }
       },
-      "errors": [],
-      "attributes": {}
+      "errors": []
     },
     "HolidayBooking": {
       "description": "Allows automating holiday package booking on individual suppliers and OTAs.",
@@ -4776,8 +4752,7 @@
           "additionalProperties": false
         }
       },
-      "errors": [],
-      "attributes": {}
+      "errors": []
     },
     "Internal": {
       "description": "Internal domain for testing platform features.",
@@ -4868,8 +4843,7 @@
           "category": "client",
           "description": "Client caused error"
         }
-      ],
-      "attributes": {}
+      ]
     },
     "FlightBookingExtraction": {
       "description": "Internal domain for generating FlightBooking inputs.",
@@ -4962,8 +4936,7 @@
           "pattern": "\\d{1,2}"
         }
       },
-      "errors": [],
-      "attributes": {}
+      "errors": []
     }
   }
 }

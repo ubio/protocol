@@ -487,7 +487,5 @@
             "category": "client",
             "description": "The website claims the room is not available for the selected dates."
         }
-    ],
-    "attributes": {
-    }
+    ]
 }
