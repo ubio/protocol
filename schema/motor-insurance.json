@@ -11,7 +11,7 @@
         "quote": {
             "typeRef": "#/domains/MotorInsurance/types/Quote",
             "canonical": [
-                "/reference"
+                "/email"
             ]
         },
         "account": {
