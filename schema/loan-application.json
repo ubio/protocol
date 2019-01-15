@@ -81,9 +81,16 @@
         },
         "expenseTypes": {
             "typeRef": "#/domains/LoanApplication/types/ExpenseTypes"
+        },
+        "savedUrl": {
+            "typeRef": "#/domains/LoanApplication/types/SavedUrl"
         }
     },
     "types": {
+        "SavedUrl": {
+            "type": "object",
+            "$ref": "#/domains/Generic/types/Link"
+        },
         "Loan": {
             "type": "object",
             "description": "Loan criteria",
