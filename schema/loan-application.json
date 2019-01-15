@@ -503,7 +503,16 @@
             "pii": true,
             "minItems": 0,
             "maxItems": 99,
-            "items": { "$ref": "#/domains/Generic/types/File" }
+            "items": {
+                "oneOf": [
+                    {
+                        "$ref": "#/domains/Generic/types/File"
+                    },
+                    {
+                        "$ref": "#/domains/Generic/types/Link"
+                    }
+                ]
+            }
         },
         "Confirmation": {
             "type": "object",
