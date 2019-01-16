@@ -14,6 +14,9 @@
         },
         "agent": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Agent"
+        },
+        "applicant": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Applicant"
         }
     },
     "outputs": {
@@ -65,6 +68,227 @@
                 "organisation",
                 "phone",
                 "email"
+            ],
+            "additionalProperties": false
+        },
+        "Applicant": {
+            "type": "object",
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
+                },
+                "contact": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "type": "object",
+                            "$ref": "#/domains/Generic/types/Address"
+                        },
+                        "email": {
+                            "type": "string",
+                            "description": "Applicant email, typically used for contact details.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.",
+                            "format": "email",
+                            "example": "hello@example.com"
+                        },
+                        "phone": {
+                            "description": "Phone number, may also be used as contact details.",
+                            "$ref": "#/domains/Generic/types/Phone"
+                        }
+                    },
+                    "required": [
+                        "address",
+                        "email",
+                        "phone"
+                    ],
+                    "additionalProperties": false
+                },
+                "emergencyContact": {
+                    "type": "object",
+                    "properties": {
+                        "person": {
+                            "type": "object",
+                            "$ref": "#/domains/Generic/types/Person"
+                        },
+                        "email": {
+                            "type": "string",
+                            "description": "Applicant email, typically used for contact details.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.",
+                            "format": "email",
+                            "example": "hello@example.com"
+                        },
+                        "phone": {
+                            "description": "Phone number, may also be used as contact details.",
+                            "$ref": "#/domains/Generic/types/Phone"
+                        }
+                    },
+                    "required": [
+                        "person",
+                        "email",
+                        "phone"
+                    ],
+                    "additionalProperties": false
+                },
+                "document": {
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/Passport"
+                }
+            },
+            "required": [
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "alias": {
+                    "type": "object",
+                    "properties": {
+                        "firstName": {
+                            "type": "string",
+                            "description": "First name(s) or given name(s), as specified in ID.",
+                            "minLength": 1,
+                            "example": "Bob"
+                        },
+                        "lastName": {
+                            "type": "string",
+                            "description": "Last name or surname, as specified in ID.",
+                            "minLength": 1,
+                            "example": "Smith"
+                        }
+                    },
+                    "required": [
+                        "firstName",
+                        "lastName"
+                    ],
+                    "additionalProperties": false
+                },
+                "birthDatePlace": {
+                    "type": "object",
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "description": "Applicant's date of birth in YYYY-MM-DD format.",
+                            "format": "date",
+                            "example": "1976-01-27"
+                        },
+                        "city": {
+                        },
+                        "countryCode": {
+                            "$ref": "#/domains/Generic/types/CountryCode"
+                        }
+                    },
+                    "required": [
+                        "date",
+                        "city",
+                        "countryCode"
+                    ],
+                    "additionalProperties": false
+                },
+                "civilStatus": {
+                    "type": "string",
+                    "enum": [
+                        "single",
+                        "married",
+                        "civil partnership"
+                    ]
+                },
+                "parentsNames": {
+                    "type": "object",
+                    "properties": {
+                        "father": {
+                            "$ref": "#/domains/Generic/types/Person"
+                        },
+                        "mother": {
+                            "$ref": "#/domains/Generic/types/Person"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "birthDatePlace",
+                "civilStatus",
+                "parentsNames"
+            ],
+            "additionalProperties": false
+        },
+        "Passport": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ordinary",
+                        "diplomatic",
+                        "official",
+                        "service",
+                        "temporary"
+                    ]
+                },
+                "nationality": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "citizenship": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "issueCountryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "issuePlace": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "number": {
+                    "type": "string",
+                    "description": "Document number.",
+                    "example": "75 127001"
+                }
+            },
+            "required": [
+                "nationality",
+                "citizenship",
+                "issueCountryCode",
+                "issuePlace"
             ],
             "additionalProperties": false
         }
