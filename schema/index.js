@@ -13,6 +13,7 @@ module.exports = {
         BroadbandSignup: require('./broadband-signup'),
         HotelBooking: require('./hotel-booking'),
         HolidayBooking: require('./holiday-booking.json'),
+        ElectronicTravelAuthorisation: require('./electronic-travel-authorisation.json'),
         Internal: require('./internal'),
         FlightBookingExtraction: require('./flight-booking-extraction.json'),
         HotelBookingExtraction: require('./hotel-booking-extraction.json'),
