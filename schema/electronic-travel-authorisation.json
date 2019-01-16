@@ -161,11 +161,11 @@
                     "default": "",
                     "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
                 },
-                "firstName": {
+                "lastName": {
                     "type": "string",
-                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "description": "Last name or surname, as specified in ID.",
                     "minLength": 1,
-                    "example": "Bob"
+                    "example": "Smith"
                 },
                 "alias": {
                     "type": "object",
