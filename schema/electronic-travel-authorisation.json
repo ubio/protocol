@@ -9,8 +9,11 @@
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "description": "Website entry point. Should be a deep link to either login page or further down the funnel.",
             "initial": true
+        },
+        "agent": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Agent"
         }
     },
     "outputs": {
@@ -19,6 +22,50 @@
         "Options": {
             "type": "object",
             "description": "Flags for enabling optional automation features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "additionalProperties": false
+        },
+        "Agent": {
+            "type": "object",
+            "properties": {
+                "person": {
+                    "type": "object",
+                    "$ref": "#/domains/Generic/types/Person"
+                },
+                "organisation": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "address": {
+                            "type": "object",
+                            "$ref": "#/domains/Generic/types/Address"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "address"
+                    ],
+                    "additionalProperties": false
+                },
+                "phone": {
+                    "description": "Phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Account email, typically used for contact details.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.",
+                    "format": "email",
+                    "example": "hello@example.com"
+                }
+            },
+            "required": [
+                "person",
+                "organisation",
+                "phone",
+                "email"
+            ],
             "additionalProperties": false
         }
     },
