@@ -198,6 +198,52 @@
             ],
             "additionalProperties": false
         },
+        "ExplictAddress": {
+            "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Street name without number.",
+                    "minLength": 1,
+                    "example": "Twin Peaks Blv"
+                },
+                "streetNumberOrHouseName": {
+                    "type": "string",
+                    "description": "Street number or house name.",
+                    "minLength": 1,
+                    "example": "Buckingham Palace"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "minLength": 1,
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                }
+            },
+            "required": [
+                "streetName",
+                "streetNumberOrHouseName",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
+        },
         "Address": {
             "type": "object",
             "description": "Physical address information, typically used as part of billing or shipping address objects.",

@@ -68,7 +68,7 @@
                         },
                         "address": {
                             "type": "object",
-                            "$ref": "#/domains/Generic/types/Address"
+                            "$ref": "#/domains/Generic/types/ExplicitAddress"
                         }
                     },
                     "required": [
@@ -107,7 +107,7 @@
                     "properties": {
                         "address": {
                             "type": "object",
-                            "$ref": "#/domains/Generic/types/Address"
+                            "$ref": "#/domains/Generic/types/ExplicitAddress"
                         },
                         "email": {
                             "type": "string",
@@ -171,7 +171,7 @@
                 },
                 "address": {
                     "type": "object",
-                    "$ref": "#/domains/Generic/types/Address"
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
                 },
                 "phone": {
                     "description": "Phone number, may also be used as contact details.",
