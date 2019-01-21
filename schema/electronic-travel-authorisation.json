@@ -17,15 +17,36 @@
         },
         "applicant": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Applicant"
+        },
+        "selectedEmploymentDomain": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/SelectedOption"
+        },
+        "selectedEmploymentJobTitle": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/SelectedOption"
         }
     },
     "outputs": {
+        "availableEmploymentDomains": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/AvailableOptions"
+        },
+        "availableEmploymentJobTitles": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/AvailableOptions"
+        }
     },
     "types": {
         "Options": {
             "type": "object",
             "description": "Flags for enabling optional automation features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
             "additionalProperties": false
+        },
+        "AvailableOptions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/ElectronicTravelAuthorisation/types/SelectedOption"
+            }
+        },
+        "SelectedOption": {
+            "type": "string"
         },
         "Agent": {
             "type": "object",
@@ -129,9 +150,44 @@
                 },
                 "document": {
                     "$ref": "#/domains/ElectronicTravelAuthorisation/types/Passport"
+                },
+                "employment": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/ElectronicTravelAuthorisation/types/Employment"
+                    }
                 }
             },
             "required": [
+            ],
+            "additionalProperties": false
+        },
+        "Employment": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "object",
+                    "$ref": "#/domains/Generic/types/Address"
+                },
+                "phone": {
+                    "description": "Phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "Employment start date in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                }
+            },
+            "required": [
+                "name",
+                "address",
+                "phone",
+                "startDate"
             ],
             "additionalProperties": false
         },
