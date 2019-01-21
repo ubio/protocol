@@ -47,6 +47,13 @@
         },
         "availableEmploymentJobTitles": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/AvailableOptions"
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Confirmation"
         }
     },
     "types": {
@@ -54,6 +61,30 @@
             "type": "object",
             "description": "Flags for enabling optional automation features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
             "additionalProperties": false
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "code"
+            ]
         },
         "Application": {
             "type": "object",
