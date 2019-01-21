@@ -33,6 +33,12 @@
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
         }
     },
     "outputs": {
