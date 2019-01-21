@@ -30,6 +30,9 @@
         },
         "application": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
         }
     },
     "outputs": {
