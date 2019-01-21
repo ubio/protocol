@@ -152,10 +152,7 @@
                     "$ref": "#/domains/ElectronicTravelAuthorisation/types/Passport"
                 },
                 "employment": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/domains/ElectronicTravelAuthorisation/types/Employment"
-                    }
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/Employment"
                 }
             },
             "required": [
