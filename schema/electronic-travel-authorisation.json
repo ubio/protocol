@@ -84,7 +84,7 @@
                     "description": "Date and time of departure (UTC).",
                     "example": "2020-02-02 19:40"
                 },
-                "requestedBefore": {
+                "wasRequestedBefore": {
                     "type": "boolean"
                 },
                 "isTransit": {
@@ -96,7 +96,7 @@
                 "purpose",
                 "entries",
                 "arrivalDate",
-                "requestedBefore",
+                "wasRequestedBefore",
                 "isTransit"
             ],
             "additionalProperties": false
