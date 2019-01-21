@@ -215,6 +215,11 @@
                     "minLength": 1,
                     "example": "Buckingham Palace"
                 },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
                 "city": {
                     "type": "string",
                     "description": "Name of city, town or other settlement.",
