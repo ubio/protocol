@@ -198,7 +198,7 @@
             ],
             "additionalProperties": false
         },
-        "ExplictAddress": {
+        "ExplicitAddress": {
             "type": "object",
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
             "pii": true,

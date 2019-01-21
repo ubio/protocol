@@ -27,6 +27,9 @@
         "emailConfirmationUrl": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "URL provided via confirmation email."
+        },
+        "application": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
         }
     },
     "outputs": {
@@ -41,6 +44,42 @@
         "Options": {
             "type": "object",
             "description": "Flags for enabling optional automation features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "additionalProperties": false
+        },
+        "Application": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "purpose": {
+                    "type": "string",
+                    "enum": [
+                        "business",
+                        "tourist"
+                    ]
+                },
+                "entries": {
+                    "type": "integer"
+                },
+                "arrivalDate": {
+                    "type": "string",
+                    "description": "Entry date in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "isTransit": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "type",
+                "purpose",
+                "entries",
+                "arrivalDate",
+                "isTransit"
+            ],
             "additionalProperties": false
         },
         "AvailableOptions": {
