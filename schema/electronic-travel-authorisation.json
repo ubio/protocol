@@ -23,6 +23,10 @@
         },
         "selectedEmploymentJobTitle": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/SelectedOption"
+        },
+        "emailConfirmationUrl": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "URL provided via confirmation email."
         }
     },
     "outputs": {
