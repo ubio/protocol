@@ -255,6 +255,10 @@
                 }
             },
             "required": [
+                "person",
+                "contact",
+                "emergencyContact",
+                "document"
             ],
             "additionalProperties": false
         },
@@ -389,7 +393,6 @@
                 "firstName",
                 "lastName",
                 "birthDatePlace",
-                "civilStatus",
                 "parentsNames"
             ],
             "additionalProperties": false
@@ -437,10 +440,14 @@
                 }
             },
             "required": [
+                "type",
                 "nationality",
                 "citizenship",
                 "issueCountryCode",
-                "issuePlace"
+                "issuePlace",
+                "issueDate",
+                "expirationDate",
+                "number"
             ],
             "additionalProperties": false
         }
