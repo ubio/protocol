@@ -254,6 +254,11 @@
                     "$ref": "#/domains/ElectronicTravelAuthorisation/types/Employment"
                 }
             },
+            "nationalIdentityNumber": {
+                "type": "string",
+                "description": "Where applicable, citizens of certain countries are assigned a unique national identity number, usually at birth, which never changes.",
+                "minLength": 1
+            },
             "required": [
                 "person",
                 "contact",
