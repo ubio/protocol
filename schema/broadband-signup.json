@@ -4,7 +4,8 @@
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
+            "initial": true
         },
         "options": {
             "typeRef": "#/domains/BroadbandSignup/types/Options"
