@@ -19,9 +19,6 @@
         "applicant": {
             "typeRef": "#/domains/LoanApplication/types/Applicant"
         },
-        "addresses": {
-            "typeRef": "#/domains/LoanApplication/types/Addresses"
-        },
         "loanConsent": {
             "typeRef": "#/domains/LoanApplication/types/Quote",
             "sourceOutputKey": "quote",
@@ -166,32 +163,14 @@
             "description": "The person applying for the loan.",
             "pii": true,
             "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "",
-                    "enum": [
-                        "mr",
-                        "miss",
-                        "ms",
-                        "mrs"
-                    ]
-                },
-                "firstName": {
-                    "type": "string",
-                    "description": "First name(s) or given name(s), as specified in ID.",
-                    "minLength": 1,
-                    "example": "Bob"
-                },
-                "middleName": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
-                },
-                "lastName": {
-                    "type": "string",
-                    "description": "Last name or surname, as specified in ID.",
-                    "minLength": 1,
-                    "example": "Smith"
+                "person": { "$ref": "#/domains/Generic/types/Person" },
+                "addresses": {
+                    "type": "array",
+                    "description": "A list of addresses for the applicant.",
+                    "pii": true,
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": { "$ref": "#/domains/LoanApplication/types/LoanAddress" }
                 },
                 "dateOfBirth": {
                     "type": "string",
@@ -250,9 +229,9 @@
             "pii": true,
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/LoanApplication/types/Address" }
+            "items": { "$ref": "#/domains/LoanApplication/types/LoanAddress" }
         },
-        "Address": {
+        "LoanAddress": {
             "type": "object",
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
             "pii": true,
