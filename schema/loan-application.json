@@ -60,6 +60,12 @@
         "expenses": {
             "typeRef": "#/domains/LoanApplication/types/Expenses"
         },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
         "options": {
             "typeRef": "#/domains/LoanApplication/types/Options",
             "default": {},
