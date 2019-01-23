@@ -33,8 +33,8 @@
         "guarantor": {
             "typeRef": "#/domains/LoanApplication/types/Applicant"
         },
-        "bankAccount": {
-            "typeRef": "#/domains/LoanApplication/types/BankAccount"
+        "directDebit": {
+            "typeRef": "#/domains/LoanApplication/types/DirectDebitPayment"
         },
         "mobilePinConfirmation": {
             "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
@@ -220,6 +220,10 @@
                 "phone": {
                     "$ref": "#/domains/Generic/types/Phone"
                 },
+                "dependentsCount": {
+                    "type": "integer",
+                    "minimum": 0
+                },
                 "residentialStatus": {
                 }
             },
@@ -328,6 +332,10 @@
             "description": "Applicant employment details.",
             "pii": true,
             "properties": {
+                "companyName": {
+                    "type": "string",
+                    "minLength": 1
+                },
                 "status": {
                     "type": "string",
                     "description": "",
@@ -367,37 +375,35 @@
             ],
             "additionalProperties": false
         },
-        "BankAccount": {
+        "DirectDebitPayment": {
             "type": "object",
-            "description": "Bank account information - where the loan is paid into.",
+            "description": "Account details for direct debit.",
             "pii": true,
             "properties": {
                 "sortCode": {
                     "type": "string",
-                    "description": "Account sort code.",
-                    "example": "001122",
-                    "minLength": 6,
-                    "maxLength": 6
+                    "description": "Bank sort code",
+                    "pattern": "\\d{2}-?\\d{2}-?\\d{2}",
+                    "example": "56-00-29"
                 },
                 "accountNumber": {
                     "type": "string",
-                    "description": "Account number.",
-                    "example": "44556677",
                     "minLength": 8,
-                    "maxLength": 8
+                    "maxLength": 8,
+                    "description": "Cover marketing name as provided by the insurer.",
+                    "example": "26207729"
                 },
-                "repaymentDay": {
-                    "type": "number",
-                    "description": "Day of month on which loan is repaid.",
-                    "example": 1,
-                    "min": 1,
-                    "max": 31
+                "accountHolder": { "$ref": "#/domains/Generic/types/Person" },
+                "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" },
+                "selectedPaymentDay": {
+                    "type": "string",
+                    "description": "Preferred payment day, one of availableDirectDebitPaymentDays.",
+                    "example": "10"
                 }
             },
             "required": [
                 "sortCode",
-                "accountNumber",
-                "repaymentDay"
+                "accountNumber"
             ],
             "additionalProperties": false
         },
