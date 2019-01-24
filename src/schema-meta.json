@@ -96,8 +96,11 @@
                 },
                 "inputMethod": {
                     "type": "string",
-                    "enum": [ "SeatSelection", "Consent" ]
+                    "enum": [ "SeatSelection", "Consent", "SelectOne", "SelectMany" ]
                 }
+            },
+            "dependencies": {
+                "sourceOutputKey": [ "inputMethod" ]
             },
             "required": ["typeRef"],
             "additionalProperties": false
