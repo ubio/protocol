@@ -6,8 +6,9 @@
             "typeRef": "#/domains/HotelBookingExtraction/types/Options"
         },
         "selectedDestination": {
+            "typeRef": "#/domains/HotelBookingExtraction/types/Destination",
             "sourceOutputKey": "availableDestinations",
-            "typeRef": "#/domains/HotelBookingExtraction/types/Destination"
+            "inputMethod": "SelectOne"
         },
         "checkinDate": {
             "typeRef": "#/domains/HotelBookingExtraction/types/Date"
@@ -16,8 +17,9 @@
             "typeRef": "#/domains/HotelBookingExtraction/types/Date"
         },
         "selectedHotel": {
+            "typeRef": "#/domains/HotelBookingExtraction/types/Hotel",
             "sourceOutputKey": "availableHotels",
-            "typeRef": "#/domains/HotelBookingExtraction/types/Hotel"
+            "inputMethod": "SelectOne"
         },
         "guestAges": {
             "typeRef": "#/domains/Generic/types/Ages"

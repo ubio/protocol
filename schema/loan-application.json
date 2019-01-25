@@ -21,8 +21,9 @@
         },
         "loanConsent": {
             "typeRef": "#/domains/LoanApplication/types/Quote",
+            "description": "Client's consent for the loan, should exactly match the <code>quote</code> object from output.<br/>Automation will not proceed with the loan application until the consent is provided.",
             "sourceOutputKey": "quote",
-            "description": "Client's consent for the loan, should exactly match the <code>quote</code> object from output.<br/>Automation will not proceed with the loan application until the consent is provided."
+            "inputMethod": "Consent"
         },
         "employment": {
             "typeRef": "#/domains/LoanApplication/types/Employment"

@@ -19,18 +19,21 @@
         },
         "selectedRooms": {
             "typeRef": "#/domains/HotelBooking/types/Rooms",
+            "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed.",
             "sourceOutputKey": "availableRooms",
-            "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed."
+            "inputMethod": "SelectMany"
         },
         "selectedHotel": {
             "typeRef": "#/domains/HotelBooking/types/Hotel",
+            "description": "Selected hotel.",
             "sourceOutputKey": "availableHotels",
-            "description": "Selected hotel."
+            "inputMethod": "SelectOne"
         },
         "selectedSearchRate": {
             "typeRef": "#/domains/HotelBooking/types/SearchRate",
+            "description": "Selected search rate.",
             "sourceOutputKey": "availableSearchRates",
-            "description": "Selected search rate."
+            "inputMethod": "SelectOne"
         },
         "guestAges": {
             "typeRef": "#/domains/Generic/types/Ages",
@@ -53,15 +56,17 @@
         },
         "selectedPaymentMethod": {
             "typeRef": "#/domains/HotelBooking/types/PaymentMethod",
-            "sourceOutputKey": "availablePaymentMethods"
+            "sourceOutputKey": "availablePaymentMethods",
+            "inputMethod": "SelectOne"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+            "inputMethod": "Consent"
         }
     },
     "outputs": {

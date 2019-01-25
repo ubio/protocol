@@ -73,6 +73,92 @@ describe('Protocol', () => {
 
     });
 
+    describe('inputMethod', () => {
+
+        it('should reference type definitions compatible with input method', () => {
+            for (const domain of protocol.getDomains()) {
+                for (const inputDef of domain.getInputs()) {
+                    const { sourceOutputKey, inputMethod } = inputDef.spec;
+                    if (sourceOutputKey) {
+                        const outputDef = domain.getOutputDef(sourceOutputKey);
+                        if (inputMethod === 'SelectOne' || inputMethod === 'SelectMany') {
+                            const outputType = resolveType(outputDef.spec.typeRef);
+                            assert.equal(outputType, 'array', `Output key ${ sourceOutputKey } of ${ domain.id } has inputMethod=SelectOne which expects output type to be array, but output type is ${ outputType }.`);
+                        }
+
+                        if (inputMethod === 'SelectMany') {
+                            const inputType = resolveType(inputDef.spec.typeRef);
+                            assert.equal(inputType, 'array', `Output key ${ sourceOutputKey } of ${ domain.id } has inputMethod=SelectOne which expects input type to be array, but input type is ${ inputType }.`);
+                        }
+
+                        if (inputMethod === 'SelectOne') {
+                            const outputSchema = protocol.resolveTypeRef(outputDef.spec.typeRef).spec;
+                            const outputType = resolveType(outputDef.spec.typeRef);
+                            if (outputType === 'array') {
+                                const outputItemType = resolveArrayItemType(outputSchema);
+                                const inputType = resolveType(inputDef.spec.typeRef);
+                                assert.equal(inputType, outputItemType, `Output key ${ sourceOutputKey } of ${ domain.id } has inputMethod=SelectOne which expects input type to be ${ outputItemType }, but input type is ${ inputType }.`);
+                            }
+                        }
+
+                        if (inputMethod === 'Consent') {
+                            const outputType = resolveType(outputDef.spec.typeRef);
+                            const inputType = resolveType(inputDef.spec.typeRef);
+                            assert.equal(inputType, outputType, `Output key ${ sourceOutputKey } of ${ domain.id } has inputMethod=Consent which expects input type to be ${ outputType }, but input type is ${ inputType }.`);
+                        }
+                    }
+                }
+            }
+
+            function resolveType(ref) {
+                const schema = protocol.resolveTypeRef(ref).spec;
+
+                const type = schemaType(schema);
+                if (type) {
+                    return type;
+                }
+
+                if (schema.oneOf) {
+                    return schema.oneOf.map(s => schemaType(s) || resolveType(s.$ref)).filter(x => x !== 'null')[0];
+                }
+            }
+
+            function resolveArrayItemType(schema) {
+                if (schema.$ref) {
+                    schema = protocol.resolveTypeRef(schema.$ref).spec;
+                }
+                const type = schemaType(schema);
+                if (type === 'array' && schema.items) {
+                    return schemaType(schema.items) || resolveType(schema.items.$ref);
+                }
+
+                if (schema.oneOf) {
+                    return schema.oneOf.filter(s => schemaType(s) !== 'null').map(s => resolveArrayItemType(s)).filter(x => x !== 'null')[0];
+                }
+
+                throw new Error('Schema is not array');
+
+            }
+
+            function schemaType(schema) {
+
+                if (schema.$ref) {
+                    return resolveType(schema.$ref);
+                }
+
+                if (schema.type && typeof schema.type === 'string') {
+                    return schema.type;
+                }
+
+                if (schema.type && Array.isArray(schema.type)) {
+                    return schema.type.filter(x => x !== 'null')[0];
+                }
+
+            }
+        });
+
+    });
+
     describe('dataExtractionDomainId', () => {
 
         it('references existing domain', () => {

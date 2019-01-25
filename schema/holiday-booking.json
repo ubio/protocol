@@ -14,23 +14,27 @@
         },
         "selectedBoard": {
             "typeRef": "#/domains/HolidayBooking/types/Board",
+            "description": "One of availableBoards.",
             "sourceOutputKey": "availableBoards",
-            "description": "One of availableBoards."
+            "inputMethod": "SelectOne"
         },
         "selectedFlightBundle": {
             "typeRef": "#/domains/HolidayBooking/types/FlightBundle",
+            "description": "One of availableFlightBundles.",
             "sourceOutputKey": "availableFlightBundles",
-            "description": "One of availableFlightBundles."
+            "inputMethod": "SelectOne"
         },
         "selectedRoomType": {
             "typeRef": "#/domains/HolidayBooking/types/RoomType",
+            "description": "One of availableRoomTypes.",
             "sourceOutputKey": "availableRoomTypes",
-            "description": "One of availableRoomTypes."
+            "inputMethod": "SelectOne"
         },
         "selectedHotelTransfer": {
             "typeRef": "#/domains/HolidayBooking/types/HotelTransfer",
+            "description": "One of availableHotelTransfers.",
             "sourceOutputKey": "availableHotelTransfers",
-            "description": "One of availableHotelTransfers."
+            "inputMethod": "SelectOne"
         },
         "selectedDeposit": {
             "typeRef": "#/domains/HolidayBooking/types/Deposit",
@@ -51,8 +55,9 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+            "inputMethod": "Consent"
         }
     },
     "outputs": {
