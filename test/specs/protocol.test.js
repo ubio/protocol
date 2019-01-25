@@ -75,7 +75,7 @@ describe('Protocol', () => {
 
     describe('inputMethod', () => {
 
-        it.only('should reference type definitions compatible with input method', () => {
+        it('should reference type definitions compatible with input method', () => {
             for (const domain of protocol.getDomains()) {
                 for (const inputDef of domain.getInputs()) {
                     const { sourceOutputKey, inputMethod } = inputDef.spec;
