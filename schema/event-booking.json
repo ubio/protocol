@@ -24,13 +24,15 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+            "inputMethod": "Consent"
         },
         "selectedDelivery": {
             "typeRef": "#/domains/EventBooking/types/Delivery",
+            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking.",
             "sourceOutputKey": "availableDeliveries",
-            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking."
+            "inputMethod": "SelectOne"
         },
         "options": {
             "typeRef": "#/domains/EventBooking/types/Options",
@@ -38,15 +40,17 @@
         },
         "selectedRefund": {
             "typeRef": "#/domains/EventBooking/types/SelectedRefund",
-            "sourceOutputKey": "availableRefunds"
+            "sourceOutputKey": "availableRefunds",
+            "inputMethod": "SelectOne"
         },
         "selectedSeats": {
             "typeRef": "#/domains/EventBooking/types/SelectedSeats"
         },
         "selectedMarketingContactOptions": {
             "typeRef": "#/domains/EventBooking/types/SelectedItem",
+            "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
-            "description": "List of marketing contact options to be selected."
+            "inputMethod": "SelectMany"
         }
     },
     "outputs": {

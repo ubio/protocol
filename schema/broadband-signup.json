@@ -26,15 +26,18 @@
         },
         "selectedTvPackages": {
             "typeRef": "#/domains/BroadbandSignup/types/SelectedPackages",
-            "sourceOutputKey": "availableTvPackages"
+            "sourceOutputKey": "availableTvPackages",
+            "inputMethod": "SelectMany"
         },
         "selectedBroadbandPackage": {
             "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage",
-            "sourceOutputKey": "availableBroadbandPackages"
+            "sourceOutputKey": "availableBroadbandPackages",
+            "inputMethod": "SelectOne"
         },
         "selectedPhonePackage": {
             "typeRef": "#/domains/BroadbandSignup/types/Package",
-            "sourceOutputKey": "availablePhonePackages"
+            "sourceOutputKey": "availablePhonePackages",
+            "inputMethod": "SelectOne"
         },
         "contactPerson": {
             "typeRef": "#/domains/BroadbandSignup/types/PersonDob"
@@ -53,8 +56,9 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+            "inputMethod": "Consent"
         },
         "landlineOptions": {
             "typeRef": "#/domains/BroadbandSignup/types/LandlineOptions"
@@ -67,28 +71,34 @@
         },
         "selectedMarketingContactOptions": {
             "typeRef": "#/domains/BroadbandSignup/types/SelectedItem",
+            "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
-            "description": "List of marketing contact options to be selected."
+            "inputMethod": "SelectMany"
         },
         "selectedTvSetupDate": {
             "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
-            "sourceOutputKey": "availableTvSetupDates"
+            "sourceOutputKey": "availableTvSetupDates",
+            "inputMethod": "SelectOne"
         },
         "selectedBroadbandSetupDate": {
             "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
-            "sourceOutputKey": "availableBroadbandSetupDates"
+            "sourceOutputKey": "availableBroadbandSetupDates",
+            "inputMethod": "SelectOne"
         },
         "selectedMoveInDate": {
             "typeRef": "#/domains/BroadbandSignup/types/SetupDate",
-            "sourceOutputKey": "availableMoveInDates"
+            "sourceOutputKey": "availableMoveInDates",
+            "inputMethod": "SelectOne"
         },
         "selectedActiveLandlineOption": {
             "typeRef": "#/domains/BroadbandSignup/types/String",
-            "sourceOutputKey": "availableActiveLandlineOptions"
+            "sourceOutputKey": "availableActiveLandlineOptions",
+            "inputMethod": "SelectOne"
         },
         "selectedAddress": {
             "typeRef": "#/domains/BroadbandSignup/types/PIIString",
-            "sourceOutputKey": "availableAddresses"
+            "sourceOutputKey": "availableAddresses",
+            "inputMethod": "SelectOne"
         },
         "landlineChallenge": {
             "typeRef": "#/domains/BroadbandSignup/types/String"

@@ -28,8 +28,9 @@
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
-            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+            "inputMethod": "Consent"
         },
         "vehicle": {
             "typeRef": "#/domains/MotorInsurance/types/Vehicle"
@@ -41,63 +42,75 @@
         },
         "selectedVoluntaryExcess": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected voluntary excess",
             "sourceOutputKey": "availableVoluntaryExcesses",
-            "description": "Selected voluntary excess"
+            "inputMethod": "SelectOne"
         },
         "selectedLegalCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected legal cover.",
             "sourceOutputKey": "availableLegalCovers",
-            "description": "Selected legal cover."
+            "inputMethod": "SelectOne"
         },
         "selectedExcessProtectCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected excess protection cover.",
             "sourceOutputKey": "availableExcessProtectCovers",
-            "description": "Selected excess protection cover."
+            "inputMethod": "SelectOne"
         },
         "selectedPersonalInjuryCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected personal injury cover.",
             "sourceOutputKey": "availablePersonalInjuryCovers",
-            "description": "Selected personal injury cover."
+            "inputMethod": "SelectOne"
         },
         "selectedCarHireCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected car hire cover.",
             "sourceOutputKey": "availableCarHireCovers",
-            "description": "Selected car hire cover."
+            "inputMethod": "SelectOne"
         },
         "selectedBreakdownCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected breakdown cover.",
             "sourceOutputKey": "availableBreakdownCovers",
-            "description": "Selected breakdown cover."
+            "inputMethod": "SelectOne"
         },
         "selectedNoClaimsDiscountProtection": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected no claims discount protection.",
             "sourceOutputKey": "availableNoClaimsDiscountProtection",
-            "description": "Selected no claims discount protection."
+            "inputMethod": "SelectOne"
         },
         "selectedWindscreenCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected no claims discount protection.",
             "sourceOutputKey": "availableWindscreenCovers",
-            "description": "Selected no claims discount protection."
+            "inputMethod": "SelectOne"
         },
         "selectedKeyReplacementCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected no claims discount protection.",
             "sourceOutputKey": "availableKeyReplacementCovers",
-            "description": "Selected no claims discount protection."
+            "inputMethod": "SelectOne"
         },
         "selectedMisfuelCover": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedCover",
+            "description": "Selected no claims discount protection.",
             "sourceOutputKey": "availableMisfuelCovers",
-            "description": "Selected no claims discount protection."
+            "inputMethod": "SelectOne"
         },
         "selectedPaymentTerm": {
             "typeRef": "#/domains/MotorInsurance/types/PaymentTerm",
+            "description": "Payment term to be used.",
             "sourceOutputKey": "availablePaymentTerms",
-            "description": "Payment term to be used."
+            "inputMethod": "SelectOne"
         },
         "selectedMarketingContactOptions": {
             "typeRef": "#/domains/MotorInsurance/types/SelectedItem",
+            "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
-            "description": "List of marketing contact options to be selected."
+            "inputMethod": "SelectMany"
         },
         "cookies": {
             "typeRef": "#/domains/Generic/types/Cookies",
