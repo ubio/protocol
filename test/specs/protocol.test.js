@@ -100,6 +100,12 @@ describe('Protocol', () => {
                                 assert.equal(inputType, outputItemType, `Output key ${ sourceOutputKey } of ${ domain.id } has inputMethod=SelectOne which expects input type to be ${ outputItemType }, but input type is ${ inputType }.`);
                             }
                         }
+
+                        if (inputMethod === 'Consent') {
+                            const outputType = resolveType(outputDef.spec.typeRef);
+                            const inputType = resolveType(inputDef.spec.typeRef);
+                            assert.equal(inputType, outputType, `Output key ${ sourceOutputKey } of ${ domain.id } has inputMethod=Consent which expects input type to be ${ outputType }, but input type is ${ inputType }.`);
+                        }
                     }
                 }
             }
