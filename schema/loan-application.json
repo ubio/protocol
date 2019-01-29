@@ -86,11 +86,28 @@
         "expenseTypes": {
             "typeRef": "#/domains/LoanApplication/types/ExpenseTypes"
         },
+        "availableLoanTerms": {
+            "typeRef": "#/domains/LoanApplication/types/LoanTerms"
+        },
+        "availableLoanPurposes": {
+            "typeRef": "#/domains/LoanApplication/types/LoanPurposes"
+        },
         "savedUrl": {
             "typeRef": "#/domains/LoanApplication/types/SavedUrl"
         }
     },
     "types": {
+        "LoanTerms": {
+            "type": "array",
+            "items": { "$ref": "#/domains/LoanApplication/types/String" }
+        },
+        "LoanPurposes": {
+            "type": "array",
+            "items": { "$ref": "#/domains/LoanApplication/types/String" }
+        },
+        "String": {
+            "type": "string"
+        },
         "SavedUrl": {
             "type": "object",
             "$ref": "#/domains/Generic/types/Link"
