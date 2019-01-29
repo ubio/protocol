@@ -92,6 +92,12 @@
         "availableLoanPurposes": {
             "typeRef": "#/domains/LoanApplication/types/LoanPurposes"
         },
+        "availableRepaymentDays": {
+            "typeRef": "#/domains/LoanApplication/types/RepaymentDays"
+        },
+        "guarantorDocuments": {
+            "typeRef": "#/domains/LoanApplication/types/Documents"
+        },
         "savedUrl": {
             "typeRef": "#/domains/LoanApplication/types/SavedUrl"
         }
@@ -102,6 +108,10 @@
             "items": { "$ref": "#/domains/LoanApplication/types/String" }
         },
         "LoanPurposes": {
+            "type": "array",
+            "items": { "$ref": "#/domains/LoanApplication/types/String" }
+        },
+        "RepaymentDays": {
             "type": "array",
             "items": { "$ref": "#/domains/LoanApplication/types/String" }
         },
