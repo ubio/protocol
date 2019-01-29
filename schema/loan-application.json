@@ -68,6 +68,9 @@
             "typeRef": "#/domains/LoanApplication/types/Options",
             "default": {},
             "initial": true
+        },
+        "selectedRepaymentDate": {
+            "typeRef": "#/domains/Generic/types/RepaymentDate"
         }
     },
     "outputs": {
@@ -92,8 +95,8 @@
         "availableLoanPurposes": {
             "typeRef": "#/domains/LoanApplication/types/LoanPurposes"
         },
-        "availableRepaymentDays": {
-            "typeRef": "#/domains/LoanApplication/types/RepaymentDays"
+        "availableRepaymentDates": {
+            "typeRef": "#/domains/LoanApplication/types/RepaymentDates"
         },
         "guarantorDocuments": {
             "typeRef": "#/domains/LoanApplication/types/Documents"
@@ -111,11 +114,14 @@
             "type": "array",
             "items": { "$ref": "#/domains/LoanApplication/types/String" }
         },
-        "RepaymentDays": {
-            "type": "array",
-            "items": { "$ref": "#/domains/LoanApplication/types/String" }
-        },
         "String": {
+            "type": "string"
+        },
+        "RepaymentDates": {
+            "type": "array",
+            "items": { "$ref": "#/domains/LoanApplication/types/RepaymentDate" }
+        },
+        "RepaymentDate": {
             "type": "string"
         },
         "SavedUrl": {
