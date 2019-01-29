@@ -70,7 +70,7 @@
             "initial": true
         },
         "selectedRepaymentDate": {
-            "typeRef": "#/domains/Generic/types/RepaymentDate"
+            "typeRef": "#/domains/LoanApplication/types/RepaymentDate"
         }
     },
     "outputs": {
