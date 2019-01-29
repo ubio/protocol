@@ -214,9 +214,7 @@
                 }
             },
             "required": [
-                "title",
-                "firstName",
-                "lastName",
+                "person",
                 "dateOfBirth",
                 "relationshipStatus",
                 "nationality",
