@@ -130,6 +130,11 @@
             "type": "object",
             "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
             "properties": {
+                "selectCheapestFare": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will select the cheapest fare without requesting or using selected*boundFare inputs.",
+                    "default": false
+                },
                 "seatSelection": {
                     "type": "boolean",
                     "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
