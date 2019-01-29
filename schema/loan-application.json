@@ -233,7 +233,7 @@
                 "phone": {
                     "$ref": "#/domains/Generic/types/Phone"
                 },
-                "dependentsCount": {
+                "dependantsCount": {
                     "type": "integer",
                     "minimum": 0
                 },
