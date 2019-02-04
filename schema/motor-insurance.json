@@ -694,6 +694,11 @@
             "code": "DirectDebitRejected",
             "category": "client",
             "description": "Direct debit details provided have been rejected by the website."
+        },
+        {
+            "code": "PolicyAlreadyPurchased",
+            "category": "client",
+            "description": "The policy has already been purchased."
         }
     ]
 }
