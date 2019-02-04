@@ -7,6 +7,10 @@
             "description": "Website entry point.",
             "initial": true
         },
+        "guarantorResidentialStatus": {
+            "typeRef": "#/domains/LoanApplication/types/ResidentialStatus",
+            "description": "Guarantor's residential status."
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
@@ -324,6 +328,15 @@
                 "countrySubdivision"
             ],
             "additionalProperties": false
+        },
+        "ResidentialStatus": {
+            "type": "string",
+            "description": "",
+            "enum": [
+                "own",
+                "family",
+                "rent"
+            ]
         },
         "Mortgage": {
             "type": "object",
