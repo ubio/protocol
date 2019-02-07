@@ -637,6 +637,11 @@
     },
     "errors": [
         {
+            "code": "AlreadyACustomer",
+            "category": "client",
+            "description":"The customer already has a loan with this provider."
+        },
+        {
             "code": "LoanApplicationDeclined",
             "category": "client",
             "description":"Loan application denied by lender."
