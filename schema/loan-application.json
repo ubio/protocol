@@ -642,6 +642,11 @@
             "description":"The customer already has a loan with this provider."
         },
         {
+            "code": "EligibleForTopUp",
+            "category": "client",
+            "description":"The customer already has a loan with this provider and is eligible for a top up."
+        },
+        {
             "code": "LoanApplicationDeclined",
             "category": "client",
             "description":"Loan application denied by lender."
