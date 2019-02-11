@@ -142,6 +142,9 @@
         "availableMoveInDates": {
             "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
         },
+        "availablePropertyProviderOptions": {
+            "typeRef": "#/domains/BroadbandSignup/types/AvailablePropertyProviderOptions"
+        },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
         },
@@ -326,12 +329,16 @@
                     "description": "Landline number (numbers only, excluding country code).",
                     "example": "123456789",
                     "pattern": "^0[0-9]{8,10}"
+                },
+                "additionalLine": {
+                    "type": "boolean"
                 }
             },
             "required": [
                 "justMoved",
                 "sharedProperty",
-                "restartLine"
+                "restartLine",
+                "additionalLine"
             ],
             "additionalProperties": false
         },
@@ -549,6 +556,12 @@
             "example": "RM108DE"
         },
         "AvailableAddresses": {
+            "type": "array",
+            "description": "A list of addresses.",
+            "minItems": 1,
+            "items": { "type": "string" }
+        },
+        "AvailablePropertyProviderOptions": {
             "type": "array",
             "description": "A list of addresses.",
             "minItems": 1,
