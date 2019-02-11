@@ -100,6 +100,9 @@
             "sourceOutputKey": "availableAddresses",
             "inputMethod": "SelectOne"
         },
+        "selectedPropertyProviderOption": {
+            "typeRef": "#/domains/BroadbandSignup/types/String"
+        },
         "landlineChallenge": {
             "typeRef": "#/domains/BroadbandSignup/types/String"
         },
