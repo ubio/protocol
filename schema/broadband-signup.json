@@ -100,7 +100,7 @@
             "sourceOutputKey": "availableAddresses",
             "inputMethod": "SelectOne"
         },
-        "selectedProviders": {
+        "selectedLineInstallationOption": {
             "typeRef": "#/domains/BroadbandSignup/types/String"
         },
         "landlineChallenge": {
@@ -145,8 +145,8 @@
         "availableMoveInDates": {
             "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
         },
-        "availableProviders": {
-            "typeRef": "#/domains/BroadbandSignup/types/AvailableProviders"
+        "availableLineInstallationOptions": {
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableLineInstallationOptions"
         },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
@@ -564,7 +564,7 @@
             "minItems": 1,
             "items": { "type": "string" }
         },
-        "AvailableProviders": {
+        "AvailableLineInstallationOptions": {
             "type": "array",
             "description": "A list of addresses.",
             "minItems": 1,
