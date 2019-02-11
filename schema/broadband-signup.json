@@ -340,8 +340,7 @@
             "required": [
                 "justMoved",
                 "sharedProperty",
-                "restartLine",
-                "additionalLine"
+                "restartLine"
             ],
             "additionalProperties": false
         },
