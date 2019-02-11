@@ -375,6 +375,7 @@
         },
         "MainGuest": {
             "type": "object",
+            "pii": true,
             "properties": {
                 "person": {
                     "$ref": "#/domains/HotelBooking/types/Person"
@@ -411,6 +412,7 @@
         "Guests": {
             "type": "array",
             "description": "A list of guests.",
+            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/HotelBooking/types/Person"
