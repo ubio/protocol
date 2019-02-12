@@ -12,6 +12,7 @@ module.exports = {
         EventBooking: require('./event-booking'),
         BroadbandSignup: require('./broadband-signup'),
         HotelBooking: require('./hotel-booking'),
+        TestHotelBooking: require('./test-hotel-booking'),
         HolidayBooking: require('./holiday-booking.json'),
         ElectronicTravelAuthorisation: require('./electronic-travel-authorisation.json'),
         Internal: require('./internal'),

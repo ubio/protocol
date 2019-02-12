@@ -1,0 +1,497 @@
+{
+    "description": "Allows automating hotel booking on individual suppliers and OTAs.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "search": {
+            "typeRef": "#/domains/TestHotelBooking/types/Search",
+            "initial": true
+        },
+        "options": {
+            "typeRef": "#/domains/TestHotelBooking/types/Options",
+            "initial": true,
+            "description": "A set of options that define the automation's behaviour."
+        },
+        "selectedRooms": {
+            "typeRef": "#/domains/TestHotelBooking/types/Rooms",
+            "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed.",
+            "sourceOutputKey": "availableRooms",
+            "inputMethod": "SelectMany"
+        },
+        "selectedHotel": {
+            "typeRef": "#/domains/TestHotelBooking/types/Hotel",
+            "description": "Selected hotel.",
+            "sourceOutputKey": "availableHotels",
+            "inputMethod": "SelectOne"
+        },
+        "selectedSearchRate": {
+            "typeRef": "#/domains/TestHotelBooking/types/SearchRate",
+            "description": "Selected search rate.",
+            "sourceOutputKey": "availableSearchRates",
+            "inputMethod": "SelectOne"
+        },
+        "guestAges": {
+            "typeRef": "#/domains/Generic/types/Ages",
+            "description": "List of guest ages."
+        },
+        "mainGuest": {
+            "typeRef": "#/domains/TestHotelBooking/types/MainGuest",
+            "description": "Personal details about the main guest.",
+            "canonical": [
+                "/person",
+                "/contact/email"
+            ]
+        },
+        "guests": {
+            "typeRef": "#/domains/TestHotelBooking/types/Guests",
+            "description": "Personal details about the guests."
+        },
+        "payment": {
+            "typeRef": "#/domains/TestHotelBooking/types/Payment"
+        },
+        "selectedPaymentMethod": {
+            "typeRef": "#/domains/TestHotelBooking/types/PaymentMethod",
+            "sourceOutputKey": "availablePaymentMethods",
+            "inputMethod": "SelectOne"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent"
+        }
+    },
+    "outputs": {
+        "availableSearchRates": {
+            "typeRef": "#/domains/TestHotelBooking/types/SearchRates",
+            "description": "List of room rates."
+        },
+        "availableHotels": {
+            "typeRef": "#/domains/TestHotelBooking/types/Hotels",
+            "description": "List of hotels found on the supplier's website."
+        },
+        "availableRooms": {
+            "typeRef": "#/domains/TestHotelBooking/types/Rooms",
+            "description": "List of rooms found on the supplier's website."
+        },
+        "availablePaymentMethods": {
+            "typeRef": "#/domains/TestHotelBooking/types/PaymentMethods",
+            "description": "List of payment methods found on the supplier's website."
+        },
+        "priceBreakdown": {
+            "typeRef": "#/domains/TestHotelBooking/types/PriceBreakdown",
+            "description": "Total price breakdown."
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/TestHotelBooking/types/BookingConfirmation"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "properties": {
+                "searchRates": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, enables special rates output and input at search.",
+                    "default": false
+                }
+            }
+        },
+        "SearchRates": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+                "$ref": "#/domains/TestHotelBooking/types/SearchRate"
+            }
+        },
+        "SearchRate": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Senior Discounts"
+                },
+                "text": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "Search": {
+            "type": "object",
+            "properties": {
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "rooms": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/TestHotelBooking/types/SearchRoom"
+                    }
+                },
+                "text": {
+                    "type": "string",
+                    "example": "London, UK",
+                    "minLength": 3
+                }
+            },
+            "required": [
+                "checkInDate",
+                "checkOutDate",
+                "rooms",
+                "text"
+            ],
+            "additionalProperties": false
+        },
+        "SearchRoom": {
+            "type": "object",
+            "properties": {
+                "ages": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 150,
+                        "exmaple": 31
+                    }
+                }
+            },
+            "required": [
+                "ages"
+            ],
+            "additionalProperties": false
+        },
+        "Hotels": {
+            "type": "array",
+            "description": "A list of hotels.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/TestHotelBooking/types/Hotel"
+            }
+        },
+        "Hotel": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "My Hotel"
+                },
+                "priceLine": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "From 188 GBP Avg./night"
+                },
+                "addressLine": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "21 Piccadilly London, United Kingdom W1J 0BH"
+                },
+                "images": {
+                    "type": "array",
+                    "description": "A list of images.",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/Generic/types/Link"
+                    }
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "Rooms": {
+            "type": "array",
+            "description": "A list of rooms.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/TestHotelBooking/types/Room"
+            }
+        },
+        "Room": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "Standard Single Room"
+                },
+                "description": {
+                    "typeRef": "#/domains/Generic/types/StructuredTextItem"
+                },
+                "price": {
+                    "typeRef": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 20600,
+                        "currency": "gbp"
+                    }
+                },
+                "strikePrice": {
+                    "typeRef": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 30600,
+                        "currency": "gbp"
+                    }
+                },
+                "cancellation": {
+                    "type": "object",
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "enum": [
+                                "full-refundable",
+                                "flexible-refundable",
+                                "non-refundable",
+                                "unknown"
+                            ]
+                        },
+                        "details": {
+                            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+                            "example": {
+                                "type": "Text",
+                                "text": "Free cancellation up to 24h before. Cancellation not allowed afterwards."
+                            }
+                        }
+                    },
+                    "required": [
+                        "code"
+                    ],
+                    "additionalProperties": false
+                },
+                "valueAdditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/TestHotelBooking/types/ValueAddition"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "price",
+                "cancellation",
+                "valueAdditions"
+            ],
+            "additionalProperties": false
+        },
+        "ValueAddition": {
+            "type": "string",
+            "enum": [
+                "pay-later",
+                "free-breakfast",
+                "free-half-board",
+                "free-full-board",
+                "free-all-inclusive",
+                "free-parking",
+                "free-internet"
+            ]
+        },
+        "PriceBreakdown": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/TestHotelBooking/types/PriceLineItem"
+            }
+        },
+        "PriceLineItem": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "net-rate",
+                        "city-tax",
+                        "vat",
+                        "hotel-fee",
+                        "resort-fee",
+                        "service-fee",
+                        "booking-fee",
+                        "total-now",
+                        "total-later",
+                        "total-overall",
+                        "others"
+                    ]
+                },
+                "paidAtHotel": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "price": {
+                    "typeRef": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 20600,
+                        "currency": "gbp"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "description",
+                "price"
+            ],
+            "additionalProperties": false
+        },
+        "PaymentMethods": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/TestHotelBooking/types/PaymentMethod"
+            }
+        },
+        "PaymentMethod": {
+            "type": "string",
+            "enum": [
+                "card",
+                "paypal",
+                "direct-debit",
+                "bank-transfer",
+                "no-prepayment"
+            ]
+        },
+        "MainGuest": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/TestHotelBooking/types/Person"
+                },
+                "contact": {
+                    "$ref": "#/domains/TestHotelBooking/types/GuestContact"
+                }
+            },
+            "required": [
+                "person",
+                "contact"
+            ],
+            "additionalProperties": false
+        },
+        "GuestContact": {
+            "type": "object",
+            "properties": {
+                "phone": {
+                    "$ref": "#/domains/Generic/types/AnyPhoneString"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address used for contact.",
+                    "format": "email",
+                    "example": "client@example.com"
+                }
+            },
+            "required": [
+                "phone",
+                "email"
+            ],
+            "additionalProperties": false
+        },
+        "Guests": {
+            "type": "array",
+            "description": "A list of guests.",
+            "minItems": 1,
+            "pii": true,
+            "items": {
+                "$ref": "#/domains/TestHotelBooking/types/Person"
+            }
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
+            "pii": true,
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "person": { "$ref": "#/domains/TestHotelBooking/types/Person" },
+                "address": { "$ref": "#/domains/Generic/types/Address" }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+        {
+            "code": "RoomNotAvailable",
+            "category": "client",
+            "description": "The website claims the room is not available for the selected dates."
+        }
+    ]
+}
