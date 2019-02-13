@@ -8,7 +8,8 @@
             "initial": true
         },
         "options": {
-            "typeRef": "#/domains/BroadbandSignup/types/Options"
+            "typeRef": "#/domains/BroadbandSignup/types/Options",
+            "initial": true
         },
         "landlineCheck": {
             "typeRef": "#/domains/BroadbandSignup/types/LandlineCheck",
