@@ -227,6 +227,10 @@
                 "screenshots": {
                     "type": "boolean",
                     "default": false
+                },
+                "testingFlow": {
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
