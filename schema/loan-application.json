@@ -88,7 +88,8 @@
             "typeRef": "#/domains/LoanApplication/types/Requirements"
         },
         "confirmation": {
-            "typeRef": "#/domains/LoanApplication/types/Confirmation"
+            "typeRef": "#/domains/LoanApplication/types/Confirmation",
+            "successConfirmationCode": "/code"
         },
         "expenseTypes": {
             "typeRef": "#/domains/LoanApplication/types/ExpenseTypes"
