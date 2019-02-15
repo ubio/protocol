@@ -52,7 +52,7 @@ describe('OutputDef', () => {
 
     describe('getSuccessConfirmationCodeValue', () => {
 
-        it('extracts canonical values from given input object', () => {
+        it('extracts successConfirmationCode value from given input object', () => {
             for (const outputDef of outputDefs) {
                 const example = outputDef.createExample();
                 const pointers = outputDef.getSuccessConfirmationCodePointer();
@@ -65,7 +65,7 @@ describe('OutputDef', () => {
             }
         });
 
-        it('returns null if no pointers specified', () => {
+        it('returns null if no pointer specified', () => {
             for (const outputDef of outputDefs) {
                 const example = outputDef.createExample();
                 const pointer = outputDef.getSuccessConfirmationCodePointer();

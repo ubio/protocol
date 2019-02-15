@@ -44,7 +44,7 @@
             "description": "Used by test-price-consent service."
         },
         "confirmation": {
-            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "typeRef": "#/domains/Internal/types/Confirmation",
             "successConfirmationCode": "/code"
         }
     },
