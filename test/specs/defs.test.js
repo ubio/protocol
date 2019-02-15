@@ -50,7 +50,7 @@ describe('InputDef', () => {
 
 describe('OutputDef', () => {
 
-    describe('getCanonicalValues', () => {
+    describe('getSuccessConfirmationCodeValue', () => {
 
         it('extracts canonical values from given input object', () => {
             for (const outputDef of outputDefs) {
@@ -60,7 +60,7 @@ describe('OutputDef', () => {
                     continue;
                 }
                 const value = outputDef.getSuccessConfirmationCodeValue(example);
-                assert.ok(value != null && typeof value === 'string',
+                assert.ok(value != null,
                     `Input ${outputDef.id} contains a null successConfirmationCode value: ${JSON.stringify(example)}`);
             }
         });

@@ -59,7 +59,8 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "confirmation": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Confirmation"
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Confirmation",
+            "successConfirmationCode": "/code"
         }
     },
     "types": {

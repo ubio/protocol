@@ -177,7 +177,8 @@
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "confirmation": {
-            "typeRef": "#/domains/BroadbandSignup/types/Confirmation"
+            "typeRef": "#/domains/BroadbandSignup/types/Confirmation",
+            "successConfirmationCode": "/reference"
         },
         "setupRequired": {
             "typeRef": "#/domains/BroadbandSignup/types/Boolean"
