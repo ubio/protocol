@@ -307,6 +307,10 @@
                 "code"
             ]
         },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end."
+        },
         "BookingConfirmation": {
             "type": "object",
             "description": "Information gathered on \"Booking success\" page.",
@@ -330,10 +334,6 @@
             "required": [
                 "bookingReference"
             ]
-        },
-        "Options": {
-            "type": "object",
-            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end."
         }
     },
     "errors": [
