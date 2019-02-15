@@ -122,7 +122,8 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "bookingConfirmation": {
-            "typeRef": "#/domains/FlightBooking/types/BookingConfirmation"
+            "typeRef": "#/domains/FlightBooking/types/BookingConfirmation",
+            "successConfirmationCode": ""
         }
     },
     "types": {

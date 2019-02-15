@@ -63,7 +63,8 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "bookingConfirmation": {
-            "typeRef": "#/domains/EventBooking/types/BookingConfirmation"
+            "typeRef": "#/domains/EventBooking/types/BookingConfirmation",
+            "successConfirmationCode": "/bookingReference"
         },
         "availableMarketingContactOptions": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems",

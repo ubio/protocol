@@ -127,7 +127,8 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "purchaseConfirmation": {
-            "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation"
+            "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation",
+            "successConfirmationCode": "/purchaseReference"
         },
         "availableVoluntaryExcesses": {
             "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",

@@ -67,7 +67,8 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "bookingConfirmation": {
-            "typeRef": "#/domains/FlightBooking/types/BookingConfirmation"
+            "typeRef": "#/domains/CoachBooking/types/BookingConfirmation",
+            "successConfirmationCode": "/bookingReference"
         }
     },
     "types": {
@@ -304,6 +305,30 @@
             },
             "required": [
                 "code"
+            ]
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
             ]
         },
         "Options": {

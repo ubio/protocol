@@ -7,6 +7,10 @@ const inputDefs = protocol.getDomains()
     .map(d => d.getInputs())
     .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
 
+const outputDefs = protocol.getDomains()
+    .map(d => d.getOutputs())
+    .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
+
 const typeDefs = protocol.getDomains()
     .map(d => d.getTypes())
     .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
@@ -36,6 +40,37 @@ describe('InputDef', () => {
                 const pointers = inputDef.getCanonicalPointers();
                 if (pointers == null) {
                     assert.equal(inputDef.getCanonicalValues(example), null);
+                }
+            }
+        });
+
+    });
+
+});
+
+describe('OutputDef', () => {
+
+    describe('getCanonicalValues', () => {
+
+        it('extracts canonical values from given input object', () => {
+            for (const outputDef of outputDefs) {
+                const example = outputDef.createExample();
+                const pointers = outputDef.getSuccessConfirmationCodePointer();
+                if (pointers == null) {
+                    continue;
+                }
+                const value = outputDef.getSuccessConfirmationCodeValue(example);
+                assert.ok(value != null && typeof value === 'string',
+                    `Input ${outputDef.id} contains a null successConfirmationCode value: ${JSON.stringify(example)}`);
+            }
+        });
+
+        it('returns null if no pointers specified', () => {
+            for (const outputDef of outputDefs) {
+                const example = outputDef.createExample();
+                const pointer = outputDef.getSuccessConfirmationCodePointer();
+                if (pointer == null) {
+                    assert.equal(outputDef.getSuccessConfirmationCodeValue(example), null);
                 }
             }
         });

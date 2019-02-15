@@ -91,7 +91,8 @@
             "typeRef": "#/domains/HolidayBooking/types/Deposits"
         },
         "bookingConfirmation": {
-            "typeRef": "#/domains/HolidayBooking/types/BookingConfirmation"
+            "typeRef": "#/domains/HolidayBooking/types/BookingConfirmation",
+            "successConfirmationCode": "/bookingReference"
         }
     },
     "types": {

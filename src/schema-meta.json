@@ -115,6 +115,10 @@
                 "canonical": {
                     "type": "array",
                     "description": "Array of json pointers for canonical fields"
+                },
+                "successConfirmationCode": {
+                    "type": "string",
+                    "description": "A json pointer for confirmation code or reference available for successful automation"
                 }
             },
             "required": ["typeRef"],

@@ -95,7 +95,8 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "bookingConfirmation": {
-            "typeRef": "#/domains/HotelBooking/types/BookingConfirmation"
+            "typeRef": "#/domains/HotelBooking/types/BookingConfirmation",
+            "successConfirmationCode": "/bookingReference"
         }
     },
     "types": {
