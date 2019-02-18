@@ -85,6 +85,10 @@
             "typeRef": "#/domains/TestHotelBooking/types/PaymentMethods",
             "description": "List of payment methods found on the supplier's website."
         },
+        "supportedCards": {
+            "typeRef": "#/domains/TestHotelBooking/types/SupportedCards",
+            "description": "List of card brands and types found on the supplier's website."
+        },
         "priceBreakdown": {
             "typeRef": "#/domains/TestHotelBooking/types/PriceBreakdown",
             "description": "Total price breakdown."
@@ -107,6 +111,41 @@
                     "default": false
                 }
             }
+        },
+        "SupportedCards": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+                "$ref": "#/domains/TestHotelBooking/types/CardBrandType"
+            }
+        },
+        "CardBrandType": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Card type, debit or credit.",
+                    "enum": [
+                        "debit",
+                        "credit"
+                    ]
+                },
+                "brand": {
+                    "type": "string",
+                    "description": "Card brand.",
+                    "enum": [
+                        "visa",
+                        "mastercard",
+                        "amex",
+                        "discover"
+                    ]
+                }
+            },
+            "required": [
+                "brand",
+                "type"
+            ],
+            "additionalProperties": false
         },
         "SearchRates": {
             "type": "array",
