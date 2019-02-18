@@ -372,11 +372,14 @@
                     "type": "array",
                     "minItems": 1,
                     "items": { "type": "string" }
+                },
+                "storeySelection": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" }
                 }
             },
             "required": [
-                "accessRestrictions",
-                "parkingRestrictions"
             ],
             "additionalProperties": false
         },
@@ -395,12 +398,12 @@
                 },
                 "buildingType": {
                     "type": "string"
+                },
+                "storeySelection": {
+                    "type": "string"
                 }
             },
             "required": [
-                "propertyType",
-                "accessRestrictions",
-                "parkingRestrictions"
             ],
             "additionalProperties": false
         },
