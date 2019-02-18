@@ -135,23 +135,6 @@ class OutputDef extends CustomDef {
     constructor(domain, key) {
         super(domain, 'outputs', key);
     }
-
-    /**
-     * @returns {string | null} success confirmation code pointers or null if not defined
-     */
-    getSuccessConfirmationCodePointer() {
-        return this.spec.successConfirmationCode || null;
-    }
-
-    /**
-     * @param {any} object output object
-     * @returns {string | null} success confirmation code value or null if no canonical pointers defined
-     */
-    getSuccessConfirmationCodeValue(object) {
-        const pointer = this.getSuccessConfirmationCodePointer();
-        return pointer ? jsonPointer.get(object, pointer) : null;
-    }
-
 }
 
 module.exports = {

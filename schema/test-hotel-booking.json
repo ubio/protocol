@@ -1,10 +1,7 @@
 {
     "description": "Allows automating hotel booking on individual suppliers and OTAs.",
     "private": false,
-    "successCode": {
-        "outputKey": "",
-        "valuePath": ""
-    },
+    "successCode": {},
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",

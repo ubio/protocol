@@ -123,11 +123,11 @@ module.exports = class Domain {
         return await def.validate(data);
     }
 
-    getSuccessOutputKey() {
+    getSuccessCodeOutputKey() {
         return this.spec.successCode && this.spec.successCode.outputKey || null;
     }
 
-    getSuccessCode(outputData) {
+    getSuccessCodeValue(outputData) {
         const pointer = this.spec.successCode && this.spec.successCode.valuePath;
         return pointer ? jsonPointer.get(outputData, pointer) : null;
     }

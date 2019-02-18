@@ -212,7 +212,7 @@ describe('Protocol', () => {
 
         it('extracts successConfirmationCode value from given input object', () => {
             for (const domain of protocol.getDomains()) {
-                const outputKey = domain.getSuccessOutputKey();
+                const outputKey = domain.getSuccessCodeOutputKey();
                 if (outputKey == null) {
                     continue;
                 }
@@ -220,7 +220,7 @@ describe('Protocol', () => {
                 assert(outputDef, `Success output ${outputKey} does not exists in domain ${domain.id}`);
 
                 const example = outputDef.createExample();
-                const value = domain.getSuccessCode(example);
+                const value = domain.getSuccessCodeValue(example);
                 assert.ok(value != null,
                     `Output ${outputDef.id} contains a null successCode value: ${JSON.stringify(example)}`);
             }
