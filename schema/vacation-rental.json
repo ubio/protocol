@@ -1,6 +1,10 @@
 {
     "description": "",
     "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/bookingReference"
+    },
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
@@ -49,8 +53,7 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "bookingConfirmation": {
-            "typeRef": "#/domains/VacationRental/types/BookingConfirmation",
-            "successConfirmationCode": "/bookingReference"
+            "typeRef": "#/domains/VacationRental/types/BookingConfirmation"
         },
         "availableDeposits": {
             "typeRef": "#/domains/VacationRental/types/AvailableDeposits",

@@ -1,6 +1,7 @@
 {
     "description": "Internal domain for generating MotorInsurance inputs.",
     "private": true,
+    "successCode": {},
     "inputs": {
         "options": {
             "typeRef": "#/domains/MotorInsurance/types/Options"

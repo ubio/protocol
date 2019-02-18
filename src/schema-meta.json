@@ -38,6 +38,17 @@
                     "type": "string",
                     "description": "Id of related domain which defines data extraction services, output of data extraction domain should match input format of referencing domain"
                 },
+                "successCode": {
+                    "type": "object",
+                    "properties": {
+                        "outputKey": {
+                            "type": "string"
+                        },
+                        "valuePath": {
+                            "type": "string"
+                        }
+                    }
+                },
                 "inputs": {
                     "type": "object",
                     "additionalProperties": {
@@ -66,7 +77,8 @@
                 "outputs",
                 "types",
                 "errors",
-                "private"
+                "private",
+                "successCode"
             ],
             "additionalProperties": false
         },
@@ -115,10 +127,6 @@
                 "canonical": {
                     "type": "array",
                     "description": "Array of json pointers for canonical fields"
-                },
-                "successConfirmationCode": {
-                    "type": "string",
-                    "description": "A json pointer for confirmation code or reference available for successful automation"
                 }
             },
             "required": ["typeRef"],

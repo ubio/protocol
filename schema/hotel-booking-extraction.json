@@ -1,6 +1,7 @@
 {
     "description": "Internal domain for generating HotelBooking inputs.",
     "private": true,
+    "successCode": {},
     "inputs": {
         "options": {
             "typeRef": "#/domains/HotelBookingExtraction/types/Options"

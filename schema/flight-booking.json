@@ -1,6 +1,10 @@
 {
     "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
     "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/bookingReference"
+    },
     "dataExtractionDomainId": "FlightBookingExtraction",
     "inputs": {
         "options": {
@@ -122,8 +126,7 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "bookingConfirmation": {
-            "typeRef": "#/domains/FlightBooking/types/BookingConfirmation",
-            "successConfirmationCode": "/bookingReference"
+            "typeRef": "#/domains/FlightBooking/types/BookingConfirmation"
         }
     },
     "types": {

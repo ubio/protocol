@@ -1,6 +1,7 @@
 'use strict';
 
 const { InputDef, OutputDef, TypeDef } = require('./defs');
+const jsonPointer = require('jsonpointer');
 
 module.exports = class Domain {
 
@@ -120,6 +121,15 @@ module.exports = class Domain {
             };
         }
         return await def.validate(data);
+    }
+
+    getSuccessOutputKey() {
+        return this.spec.successCode && this.spec.successCode.outputKey || null;
+    }
+
+    getSuccessCode(outputData) {
+        const pointer = this.spec.successCode && this.spec.successCode.valuePath;
+        return pointer ? jsonPointer.get(outputData, pointer) : null;
     }
 
 };

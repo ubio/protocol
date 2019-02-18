@@ -1,6 +1,10 @@
 {
     "description": "Allows automating holiday package booking on individual suppliers and OTAs.",
     "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/bookingReference"
+    },
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
@@ -91,8 +95,7 @@
             "typeRef": "#/domains/HolidayBooking/types/Deposits"
         },
         "bookingConfirmation": {
-            "typeRef": "#/domains/HolidayBooking/types/BookingConfirmation",
-            "successConfirmationCode": "/bookingReference"
+            "typeRef": "#/domains/HolidayBooking/types/BookingConfirmation"
         }
     },
     "types": {

@@ -1,6 +1,10 @@
 {
     "description": "",
     "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/code"
+    },
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
@@ -88,8 +92,7 @@
             "typeRef": "#/domains/LoanApplication/types/Requirements"
         },
         "confirmation": {
-            "typeRef": "#/domains/LoanApplication/types/Confirmation",
-            "successConfirmationCode": "/code"
+            "typeRef": "#/domains/LoanApplication/types/Confirmation"
         },
         "expenseTypes": {
             "typeRef": "#/domains/LoanApplication/types/ExpenseTypes"

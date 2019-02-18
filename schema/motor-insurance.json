@@ -2,6 +2,10 @@
     "description": "",
     "private": false,
     "dataExtractionDomainId": "MotorInsuranceExtraction",
+    "successCode": {
+        "outputKey": "purchaseConfirmation",
+        "valuePath": "/purchaseReference"
+    },
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
@@ -127,8 +131,7 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "purchaseConfirmation": {
-            "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation",
-            "successConfirmationCode": "/purchaseReference"
+            "typeRef": "#/domains/MotorInsurance/types/PurchaseConfirmation"
         },
         "availableVoluntaryExcesses": {
             "typeRef": "#/domains/MotorInsurance/types/NullableAvailableCovers",

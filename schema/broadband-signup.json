@@ -1,6 +1,10 @@
 {
     "description": "Allows automating broadband package signups in the UK.",
     "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/reference"
+    },
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
@@ -177,8 +181,7 @@
             "typeRef": "#/domains/BroadbandSignup/types/Anything"
         },
         "confirmation": {
-            "typeRef": "#/domains/BroadbandSignup/types/Confirmation",
-            "successConfirmationCode": "/reference"
+            "typeRef": "#/domains/BroadbandSignup/types/Confirmation"
         },
         "setupRequired": {
             "typeRef": "#/domains/BroadbandSignup/types/Boolean"
