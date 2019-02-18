@@ -101,6 +101,11 @@
             "sourceOutputKey": "availableAddresses",
             "inputMethod": "SelectOne"
         },
+        "selectedInstallationAddress": {
+            "typeRef": "#/domains/BroadbandSignup/types/PIIString",
+            "sourceOutputKey": "availableInstallationAddresses",
+            "inputMethod": "SelectOne"
+        },
         "selectedLineInstallationOption": {
             "typeRef": "#/domains/BroadbandSignup/types/String"
         },
@@ -135,6 +140,9 @@
             "typeRef": "#/domains/BroadbandSignup/types/InstallationOptions"
         },
         "availableAddresses": {
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableAddresses"
+        },
+        "availableInstallationAddresses": {
             "typeRef": "#/domains/BroadbandSignup/types/AvailableAddresses"
         },
         "availableTvSetupDates": {
