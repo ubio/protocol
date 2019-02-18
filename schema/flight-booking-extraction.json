@@ -1,7 +1,6 @@
 {
     "description": "Internal domain for generating FlightBooking inputs.",
     "private": true,
-    "successCode": {},
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL"

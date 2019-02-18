@@ -1,7 +1,6 @@
 {
     "description": "Generic domain contains type definitions used in other domains.",
     "private": false,
-    "successCode": {},
     "inputs": {},
     "outputs": {},
     "types": {

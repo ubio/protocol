@@ -75,8 +75,8 @@ module.exports = class Protocol {
         return domain ? domain.getSuccessCodeOutputKey() : null;
     }
 
-    getSuccessCodeValue(domainId) {
+    getSuccessCodeValue(domainId, outputKey, outputData) {
         const domain = this.getDomain(domainId);
-        return domain ? domain.getSuccessCodeValue() : null;
+        return domain ? domain.getSuccessCodeValue(outputKey, outputData) : null;
     }
 };

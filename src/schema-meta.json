@@ -47,7 +47,8 @@
                         "valuePath": {
                             "type": "string"
                         }
-                    }
+                    },
+                    "required": ["outputKey", "valuePath"]
                 },
                 "inputs": {
                     "type": "object",
@@ -77,8 +78,7 @@
                 "outputs",
                 "types",
                 "errors",
-                "private",
-                "successCode"
+                "private"
             ],
             "additionalProperties": false
         },

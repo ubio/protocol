@@ -135,6 +135,7 @@ class OutputDef extends CustomDef {
     constructor(domain, key) {
         super(domain, 'outputs', key);
     }
+
 }
 
 module.exports = {
