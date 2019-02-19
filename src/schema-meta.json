@@ -38,6 +38,18 @@
                     "type": "string",
                     "description": "Id of related domain which defines data extraction services, output of data extraction domain should match input format of referencing domain"
                 },
+                "successCode": {
+                    "type": "object",
+                    "properties": {
+                        "outputKey": {
+                            "type": "string"
+                        },
+                        "valuePath": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["outputKey", "valuePath"]
+                },
                 "inputs": {
                     "type": "object",
                     "additionalProperties": {

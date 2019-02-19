@@ -70,4 +70,13 @@ module.exports = class Protocol {
         return Array.from(unresolvedRefs);
     }
 
+    getSuccessCodeOutputKey(domainId) {
+        const domain = this.getDomain(domainId);
+        return domain ? domain.getSuccessCodeOutputKey() : null;
+    }
+
+    getSuccessCodeValue(domainId, outputKey, outputData) {
+        const domain = this.getDomain(domainId);
+        return domain ? domain.getSuccessCodeValue(outputKey, outputData) : null;
+    }
 };

@@ -1,6 +1,10 @@
 {
     "description": "Allows automating ETAs.",
     "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/code"
+    },
     "inputs": {
         "options": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Options",

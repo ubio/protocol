@@ -1,6 +1,10 @@
 {
     "description": "Internal domain for testing platform features.",
     "private": true,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/code"
+    },
     "inputs": {
         "options": {
             "typeRef": "#/domains/Internal/types/Options",
@@ -42,6 +46,9 @@
         "finalPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Used by test-price-consent service."
+        },
+        "confirmation": {
+            "typeRef": "#/domains/Internal/types/Confirmation"
         }
     },
     "types": {
@@ -76,6 +83,30 @@
                     "default": false
                 }
             }
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Information gathered on \" success\" page.",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "reference grabbed from the page.",
+                    "example": "UBIO1234"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful automation.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "code"
+            ]
         }
     },
     "errors": [

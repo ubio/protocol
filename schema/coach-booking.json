@@ -1,6 +1,10 @@
 {
     "description": "Automates bus and chack tickets booking on websites.",
     "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/bookingReference"
+    },
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
