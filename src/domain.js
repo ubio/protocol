@@ -127,15 +127,13 @@ module.exports = class Domain {
         return this.spec.successCode ? this.spec.successCode.outputKey : null;
     }
 
-    getSuccessCodeValue(key, data = {}) {
-        const { outputKey, valuePath } = this.spec.successCode || {};
-
-        if (outputKey && outputKey === key && valuePath) {
-            return jsonPointer.get(data, valuePath) || null;
+    getSuccessCodeValue(outputKey, outputData = {}) {
+        if (!this.spec.successCode || this.spec.successCode.outputKey !== outputKey) {
+            return null;
         }
 
-        return null;
-
+        const pointer = this.spec.successCode.valuePath;
+        return jsonPointer.get(outputData, pointer) || null;
     }
 
 };
