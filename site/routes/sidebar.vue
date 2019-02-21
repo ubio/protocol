@@ -35,6 +35,7 @@ module.exports = {
 .sidebar__sticky {
     position: sticky;
     top: 20px;
+    max-height: calc(100vh - 20px);
     overflow-y: auto;
 }
 </style>
