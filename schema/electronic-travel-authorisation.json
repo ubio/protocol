@@ -261,6 +261,12 @@
                     "type": "string",
                     "description": "Where applicable, citizens of certain countries are assigned a unique national identity number, usually at birth, which never changes.",
                     "minLength": 1
+                },
+                "otherNationalities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/ElectronicTravelAuthorisation/types/OtherNationality"
+                    }
                 }
             },
             "required": [
@@ -268,6 +274,34 @@
                 "contact",
                 "emergencyContact",
                 "document"
+            ],
+            "additionalProperties": false
+        },
+        "OtherNationality": {
+            "type": "object",
+            "properties": {
+                "isCurrent": {
+                    "type": "boolean"
+                },
+                "obtainedBy": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "birth",
+                        "parents",
+                        "naturalisation",
+                        "other"
+                    ]
+                },
+                "obtainedOtherReason": {
+                    "type": "string",
+                    "minLength": 2,
+                    "description": "When obtainedBy is 'other', this entry is mandatory."
+                }
+            },
+            "required": [
+                "isCurrent",
+                "obtainedBy"
             ],
             "additionalProperties": false
         },
