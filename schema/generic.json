@@ -701,6 +701,7 @@
             "enum": [
                 "aed",
                 "all",
+                "aoa",
                 "afn",
                 "ars",
                 "awg",
