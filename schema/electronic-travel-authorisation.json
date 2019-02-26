@@ -297,11 +297,15 @@
                     "type": "string",
                     "minLength": 2,
                     "description": "When obtainedBy is 'other', this entry is mandatory."
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
                 }
             },
             "required": [
                 "isCurrent",
-                "obtainedBy"
+                "obtainedBy",
+                "countryCode"
             ],
             "additionalProperties": false
         },
