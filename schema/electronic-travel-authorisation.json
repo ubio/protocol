@@ -64,13 +64,19 @@
         },
         "confirmation": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Confirmation"
-        }
+        },
+	"applicationReference": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/ApplicationReference"
+	}
     },
     "types": {
         "Options": {
             "type": "object",
             "description": "Flags for enabling optional automation features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
             "additionalProperties": false
+        },
+        "ApplicationReference": {
+            "type": "string"
         },
         "Confirmation": {
             "type": "object",
