@@ -65,9 +65,9 @@
         "confirmation": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Confirmation"
         },
-	"applicationReference": {
+        "applicationReference": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/ApplicationReference"
-	}
+        }
     },
     "types": {
         "Options": {
@@ -131,6 +131,22 @@
                     "description": "Date and time of departure (UTC).",
                     "example": "2020-02-02 19:40"
                 },
+                "destinationContact": {
+                    "address": {
+                        "type": "object",
+                        "$ref": "#/domains/Generic/types/ExplicitAddress"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "Typically used for contact details.",
+                        "format": "email",
+                        "example": "hello@example.com"
+                    },
+                    "phone": {
+                        "description": "Phone number.",
+                        "$ref": "#/domains/Generic/types/Phone"
+                    }
+                },
                 "wasRequestedBefore": {
                     "type": "boolean"
                 },
@@ -170,10 +186,6 @@
                         "name": {
                             "type": "string",
                             "minLength": 1
-                        },
-                        "address": {
-                            "type": "object",
-                            "$ref": "#/domains/Generic/types/ExplicitAddress"
                         }
                     },
                     "required": [
@@ -207,10 +219,10 @@
                 "person": {
                     "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
                 },
-		"address": {
-			"type": "object",
-			"$ref": "#/domains/Generic/types/ExplicitAddress"
-		},
+                "homeAddress": {
+                    "type": "object",
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
+                },
                 "contact": {
                     "type": "object",
                     "properties": {
@@ -281,7 +293,7 @@
             },
             "required": [
                 "person",
-		"address",
+                "address",
                 "contact",
                 "emergencyContact",
                 "document"
