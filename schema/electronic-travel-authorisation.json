@@ -201,6 +201,10 @@
                 "person": {
                     "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
                 },
+		"address": {
+			"type": "object",
+			"$ref": "#/domains/Generic/types/ExplicitAddress"
+		},
                 "contact": {
                     "type": "object",
                     "properties": {
@@ -271,6 +275,7 @@
             },
             "required": [
                 "person",
+		"address",
                 "contact",
                 "emergencyContact",
                 "document"
