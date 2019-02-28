@@ -296,7 +296,6 @@
             },
             "required": [
                 "person",
-                "address",
                 "contact",
                 "emergencyContact",
                 "document"
