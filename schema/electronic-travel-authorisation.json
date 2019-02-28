@@ -189,6 +189,10 @@
                         "name": {
                             "type": "string",
                             "minLength": 1
+                        },
+                        "address": {
+                            "type": "object",
+                            "$ref": "#/domains/Generic/types/ExplicitAddress"
                         }
                     },
                     "required": [
