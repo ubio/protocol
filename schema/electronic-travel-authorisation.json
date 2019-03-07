@@ -257,7 +257,7 @@
                     "properties": {
                         "person": {
                             "type": "object",
-                            "$ref": "#/domains/Generic/types/GenericPersonWithOptionalTitle"
+                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/GenericPersonWithOptionalTitle"
                         },
                         "email": {
                             "type": "string",
