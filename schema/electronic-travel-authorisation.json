@@ -345,7 +345,7 @@
                 },
                 "phone": {
                     "description": "Phone number, may also be used as contact details.",
-                    "$ref": "#/domains/Generic/types/Phone"
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/Phone"
                 },
                 "startDate": {
                     "type": "string",
@@ -557,6 +557,37 @@
             "required": [
             ],
             "additionalProperties": false
+        },
+        "Phone": {
+            "type": "object",
+            "description": "Phone information, typically used on contact details pages.",
+            "pii": true,
+            "properties": {
+                "countryCode": { "$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString" },
+                "number": {
+                    "type": "string",
+                    "description": "Mobile phone number (numbers only, excluding country code).",
+                    "example": "123456789"
+                }
+            },
+            "required": [
+                "countryCode",
+                "number"
+            ],
+            "additionalProperties": false
+        },
+        "CountryCodeOrEmptyString": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        ""
+                    ]
+                }
+            ]
         }
     },
     "errors": [
