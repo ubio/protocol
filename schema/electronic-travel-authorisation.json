@@ -102,15 +102,13 @@
             },
             "additionalProperties": false,
             "required": [
-                "code"
             ]
         },
         "Application": {
             "type": "object",
             "properties": {
                 "type": {
-                    "type": "string",
-                    "minLength": 1
+                    "type": "string"
                 },
                 "purpose": {
                     "type": "string",
@@ -187,8 +185,7 @@
                     "type": "object",
                     "properties": {
                         "name": {
-                            "type": "string",
-                            "minLength": 1
+                            "type": "string"
                         },
                         "address": {
                             "type": "object",
@@ -288,8 +285,7 @@
                 },
                 "nationalIdentityNumber": {
                     "type": "string",
-                    "description": "Where applicable, citizens of certain countries are assigned a unique national identity number, usually at birth, which never changes.",
-                    "minLength": 1
+                    "description": "Where applicable, citizens of certain countries are assigned a unique national identity number, usually at birth, which never changes."
                 },
                 "otherNationalities": {
                     "type": "array",
@@ -324,7 +320,6 @@
                 },
                 "obtainedOtherReason": {
                     "type": "string",
-                    "minLength": 2,
                     "description": "When obtainedBy is 'other', this entry is mandatory."
                 },
                 "countryCode": {
@@ -385,7 +380,6 @@
                 "firstName": {
                     "type": "string",
                     "description": "First name(s) or given name(s), as specified in ID.",
-                    "minLength": 1,
                     "example": "Bob"
                 },
                 "middleName": {
@@ -396,7 +390,6 @@
                 "lastName": {
                     "type": "string",
                     "description": "Last name or surname, as specified in ID.",
-                    "minLength": 1,
                     "example": "Smith"
                 },
                 "alias": {
@@ -405,13 +398,11 @@
                         "firstName": {
                             "type": "string",
                             "description": "First name(s) or given name(s), as specified in ID.",
-                            "minLength": 1,
                             "example": "Bob"
                         },
                         "lastName": {
                             "type": "string",
                             "description": "Last name or surname, as specified in ID.",
-                            "minLength": 1,
                             "example": "Smith"
                         }
                     },
@@ -496,8 +487,7 @@
                     "$ref": "#/domains/Generic/types/CountryCode"
                 },
                 "issuePlace": {
-                    "type": "string",
-                    "minLength": 1
+                    "type": "string"
                 },
                 "issueDate": {
                     "type": "string",
