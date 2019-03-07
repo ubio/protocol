@@ -135,7 +135,7 @@
                 "destinationContact": {
                     "address": {
                         "type": "object",
-                        "$ref": "#/domains/Generic/types/ExplicitAddress"
+                        "$ref": "#/domains/ElectronicTravelAuthorisation/types/ExplicitAddress"
                     },
                     "email": {
                         "type": "string",
@@ -189,7 +189,7 @@
                         },
                         "address": {
                             "type": "object",
-                            "$ref": "#/domains/Generic/types/ExplicitAddress"
+                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/ExplicitAddress"
                         }
                     },
                     "required": [
@@ -225,14 +225,14 @@
                 },
                 "homeAddress": {
                     "type": "object",
-                    "$ref": "#/domains/Generic/types/ExplicitAddress"
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/ExplicitAddress"
                 },
                 "contact": {
                     "type": "object",
                     "properties": {
                         "address": {
                             "type": "object",
-                            "$ref": "#/domains/Generic/types/ExplicitAddress"
+                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/ExplicitAddress"
                         },
                         "email": {
                             "type": "string",
@@ -341,7 +341,7 @@
                 },
                 "address": {
                     "type": "object",
-                    "$ref": "#/domains/Generic/types/ExplicitAddress"
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/ExplicitAddress"
                 },
                 "phone": {
                     "description": "Phone number, may also be used as contact details.",
@@ -514,6 +514,47 @@
                 "issueDate",
                 "expirationDate",
                 "number"
+            ],
+            "additionalProperties": false
+        },
+        "ExplicitAddress": {
+            "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Street name without number.",
+                    "example": "Twin Peaks Blv"
+                },
+                "streetNumberOrHouseName": {
+                    "type": "string",
+                    "description": "Street number or house name.",
+                    "example": "Buckingham Palace"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                }
+            },
+            "required": [
             ],
             "additionalProperties": false
         }
