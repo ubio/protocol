@@ -200,6 +200,16 @@
                 "id", "token"
             ]
         },
+        "ApplicantOrNull": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/LoanApplication/types/Applicant"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
         "Applicant": {
             "type": "object",
             "description": "The person applying for the loan.",
