@@ -478,10 +478,10 @@
                     "type": "object",
                     "properties": {
                         "father": {
-                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
+                            "$ref": "#/domains/Generic/types/Person"
                         },
                         "mother": {
-                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
+                            "$ref": "#/domains/Generic/types/Person"
                         }
                     },
                     "additionalProperties": false
