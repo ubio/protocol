@@ -179,7 +179,7 @@
             "properties": {
                 "person": {
                     "type": "object",
-                    "$ref": "#/domains/Generic/types/Person"
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
                 },
                 "organisation": {
                     "type": "object",
@@ -257,7 +257,7 @@
                     "properties": {
                         "person": {
                             "type": "object",
-                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/GenericPersonWithOptionalTitle"
+                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
                         },
                         "email": {
                             "type": "string",
@@ -333,50 +333,6 @@
             ],
             "additionalProperties": false
         },
-        "GenericPersonWithOptionalTitle": {
-            "type": "object",
-            "description": "Basic information about person's identity.",
-            "pii": true,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "",
-                    "enum": [
-                        "",
-                        "mr",
-                        "miss",
-                        "ms",
-                        "mrs"
-                    ]
-                },
-                "firstName": {
-                    "type": "string",
-                    "description": "First name(s) or given name(s), as specified in ID.",
-                    "minLength": 1,
-                    "example": "Bob"
-                },
-                "middleName": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
-                },
-                "lastName": {
-                    "type": "string",
-                    "description": "Last name or surname, as specified in ID.",
-                    "minLength": 1,
-                    "example": "Smith"
-                },
-                "document": {
-                    "$ref": "#/domains/Generic/types/IdentityDocument"
-                }
-            },
-            "required": [
-                "title",
-                "firstName",
-                "lastName"
-            ],
-            "additionalProperties": false
-        },
         "Employment": {
             "type": "object",
             "properties": {
@@ -422,6 +378,15 @@
                         "mrs"
                     ]
                 },
+                "gender": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "male",
+                        "female",
+                        "transgender"
+                    ]
+                },
                 "firstName": {
                     "type": "string",
                     "description": "First name(s) or given name(s), as specified in ID.",
@@ -436,6 +401,9 @@
                     "type": "string",
                     "description": "Last name or surname, as specified in ID.",
                     "example": "Smith"
+                },
+                "document": {
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
                 },
                 "alias": {
                     "type": "object",
@@ -491,21 +459,18 @@
                     "type": "object",
                     "properties": {
                         "father": {
-                            "$ref": "#/domains/Generic/types/Person"
+                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
                         },
                         "mother": {
-                            "$ref": "#/domains/Generic/types/Person"
+                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/Person"
                         }
                     },
                     "additionalProperties": false
                 }
             },
             "required": [
-                "title",
                 "firstName",
-                "lastName",
-                "birthDatePlace",
-                "parentsNames"
+                "lastName"
             ],
             "additionalProperties": false
         },
