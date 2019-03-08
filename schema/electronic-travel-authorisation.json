@@ -348,10 +348,8 @@
                     "$ref": "#/domains/ElectronicTravelAuthorisation/types/Phone"
                 },
                 "startDate": {
-                    "type": "string",
-                    "description": "Employment start date in YYYY-MM-DD format.",
-                    "format": "date",
-                    "example": "1976-01-27"
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/DateOrEmptyString",
+                    "description": "Employment start date in YYYY-MM-DD format."
                 }
             },
             "required": [
@@ -361,6 +359,21 @@
                 "startDate"
             ],
             "additionalProperties": false
+        },
+        "DateOrEmptyString": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        ""
+                    ]
+                }
+            ]
         },
         "Person": {
             "type": "object",
