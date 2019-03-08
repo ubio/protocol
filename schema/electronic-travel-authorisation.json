@@ -114,7 +114,8 @@
                     "type": "string",
                     "enum": [
                         "business",
-                        "tourist"
+                        "tourist",
+                        ""
                     ]
                 },
                 "entries": {
