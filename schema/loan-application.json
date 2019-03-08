@@ -585,6 +585,10 @@
                     "type": "string",
                     "description": "Confirmation message from the web page.",
                     "example": "Your loan is confirmed."
+                },
+                "savedUrl": {
+                    "type": "object",
+                    "$ref": "#/domains/Generic/types/Link"
                 }
             },
             "required": [
