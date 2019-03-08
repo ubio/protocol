@@ -557,9 +557,7 @@
                     "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
                     "example": "94581"
                 },
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
-                },
+                "countryCode": { "$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString" },
                 "countrySubdivision": {
                     "$ref": "#/domains/Generic/types/CountrySubdivision"
                 }
