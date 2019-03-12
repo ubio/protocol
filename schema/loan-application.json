@@ -40,7 +40,7 @@
             "typeRef": "#/domains/LoanApplication/types/Applicant"
         },
         "directDebit": {
-            "typeRef": "#/domains/LoanApplication/types/DirectDebitPayment"
+            "typeRef": "#/domains/LoanApplication/types/DirectDebitPaymentOrNull"
         },
         "mobilePinConfirmation": {
             "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
@@ -398,6 +398,9 @@
                     "description": "Job title.",
                     "example": "Computer programmer"
                 },
+                "phone": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
                 "grossIncome": {
                     "$ref": "#/domains/Generic/types/Price",
                     "description": "Applicant's total annual gross salary (before tax)."
@@ -418,6 +421,16 @@
                 "status"
             ],
             "additionalProperties": false
+        },
+        "DirectDebitPaymentOrNull": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/LoanApplication/types/DirectDebitPayment"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "DirectDebitPayment": {
             "type": "object",
