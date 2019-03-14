@@ -37,7 +37,7 @@
             "typeRef": "#/domains/LoanApplication/types/Employment"
         },
         "guarantor": {
-            "typeRef": "#/domains/LoanApplication/types/Applicant"
+            "typeRef": "#/domains/LoanApplication/types/ApplicantOrNull"
         },
         "directDebit": {
             "typeRef": "#/domains/LoanApplication/types/DirectDebitPaymentOrNull"
