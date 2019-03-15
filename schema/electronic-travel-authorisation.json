@@ -52,6 +52,9 @@
         },
         "cbpGlobalEntryProgramMembership": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/String"
+        },
+        "residencyPermit": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/ResidencyPermit"
         }
     },
     "outputs": {
@@ -80,6 +83,24 @@
         },
         "String": {
             "type": "string"
+        },
+        "ResidencyPermit": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                }
+            },
+            "required": [
+                "number",
+                "expirationDate"
+            ],
+            "additionalProperties": false
         },
         "Confirmation": {
             "type": "object",
