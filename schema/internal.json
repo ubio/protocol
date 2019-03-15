@@ -49,6 +49,9 @@
         },
         "confirmation": {
             "typeRef": "#/domains/Internal/types/Confirmation"
+        },
+        "somethingPrivate": {
+            "typeRef": "#/domains/Internal/types/SomethingPrivate"
         }
     },
     "types": {
@@ -107,6 +110,12 @@
             "required": [
                 "code"
             ]
+        },
+        "SomethingPrivate": {
+            "type": "string",
+            "description": "I contain some PII.",
+            "pii": true,
+            "example": "N/A"
         }
     },
     "errors": [
