@@ -413,7 +413,9 @@
                     "type": "string",
                     "enum": [
                         "monthly",
-                        "weekly"
+                        "weekly",
+                        "fortnightly",
+                        "four-weekly"
                     ]
                 }
             },
