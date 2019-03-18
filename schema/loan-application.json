@@ -389,7 +389,8 @@
                         "unemployed",
                         "self-employed",
                         "on-benefits",
-                        "retired"
+                        "retired",
+                        "student"
                     ]
                 },
                 "jobTitle": {
