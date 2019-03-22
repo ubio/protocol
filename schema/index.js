@@ -19,5 +19,6 @@ module.exports = {
         FlightBookingExtraction: require('./flight-booking-extraction.json'),
         HotelBookingExtraction: require('./hotel-booking-extraction.json'),
         MotorInsuranceExtraction: require('./motor-insurance-extraction.json'),
+        PetInsurance: require('./pet-insurance.json'),
     },
 };
