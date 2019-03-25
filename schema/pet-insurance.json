@@ -6,6 +6,11 @@
         "valuePath": "/purchaseReference"
     },
     "inputs": {
+        "options": {
+            "typeRef": "#/domains/PetInsurance/types/Options",
+            "default": {},
+            "initial": true
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point.",
@@ -129,6 +134,10 @@
         }
     },
     "types": {
+        "Options": {
+            "type": "object",
+            "description": ""
+        },
         "Pets": {
             "type": "array",
             "description": "An array with flags and informations about pets",
