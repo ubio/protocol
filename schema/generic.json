@@ -198,17 +198,11 @@
             ],
             "additionalProperties": false
         },
-        "Address": {
+        "CommonAddressComponents": {
             "type": "object",
-            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "description": "Address components common to all address combinations.",
             "pii": true,
             "properties": {
-                "line1": {
-                    "type": "string",
-                    "description": "Street name with house number.",
-                    "minLength": 1,
-                    "example": "501 Twin Peaks Blv"
-                },
                 "line2": {
                     "type": "string",
                     "description": "Additional address information (e.g. flat).",
@@ -234,14 +228,68 @@
                 }
             },
             "required": [
-                "line1",
-                "line2",
                 "city",
                 "postcode",
                 "countryCode",
                 "countrySubdivision"
-            ],
-            "additionalProperties": false
+            ]
+        },
+        "ExplicitAddressComponents": {
+            "type": "object",
+            "description": "Explicit address components (parsed version, used to forman into various standards.",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Name of the street.",
+                    "minLength": 1,
+                    "example": "Clerkenwell Close"
+                },
+                "streetNumber": {
+                    "type": "string",
+                    "description": "Number of the street or other building identifier, such as house number or house name",
+                    "minLength": 1,
+                    "example": "27-31"
+                }
+            },
+            "required": [
+                "streetName"
+            ]
+        },
+        "InlinedAddressComponents": {
+            "type": "object",
+            "description": "Address components common to inlined addresses (line1, line2)",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "minLength": 1,
+                    "example": "501 Twin Peaks Blv"
+                }
+            },
+            "required": [
+                "line1"
+            ]
+        },
+        "Address": {
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "allOf": [
+                {
+                    "$ref": "#/domains/Generic/types/CommonAddressComponents"
+                },
+                {
+                    "anyOf": [
+                        {
+                            "$ref": "#/domains/Generic/types/InlinedAddressComponents"
+                        },
+                        {
+                            "$ref": "#/domains/Generic/types/ExplicitAddressComponents"
+                        }
+                    ]
+                }
+            ]
         },
         "Phone": {
             "type": "object",
