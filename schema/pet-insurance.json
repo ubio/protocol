@@ -19,7 +19,6 @@
             "description": "Select breed typology (Pedigree, Non-Pedigree etc)",
             "sourceOutputKey": "availableBreedTypes",
             "inputMethod": "SelectOne"
-
         },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
@@ -78,7 +77,6 @@
             "typeRef": "#/domains/PetInsurance/types/CoverOptions",
             "sourceOutputKey": "availableCoverOptions",
             "inputMethod": "SelectMany"
-
         },
         "selectedVetPaymentTerm": {
             "typeRef": "#/domains/PetInsurance/types/VetPaymentTerm",
@@ -143,7 +141,7 @@
         },
         "Pet": {
             "type": "object",
-            "description": "Flight fare information.",
+            "description": "",
             "additionalProperties": false,
             "properties": {
                 "petName": {
@@ -168,7 +166,7 @@
                 },
                 "dateOfBirth": {
                     "type": "string",
-                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "description": "Date of birth in YYYY-MM-DD format.",
                     "format": "date",
                     "example": "1976-01-27"
                 },
@@ -209,10 +207,8 @@
         },
         "BreedType": {
             "type": "string",
-
             "description": ""
         },
-
         "BreedTypes": {
             "type": "array",
             "description": "",
@@ -233,7 +229,7 @@
                 },
                 "numberOfPetsOwned": {
                     "type": "number",
-                    "description": "Cover Start Date",
+                    "description": "",
                     "example": "2019-04-02"
                 },
                 "jointPolicyHolder": {
@@ -271,7 +267,6 @@
         "MaritalStatusOption": {
             "type": "string",
             "description": ""
-
         },
         "MaritalStatusOptions": {
             "type": "array",
@@ -294,7 +289,7 @@
         },
         "VoluntaryExcess": {
             "type": "object",
-            "description": "Flight fare information.",
+            "description": "",
             "additionalProperties": false,
             "properties": {
                 "name": {
@@ -311,7 +306,6 @@
                     "description": "",
                     "example": "Afgan"
                 }
-
             }
         },
         "CoverTypes": {
@@ -482,7 +476,7 @@
                         },
                         "dateOfBirth": {
                             "type": "string",
-                            "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                            "description": "Date of birth in YYYY-MM-DD format.",
                             "format": "date",
                             "example": "1976-01-27"
                         }
@@ -499,7 +493,6 @@
                             "type": "string",
                             "default": "",
                             "description": ""
-
                         }
                     },
                     "postcode": {
@@ -537,7 +530,6 @@
             ]
         }
     },
-
     "errors": [{
             "code": "QuoteNotFound",
             "category": "client",
