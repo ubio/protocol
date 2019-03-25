@@ -129,6 +129,18 @@
         "availablePaymentTerms": {
             "typeRef": "#/domains/PetInsurance/types/PaymentTerms"
         },
+        "insuranceProductInformationDocument": {
+            "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
+            "description": "Emitted when the policy wording is presented."
+        },
+        "essentialInformation": {
+            "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
+            "description": "Emitted when the policy wording is presented."
+        },
+        "policyWording": {
+            "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
+            "description": "Emitted when the policy wording is presented."
+        },
         "purchaseConfirmation": {
             "typeRef": "#/domains/PetInsurance/types/PurchaseConfirmation"
         }
@@ -536,6 +548,15 @@
                 "purchaseReference",
                 "message",
                 "price"
+            ]
+        },
+        "NullableStructuredTextItem": {
+            "oneOf": [{
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                },
+                {
+                    "type": "null"
+                }
             ]
         }
     },
