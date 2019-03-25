@@ -143,6 +143,10 @@
         },
         "purchaseConfirmation": {
             "typeRef": "#/domains/PetInsurance/types/PurchaseConfirmation"
+        },
+        "eligibilityConditions": {
+            "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
+            "description": "Emitted when the policy wording is presented."
         }
     },
     "types": {
