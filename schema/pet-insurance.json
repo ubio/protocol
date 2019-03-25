@@ -332,7 +332,7 @@
                 }
             },
             "required": [
-                "text",
+                "coverName",
                 "price"
             ]
         },
