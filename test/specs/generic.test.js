@@ -35,8 +35,22 @@ describe('Generic', () => {
             assert.equal(errors.length, 0);
         });
 
-        it('should not accept common address components only', async () => {
+        it('should not accept incomplete addresses', async () => {
             const { valid, errors } = await Generic.validate('Address', {
+                line2: 'Unit G.03',
+                city: 'London',
+                postcode: 'EC1R 0AT',
+                countryCode: 'gb',
+                countrySubdivision: 'London',
+            });
+            assert.equal(valid, false);
+            assert.notEqual(errors.length, 0);
+        });
+
+        it('should not accept additional properties', async () => {
+            const { valid, errors } = await Generic.validate('Address', {
+                asd: 'qq',
+                streetName: 'Unit G.03',
                 line2: 'Unit G.03',
                 city: 'London',
                 postcode: 'EC1R 0AT',

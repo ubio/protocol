@@ -240,7 +240,7 @@
                 "countrySubdivision"
             ]
         },
-        "ExplicitAddressComponents": {
+        "ExplicitAddress": {
             "type": "object",
             "description": "Explicit address components (parsed version, used to forman into various standards.",
             "pii": true,
@@ -256,13 +256,47 @@
                     "description": "Number of the street or other building identifier, such as house number or house name",
                     "minLength": 1,
                     "example": "27-31"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "description": "Name of the city subdivision.",
+                    "minLength": 1,
+                    "example": "Glen Park"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "minLength": 1,
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
                 }
             },
             "required": [
-                "streetName"
-            ]
+                "streetName",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
         },
-        "InlinedAddressComponents": {
+        "InlinedAddress": {
             "type": "object",
             "description": "Address components common to inlined addresses (line1, line2)",
             "pii": true,
@@ -272,28 +306,55 @@
                     "description": "Street name with house number.",
                     "minLength": 1,
                     "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "description": "Name of the city subdivision.",
+                    "minLength": 1,
+                    "example": "Glen Park"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "minLength": 1,
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
                 }
             },
             "required": [
-                "line1"
-            ]
+                "line1",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
         },
         "Address": {
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
             "pii": true,
-            "allOf": [
+            "oneOf": [
                 {
-                    "$ref": "#/domains/Generic/types/CommonAddressComponents"
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
                 },
                 {
-                    "anyOf": [
-                        {
-                            "$ref": "#/domains/Generic/types/InlinedAddressComponents"
-                        },
-                        {
-                            "$ref": "#/domains/Generic/types/ExplicitAddressComponents"
-                        }
-                    ]
+                    "$ref": "#/domains/Generic/types/InlinedAddress"
                 }
             ]
         },
