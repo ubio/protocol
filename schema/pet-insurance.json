@@ -260,7 +260,6 @@
         "BreedTypes": {
             "type": "array",
             "description": "",
-            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/BreedType"
@@ -306,7 +305,6 @@
         "Covers": {
             "type": "array",
             "description": "",
-            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/Cover"
@@ -390,7 +388,6 @@
         "PaymentTerms": {
             "type": "array",
             "description": "",
-            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/PaymentTerm"
@@ -426,7 +423,6 @@
         "CoverOptions": {
             "type": "array",
             "description": "",
-            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/CoverOption"
