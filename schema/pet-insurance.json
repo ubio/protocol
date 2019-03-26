@@ -494,58 +494,54 @@
                             "minLength": 1,
                             "example": "Smith"
                         },
-                        "document": {
-                            "$ref": "#/domains/Generic/types/IdentityDocument"
+                        "dateOfBirth": {
+                            "type": "string",
+                            "description": "Proposer's date of birth in YYYY-MM-DD format.",
+                            "format": "date",
+                            "example": "1976-01-27"
                         }
                     },
                     "required": [
                         "title",
                         "firstName",
-                        "lastName"
+                        "lastName",
+                        "dateOfBirth"
                     ]
                 },
                 "address": {
-                    "type": "object",
-                    "description": "Physical address information, typically used as part of billing or shipping address objects.",
-                    "pii": true,
-                    "properties": {
-                        "line1": {
-                            "type": "string",
-                            "description": "Street name with house number.",
-                            "minLength": 1,
-                            "example": "501 Twin Peaks Blv"
-                        },
-                        "line2": {
-                            "type": "string",
-                            "description": "Additional address information (e.g. flat).",
-                            "example": "Flat 2"
-                        },
-                        "city": {
-                            "type": "string",
-                            "description": "Name of city, town or other settlement.",
-                            "minLength": 1,
-                            "example": "San Francisco"
-                        },
-                        "postcode": {
-                            "type": "string",
-                            "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
-                            "minLength": 1,
-                            "example": "94581"
-                        },
-                        "countryCode": {
-                            "$ref": "#/domains/Generic/types/CountryCode"
-                        },
-                        "countrySubdivision": {
-                            "$ref": "#/domains/Generic/types/CountrySubdivision"
-                        }
+                    "line1": {
+                        "type": "string",
+                        "description": "Street name with house number.",
+                        "minLength": 1,
+                        "example": "501 Twin Peaks Blv"
+                    },
+                    "line2": {
+                        "type": "string",
+                        "description": "Additional address information (e.g. flat).",
+                        "example": "Flat 2"
+                    },
+                    "city": {
+                        "type": "string",
+                        "description": "Name of city, town or other settlement.",
+                        "minLength": 1,
+                        "example": "San Francisco"
+                    },
+                    "postcode": {
+                        "type": "string",
+                        "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                        "minLength": 1,
+                        "example": "94581"
+                    },
+                    "countryCode": {
+                        "$ref": "#/domains/Generic/types/CountryCode"
+                    },
+                    "countrySubdivision": {
+                        "$ref": "#/domains/Generic/types/CountrySubdivision"
                     },
                     "required": [
                         "line1",
                         "line2",
-                        "city",
-                        "postcode",
-                        "countryCode",
-                        "countrySubdivision"
+                        "postcode"
                     ]
                 }
             }
