@@ -462,7 +462,7 @@
             "pii": true,
             "additionalProperties": false,
             "properties": {
-                "Person": {
+                "person": {
                     "type": "object",
                     "description": "Basic information about person's identity.",
                     "pii": true,
