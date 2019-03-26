@@ -242,7 +242,7 @@
         },
         "ExplicitAddress": {
             "type": "object",
-            "description": "Explicit address components (parsed version, used to forman into various standards.",
+            "description": "Explicit address components (parsed version, used to format into various standards).",
             "pii": true,
             "properties": {
                 "streetName": {
