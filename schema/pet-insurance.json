@@ -317,7 +317,6 @@
         "MaritalStatusOptions": {
             "type": "array",
             "description": "",
-            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/MaritalStatusOption"
@@ -326,7 +325,6 @@
         "VoluntaryExcesses": {
             "type": "array",
             "description": "",
-            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/VoluntaryExcess"
@@ -356,7 +354,6 @@
         "CoverTypes": {
             "type": "array",
             "description": "",
-            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/CoverType"
@@ -414,7 +411,6 @@
         "VetFees": {
             "type": "array",
             "description": "",
-            "pii": true,
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/VetFee"
@@ -461,7 +457,6 @@
                 "person": {
                     "type": "object",
                     "description": "Basic information about person's identity.",
-                    "pii": true,
                     "properties": {
                         "title": {
                             "type": "string",
