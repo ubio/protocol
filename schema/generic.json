@@ -198,48 +198,6 @@
             ],
             "additionalProperties": false
         },
-        "CommonAddressComponents": {
-            "type": "object",
-            "description": "Address components common to all address combinations.",
-            "pii": true,
-            "properties": {
-                "line2": {
-                    "type": "string",
-                    "description": "Additional address information (e.g. flat).",
-                    "example": "Flat 2"
-                },
-                "city": {
-                    "type": "string",
-                    "description": "Name of city, town or other settlement.",
-                    "minLength": 1,
-                    "example": "San Francisco"
-                },
-                "citySubdivision": {
-                    "type": "string",
-                    "description": "Name of the city subdivision.",
-                    "minLength": 1,
-                    "example": "Glen Park"
-                },
-                "postcode": {
-                    "type": "string",
-                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
-                    "minLength": 1,
-                    "example": "94581"
-                },
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
-                },
-                "countrySubdivision": {
-                    "$ref": "#/domains/Generic/types/CountrySubdivision"
-                }
-            },
-            "required": [
-                "city",
-                "postcode",
-                "countryCode",
-                "countrySubdivision"
-            ]
-        },
         "ExplicitAddress": {
             "type": "object",
             "description": "Explicit address components (parsed version, used to format into various standards).",
