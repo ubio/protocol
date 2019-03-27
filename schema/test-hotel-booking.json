@@ -371,6 +371,7 @@
                         "total-now",
                         "total-later",
                         "total-overall",
+                        "total-overall-supplier",
                         "others"
                     ]
                 },
