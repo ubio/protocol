@@ -48,7 +48,7 @@
             "inputMethod": "SelectOne"
         },
         "selectedSeats": {
-            "typeRef": "#/domains/EventBooking/types/SelectedSeats"
+            "typeRef": "#/domains/EventBooking/types/Seats"
         },
         "selectedMarketingContactOptions": {
             "typeRef": "#/domains/EventBooking/types/SelectedItem",
@@ -80,6 +80,9 @@
         "availableRefunds": {
             "typeRef": "#/domains/EventBooking/types/AvailableRefunds",
             "description": "Emitted when actual refund information is collected.<br/>Note: on deep links with pre-selected refund this output may not be provided."
+        },
+        "availableSeats": {
+            "typeRef": "#/domains/EventBooking/types/Seats"
         }
     },
     "types": {
@@ -177,9 +180,9 @@
                 "name"
             ]
         },
-        "SelectedSeats": {
+        "Seats": {
             "type": "array",
-            "description": "A list of seats to be selected.",
+            "description": "A list of seats.",
             "minItems": 1,
             "maxItems": 9,
             "items": {
