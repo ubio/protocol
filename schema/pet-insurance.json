@@ -29,6 +29,9 @@
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
+        "directDebit": {
+            "typeRef": "#/domains/PetInsurance/types/DirectDebitPayment"
+        },
         "owner": {
             "typeRef": "#/domains/PetInsurance/types/Owner",
             "description": "Details about the pet owner and address"
@@ -167,6 +170,10 @@
         },
         "purchaseConfirmation": {
             "typeRef": "#/domains/PetInsurance/types/PurchaseConfirmation"
+        },
+        "availableDirectDebitPaymentDays": {
+            "typeRef": "#/domains/PetInsurance/types/AvailablePaymentDays",
+            "description": "List of available DD payment days."
         },
         "eligibilityConditions": {
             "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
@@ -380,15 +387,76 @@
         },
         "PaymentTerm": {
             "type": "string",
-            "description": ""
+            "description": "Payment term. The outlier is <strong>monthly-directdebit-card</strong>, which specifies that card payment must be used to pay the initial deposit, but direct debit must be set up for recurring monthly payments.",
+            "enum": [
+                "annual-card",
+                "monthly-card",
+                "monthly-directdebit",
+                "monthly-directdebit-card"
+            ]
         },
         "PaymentTerms": {
             "type": "array",
-            "description": "",
+            "description": "List of payment terms.",
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/PaymentTerm"
             }
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "person": { "$ref": "#/domains/Generic/types/Person" },
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "address": { "$ref": "#/domains/Generic/types/Address" },
+                "selectedPaymentDay": {
+                    "type": "string",
+                    "description": "Preferred payment day, one of availableCardPaymentDays.",
+                    "example": "10"
+                }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
+        },
+        "DirectDebitPayment": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "pii": true,
+            "properties": {
+                "sortCode": {
+                    "type": "string",
+                    "description": "Bank sort code",
+                    "pattern": "\\d{2}-?\\d{2}-?\\d{2}",
+                    "example": "56-00-29"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 8,
+                    "description": "Cover marketing name as provided by the insurer.",
+                    "example": "26207729"
+                },
+                "accountHolder": { "$ref": "#/domains/Generic/types/Person" },
+                "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" },
+                "selectedPaymentDay": {
+                    "type": "string",
+                    "description": "Preferred payment day, one of availableDirectDebitPaymentDays.",
+                    "example": "10"
+                }
+            },
+            "required": [
+                "sortCode",
+                "accountNumber",
+                "accountHolder",
+                "accountHolderAddress"
+            ],
+            "additionalProperties": false
         },
         "VetFee": {
             "type": "object",
@@ -406,6 +474,17 @@
             "required": [
                 "text",
                 "price"
+            ]
+        },
+        "AvailablePaymentDays": {
+            "oneOf": [{
+                    "type": "array",
+                    "description": "List of payment days.",
+                    "items": { "type": "string" }
+                },
+                {
+                    "type": "null"
+                }
             ]
         },
         "VetFees": {
@@ -589,14 +668,14 @@
             "description": "Registration number is required by the website"
         },
         {
-            "code": "DirectDebitRejected",
-            "category": "client",
-            "description": "Direct debit details provided have been rejected by the website."
-        },
-        {
             "code": "PolicyAlreadyPurchased",
             "category": "client",
             "description": "The policy has already been purchased."
+        },
+        {
+            "code": "DirectDebitRejected",
+            "category": "client",
+            "description": "Direct debit details provided have been rejected by the website."
         },
         {
             "code": "BreedTypeRequired",
