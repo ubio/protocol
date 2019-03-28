@@ -184,7 +184,6 @@
             "type": "array",
             "description": "A list of seats.",
             "minItems": 1,
-            "maxItems": 9,
             "items": {
                 "$ref": "#/domains/EventBooking/types/Seat"
             }
