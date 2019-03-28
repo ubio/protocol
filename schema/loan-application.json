@@ -700,6 +700,16 @@
             "description":"The customer already has a loan with this provider and is eligible for a top up."
         },
         {
+            "code": "GuarantorDeclined",
+            "category": "client",
+            "description":"Guarantor denied by lender."
+        },
+        {
+            "code": "GuarantorDetailsInvalid",
+            "category": "client",
+            "description":"The guarantor details are not valid."
+        },
+        {
             "code": "LoanApplicationDeclined",
             "category": "client",
             "description":"Loan application denied by lender."
