@@ -368,11 +368,12 @@
                         "resort-fee",
                         "service-fee",
                         "booking-fee",
+                        "others",
                         "total-now",
                         "total-later",
+                        "total-later-supplier",
                         "total-overall",
-                        "total-overall-supplier",
-                        "others"
+                        "total-overall-supplier"
                     ]
                 },
                 "paidAtHotel": {
