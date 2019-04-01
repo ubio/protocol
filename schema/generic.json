@@ -371,12 +371,29 @@
             "properties": {
                 "person": { "$ref": "#/domains/Generic/types/Person" },
                 "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
-                "address": { "$ref": "#/domains/Generic/types/Address" }
+                "address": { "$ref": "#/domains/Generic/types/Address" },
+                "tax": { "$ref": "#/domains/Generic/types/Tax" }
             },
             "required": [
                 "card",
                 "person",
                 "address"
+            ],
+            "additionalProperties": false
+        },
+        "Tax": {
+            "type": "object",
+            "description": "Tax information.",
+            "pii": true,
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Local tax number.",
+                    "example": "RO37866619"
+                }
+            },
+            "required": [
+                "number"
             ],
             "additionalProperties": false
         },
