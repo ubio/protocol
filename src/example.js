@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = function createExample(protocol, spec, visitedRefs = new Set()) {
+    if (spec.example) {
+        return spec.example;
+    }
     if (spec.$ref) {
         if (visitedRefs.has(spec.$ref)) {
             return undefined;
@@ -15,9 +18,6 @@ module.exports = function createExample(protocol, spec, visitedRefs = new Set())
     const type = Array.isArray(spec.type) ? spec.type[0] : spec.type;
     switch (type) {
         case 'string':
-            if (spec.example) {
-                return spec.example;
-            }
             if (spec.enum) {
                 return spec.enum[0];
             }

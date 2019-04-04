@@ -88,7 +88,7 @@
                     "description": "Inbound (return) trip specification. If omitted, one-way trip booking flow is used."
                 },
                 "passengerAges": {
-                    "typeRef": "#/domains/Generic/types/Ages",
+                    "$ref": "#/domains/Generic/types/Ages",
                     "description": "Ages of all passengers.",
                     "example": [34, 31, 9]
                 }

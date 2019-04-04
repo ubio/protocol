@@ -187,7 +187,7 @@
                     "description": "Inbound (return) flight specification. If omitted, one-way flight booking flow is used."
                 },
                 "passengerAges": {
-                    "typeRef": "#/domains/Generic/types/Ages",
+                    "$ref": "#/domains/Generic/types/Ages",
                     "description": "Ages of all passengers.",
                     "example": [34, 31, 9]
                 }
@@ -482,7 +482,7 @@
                     "description": "The description of an item on the price breakdown list, as found on the website.",
                     "example": "Credit card charge"
                 },
-                "price": { "typeRef": "#/domains/Generic/types/Price" }
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
                 "text",
