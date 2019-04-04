@@ -1,13 +1,15 @@
 'use strict';
 
-module.exports = function createExample(protocol, spec, visitedRefs = new Set()) {
+module.exports = function createExample(protocol, spec, visitedRefs = []) {
+    if (spec.example) {
+        return spec.example;
+    }
     if (spec.$ref) {
-        if (visitedRefs.has(spec.$ref)) {
+        if (visitedRefs.includes(spec.$ref)) {
             return undefined;
         }
-        visitedRefs.add(spec.$ref);
         const typeDef = protocol.resolveTypeRef(spec.$ref);
-        return typeDef ? createExample(protocol, typeDef.spec, visitedRefs) : null;
+        return typeDef ? createExample(protocol, typeDef.spec, [spec.$ref].concat(visitedRefs)) : null;
     }
     if (spec.oneOf) {
         return createExample(protocol, spec.oneOf[0], visitedRefs);
@@ -15,9 +17,6 @@ module.exports = function createExample(protocol, spec, visitedRefs = new Set())
     const type = Array.isArray(spec.type) ? spec.type[0] : spec.type;
     switch (type) {
         case 'string':
-            if (spec.example) {
-                return spec.example;
-            }
             if (spec.enum) {
                 return spec.enum[0];
             }
