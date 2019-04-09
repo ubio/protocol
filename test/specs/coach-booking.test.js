@@ -22,8 +22,8 @@ describe('CoachBooking', () => {
                     number: 'abc123',
                     issueDate: '2016-01-02',
                     expirationDate: '2023-06-02',
-                    issueCountryCode: 'es'
-                }
+                    issueCountryCode: 'es',
+                },
             }, {
                 title: 'mr',
                 firstName: 'someone',
@@ -36,8 +36,8 @@ describe('CoachBooking', () => {
                     number: '123456',
                     issueDate: '2016-03-03',
                     expirationDate: '2024-08-03',
-                    issueCountryCode: 'es'
-                }
+                    issueCountryCode: 'es',
+                },
             }]);
             assert.ok(valid);
             assert.equal(errors.length, 0);

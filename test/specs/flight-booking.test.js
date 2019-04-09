@@ -16,27 +16,27 @@ describe('FlightBooking', () => {
                     origin: {
                         countryCode: 'us',
                         date: '2017-10-20',
-                        airportCode: 'SFO'
+                        airportCode: 'SFO',
                     },
                     destination: {
                         countryCode: 'us',
                         date: '2017-10-20',
-                        airportCode: 'LGA'
-                    }
+                        airportCode: 'LGA',
+                    },
                 },
                 inbound: {
                     origin: {
                         countryCode: 'us',
                         date: '2017-11-24',
-                        airportCode: 'LGA'
+                        airportCode: 'LGA',
                     },
                     destination: {
                         countryCode: 'us',
                         date: '2017-11-25',
-                        airportCode: 'SFO'
-                    }
+                        airportCode: 'SFO',
+                    },
                 },
-                passengerAges: [31, 32, 9]
+                passengerAges: [31, 32, 9],
             });
             assert.ok(valid);
             assert.equal(errors.length, 0);
@@ -49,16 +49,16 @@ describe('FlightBooking', () => {
                     origin: {
                         countryCode: 'us',
                         date: '2017-10-20',
-                        airportCode: 'SFO'
+                        airportCode: 'SFO',
                     },
                     destination: {
                         countryCode: 'us',
                         date: '2017-10-20',
-                        airportCode: 'LGA'
-                    }
+                        airportCode: 'LGA',
+                    },
                 },
                 inbound: 'smth',
-                passengerAges: [31, 32, 9]
+                passengerAges: [31, 32, 9],
             });
             assert.equal(valid, false);
             assert.ok(errors.length > 0);
@@ -72,15 +72,15 @@ describe('FlightBooking', () => {
                     origin: {
                         countryCode: 'us',
                         date: '2017-10-20',
-                        airportCode: 'SFO'
+                        airportCode: 'SFO',
                     },
                     destination: {
                         countryCode: 'us',
                         date: '2017-10-20',
-                        airportCode: 'LGA'
-                    }
+                        airportCode: 'LGA',
+                    },
                 },
-                passengerAges: [31, 32, 9]
+                passengerAges: [31, 32, 9],
             });
             assert.ok(valid);
             assert.equal(errors.length, 0);
@@ -91,9 +91,9 @@ describe('FlightBooking', () => {
                 cabinClass: 'economy',
                 outbound: {
                     origin: {},
-                    destination: {}
+                    destination: {},
                 },
-                passengerAges: [31, 32, 9]
+                passengerAges: [31, 32, 9],
             });
             assert.equal(valid, false);
             assert.ok(errors.length > 0);
@@ -116,34 +116,34 @@ describe('FlightBooking', () => {
                     'issueCountryCode': 'de',
                     'expirationDate': '2030-10-14',
                     'number': '123456',
-                    'type': 'passport'
-                }
+                    'type': 'passport',
+                },
             }, {
                 'document': {
                     'type': 'passport',
                     'number': '1234',
                     'expirationDate': '2025-02-19',
-                    'issueCountryCode': 'br'
+                    'issueCountryCode': 'br',
                 },
                 'title': 'mr',
                 'firstName': 'asd',
                 'lastName': 'asda',
                 'dateOfBirth': '1988-07-26',
                 'addAdditionalLuggage': 1,
-                'middleName': ''
+                'middleName': '',
             }, {
                 'document': {
                     'type': 'passport',
                     'number': '01234',
                     'expirationDate': '2027-11-18',
-                    'issueCountryCode': 'gb'
+                    'issueCountryCode': 'gb',
                 },
                 'title': 'mr',
                 'firstName': 'haha',
                 'lastName': 'hehe',
                 'dateOfBirth': '1954-04-15',
                 'addAdditionalLuggage': 0,
-                'middleName': ''
+                'middleName': '',
             }]);
             assert.ok(valid);
             assert.equal(errors.length, 0);
