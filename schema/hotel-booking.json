@@ -286,17 +286,17 @@
                     "example": "Standard Single Room"
                 },
                 "description": {
-                    "typeRef": "#/domains/Generic/types/StructuredTextItem"
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price",
+                    "$ref": "#/domains/Generic/types/Price",
                     "example": {
                         "value": 20600,
                         "currency": "gbp"
                     }
                 },
                 "strikePrice": {
-                    "typeRef": "#/domains/Generic/types/Price",
+                    "$ref": "#/domains/Generic/types/Price",
                     "example": {
                         "value": 30600,
                         "currency": "gbp"
@@ -315,7 +315,7 @@
                             ]
                         },
                         "details": {
-                            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+                            "$ref": "#/domains/Generic/types/StructuredTextItem",
                             "example": {
                                 "type": "Text",
                                 "text": "Free cancellation up to 24h before. Cancellation not allowed afterwards."
@@ -387,7 +387,7 @@
                     "type": "string"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price",
+                    "$ref": "#/domains/Generic/types/Price",
                     "example": {
                         "value": 20600,
                         "currency": "gbp"

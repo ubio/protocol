@@ -377,7 +377,7 @@
                     "example": "Accident Only"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price"
+                    "$ref": "#/domains/Generic/types/Price"
                 }
             },
             "required": [
@@ -462,7 +462,7 @@
                     "example": "Accident Only"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price"
+                    "$ref": "#/domains/Generic/types/Price"
                 }
             },
             "required": [
@@ -513,7 +513,7 @@
                     "example": "Male"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price"
+                    "$ref": "#/domains/Generic/types/Price"
                 }
             },
             "required": [
