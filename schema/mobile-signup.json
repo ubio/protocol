@@ -1,0 +1,94 @@
+{
+    "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+    "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/code"
+    },
+    "inputs": {
+        "applicant": {
+            "typeRef": "#/domains/MobileSignup/types/Anything",
+            "default": {},
+            "initial": true
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "initial": true
+        },
+        "deliveryAddress": {
+            "typeRef": "#/domains/MobileSignup/types/Anything"
+        },
+        "selectedDeliveryAddress": {
+            "typeRef": "#/domains/MobileSignup/types/Anything"
+        },
+        "selectedDeliveryDate": {
+            "typeRef": "#/domains/MobileSignup/types/Date"
+        },
+        "bankDetails": {
+            "typeRef": "#/domains/MobileSignup/types/Anything"
+        }
+    },
+    "outputs": {
+        "availableOffers": {
+            "typeRef": "#/domains/MobileSignup/types/Anything",
+            "description": "Available offers for subscription"
+        },
+        "availableDeliveryAddresses": {
+            "typeRef": "#/domains/MobileSignup/types/Anything",
+            "description": "List of available delivery addresses provided by the website"
+        },
+        "availableDeliveryDates": {
+            "typeRef": "#/domains/MobileSignup/types/Date"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/MobileSignup/types/Confirmation"
+        }
+    },
+    "types": {
+        "Anything": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "array"
+                },
+                {
+                    "type": "object"
+                }
+            ]
+        },
+        "Date": {
+            "type": "string",
+            "description": "Delivery date in YYYY-MM-DD format.",
+            "format": "date",
+            "example": "2019-05-27"
+        },
+        "AvailableDeliveryDates": {
+            "type": "array",
+            "description": "A list of delivery dates.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/MobileSignup/types/Date" }
+        },
+        "Confirmation": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "example": "abc"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "errors": [
+        {
+            "code": "DuplicateRequest",
+            "category": "client",
+            "description": "The website claims this is a duplicate attempt."
+        }
+    ]
+}

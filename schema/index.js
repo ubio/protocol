@@ -20,5 +20,6 @@ module.exports = {
         HotelBookingExtraction: require('./hotel-booking-extraction.json'),
         MotorInsuranceExtraction: require('./motor-insurance-extraction.json'),
         PetInsurance: require('./pet-insurance.json'),
+        MobileSignup: require('./mobile-signup.json'),
     },
 };
