@@ -25,7 +25,7 @@
         "selectedDeliveryDate": {
             "typeRef": "#/domains/MobileSignup/types/Date"
         },
-        "bankDetails": {
+        "bankAccount": {
             "typeRef": "#/domains/MobileSignup/types/Anything"
         }
     },
