@@ -1,5 +1,5 @@
 {
-    "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+    "description": "Allows subscribing to mobile offers (which might also include delivery of SIM cards or other mobile related items)",
     "private": false,
     "successCode": {
         "outputKey": "confirmation",
