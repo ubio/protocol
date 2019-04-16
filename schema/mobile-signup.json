@@ -30,6 +30,11 @@
         },
         "account": {
             "typeRef": "#/domains/MobileSignup/types/Account"
+        },
+        "options": {
+            "typeRef": "#/domains/LoanApplication/types/Options",
+            "default": {},
+            "initial": true
         }
     },
     "outputs": {
@@ -121,6 +126,15 @@
                 "email",
                 "phone",
                 "isExisting"
+            ],
+            "additionalProperties": false
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features.",
+            "properties": {
+            },
+            "required": [
             ],
             "additionalProperties": false
         }
