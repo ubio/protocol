@@ -32,7 +32,7 @@
             "typeRef": "#/domains/MobileSignup/types/Account"
         },
         "options": {
-            "typeRef": "#/domains/LoanApplication/types/Options",
+            "typeRef": "#/domains/MobileSignup/types/Options",
             "default": {},
             "initial": true
         }
