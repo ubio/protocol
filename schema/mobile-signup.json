@@ -47,7 +47,7 @@
             "description": "List of available delivery addresses provided by the website"
         },
         "availableDeliveryDates": {
-            "typeRef": "#/domains/MobileSignup/types/Date"
+            "typeRef": "#/domains/MobileSignup/types/AvailableDeliveryDates"
         },
         "confirmation": {
             "typeRef": "#/domains/MobileSignup/types/Confirmation"
