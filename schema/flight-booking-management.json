@@ -23,6 +23,12 @@
         },
         "selectedSeats": {
             "typeRef": "#/domains/FlightBookingManagement/types/SelectedSeats"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         }
     },
     "outputs": {
