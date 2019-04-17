@@ -49,6 +49,9 @@
         "availableDeliveryDates": {
             "typeRef": "#/domains/MobileSignup/types/AvailableDeliveryDates"
         },
+        "priceBreakdown": {
+            "typeRef": "#/domains/MobileSignup/types/Anything"
+        },
         "confirmation": {
             "typeRef": "#/domains/MobileSignup/types/Confirmation"
         }
