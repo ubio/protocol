@@ -22,7 +22,7 @@
             "typeRef": "#/domains/FlightBookingManagement/types/BookingConfirmation"
         },
         "selectedSeats": {
-            "typeRef": "#/domains/FlightBookingManagement/types/SelectedSeats"
+            "typeRef": "#/domains/FlightBookingManagement/types/SeatsWithLegs"
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
@@ -33,7 +33,7 @@
     },
     "outputs": {
         "availableSeats": {
-            "typeRef": "#/domains/FlightBookingManagement/types/AvailableSeats"
+            "typeRef": "#/domains/FlightBookingManagement/types/SeatsWithLegs"
         }
     },
     "types": {
@@ -52,14 +52,6 @@
                     "default": false
                 }
             }
-        },
-        "SelectedSeats": {
-            "type": "array",
-            "description": "Seat selection. Each item corresponds to a particular flight leg where seat selection is supported. Client provides each seat after reading corresponding seat availability information from <code>availableSeats</code> output.",
-            "items": { "$ref": "#/domains/FlightBookingManagement/types/Seat" },
-            "minItems": 1,
-            "maxItems": 8,
-            "additionalProperties": false
         },
         "AvailableSeatsLeg": {
             "type": "object",
@@ -80,7 +72,7 @@
             ],
             "additionalProperties": false
         },
-        "AvailableSeats": {
+        "SeatsWithLegs": {
             "description": "Seat availability information for each leg.",
             "type": "array",
             "items": { "$ref": "#/domains/FlightBookingManagement/types/AvailableSeatsLeg" }
