@@ -16,6 +16,9 @@
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
             "initial": true
         },
+        "selectedOffer": {
+            "typeRef": "#/domains/MobileSignup/types/Anything"
+        },
         "deliveryAddress": {
             "typeRef": "#/domains/MobileSignup/types/Anything"
         },
@@ -48,6 +51,9 @@
         },
         "availableDeliveryDates": {
             "typeRef": "#/domains/MobileSignup/types/AvailableDeliveryDates"
+        },
+        "priceBreakdown": {
+            "typeRef": "#/domains/MobileSignup/types/Anything"
         },
         "confirmation": {
             "typeRef": "#/domains/MobileSignup/types/Confirmation"
@@ -133,6 +139,10 @@
             "type": "object",
             "description": "Flags for enabling optional automation features.",
             "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
             },
             "required": [
             ],
