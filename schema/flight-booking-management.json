@@ -67,6 +67,12 @@
             }
         },
         "IncludedLuggage": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/FlightBookingManagement/types/IncludedLuggageItem"
+            }
+        },
+        "IncludedLuggageItem": {
             "type": "object",
             "properties": {
                 "count": {
@@ -83,6 +89,12 @@
             "additionalProperties": false
         },
         "AdditionalLuggage": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/FlightBookingManagement/types/AdditionalLuggageItem"
+            }
+        },
+        "AdditionalLuggageItem": {
             "type": "object",
             "properties": {
                 "count": {
