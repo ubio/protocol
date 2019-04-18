@@ -24,6 +24,9 @@
         "selectedSeats": {
             "typeRef": "#/domains/FlightBookingManagement/types/SeatsWithLegs"
         },
+        "selectedAdditionalLuggage": {
+            "typeRef": "#/domains/FlightBookingManagement/types/AdditionalLuggage"
+        },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "sourceOutputKey": "finalPrice",
@@ -34,6 +37,16 @@
     "outputs": {
         "availableSeats": {
             "typeRef": "#/domains/FlightBookingManagement/types/SeatsWithLegs"
+        },
+        "includedLuggage": {
+            "typeRef": "#/domains/FlightBookingManagement/types/IncludedLuggage"
+        },
+        "availableAdditionalLuggage": {
+            "typeRef": "#/domains/FlightBookingManagement/types/AdditionalLuggage"
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
         }
     },
     "types": {
@@ -52,6 +65,45 @@
                     "default": false
                 }
             }
+        },
+        "IncludedLuggage": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "weightCategory": {
+                    "type": "string",
+                    "example": "20kg"
+                }
+            },
+            "required": [
+            ],
+            "additionalProperties": false
+        },
+        "AdditionalLuggage": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "weightCategory": {
+                    "type": "string",
+                    "example": "20kg"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Luggage price, if such information is available."
+                }
+            },
+            "required": [
+                "count",
+                "weightCategory",
+                "price"
+            ],
+            "additionalProperties": false
         },
         "AvailableSeatsLeg": {
             "type": "object",
