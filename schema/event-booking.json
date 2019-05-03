@@ -212,6 +212,10 @@
                     "description": "Unique identifier of the seat section on the supplier's website, database id or html element id.",
                     "minLength": 1,
                     "example": "3ea307de-c69a-43c5-9d2e-63083ab3c945"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the seat selection page."
                 }
             },
             "required": [
