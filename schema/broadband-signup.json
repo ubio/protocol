@@ -414,7 +414,7 @@
                 "storeySelection": {
                     "type": "string"
                 },
-                "communalSatellite": {
+                "hasAccessToCommunalSatellite": {
                     "type": "boolean"
                 }
             },
