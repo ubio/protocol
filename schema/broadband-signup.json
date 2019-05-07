@@ -413,6 +413,9 @@
                 },
                 "storeySelection": {
                     "type": "string"
+                },
+                "communalSatellite": {
+                    "type": "boolean"
                 }
             },
             "required": [
