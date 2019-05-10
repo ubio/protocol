@@ -17,7 +17,7 @@
             "initial": true
         },
         "pets": {
-            "description": "Information about the pet (name, type, breed, gender ,standard questions etc",
+            "description": "Information about the pet(name, type, breed, gender, standard questions etc).",
             "typeRef": "#/domains/PetInsurance/types/Pets"
         },
         "payment": {
@@ -28,7 +28,7 @@
         },
         "owner": {
             "typeRef": "#/domains/PetInsurance/types/Owner",
-            "description": "Details about the pet owner and address"
+            "description": "Details about the pet owner and address."
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -44,24 +44,24 @@
         },
         "selectedMaritalStatusOption": {
             "typeRef": "#/domains/PetInsurance/types/MaritalStatusOption",
-            "description": "Marital status of the owner",
+            "description": "Marital status of the owner.",
             "sourceOutputKey": "availableMaritalStatusOptions",
             "inputMethod": "SelectOne"
         },
         "policyOptions": {
             "typeRef": "#/domains/PetInsurance/types/PolicyOption",
-            "description": "Cover start date, number of pets owned, second policy holder(if any)"
+            "description": "Cover start date, number of pets owned, second policy holder(if any)."
         },
         "selectedVoluntaryExcess": {
             "typeRef": "#/domains/PetInsurance/types/VoluntaryExcess",
-            "description": "Selected voluntary excess",
+            "description": "Selected voluntary excess.",
             "sourceOutputKey": "availableVoluntaryExcesses",
             "inputMethod": "SelectOne"
         },
         "selectedAddress": {
             "typeRef": "#/domains/PetInsurance/types/Address",
             "sourceOutputKey": "availableAddresses",
-            "description": "After postcode input is needed to choose the address from a drop-down list",
+            "description": "After postcode input a drop-down list with available addresses will appear. This input has the address selected from that list.",
             "inputMethod": "SelectOne"
         },
         "selectedCover": {
@@ -72,31 +72,31 @@
         },
         "selectedCoverType": {
             "typeRef": "#/domains/PetInsurance/types/CoverType",
-            "description": "Type of coverage",
+            "description": "Type of coverage.",
             "sourceOutputKey": "availableCoverTypes",
             "inputMethod": "SelectOne"
         },
         "selectedVetFee": {
             "typeRef": "#/domains/PetInsurance/types/VetFee",
-            "description": "Vet fee amount covered",
+            "description": "Vet fee amount covered.",
             "sourceOutputKey": "availableVetFees",
             "inputMethod": "SelectOne"
         },
         "selectedCoverOptions": {
             "typeRef": "#/domains/PetInsurance/types/CoverOptions",
-            "description": "Optional extra packages",
+            "description": "Optional extra packages.",
             "sourceOutputKey": "availableCoverOptions",
             "inputMethod": "SelectMany"
         },
         "selectedVetPaymentTerm": {
             "typeRef": "#/domains/PetInsurance/types/PaymentTerm",
-            "description": "Type of vet bill coverage",
+            "description": "Type of vet bill coverage.",
             "sourceOutputKey": "availableVetPaymentTerms",
             "inputMethod": "SelectOne"
         },
         "selectedPaymentTerm": {
             "typeRef": "#/domains/PetInsurance/types/PaymentTerm",
-            "description": "Method of payment (card, directdebit etc)",
+            "description": "Method of payment (card, directdebit etc).",
             "sourceOutputKey": "availablePaymentTerms",
             "inputMethod": "SelectOne"
         }
@@ -108,22 +108,22 @@
         },
         "availableBreedTypes": {
             "typeRef": "#/domains/PetInsurance/types/BreedTypes",
-            "description": "Available breed typologies (Pedigree, Non-Pedigree etc)"
+            "description": "Available breed typologies (Pedigree, Non-Pedigree etc)."
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "availableMaritalStatusOptions": {
-            "description": "Owner's marital status available options",
+            "description": "Owner's marital status available options.",
             "typeRef": "#/domains/PetInsurance/types/MaritalStatusOptions"
         },
         "availableVoluntaryExcesses": {
-            "description": "Available voluntary excesses (in % increments)",
+            "description": "Available voluntary excesses (in % increments).",
             "typeRef": "#/domains/PetInsurance/types/VoluntaryExcesses"
         },
         "availableAddresses": {
-            "description": "Available addresses after postcode input",
+            "description": "Available addresses after postcode input.",
             "typeRef": "#/domains/PetInsurance/types/Addresses"
         },
         "availableCovers": {
@@ -131,46 +131,46 @@
             "typeRef": "#/domains/PetInsurance/types/Covers"
         },
         "availableCoverTypes": {
-            "description": "Available types of coverage",
+            "description": "Available types of coverage.",
             "typeRef": "#/domains/PetInsurance/types/CoverTypes"
         },
         "availableVetFees": {
-            "description": "Availebel vet fee amounts covered",
+            "description": "Availebel vet fee amounts covered.",
             "typeRef": "#/domains/PetInsurance/types/VetFees"
         },
         "availableCoverOptions": {
-            "description": "Available optional extra packages",
+            "description": "Available optional extra packages.",
             "typeRef": "#/domains/PetInsurance/types/CoverOptions"
         },
         "availableVetPaymentTerms": {
-            "description": "Available types of vet bill coverage",
+            "description": "Available types of vet bill coverage.",
             "typeRef": "#/domains/PetInsurance/types/PaymentTerms"
         },
         "availablePaymentTerms": {
-            "description": "Available methods of payment (card, directdebit etc)",
+            "description": "Available methods of payment (card, directdebit etc).",
             "typeRef": "#/domains/PetInsurance/types/PaymentTerms"
         },
         "insuranceProductInformationDocument": {
-            "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/PetInsurance/types/StructuredText",
             "description": "Emitted when the document inforamtion is presented."
         },
         "essentialInformation": {
-            "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/PetInsurance/types/StructuredText",
             "description": "Emitted when the esential information document is presented."
         },
         "policyWording": {
-            "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/PetInsurance/types/StructuredText",
             "description": "Emitted when the policy wording is presented."
         },
         "purchaseConfirmation": {
             "typeRef": "#/domains/PetInsurance/types/PurchaseConfirmation"
         },
-        "availableDirectDebitPaymentDays": {
+        "availablePaymentDays": {
             "typeRef": "#/domains/PetInsurance/types/AvailablePaymentDays",
             "description": "List of available DD payment days."
         },
         "eligibilityConditions": {
-            "typeRef": "#/domains/PetInsurance/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/PetInsurance/types/StructuredText",
             "description": "Emitted when the eligibility conditions are presented."
         }
     },
@@ -181,7 +181,7 @@
         },
         "Pets": {
             "type": "array",
-            "description": "An array with flags and informations about pets",
+            "description": "An array with flags and informations about pets.",
             "pii": true,
             "minItems": 1,
             "items": {
@@ -193,12 +193,12 @@
             "description": "",
             "additionalProperties": false,
             "properties": {
-                "petName": {
+                "name": {
                     "type": "string",
                     "description": "Pet Name",
                     "example": "Rex"
                 },
-                "petType": {
+                "animalType": {
                     "type": "string",
                     "description": "",
                     "example": "dog",
@@ -207,19 +207,19 @@
                         "cat"
                     ]
                 },
-                "petGender": {
+                "gender": {
                     "type": "string",
-                    "description": "",
+                    "description": "Animal gender.",
                     "example": "Male"
                 },
                 "breedType": {
                     "type": "string",
-                    "description": "",
+                    "description": "The record of descent of an animal(i.e. Cross Breed, Pedigree).",
                     "example": "Male"
                 },
                 "breedName": {
                     "type": "string",
-                    "description": "Your pet breed",
+                    "description": "Your pet breed.",
                     "example": "Afgan",
                     "enum": [
                         "Dogs:",
@@ -854,7 +854,7 @@
                 "petPrice": {
                     "type": "string",
                     "default": "",
-                    "description": "The price given for the pet"
+                    "description": "The price given for the pet."
                 },
                 "relatedQuestions": {
                     "properties": {
@@ -893,9 +893,9 @@
                 }
             },
             "required": [
-                "petName",
-                "petType",
-                "petGender",
+                "name",
+                "animalType",
+                "gender",
                 "breedName",
                 "dateOfBirth",
                 "relatedQuestions"
@@ -919,7 +919,7 @@
             "properties": {
                 "coverStartDate": {
                     "type": "string",
-                    "description": "Cover Start Date",
+                    "description": "Cover Start Date.",
                     "example": "2019-04-02"
                 },
                 "numberOfPetsOwned": {
@@ -1047,7 +1047,13 @@
         },
         "PaymentTerm": {
             "type": "string",
-            "description": "Payment term. The outlier is <strong>monthly-directdebit-card</strong>, which specifies that card payment must be used to pay the initial deposit, but direct debit must be set up for recurring monthly payments."
+            "description": "Payment term. The outlier is <strong>monthly-directdebit-card</strong>, which specifies that card payment must be used to pay the initial deposit, but direct debit must be set up for recurring monthly payments.",
+            "enum": [
+                "annual-card",
+                "monthly-card",
+                "monthly-directdebit",
+                "monthly-directdebit-card"
+            ]
         },
         "PaymentTerms": {
             "type": "array",
@@ -1091,7 +1097,7 @@
             "properties": {
                 "sortCode": {
                     "type": "string",
-                    "description": "Bank sort code",
+                    "description": "Bank sort code.",
                     "pattern": "\\d{2}-?\\d{2}-?\\d{2}",
                     "example": "56-00-29"
                 },
@@ -1099,7 +1105,7 @@
                     "type": "string",
                     "minLength": 8,
                     "maxLength": 8,
-                    "description": "Cover marketing name as provided by the insurer.",
+                    "description": "The primary identifier for ownership of an bank account.",
                     "example": "26207729"
                 },
                 "accountHolder": {
@@ -1110,7 +1116,7 @@
                 },
                 "selectedPaymentDay": {
                     "type": "string",
-                    "description": "Preferred payment day, one of availableDirectDebitPaymentDays.",
+                    "description": "Preferred payment day, one of availablePaymentDays.",
                     "example": "10"
                 }
             },
@@ -1142,17 +1148,11 @@
             ]
         },
         "AvailablePaymentDays": {
-            "oneOf": [{
-                    "type": "array",
-                    "description": "List of payment days.",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                {
-                    "type": "null"
-                }
-            ]
+            "type": "array",
+            "description": "List of payment days.",
+            "items": {
+                "type": "string"
+            }
         },
         "VetFees": {
             "type": "array",
@@ -1233,7 +1233,7 @@
                         },
                         "dateOfBirth": {
                             "type": "string",
-                            "description": "Proposer's date of birth in YYYY-MM-DD format.",
+                            "description": "Date of birth in YYYY-MM-DD format.",
                             "format": "date",
                             "example": "1976-01-27"
                         }
@@ -1250,7 +1250,7 @@
                         "type": "string",
                         "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
                         "minLength": 1,
-                        "example": "94581"
+                        "example": "E3 3RP"
                     },
                     "required": [
                         "postcode"
@@ -1284,12 +1284,24 @@
                 "price"
             ]
         },
-        "NullableStructuredTextItem": {
+        "StructuredText": {
             "oneOf": [{
-                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                    "$ref": "#/domains/Generic/types/StructuredText"
                 },
                 {
-                    "type": "null"
+                    "$ref": "#/domains/Generic/types/File"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/Link"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/NamedText"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/HTML"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/Text"
                 }
             ]
         }
@@ -1302,12 +1314,12 @@
         {
             "code": "RegistrationNumberInvalid",
             "category": "client",
-            "description": "Registration number is not accepted by the website"
+            "description": "Registration number is not accepted by the website."
         },
         {
             "code": "RegistrationNumberRequired",
             "category": "client",
-            "description": "Registration number is required by the website"
+            "description": "Registration number is required by the website."
         },
         {
             "code": "PolicyAlreadyPurchased",
@@ -1322,7 +1334,7 @@
         {
             "code": "BreedTypeRequired",
             "category": "client",
-            "description": "Breed type is required by the website"
+            "description": "Breed type is required by the website."
         }
     ]
 }
