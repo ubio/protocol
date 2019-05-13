@@ -273,6 +273,15 @@
                 "$ref": "#/domains/TestHotelBooking/types/Room"
             }
         },
+        "RoomDescription": {
+            "type": "array",
+            "description": "A list to describe a room.",
+            "minItems": 0,
+            "items": {
+                "type": "string",
+                "example": "Maximum occupancy: 2"
+            }
+        },
         "Room": {
             "type": "object",
             "properties": {
@@ -281,17 +290,17 @@
                     "example": "Standard Single Room"
                 },
                 "description": {
-                    "typeRef": "#/domains/Generic/types/StructuredTextItem"
+                    "$ref": "#/domains/TestHotelBooking/types/RoomDescription"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price",
+                    "$ref": "#/domains/Generic/types/Price",
                     "example": {
                         "value": 20600,
                         "currency": "gbp"
                     }
                 },
                 "strikePrice": {
-                    "typeRef": "#/domains/Generic/types/Price",
+                    "$ref": "#/domains/Generic/types/Price",
                     "example": {
                         "value": 30600,
                         "currency": "gbp"
@@ -310,7 +319,7 @@
                             ]
                         },
                         "details": {
-                            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+                            "$ref": "#/domains/Generic/types/StructuredTextItem",
                             "example": {
                                 "type": "Text",
                                 "text": "Free cancellation up to 24h before. Cancellation not allowed afterwards."
@@ -370,7 +379,9 @@
                         "booking-fee",
                         "total-now",
                         "total-later",
+                        "total-later-supplier",
                         "total-overall",
+                        "total-overall-supplier",
                         "others"
                     ]
                 },
@@ -381,7 +392,7 @@
                     "type": "string"
                 },
                 "price": {
-                    "typeRef": "#/domains/Generic/types/Price",
+                    "$ref": "#/domains/Generic/types/Price",
                     "example": {
                         "value": 20600,
                         "currency": "gbp"

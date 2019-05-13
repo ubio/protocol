@@ -20,6 +20,12 @@
             "description": "Information about the pet (name, type, breed, gender, standard questions etc).",
             "typeRef": "#/domains/PetInsurance/types/Pets"
         },
+        "selectedBreedType": {
+            "typeRef": "#/domains/PetInsurance/types/BreedType",
+            "description": "Selected breed typology (Pedigree, Non-Pedigree etc)",
+            "sourceOutputKey": "availableBreedTypes",
+            "inputMethod": "SelectOne"
+        },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
@@ -1066,15 +1072,9 @@
             "description": "Payment information, including card details and billing address.",
             "pii": true,
             "properties": {
-                "person": {
-                    "$ref": "#/domains/Generic/types/Person"
-                },
-                "card": {
-                    "$ref": "#/domains/Generic/types/PaymentCard"
-                },
-                "address": {
-                    "$ref": "#/domains/Generic/types/Address"
-                },
+                "person": { "$ref": "#/domains/Generic/types/Person" },
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "address": { "$ref": "#/domains/Generic/types/Address" },
                 "selectedPaymentDay": {
                     "type": "string",
                     "description": "Preferred payment day, one of availableCardPaymentDays.",
@@ -1231,7 +1231,7 @@
                         },
                         "dateOfBirth": {
                             "type": "string",
-                            "description": "Date of birth in YYYY-MM-DD format.",
+                            "description": "Proposer's date of birth in YYYY-MM-DD format.",
                             "format": "date",
                             "example": "1976-01-27"
                         }

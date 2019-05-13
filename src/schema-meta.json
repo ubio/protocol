@@ -152,6 +152,30 @@
                             "required": [
                                 "oneOf"
                             ]
+                        },
+                        {
+                            "properties": {
+                                "allOf": {}
+                            },
+                            "required": [
+                                "allOf"
+                            ]
+                        },
+                        {
+                            "properties": {
+                                "anyOf": {}
+                            },
+                            "required": [
+                                "anyOf"
+                            ]
+                        },
+                        {
+                            "properties": {
+                                "propertyNames": {}
+                            },
+                            "required": [
+                                "propertyNames"
+                            ]
                         }
                     ]
                 }

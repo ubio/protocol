@@ -198,9 +198,65 @@
             ],
             "additionalProperties": false
         },
-        "Address": {
+        "ExplicitAddress": {
             "type": "object",
-            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "description": "Explicit address components (parsed version, used to format into various standards).",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Name of the street.",
+                    "minLength": 1,
+                    "example": "Clerkenwell Close"
+                },
+                "streetNumber": {
+                    "type": "string",
+                    "description": "Number of the street or other building identifier, such as house number or house name",
+                    "minLength": 1,
+                    "example": "27-31"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "description": "Name of the city subdivision.",
+                    "minLength": 1,
+                    "example": "Glen Park"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "minLength": 1,
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                }
+            },
+            "required": [
+                "streetName",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
+        },
+        "InlinedAddress": {
+            "type": "object",
+            "description": "Address components common to inlined addresses (line1, line2)",
             "pii": true,
             "properties": {
                 "line1": {
@@ -220,6 +276,12 @@
                     "minLength": 1,
                     "example": "San Francisco"
                 },
+                "citySubdivision": {
+                    "type": "string",
+                    "description": "Name of the city subdivision.",
+                    "minLength": 1,
+                    "example": "Glen Park"
+                },
                 "postcode": {
                     "type": "string",
                     "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
@@ -235,13 +297,24 @@
             },
             "required": [
                 "line1",
-                "line2",
                 "city",
                 "postcode",
                 "countryCode",
                 "countrySubdivision"
             ],
             "additionalProperties": false
+        },
+        "Address": {
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/InlinedAddress"
+                }
+            ]
         },
         "Phone": {
             "type": "object",
@@ -298,12 +371,29 @@
             "properties": {
                 "person": { "$ref": "#/domains/Generic/types/Person" },
                 "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
-                "address": { "$ref": "#/domains/Generic/types/Address" }
+                "address": { "$ref": "#/domains/Generic/types/Address" },
+                "tax": { "$ref": "#/domains/Generic/types/Tax" }
             },
             "required": [
                 "card",
                 "person",
                 "address"
+            ],
+            "additionalProperties": false
+        },
+        "Tax": {
+            "type": "object",
+            "description": "Tax information.",
+            "pii": true,
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Local tax number.",
+                    "example": "RO37866619"
+                }
+            },
+            "required": [
+                "number"
             ],
             "additionalProperties": false
         },

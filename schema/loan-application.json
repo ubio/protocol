@@ -109,6 +109,12 @@
         "guarantorDocuments": {
             "typeRef": "#/domains/LoanApplication/types/Documents"
         },
+        "loanType": {
+            "typeRef": "#/domains/LoanApplication/types/LoanType"
+        },
+        "finalLoanAmount": {
+            "typeRef": "#/domains/LoanApplication/types/LoanAmount"
+        },
         "savedUrl": {
             "typeRef": "#/domains/LoanApplication/types/SavedUrl"
         }
@@ -124,6 +130,19 @@
         },
         "String": {
             "type": "string"
+        },
+        "LoanType": {
+            "type": "string",
+            "description": "",
+            "enum": [
+                "personal",
+                "guarantor"
+            ]
+        },
+        "LoanAmount": {
+            "type": "object",
+            "$ref": "#/domains/Generic/types/Price",
+            "description": "The loan amount contracted."
         },
         "RepaymentDates": {
             "type": "array",
@@ -679,6 +698,16 @@
             "code": "EligibleForTopUp",
             "category": "client",
             "description":"The customer already has a loan with this provider and is eligible for a top up."
+        },
+        {
+            "code": "GuarantorDeclined",
+            "category": "client",
+            "description":"Guarantor denied by lender."
+        },
+        {
+            "code": "GuarantorDetailsInvalid",
+            "category": "client",
+            "description":"The guarantor details are not valid."
         },
         {
             "code": "LoanApplicationDeclined",
