@@ -215,14 +215,13 @@
                 "breedType": {
                     "type": "string",
                     "description": "The record of descent of an animal(i.e. Cross Breed, Pedigree).",
-                    "example": "Male"
+                    "example": "Pedigree"
                 },
                 "breedName": {
                     "type": "string",
                     "description": "Your pet breed.",
                     "example": "Afgan",
                     "enum": [
-                        "Dogs:",
                         "Affenpinscher",
                         "Afghan Hound",
                         "Afghan Shepherd",
@@ -764,7 +763,6 @@
                         "Yakutian Laika",
                         "Yorkshire Terrier",
 
-                        "Cats:",
                         "Abyssinian",
                         "Aegean",
                         "American Curl",
