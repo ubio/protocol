@@ -384,6 +384,7 @@
                         "booking-fee",
                         "total-now",
                         "total-later",
+                        "total-later-supplier",
                         "total-overall",
                         "total-overall-supplier",
                         "others"
