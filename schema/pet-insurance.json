@@ -17,7 +17,7 @@
             "initial": true
         },
         "pets": {
-            "description": "Information about the pet(name, type, breed, gender, standard questions etc).",
+            "description": "Information about the pet (name, type, breed, gender, standard questions etc).",
             "typeRef": "#/domains/PetInsurance/types/Pets"
         },
         "payment": {
@@ -151,15 +151,15 @@
             "typeRef": "#/domains/PetInsurance/types/PaymentTerms"
         },
         "insuranceProductInformationDocument": {
-            "typeRef": "#/domains/PetInsurance/types/StructuredText",
-            "description": "Emitted when the document inforamtion is presented."
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when the document information is presented."
         },
         "essentialInformation": {
-            "typeRef": "#/domains/PetInsurance/types/StructuredText",
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the esential information document is presented."
         },
         "policyWording": {
-            "typeRef": "#/domains/PetInsurance/types/StructuredText",
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the policy wording is presented."
         },
         "purchaseConfirmation": {
@@ -170,7 +170,7 @@
             "description": "List of available DD payment days."
         },
         "eligibilityConditions": {
-            "typeRef": "#/domains/PetInsurance/types/StructuredText",
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the eligibility conditions are presented."
         }
     },
@@ -214,7 +214,7 @@
                 },
                 "breedType": {
                     "type": "string",
-                    "description": "The record of descent of an animal(i.e. Cross Breed, Pedigree).",
+                    "description": "The record of descent of an animal (i.e. Cross Breed, Pedigree).",
                     "example": "Pedigree"
                 },
                 "breedName": {
@@ -1282,7 +1282,7 @@
                 "price"
             ]
         },
-        "StructuredText": {
+        "StructuredTextItem": {
             "oneOf": [{
                     "$ref": "#/domains/Generic/types/StructuredText"
                 },
