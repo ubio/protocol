@@ -40,7 +40,7 @@
             "inputMethod": "SelectOne"
         },
         "selectedPhonePackage": {
-            "typeRef": "#/domains/BroadbandSignup/types/Package",
+            "typeRef": "#/domains/BroadbandSignup/types/SelectedPackage",
             "sourceOutputKey": "availablePhonePackages",
             "inputMethod": "SelectOne"
         },
