@@ -88,10 +88,10 @@
             "sourceOutputKey": "availableCoverOptions",
             "inputMethod": "SelectMany"
         },
-        "selectedVetFeeLimit": {
-            "typeRef": "#/domains/PetInsurance/types/VetFeeLimit",
-            "description": "Type of vet bill coverage.",
-            "sourceOutputKey": "availableVetFeeLimits",
+        "selectedVetPaymentTerm": {
+            "typeRef": "#/domains/PetInsurance/types/VetPaymentTerm",
+            "description": "Terms of vet bill coverage.",
+            "sourceOutputKey": "availableVetPaymentTerms",
             "inputMethod": "SelectOne"
         },
         "selectedPaymentTerm": {
@@ -138,9 +138,9 @@
             "description": "Available optional extra packages.",
             "typeRef": "#/domains/PetInsurance/types/CoverOptions"
         },
-        "availableVetFeeLimits": {
-            "description": "Available types of vet bill coverage.",
-            "typeRef": "#/domains/PetInsurance/types/VetFeeLimits"
+        "availableVetPaymentTerms": {
+            "description": "Available terms of vet bill coverage.",
+            "typeRef": "#/domains/PetInsurance/types/VetPaymentTerms"
         },
         "availablePaymentTerms": {
             "description": "Available methods of payment (card, directdebit etc).",
@@ -1031,6 +1031,27 @@
                 "price"
             ]
         },
+        "VetPaymentTerms": {
+            "type": "array",
+            "description": "List of vet payment terms options.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/PetInsurance/types/VetPaymentTerm"
+            }
+        },
+        "VetPaymentTerm": {
+            "type": "string",
+            "description": "Vet payment terms (i.e. Short-term & ongoing treatments, Short-term treatments)."
+        },
+        "PaymentTerms": {
+            "type": "array",
+            "description": "List of payment terms.",
+            "example": "monthly-card",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/PetInsurance/types/PaymentTerm"
+            }
+        },
         "PaymentTerm": {
             "type": "string",
             "description": "Payment term. The outlier is <strong>monthly-directdebit-card</strong>, which specifies that card payment must be used to pay the initial deposit, but direct debit must be set up for recurring monthly payments.",
@@ -1040,40 +1061,6 @@
                 "monthly-directdebit",
                 "monthly-directdebit-card"
             ]
-        },
-        "VetFeeLimits": {
-            "type": "array",
-            "description": "List of vet fee limit options.",
-            "minItems": 1,
-            "items": {
-                "$ref": "#/domains/PetInsurance/types/VetFeeLimit"
-            }
-        },
-        "VetFeeLimit": {
-            "type": "object",
-            "description": "Vet fees limit. Each injury or illness is limited to a fixed amount of money for vet treatment per month/year.",
-            "additionalProperties": false,
-            "properties": {
-                "text": {
-                    "type": "string",
-                    "description": "Info for current fee limit."
-                },
-                "price": {
-                    "$ref": "#/domains/Generic/types/Price"
-                }
-            },
-            "required": [
-                "text",
-                "price"
-            ]
-        },
-        "PaymentTerms": {
-            "type": "array",
-            "description": "List of payment terms.",
-            "minItems": 1,
-            "items": {
-                "$ref": "#/domains/PetInsurance/types/PaymentTerm"
-            }
         },
         "Payment": {
             "type": "object",
@@ -1270,7 +1257,6 @@
                         "lastName",
                         "dateOfBirth",
                         "maritalStatus"
-                        
                     ]
                 },
                 "address": {
