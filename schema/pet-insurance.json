@@ -48,12 +48,6 @@
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent"
         },
-        "selectedMaritalStatusOption": {
-            "typeRef": "#/domains/PetInsurance/types/MaritalStatusOption",
-            "description": "Marital status of the owner.",
-            "sourceOutputKey": "availableMaritalStatusOptions",
-            "inputMethod": "SelectOne"
-        },
         "policyOptions": {
             "typeRef": "#/domains/PetInsurance/types/PolicyOption",
             "description": "Cover start date, number of pets owned, second policy holder(if any)."
@@ -94,10 +88,10 @@
             "sourceOutputKey": "availableCoverOptions",
             "inputMethod": "SelectMany"
         },
-        "selectedVetPaymentTerm": {
-            "typeRef": "#/domains/PetInsurance/types/PaymentTerm",
+        "selectedVetFeeLimit": {
+            "typeRef": "#/domains/PetInsurance/types/VetFeeLimit",
             "description": "Type of vet bill coverage.",
-            "sourceOutputKey": "availableVetPaymentTerms",
+            "sourceOutputKey": "availableVetFeeLimits",
             "inputMethod": "SelectOne"
         },
         "selectedPaymentTerm": {
@@ -119,10 +113,6 @@
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
-        },
-        "availableMaritalStatusOptions": {
-            "description": "Owner's marital status available options.",
-            "typeRef": "#/domains/PetInsurance/types/MaritalStatusOptions"
         },
         "availableVoluntaryExcesses": {
             "description": "Available voluntary excesses (in % increments).",
@@ -148,9 +138,9 @@
             "description": "Available optional extra packages.",
             "typeRef": "#/domains/PetInsurance/types/CoverOptions"
         },
-        "availableVetPaymentTerms": {
+        "availableVetFeeLimits": {
             "description": "Available types of vet bill coverage.",
-            "typeRef": "#/domains/PetInsurance/types/PaymentTerms"
+            "typeRef": "#/domains/PetInsurance/types/VetFeeLimits"
         },
         "availablePaymentTerms": {
             "description": "Available methods of payment (card, directdebit etc).",
@@ -980,14 +970,6 @@
                 "Widowed"
             ]
         },
-        "MaritalStatusOptions": {
-            "type": "array",
-            "description": "",
-            "minItems": 1,
-            "items": {
-                "$ref": "#/domains/PetInsurance/types/MaritalStatusOption"
-            }
-        },
         "VoluntaryExcesses": {
             "type": "array",
             "description": "",
@@ -1059,6 +1041,32 @@
                 "monthly-directdebit-card"
             ]
         },
+        "VetFeeLimits": {
+            "type": "array",
+            "description": "List of vet fee limit options.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/PetInsurance/types/VetFeeLimit"
+            }
+        },
+        "VetFeeLimit": {
+            "type": "object",
+            "description": "Vet fees limit. Each injury or illness is limited to a fixed amount of money for vet treatment per month/year.",
+            "additionalProperties": false,
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "Info for current fee limit."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
+            },
+            "required": [
+                "text",
+                "price"
+            ]
+        },
         "PaymentTerms": {
             "type": "array",
             "description": "List of payment terms.",
@@ -1072,9 +1080,15 @@
             "description": "Payment information, including card details and billing address.",
             "pii": true,
             "properties": {
-                "person": { "$ref": "#/domains/Generic/types/Person" },
-                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
-                "address": { "$ref": "#/domains/Generic/types/Address" },
+                "person": {
+                    "$ref": "#/domains/Generic/types/Person"
+                },
+                "card": {
+                    "$ref": "#/domains/Generic/types/PaymentCard"
+                },
+                "address": {
+                    "$ref": "#/domains/Generic/types/Address"
+                },
                 "selectedPaymentDay": {
                     "type": "string",
                     "description": "Preferred payment day, one of availableCardPaymentDays.",
@@ -1234,13 +1248,29 @@
                             "description": "Proposer's date of birth in YYYY-MM-DD format.",
                             "format": "date",
                             "example": "1976-01-27"
+                        },
+                        "maritalStatus": {
+                            "type": "string",
+                            "description": "Marital status of the owner.",
+                            "example": "Single",
+                            "enum": [
+                                "Civil Partner",
+                                "Cohabiting",
+                                "Divorced",
+                                "Married",
+                                "Separated",
+                                "Single",
+                                "Widowed"
+                            ]
                         }
                     },
                     "required": [
                         "title",
                         "firstName",
                         "lastName",
-                        "dateOfBirth"
+                        "dateOfBirth",
+                        "maritalStatus"
+                        
                     ]
                 },
                 "address": {
