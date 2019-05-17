@@ -1268,7 +1268,9 @@
                         "title",
                         "firstName",
                         "lastName",
-                        "dateOfBirth"
+                        "dateOfBirth",
+                        "maritalStatus"
+                        
                     ]
                 },
                 "address": {
