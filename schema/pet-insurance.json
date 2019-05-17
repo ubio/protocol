@@ -88,10 +88,10 @@
             "sourceOutputKey": "availableCoverOptions",
             "inputMethod": "SelectMany"
         },
-        "selectedVetPaymentTerm": {
-            "typeRef": "#/domains/PetInsurance/types/VetPaymentTerm",
+        "selectedVetFeeLimit": {
+            "typeRef": "#/domains/PetInsurance/types/VetFeeLimit",
             "description": "Type of vet bill coverage.",
-            "sourceOutputKey": "availableVetPaymentTerms",
+            "sourceOutputKey": "availableVetFeeLimits",
             "inputMethod": "SelectOne"
         },
         "selectedPaymentTerm": {
@@ -138,9 +138,9 @@
             "description": "Available optional extra packages.",
             "typeRef": "#/domains/PetInsurance/types/CoverOptions"
         },
-        "availableVetPaymentTerms": {
+        "availableVetFeeLimits": {
             "description": "Available types of vet bill coverage.",
-            "typeRef": "#/domains/PetInsurance/types/VetPaymentTerms"
+            "typeRef": "#/domains/PetInsurance/types/VetFeeLimits"
         },
         "availablePaymentTerms": {
             "description": "Available methods of payment (card, directdebit etc).",
@@ -1041,15 +1041,15 @@
                 "monthly-directdebit-card"
             ]
         },
-        "VetPaymentTerms": {
+        "VetFeeLimits": {
             "type": "array",
             "description": "List of vet fee limit options.",
             "minItems": 1,
             "items": {
-                "$ref": "#/domains/PetInsurance/types/VetPaymentTerm"
+                "$ref": "#/domains/PetInsurance/types/VetFeeLimit"
             }
         },
-        "VetPaymentTerm": {
+        "VetFeeLimit": {
             "type": "object",
             "description": "Vet fees limit. Each injury or illness is limited to a fixed amount of money for vet treatment per month/year.",
             "additionalProperties": false,
