@@ -1043,7 +1043,7 @@
         },
         "VetPaymentTerms": {
             "type": "array",
-            "description": "List of payment terms.",
+            "description": "List of vet fee limit options.",
             "minItems": 1,
             "items": {
                 "$ref": "#/domains/PetInsurance/types/VetPaymentTerm"
