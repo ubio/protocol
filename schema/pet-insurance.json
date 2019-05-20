@@ -1266,8 +1266,14 @@
                         "minLength": 1,
                         "example": "E3 3RP"
                     },
+                    "propertyNumber": {
+                        "type": "string",
+                        "description": "Property number from owner's address.",
+                        "minLength": 1
+                    },
                     "required": [
-                        "postcode"
+                        "postcode",
+                        "propertyNumber"
                     ]
                 }
             }
