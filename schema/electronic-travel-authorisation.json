@@ -341,6 +341,9 @@
                     "description": "Last name or surname, as specified in ID.",
                     "example": "Smith"
                 },
+                "age": {
+                    "type": "integer"
+                },
                 "relationship": {
                     "type": "string",
                     "description": "Relationship to the applicant.",
