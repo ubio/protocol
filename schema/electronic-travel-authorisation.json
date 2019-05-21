@@ -388,12 +388,30 @@
         "Employment": {
             "type": "object",
             "properties": {
+                "status": {
+                    "enum": [
+                        "employed",
+                        "self-employed",
+                        "student",
+                        "retired",
+                        "unemployed"
+                    ]
+                },
                 "name": {
                     "type": "string"
                 },
                 "address": {
                     "type": "object",
                     "$ref": "#/domains/ElectronicTravelAuthorisation/types/ExplicitAddress"
+                },
+                "businessType": {
+                    "type": "string"
+                },
+                "occupation": {
+                    "type": "string"
+                },
+                "jobTitle": {
+                    "type": "string"
                 },
                 "phone": {
                     "description": "Phone number, may also be used as contact details.",
@@ -407,6 +425,9 @@
             "required": [
                 "name",
                 "address",
+                "businessType",
+                "occupation",
+                "jobTitle",
                 "phone",
                 "startDate"
             ],
