@@ -22,6 +22,9 @@
         "applicant": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Applicant"
         },
+        "relativesNotAccompanyingApplicant": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Relatives"
+        },
         "selectedEmploymentDomain": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/SelectedOption"
         },
@@ -311,6 +314,43 @@
                 "contact",
                 "emergencyContact",
                 "document"
+            ],
+            "additionalProperties": false
+        },
+        "Relatives": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/ElectronicTravelAuthorisation/types/Relative"
+            }
+        },
+        "Relative": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "example": "Smith"
+                },
+                "relationship": {
+                    "type": "string",
+                    "description": "Relationship to the applicant.",
+                    "example": "Child"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName",
+                "relationship"
             ],
             "additionalProperties": false
         },
