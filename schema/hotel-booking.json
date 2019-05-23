@@ -206,8 +206,7 @@
             "required": [
                 "checkInDate",
                 "checkOutDate",
-                "rooms",
-                "text"
+                "rooms"
             ],
             "additionalProperties": false
         },
