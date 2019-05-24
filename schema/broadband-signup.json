@@ -124,6 +124,9 @@
         },
         "existingLandline": {
             "typeRef": "#/domains/BroadbandSignup/types/ExistingLandline"
+        },
+        "voucherCode": {
+            "typeRef": "#/domains/BroadbandSignup/types/Voucher"
         }
     },
     "outputs": {
@@ -203,6 +206,9 @@
         },
         "selectionBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
+        },
+        "voucherDetails": {
+            "typeRef": "#/domains/BroadbandSignup/types/VoucherInformation"
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -522,6 +528,32 @@
                 "lastName",
                 "dateOfBirth"
             ],
+            "additionalProperties": false
+        },
+        "Voucher": {
+            "type": "object",
+            "description": "Voucher details required to claim rewards.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Email used to receive information about voucher details.",
+                    "example": "hello@example.com"
+                }
+            },
+            "required": [
+                "email"
+            ],
+            "additionalProperties": false
+        },
+        "VoucherInformation": {
+            "type": "object",
+            "properties": {
+                "termsAndConditions": {
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                }
+            },
             "additionalProperties": false
         },
         "DirectDebitPayment": {
