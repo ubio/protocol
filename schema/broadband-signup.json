@@ -124,6 +124,9 @@
         },
         "existingLandline": {
             "typeRef": "#/domains/BroadbandSignup/types/ExistingLandline"
+        },
+        "voucherCode": {
+            "typeRef": "#/domains/BroadbandSignup/types/Voucher"
         }
     },
     "outputs": {
@@ -202,6 +205,9 @@
             "description": "Emitted when T&Cs are presented."
         },
         "selectionBreakdown": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems"
+        },
+        "voucherDetails": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
         },
         "finalPrice": {
@@ -521,6 +527,23 @@
                 "firstName",
                 "lastName",
                 "dateOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "Voucher": {
+            "type": "object",
+            "description": "Voucher details required to claim rewards.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Email used to receive information about voucher details.",
+                    "example": "hello@example.com"
+                }
+            },
+            "required": [
+                "email"
             ],
             "additionalProperties": false
         },
