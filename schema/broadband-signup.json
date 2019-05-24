@@ -550,7 +550,7 @@
         "VoucherInformation": {
             "type": "object",
             "properties": {
-                "termsAndConditionsText": {
+                "termsAndConditions": {
                     "$ref": "#/domains/Generic/types/StructuredTextItem"
                 }
             },
