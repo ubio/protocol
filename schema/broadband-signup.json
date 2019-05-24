@@ -208,7 +208,7 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
         },
         "voucherDetails": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItems"
+            "typeRef": "#/domains/BroadbandSignup/types/VoucherInformation"
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -545,6 +545,15 @@
             "required": [
                 "email"
             ],
+            "additionalProperties": false
+        },
+        "VoucherInformation": {
+            "type": "object",
+            "properties": {
+                "termsAndConditionsText": {
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                }
+            },
             "additionalProperties": false
         },
         "DirectDebitPayment": {
