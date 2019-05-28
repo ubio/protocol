@@ -57,7 +57,7 @@
             "typeRef": "#/domains/Generic/types/PanToken"
         },
         "directDebit": {
-            "typeRef": "#/domains/BroadbandSignup/types/DirectDebitPayment"
+            "typeRef": "#/domains/BroadbandSignup/types/DirectDebit"
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
@@ -556,7 +556,19 @@
             },
             "additionalProperties": false
         },
-        "DirectDebitPayment": {
+        "DirectDebit": {
+            "description": "Direct debit information for GB (sort code and account number) or IBAN information.",
+            "pii": true,
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignup/types/DirectDebitGB"
+                },
+                {
+                    "$ref": "#/domains/BroadbandSignup/types/DirectDebitIban"
+                }
+            ]
+        },
+        "DirectDebitGB": {
             "type": "object",
             "description": "Account details for direct debit.",
             "pii": true,
@@ -571,7 +583,7 @@
                     "type": "string",
                     "minLength": 8,
                     "maxLength": 8,
-                    "description": "Cover marketing name as provided by the insurer.",
+                    "description": "Account number provided by the bank.",
                     "example": "26207729"
                 },
                 "accountHolder": { "$ref": "#/domains/Generic/types/Person" },
@@ -582,6 +594,22 @@
                 "accountNumber",
                 "accountHolder",
                 "accountHolderAddress"
+            ],
+            "additionalProperties": false
+        },
+        "DirectDebitIban": {
+            "type": "object",
+            "description": "Account details for direct debit using IBAN.",
+            "pii": true,
+            "properties": {
+                "iban": {
+                    "type": "string",
+                    "description": "International bank account number.",
+                    "example": "NL99BANK0123456789"
+                }
+            },
+            "required": [
+                "iban"
             ],
             "additionalProperties": false
         },

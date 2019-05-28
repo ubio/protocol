@@ -116,7 +116,7 @@
         }
     },
     {
-        "typeRef": "#/domains/BroadbandSignup/types/DirectDebitPayment",
+        "typeRef": "#/domains/BroadbandSignup/types/DirectDebitGB",
         "instructionTemplate": {
             "method": "Mixin",
             "base": "bankDetails",
