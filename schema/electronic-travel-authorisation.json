@@ -711,5 +711,15 @@
         }
     },
     "errors": [
+        {
+            "code": "DocumentDetailsInvalid",
+            "category": "client",
+            "description": "Document details invalid or not acceptable."
+        },
+        {
+            "code": "ApplicantDetailsInvalid",
+            "category": "client",
+            "description": "Applicant details invalid or not acceptable."
+        }
     ]
 }
