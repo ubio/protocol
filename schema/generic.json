@@ -989,6 +989,8 @@
                             }
                         },
                         "required": [
+                            "key",
+                            "value"
                         ],
                         "additionalProperties": false
                     }
