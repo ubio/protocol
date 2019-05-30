@@ -974,6 +974,23 @@
                 "filename": {
                     "type": "string",
                     "description": "The name of the file, including the extension."
+                },
+                "headers": {
+                    "type": "array",
+                    "description": "List of relevant headers associated with the uri.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                        },
+                        "required": [
+                        ],
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "example": [{
+                        "Authorization": "Bearer abc123"
+                    }]
                 }
             },
             "required": [
