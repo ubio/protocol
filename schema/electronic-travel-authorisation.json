@@ -300,7 +300,7 @@
                     ],
                     "additionalProperties": false
                 },
-                "document": {
+                "documents": {
                     "type": "array",
                     "items": {
                         "$ref": "#/domains/ElectronicTravelAuthorisation/types/Passport"
@@ -324,7 +324,7 @@
                 "person",
                 "contact",
                 "emergencyContact",
-                "document"
+                "documents"
             ],
             "additionalProperties": false
         },
