@@ -974,6 +974,24 @@
                 "filename": {
                     "type": "string",
                     "description": "The name of the file, including the extension."
+                },
+                "headers": {
+                    "type": "array",
+                    "description": "List of relevant headers associated with the uri.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                        ],
+                        "additionalProperties": false
+                    }
                 }
             },
             "required": [
