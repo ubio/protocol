@@ -301,7 +301,10 @@
                     "additionalProperties": false
                 },
                 "document": {
-                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/Passport"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/ElectronicTravelAuthorisation/types/Passport"
+                    }
                 },
                 "employment": {
                     "$ref": "#/domains/ElectronicTravelAuthorisation/types/Employment"
@@ -629,11 +632,7 @@
             },
             "required": [
                 "type",
-                "nationality",
-                "citizenship",
                 "issueCountryCode",
-                "issuePlace",
-                "issueDate",
                 "expirationDate",
                 "number"
             ],
