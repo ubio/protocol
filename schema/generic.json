@@ -984,7 +984,9 @@
                         },
                         "required": [
                         ],
-                        "additionalProperties": true
+                        "additionalProperties": {
+                            "type": "string"
+                        }
                     },
                     "example": [{
                         "Authorization": "Bearer abc123"
