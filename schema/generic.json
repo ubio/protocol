@@ -981,19 +981,14 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "key": {
-                                "type": "string"
-                            },
-                            "value": {
-                                "type": "string"
-                            }
                         },
                         "required": [
-                            "key",
-                            "value"
                         ],
-                        "additionalProperties": false
-                    }
+                        "additionalProperties": true
+                    },
+                    "example": [{
+                        "Authorization": "Bearer abc123"
+                    }]
                 }
             },
             "required": [
