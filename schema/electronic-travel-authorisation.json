@@ -603,10 +603,10 @@
                     ]
                 },
                 "nationality": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
+                    "$ref": "#/domains/Generic/types/CountryCodeOrEmptyString"
                 },
                 "citizenship": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
+                    "$ref": "#/domains/Generic/types/CountryCodeOrEmptyString"
                 },
                 "issueCountryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode"
