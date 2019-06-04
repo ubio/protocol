@@ -719,6 +719,11 @@
             "code": "ApplicantDetailsInvalid",
             "category": "client",
             "description": "Applicant details invalid or not acceptable."
+        },
+        {
+            "code": "ApplicationAlreadyExists",
+            "category": "client",
+            "description": "An application for this data already exists."
         }
     ]
 }
