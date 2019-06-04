@@ -976,7 +976,7 @@
                     "description": "The name of the file, including the extension."
                 },
                 "headers": {
-                    "type": "array",
+                    "type": "object",
                     "description": "List of relevant headers associated with the uri.",
                     "items": {
                         "type": "object",

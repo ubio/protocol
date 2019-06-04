@@ -51,6 +51,9 @@
         "mobilePinConfirmationRetry2": {
             "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
         },
+        "changeMobileNumber": {
+            "typeRef": "#/domains/Generic/types/Phone"
+        },
         "emailVerification": {
             "typeRef": "#/domains/LoanApplication/types/EmailVerification"
         },
@@ -476,7 +479,7 @@
                 "accountHolderAddress": { "$ref": "#/domains/Generic/types/Address" },
                 "selectedPaymentDay": {
                     "type": "string",
-                    "description": "Preferred payment day, one of availableDirectDebitPaymentDays.",
+                    "description": "Preferred payment day, one of availableDirectDebitPaymentDays where available.",
                     "example": "10"
                 }
             },
@@ -635,6 +638,10 @@
             "type": "object",
             "description": "Flags for enabling optional automation features.",
             "properties": {
+                "skipMobilePinVerification": {
+                    "type": "boolean",
+                    "default": false
+                }
             },
             "required": [
             ],
