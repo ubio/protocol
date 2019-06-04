@@ -603,10 +603,10 @@
                     ]
                 },
                 "nationality": {
-                    "$ref": "#/domains/Generic/types/CountryCodeOrEmptyString"
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString"
                 },
                 "citizenship": {
-                    "$ref": "#/domains/Generic/types/CountryCodeOrEmptyString"
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString"
                 },
                 "issueCountryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode"
