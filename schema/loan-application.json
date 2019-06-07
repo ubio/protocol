@@ -52,7 +52,7 @@
             "typeRef": "#/domains/LoanApplication/types/MobilePinConfirmation"
         },
         "changeMobileNumber": {
-            "typeRef": "#/domains/Generic/types/Phone"
+            "typeRef": "#/domains/LoanApplication/types/PhoneOrNull"
         },
         "emailVerification": {
             "typeRef": "#/domains/LoanApplication/types/EmailVerification"
@@ -446,6 +446,16 @@
                 "status"
             ],
             "additionalProperties": false
+        },
+        "PhoneOrNull": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "DirectDebitPaymentOrNull": {
             "oneOf": [
