@@ -120,7 +120,7 @@
         },
         "availableAddresses": {
             "description": "Available addresses after postcode input.",
-            "typeRef": "#/domains/PetInsurance/types/Addresses"
+            "typeRef": "#/domains/PetInsurance/types/AddressesOrNull"
         },
         "availableCovers": {
             "description": "Available protection covers.",
@@ -944,6 +944,16 @@
             "items": {
                 "$ref": "#/domains/PetInsurance/types/Address"
             }
+        },
+        "AddressesOrNull": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/PetInsurance/types/Addresses"
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "Cover": {
             "type": "string",
