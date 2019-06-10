@@ -1,0 +1,199 @@
+{
+    "description": "Allows automating airplane tickets booking on airline websites and OTAs.",
+    "private": false,
+    "inputs": {
+        "options": {
+            "typeRef": "#/domains/FlightBookingManagement/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "initial": true
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/FlightBookingManagement/types/BookingConfirmation"
+        },
+        "selectedSeats": {
+            "typeRef": "#/domains/FlightBookingManagement/types/SeatsWithLegs"
+        },
+        "selectedAdditionalLuggage": {
+            "typeRef": "#/domains/FlightBookingManagement/types/AdditionalLuggage"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        }
+    },
+    "outputs": {
+        "availableSeats": {
+            "typeRef": "#/domains/FlightBookingManagement/types/SeatsWithLegs"
+        },
+        "includedLuggage": {
+            "typeRef": "#/domains/FlightBookingManagement/types/IncludedLuggage"
+        },
+        "availableAdditionalLuggage": {
+            "typeRef": "#/domains/FlightBookingManagement/types/AdditionalLuggage"
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "properties": {
+                "luggageSelection": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will select additional luggage.",
+                    "default": false
+                },
+                "seatSelection": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
+                    "default": false
+                }
+            }
+        },
+        "IncludedLuggage": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/FlightBookingManagement/types/IncludedLuggageItem"
+            }
+        },
+        "IncludedLuggageItem": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "weightCategory": {
+                    "type": "string",
+                    "example": "20kg"
+                }
+            },
+            "required": [
+            ],
+            "additionalProperties": false
+        },
+        "AdditionalLuggage": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/FlightBookingManagement/types/AdditionalLuggageItem"
+            }
+        },
+        "AdditionalLuggageItem": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "weightCategory": {
+                    "type": "string",
+                    "example": "20kg"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Luggage price, if such information is available."
+                }
+            },
+            "required": [
+                "count",
+                "weightCategory",
+                "price"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableSeatsLeg": {
+            "type": "object",
+            "properties": {
+                "leg": {
+                    "type": "string",
+                    "description": "Flight leg name as displayed on website.",
+                    "example": "LTN to ZRH, Wed 7th Mar"
+                },
+                "seats": {
+                    "type": "array",
+                    "items": { "$ref": "#/domains/FlightBookingManagement/types/Seat" }
+                }
+            },
+            "required": [
+                "leg",
+                "seats"
+            ],
+            "additionalProperties": false
+        },
+        "SeatsWithLegs": {
+            "description": "Seat availability information for each leg.",
+            "type": "array",
+            "items": { "$ref": "#/domains/FlightBookingManagement/types/AvailableSeatsLeg" }
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference",
+                "lastName"
+            ]
+        },
+        "Seat": {
+            "type": "object",
+            "description": "Seat metadata.",
+            "properties": {
+                "seatNumber": {
+                    "$ref": "#/domains/FlightBookingManagement/types/SeatNumber"
+                },
+                "available": {
+                    "type": "boolean",
+                    "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
+                },
+                "restricted": {
+                    "type": "boolean",
+                    "description": "<code>true</code> if seat has restrictions for certain groups of passengers."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Seat price, if such information is available."
+                }
+            },
+            "required": [
+                "seatNumber",
+                "available"
+            ],
+            "additionalProperties": false
+        },
+        "SeatNumber": {
+            "type": "string",
+            "description": "Seat number as extracted from website.",
+            "example": "7A"
+        }
+    },
+    "errors": [
+    ]
+}

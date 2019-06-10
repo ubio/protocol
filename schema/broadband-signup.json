@@ -776,12 +776,12 @@
         {
             "code": "BankDetailsInvalid",
             "category": "client",
-            "description": "The package is not avaialbe."
+            "description": "Bank details invalid."
         },
         {
             "code": "DirectDebitRejected",
             "category": "client",
-            "description": "The package is not avaialbe."
+            "description": "Direct debit details rejected."
         },
         {
             "code": "LandlineMandatory",
@@ -792,6 +792,11 @@
             "code": "LandlineInvalid",
             "category": "client",
             "description": "The landline is not valid."
+        },
+        {
+            "code": "OfferNotAvailable",
+            "category": "client",
+            "description": "The offer is not available, usually expired or not applicable to the user or client."
         }
     ]
 }
