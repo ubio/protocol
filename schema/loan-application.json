@@ -651,6 +651,10 @@
                 "skipMobilePinVerification": {
                     "type": "boolean",
                     "default": false
+                },
+                "continueAfterSubmittingUrl": {
+                    "type": "boolean",
+                    "default": false
                 }
             },
             "required": [
