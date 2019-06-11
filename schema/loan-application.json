@@ -37,7 +37,7 @@
             "typeRef": "#/domains/LoanApplication/types/Employment"
         },
         "guarantor": {
-            "typeRef": "#/domains/LoanApplication/types/GuarantorOrNull"
+            "typeRef": "#/domains/LoanApplication/types/ApplicantOrNull"
         },
         "directDebit": {
             "typeRef": "#/domains/LoanApplication/types/DirectDebitPaymentOrNull"
@@ -232,16 +232,6 @@
                 }
             ]
         },
-        "GuarantorOrNull": {
-            "oneOf": [
-                {
-                    "$ref": "#/domains/LoanApplication/types/Guarantor"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
         "Applicant": {
             "type": "object",
             "description": "The person applying for the loan.",
@@ -271,99 +261,6 @@
                         "divorced",
                         "cohabiting",
                         "widower"
-                    ]
-                },
-                "nationality": {
-                    "$ref": "#/domains/Generic/types/CountryCode",
-                    "description": "Nationality according to passport."
-                },
-                "countryOfBirth": {
-                    "$ref": "#/domains/Generic/types/CountryCode",
-                    "description": "Country of birth."
-                },
-                "email": {
-                    "type": "string",
-                    "format": "email",
-                    "example": "hello@example.com"
-                },
-                "phone": {
-                    "$ref": "#/domains/Generic/types/Phone"
-                },
-                "dependantsCount": {
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "residentialStatus": {
-                }
-            },
-            "required": [
-                "person",
-                "dateOfBirth",
-                "relationshipStatus",
-                "nationality",
-                "countryOfBirth"
-            ],
-            "additionalProperties": false
-        },
-        "Guarantor": {
-            "type": "object",
-            "description": "The person guaranteeing for the loan.",
-            "pii": true,
-            "properties": {
-                "person": { "$ref": "#/domains/Generic/types/Person" },
-                "addresses": {
-                    "type": "array",
-                    "description": "A list of addresses for the guarantor.",
-                    "pii": true,
-                    "minItems": 1,
-                    "maxItems": 9,
-                    "items": { "$ref": "#/domains/LoanApplication/types/LoanAddress" }
-                },
-                "dateOfBirth": {
-                    "type": "string",
-                    "format": "date",
-                    "description": "Date of birth YYYY-MM-DD.",
-                    "example": "1980-01-01"
-                },
-                "relationshipStatus": {
-                    "type": "string",
-                    "description": "",
-                    "enum": [
-                        "single",
-                        "married",
-                        "divorced",
-                        "cohabiting",
-                        "widower"
-                    ]
-                },
-                "relationshipToApplicant": {
-                    "type": "string",
-                    "description": "",
-                    "enum": [
-                        "friend",
-                        "mother",
-                        "father",
-                        "partner",
-                        "sister",
-                        "brother",
-                        "mother-in-law",
-                        "father-in-law",
-                        "married",
-                        "grandmother",
-                        "grandfather",
-                        "cousin",
-                        "daughter",
-                        "son",
-                        "aunt",
-                        "brother-in-law",
-                        "sister-in-law",
-                        "uncle",
-                        "son-in-law",
-                        "daughter-in-law",
-                        "employer",
-                        "employee",
-                        "niece",
-                        "nephew"
                     ]
                 },
                 "nationality": {
