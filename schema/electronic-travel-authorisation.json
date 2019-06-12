@@ -31,6 +31,9 @@
         "selectedEmploymentJobTitle": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/SelectedOption"
         },
+        "selectedVisitPurpose": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/SelectedOption"
+        },
         "emailConfirmationUrl": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "URL provided via confirmation email."
@@ -65,6 +68,9 @@
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/AvailableOptions"
         },
         "availableEmploymentJobTitles": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/AvailableOptions"
+        },
+        "availableVisitPurposes": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/AvailableOptions"
         },
         "finalPrice": {
@@ -141,6 +147,9 @@
                         "tourist",
                         ""
                     ]
+                },
+                "purposeDescription": {
+                    "type": "string"
                 },
                 "entries": {
                     "type": "integer"
