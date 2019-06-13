@@ -1,0 +1,15 @@
+kind: Kustomization
+
+bases:
+  - ../../base
+
+patches:
+  - replicas.yaml
+  - nodepool.yaml
+
+secretGenerator:
+  - name: protocol-nginx-ssl
+    behavior: replace
+    files:
+      - star.automationcloud.net.crt
+      - star.automationcloud.net.key

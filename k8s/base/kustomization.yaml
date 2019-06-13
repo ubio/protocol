@@ -1,0 +1,14 @@
+kind: Kustomization
+
+namespace: default
+
+commonLabels:
+  tier: frontend
+  app: protocol
+
+resources:
+  - deployment.yaml
+  - service.yaml
+
+secretGenerator:
+  - name: protocol-nginx-ssl
