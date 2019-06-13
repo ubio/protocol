@@ -1,16 +1,74 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/protocol:$COMMIT_SHA', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/protocol:$COMMIT_SHA']
-- name: 'gcr.io/cloud-builders/kubectl'
+
+- id: docker-build
+  name: 'gcr.io/cloud-builders/docker'
+  args: ["build", "-t", "gcr.io/$PROJECT_ID/protocol:$COMMIT_SHA", '.']
+
+- id: docker-push
+  name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/$PROJECT_ID/protocol:$COMMIT_SHA"]
+
+- id: decrypt star.automationcloud.net.crt
+  name: 'eu.gcr.io/$PROJECT_ID/sops'
   args:
-  - set
-  - image
-  - deployment
-  - protocol
-  - protocol=gcr.io/$PROJECT_ID/protocol:$COMMIT_SHA
+    - "--decrypt"
+    - "--output=star.automationcloud.net.crt"
+    - "--output-type=binary"
+    - "encrypted.star.automationcloud.net.crt"
+  dir: /workspace/k8s/overlays/${_OVERLAY}
+
+- id: decrypt star.automationcloud.net.key
+  name: 'eu.gcr.io/$PROJECT_ID/sops'
+  args:
+    - "--decrypt"
+    - "--output=star.automationcloud.net.key"
+    - "--output-type=binary"
+    - "encrypted.star.automationcloud.net.key"
+  dir: /workspace/k8s/overlays/${_OVERLAY}
+
+- id: kustomize-set-image
+  name: 'eu.gcr.io/$PROJECT_ID/kustomize'
+  entrypoint: "bash"
+  args:
+    - "-c"
+    - kustomize edit set image protocol=gcr.io/$PROJECT_ID/protocol:$COMMIT_SHA
+  dir: /workspace/k8s/overlays/${_OVERLAY}
+
+- id: kustomize-build
+  name: 'eu.gcr.io/$PROJECT_ID/kustomize'
+  entrypoint: "bash"
+  args:
+    - "-c"
+    - kustomize build /workspace/k8s/overlays/${_OVERLAY} --output=/workspace/k8s/${_OVERLAY}.yaml
+
+- id: kustomize-print
+  name: 'eu.gcr.io/$PROJECT_ID/kustomize'
+  entrypoint: "bash"
+  args:
+    - "-c"
+    - cat /workspace/k8s/${_OVERLAY}.yaml
+
+- id: kubectl-validate
+  name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - apply
+    - "--filename=/workspace/k8s/${_OVERLAY}.yaml"
+    - "--validate=true"
+    - "--dry-run=true"
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+    - CLOUDSDK_COMPUTE_REGION=${_ZONE}
+    - CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}
+
+- id: kubectl-apply
+  name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - apply
+    - "--filename=/workspace/k8s/${_OVERLAY}.yaml"
+    - "--prune"
+    - "-l app=protocol"
+    - "--prune-whitelist=core/v1/Secret"
+  env:
+    - CLOUDSDK_COMPUTE_REGION=${_ZONE}
+    - CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}
+
 images: ['gcr.io/$PROJECT_ID/protocol:$COMMIT_SHA']
