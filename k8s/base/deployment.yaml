@@ -11,6 +11,8 @@ spec:
     type: RollingUpdate
   template:
     spec:
+      nodeSelector:
+        pool: default
       volumes:
         - name: nginx-ssl
           secret:
