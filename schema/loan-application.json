@@ -82,6 +82,9 @@
         },
         "selectedRepaymentDate": {
             "typeRef": "#/domains/LoanApplication/types/RepaymentDate"
+        },
+        "agreeTerms": {
+            "typeRef": "#/domains/LoanApplication/types/Boolean"
         }
     },
     "outputs": {
@@ -810,6 +813,9 @@
                 "key"
             ],
             "additionalProperties": false
+        },
+        "Boolean": {
+            "type": "boolean"
         }
     },
     "errors": [
