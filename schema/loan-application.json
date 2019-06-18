@@ -741,7 +741,6 @@
                     "example": "Your loan is confirmed."
                 },
                 "savedUrl": {
-                    "type": "object",
                     "$ref": "#/domains/Generic/types/Link"
                 }
             },
