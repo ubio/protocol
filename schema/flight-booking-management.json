@@ -195,5 +195,10 @@
         }
     },
     "errors": [
+        {
+            "code": "BookingNotFound",
+            "category": "client",
+            "description": "Booking not found, usually caused by wrong booking reference or name."
+        }
     ]
 }
