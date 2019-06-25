@@ -77,6 +77,12 @@
         }
     },
     "outputs": {
+        "availableOutboundFlights": {
+            "typeRef": "#/domains/FlightBooking/types/Flights"
+        },
+        "availableInboundFlights": {
+            "typeRef": "#/domains/FlightBooking/types/Flights"
+        },
         "availableOutboundFares": {
             "typeRef": "#/domains/FlightBooking/types/AvailableFares",
             "description": "Emitted when actual outbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
@@ -211,6 +217,11 @@
                 "destination"
             ],
             "additionalProperties": false
+        },
+        "Flights": {
+            "type": "array",
+            "description": "An array with details for each flight.",
+            "items": { "$ref": "#/domains/FlightBooking/types/Flight" }
         },
         "Flight": {
             "type": "object",
