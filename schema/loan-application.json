@@ -85,6 +85,9 @@
         },
         "agreeTerms": {
             "typeRef": "#/domains/LoanApplication/types/Boolean"
+        },
+        "agreeDocuments": {
+            "typeRef": "#/domains/LoanApplication/types/Boolean"
         }
     },
     "outputs": {
