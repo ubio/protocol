@@ -235,7 +235,6 @@
                 "postcode": {
                     "type": "string",
                     "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
-                    "minLength": 1,
                     "example": "94581"
                 },
                 "countryCode": {
@@ -248,6 +247,7 @@
             "required": [
                 "streetName",
                 "city",
+                "postcode",
                 "countryCode",
                 "countrySubdivision"
             ],
@@ -284,7 +284,6 @@
                 "postcode": {
                     "type": "string",
                     "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
-                    "minLength": 1,
                     "example": "94581"
                 },
                 "countryCode": {
@@ -297,6 +296,7 @@
             "required": [
                 "line1",
                 "city",
+                "postcode",
                 "countryCode",
                 "countrySubdivision"
             ],
