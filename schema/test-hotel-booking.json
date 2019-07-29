@@ -201,8 +201,7 @@
             "required": [
                 "checkInDate",
                 "checkOutDate",
-                "rooms",
-                "text"
+                "rooms"
             ],
             "additionalProperties": false
         },
@@ -336,6 +335,10 @@
                     "items": {
                         "$ref": "#/domains/TestHotelBooking/types/ValueAddition"
                     }
+                },
+                "rateGroup": {
+                    "type": "string",
+                    "example": "standard"
                 }
             },
             "required": [
