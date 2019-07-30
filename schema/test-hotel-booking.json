@@ -99,6 +99,9 @@
         },
         "bookingConfirmation": {
             "typeRef": "#/domains/TestHotelBooking/types/BookingConfirmation"
+        },
+        "billingPrice": {
+            "typeRef": "#/domains/Generic/types/Price"
         }
     },
     "types": {
