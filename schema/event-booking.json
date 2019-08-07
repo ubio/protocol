@@ -23,6 +23,9 @@
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
+        "deliveryAddress": {
+            "typeRef": "#/domains/Generic/types/Address"
+        },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
@@ -135,6 +138,10 @@
                     "default": false
                 },
                 "marketingContact": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "useDeliveryAddressAsBilling": {
                     "type": "boolean",
                     "default": false
                 }
