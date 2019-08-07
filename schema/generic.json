@@ -109,7 +109,6 @@
             },
             "required": [
                 "email",
-                "phone",
                 "isExisting"
             ],
             "additionalProperties": false

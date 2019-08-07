@@ -55,6 +55,10 @@
             "typeRef": "#/domains/HotelBooking/types/Guests",
             "description": "Personal details about the guests."
         },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "description": "If required, used for logging in."
+        },
         "payment": {
             "typeRef": "#/domains/HotelBooking/types/Payment"
         },
