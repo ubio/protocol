@@ -153,13 +153,13 @@
             "typeRef": "#/domains/BroadbandSignup/types/AvailableAddresses"
         },
         "availableTvSetupDates": {
-            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDatesOrNull"
         },
         "availableBroadbandSetupDates": {
-            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDatesOrNull"
         },
         "availableMoveInDates": {
-            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDates"
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableSetupDatesOrNull"
         },
         "availableLineInstallationOptions": {
             "typeRef": "#/domains/BroadbandSignup/types/AvailableLineInstallationOptions"
@@ -628,11 +628,18 @@
             ],
             "additionalProperties": false
         },
-        "AvailableSetupDates": {
-            "type": "array",
-            "description": "A list of setup dates.",
-            "minItems": 1,
-            "items": { "$ref": "#/domains/BroadbandSignup/types/SetupDate" }
+        "AvailableSetupDatesOrNull": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "array",
+                    "description": "A list of setup dates.",
+                    "minItems": 1,
+                    "items": { "$ref": "#/domains/BroadbandSignup/types/SetupDate" }
+                }
+            ]
         },
         "Postcode": {
             "type": "string",
