@@ -75,6 +75,10 @@
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent"
+        },
+        "loginConfirmationCode": {
+            "typeRef": "#/domains/HotelBooking/types/ConfirmationCode",
+            "description": "When logging in, some websites require a confirmation code."
         }
     },
     "outputs": {
@@ -130,6 +134,11 @@
             "items": {
                 "$ref": "#/domains/HotelBooking/types/CardBrandType"
             }
+        },
+        "ConfirmationCode": {
+            "type": "string",
+            "minLength": 1,
+            "example": "ABC123"
         },
         "CardBrandType": {
             "type": "object",
