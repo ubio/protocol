@@ -55,6 +55,10 @@
             "typeRef": "#/domains/HotelBooking/types/Guests",
             "description": "Personal details about the guests."
         },
+        "visit": {
+            "typeRef": "#/domains/HotelBooking/types/Visit",
+            "description": "Details about the visit."
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "description": "If required, used for logging in."
@@ -127,6 +131,22 @@
                     "default": false
                 }
             }
+        },
+        "Visit": {
+            "type": "object",
+            "properties": {
+                "purpose": {
+                    "type": "string",
+                    "enum": [
+                        "business",
+                        "leisure"
+                    ]
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
         },
         "SupportedCards": {
             "type": "array",
