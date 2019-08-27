@@ -105,6 +105,10 @@
                 "isExisting": {
                     "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
                     "type": "boolean"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "john012345"
                 }
             },
             "required": [
