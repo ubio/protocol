@@ -220,6 +220,10 @@
                     "minLength": 1,
                     "example": "3ea307de-c69a-43c5-9d2e-63083ab3c945"
                 },
+                "ticketName": {
+                    "type": "string",
+                    "example": "Full price variety bundle"
+                },
                 "price": {
                     "$ref": "#/domains/Generic/types/Price",
                     "description": "Price, if found on the seat selection page."
