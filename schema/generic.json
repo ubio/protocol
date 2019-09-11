@@ -464,7 +464,7 @@
             "type": "string",
             "description": "An encrypted PAN token, obtained from Automation Cloud Vault. Please consult \"Vaulting Payment Card Information\" section of Documentation for information on how to acquire it.",
             "example": "5d41402abc4b2a76b9719d911017c592",
-            "minLength": 20
+            "minLength": 16
         },
         "CountryCode": {
             "type": "string",
