@@ -145,6 +145,7 @@
                     "enum": [
                         "business",
                         "tourist",
+                        "transit",
                         ""
                     ]
                 },
