@@ -187,6 +187,30 @@
                     ],
                     "additionalProperties": false
                 },
+                "transitContact": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "address": {
+                            "type": "object",
+                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/ExplicitAddress"
+                        },
+                        "email": {
+                            "type": "string",
+                            "description": "Typically used for contact details.",
+                            "format": "email",
+                            "example": "hello@example.com"
+                        },
+                        "phone": {
+                            "description": "Phone number.",
+                            "$ref": "#/domains/ElectronicTravelAuthorisation/types/Phone"
+                        }
+                    },
+                    "required": [
+                    ],
+                    "additionalProperties": false
+                },
                 "wasRequestedBefore": {
                     "type": "boolean"
                 },
