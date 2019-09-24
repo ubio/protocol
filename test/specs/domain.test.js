@@ -104,7 +104,7 @@ describe('Domain', () => {
 
         it('should allow valid data', async () => {
             const { valid } = await Internal.validateOutput('finalPrice', {
-                price: { value: 0, currencyCode: 'usd' },
+                price: { value: 0, currencyCode: 'usd' }
             });
             assert.ok(valid);
         });
