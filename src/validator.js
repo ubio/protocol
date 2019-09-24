@@ -6,12 +6,12 @@ const DEFAULT_OPTIONS = {
     allErrors: true,
     useDefaults: true,
     jsonPointers: true,
-    format: 'full',
+    format: 'full'
 };
 
 module.exports = {
     DEFAULT_OPTIONS,
-    createValidator,
+    createValidator
 };
 
 function createValidator(schema, defs, options = DEFAULT_OPTIONS) {

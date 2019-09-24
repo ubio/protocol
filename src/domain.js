@@ -81,9 +81,9 @@ module.exports = class Domain {
                     {
                         message: `Unexpected data: ${this.id}.${key}`,
                         domain: this.id,
-                        key,
-                    },
-                ],
+                        key
+                    }
+                ]
             };
         }
         return await def.validate(data);
@@ -98,9 +98,9 @@ module.exports = class Domain {
                     {
                         message: `Unexpected input: ${this.id}.${key}`,
                         domain: this.id,
-                        key,
-                    },
-                ],
+                        key
+                    }
+                ]
             };
         }
         return await def.validate(data);
@@ -115,9 +115,9 @@ module.exports = class Domain {
                     {
                         message: `Unexpected output: ${this.id}.${key}`,
                         domain: this.id,
-                        key,
-                    },
-                ],
+                        key
+                    }
+                ]
             };
         }
         return await def.validate(data);

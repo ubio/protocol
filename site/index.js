@@ -13,8 +13,8 @@ Vue.mixin({
     computed: {
         $protocol() {
             return $provider.latest;
-        },
-    },
+        }
+    }
 });
 
 new App({
@@ -22,7 +22,7 @@ new App({
     el: '#app',
     data() {
         return {
-            $provider,
+            $provider
         };
-    },
+    }
 });
