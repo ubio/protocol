@@ -53,7 +53,7 @@ module.exports = {
     name: 'schema-type',
 
     props: {
-        spec: { type: Object, required: true },
+        spec: { type: Object, required: true }
     },
 
     computed: {
@@ -76,9 +76,9 @@ module.exports = {
 
         deprecated() {
             return !!this.ref.spec.deprecated;
-        },
+        }
 
-    },
+    }
 
 };
 </script>

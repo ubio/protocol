@@ -28,14 +28,14 @@
 module.exports = {
 
     props: {
-        error: { type: Object, required: true },
+        error: { type: Object, required: true }
     },
 
     computed: {
 
         active() {
             return this.$route.hash === ('#' + this.error.code);
-        },
+        }
 
     },
 
@@ -43,9 +43,9 @@ module.exports = {
 
         permalink() {
             this.$router.replace('#' + this.error.code);
-        },
+        }
 
-    },
+    }
 
 };
 </script>

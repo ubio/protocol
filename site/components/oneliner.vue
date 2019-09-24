@@ -44,11 +44,11 @@ module.exports = {
 
     components: {
         'val': require('./val.vue'),
-        'schema-type': require('./schema-type.vue'),
+        'schema-type': require('./schema-type.vue')
     },
 
     props: {
-        def: { type: Object, required: true },
+        def: { type: Object, required: true }
     },
 
     computed: {
@@ -66,7 +66,7 @@ module.exports = {
 
         active() {
             return this.$route.hash === ('#' + this.def.key);
-        },
+        }
 
     },
 
@@ -74,9 +74,9 @@ module.exports = {
 
         permalink() {
             this.$router.replace('#' + this.def.key);
-        },
+        }
 
-    },
+    }
 
 };
 </script>
