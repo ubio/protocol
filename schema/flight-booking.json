@@ -378,7 +378,11 @@
                     "description": "Fare marketing name as provided by airline.",
                     "example": "Business Flex"
                 },
-                "price": { "$ref": "#/domains/Generic/types/Price" }
+                "price": { "$ref": "#/domains/Generic/types/Price" },
+                "services": {
+                    "type": "array",
+                    "items": { "$ref": "#/domains/Generic/types/StructuredTextItem" }
+                }
             },
             "required": [
                 "fareName",
