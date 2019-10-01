@@ -16,5 +16,5 @@ module.exports = {
 
 module.exports = {
     directory: 'docs',
-    spa: 'index.html',
+    spa: 'index.html'
 };

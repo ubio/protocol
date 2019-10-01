@@ -43,7 +43,7 @@ class Def {
             const valid = ajvSchema(data);
             return {
                 valid,
-                errors: !valid ? ajvSchema.errors : [],
+                errors: !valid ? ajvSchema.errors : []
             };
         }
         return {
@@ -52,9 +52,9 @@ class Def {
                 {
                     message: `Cannot resolve schema for definition: ${this.id}`,
                     domain: this.domain.id,
-                    key: this.key,
-                },
-            ],
+                    key: this.key
+                }
+            ]
         };
     }
 
@@ -141,5 +141,5 @@ class OutputDef extends CustomDef {
 module.exports = {
     InputDef,
     OutputDef,
-    TypeDef,
+    TypeDef
 };

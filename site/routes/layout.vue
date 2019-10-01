@@ -40,8 +40,8 @@
 module.exports = {
 
     components: {
-        sidebar: require('./sidebar.vue'),
-    },
+        sidebar: require('./sidebar.vue')
+    }
 
 };
 </script>

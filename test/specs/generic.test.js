@@ -16,7 +16,7 @@ describe('Generic', () => {
                 city: 'London',
                 postcode: 'EC1R 0AT',
                 countryCode: 'gb',
-                countrySubdivision: 'London',
+                countrySubdivision: 'London'
             });
             assert.ok(valid);
             assert.equal(errors.length, 0);
@@ -29,7 +29,7 @@ describe('Generic', () => {
                 city: 'London',
                 postcode: 'EC1R 0AT',
                 countryCode: 'gb',
-                countrySubdivision: 'London',
+                countrySubdivision: 'London'
             });
             assert.ok(valid);
             assert.equal(errors.length, 0);
@@ -41,7 +41,7 @@ describe('Generic', () => {
                 city: 'London',
                 postcode: 'EC1R 0AT',
                 countryCode: 'gb',
-                countrySubdivision: 'London',
+                countrySubdivision: 'London'
             });
             assert.equal(valid, false);
             assert.notEqual(errors.length, 0);
@@ -55,7 +55,7 @@ describe('Generic', () => {
                 city: 'London',
                 postcode: 'EC1R 0AT',
                 countryCode: 'gb',
-                countrySubdivision: 'London',
+                countrySubdivision: 'London'
             });
             assert.equal(valid, false);
             assert.notEqual(errors.length, 0);

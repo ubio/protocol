@@ -67,12 +67,12 @@
 module.exports = {
 
     props: {
-        domain: { type: Object, required: true },
+        domain: { type: Object, required: true }
     },
 
     data() {
         return {
-            showTypes: false,
+            showTypes: false
         };
     },
 
@@ -85,9 +85,9 @@ module.exports = {
         sortedTypes() {
             const types = this.domain.getTypes();
             return [].concat(types).sort((a, b) => a.key > b.key ? 1 : -1);
-        },
+        }
 
-    },
+    }
 
 };
 </script>

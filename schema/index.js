@@ -21,6 +21,6 @@ module.exports = {
         MotorInsuranceExtraction: require('./motor-insurance-extraction.json'),
         PetInsurance: require('./pet-insurance.json'),
         MobileSignup: require('./mobile-signup.json'),
-        FlightBookingManagement: require('./flight-booking-management.json'),
-    },
+        FlightBookingManagement: require('./flight-booking-management.json')
+    }
 };

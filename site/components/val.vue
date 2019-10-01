@@ -6,7 +6,7 @@
 module.exports = {
 
     props: {
-        value: {},
+        value: {}
     },
 
     computed: {
@@ -26,9 +26,9 @@ module.exports = {
                 return JSON.stringify(value);
             }
             return String(value);
-        },
+        }
 
-    },
+    }
 
 };
 </script>
