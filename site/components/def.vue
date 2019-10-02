@@ -55,11 +55,11 @@ module.exports = {
 
     components: {
         'schema-type': require('./schema-type.vue'),
-        prop: require('./prop.vue'),
+        prop: require('./prop.vue')
     },
 
     props: {
-        def: { type: Object, required: true },
+        def: { type: Object, required: true }
     },
 
     computed: {
@@ -81,16 +81,16 @@ module.exports = {
         deprecated() {
             const { deprecated } = this.def.spec;
             return !!deprecated;
-        },
+        }
     },
 
     methods: {
 
         permalink() {
             this.$router.replace('#' + this.def.key);
-        },
+        }
 
-    },
+    }
 
 };
 </script>

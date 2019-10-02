@@ -12,16 +12,16 @@
 module.exports = {
 
     components: {
-        'sidebar__domain': require('./sidebar__domain.vue'),
+        'sidebar__domain': require('./sidebar__domain.vue')
     },
 
     computed: {
 
         domains() {
             return this.$protocol.getDomains().filter(d => !d.spec.private);
-        },
+        }
 
-    },
+    }
 
 };
 </script>

@@ -13,14 +13,14 @@ async function main() {
 
     await validate('Generic', 'Price', {
         currencyCode: 'gbp',
-        value: 1200,
+        value: 1200
     });
 
     await validate('FlightBooking', 'finalPrice', {
         price: {
             currencyCode: 'gbp',
-            value: 1200,
-        },
+            value: 1200
+        }
     });
 
 }

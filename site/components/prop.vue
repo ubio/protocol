@@ -40,13 +40,13 @@ module.exports = {
 
     components: {
         'val': require('./val.vue'),
-        'schema-type': require('./schema-type.vue'),
+        'schema-type': require('./schema-type.vue')
     },
 
     props: {
         id: { type: String, required: true },
         prop: { type: Object, required: true },
-        parent: { type: Object, required: true },
+        parent: { type: Object, required: true }
     },
 
     computed: {
@@ -54,9 +54,9 @@ module.exports = {
         required() {
             const required = this.parent.spec.required || [];
             return required.includes(this.id);
-        },
+        }
 
-    },
+    }
 
 };
 </script>

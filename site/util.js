@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    scrollToHash,
+    scrollToHash
 };
 
 function scrollToHash(hash) {

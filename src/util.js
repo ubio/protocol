@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    deepClone,
+    deepClone
 };
 
 function deepClone(value) {

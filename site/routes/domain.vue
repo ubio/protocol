@@ -71,16 +71,16 @@ module.exports = {
     components: {
         'def': require('../components/def.vue'),
         'oneliner': require('../components/oneliner.vue'),
-        'error-oneliner': require('../components/error-oneliner.vue'),
+        'error-oneliner': require('../components/error-oneliner.vue')
     },
 
     props: {
-        domainId: { type: String, required: true },
+        domainId: { type: String, required: true }
     },
 
     data() {
         return {
-            showExamples: false,
+            showExamples: false
         };
     },
 
@@ -131,9 +131,9 @@ module.exports = {
                 }
             }
             return obj;
-        },
+        }
 
-    },
+    }
 
 };
 </script>

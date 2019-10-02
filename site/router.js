@@ -21,15 +21,15 @@ module.exports = new VueRouter({
                 {
                     name: 'home',
                     path: '/',
-                    component: require('./routes/home.vue'),
+                    component: require('./routes/home.vue')
                 },
                 {
                     name: 'domain',
                     path: '/:domainId',
                     component: require('./routes/domain.vue'),
-                    props: true,
-                },
-            ],
-        },
-    ],
+                    props: true
+                }
+            ]
+        }
+    ]
 });

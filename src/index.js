@@ -7,5 +7,5 @@ const Domain = require('./domain');
 module.exports = {
     Protocol,
     ProtocolProvider,
-    Domain,
+    Domain
 };

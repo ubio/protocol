@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 const DEFAULT_OPTIONS = {
     url: 'https://protocol.automationcloud.net/schema.json',
     ttl: 3 * 60000,
-    autoRefresh: false,
+    autoRefresh: false
 };
 
 module.exports = class ProtocolProvider {
@@ -75,7 +75,7 @@ module.exports = class ProtocolProvider {
             throw new RemoteProtocolFetchError(`server returned ${status}`, {
                 url,
                 tag,
-                status,
+                status
             });
         }
         const text = await res.text();
@@ -85,7 +85,7 @@ module.exports = class ProtocolProvider {
             throw new RemoteProtocolFetchError('JSON parse failed', {
                 url,
                 tag,
-                text,
+                text
             });
         }
     }
