@@ -47,6 +47,9 @@
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/FlightBookingManagement/types/Confirmation"
         }
     },
     "types": {
@@ -192,6 +195,22 @@
             "type": "string",
             "description": "Seat number as extracted from website.",
             "example": "7A"
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Information gathered on the \"success\" page.",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "message"
+            ]
         }
     },
     "errors": [
