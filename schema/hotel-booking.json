@@ -376,6 +376,12 @@
                     "items": {
                         "$ref": "#/domains/HotelBooking/types/ValueAddition"
                     }
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/Generic/types/Link"
+                    }
                 }
             },
             "required": [
