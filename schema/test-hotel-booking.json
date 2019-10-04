@@ -1,6 +1,11 @@
 {
     "description": "Allows automating hotel booking on individual suppliers and OTAs.",
     "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/bookingReference"
+    },
+    "dataExtractionDomainId": "HotelBookingExtraction",
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
@@ -50,6 +55,14 @@
             "typeRef": "#/domains/TestHotelBooking/types/Guests",
             "description": "Personal details about the guests."
         },
+        "visit": {
+            "typeRef": "#/domains/TestHotelBooking/types/Visit",
+            "description": "Details about the visit."
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "description": "If required, used for logging in."
+        },
         "payment": {
             "typeRef": "#/domains/TestHotelBooking/types/Payment"
         },
@@ -66,6 +79,10 @@
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent"
+        },
+        "loginConfirmationCode": {
+            "typeRef": "#/domains/TestHotelBooking/types/ConfirmationCode",
+            "description": "When logging in, some websites require a confirmation code."
         }
     },
     "outputs": {
@@ -115,12 +132,33 @@
                 }
             }
         },
+        "Visit": {
+            "type": "object",
+            "properties": {
+                "purpose": {
+                    "type": "string",
+                    "enum": [
+                        "business",
+                        "leisure"
+                    ]
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
         "SupportedCards": {
             "type": "array",
             "minItems": 0,
             "items": {
                 "$ref": "#/domains/TestHotelBooking/types/CardBrandType"
             }
+        },
+        "ConfirmationCode": {
+            "type": "string",
+            "minLength": 1,
+            "example": "ABC123"
         },
         "CardBrandType": {
             "type": "object",
@@ -339,9 +377,11 @@
                         "$ref": "#/domains/TestHotelBooking/types/ValueAddition"
                     }
                 },
-                "rateGroup": {
-                    "type": "string",
-                    "example": "standard"
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/Generic/types/Link"
+                    }
                 }
             },
             "required": [
