@@ -382,6 +382,10 @@
                     "items": {
                         "$ref": "#/domains/Generic/types/Link"
                     }
+                },
+                "rateGroup": {
+                    "type": "string",
+                    "example": "standard"
                 }
             },
             "required": [
