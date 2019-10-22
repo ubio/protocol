@@ -5,7 +5,6 @@
         "outputKey": "bookingConfirmation",
         "valuePath": "/bookingReference"
     },
-    "dataExtractionDomainId": "HotelBookingExtraction",
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
