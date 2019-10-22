@@ -214,6 +214,14 @@
                 "wasRequestedBefore": {
                     "type": "boolean"
                 },
+                "transportation": {
+                    "type": "string",
+                    "enum": [
+                        "aeroplane",
+                        "ship",
+                        ""
+                    ]
+                },
                 "isTransit": {
                     "type": "boolean"
                 }
