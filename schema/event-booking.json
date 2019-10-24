@@ -303,10 +303,7 @@
                     "type": "null"
                 },
                 {
-                    "type": "array",
-                    "description": "List of StructuredTextItems or null.",
-                    "minItems": 1,
-                    "items": { "$ref": "#/domains/Generic/types/StructuredTextItems" }
+                    "$ref": "#/domains/Generic/types/StructuredTextItems"
                 }
             ]
         },
