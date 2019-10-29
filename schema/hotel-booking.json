@@ -13,8 +13,7 @@
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
         "search": {
-            "typeRef": "#/domains/HotelBooking/types/Search",
-            "initial": true
+            "typeRef": "#/domains/HotelBooking/types/Search"
         },
         "options": {
             "typeRef": "#/domains/HotelBooking/types/Options",
