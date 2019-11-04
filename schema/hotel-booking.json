@@ -289,8 +289,7 @@
                 }
             },
             "required": [
-                "name",
-                "address"
+                "name"
             ],
             "additionalProperties": false
         },
