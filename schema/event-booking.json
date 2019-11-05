@@ -95,9 +95,16 @@
         },
         "availablePerformances": {
             "typeRef": "#/domains/EventBooking/types/Performances"
+        },
+        "showName": {
+            "typeRef": "#/domains/EventBooking/types/ShowName"
         }
     },
     "types": {
+        "ShowName": {
+            "type": "string",
+            "description": "Name of the show being booked."
+        },
         "BookingConfirmation": {
             "type": "object",
             "description": "Information gathered on \"Booking success\" page.",
