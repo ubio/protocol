@@ -160,6 +160,10 @@
                 "useDeliveryAddressAsBilling": {
                     "type": "boolean",
                     "default": false
+                },
+                "noDMTJobsBefore": {
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
