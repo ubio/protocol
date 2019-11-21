@@ -354,6 +354,14 @@
                     "type": "string",
                     "example": "Standard Single Room"
                 },
+                "name": {
+                    "type": "string",
+                    "example": "Room with Window"
+                },
+                "rate": {
+                    "type": "string",
+                    "example": "Breakfast Plus"
+                },
                 "description": {
                     "$ref": "#/domains/HotelBooking/types/RoomDescription"
                 },
