@@ -354,7 +354,7 @@
                 "currencyCode": { "$ref": "#/domains/Generic/types/CurrencyCode" },
                 "value": {
                     "type": "integer",
-                    "description": "A positive integer in the smallest currency unit (100 for £1.00).",
+                    "description": "An integer in the smallest currency unit (100 for £1.00).",
                     "example": "12300"
                 }
             },
