@@ -383,7 +383,7 @@
                         "currency": "gbp"
                     }
                 },
-                "priceItems": {
+                "priceLines": {
                     "type": "array",
                     "items": {
                         "$ref": "#/domains/HotelBooking/types/PriceLineItem"
