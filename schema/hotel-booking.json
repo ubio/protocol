@@ -471,6 +471,9 @@
                 "paidAtHotel": {
                     "type": "boolean"
                 },
+                "excludedFromTotals": {
+                    "type": "boolean"
+                },
                 "description": {
                     "type": "string"
                 },
