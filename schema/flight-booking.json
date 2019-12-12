@@ -22,12 +22,10 @@
             "initial": true
         },
         "selectedOutboundFlight": {
-            "typeRef": "#/domains/FlightBooking/types/Flight",
-            "initial": true
+            "typeRef": "#/domains/FlightBooking/types/Flight"
         },
         "selectedInboundFlight": {
-            "typeRef": "#/domains/FlightBooking/types/Flight",
-            "initial": true
+            "typeRef": "#/domains/FlightBooking/types/Flight"
         },
         "itinerary": {
             "typeRef": "#/domains/FlightBooking/types/Itinerary",
