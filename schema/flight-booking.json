@@ -28,7 +28,7 @@
         },
         "selectedInboundFlight": {
             "typeRef": "#/domains/FlightBooking/types/Flight",
-            "sourceOutputKey": "availableOutboundFlights",
+            "sourceOutputKey": "availableInboundFlights",
             "inputMethod": "SelectOne"
         },
         "itinerary": {
