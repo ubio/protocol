@@ -25,7 +25,7 @@
 </template>
 
 <script>
-module.exports = {
+export default {
 
     props: {
         error: { type: Object, required: true }

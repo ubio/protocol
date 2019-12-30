@@ -36,11 +36,14 @@
 </template>
 
 <script>
-module.exports = {
+import Val from './val.vue';
+import SchemaType from './schema-type.vue';
+
+export default {
 
     components: {
-        'val': require('./val.vue'),
-        'schema-type': require('./schema-type.vue')
+        Val,
+        SchemaType,
     },
 
     props: {

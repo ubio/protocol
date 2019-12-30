@@ -1,7 +1,5 @@
 # ubio Automation Protocol
 
-_Note: This repository is under active development. Please expect breaking changes in v0.x.x releases._
-
 ## Terminology
 
 **Domain** is a collection of input, output and type definitions. Domains are uniquely identified by `id` which is a PascalCase string. Example: `FlightBooking`.

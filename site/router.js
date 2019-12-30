@@ -1,14 +1,16 @@
-'use strict';
+import { scrollToHash } from './util';
+import VueRouter from 'vue-router';
 
-const util = require('./util');
-const VueRouter = require('vue-router');
+import ViewLayout from './routes/layout.vue';
+import ViewHome from './routes/home.vue';
+import ViewDomain from './routes/domain.vue';
 
-module.exports = new VueRouter({
+export const router = new VueRouter({
     mode: 'history',
     scrollBehavior(route) {
         const { hash } = route;
         if (hash) {
-            util.scrollToHash(hash);
+            scrollToHash(hash);
         } else {
             return { x: 0, y: 0 };
         }
@@ -16,17 +18,17 @@ module.exports = new VueRouter({
     routes: [
         {
             path: '',
-            component: require('./routes/layout.vue'),
+            component: ViewLayout,
             children: [
                 {
                     name: 'home',
                     path: '/',
-                    component: require('./routes/home.vue')
+                    component: ViewHome,
                 },
                 {
                     name: 'domain',
                     path: '/:domainId',
-                    component: require('./routes/domain.vue'),
+                    component: ViewDomain,
                     props: true
                 }
             ]

@@ -2,26 +2,28 @@
   "name": "@ubio/protocol",
   "version": "5.5.1",
   "description": "ubio Automation Protocol",
-  "main": "src/index.js",
+  "main": "out/main/index.js",
+  "types": "out/main/index.d.ts",
   "author": "ubio",
   "license": "MIT",
   "files": [
-    "src/"
+    "src/",
+    "out/"
   ],
   "browser": {
-    "node-fetch": "./src/fetch-browser.js"
+    "node-fetch": "./fetch-browser.js"
   },
   "scripts": {
-    "check": "eslint --ext=js,vue .",
-    "dev": "run-p watch:* serve",
-    "build": "rimraf public && npm run build:copy-static && npm run build:js && npm run build:schema && npm run build:html-cache",
-    "serve": "serve public",
-    "build:copy-static": "node ./build-copy-static.js",
-    "build:js": "browserify site/ -o public/app.js",
-    "build:schema": "node ./build-schema.js",
-    "build:html-cache": "node ./build-html-cache.js",
-    "watch:js": "watchify -p browserify-hmr site/ -o public/app.js",
-    "test": "mocha",
+    "clean": "rm -rf out/ public/",
+    "check": "tslint --project ./tsconfig.json",
+    "dev": "npm run clean && run-p dev:*",
+    "dev:ts": "tsc -w",
+    "dev:site": "webpack-dev-server --hot",
+    "test": "NODE_ENV=test mocha --opts ./mocha.opts",
+    "build": "run-s clean build:ts build:site build:public",
+    "build:ts": "tsc",
+    "build:site": "NODE_ENV=production webpack",
+    "build:public": "node ./out/bin/build",
     "preversion": "run-s check test",
     "version": "run-s build",
     "postversion": "npm publish --access public && git push origin master --tags"
@@ -30,28 +32,35 @@
     "check"
   ],
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "babel-core": "^6.26.3",
-    "babelify": "^10.0.0",
-    "browserify": "^16.5.0",
-    "browserify-hmr": "^0.3.5",
+    "@types/chai": "^4.2.7",
+    "@types/glob": "^7.1.1",
+    "@types/jsonpointer": "^4.0.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^13.1.1",
+    "@types/node-fetch": "^2.5.4",
+    "chai": "^4.2.0",
+    "css-loader": "^3.4.0",
     "eslint": "^6.4.0",
     "eslint-config-ub": "^3.0.0",
     "eslint-plugin-vue": "^5.2.3",
-    "mocha": "^6.2.0",
+    "glob": "^7.1.6",
+    "mocha": "^6.2.2",
     "npm-run-all": "^4.1.2",
     "pre-commit": "^1.2.2",
-    "rimraf": "^3.0.0",
-    "serve": "^11.1.0",
-    "vue": "^2.6.10",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.8.3",
     "vue-router": "^3.1.3",
-    "vueify": "^9.4.1",
-    "watchify": "^3.11.1"
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
     "ajv": "^6.10.2",
     "jsonpointer": "^4.0.1",
-    "node-fetch": "^2.6.0",
-    "vue-template-compiler": "^2.6.10"
+    "node-fetch": "^2.6.0"
   }
 }

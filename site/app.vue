@@ -5,5 +5,9 @@
     </div>
 </template>
 
-<style src="index.css">
+<script>
+export default {}
+</script>
+
+<style src="./index.css">
 </style>

@@ -1,28 +1,28 @@
-'use strict';
-
-const Vue = require('vue');
-const VueRouter = require('vue-router');
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import App from './app.vue';
+import { router } from './router';
+import { provider } from './provider';
 
 Vue.use(VueRouter);
-
-const App = Vue.component('app', require('./app.vue'));
-
-const $provider = require('./provider');
 
 Vue.mixin({
     computed: {
         $protocol() {
-            return $provider.latest;
+            return provider.latest;
         }
     }
 });
 
-new App({
-    router: require('./router'),
-    el: '#app',
+const AppComponent = Vue.component('app', App);
+
+const app = new AppComponent({
+    router,
     data() {
         return {
-            $provider
+            $provider: provider,
         };
-    }
+    },
 });
+
+app.$mount('#app');

@@ -1,5 +1,4 @@
 node_modules/
-public
 *.log
 yarn.lock
 .eslintcache
@@ -7,3 +6,6 @@ yarn.lock
 
 .env*
 !.env.example
+
+public/
+out/
