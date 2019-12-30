@@ -21,7 +21,8 @@
     "dev": "run-s clean dev:*",
     "dev:ts": "tsc -w",
     "test": "NODE_ENV=test mocha --opts ./mocha.opts",
-    "build": "run-s clean compile ./out/bin/build",
+    "build": "run-s clean compile build:public",
+    "build:public": "node ./out/bin/build",
     "preversion": "run-s check test",
     "version": "run-s build",
     "postversion": "npm publish --access public && git push origin master --tags"
