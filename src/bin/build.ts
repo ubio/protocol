@@ -2,7 +2,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { promisify } from 'util';
-import { schema } from '../main';
+import { schema } from '../schema';
 import glob from 'glob';
 
 const globAsync = promisify(glob);

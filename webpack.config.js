@@ -4,6 +4,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const outputDir = path.resolve(process.cwd(), './docs');
 
 module.exports = {
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     entry: {
         app: './site/index.js',
     },

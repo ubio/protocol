@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import assert from 'assert';
 import { protocol } from '../protocol';
-import meta from '../../main/schema/meta.json';
+import meta from '../../schema/meta.json';
 
 describe('Schema', () => {
 
