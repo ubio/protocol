@@ -15,7 +15,7 @@
   },
   "scripts": {
     "clean": "rm -rf out/ public/",
-    "compile": "run -s clean compile:*",
+    "compile": "run-s clean compile:*",
     "compile:ts": "tsc",
     "check": "tslint --project ./tsconfig.json",
     "dev": "run-s clean dev:*",
