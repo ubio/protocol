@@ -39,7 +39,7 @@ export class ProtocolProvider {
         const interval = this.ttl;
         const repeat = () => {
             clearTimeout(this.autoRefreshTimer);
-            this.autoRefreshTimer = setTimeout(() => this.startAutoRefresh(), interval).unref();
+            this.autoRefreshTimer = setTimeout(() => this.startAutoRefresh(), interval);
         };
         this.fetchLatest()
             .then(repeat, repeat);

@@ -31,6 +31,7 @@
 
             <oneliner
                 v-for="def of inputs"
+                :key="def.id"
                 :def="def"/>
         </template>
 
@@ -38,6 +39,7 @@
             <h2 id="outputs">Outputs</h2>
             <oneliner
                 v-for="def of outputs"
+                :key="def.id"
                 :def="def"/>
         </template>
 
@@ -45,6 +47,7 @@
             <h2 id="types">Types</h2>
             <def
                 v-for="def of types"
+                :key="def.id"
                 :def="def"/>
         </template>
 
@@ -56,6 +59,7 @@
                 <h3 class="domain__errors-subheader"> {{ category }} </h3>
                 <error-oneliner
                     v-for="error of errorsByCategory[category]"
+                    :key="error.code"
                     :error="error"/>
             </div>
         </template>
@@ -64,14 +68,17 @@
 </template>
 
 <script>
-const util = require('../util');
+import { scrollToHash } from '../util';
+import Def from '../components/def.vue';
+import Oneliner from '../components/oneliner.vue';
+import ErrorOneliner from '../components/error-oneliner.vue';
 
-module.exports = {
+export default {
 
     components: {
-        'def': require('../components/def.vue'),
-        'oneliner': require('../components/oneliner.vue'),
-        'error-oneliner': require('../components/error-oneliner.vue')
+        Def,
+        Oneliner,
+        ErrorOneliner,
     },
 
     props: {
@@ -85,7 +92,7 @@ module.exports = {
     },
 
     mounted() {
-        util.scrollToHash(this.$route.hash);
+        scrollToHash(this.$route.hash);
     },
 
     computed: {

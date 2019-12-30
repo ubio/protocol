@@ -1,18 +1,21 @@
 <template>
     <div class="sidebar">
         <div class="sidebar__sticky">
-            <sidebar__domain
+            <sidebar-domain
                 v-for="domain in domains"
+                :key="domain.id"
                 :domain="domain"/>
         </div>
     </div>
 </template>
 
 <script>
-module.exports = {
+import SidebarDomain from './sidebar-domain.vue';
+
+export default {
 
     components: {
-        'sidebar__domain': require('./sidebar__domain.vue')
+        SidebarDomain,
     },
 
     computed: {

@@ -41,6 +41,7 @@
             </router-link>
             <router-link
                 v-for="def of sortedTypes"
+                :key="def.id"
                 class="sidebar__sublink"
                 :to="{
                     name: 'domain',
@@ -64,7 +65,7 @@
 </template>
 
 <script>
-module.exports = {
+export default {
 
     props: {
         domain: { type: Object, required: true }

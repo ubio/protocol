@@ -37,10 +37,12 @@
 </template>
 
 <script>
-module.exports = {
+import Sidebar from './sidebar.vue';
+
+export default {
 
     components: {
-        sidebar: require('./sidebar.vue')
+        Sidebar,
     }
 
 };

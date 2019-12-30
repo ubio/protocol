@@ -42,7 +42,8 @@
             <h4>Properties</h4>
             <prop
                 class="def__prop"
-                v-for="prop,id in def.spec.properties"
+                v-for="prop, id in def.spec.properties"
+                :key="id"
                 :id="id"
                 :prop="prop"
                 :parent="def"/>
@@ -51,11 +52,14 @@
 </template>
 
 <script>
-module.exports = {
+import SchemaType from './schema-type.vue';
+import Prop from './prop.vue';
+
+export default {
 
     components: {
-        'schema-type': require('./schema-type.vue'),
-        prop: require('./prop.vue')
+        SchemaType,
+        Prop,
     },
 
     props: {

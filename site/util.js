@@ -1,10 +1,4 @@
-'use strict';
-
-module.exports = {
-    scrollToHash
-};
-
-function scrollToHash(hash) {
+export function scrollToHash(hash) {
     if (!hash) {
         return;
     }
