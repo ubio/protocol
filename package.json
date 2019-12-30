@@ -24,8 +24,7 @@
     "build:ts": "tsc",
     "build:site": "NODE_ENV=production webpack",
     "build:public": "node ./out/bin/build",
-    "preversion": "run-s check test",
-    "version": "run-s build",
+    "preversion": "run-s check build test",
     "postversion": "npm publish --access public && git push origin master --tags"
   },
   "pre-commit": [
