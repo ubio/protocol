@@ -4,11 +4,14 @@ import { protocol } from '../protocol';
 // tslint:disable
 
 /**
- * Note: code below is intentionally left almost "as is", to outline some of the problems with
- * contributing code to Protocol. `any` annotations and `!`s were added to allow TypeScript to compile this.
+ * Code below is intentionally left almost "as is", to avoid interfering with tests.
+ * `any` annotations and `!`s were added to allow TypeScript to compile this.
  *
- * - 18 out of 20 "if" statements used in this file is concentrated in this small chunk of code.
- * - Type resoluting hides even more logic in lines like
+ * A brief summary of code issues follows.
+ *
+ * - There are 18 "if" statements in this file. By comparison, the entire test suite uses 24 "if" statements,
+ *   so this is
+ * - Type resolution hides more boolean logic in lines like
  *   `schema.oneOf.map(s => schemaType(s) || resolveType(s.$ref)).filter(x => x !== 'null')[0]`
  *   which indicates huge logical complexity.
  * - Helper functions implicitly return `undefined` if none of the branches match.
@@ -22,6 +25,10 @@ import { protocol } from '../protocol';
  *   (i.e. how many parameters does it really process?), extract from code, move to other place/module,
  *   re-use, etc. For that very reason use of named nested functions is discouraged, which
  *   a contributor can easily confirm just by looking around the codebase.
+ *
+ * It should be noted that test complexity is often an indicator of solution complexity itself
+ * (i.e. we verify that it works according to rules we have in mind, and this test pretty much describes
+ * these rules). Such design decisions should be re-assessed in an iterative way.
  */
 
 describe('inputMethod', () => {
