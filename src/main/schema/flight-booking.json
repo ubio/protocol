@@ -23,11 +23,13 @@
         },
         "selectedOutboundFlight": {
             "typeRef": "#/domains/FlightBooking/types/Flight",
-            "initial": true
+            "sourceOutputKey": "availableOutboundFlights",
+            "inputMethod": "SelectOne"
         },
         "selectedInboundFlight": {
             "typeRef": "#/domains/FlightBooking/types/Flight",
-            "initial": true
+            "sourceOutputKey": "availableInboundFlights",
+            "inputMethod": "SelectOne"
         },
         "itinerary": {
             "typeRef": "#/domains/FlightBooking/types/Itinerary",

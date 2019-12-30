@@ -383,6 +383,12 @@
                         "currency": "gbp"
                     }
                 },
+                "priceLines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/HotelBooking/types/PriceLineItem"
+                    }
+                },
                 "cancellation": {
                     "type": "object",
                     "properties": {
