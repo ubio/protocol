@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 
-import dataGeneration from '../../static/data-generation.json';
-import meta from '../../static/data-generation-meta.json';
+import dataGeneration from '../../misc/data-generation.json';
+import meta from '../../misc/data-generation-meta.json';
 import assert from 'assert';
 import { protocol } from '../protocol';
 

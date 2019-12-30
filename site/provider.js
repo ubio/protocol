@@ -1,6 +1,6 @@
 'use strict';
 
-const { ProtocolProvider } = require('../src');
+const { ProtocolProvider } = require('../src/main');
 
 const provider = module.exports = new ProtocolProvider({
     autoRefresh: true,

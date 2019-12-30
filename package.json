@@ -19,7 +19,6 @@
     "dev": "run-s clean dev:ts",
     "dev:ts": "tsc -w",
     "test": "NODE_ENV=test mocha --opts ./mocha.opts",
-
     "dev-site": "run-p watch:* serve",
     "build": "rimraf public && npm run build:copy-static && npm run build:js && npm run build:schema && npm run build:html-cache",
     "serve": "serve public",
@@ -38,6 +37,7 @@
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@types/chai": "^4.2.7",
+    "@types/glob": "^7.1.1",
     "@types/jsonpointer": "^4.0.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^13.1.1",
@@ -49,6 +49,7 @@
     "eslint": "^6.4.0",
     "eslint-config-ub": "^3.0.0",
     "eslint-plugin-vue": "^5.2.3",
+    "glob": "^7.1.6",
     "mocha": "^6.2.2",
     "npm-run-all": "^4.1.2",
     "pre-commit": "^1.2.2",
