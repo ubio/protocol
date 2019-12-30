@@ -1,11 +1,8 @@
-'use strict';
-
-const protocol = require('../protocol');
-const assert = require('assert');
+import assert from 'assert';
+import { protocol } from '../protocol';
+const HotelBooking = protocol.getDomain('HotelBooking')!;
 
 describe('HotelBooking', () => {
-
-    const HotelBooking = protocol.getDomain('HotelBooking');
 
     describe('Rooms', () => {
 
@@ -28,7 +25,7 @@ describe('HotelBooking', () => {
                 ]
             }]);
             assert.ok(valid);
-            assert.equal(errors.length, 0);
+            assert.equal(errors!.length, 0);
         });
     });
 });

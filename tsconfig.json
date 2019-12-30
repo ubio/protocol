@@ -11,9 +11,9 @@
         "resolveJsonModule": true,
         "rootDir": "./src",
         "sourceMap": true,
-        "strict": true
-    },
-    "include": [
-        "src"
-    ]
+        "strict": true,
+        "lib": [
+            "ES2019"
+        ]
+    }
 }

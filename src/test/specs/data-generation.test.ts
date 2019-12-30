@@ -1,8 +1,9 @@
-const Ajv = require('ajv');
-const dataGeneration = require('../../src/data-generation.json');
-const assert = require('assert');
-const meta = require('../../src/data-generation-meta.json');
-const protocol = require('../protocol.js');
+import Ajv from 'ajv';
+
+import dataGeneration from '../../static/data-generation.json';
+import meta from '../../static/data-generation-meta.json';
+import assert from 'assert';
+import { protocol } from '../protocol';
 
 describe('Data Generation', () => {
 
@@ -11,7 +12,7 @@ describe('Data Generation', () => {
         const validate = ajv.compile(meta);
         const valid = validate(dataGeneration);
         if (validate.errors) {
-            // eslint-disable-next-line no-console
+            // tslint:disable-next-line no-console
             console.log('Validation errors:', validate.errors);
         }
         assert.ok(valid);
@@ -22,6 +23,5 @@ describe('Data Generation', () => {
             assert.ok(protocol.resolveTypeRef(dataGen.typeRef));
         });
     });
-
 
 });

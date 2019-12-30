@@ -13,7 +13,6 @@ export class Protocol {
     }
 
     _collectDomains(): Domain[] {
-        // TODO consider adding type defs to JSON schema objects
         return Object.keys(this.schema.domains).map(id => new Domain(this, id));
     }
 

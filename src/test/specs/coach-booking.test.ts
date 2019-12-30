@@ -1,11 +1,9 @@
-'use strict';
+import assert from 'assert';
+import { protocol } from '../protocol';
 
-const protocol = require('../protocol');
-const assert = require('assert');
+const CoachBooking = protocol.getDomain('CoachBooking')!;
 
 describe('CoachBooking', () => {
-
-    const CoachBooking = protocol.getDomain('CoachBooking');
 
     describe('Passengers', () => {
 
@@ -40,7 +38,7 @@ describe('CoachBooking', () => {
                 }
             }]);
             assert.ok(valid);
-            assert.equal(errors.length, 0);
+            assert.equal(errors!.length, 0);
         });
 
     });

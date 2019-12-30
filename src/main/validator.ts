@@ -20,3 +20,8 @@ export function createValidator(schema: any, defs: Def[], options: Ajv.Options =
     }
     return ajv;
 }
+
+export interface ValidationResult {
+    valid: boolean;
+    errors: Ajv.ErrorObject[] | null;
+}

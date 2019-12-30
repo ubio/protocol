@@ -2,6 +2,7 @@ import { Domain } from './domain';
 import { deepClone } from './util';
 import jsonPointer from 'jsonpointer';
 import { createExample } from './example';
+import { ValidationResult } from './validator';
 
 export class Def {
     spec: any;
@@ -16,12 +17,24 @@ export class Def {
         this.spec = domain.spec[ns][key];
         this.ns = ns;
         this.key = key;
-        const id = `${domain.id}.${key}`;
-        this.id = id;
+        this.id = `${domain.id}.${key}`;
     }
 
+    /**
+     * Returns a reference to JSON schema type definition designated by this Def.
+     * E.g. for InputDef, the type ref should return a reference to type defintion from `types`,
+     * specified by `typeRef` field.
+     * For TypeDef this is the same as self ref.
+     */
     getTypeRef(): string {
-        return '';
+        return this.getSelfRef();
+    }
+
+    /**
+     * Returns a reference to "self", e.g. for input defs it's a reference to the input def itself.
+     */
+    getSelfRef(): string {
+        return `#/domains/${this.domain.id}/${this.ns}/${this.key}`;
     }
 
     hasDefault(): boolean {
@@ -38,13 +51,13 @@ export class Def {
         data[this.key] = deepClone(this.spec.default);
     }
 
-    async validate(data: any) {
+    async validate(data: any): Promise<ValidationResult> {
         const ajvSchema = this.domain.protocol.validator.getSchema(this.id);
         if (ajvSchema) {
-            const valid = ajvSchema(data);
+            const valid = ajvSchema(data) as boolean;
             return {
                 valid,
-                errors: !valid ? ajvSchema.errors : []
+                errors: !valid ? ajvSchema.errors! : []
             };
         }
         return {
@@ -52,8 +65,13 @@ export class Def {
             errors: [
                 {
                     message: `Cannot resolve schema for definition: ${this.id}`,
-                    domain: this.domain.id,
-                    key: this.key
+                    keyword: '',
+                    dataPath: '',
+                    schemaPath: this.getSelfRef(),
+                    params: {
+                        domainId: this.domain.id,
+                        key: this.key,
+                    }
                 }
             ]
         };
@@ -69,10 +87,6 @@ export class TypeDef extends Def {
 
     constructor(domain: Domain, key: string) {
         super(domain, 'types', key);
-    }
-
-    getTypeRef() {
-        return `#/domains/${this.domain.id}/types/${this.key}`;
     }
 
     getTypeDef() {

@@ -1,8 +1,6 @@
-'use strict';
-
-const protocol = require('../protocol');
-const assert = require('assert');
-const Internal = protocol.getDomain('Internal');
+import assert from 'assert';
+import { protocol } from '../protocol';
+const Internal = protocol.getDomain('Internal')!;
 
 describe('Domain', () => {
 
@@ -95,7 +93,7 @@ describe('Domain', () => {
             const { valid, errors } = await Internal.validateInput('Value', {});
             assert.equal(valid, false);
             assert.ok(Array.isArray(errors));
-            assert.equal(errors.length, 1);
+            assert.equal(errors!.length, 1);
         });
 
     });
@@ -119,7 +117,7 @@ describe('Domain', () => {
             const { valid, errors } = await Internal.validateOutput('url', 'https://github.com');
             assert.equal(valid, false);
             assert.ok(Array.isArray(errors));
-            assert.equal(errors.length, 1);
+            assert.equal(errors!.length, 1);
         });
 
     });

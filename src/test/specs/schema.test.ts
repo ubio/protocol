@@ -1,9 +1,7 @@
-'use strict';
-
-const Ajv = require('ajv');
-const protocol = require('../protocol');
-const assert = require('assert');
-const meta = require('../../src/schema-meta.json');
+import Ajv from 'ajv';
+import assert from 'assert';
+import { protocol } from '../protocol';
+import meta from '../../main/schema/meta.json';
 
 describe('Schema', () => {
 
@@ -12,7 +10,7 @@ describe('Schema', () => {
         const validate = ajv.compile(meta);
         const valid = validate(protocol.schema);
         if (validate.errors) {
-            // eslint-disable-next-line no-console
+            // tslint:disable-next-line no-console
             console.log('Validation errors:', validate.errors);
         }
         assert.ok(valid);

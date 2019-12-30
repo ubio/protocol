@@ -2,6 +2,7 @@ import { Protocol } from './protocol';
 
 import jsonPointer from 'jsonpointer';
 import { InputDef, OutputDef, TypeDef, Def } from './defs';
+import { ValidationResult } from './validator';
 
 export class Domain {
     spec: any;
@@ -87,16 +88,21 @@ export class Domain {
         });
     }
 
-    async validate(key: string, data: any) {
+    async validate(key: string, data: any): Promise<ValidationResult> {
         const def = this.getDef(key);
         if (!def) {
             return {
                 valid: false,
                 errors: [
                     {
-                        message: `Unexpected data: ${this.id}.${key}`,
-                        domain: this.id,
-                        key
+                        message: `Cannot resolve schema for definition: ${key}`,
+                        keyword: '',
+                        dataPath: '',
+                        schemaPath: `#/domains/${this.id}`,
+                        params: {
+                            domainId: this.id,
+                            key,
+                        }
                     }
                 ]
             };

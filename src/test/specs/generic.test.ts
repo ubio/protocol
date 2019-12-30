@@ -1,11 +1,9 @@
-'use strict';
-
-const protocol = require('../protocol');
-const assert = require('assert');
+import assert from 'assert';
+import { protocol } from '../protocol';
 
 describe('Generic', () => {
 
-    const Generic = protocol.getDomain('Generic');
+    const Generic = protocol.getDomain('Generic')!;
 
     describe('Address', () => {
 
@@ -19,7 +17,7 @@ describe('Generic', () => {
                 countrySubdivision: 'London'
             });
             assert.ok(valid);
-            assert.equal(errors.length, 0);
+            assert.equal(errors!.length, 0);
         });
 
         it('should accept valid explicit address', async () => {
@@ -32,7 +30,7 @@ describe('Generic', () => {
                 countrySubdivision: 'London'
             });
             assert.ok(valid);
-            assert.equal(errors.length, 0);
+            assert.equal(errors!.length, 0);
         });
 
         it('should not accept incomplete addresses', async () => {
@@ -44,7 +42,7 @@ describe('Generic', () => {
                 countrySubdivision: 'London'
             });
             assert.equal(valid, false);
-            assert.notEqual(errors.length, 0);
+            assert.notEqual(errors!.length, 0);
         });
 
         it('should not accept additional properties', async () => {
@@ -58,7 +56,7 @@ describe('Generic', () => {
                 countrySubdivision: 'London'
             });
             assert.equal(valid, false);
-            assert.notEqual(errors.length, 0);
+            assert.notEqual(errors!.length, 0);
         });
     });
 });

@@ -2,20 +2,23 @@
   "name": "@ubio/protocol",
   "version": "5.5.1",
   "description": "ubio Automation Protocol",
-  "main": "src/index.js",
+  "main": "out/main/index.js",
+  "types": "out/main/index.d.ts",
   "author": "ubio",
   "license": "MIT",
   "files": [
-    "src/"
+    "src/",
+    "out/"
   ],
   "browser": {
-    "node-fetch": "./src/fetch-browser.js"
+    "node-fetch": "./fetch-browser.js"
   },
   "scripts": {
     "clean": "rm -rf out",
     "check": "tslint --project ./tsconfig.json",
     "dev": "run-s clean dev:ts",
     "dev:ts": "tsc -w",
+    "test": "NODE_ENV=test mocha --opts ./mocha.opts",
 
     "dev-site": "run-p watch:* serve",
     "build": "rimraf public && npm run build:copy-static && npm run build:js && npm run build:schema && npm run build:html-cache",
@@ -25,7 +28,6 @@
     "build:schema": "node ./build-schema.js",
     "build:html-cache": "node ./build-html-cache.js",
     "watch:js": "watchify -p browserify-hmr site/ -o public/app.js",
-    "test": "mocha",
     "preversion": "run-s check test",
     "version": "run-s build",
     "postversion": "npm publish --access public && git push origin master --tags"

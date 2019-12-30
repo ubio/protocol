@@ -1,11 +1,9 @@
-'use strict';
-
-const protocol = require('../protocol');
-const assert = require('assert');
+import assert from 'assert';
+import { protocol } from '../protocol';
 
 describe('FlightBooking', () => {
 
-    const FlightBooking = protocol.getDomain('FlightBooking');
+    const FlightBooking = protocol.getDomain('FlightBooking')!;
 
     describe('Search', () => {
 
@@ -39,7 +37,7 @@ describe('FlightBooking', () => {
                 passengerAges: [31, 32, 9]
             });
             assert.ok(valid);
-            assert.equal(errors.length, 0);
+            assert.equal(errors!.length, 0);
         });
 
         it('should not accept invalid inbound flight', async () => {
@@ -61,8 +59,8 @@ describe('FlightBooking', () => {
                 passengerAges: [31, 32, 9]
             });
             assert.equal(valid, false);
-            assert.ok(errors.length > 0);
-            assert.ok(errors.find(e => e.dataPath === '/inbound'));
+            assert.ok(errors!.length > 0);
+            assert.ok(errors!.find(e => e.dataPath === '/inbound'));
         });
 
         it('should not require inbound flight', async () => {
@@ -83,7 +81,7 @@ describe('FlightBooking', () => {
                 passengerAges: [31, 32, 9]
             });
             assert.ok(valid);
-            assert.equal(errors.length, 0);
+            assert.equal(errors!.length, 0);
         });
 
         it('should not allow incorrect destination/origin', async () => {
@@ -96,9 +94,9 @@ describe('FlightBooking', () => {
                 passengerAges: [31, 32, 9]
             });
             assert.equal(valid, false);
-            assert.ok(errors.length > 0);
-            assert.ok(errors.find(e => e.dataPath === '/outbound/destination'));
-            assert.ok(errors.find(e => e.dataPath === '/outbound/origin'));
+            assert.ok(errors!.length > 0);
+            assert.ok(errors!.find(e => e.dataPath === '/outbound/destination'));
+            assert.ok(errors!.find(e => e.dataPath === '/outbound/origin'));
         });
 
     });
@@ -146,7 +144,7 @@ describe('FlightBooking', () => {
                 'middleName': ''
             }]);
             assert.ok(valid);
-            assert.equal(errors.length, 0);
+            assert.equal(errors!.length, 0);
         });
     });
 

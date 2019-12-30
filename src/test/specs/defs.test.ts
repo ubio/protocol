@@ -1,16 +1,8 @@
-'use strict';
+import assert from 'assert';
+import { protocol } from '../protocol';
 
-const protocol = require('../protocol');
-const assert = require('assert');
-
-const inputDefs = protocol.getDomains()
-    .map(d => d.getInputs())
-    .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
-
-const typeDefs = protocol.getDomains()
-    .map(d => d.getTypes())
-    .reduce((a, b) => a.concat(b), []); // TODO replace with .flat in 2020
-
+const inputDefs = protocol.getDomains().flatMap(d => d.getInputs());
+const typeDefs = protocol.getDomains().flatMap(d => d.getTypes());
 
 describe('InputDef', () => {
 
@@ -23,7 +15,7 @@ describe('InputDef', () => {
                 if (pointers == null) {
                     continue;
                 }
-                const values = inputDef.getCanonicalValues(example);
+                const values = inputDef.getCanonicalValues(example)!;
                 assert.ok(Array.isArray(values));
                 assert.ok(values.every(val => val != null),
                     `Input ${inputDef.id} contains a null canonical value: ${JSON.stringify(example)}`);
