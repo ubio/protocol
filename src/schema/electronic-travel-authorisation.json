@@ -41,6 +41,18 @@
         "application": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
         },
+        "passportBioDataPagePhoto": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "A photo with passport details section. Used for passport validation."
+        },
+        "otherDocuments": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "Invitation Letters from company / Invitation letter for business visits. Copies of registration of the company Family visits. Invitation Letters from family. Identity card / Passport / Alien card / Entry permit of the host. Travel itinerary (Details about places to visit if going as tourist). Hotel bookings. Identity Documents."
+        },
+        "passportPhoto": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "Applicant passport photo. Used for passport validation."
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
@@ -221,6 +233,10 @@
                         "ship",
                         ""
                     ]
+                },
+                "pointOfEntry": {
+                    "type": "string",
+                    "description": "The border point of entry. Port, airport or border name."
                 },
                 "isTransit": {
                     "type": "boolean"
