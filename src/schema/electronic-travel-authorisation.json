@@ -41,17 +41,9 @@
         "application": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
         },
-        "passportBioDataPagePhoto": {
+        "identityCardPhoto": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems",
-            "description": "A photo with passport details section. Used for passport validation."
-        },
-        "otherDocuments": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItems",
-            "description": "Invitation Letters from company / Invitation letter for business visits. Copies of registration of the company Family visits. Invitation Letters from family. Identity card / Passport / Alien card / Entry permit of the host. Travel itinerary (Details about places to visit if going as tourist). Hotel bookings. Identity Documents."
-        },
-        "passportPhoto": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItems",
-            "description": "Applicant passport photo. Used for passport validation."
+            "description": "A photo of applicant identity card. Used for visa validation."
         },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
@@ -686,6 +678,14 @@
                     "type": "string",
                     "description": "Document number.",
                     "example": "75 127001"
+                },
+                "passportBioDataPagePhoto": {
+                    "typeRef": "#/domains/Generic/types/StructuredTextItems",
+                    "description": "A photo with passport details section. Used for passport validation."
+                },
+                "passportPhoto": {
+                    "typeRef": "#/domains/Generic/types/StructuredTextItems",
+                    "description": "Applicant passport photo. Used for passport validation."
                 }
             },
             "required": [
