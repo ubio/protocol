@@ -42,7 +42,7 @@
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
         },
         "identityCardPhoto": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "typeRef": "#/domains/Generic/types/File",
             "description": "A photo of applicant identity card. Used for visa validation."
         },
         "account": {
@@ -679,12 +679,12 @@
                     "description": "Document number.",
                     "example": "75 127001"
                 },
-                "passportBioDataPagePhoto": {
-                    "typeRef": "#/domains/Generic/types/StructuredTextItems",
+                "bioDataPagePhoto": {
+                    "typeRef": "#/domains/Generic/types/File",
                     "description": "A photo with passport details section. Used for passport validation."
                 },
-                "passportPhoto": {
-                    "typeRef": "#/domains/Generic/types/StructuredTextItems",
+                "photo": {
+                    "typeRef": "#/domains/Generic/types/File",
                     "description": "Applicant passport photo. Used for passport validation."
                 }
             },
