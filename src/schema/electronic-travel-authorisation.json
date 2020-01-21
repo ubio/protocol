@@ -41,6 +41,10 @@
         "application": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
         },
+        "identityCardPhoto": {
+            "typeRef": "#/domains/Generic/types/File",
+            "description": "A photo of applicant identity card. Used for visa validation."
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
@@ -221,6 +225,10 @@
                         "ship",
                         ""
                     ]
+                },
+                "pointOfEntry": {
+                    "type": "string",
+                    "description": "The border point of entry. Port, airport or border name."
                 },
                 "isTransit": {
                     "type": "boolean"
@@ -670,6 +678,14 @@
                     "type": "string",
                     "description": "Document number.",
                     "example": "75 127001"
+                },
+                "bioDataPagePhoto": {
+                    "typeRef": "#/domains/Generic/types/File",
+                    "description": "A photo with passport details section. Used for passport validation."
+                },
+                "photo": {
+                    "typeRef": "#/domains/Generic/types/File",
+                    "description": "Applicant passport photo. Used for passport validation."
                 }
             },
             "required": [
