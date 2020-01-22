@@ -45,6 +45,22 @@
             "typeRef": "#/domains/Generic/types/File",
             "description": "A photo of applicant identity card. Used for visa validation."
         },
+        "bussinesInvitationLetter": {
+            "typeRef": "#/domains/Generic/types/File",
+            "description": "A photo of applicant invitation letter."
+        },
+        "companyRegistrationDocument": {
+            "typeRef": "#/domains/Generic/types/File",
+            "description": "A photo of company registration document. Used when travel for bussines."
+        },
+        "travelItineraryDocument": {
+            "typeRef": "#/domains/Generic/types/File",
+            "description": "A photo of travel itinerary. Used for bussines and tourism."
+        },
+        "hotelBookingConfirmationDocument": {
+            "typeRef": "#/domains/Generic/types/File",
+            "description": "A photo of hotel booking confirmation document."
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
