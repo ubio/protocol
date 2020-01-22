@@ -42,23 +42,23 @@
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
         },
         "identityCardPhoto": {
-            "typeRef": "#/domains/Generic/types/File",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableIdentityCardPhoto",
             "description": "A photo of applicant identity card. Used for visa validation."
         },
         "bussinesInvitationLetter": {
-            "typeRef": "#/domains/Generic/types/File",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableBussinesInvitationLetter",
             "description": "A photo of applicant invitation letter."
         },
         "companyRegistrationDocument": {
-            "typeRef": "#/domains/Generic/types/File",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableCompanyRegistrationDocument",
             "description": "A photo of company registration document. Used when travel for bussines."
         },
         "travelItineraryDocument": {
-            "typeRef": "#/domains/Generic/types/File",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableTravelItineraryDocument",
             "description": "A photo of travel itinerary. Used for bussines and tourism."
         },
         "hotelBookingConfirmationDocument": {
-            "typeRef": "#/domains/Generic/types/File",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableHotelBookingConfirmationDocument",
             "description": "A photo of hotel booking confirmation document."
         },
         "account": {
@@ -529,8 +529,7 @@
             ]
         },
         "DateOrEmptyString": {
-            "oneOf": [
-                {
+            "oneOf": [{
                     "type": "string",
                     "format": "date",
                     "example": "1976-01-27"
@@ -615,8 +614,7 @@
                             "format": "date",
                             "example": "1976-01-27"
                         },
-                        "city": {
-                        },
+                        "city": {},
                         "countryCode": {
                             "$ref": "#/domains/Generic/types/CountryCode"
                         }
@@ -742,7 +740,7 @@
                     "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
                     "example": "94581"
                 },
-                "countryCode": { "$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString" },
+                "countryCode": {"$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString"},
                 "countrySubdivision": {
                     "$ref": "#/domains/Generic/types/CountrySubdivision"
                 }
@@ -756,7 +754,9 @@
             "description": "Phone information, typically used on contact details pages.",
             "pii": true,
             "properties": {
-                "countryCode": { "$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString" },
+                "countryCode": {
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString"
+                },
                 "number": {
                     "type": "string",
                     "description": "Mobile phone number (numbers only, excluding country code).",
@@ -780,6 +780,65 @@
                         ""
                     ]
                 }
+            ]
+        },
+        "NullableIdentityCardPhoto": {
+            "oneOf": [
+                {
+                    "typeRef": "#/domains/Generic/types/File",
+                    "description": "A photo of applicant identity card. Used for visa validation."
+                },
+                {
+                    "type": "null"
+                }
+
+            ]
+        },
+        "NullableBussinesInvitationLetter": {
+            "oneOf": [
+                {
+                    "typeRef": "#/domains/Generic/types/File",
+                    "description": "A photo of applicant invitation letter."
+                },
+                {
+                    "type": "null"
+                }
+
+            ]
+        },
+        "NullableCompanyRegistrationDocument": {
+            "oneOf": [{
+                    "typeRef": "#/domains/Generic/types/File",
+                    "description": "A photo of company registration document. Used when travel for bussines."
+                },
+                {
+                    "type": "null"
+                }
+
+            ]
+        },
+        "NullableTravelItineraryDocument": {
+            "oneOf": [
+                {
+                    "typeRef": "#/domains/Generic/types/File",
+                    "description": "A photo of travel itinerary. Used for bussines and tourism."
+                },
+                {
+                    "type": "null"
+                }
+
+            ]
+        },
+        "NullableHotelBookingConfirmationDocument": {
+            "oneOf": [
+                {
+                    "typeRef": "#/domains/Generic/types/File",
+                    "description": "A photo of hotel booking confirmation document."
+                },
+                {
+                    "type": "null"
+                }
+
             ]
         }
     },
