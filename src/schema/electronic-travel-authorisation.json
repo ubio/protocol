@@ -791,10 +791,9 @@
                 {
                     "type": "null"
                 }
-
             ]
         },
-        "NullableBussinesInvitationLetter": {
+        "NullableBusinessInvitationLetter": {
             "oneOf": [
                 {
                     "typeRef": "#/domains/Generic/types/File",
@@ -803,7 +802,6 @@
                 {
                     "type": "null"
                 }
-
             ]
         },
         "NullableCompanyRegistrationDocument": {
@@ -826,7 +824,6 @@
                 {
                     "type": "null"
                 }
-
             ]
         },
         "NullableHotelBookingConfirmationDocument": {
@@ -838,7 +835,6 @@
                 {
                     "type": "null"
                 }
-
             ]
         }
     },
