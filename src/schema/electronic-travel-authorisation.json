@@ -42,7 +42,8 @@
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
         },
         "identityCardPhoto": {
-            "oneOF": [{
+            "oneOf": [
+                {
                     "typeRef": "#/domains/Generic/types/File",
                     "description": "A photo of applicant identity card. Used for visa validation."
                 },
@@ -53,7 +54,8 @@
             ]
         },
         "bussinesInvitationLetter": {
-            "oneOf": [{
+            "oneOf": [
+                {
                     "typeRef": "#/domains/Generic/types/File",
                     "description": "A photo of applicant invitation letter."
                 },
@@ -64,7 +66,8 @@
             ]
         },
         "companyRegistrationDocument": {
-            "oneOf": [{
+            "oneOf": [
+                {
                     "typeRef": "#/domains/Generic/types/File",
                     "description": "A photo of company registration document. Used when travel for bussines."
                 },
@@ -75,7 +78,8 @@
             ]
         },
         "travelItineraryDocument": {
-            "oneOf": [{
+            "oneOf": [
+                {
                     "typeRef": "#/domains/Generic/types/File",
                     "description": "A photo of travel itinerary. Used for bussines and tourism."
                 },
@@ -86,7 +90,8 @@
             ]
         },
         "hotelBookingConfirmationDocument": {
-            "oneOf": [{
+            "oneOf": [
+                {
                     "typeRef": "#/domains/Generic/types/File",
                     "description": "A photo of hotel booking confirmation document."
                 },
