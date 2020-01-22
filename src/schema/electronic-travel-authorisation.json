@@ -45,8 +45,8 @@
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableIdentityCardPhoto",
             "description": "A photo of applicant identity card. Used for visa validation."
         },
-        "bussinesInvitationLetter": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableBussinesInvitationLetter",
+        "businessInvitationLetter": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableBusinessInvitationLetter",
             "description": "A photo of applicant invitation letter."
         },
         "companyRegistrationDocument": {
