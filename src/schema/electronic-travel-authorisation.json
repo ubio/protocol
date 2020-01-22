@@ -783,10 +783,10 @@
             ]
         },
         "NullableIdentityCardPhoto": {
+            "description": "A photo of applicant identity card. Used for visa validation.",
             "oneOf": [
                 {
-                    "typeRef": "#/domains/Generic/types/File",
-                    "description": "A photo of applicant identity card. Used for visa validation."
+                    "$ref": "#/domains/Generic/types/File"
                 },
                 {
                     "type": "null"
@@ -794,10 +794,10 @@
             ]
         },
         "NullableBusinessInvitationLetter": {
+            "description": "A photo of applicant invitation letter.",
             "oneOf": [
                 {
-                    "typeRef": "#/domains/Generic/types/File",
-                    "description": "A photo of applicant invitation letter."
+                    "$ref": "#/domains/Generic/types/File"
                 },
                 {
                     "type": "null"
@@ -805,9 +805,10 @@
             ]
         },
         "NullableCompanyRegistrationDocument": {
-            "oneOf": [{
-                    "typeRef": "#/domains/Generic/types/File",
-                    "description": "A photo of company registration document. Used when travel for bussines."
+            "description": "A photo of company registration document. Used when travel for bussines.",
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/File"
                 },
                 {
                     "type": "null"
@@ -815,10 +816,10 @@
             ]
         },
         "NullableTravelItineraryDocument": {
+            "description": "A photo of travel itinerary. Used for bussines and tourism.",
             "oneOf": [
                 {
-                    "typeRef": "#/domains/Generic/types/File",
-                    "description": "A photo of travel itinerary. Used for bussines and tourism."
+                    "$ref": "#/domains/Generic/types/File"
                 },
                 {
                     "type": "null"
@@ -826,10 +827,10 @@
             ]
         },
         "NullableHotelBookingConfirmationDocument": {
+            "description": "A photo of hotel booking confirmation document.",
             "oneOf": [
                 {
-                    "typeRef": "#/domains/Generic/types/File",
-                    "description": "A photo of hotel booking confirmation document."
+                    "$ref": "#/domains/Generic/types/File"
                 },
                 {
                     "type": "null"
