@@ -138,6 +138,11 @@
                     "description": "If <code>true</code>, enables special rates output and input at search.",
                     "default": false
                 },
+                "showMemberRates": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, enables member rates output and input at room selection.",
+                    "default": false
+                },
                 "userAgent": {
                     "type": "string",
                     "description": "Enables custom user-agent header when performing automations."
