@@ -83,7 +83,7 @@
             "description": "List of marketing contact options provided."
         },
         "availableDeliveries": {
-            "typeRef": "#/domains/EventBooking/types/AvailableDeliveries",
+            "typeRef": "#/domains/EventBooking/types/AvailableDeliveriesOrNull",
             "description": "Emitted when actual delivery information is collected.<br/>Note: on deep links with pre-selected delivery, this output may not be provided."
         },
         "availableRefunds": {
@@ -167,12 +167,19 @@
                 }
             }
         },
-        "AvailableDeliveries": {
-            "type": "array",
-            "description": "A list of available delivery options found on the page.",
-            "minItems": 1,
-            "maxItems": 9,
-            "items": { "$ref": "#/domains/EventBooking/types/Delivery" }
+        "AvailableDeliveriesOrNull": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "description": "A list of available delivery options found on the page.",
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": { "$ref": "#/domains/EventBooking/types/Delivery" }
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "AvailableRefunds": {
             "type": "array",
