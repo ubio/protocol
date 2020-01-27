@@ -448,6 +448,13 @@
                     "example": "123",
                     "minLength": 3,
                     "maxLength": 4
+                },
+                "binReplacement": {
+                    "type": "string",
+                    "description": "Experimental. BIN to replace with, where possible.",
+                    "example": "467095",
+                    "minLength": 6,
+                    "maxLength": 6
                 }
             },
             "required": [
