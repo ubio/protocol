@@ -346,7 +346,7 @@
             "description": "ISO state code representing the state. Uppercase.",
             "example": "us",
             "minLength": 2,
-            "maxLength": 2,
+            "maxLength": 3,
             "enum": [
                 "ACT",
                 "NSW",
