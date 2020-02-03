@@ -238,8 +238,7 @@
                     "example": "2028-01-01"
                 },
                 "issueState": {
-                    "type": "string",
-                    "description": "State."
+                    "$ref": "#/domains/BroadbandSignupAU/types/StateCode"
                 },
                 "issueCountryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
@@ -339,6 +338,24 @@
             "additionalProperties": false,
             "required": [
                 "reference"
+            ]
+        },
+        "StateCode": {
+            "type": "string",
+            "title": "ISO state code.",
+            "description": "ISO state code representing the state. Uppercase.",
+            "example": "us",
+            "minLength": 2,
+            "maxLength": 2,
+            "enum": [
+                "ACT",
+                "NSW",
+                "NT",
+                "QLD",
+                "SA",
+                "TAS",
+                "VIC",
+                "WA"
             ]
         }
     },
