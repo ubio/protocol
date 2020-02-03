@@ -1,0 +1,347 @@
+{
+    "description": "Allows automating broadband package signups in Australia.",
+    "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/reference"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
+            "initial": true
+        },
+        "options": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Options",
+            "initial": true
+        },
+        "searchAddress": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/StringAddress"
+        },
+        "selectedAddress": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/StringAddress",
+            "sourceOutputKey": "availableAddresses",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBroadbandPackage": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Package",
+            "sourceOutputKey": "availableBroadbandPackages",
+            "inputMethod": "SelectOne"
+        },
+        "selectedPaymentPlan": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/PaymentPlan",
+            "sourceOutputKey": "availablePaymentPlans",
+            "inputMethod": "SelectOne"
+        },
+        "contactPerson": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/PersonDob"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "identityDocument": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/IdentityDocument"
+        },
+        "landlineOptions": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/LandlineOptions"
+        },
+        "keepPhoneNumberDetails": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/KeepPhoneNumberDetails"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent"
+        }
+    },
+    "outputs": {
+        "availableAddresses": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/StringAddresses",
+            "description": "List of available addresses to select from."
+        },
+        "availableBroadbandPackages": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Packages"
+        },
+        "availablePaymentPlans": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/PaymentPlans"
+        },
+        "priceBreakdown": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/PriceBreakdown",
+            "description": "The list of price components, as found on the website."
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Confirmation",
+            "description": "Booking confirmation"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
+                "success"
+            ],
+            "additionalProperties": false
+        },
+        "StringAddress": {
+            "type": "string",
+            "example": "50 Cresthaven"
+        },
+        "StringAddresses": {
+            "type": "array",
+            "description": "A list of strings.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupAU/types/StringAddress" }
+        },
+        "Packages": {
+            "type": "array",
+            "description": "A list of packages.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupAU/types/Package" }
+        },
+        "Package": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "All in One Package",
+                    "minLength": 1
+                },
+                "description": {
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "image": {
+                    "$ref": "#/domains/Generic/types/Link"
+                },
+                "estimatedSpeed": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "PaymentPlans": {
+            "type": "array",
+            "description": "A list of packages.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupAU/types/PaymentPlan" }
+        },
+        "PaymentPlan": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Monthly pay as you go",
+                    "minLength": 1
+                },
+                "priceLine": {
+                    "type": "string",
+                    "example": "Min. total cost $960 over 12 month(s) + $15 P&H"
+                }
+            },
+            "required": [
+                "name",
+                "priceLine"
+            ],
+            "additionalProperties": false
+        },
+        "PersonDob": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "IdentityDocument": {
+            "type": "object",
+            "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
+            "pii": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Document type.",
+                    "enum": [
+                        "passport",
+                        "driving-license"
+                    ]
+                },
+                "number": {
+                    "type": "string",
+                    "description": "Document number.",
+                    "example": "75 127001"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "issueState": {
+                    "type": "string",
+                    "description": "State."
+                },
+                "issueCountryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Code of country where the document was issued."
+                }
+            },
+            "required": [
+                "type",
+                "number",
+                "expirationDate",
+                "issueCountryCode",
+                "issueState"
+            ],
+            "additionalProperties": false
+        },
+        "LandlineOptions": {
+            "type": "object",
+            "description": "Landline options.",
+            "properties": {
+                "keepPhoneNumber": {
+                    "type": "boolean"
+                },
+                "transferService": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "keepPhoneNumber",
+                "transferService"
+            ],
+            "additionalProperties": false
+        },
+        "KeepPhoneNumberDetails": {
+            "type": "object",
+            "description": "Landline options.",
+            "properties": {
+                "phoneNumber": {
+                    "type": "string",
+                    "minLength": 10,
+                    "description": "Landline number (numbers only, excluding country code).",
+                    "example": "123456789",
+                    "pattern": "^0[0-9]{8,10}"
+                },
+                "serviceProvider": {
+                    "type": "string",
+                    "example": "dodo"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "example": "1234567890"
+                }
+            },
+            "required": [
+                "phoneNumber",
+                "serviceProvider",
+                "accountNumber"
+            ],
+            "additionalProperties": false
+        },
+        "PriceBreakdown": {
+            "type": "array",
+            "description": "The list of price components, as found on the website.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupAU/types/PriceBreakdownItem" }
+        },
+        "PriceBreakdownItem": {
+            "type": "object",
+            "description": "A component of the price breakdown.",
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The description of an item on the price breakdown list, as found on the website.",
+                    "example": "Credit card charge"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "text",
+                "price"
+            ]
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "description": "Booking reference extracted from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "reference"
+            ]
+        }
+    },
+    "errors": [
+    ]
+}

@@ -7,6 +7,7 @@ import MotorInsurance from './motor-insurance.json';
 import LoanApplication from './loan-application.json';
 import EventBooking from './event-booking.json';
 import BroadbandSignup from './broadband-signup.json';
+import BroadbandSignupAU from './broadband-signup-au.json';
 import HotelBooking from './hotel-booking.json';
 import TestHotelBooking from './test-hotel-booking.json';
 import HolidayBooking from './holiday-booking.json';
@@ -29,6 +30,7 @@ export const schema = {
         LoanApplication,
         EventBooking,
         BroadbandSignup,
+        BroadbandSignupAU,
         HotelBooking,
         TestHotelBooking,
         HolidayBooking,
