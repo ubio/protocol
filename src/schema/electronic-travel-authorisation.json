@@ -638,15 +638,83 @@
                     "type": "object",
                     "properties": {
                         "father": {
-                            "$ref": "#/domains/Generic/types/Person"
+                            "type": "object",
+                            "description": "Basic information about father's identity.",
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "mr.",
+                                    "enum": [
+                                        "",
+                                        "mr",
+                                        "miss",
+                                        "ms",
+                                        "mrs"
+                                    ]
+                                },
+                                "firstName": {
+                                    "type": "string",
+                                    "description": "First name(s) or given name(s), of person's father.",
+                                    "example": "Bob"
+                                },
+                                "middleName": {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                                },
+                                "lastName": {
+                                    "type": "string",
+                                    "description": "Last name or surname, of person's father.",
+                                    "example": "Smith"
+                                }
+                            },
+                            "required": [
+                                "firstName",
+                                "lastName"
+                            ],
+                            "additionalProperties": false
                         },
                         "mother": {
-                            "$ref": "#/domains/Generic/types/Person"
+                            "type": "object",
+                            "description": "Basic information about mother's identity.",
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "mr.",
+                                    "enum": [
+                                        "",
+                                        "mr",
+                                        "miss",
+                                        "ms",
+                                        "mrs"
+                                    ]
+                                },
+                                "firstName": {
+                                    "type": "string",
+                                    "description": "First name(s) or given name(s), of person's mother.",
+                                    "example": "Bob"
+                                },
+                                "middleName": {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                                },
+                                "lastName": {
+                                    "type": "string",
+                                    "description": "Last name or surname, of person's mother.",
+                                    "example": "Smith"
+                                }
+                            },
+                            "required": [
+                                "firstName",
+                                "lastName"
+                            ],
+                            "additionalProperties": false
                         }
                     },
                     "additionalProperties": false
                 }
-            },
+                },
             "required": [
                 "firstName",
                 "lastName"
