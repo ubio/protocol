@@ -714,7 +714,7 @@
                     },
                     "additionalProperties": false
                 }
-                },
+            },
             "required": [
                 "firstName",
                 "lastName"
