@@ -425,6 +425,10 @@
                         "$ref": "#/domains/HotelBooking/types/ValueAddition"
                     }
                 },
+                "rateGroup": {
+                    "type": "string",
+                    "example": "standard"
+                },
                 "images": {
                     "type": "array",
                     "items": {
