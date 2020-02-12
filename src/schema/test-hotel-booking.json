@@ -12,8 +12,7 @@
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
         "search": {
-            "typeRef": "#/domains/TestHotelBooking/types/Search",
-            "initial": true
+            "typeRef": "#/domains/TestHotelBooking/types/Search"
         },
         "options": {
             "typeRef": "#/domains/TestHotelBooking/types/Options",
@@ -100,6 +99,10 @@
         "availablePaymentMethods": {
             "typeRef": "#/domains/TestHotelBooking/types/PaymentMethods",
             "description": "List of payment methods found on the supplier's website."
+        },
+        "hotelDetails": {
+            "typeRef": "#/domains/TestHotelBooking/types/HotelDetails",
+            "description": "Details about the hotel."
         },
         "supportedCards": {
             "typeRef": "#/domains/TestHotelBooking/types/SupportedCards",
@@ -286,6 +289,23 @@
                 "$ref": "#/domains/TestHotelBooking/types/Hotel"
             }
         },
+        "HotelDetails": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "My Hotel"
+                },
+                "address": {
+                    "$ref": "#/domains/Generic/types/Address"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
         "Hotel": {
             "type": "object",
             "properties": {
@@ -342,6 +362,14 @@
                     "type": "string",
                     "example": "Standard Single Room"
                 },
+                "name": {
+                    "type": "string",
+                    "example": "Room with Window"
+                },
+                "rate": {
+                    "type": "string",
+                    "example": "Breakfast Plus"
+                },
                 "description": {
                     "$ref": "#/domains/TestHotelBooking/types/RoomDescription"
                 },
@@ -357,6 +385,12 @@
                     "example": {
                         "value": 30600,
                         "currency": "gbp"
+                    }
+                },
+                "priceLines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/TestHotelBooking/types/PriceLineItem"
                     }
                 },
                 "cancellation": {
@@ -390,15 +424,15 @@
                         "$ref": "#/domains/TestHotelBooking/types/ValueAddition"
                     }
                 },
+                "rateGroup": {
+                    "type": "string",
+                    "example": "standard"
+                },
                 "images": {
                     "type": "array",
                     "items": {
                         "$ref": "#/domains/Generic/types/Link"
                     }
-                },
-                "rateGroup": {
-                    "type": "string",
-                    "example": "standard"
                 }
             },
             "required": [
@@ -449,6 +483,9 @@
                     ]
                 },
                 "paidAtHotel": {
+                    "type": "boolean"
+                },
+                "excludedFromTotals": {
                     "type": "boolean"
                 },
                 "description": {
