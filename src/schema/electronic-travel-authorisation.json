@@ -79,6 +79,9 @@
         "cbpGlobalEntryProgramMembership": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/String"
         },
+        "previousApplicationVisaNumber": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/String"
+        },
         "residencyPermit": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/ResidencyPermit"
         }
