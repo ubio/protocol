@@ -88,7 +88,7 @@
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/String"
         },
         "previousApplicationVisaNumber": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/String"
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/PreviousApplicationVisaNumber"
         },
         "residencyPermit": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/ResidencyPermit"
@@ -865,6 +865,16 @@
             "oneOf": [
                 {
                     "$ref": "#/domains/Generic/types/File"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "PreviousApplicationVisaNumber": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/String"
                 },
                 {
                     "type": "null"
