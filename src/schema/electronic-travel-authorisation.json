@@ -42,23 +42,31 @@
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/Application"
         },
         "identityCardPhoto": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableIdentityCardPhoto",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableDocument",
             "description": "A photo of applicant identity card. Used for visa validation."
         },
         "businessInvitationLetter": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableBusinessInvitationLetter",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableDocument",
             "description": "A photo of applicant invitation letter."
         },
         "companyRegistrationDocument": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableCompanyRegistrationDocument",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableDocument",
             "description": "A photo of company registration document. Used when travel for bussines."
         },
         "travelItineraryDocument": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableTravelItineraryDocument",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableDocument",
             "description": "A photo of travel itinerary. Used for bussines and tourism."
         },
+        "visaApplication": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableDocument",
+            "description": "A photo of visa application. Used for bussines and tourism."
+        },
+        "residencyCardDocument": {
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableDocument",
+            "description": "A photo of residency card. Used for bussines and tourism."
+        },
         "hotelBookingConfirmationDocument": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableHotelBookingConfirmationDocument",
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/NullableDocument",
             "description": "A photo of hotel booking confirmation document."
         },
         "account": {
@@ -80,7 +88,7 @@
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/String"
         },
         "previousApplicationVisaNumber": {
-            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/String"
+            "typeRef": "#/domains/ElectronicTravelAuthorisation/types/PreviousApplicationVisaNumber"
         },
         "residencyPermit": {
             "typeRef": "#/domains/ElectronicTravelAuthorisation/types/ResidencyPermit"
@@ -853,8 +861,7 @@
                 }
             ]
         },
-        "NullableIdentityCardPhoto": {
-            "description": "A photo of applicant identity card. Used for visa validation.",
+        "NullableDocument": {
             "oneOf": [
                 {
                     "$ref": "#/domains/Generic/types/File"
@@ -864,44 +871,10 @@
                 }
             ]
         },
-        "NullableBusinessInvitationLetter": {
-            "description": "A photo of applicant invitation letter.",
+        "PreviousApplicationVisaNumber": {
             "oneOf": [
                 {
-                    "$ref": "#/domains/Generic/types/File"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "NullableCompanyRegistrationDocument": {
-            "description": "A photo of company registration document. Used when travel for bussines.",
-            "oneOf": [
-                {
-                    "$ref": "#/domains/Generic/types/File"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "NullableTravelItineraryDocument": {
-            "description": "A photo of travel itinerary. Used for bussines and tourism.",
-            "oneOf": [
-                {
-                    "$ref": "#/domains/Generic/types/File"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "NullableHotelBookingConfirmationDocument": {
-            "description": "A photo of hotel booking confirmation document.",
-            "oneOf": [
-                {
-                    "$ref": "#/domains/Generic/types/File"
+                    "$ref": "#/domains/ElectronicTravelAuthorisation/types/String"
                 },
                 {
                     "type": "null"
