@@ -18,6 +18,7 @@ import MotorInsuranceExtraction from './motor-insurance-extraction.json';
 import PetInsurance from './pet-insurance.json';
 import MobileSignup from './mobile-signup.json';
 import FlightBookingManagement from './flight-booking-management.json';
+import ContestSignup from './contest-signup.json';
 
 export const schema = {
     $id: 'https://protocol.automationcloud.net/schema.json',
@@ -42,5 +43,6 @@ export const schema = {
         PetInsurance,
         MobileSignup,
         FlightBookingManagement,
+        ContestSignup,
     }
 };

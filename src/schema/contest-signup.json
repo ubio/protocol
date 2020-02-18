@@ -1,0 +1,123 @@
+{
+    "description": "",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": [
+                "/email"
+            ]
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "selectedEntry": {
+            "typeRef": "#/domains/ContestSignup/types/Entry"
+        },
+        "participants": {
+            "typeRef": "#/domains/ContestSignup/types/Participants"
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "availableEntries": {
+            "typeRef": "#/domains/ContestSignup/types/Entries"
+        }
+    },
+    "types": {
+        "Entries": {
+            "type": "array",
+            "description": "A list of possible entries.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/ContestSignup/types/Entry"
+            }
+        },
+        "Entry": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "count": {
+                    "type": "integer"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "name",
+                "count"
+            ]
+        },
+        "Participants": {
+            "type": "array",
+            "description": "A list of participants.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/ContestSignup/types/Participant"
+            }
+        },
+        "Participant": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth",
+                "email",
+                "phone"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+    ]
+}
