@@ -24,6 +24,10 @@
         },
         "participants": {
             "typeRef": "#/domains/ContestSignup/types/Participants"
+        },
+        "options": {
+            "typeRef": "#/domains/ContestSignup/types/Options",
+            "initial": true
         }
     },
     "outputs": {
@@ -36,6 +40,12 @@
         }
     },
     "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "properties": {
+            }
+        },
         "Entries": {
             "type": "array",
             "description": "A list of possible entries.",
