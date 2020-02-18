@@ -19,8 +19,8 @@
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
-        "selectedEntry": {
-            "typeRef": "#/domains/ContestSignup/types/Entry"
+        "selectedEntries": {
+            "typeRef": "#/domains/ContestSignup/types/Entries"
         },
         "participants": {
             "typeRef": "#/domains/ContestSignup/types/Participants"
@@ -56,8 +56,7 @@
             },
             "additionalProperties": false,
             "required": [
-                "name",
-                "count"
+                "name"
             ]
         },
         "Participants": {
