@@ -250,6 +250,7 @@
                     "enum": [
                         "aeroplane",
                         "ship",
+                        "land",
                         ""
                     ]
                 },
