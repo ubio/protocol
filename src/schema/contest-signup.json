@@ -38,6 +38,9 @@
         "options": {
             "typeRef": "#/domains/ContestSignup/types/Options",
             "initial": true
+        },
+        "discount": {
+            "typeRef": "#/domains/ContestSignup/types/Discount"
         }
     },
     "outputs": {
@@ -148,6 +151,21 @@
                 "phone"
             ],
             "additionalProperties": false
+        },
+        "Discount": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Discount code",
+                    "example": "RL2XYZ"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "code"
+            ]
         },
         "Confirmation": {
             "type": "object",
