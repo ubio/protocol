@@ -25,6 +25,10 @@
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent"
         },
+        "priceRange": {
+            "typeRef": "#/domains/Generic/types/PriceRange",
+            "description": "Acceptable price range. Prices within this range are acceptable and purchases will be automatically confirmed."
+        },
         "selectedEntries": {
             "typeRef": "#/domains/ContestSignup/types/Entries"
         },

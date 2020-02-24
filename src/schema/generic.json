@@ -364,6 +364,29 @@
             ],
             "additionalProperties": false
         },
+        "PriceRange": {
+            "type": "object",
+            "description": "Price range information.",
+            "properties": {
+                "currencyCode": { "$ref": "#/domains/Generic/types/CurrencyCode" },
+                "min": {
+                    "type": "integer",
+                    "description": "An integer in the smallest currency unit (100 for £1.00).",
+                    "example": "12000"
+                },
+                "max": {
+                    "type": "integer",
+                    "description": "An integer in the smallest currency unit (100 for £1.00).",
+                    "example": "12300"
+                }
+            },
+            "required": [
+                "currencyCode",
+                "min",
+                "max"
+            ],
+            "additionalProperties": false
+        },
         "Payment": {
             "type": "object",
             "description": "Payment information, including card details and billing address.",
