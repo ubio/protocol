@@ -1263,6 +1263,11 @@
             "description": "Invalid cookie provided"
         },
         {
+            "code": "PriceRangeExceeded",
+            "category": "client",
+            "description": "Price range exceeded input specifications."
+        },
+        {
             "code": "PriceChangedAfterConsent",
             "category": "website",
             "description": "Price changed after final price consent."
