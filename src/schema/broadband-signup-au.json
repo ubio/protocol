@@ -28,9 +28,24 @@
             "sourceOutputKey": "availableBroadbandPackages",
             "inputMethod": "SelectOne"
         },
-        "selectedPaymentPlan": {
-            "typeRef": "#/domains/BroadbandSignupAU/types/PaymentPlan",
-            "sourceOutputKey": "availablePaymentPlans",
+        "selectedBroadbandExtras": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Extras",
+            "sourceOutputKey": "availableBroadbandExtras",
+            "inputMethod": "SelectMany"
+        },
+        "selectedPhoneExtras": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Extras",
+            "sourceOutputKey": "availablePhoneExtras",
+            "inputMethod": "SelectMany"
+        },
+        "selectedTvExtras": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Extras",
+            "sourceOutputKey": "availableTvExtras",
+            "inputMethod": "SelectMany"
+        },
+        "selectedTvPackage": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Extra",
+            "sourceOutputKey": "availableTvPackages",
             "inputMethod": "SelectOne"
         },
         "contactPerson": {
@@ -41,6 +56,15 @@
         },
         "identityDocument": {
             "typeRef": "#/domains/BroadbandSignupAU/types/IdentityDocument"
+        },
+        "residetialStatus": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/AddressStatus"
+        },
+        "employment": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Employment"
+        },
+        "document": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Document"
         },
         "landlineOptions": {
             "typeRef": "#/domains/BroadbandSignupAU/types/LandlineOptions"
@@ -69,8 +93,17 @@
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignupAU/types/Packages"
         },
-        "availablePaymentPlans": {
-            "typeRef": "#/domains/BroadbandSignupAU/types/PaymentPlans"
+        "availableBroadbandExtras": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Extras"
+        },
+        "availablePhoneExtras": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Extras"
+        },
+        "availableTvExtras": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Extras"
+        },
+        "availableTvPackages": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/Extras"
         },
         "priceBreakdown": {
             "typeRef": "#/domains/BroadbandSignupAU/types/PriceBreakdown",
@@ -123,6 +156,16 @@
                     "example": "All in One Package",
                     "minLength": 1
                 },
+                "paymentPlan": {
+                    "type": "string",
+                    "example": "Month to month",
+                    "minLength": 1
+                },
+                "priceLine": {
+                    "type": "string",
+                    "example": "Min. total cost for first month is $270 incl. $200 upfront costs",
+                    "minLength": 1
+                },
                 "description": {
                     "$ref": "#/domains/Generic/types/StructuredTextItem"
                 },
@@ -141,28 +184,239 @@
             ],
             "additionalProperties": false
         },
-        "PaymentPlans": {
+        "Extras": {
             "type": "array",
-            "description": "A list of packages.",
+            "description": "A list of extras.",
             "minItems": 1,
-            "items": { "$ref": "#/domains/BroadbandSignupAU/types/PaymentPlan" }
+            "items": { "$ref": "#/domains/BroadbandSignupAU/types/Extra" }
         },
-        "PaymentPlan": {
+        "Extra": {
             "type": "object",
             "properties": {
                 "name": {
                     "type": "string",
-                    "example": "Monthly pay as you go",
+                    "example": "Internet 100",
                     "minLength": 1
                 },
-                "priceLine": {
-                    "type": "string",
-                    "example": "Min. total cost $960 over 12 month(s) + $15 P&H"
+                "description": {
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
                 }
             },
             "required": [
-                "name",
-                "priceLine"
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "AddressStatus": {
+            "type": "object",
+            "properties": {
+                "currentAddress": {
+                    "type": "object",
+                    "properties": {
+                        "line1": {
+                            "type": "string",
+                            "example": "50 CRESTHAVEN BVD",
+                            "minLength": 1
+                        },
+                        "line2": {
+                            "type": "string",
+                            "example": "Flat 2"
+                        },
+                        "postCode": {
+                            "type": "string",
+                            "example": "3806",
+                            "minLength": 1
+                        },
+                        "city": {
+                            "type": "string",
+                            "example": "Melbourne",
+                            "minLength": 1
+                        },
+                        "citySubdivision": {
+                            "type": "string",
+                            "example": "Berwick",
+                            "minLength": 1
+                        },
+                        "countrySubdivision": {
+                            "type": "string",
+                            "enum": [
+                                "ACT",
+                                "NSW",
+                                "NT",
+                                "QLD",
+                                "SA",
+                                "TAS",
+                                "VIC",
+                                "WA"
+                            ]
+                        },
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "owned",
+                                "rent",
+                                "others"
+                            ]
+                        },
+                        "moveingInDate": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2001-01-01"
+                        }
+                    },
+                    "required": [
+                        "line1",
+                        "postCode",
+                        "city",
+                        "citySubdivision",
+                        "countrySubdivision",
+                        "status"
+                    ],
+                    "additionalProperties": false
+                },
+                "previousAddress": {
+                    "type": "object",
+                    "properties": {
+                        "line1": {
+                            "type": "string",
+                            "example": "50 CRESTHAVEN BVD",
+                            "minLength": 1
+                        },
+                        "line2": {
+                            "type": "string",
+                            "example": "Flat 2"
+                        },
+                        "postCode": {
+                            "type": "string",
+                            "example": "3806",
+                            "minLength": 1
+                        },
+                        "city": {
+                            "type": "string",
+                            "example": "Melbourne",
+                            "minLength": 1
+                        },
+                        "citySubdivision": {
+                            "type": "string",
+                            "example": "Berwick",
+                            "minLength": 1
+                        },
+                        "countrySubdivision": {
+                            "type": "string",
+                            "enum": [
+                                "ACT",
+                                "NSW",
+                                "NT",
+                                "QLD",
+                                "SA",
+                                "TAS",
+                                "VIC",
+                                "WA"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "line1",
+                        "postCode",
+                        "city",
+                        "citySubdivision",
+                        "countrySubdivision"
+                    ],
+                    "additionalProperties": false
+                }
+                   
+            },
+            "required": [
+                "currentAddress"
+            ],
+            "additionalProperties": false
+        },
+        "Employment": {
+            "type": "object",
+            "properties": {
+                "occupation": {
+                    "type": "string",
+                    "example": "Product Manager",
+                    "minLength": 1
+                },
+                "industry": {
+                    "type": "string",
+                    "example": "IT",
+                    "minLength": 1
+                },
+                "status": {
+                    "type": "string",
+                    "example": "professional",
+                    "minLength": 1
+                },
+                "employerName": {
+                    "type": "string",
+                    "example": "Intel",
+                    "minLength": 1
+                },
+                "startDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2001-01-01"
+                }
+            },
+            "required": [
+                "occupation",
+                "industry",
+                "status",
+                "employerName",
+                "startDate"
+
+            ],
+            "additionalProperties": false
+        },
+        "Document": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "passport",
+                    "minLength": 1
+                },
+                "number": {
+                    "type": "string",
+                    "example": "46532646",
+                    "minLength": 1
+                },
+                "state": {
+                    "type": "string",
+                    "enum": [
+                        "ACT",
+                        "NSW",
+                        "NT",
+                        "QLD",
+                        "SA",
+                        "TAS",
+                        "VIC",
+                        "WA"
+                    ]
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2001-01-01"
+                }
+                
+            },
+            "required": [
+                "type",
+                "number",
+                "state",
+                "expirationDate",
+                "issueDate"
             ],
             "additionalProperties": false
         },
@@ -360,5 +614,30 @@
         }
     },
     "errors": [
+        {
+            "code": "ContactUsToContinue",
+            "category": "client",
+            "description": "The user being asked to contact the supplier to continue the purchase."
+        },
+        {
+            "code": "AlreadyACustomer",
+            "category": "client",
+            "description": "The user being signed up is already a customer of this service."
+        },
+        {
+            "code": "PackageNotAvailable",
+            "category": "client",
+            "description": "The package is not avaialbe."
+        },
+        {
+            "code": "LandlineMandatory",
+            "category": "client",
+            "description": "The landline is mandatory, but not either not provided or not valid."
+        },
+        {
+            "code": "LandlineInvalid",
+            "category": "client",
+            "description": "The landline is not valid."
+        }
     ]
 }
