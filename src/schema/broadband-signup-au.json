@@ -63,9 +63,6 @@
         "employment": {
             "typeRef": "#/domains/BroadbandSignupAU/types/Employment"
         },
-        "document": {
-            "typeRef": "#/domains/BroadbandSignupAU/types/Document"
-        },
         "landlineOptions": {
             "typeRef": "#/domains/BroadbandSignupAU/types/LandlineOptions"
         },
@@ -241,17 +238,7 @@
                             "minLength": 1
                         },
                         "countrySubdivision": {
-                            "type": "string",
-                            "enum": [
-                                "ACT",
-                                "NSW",
-                                "NT",
-                                "QLD",
-                                "SA",
-                                "TAS",
-                                "VIC",
-                                "WA"
-                            ]
+                            "$ref": "#/domains/BroadbandSignupAU/types/StateCode"
                         },
                         "status": {
                             "type": "string",
@@ -370,55 +357,6 @@
                 "employerName",
                 "startDate"
 
-            ],
-            "additionalProperties": false
-        },
-        "Document": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "driverLicense",
-                        "passport"
-                    ]
-                },
-                "number": {
-                    "type": "string",
-                    "example": "46532646",
-                    "minLength": 1
-                },
-                "state": {
-                    "type": "string",
-                    "enum": [
-                        "ACT",
-                        "NSW",
-                        "NT",
-                        "QLD",
-                        "SA",
-                        "TAS",
-                        "VIC",
-                        "WA"
-                    ]
-                },
-                "expirationDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2028-01-01"
-                },
-                "issueDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2001-01-01"
-                }
-                
-            },
-            "required": [
-                "type",
-                "number",
-                "state",
-                "expirationDate",
-                "issueDate"
             ],
             "additionalProperties": false
         },
