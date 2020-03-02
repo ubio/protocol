@@ -292,17 +292,7 @@
                             "minLength": 1
                         },
                         "countrySubdivision": {
-                            "type": "string",
-                            "enum": [
-                                "ACT",
-                                "NSW",
-                                "NT",
-                                "QLD",
-                                "SA",
-                                "TAS",
-                                "VIC",
-                                "WA"
-                            ]
+                            "$ref": "#/domains/BroadbandSignupAU/types/StateCode"
                         }
                     },
                     "required": [
