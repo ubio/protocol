@@ -326,8 +326,13 @@
                 },
                 "status": {
                     "type": "string",
-                    "example": "professional",
-                    "minLength": 1
+                    "enum": [
+                        "self employed",
+                        "employed",
+                        "unemployed",
+                        "part time",
+                        "retired"
+                    ]
                 },
                 "employerName": {
                     "type": "string",
