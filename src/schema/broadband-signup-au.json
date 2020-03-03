@@ -249,7 +249,7 @@
                         "others"
                     ]
                 },
-                "moveingInDate": {
+                "moveInDate": {
                     "type": "string",
                     "format": "date",
                     "example": "2001-01-01"
@@ -327,10 +327,10 @@
                 "status": {
                     "type": "string",
                     "enum": [
-                        "self employed",
+                        "self-employed",
                         "employed",
                         "unemployed",
-                        "part time",
+                        "part-time",
                         "retired"
                     ]
                 },
