@@ -57,8 +57,12 @@
         "identityDocument": {
             "typeRef": "#/domains/BroadbandSignupAU/types/IdentityDocument"
         },
-        "residetialStatus": {
-            "typeRef": "#/domains/BroadbandSignupAU/types/AddressStatus"
+        "currentAddress": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/CurrentAddress"
+        },
+        "previousAddresses": {
+            "typeRef": "#/domains/BroadbandSignupAU/types/PreviousAddresses",
+            "inputMethod": "SelectMany"
         },
         "employment": {
             "typeRef": "#/domains/BroadbandSignupAU/types/Employment"
@@ -153,7 +157,7 @@
                     "example": "All in One Package",
                     "minLength": 1
                 },
-                "paymentPlan": {
+                "paymentPlanName": {
                     "type": "string",
                     "example": "Month to month",
                     "minLength": 1
@@ -207,107 +211,103 @@
             ],
             "additionalProperties": false
         },
-        "AddressStatus": {
+        "CurrentAddress": {
             "type": "object",
             "properties": {
-                "currentAddress": {
-                    "type": "object",
-                    "properties": {
-                        "line1": {
-                            "type": "string",
-                            "example": "50 CRESTHAVEN BVD",
-                            "minLength": 1
-                        },
-                        "line2": {
-                            "type": "string",
-                            "example": "Flat 2"
-                        },
-                        "postCode": {
-                            "type": "string",
-                            "example": "3806",
-                            "minLength": 1
-                        },
-                        "city": {
-                            "type": "string",
-                            "example": "Melbourne",
-                            "minLength": 1
-                        },
-                        "citySubdivision": {
-                            "type": "string",
-                            "example": "Berwick",
-                            "minLength": 1
-                        },
-                        "countrySubdivision": {
-                            "$ref": "#/domains/BroadbandSignupAU/types/StateCode"
-                        },
-                        "status": {
-                            "type": "string",
-                            "enum": [
-                                "owned",
-                                "rent",
-                                "others"
-                            ]
-                        },
-                        "moveingInDate": {
-                            "type": "string",
-                            "format": "date",
-                            "example": "2001-01-01"
-                        }
-                    },
-                    "required": [
-                        "line1",
-                        "postCode",
-                        "city",
-                        "citySubdivision",
-                        "countrySubdivision",
-                        "status"
-                    ],
-                    "additionalProperties": false
+                "line1": {
+                    "type": "string",
+                    "example": "50 CRESTHAVEN BVD",
+                    "minLength": 1
                 },
-                "previousAddress": {
-                    "type": "object",
-                    "properties": {
-                        "line1": {
-                            "type": "string",
-                            "example": "50 CRESTHAVEN BVD",
-                            "minLength": 1
-                        },
-                        "line2": {
-                            "type": "string",
-                            "example": "Flat 2"
-                        },
-                        "postCode": {
-                            "type": "string",
-                            "example": "3806",
-                            "minLength": 1
-                        },
-                        "city": {
-                            "type": "string",
-                            "example": "Melbourne",
-                            "minLength": 1
-                        },
-                        "citySubdivision": {
-                            "type": "string",
-                            "example": "Berwick",
-                            "minLength": 1
-                        },
-                        "countrySubdivision": {
-                            "$ref": "#/domains/BroadbandSignupAU/types/StateCode"
-                        }
-                    },
-                    "required": [
-                        "line1",
-                        "postCode",
-                        "city",
-                        "citySubdivision",
-                        "countrySubdivision"
-                    ],
-                    "additionalProperties": false
+                "line2": {
+                    "type": "string",
+                    "example": "Flat 2"
+                },
+                "postCode": {
+                    "type": "string",
+                    "example": "3806",
+                    "minLength": 1
+                },
+                "city": {
+                    "type": "string",
+                    "example": "Melbourne",
+                    "minLength": 1
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "example": "Berwick",
+                    "minLength": 1
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/BroadbandSignupAU/types/StateCode"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "owned",
+                        "rent",
+                        "others"
+                    ]
+                },
+                "moveingInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2001-01-01"
                 }
-                   
             },
             "required": [
-                "currentAddress"
+                "line1",
+                "postCode",
+                "city",
+                "citySubdivision",
+                "countrySubdivision",
+                "status"
+            ],
+            "additionalProperties": false
+        },
+        "PreviousAddresses": {
+            "type": "array",
+            "description": "A list of extras.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupAU/types/PreviousAddress" }
+        },
+        "PreviousAddress": {
+            "type": "object",
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "example": "50 CRESTHAVEN BVD",
+                    "minLength": 1
+                },
+                "line2": {
+                    "type": "string",
+                    "example": "Flat 2"
+                },
+                "postCode": {
+                    "type": "string",
+                    "example": "3806",
+                    "minLength": 1
+                },
+                "city": {
+                    "type": "string",
+                    "example": "Melbourne",
+                    "minLength": 1
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "example": "Berwick",
+                    "minLength": 1
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/BroadbandSignupAU/types/StateCode"
+                }
+            },
+            "required": [
+                "line1",
+                "postCode",
+                "city",
+                "citySubdivision",
+                "countrySubdivision"
             ],
             "additionalProperties": false
         },
