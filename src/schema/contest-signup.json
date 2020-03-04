@@ -11,6 +11,9 @@
             "description": "Website entry point.",
             "initial": true
         },
+        "agentLogin": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "canonical": [
