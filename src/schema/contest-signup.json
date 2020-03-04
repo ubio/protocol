@@ -33,6 +33,9 @@
             "typeRef": "#/domains/Generic/types/PriceRange",
             "description": "Acceptable price range. Prices within this range are acceptable and purchases will be automatically confirmed."
         },
+        "selectedEvent": {
+            "typeRef": "#/domains/ContestSignup/types/Event"
+        },
         "selectedEntries": {
             "typeRef": "#/domains/ContestSignup/types/Entries"
         },
@@ -51,6 +54,9 @@
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "availableEvents": {
+            "typeRef": "#/domains/ContestSignup/types/Events"
         },
         "availableEntries": {
             "typeRef": "#/domains/ContestSignup/types/Entries"
@@ -75,6 +81,26 @@
                     "default": ""
                 }
             }
+        },
+        "Events": {
+            "type": "array",
+            "description": "A list of events.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/ContestSignup/types/Event"
+            }
+        },
+        "Event": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "name"
+            ]
         },
         "Entries": {
             "type": "array",
