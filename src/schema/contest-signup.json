@@ -95,7 +95,15 @@
             "properties": {
                 "name": {
                     "type": "string"
-                }
+                },
+                "startDate": {
+                    "type": "date"
+                },
+                "startTime": {
+                    "type": "string"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" },
+                "strikePrice": { "$ref": "#/domains/Generic/types/Price" }
             },
             "additionalProperties": false,
             "required": [
