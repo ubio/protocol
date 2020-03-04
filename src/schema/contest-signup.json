@@ -34,10 +34,14 @@
             "description": "Acceptable price range. Prices within this range are acceptable and purchases will be automatically confirmed."
         },
         "selectedEvent": {
-            "typeRef": "#/domains/ContestSignup/types/Event"
+            "typeRef": "#/domains/ContestSignup/types/Event",
+            "sourceOutputKey": "availableEvents",
+            "inputMethod": "SelectOne"
         },
         "selectedEntries": {
-            "typeRef": "#/domains/ContestSignup/types/Entries"
+            "typeRef": "#/domains/ContestSignup/types/Entries",
+            "sourceOutputKey": "availableEntries",
+            "inputMethod": "SelectMany"
         },
         "participants": {
             "typeRef": "#/domains/ContestSignup/types/Participants"
