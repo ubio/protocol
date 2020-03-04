@@ -52,6 +52,9 @@
         },
         "discount": {
             "typeRef": "#/domains/ContestSignup/types/Discount"
+        },
+        "emergencyContact": {
+            "typeRef": "#/domains/ContestSignup/types/EmergencyContact"
         }
     },
     "outputs": {
@@ -229,6 +232,18 @@
             "additionalProperties": false,
             "required": [
                 "code"
+            ]
+        },
+        "EmergencyContact": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "person": { "$ref": "#/domains/Generic/types/Person" },
+                "number": { "$ref": "#/domains/Generic/types/Phone" }
+            },
+            "additionalProperties": false,
+            "required": [
+                "number"
             ]
         },
         "Confirmation": {
