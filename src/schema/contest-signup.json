@@ -182,6 +182,10 @@
                 "phone": {
                     "description": "Account phone number, may also be used as contact details.",
                     "$ref": "#/domains/Generic/types/Phone"
+                },
+                "membership": {
+                    "description": "Personal membership details.",
+                    "$ref": "#/domains/ContestSignup/types/Membership"
                 }
             },
             "required": [
@@ -193,6 +197,24 @@
                 "phone"
             ],
             "additionalProperties": false
+        },
+        "Membership": {
+            "type": "object",
+            "description": "Membership details.",
+            "properties": {
+                "organisation": {
+                    "type": "string",
+                    "example": "Run for Us"
+                },
+                "number": {
+                    "type": "string",
+                    "example": "rfu-12345"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "number"
+            ]
         },
         "Discount": {
             "type": "object",
