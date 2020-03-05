@@ -239,14 +239,15 @@
         },
         "EmergencyContact": {
             "type": "object",
-            "description": "Information gathered on \"Booking success\" page.",
+            "description": "Emergency contact details.",
             "properties": {
                 "person": { "$ref": "#/domains/Generic/types/Person" },
                 "phone": { "$ref": "#/domains/Generic/types/Phone" }
             },
             "additionalProperties": false,
             "required": [
-                "number"
+                "person",
+                "phone"
             ]
         },
         "Confirmation": {
