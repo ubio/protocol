@@ -67,6 +67,9 @@
         "availableEventOptions": {
             "typeRef": "#/domains/ContestSignup/types/AvailableOptions"
         },
+        "availableParticipantOptions": {
+            "typeRef": "#/domains/ContestSignup/types/AvailableOptions"
+        },
         "confirmation": {
             "typeRef": "#/domains/ContestSignup/types/Confirmation"
         }
@@ -189,6 +192,10 @@
                 "membership": {
                     "description": "Personal membership details.",
                     "$ref": "#/domains/ContestSignup/types/Membership"
+                },
+                "additionalOptions": {
+                    "description": "Additional personal details requested by the supplier.",
+                    "$ref": "#/domains/ContestSignup/types/SelectedOptions"
                 }
             },
             "required": [
