@@ -97,7 +97,8 @@
                     "type": "string"
                 },
                 "startDate": {
-                    "type": "date"
+                    "type": "string",
+                    "format": "date"
                 },
                 "startTime": {
                     "type": "string"
@@ -258,6 +259,79 @@
             "additionalProperties": false,
             "required": [
             ]
+        },
+        "AvailableOptions": {
+            "type": "array",
+            "description": "Additional options to be filled in.",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/domains/ContestSignup/types/AvailableOptionString"
+                    },
+                    {
+                        "$ref": "#/domains/ContestSignup/types/AvailableOptionSelectOne"
+                    },
+                    {
+                        "$ref": "#/domains/ContestSignup/types/AvailableOptionSelectMany"
+                    }
+                ]
+            }
+        },
+        "AvailableOptionString": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "String" ] },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableOptionSelectOne": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectOne" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableOptionSelectMany": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectMany" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
