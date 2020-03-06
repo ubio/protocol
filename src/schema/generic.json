@@ -1312,7 +1312,12 @@
         {
             "code": "JobTimeout",
             "category": "server",
-            "description": "Job timeout after an hour of job creation without reaching the final step"
+            "description": "Job timeout after an hour of job creation without reaching the final step."
+        },
+        {
+            "code": "BotDetection",
+            "category": "server",
+            "description": "The automation could not continue because it was bot detected and the available countermeasures did not work around the issue."
         }
     ]
 }
