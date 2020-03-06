@@ -40,6 +40,9 @@
             "sourceOutputKey": "availableEntries",
             "inputMethod": "SelectMany"
         },
+        "selectedEventOptions": {
+            "typeRef": "#/domains/ContestSignup/types/SelectedOptions"
+        },
         "participants": {
             "typeRef": "#/domains/ContestSignup/types/Participants"
         },
@@ -60,6 +63,9 @@
         },
         "availableEntries": {
             "typeRef": "#/domains/ContestSignup/types/Entries"
+        },
+        "availableEventOptions": {
+            "typeRef": "#/domains/ContestSignup/types/AvailableOptions"
         },
         "confirmation": {
             "typeRef": "#/domains/ContestSignup/types/Confirmation"
@@ -313,6 +319,80 @@
             "additionalProperties": false
         },
         "AvailableOptionSelectMany": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectMany" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptions": {
+            "type": "array",
+            "description": "Additional options to fill in.",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/domains/ContestSignup/types/SelectedOptionString"
+                    },
+                    {
+                        "$ref": "#/domains/ContestSignup/types/SelectedOptionSelectOne"
+                    },
+                    {
+                        "$ref": "#/domains/ContestSignup/types/SelectedOptionSelectMany"
+                    }
+                ]
+            }
+        },
+        "SelectedOptionString": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "String" ] },
+                "label": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "text"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptionSelectOne": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectOne" ] },
+                "label": {
+                    "type": "string"
+                },
+                "option": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "option"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptionSelectMany": {
             "type": "object",
             "properties": {
                 "inputType": { "enum": [ "SelectMany" ] },
