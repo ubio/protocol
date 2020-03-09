@@ -427,5 +427,10 @@
         }
     },
     "errors": [
+        {
+            "code": "InvalidAdditionalParticipantOptions",
+            "category": "client",
+            "description": "The participants/*/additionalOptions is invalid."
+        }
     ]
 }
