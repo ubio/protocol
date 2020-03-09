@@ -136,7 +136,8 @@
                 },
                 "count": {
                     "type": "integer"
-                }
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "additionalProperties": false,
             "required": [
