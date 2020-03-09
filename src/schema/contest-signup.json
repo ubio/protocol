@@ -246,12 +246,16 @@
             "type": "object",
             "description": "Emergency contact details.",
             "properties": {
-                "person": { "$ref": "#/domains/Generic/types/Person" },
-                "phone": { "$ref": "#/domains/Generic/types/Phone" }
+                "name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
             },
             "additionalProperties": false,
             "required": [
-                "person",
+                "name",
                 "phone"
             ]
         },
