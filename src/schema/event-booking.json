@@ -286,7 +286,6 @@
                 }
             },
             "required": [
-                "number"
             ],
             "additionalProperties": false
         },
