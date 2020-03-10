@@ -98,6 +98,9 @@
         },
         "showName": {
             "typeRef": "#/domains/EventBooking/types/ShowName"
+        },
+        "seatsReserved": {
+            "typeRef": "#/domains/EventBooking/types/Boolean"
         }
     },
     "types": {
@@ -327,6 +330,9 @@
         "AccountPassword": {
             "type": "string",
             "pii": true
+        },
+        "Boolean": {
+            "type": "boolean"
         }
     },
     "errors": [
