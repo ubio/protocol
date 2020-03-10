@@ -167,6 +167,10 @@
                 "noDMTJobsBefore": {
                     "type": "boolean",
                     "default": false
+                },
+                "upsells": {
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
