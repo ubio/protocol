@@ -79,6 +79,9 @@
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent"
         },
+        "discount": {
+            "typeRef": "#/domains/HotelBooking/types/Discount"
+        },
         "loginConfirmationCode": {
             "typeRef": "#/domains/HotelBooking/types/ConfirmationCode",
             "description": "When logging in, some websites require a confirmation code."
@@ -148,11 +151,31 @@
                     "description": "If <code>true</code>, enables member rates output and input at room selection.",
                     "default": false
                 },
+                "enableDiscountCode": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, enables the discount code input.",
+                    "default": false
+                },
                 "userAgent": {
                     "type": "string",
                     "description": "Enables custom user-agent header when performing automations."
                 }
             }
+        },
+        "Discount": {
+            "type": "object",
+            "description": "Discount code.",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Discount code",
+                    "example": "RL2XYZ"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "code"
+            ]
         },
         "Visit": {
             "type": "object",
