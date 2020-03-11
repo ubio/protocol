@@ -197,7 +197,8 @@
                 "additionalOptions": {
                     "description": "Additional personal details requested by the supplier.",
                     "$ref": "#/domains/ContestSignup/types/SelectedOptions"
-                }
+                },
+                "address": { "$ref": "#/domains/Generic/types/ExplicitAddress" }
             },
             "required": [
                 "title",
