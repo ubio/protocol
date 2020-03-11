@@ -64,6 +64,12 @@
             "description": "List of available scheduling dates, times and locations.",
             "sourceOutputKey": "availablePerformances",
             "inputMethod": "SelectOne"
+        },
+        "selectedUpsells": {
+            "typeRef": "#/domains/EventBooking/types/Upsells",
+            "description": "List of selected upsells.",
+            "sourceOutputKey": "availableUpsells",
+            "inputMethod": "SelectMany"
         }
     },
     "outputs": {
@@ -95,6 +101,9 @@
         },
         "availablePerformances": {
             "typeRef": "#/domains/EventBooking/types/Performances"
+        },
+        "availableUpsells": {
+            "typeRef": "#/domains/EventBooking/types/Upsells"
         },
         "showName": {
             "typeRef": "#/domains/EventBooking/types/ShowName"
@@ -220,6 +229,39 @@
             "required": [
                 "name"
             ]
+        },
+        "Upsells": {
+            "type": "array",
+            "description": "A list of upsells.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/EventBooking/types/Upsell"
+            }
+        },
+        "Upsell": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Glass of wine"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Count of items",
+                    "example": 2
+                },
+                "description": {
+                    "type": "string",
+                    "example": "This package contains amazing glasses of wine (actual drink not included)."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
+            },
+            "required": [
+            ],
+            "additionalProperties": false
         },
         "Performances": {
             "type": "array",
