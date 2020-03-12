@@ -233,7 +233,6 @@
         "Upsells": {
             "type": "array",
             "description": "A list of upsells.",
-            "minItems": 1,
             "items": {
                 "$ref": "#/domains/EventBooking/types/Upsell"
             }
