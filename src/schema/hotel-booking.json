@@ -457,6 +457,10 @@
                     "type": "string",
                     "example": "standard"
                 },
+                "isMemberRate": {
+                    "type": "boolean",
+                    "example": true
+                },
                 "images": {
                     "type": "array",
                     "items": {
