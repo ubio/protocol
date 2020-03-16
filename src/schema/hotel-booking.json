@@ -125,6 +125,9 @@
         },
         "billingPrice": {
             "typeRef": "#/domains/Generic/types/Price"
+        },
+        "loggedIn": {
+            "typeRef": "#/domains/HotelBooking/types/Boolean"
         }
     },
     "types": {
@@ -668,6 +671,9 @@
                 "address"
             ],
             "additionalProperties": false
+        },
+        "Boolean": {
+            "type": "boolean"
         }
     },
     "errors": [
