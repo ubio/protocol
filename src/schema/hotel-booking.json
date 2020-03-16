@@ -380,7 +380,7 @@
         },
         "RoomDescription": {
             "type": "array",
-            "description": "A list to describe a room.",
+            "description": "A list to describe a room or a rate.",
             "minItems": 0,
             "items": {
                 "type": "string",
@@ -403,6 +403,9 @@
                     "example": "Breakfast Plus"
                 },
                 "description": {
+                    "$ref": "#/domains/HotelBooking/types/RoomDescription"
+                },
+                "rateDescription": {
                     "$ref": "#/domains/HotelBooking/types/RoomDescription"
                 },
                 "price": {
