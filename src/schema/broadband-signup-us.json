@@ -61,9 +61,6 @@
         "landlineOptions": {
             "typeRef": "#/domains/BroadbandSignupUS/types/LandlineOptions"
         },
-        "monthlyPaymentMethod": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/PaymentMethod"
-        },
         "directDebit": {
             "typeRef": "#/domains/BroadbandSignupUS/types/DirectDebitIban"
         },
@@ -87,7 +84,7 @@
             "sourceOutputKey": "availableAddresses",
             "inputMethod": "SelectOne"
         },
-        "securityInformation": {
+        "accountSecurity": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Security"
         },
         "alternativeCorrespondence": {
@@ -98,10 +95,6 @@
         }
     },
     "outputs": {
-        "availableMarketingContactOptions": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItems",
-            "description": "List of marketing contact options provided by the insurer."
-        },
         "availableTvPackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
         },
@@ -129,30 +122,8 @@
         "oneOffCosts": {
             "typeRef": "#/domains/Generic/types/StructuredText"
         },
-        "equipmentCosts": {
-            "typeRef": "#/domains/Generic/types/StructuredText"
-        },
-        "extrasCosts": {
-            "typeRef": "#/domains/Generic/types/StructuredText"
-        },
-        "upfrontPayment": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/Anything"
-        },
-        "totalOneOffPrice": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/Anything"
-        },
-        "monthlyPayments": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/Anything"
-        },
         "confirmation": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Confirmation"
-        },
-        "serviceTermsAndConditions": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItem",
-            "description": "Emitted when T&Cs are presented."
-        },
-        "selectionBreakdown": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItems"
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -431,13 +402,6 @@
             "minItems": 1,
             "items": { "type": "string" }
         },
-        "PaymentMethod": {
-            "type": "string",
-            "enum": [
-                "card",
-                "directdebit"
-            ]
-        },
         "Boolean": {
             "type": "boolean",
             "enum": [
@@ -511,19 +475,6 @@
         },
         "String": {
             "type": "string"
-        },
-        "Anything": {
-            "oneOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "array"
-                },
-                {
-                    "type": "object"
-                }
-            ]
         }
     },
     "errors": [
