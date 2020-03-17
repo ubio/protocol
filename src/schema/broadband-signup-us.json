@@ -201,40 +201,7 @@
             "pii": true,
             "properties": {
                 "address": {
-                    "type": "object",
-                    "properties": {
-                        "houseName": {
-                            "type": "string",
-                            "example": "Da house"
-                        },
-                        "streetNumber": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": "93"
-                        },
-                        "streetName": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": "Clerkenwell Close"
-                        },
-                        "postcode": {
-                            "$ref": "#/domains/BroadbandSignupUS/types/Postcode"
-                        },
-                        "city": {
-                            "type": "string",
-                            "minLength": 1,
-                            "example": "Dagenham"
-                        },
-                        "countrySubdivision": {
-                            "type": "string",
-                            "example": "Greater London"
-                        }
-                    },
-                    "required": [
-                        "postcode",
-                        "city",
-                        "countrySubdivision"
-                    ]
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
                 }
             },
             "required": [
@@ -430,12 +397,12 @@
             "properties": {
                 "dateTimeIntreval": {
                     "type": "string",
-                    "format": "date",
+                    "minLength": 1,
                     "example": "2020-03-16 09:00 - 11:00"
                 }
             },
             "required": [
-                "date"
+                "dateTimeIntreval"
             ],
             "additionalProperties": false
         },
