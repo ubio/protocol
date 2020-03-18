@@ -1,0 +1,510 @@
+{
+    "description": "Allows automating broadband package signups in the US.",
+    "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/reference"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
+            "initial": true
+        },
+        "landlineCheck": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/LandlineCheck",
+            "canonical": [
+                "/postcode"
+            ]
+        },
+        "property": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Property",
+            "canonical": [
+                "/address/postcode",
+                "/address/city",
+                "/address/countrySubdivision"
+            ]
+        },
+        "selectedTvPackages": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackages",
+            "sourceOutputKey": "availableTvPackages",
+            "inputMethod": "SelectMany"
+        },
+        "selectedBroadbandPackage": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackage",
+            "sourceOutputKey": "availableBroadbandPackages",
+            "inputMethod": "SelectOne"
+        },
+        "selectedPhonePackage": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackage",
+            "sourceOutputKey": "availablePhonePackages",
+            "inputMethod": "SelectOne"
+        },
+        "contactPerson": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/PersonDob"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent"
+        },
+        "landlineOptions": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/LandlineOptions"
+        },
+        "directDebit": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/DirectDebitIban"
+        },
+        "selectedTvSetupDate": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/SetupDate",
+            "sourceOutputKey": "availableTvSetupDates",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBroadbandSetupDate": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/SetupDate",
+            "sourceOutputKey": "availableBroadbandSetupDates",
+            "inputMethod": "SelectOne"
+        },
+        "selectedActiveLandlineOption": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/String",
+            "sourceOutputKey": "availableActiveLandlineOptions",
+            "inputMethod": "SelectOne"
+        },
+        "selectedAddress": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/PIIString",
+            "sourceOutputKey": "availableAddresses",
+            "inputMethod": "SelectOne"
+        },
+        "accountSecurity": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Security"
+        },
+        "alternativeCorrespondence": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/NullableProperty"
+        },
+        "existingLandline": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/ExistingLandline"
+        }
+    },
+    "outputs": {
+        "availableTvPackages": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
+        },
+        "availableBroadbandPackages": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
+        },
+        "availablePhonePackages": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
+        },
+        "availableAddresses": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/AvailableAddresses"
+        },
+        "availableTvSetupDates": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/AvailableSetupDatesOrNull"
+        },
+        "availableBroadbandSetupDates": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/AvailableSetupDatesOrNull"
+        },
+        "estimatedPriceBreakdown": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems"
+        },
+        "monthlyCosts": {
+            "typeRef": "#/domains/Generic/types/StructuredText"
+        },
+        "oneOffCosts": {
+            "typeRef": "#/domains/Generic/types/StructuredText"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Confirmation"
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        }
+    },
+    "types": {
+        "LandlineCheck": {
+            "type": "object",
+            "description": "Information required to check existing landlines",
+            "pii": true,
+            "properties": {
+                "postcode": {
+                    "$ref": "#/domains/BroadbandSignupUS/types/Postcode"
+                },
+                "landline": {
+                    "type": "string",
+                    "minLength": 9,
+                    "description": "Landline number (numbers only, excluding country code).",
+                    "example": "123456789",
+                    "pattern": "^0[0-9]{8,10}"
+                },
+                "billpayer": {
+                    "type": "boolean",
+                    "description": "Whether the user is also the bill payer of the landline check phone number."
+                }
+            },
+            "required": [
+                "postcode"
+            ],
+            "additionalProperties": false
+        },
+        "NullableProperty": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignupUS/types/Property"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "Property": {
+            "type": "object",
+            "description": "Information about the property to be serviced.",
+            "pii": true,
+            "properties": {
+                "address": {
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
+                }
+            },
+            "required": [
+                "address"
+            ],
+            "additionalProperties": false
+        },
+        "LandlineOptions": {
+            "type": "object",
+            "description": "Owner details in relation to the address.",
+            "pii": true,
+            "properties": {
+                "justMoved": {
+                    "type": "boolean"
+                },
+                "sharedProperty": {
+                    "type": "boolean"
+                },
+                "restartLine": {
+                    "type": "boolean"
+                },
+                "landline": {
+                    "type": "string",
+                    "minLength": 9,
+                    "description": "Landline number (numbers only, excluding country code).",
+                    "example": "123456789",
+                    "pattern": "^0[0-9]{8,10}"
+                },
+                "additionalLine": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "justMoved",
+                "sharedProperty",
+                "restartLine"
+            ],
+            "additionalProperties": false
+        },
+        "Security": {
+            "type": "object",
+            "description": "Security informations when contacting the provider.",
+            "pii": true,
+            "properties": {
+                "pinNumber": {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 4,
+                    "description": "For authentication purposes, customers are required to set up a 4-digit passcode (Pin).",
+                    "example": "4576"
+                },
+                "selectedSecurityQuestion": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A question for authentication if credentials are forgotten.",
+                    "example": "Who is your favorite actor?"
+                },
+                "answer": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "An answer for authentication if credentials are forgotten.",
+                    "example": "Van Damme"
+                }
+            },
+            "required": [
+                "pinNumber",
+                "selectedSecurityQuestion",
+                "answer"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedPackages": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignupUS/types/Packages"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "SelectedPackage": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignupUS/types/Package"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "Packages": {
+            "type": "array",
+            "description": "A list of packages.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/Package" }
+        },
+        "Package": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "All in One Package",
+                    "minLength": 1
+                },
+                "description": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/domains/Generic/types/StructuredTextItem"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "image": {
+                    "$ref": "#/domains/Generic/types/Link"
+                },
+                "estimatedSpeed": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "PersonDob": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "DirectDebitIban": {
+            "type": "object",
+            "description": "Account details for direct debit using IBAN.",
+            "pii": true,
+            "properties": {
+                "iban": {
+                    "type": "string",
+                    "description": "International bank account number.",
+                    "example": "NL99BANK0123456789"
+                }
+            },
+            "required": [
+                "iban"
+            ],
+            "additionalProperties": false
+        },
+        "SetupDate": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "properties": {
+                "dateTimeIntreval": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "2020-03-16 09:00 - 11:00"
+                }
+            },
+            "required": [
+                "dateTimeIntreval"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableSetupDatesOrNull": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "array",
+                    "description": "A list of setup dates.",
+                    "minItems": 1,
+                    "items": { "$ref": "#/domains/BroadbandSignupUS/types/SetupDate" }
+                }
+            ]
+        },
+        "Postcode": {
+            "type": "string",
+            "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+            "minLength": 4,
+            "example": "RM108DE"
+        },
+        "AvailableAddresses": {
+            "type": "array",
+            "description": "A list of addresses.",
+            "minItems": 1,
+            "items": { "type": "string" }
+        },
+        "Boolean": {
+            "type": "boolean",
+            "enum": [
+                true,
+                false
+            ]
+        },
+        "AvailableActiveLandlineOptions": {
+            "type": "array",
+            "description": "A list of options.",
+            "minItems": 1,
+            "items": { "type": "string" }
+        },
+        "ExistingLandline": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "description": "Information required to check existing landlines",
+                    "pii": true,
+                    "properties": {
+                        "postcode": {
+                            "$ref": "#/domains/BroadbandSignupUS/types/Postcode"
+                        },
+                        "landline": {
+                            "type": "string",
+                            "minLength": 9,
+                            "description": "Landline number (numbers only, excluding country code).",
+                            "example": "123456789",
+                            "pattern": "^0[0-9]{8,10}"
+                        },
+                        "provider": {
+                            "type": "string",
+                            "description": "Landline provider"
+                        }
+                    },
+                    "required": [
+                        "postcode",
+                        "landline",
+                        "provider"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "reference"
+            ]
+        },
+        "PIIString": {
+            "type": "string",
+            "pii": true
+        },
+        "String": {
+            "type": "string"
+        }
+    },
+    "errors": [
+        {
+            "code": "PackageNotAvailable",
+            "category": "client",
+            "description": "The package is not avaialbe."
+        },
+        {
+            "code": "OfferNotAvailable",
+            "category": "client",
+            "description": "The offer is not available, usually expired or not applicable to the user or client."
+        },
+        {
+            "code": "DateOfBirthInvalid",
+            "category": "client",
+            "description": "Date of birth is not accepted by the website",
+            "example": "Child must be younger than 12"
+        },
+        {
+            "code": "DocumentIssueDateInvalid",
+            "category": "client",
+            "description": "Document issue date is not accepted by the website",
+            "example": "The issue date cannot be after today's date"
+        },
+        {
+            "code": "DocumentExpiryDateInvalid",
+            "category": "client",
+            "description": "Document expiration date is not accepted by the website",
+            "example": "Document should be valid for more than 3 months"
+        }
+    ]
+}
