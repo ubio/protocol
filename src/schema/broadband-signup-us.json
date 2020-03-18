@@ -90,7 +90,7 @@
             "inputMethod": "SelectOne"
         },
         "accountSecurityCode": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/Security"
+            "typeRef": "#/domains/BroadbandSignupUS/types/SecurityCode"
         },
         "securityAnswer": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Answer"
@@ -226,23 +226,12 @@
             ],
             "additionalProperties": false
         },
-        "Security": {
-            "type": "object",
-            "description": "Security information's when contacting the provider.",
-            "pii": true,
-            "properties": {
-                "pin": {
-                    "type": "string",
-                    "minLength": 4,
-                    "maxLength": 4,
-                    "description": "For authentication purposes, customers are required to set up a 4-digit passcode (Pin).",
-                    "example": "4576"
-                }
-            },
-            "required": [
-                "pin"
-            ],
-            "additionalProperties": false
+        "SecurityCode": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 4,
+            "description": "For authentication purposes, customers are required to set up a 4-digit passcode (Pin).",
+            "pii": true
         },
         "SelectedPackages": {
             "oneOf": [
