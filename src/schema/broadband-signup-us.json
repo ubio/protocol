@@ -84,8 +84,16 @@
             "sourceOutputKey": "availableAddresses",
             "inputMethod": "SelectOne"
         },
-        "accountSecurity": {
+        "selectedSecurityQuestion": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/SecurityQuestion",
+            "sourceOutputKey": "availableSecurityQuestions",
+            "inputMethod": "SelectOne"
+        },
+        "accountSecurityCode": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Security"
+        },
+        "securityAnswer": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Answer"
         },
         "alternativeCorrespondence": {
             "typeRef": "#/domains/BroadbandSignupUS/types/NullableProperty"
@@ -103,6 +111,9 @@
         },
         "availablePhonePackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
+        },
+        "availableSecurityQuestions": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/SecurityQuestions"
         },
         "availableAddresses": {
             "typeRef": "#/domains/BroadbandSignupUS/types/AvailableAddresses"
@@ -217,33 +228,19 @@
         },
         "Security": {
             "type": "object",
-            "description": "Security informations when contacting the provider.",
+            "description": "Security information's when contacting the provider.",
             "pii": true,
             "properties": {
-                "pinNumber": {
+                "pin": {
                     "type": "string",
                     "minLength": 4,
                     "maxLength": 4,
                     "description": "For authentication purposes, customers are required to set up a 4-digit passcode (Pin).",
                     "example": "4576"
-                },
-                "selectedSecurityQuestion": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "A question for authentication if credentials are forgotten.",
-                    "example": "Who is your favorite actor?"
-                },
-                "answer": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "An answer for authentication if credentials are forgotten.",
-                    "example": "Van Damme"
                 }
             },
             "required": [
-                "pinNumber",
-                "selectedSecurityQuestion",
-                "answer"
+                "pin"
             ],
             "additionalProperties": false
         },
@@ -369,14 +366,14 @@
             "type": "object",
             "description": "Account details for direct debit.",
             "properties": {
-                "dateTimeIntreval": {
+                "dateTimeInterval": {
                     "type": "string",
                     "minLength": 1,
                     "example": "2020-03-16 09:00 - 11:00"
                 }
             },
             "required": [
-                "dateTimeIntreval"
+                "dateTimeInterval"
             ],
             "additionalProperties": false
         },
@@ -404,6 +401,24 @@
             "description": "A list of addresses.",
             "minItems": 1,
             "items": { "type": "string" }
+        },
+        "SecurityQuestions": {
+            "type": "array",
+            "description": "A list of security questions.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/SecurityQuestion" }
+        },
+        "SecurityQuestion": {
+            "type": "string",
+            "pii": true,
+            "description": "A question for authentication if credentials are forgotten.",
+            "example": "Who is your favorite actor?"
+        },
+        "Answer": {
+            "type": "string",
+            "pii": true,
+            "description": "A answer to selected security question for authentication if credentials are forgotten.",
+            "example": "Van Damme"
         },
         "Boolean": {
             "type": "boolean",
@@ -484,7 +499,7 @@
         {
             "code": "PackageNotAvailable",
             "category": "client",
-            "description": "The package is not avaialbe."
+            "description": "The package is not available."
         },
         {
             "code": "OfferNotAvailable",
