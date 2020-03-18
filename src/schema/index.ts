@@ -8,6 +8,7 @@ import LoanApplication from './loan-application.json';
 import EventBooking from './event-booking.json';
 import BroadbandSignup from './broadband-signup.json';
 import BroadbandSignupAU from './broadband-signup-au.json';
+import BroadbandSignupUS from './broadband-signup-us.json';
 import HotelBooking from './hotel-booking.json';
 import TestHotelBooking from './test-hotel-booking.json';
 import HolidayBooking from './holiday-booking.json';
@@ -32,6 +33,7 @@ export const schema = {
         EventBooking,
         BroadbandSignup,
         BroadbandSignupAU,
+        BroadbandSignupUS,
         HotelBooking,
         TestHotelBooking,
         HolidayBooking,
