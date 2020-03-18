@@ -113,6 +113,9 @@
         "availableBroadbandSetupDates": {
             "typeRef": "#/domains/BroadbandSignupUS/types/AvailableSetupDatesOrNull"
         },
+        "availableActiveLandlineOptions": {
+            "typeRef": "#/domains/BroadbandSignup/types/AvailableActiveLandlineOptions"
+        },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
         },
