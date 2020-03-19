@@ -432,6 +432,11 @@
             "code": "InvalidAdditionalParticipantOptions",
             "category": "client",
             "description": "The participants/*/additionalOptions is invalid."
+        },
+        {
+            "code": "InvalidParticipantDetails",
+            "category": "client",
+            "description": "One of the participants' details are invalid."
         }
     ]
 }
