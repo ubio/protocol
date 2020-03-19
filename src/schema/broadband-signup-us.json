@@ -325,6 +325,11 @@
                     "description": "Passenger's date of birth in YYYY-MM-DD format.",
                     "format": "date",
                     "example": "1976-01-27"
+                },
+                "socialSecurityNumber": {
+                    "type": "string",
+                    "description": "For credit check, a 9 digits social security number is required.",
+                    "example": "4111111119"
                 }
             },
             "required": [
