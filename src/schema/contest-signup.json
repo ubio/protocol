@@ -437,6 +437,11 @@
             "code": "InvalidParticipantDetails",
             "category": "client",
             "description": "One of the participants' details are invalid."
+        },
+        {
+            "code": "EntriesNotAvailable",
+            "category": "client",
+            "description": "One or more entries are not available."
         }
     ]
 }
