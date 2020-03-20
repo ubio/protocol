@@ -442,6 +442,11 @@
             "code": "EntriesNotAvailable",
             "category": "client",
             "description": "One or more entries are not available."
+        },
+        {
+            "code": "InvalidPassword",
+            "category": "client",
+            "description": "One or more entries are not available."
         }
     ]
 }
