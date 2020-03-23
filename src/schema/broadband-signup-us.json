@@ -43,6 +43,9 @@
         "contactPerson": {
             "typeRef": "#/domains/BroadbandSignupUS/types/PersonDob"
         },
+        "agentAccount": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/AgentAccount"
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
@@ -191,6 +194,28 @@
             },
             "required": [
                 "address"
+            ],
+            "additionalProperties": false
+        },
+        "AgentAccount": {
+            "type": "object",
+            "description": "Information about the agent login account.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "agent@example.com"
+                },
+                "password": {
+                    "type": "string",
+                    "default": ""
+                }
+            },
+            "required": [
+                "email",
+                "password"
+
             ],
             "additionalProperties": false
         },
