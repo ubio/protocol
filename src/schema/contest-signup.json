@@ -446,7 +446,17 @@
         {
             "code": "InvalidPassword",
             "category": "client",
-            "description": "One or more entries are not available."
+            "description": "The specified password is not valid."
+        },
+        {
+            "code": "AccountAlreadyExists",
+            "category": "client",
+            "description": "The specified account already exists."
+        },
+        {
+            "code": "AccountLocked",
+            "category": "client",
+            "description": "The specified account is not accessible."
         }
     ]
 }
