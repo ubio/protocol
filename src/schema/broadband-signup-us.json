@@ -11,6 +11,10 @@
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
             "initial": true
         },
+        "options": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Options",
+            "initial": true
+        },
         "landlineCheck": {
             "typeRef": "#/domains/BroadbandSignupUS/types/LandlineCheck",
             "canonical": [
@@ -145,6 +149,18 @@
         }
     },
     "types": {
+        "Options": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
+            ],
+            "additionalProperties": false
+        },
         "LandlineCheck": {
             "type": "object",
             "description": "Information required to check existing landlines",
