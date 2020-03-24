@@ -13,6 +13,7 @@
         },
         "searchAddress": {
             "typeRef": "#/domains/BroadbandSignupUS/types/String"
+        },
         "options": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Options",
             "initial": true
