@@ -17,6 +17,9 @@
         "serviceAddress": {
             "typeRef": "#/domains/BroadbandSignupUS/types/ServiceAddress"
         },
+        "contactPerson": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/PersonDob"
+        },
         "selectedTvPackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackages",
             "sourceOutputKey": "availableTvPackages",
@@ -278,7 +281,7 @@
             ],
             "additionalProperties": false
         },
-        "Person": {
+        "PersonDob": {
             "type": "object",
             "pii": true,
             "properties": {
