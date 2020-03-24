@@ -11,9 +11,6 @@
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
             "initial": true
         },
-        "searchAddress": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/String"
-        },
         "options": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Options",
             "initial": true
@@ -78,11 +75,6 @@
             "sourceOutputKey": "availableActiveLandlineOptions",
             "inputMethod": "SelectOne"
         },
-        "selectedSearchAddress": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/PIIString",
-            "sourceOutputKey": "availableSearchAddresses",
-            "inputMethod": "SelectOne"
-        },
         "selectedSecurityQuestion": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SecurityQuestion",
             "sourceOutputKey": "availableSecurityQuestions",
@@ -110,9 +102,6 @@
         },
         "availableSecurityQuestions": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SecurityQuestions"
-        },
-        "availableSearchAddresses": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/AvailableAddresses"
         },
         "availableTvSetupDates": {
             "typeRef": "#/domains/BroadbandSignupUS/types/AvailableSetupDatesOrNull"
@@ -394,12 +383,6 @@
             "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
             "minLength": 4,
             "example": "RM108DE"
-        },
-        "AvailableAddresses": {
-            "type": "array",
-            "description": "A list of addresses.",
-            "minItems": 1,
-            "items": { "type": "string" }
         },
         "SecurityQuestions": {
             "type": "array",
