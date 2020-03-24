@@ -78,9 +78,9 @@
             "sourceOutputKey": "availableActiveLandlineOptions",
             "inputMethod": "SelectOne"
         },
-        "selectedAddress": {
+        "selectedSearchAddress": {
             "typeRef": "#/domains/BroadbandSignupUS/types/PIIString",
-            "sourceOutputKey": "availableAddresses",
+            "sourceOutputKey": "availableSearchAddresses",
             "inputMethod": "SelectOne"
         },
         "selectedSecurityQuestion": {
@@ -111,7 +111,7 @@
         "availableSecurityQuestions": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SecurityQuestions"
         },
-        "availableAddresses": {
+        "availableSearchAddresses": {
             "typeRef": "#/domains/BroadbandSignupUS/types/AvailableAddresses"
         },
         "availableTvSetupDates": {
