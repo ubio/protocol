@@ -302,6 +302,9 @@
                 "inputType": { "enum": [ "String" ] },
                 "label": {
                     "type": "string"
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -322,6 +325,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -343,6 +349,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
