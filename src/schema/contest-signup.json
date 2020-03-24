@@ -387,6 +387,9 @@
                 },
                 "text": {
                     "type": "string"
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -405,6 +408,9 @@
                 },
                 "option": {
                     "type": "string"
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -426,6 +432,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
