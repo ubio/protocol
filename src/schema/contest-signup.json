@@ -302,6 +302,9 @@
                 "inputType": { "enum": [ "String" ] },
                 "label": {
                     "type": "string"
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -322,6 +325,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -343,6 +349,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -378,6 +387,9 @@
                 },
                 "text": {
                     "type": "string"
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -396,6 +408,9 @@
                 },
                 "option": {
                     "type": "string"
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -417,6 +432,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "isMandatory": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -432,6 +450,31 @@
             "code": "InvalidAdditionalParticipantOptions",
             "category": "client",
             "description": "The participants/*/additionalOptions is invalid."
+        },
+        {
+            "code": "InvalidParticipantDetails",
+            "category": "client",
+            "description": "One of the participants' details are invalid."
+        },
+        {
+            "code": "EntriesNotAvailable",
+            "category": "client",
+            "description": "One or more entries are not available."
+        },
+        {
+            "code": "InvalidPassword",
+            "category": "client",
+            "description": "The specified password is not valid."
+        },
+        {
+            "code": "AccountAlreadyExists",
+            "category": "client",
+            "description": "The specified account already exists."
+        },
+        {
+            "code": "AccountLocked",
+            "category": "client",
+            "description": "The specified account is not accessible."
         }
     ]
 }

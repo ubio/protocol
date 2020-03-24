@@ -13,6 +13,9 @@
         },
         "searchAddress": {
             "typeRef": "#/domains/BroadbandSignupUS/types/String"
+        "options": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Options",
+            "initial": true
         },
         "serviceAddress": {
             "typeRef": "#/domains/BroadbandSignupUS/types/ServiceAddress"
@@ -158,6 +161,18 @@
                 "selectedAddress",
                 "zip"
 
+            ],
+            "additionalProperties": false
+        },
+        "Options": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
             ],
             "additionalProperties": false
         },

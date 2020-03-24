@@ -809,7 +809,6 @@
                 "xcd",
                 "egp",
                 "svc",
-                "xaf",
                 "eur",
                 "fkp",
                 "fjd",
@@ -822,6 +821,7 @@
                 "hnl",
                 "hkd",
                 "huf",
+                "iqd",
                 "isk",
                 "inr",
                 "idr",
@@ -894,6 +894,7 @@
                 "uzs",
                 "vef",
                 "vnd",
+                "xaf",
                 "xof",
                 "yer",
                 "zwd"
