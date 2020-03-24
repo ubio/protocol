@@ -11,23 +11,18 @@
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
             "initial": true
         },
+        "searchAddress": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/String"
+        },
         "options": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Options",
             "initial": true
         },
-        "landlineCheck": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/LandlineCheck",
-            "canonical": [
-                "/postcode"
-            ]
+        "serviceAddress": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/ServiceAddress"
         },
-        "property": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/Property",
-            "canonical": [
-                "/address/postcode",
-                "/address/city",
-                "/address/countrySubdivision"
-            ]
+        "contactPerson": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/PersonDob"
         },
         "selectedTvPackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackages",
@@ -43,9 +38,6 @@
             "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackage",
             "sourceOutputKey": "availablePhonePackages",
             "inputMethod": "SelectOne"
-        },
-        "contactPerson": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/PersonDob"
         },
         "agentAccount": {
             "typeRef": "#/domains/BroadbandSignupUS/types/AgentAccount"
@@ -102,9 +94,6 @@
         "securityAnswer": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Answer"
         },
-        "alternativeCorrespondence": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/NullableProperty"
-        },
         "existingLandline": {
             "typeRef": "#/domains/BroadbandSignupUS/types/ExistingLandline"
         }
@@ -152,6 +141,30 @@
         }
     },
     "types": {
+        "ServiceAddress": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "selectedAddress": {
+                    "type": "string",
+                    "default": ""
+                },
+                "unit": {
+                    "type": "string",
+                    "default": ""
+                },
+                "zip": {
+                    "type": "string",
+                    "default": ""
+                }
+            },
+            "required": [
+                "selectedAddress",
+                "zip"
+
+            ],
+            "additionalProperties": false
+        },
         "Options": {
             "type": "object",
             "properties": {
@@ -161,55 +174,6 @@
                 }
             },
             "required": [
-            ],
-            "additionalProperties": false
-        },
-        "LandlineCheck": {
-            "type": "object",
-            "description": "Information required to check existing landlines",
-            "pii": true,
-            "properties": {
-                "postcode": {
-                    "$ref": "#/domains/BroadbandSignupUS/types/Postcode"
-                },
-                "landline": {
-                    "type": "string",
-                    "minLength": 9,
-                    "description": "Landline number (numbers only, excluding country code).",
-                    "example": "123456789",
-                    "pattern": "^0[0-9]{8,10}"
-                },
-                "billpayer": {
-                    "type": "boolean",
-                    "description": "Whether the user is also the bill payer of the landline check phone number."
-                }
-            },
-            "required": [
-                "postcode"
-            ],
-            "additionalProperties": false
-        },
-        "NullableProperty": {
-            "oneOf": [
-                {
-                    "$ref": "#/domains/BroadbandSignupUS/types/Property"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
-        "Property": {
-            "type": "object",
-            "description": "Information about the property to be serviced.",
-            "pii": true,
-            "properties": {
-                "address": {
-                    "$ref": "#/domains/Generic/types/ExplicitAddress"
-                }
-            },
-            "required": [
-                "address"
             ],
             "additionalProperties": false
         },
