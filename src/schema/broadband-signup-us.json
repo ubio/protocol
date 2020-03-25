@@ -57,6 +57,9 @@
         "landlineOptions": {
             "typeRef": "#/domains/BroadbandSignupUS/types/LandlineOptions"
         },
+        "creditCheck": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/CreditCheck"
+        },
         "directDebit": {
             "typeRef": "#/domains/BroadbandSignupUS/types/DirectDebitIban"
         },
@@ -163,6 +166,24 @@
                 }
             },
             "required": [
+            ],
+            "additionalProperties": false
+        },
+        "CreditCheck": {
+            "type": "object",
+            "description": "Information for client credit validation.",
+            "pii": true,
+            "properties": {
+                "socialSecurityNumber": {
+                    "type": "string",
+                    "minLength": 9,
+                    "maxLength": 9,
+                    "default": ""
+                }
+            },
+            "required": [
+                "socialSecurityNumber"
+
             ],
             "additionalProperties": false
         },
@@ -319,11 +340,6 @@
                     "description": "Passenger's date of birth in YYYY-MM-DD format.",
                     "format": "date",
                     "example": "1976-01-27"
-                },
-                "socialSecurityNumber": {
-                    "type": "string",
-                    "description": "For credit check, a 9 digits social security number is required.",
-                    "example": "4111111119"
                 }
             },
             "required": [
