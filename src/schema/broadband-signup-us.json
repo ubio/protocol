@@ -58,7 +58,7 @@
             "typeRef": "#/domains/BroadbandSignupUS/types/LandlineOptions"
         },
         "creditCheck": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/CreditCheck"
+            "typeRef": "#/domains/BroadbandSignupUS/types/CreditCheckOrNull"
         },
         "directDebit": {
             "typeRef": "#/domains/BroadbandSignupUS/types/DirectDebitIban"
@@ -169,23 +169,28 @@
             ],
             "additionalProperties": false
         },
-        "CreditCheck": {
-            "type": "object",
-            "description": "Information for client credit validation.",
-            "pii": true,
-            "properties": {
-                "socialSecurityNumber": {
-                    "type": "string",
-                    "minLength": 9,
-                    "maxLength": 9,
-                    "default": ""
+        "CreditCheckOrNull": {
+            "oneOf": [{
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "description": "Information for client credit validation.",
+                    "pii": true,
+                    "properties": {
+                        "socialSecurityNumber": {
+                            "type": "string",
+                            "minLength": 9,
+                            "maxLength": 9,
+                            "default": ""
+                        }
+                    },
+                    "required": [
+                        "socialSecurityNumber"
+                    ],
+                    "additionalProperties": false
                 }
-            },
-            "required": [
-                "socialSecurityNumber"
-
-            ],
-            "additionalProperties": false
+            ]
         },
         "AgentAccount": {
             "type": "object",
