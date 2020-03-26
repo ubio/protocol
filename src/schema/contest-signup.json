@@ -493,6 +493,11 @@
             "description": "One or more entries are not available."
         },
         {
+            "code": "EventNotAvailable",
+            "category": "client",
+            "description": "The event is not available."
+        },
+        {
             "code": "InvalidPassword",
             "category": "client",
             "description": "The specified password is not valid."
