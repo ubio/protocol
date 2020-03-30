@@ -229,7 +229,7 @@
                     "type": "null"
                 },
                 {
-                    "$ref": "#/domains/Generic/types/StructuredTextItems"
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
                 }
             ]
         },
