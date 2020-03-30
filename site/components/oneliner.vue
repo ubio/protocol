@@ -5,7 +5,7 @@
          }"
          :id="def.key">
         <div class="oneliner__term">
-            <span class="oneliner__key">{{ def.key }}</span>
+            <span class="oneliner__key">{{ key }}</span>
             <img
                 src="/img/link.svg"
                 class="oneliner__link"
@@ -14,10 +14,6 @@
                 <span class="tag tag--success"
                     v-if="def.spec.initial">
                     initial
-                </span>
-                <span class="tag tag--primary"
-                    v-if="def.spec.staged">
-                    staged
                 </span>
                 <span class="tag tag--warning"
                     v-if="def.spec.deprecated">
@@ -55,6 +51,10 @@ export default {
     },
 
     computed: {
+
+        key() {
+            return this.def.getDisplayKey();
+        },
 
         typeDef() {
             return this.def.getTypeDef();

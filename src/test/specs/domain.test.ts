@@ -36,6 +36,13 @@ describe('Domain', () => {
             assert.equal(Internal.getInputDef('nonsense'), null);
         });
 
+        it('should resolve dynamic definitions', () => {
+            const def = Internal.getInputDef('dynamicInput:foo');
+            assert.ok(def);
+            assert.equal(def?.key, 'dynamicInput');
+            assert.equal(def?.isDynamic(), true);
+        });
+
     });
 
     describe('getOutputDef', () => {
@@ -49,6 +56,13 @@ describe('Domain', () => {
             assert.equal(Internal.getOutputDef('url'), null);
             assert.equal(Internal.getOutputDef('Value'), null);
             assert.equal(Internal.getOutputDef('nonsense'), null);
+        });
+
+        it('should resolve dynamic definitions', () => {
+            const def = Internal.getOutputDef('dynamicOutput:foo');
+            assert.ok(def);
+            assert.equal(def?.key, 'dynamicOutput');
+            assert.equal(def?.isDynamic(), true);
         });
 
     });

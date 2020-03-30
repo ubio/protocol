@@ -66,7 +66,7 @@
             "typeRef": "#/domains/FlightBooking/types/SelectedSeatsStage",
             "sourceOutputKey": "availableSeats",
             "inputMethod": "SeatSelection",
-            "staged": true
+            "dynamic": true
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -95,7 +95,7 @@
         },
         "availableSeats": {
             "typeRef": "#/domains/FlightBooking/types/AvailableSeatsStage",
-            "staged": true
+            "dynamic": true
         },
         "availableFrequentFlyerProgrammes": {
             "typeRef": "#/domains/FlightBooking/types/AvailableFrequentFlyerProgrammes",
