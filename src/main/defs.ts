@@ -103,7 +103,7 @@ export abstract class CustomDef extends Def {
 
     matchKey(key: string) {
         if (this.isDynamic()) {
-            return new RegExp(`^${this.key}:.*`).test(key);
+            return new RegExp(`^${this.key}(:.*)?`).test(key);
         }
         return super.matchKey(key);
     }
