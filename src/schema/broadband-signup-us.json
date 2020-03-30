@@ -207,7 +207,11 @@
                     "description": "For different billing address.",
                     "pii": true,
                     "properties": {
-                        "address": {
+                        "streetAddress": {
+                            "type": "string",
+                            "default": ""
+                        },
+                        "unit": {
                             "type": "string",
                             "default": ""
                         },
@@ -217,7 +221,8 @@
                         }
                     },
                     "required": [
-                        "address",
+                        "streetAddress",
+                        "unit",
                         "zip"
                     ],
                     "additionalProperties": false
