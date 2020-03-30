@@ -51,6 +51,10 @@ export class Def {
         data[this.key] = deepClone(this.spec.default);
     }
 
+    matchKey(key: string): boolean {
+        return this.key === key;
+    }
+
     async validate(data: any): Promise<ValidationResult> {
         const ajvSchema = this.domain.protocol.validator.getSchema(this.id);
         if (ajvSchema) {
@@ -95,7 +99,18 @@ export class TypeDef extends Def {
 
 }
 
-export class CustomDef extends Def {
+export abstract class CustomDef extends Def {
+
+    matchKey(key: string) {
+        if (this.isDynamic()) {
+            return new RegExp(`^${this.key}:.*`).test(key);
+        }
+        return super.matchKey(key);
+    }
+
+    getDisplayKey() {
+        return this.key + (this.isDynamic() ? ':*' : '');
+    }
 
     getTypeRef() {
         return this.spec.typeRef;
@@ -105,13 +120,13 @@ export class CustomDef extends Def {
         return this.domain.protocol.resolveTypeRef(this.getTypeRef());
     }
 
-    isStaged() {
-        return this.spec.staged || false;
+    isDynamic() {
+        return this.spec.dynamic || false;
     }
 
     isPii() {
         const typeDef = this.getTypeDef();
-        return typeDef && typeDef.spec && typeDef.spec.pii || false;
+        return typeDef?.spec?.pii || false;
     }
 
     createExample() {

@@ -49,15 +49,15 @@ export class Domain {
     }
 
     getDef(key: string) {
-        return this.defs.find(def => def.key === key);
+        return this.defs.find(def => def.matchKey(key));
     }
 
     getInputDef(key: string) {
-        return this.inputs.find(def => def.key === key);
+        return this.inputs.find(def => def.matchKey(key));
     }
 
     getOutputDef(key: string) {
-        return this.outputs.find(def => def.key === key);
+        return this.outputs.find(def => def.matchKey(key));
     }
 
     getError(code: string) {

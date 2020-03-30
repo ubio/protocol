@@ -15,10 +15,10 @@
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Used by most test services."
         },
-        "stagedInput": {
+        "dynamicInput": {
             "typeRef": "#/domains/Internal/types/Value",
             "description": "Used by test-stages service.",
-            "staged": true
+            "dynamic": true
         },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
@@ -38,10 +38,10 @@
         "value": {
             "typeRef": "#/domains/Internal/types/Value"
         },
-        "stagedOutput": {
+        "dynamicOutput": {
             "typeRef": "#/domains/Internal/types/Value",
             "description": "Used by test-stages service.",
-            "staged": true
+            "dynamic": true
         },
         "finalPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent",

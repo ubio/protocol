@@ -95,7 +95,7 @@
                 "deprecated": {
                     "type": "boolean"
                 },
-                "staged": {
+                "dynamic": {
                     "type": "boolean"
                 },
                 "canonical": {
@@ -121,7 +121,7 @@
             "properties": {
                 "typeRef": { "$ref": "#/definitions/TypeRef" },
                 "description": { "type": "string" },
-                "staged": {
+                "dynamic": {
                     "type": "boolean"
                 },
                 "canonical": {
