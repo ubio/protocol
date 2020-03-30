@@ -60,8 +60,8 @@
         "creditCheck": {
             "typeRef": "#/domains/BroadbandSignupUS/types/CreditCheckOrNull"
         },
-        "otherBillingAddress": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/BillingAddressOrNull"
+        "creditCheckAddress": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/CheckAddressOrNull"
         },
         "directDebit": {
             "typeRef": "#/domains/BroadbandSignupUS/types/DirectDebitIban"
@@ -118,6 +118,9 @@
         "availableActiveLandlineOptions": {
             "typeRef": "#/domains/BroadbandSignup/types/AvailableActiveLandlineOptions"
         },
+        "creditCheckServiceFee": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/CheckServiceFeeOrNull"
+        },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItems"
         },
@@ -140,7 +143,7 @@
             "type": "object",
             "pii": true,
             "properties": {
-                "selectedAddress": {
+                "streetAddress": {
                     "type": "string",
                     "default": ""
                 },
@@ -154,7 +157,7 @@
                 }
             },
             "required": [
-                "selectedAddress",
+                "streetAddress",
                 "zip"
 
             ],
@@ -195,7 +198,7 @@
                 }
             ]
         },
-        "BillingAddressOrNull": {
+        "CheckAddressOrNull": {
             "oneOf": [{
                     "type": "null"
                 },
@@ -218,6 +221,15 @@
                         "zip"
                     ],
                     "additionalProperties": false
+                }
+            ]
+        },
+        "CheckServiceFeeOrNull": {
+            "oneOf": [{
+                    "type": "null"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/StructuredTextItems"
                 }
             ]
         },
@@ -515,7 +527,8 @@
                     },
                     "required": [
                         "postcode"
-                    ]
+                    ],
+                    "additionalProperties": false
                 },
                 "card": {
                     "type": "object",
@@ -574,7 +587,8 @@
                         "expirationDate",
                         "name",
                         "cvv"
-                    ]
+                    ],
+                    "additionalProperties": false
                 }
             },
             "required": [
