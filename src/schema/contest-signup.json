@@ -55,6 +55,10 @@
         },
         "emergencyContact": {
             "typeRef": "#/domains/ContestSignup/types/EmergencyContact"
+        },
+        "selectedDynamicOptions": {
+            "typeRef": "#/domains/ContestSignup/types/SelectedOptions",
+            "dynamic": true
         }
     },
     "outputs": {
@@ -69,6 +73,10 @@
         },
         "availableParticipantOptions": {
             "typeRef": "#/domains/ContestSignup/types/AvailableOptions"
+        },
+        "availableDynamicOptions": {
+            "typeRef": "#/domains/ContestSignup/types/AvailableOptions",
+            "dynamic": true
         },
         "confirmation": {
             "typeRef": "#/domains/ContestSignup/types/Confirmation"
