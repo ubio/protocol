@@ -56,7 +56,7 @@
         "emergencyContact": {
             "typeRef": "#/domains/ContestSignup/types/EmergencyContact"
         },
-        "selectedDynamicOptions": {
+        "selectedDynamicOption": {
             "typeRef": "#/domains/ContestSignup/types/SelectedDynamicOption",
             "dynamic": true
         }
