@@ -57,7 +57,7 @@
             "typeRef": "#/domains/ContestSignup/types/EmergencyContact"
         },
         "selectedDynamicOptions": {
-            "typeRef": "#/domains/ContestSignup/types/SelectedOptions",
+            "typeRef": "#/domains/ContestSignup/types/SelectedDynamicOption",
             "dynamic": true
         }
     },
@@ -75,7 +75,7 @@
             "typeRef": "#/domains/ContestSignup/types/AvailableOptions"
         },
         "availableDynamicOptions": {
-            "typeRef": "#/domains/ContestSignup/types/AvailableOptions",
+            "typeRef": "#/domains/ContestSignup/types/AvailableDynamicOption",
             "dynamic": true
         },
         "confirmation": {
@@ -318,6 +318,19 @@
             "required": [
             ]
         },
+        "AvailableDynamicOption": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/ContestSignup/types/AvailableOptionString"
+                },
+                {
+                    "$ref": "#/domains/ContestSignup/types/AvailableOptionSelectOne"
+                },
+                {
+                    "$ref": "#/domains/ContestSignup/types/AvailableOptionSelectMany"
+                }
+            ]
+        },
         "AvailableOptions": {
             "type": "array",
             "description": "Additional options to be filled in.",
@@ -399,6 +412,19 @@
                 "options"
             ],
             "additionalProperties": false
+        },
+        "SelectedDynamicOption": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/ContestSignup/types/SelectedOptionString"
+                },
+                {
+                    "$ref": "#/domains/ContestSignup/types/SelectedOptionSelectOne"
+                },
+                {
+                    "$ref": "#/domains/ContestSignup/types/SelectedOptionSelectMany"
+                }
+            ]
         },
         "SelectedOptions": {
             "type": "array",
