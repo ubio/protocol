@@ -62,6 +62,12 @@
         }
     },
     "outputs": {
+        "authenticationTerms": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem"
+        },
+        "registrationWaivers": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem"
+        },
         "availableEvents": {
             "typeRef": "#/domains/ContestSignup/types/Events"
         },
