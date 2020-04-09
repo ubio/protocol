@@ -26,6 +26,41 @@
             "sourceOutputKey": "availableTvPackages",
             "inputMethod": "SelectMany"
         },
+        "selectedTvPromotions": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull",
+            "sourceOutputKey": "availableTvPromotions",
+            "inputMethod": "SelectMany"
+        },
+        "selectedPremiumTvChannels": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull",
+            "sourceOutputKey": "availablePremiumTvChannels",
+            "inputMethod": "SelectMany"
+        },
+        "selectedInternationalTvChannels": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull",
+            "sourceOutputKey": "availableInternationalTvChannels",
+            "inputMethod": "SelectMany"
+        },
+        "selectedSportsTvChannels": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull",
+            "sourceOutputKey": "availableSportsTvChannels",
+            "inputMethod": "SelectMany"
+        },
+        "selectedHardwareExtras": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/SelectedHardwareExtras",
+            "sourceOutputKey": "availableHardwareExtras",
+            "inputMethod": "SelectMany"
+        },
+        "selectedHardwareOption": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/HardwareOption",
+            "sourceOutputKey": "availableHardwareOptions",
+            "inputMethod": "SelectOne"
+        },
+        "selectedLandlordPermissionAnswer": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/LandlordPermissionAnswer",
+            "sourceOutputKey": "availableLandlordPermissionAnswers",
+            "inputMethod": "SelectOne"
+        },
         "selectedBroadbandPackage": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackage",
             "sourceOutputKey": "availableBroadbandPackages",
@@ -62,6 +97,9 @@
         },
         "creditCheckAddress": {
             "typeRef": "#/domains/BroadbandSignupUS/types/CheckAddressOrNull"
+        },
+        "tvCount": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvCount"
         },
         "directDebit": {
             "typeRef": "#/domains/BroadbandSignupUS/types/DirectDebitIban"
@@ -100,8 +138,29 @@
         "availableTvPackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
         },
+        "availableTvPromotions": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull"
+        },
+        "availablePremiumTvChannels": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull"
+        },
+        "availableInternationalTvChannels": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull"
+        },
+        "availableSportsTvChannels": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull"
+        },
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
+        },
+        "availableHardwareExtras": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/HardwareExtras"
+        },
+        "availableHardwareOptions": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/HardwareOptions"
+        },
+        "availableLandlordPermissionAnswers": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/LandlordPermissionAnswers"
         },
         "availablePhonePackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
@@ -169,9 +228,14 @@
                 "success": {
                     "type": "boolean",
                     "default": false
+                },
+                "hasInternetPackage": {
+                    "type": "boolean",
+                    "default": false
                 }
             },
             "required": [
+                "hasInternetPackage"
             ],
             "additionalProperties": false
         },
@@ -292,6 +356,13 @@
             ],
             "additionalProperties": false
         },
+        "TvCount": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Number of TV's in the household.",
+            "example": "8",
+            "pattern": "^0[0-9]{1,2}"
+        },
         "SecurityCode": {
             "type": "string",
             "minLength": 4,
@@ -351,6 +422,144 @@
                 },
                 "estimatedSpeed": {
                     "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "HardwareExtras": {
+            "type": "array",
+            "description": "A list of hardware devices.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/HardwareExtra" }
+        },
+        "HardwareExtra": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Genie Mini",
+                    "minLength": 1
+                },
+                "maxCount": {
+                    "type": "integer",
+                    "example": "3",
+                    "minimum": 1,
+                    "description": "Maximum number of required devices.",
+                    "pattern": "^0[0-9]{1,2}"
+                }
+            },
+            "required": [
+                "name",
+                "maxCount"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedHardwareExtras": {
+            "type": "array",
+            "description": "A list of hardware devices.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/HardwareExtra" }
+        },
+        "SelectedHardwareExtra": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Genie Mini",
+                    "minLength": 1
+                },
+                "count": {
+                    "type": "integer",
+                    "example": "3",
+                    "minimum": 1,
+                    "description": "Number of specific devices.",
+                    "pattern": "^0[0-9]{1}"
+                }
+            },
+            "required": [
+                "name",
+                "count"
+            ],
+            "additionalProperties": false
+        },
+        "HardwareOptions": {
+            "type": "array",
+            "description": "A list of hardware options.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/HardwareOption" }
+        },
+        "HardwareOption": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "description": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/domains/Generic/types/StructuredTextItem"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "LandlordPermissionAnswers": {
+            "type": "array",
+            "description": "A list of answers for validating client permission to install services.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/LandlordPermissionAnswer" }
+        },
+        "LandlordPermissionAnswer": {
+            "type": "string",
+            "minLength": 1,
+            "example": "I rent and I have permission from my landlord."
+        },
+        "TvOptionsOrNull": {
+            "oneOf": [{
+                    "type": "array",
+                    "description": "A list of channels, promotions options.",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/BroadbandSignupUS/types/TvOption"
+                    }
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "TvOption": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "description": {
+                    "oneOf": [{
+                            "$ref": "#/domains/Generic/types/StructuredTextItem"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
                 }
             },
             "required": [
