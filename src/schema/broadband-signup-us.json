@@ -232,10 +232,15 @@
                 "hasInternetPackage": {
                     "type": "boolean",
                     "default": false
+                },
+                "hasBroadbandOnly": {
+                    "type": "boolean",
+                    "default": false
                 }
             },
             "required": [
-                "hasInternetPackage"
+                "hasInternetPackage",
+                "hasBroadbandOnly"
             ],
             "additionalProperties": false
         },
@@ -461,7 +466,7 @@
             "type": "array",
             "description": "A list of hardware devices.",
             "minItems": 1,
-            "items": { "$ref": "#/domains/BroadbandSignupUS/types/HardwareExtra" }
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/SelectedHardwareExtra" }
         },
         "SelectedHardwareExtra": {
             "type": "object",
