@@ -47,7 +47,7 @@
             "inputMethod": "SelectMany"
         },
         "selectedHardwareExtras": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/HardwareExtras",
+            "typeRef": "#/domains/BroadbandSignupUS/types/SelectedHardwareExtras",
             "sourceOutputKey": "availableHardwareExtras",
             "inputMethod": "SelectMany"
         },
@@ -157,7 +157,7 @@
             "typeRef": "#/domains/BroadbandSignupUS/types/HardwareExtras"
         },
         "availableHardwareOptions": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
+            "typeRef": "#/domains/BroadbandSignupUS/types/HardwareOptions"
         },
         "availableLandlordPermissionAnswers": {
             "typeRef": "#/domains/BroadbandSignupUS/types/LandlordPermissionAnswers"
@@ -339,8 +339,8 @@
                     "type": "boolean"
                 },
                 "landline": {
-                    "type": "integer",
-                    "minimum": 9,
+                    "type": "string",
+                    "minLength": 9,
                     "description": "Landline number (numbers only, excluding country code).",
                     "example": "123456789",
                     "pattern": "^0[0-9]{8,10}"
@@ -449,6 +449,27 @@
                     "minimum": 1,
                     "description": "Maximum number of required devices.",
                     "pattern": "^0[0-9]{1,2}"
+                }
+            },
+            "required": [
+                "name",
+                "maxCount"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedHardwareExtras": {
+            "type": "array",
+            "description": "A list of hardware devices.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/HardwareExtra" }
+        },
+        "SelectedHardwareExtra": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Genie Mini",
+                    "minLength": 1
                 },
                 "count": {
                     "type": "integer",
@@ -459,7 +480,8 @@
                 }
             },
             "required": [
-                "name"
+                "name",
+                "count"
             ],
             "additionalProperties": false
         },
@@ -680,8 +702,8 @@
                             "$ref": "#/domains/BroadbandSignupUS/types/Postcode"
                         },
                         "landline": {
-                            "type": "integer",
-                            "minimum": 9,
+                            "type": "string",
+                            "minLength": 9,
                             "description": "Landline number (numbers only, excluding country code).",
                             "example": "123456789",
                             "pattern": "^0[0-9]{8,10}"
