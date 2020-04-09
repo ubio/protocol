@@ -27,22 +27,22 @@
             "inputMethod": "SelectMany"
         },
         "selectedTvPromotions": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptions",
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull",
             "sourceOutputKey": "availableTvPromotions",
             "inputMethod": "SelectMany"
         },
         "selectedPremiumTvChannels": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptions",
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull",
             "sourceOutputKey": "availablePremiumTvChannels",
             "inputMethod": "SelectMany"
         },
         "selectedInternationalTvChannels": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptions",
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull",
             "sourceOutputKey": "availableInternationalTvChannels",
             "inputMethod": "SelectMany"
         },
         "selectedSportsTvChannels": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptions",
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull",
             "sourceOutputKey": "availableSportsTvChannels",
             "inputMethod": "SelectMany"
         },
@@ -139,16 +139,16 @@
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
         },
         "availableTvPromotions": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptions"
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull"
         },
         "availablePremiumTvChannels": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptions"
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull"
         },
         "availableInternationalTvChannels": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptions"
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull"
         },
         "availableSportsTvChannels": {
-            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptions"
+            "typeRef": "#/domains/BroadbandSignupUS/types/TvOptionsOrNull"
         },
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
@@ -506,11 +506,19 @@
             "minLength": 1,
             "example": "I rent and I have permission from my landlord."
         },
-        "TvOptions": {
-            "type": "array",
-            "description": "A list of channels, promotions options.",
-            "minItems": 1,
-            "items": { "$ref": "#/domains/BroadbandSignupUS/types/TvOption" }
+        "TvOptionsOrNull": {
+            "oneOf": [{
+                    "type": "array",
+                    "description": "A list of channels, promotions options.",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/BroadbandSignupUS/types/TvOption"
+                    }
+                },
+                {
+                    "type": "null"
+                }
+            ]
         },
         "TvOption": {
             "type": "object",
@@ -520,8 +528,7 @@
                     "minLength": 1
                 },
                 "description": {
-                    "oneOf": [
-                        {
+                    "oneOf": [{
                             "$ref": "#/domains/Generic/types/StructuredTextItem"
                         },
                         {
