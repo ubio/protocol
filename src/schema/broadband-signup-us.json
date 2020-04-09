@@ -508,7 +508,7 @@
         },
         "TvOptions": {
             "type": "array",
-            "description": "A list of hardware options.",
+            "description": "A list of channels, promotions options.",
             "minItems": 1,
             "items": { "$ref": "#/domains/BroadbandSignupUS/types/TvOption" }
         },
