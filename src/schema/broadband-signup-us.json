@@ -251,7 +251,7 @@
                         "socialSecurityNumber": {
                             "type": "string",
                             "minLength": 9,
-                            "maxLength": 11,
+                            "maxLength": 9,
                             "default": ""
                         }
                     },
