@@ -21,6 +21,9 @@
         "contactPerson": {
             "typeRef": "#/domains/BroadbandSignupUS/types/PersonDob"
         },
+        "hasInternet": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/Internet"
+        },
         "selectedTvPackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackages",
             "sourceOutputKey": "availableTvPackages",
@@ -229,20 +232,19 @@
                     "type": "boolean",
                     "default": false
                 },
-                "tvAndBroadband": {
-                    "type": "boolean",
-                    "default": false
-                },
-                "broadband": {
-                    "type": "boolean",
-                    "default": false
+                "checkoutType": {
+                    "type": "string",
+                    "enum": ["broadband-only", "tv-and-broadband"]
                 }
             },
             "required": [
-                "tvAndBroadband",
-                "broadband"
+                "checkoutType"
             ],
             "additionalProperties": false
+        },
+        "Internet": {
+            "type": "boolean",
+            "default": false
         },
         "CreditCheckOrNull": {
             "oneOf": [{
