@@ -229,18 +229,18 @@
                     "type": "boolean",
                     "default": false
                 },
-                "hasBroadband": {
+                "tvAndBroadband": {
                     "type": "boolean",
                     "default": false
                 },
-                "hasBroadbandOnly": {
+                "broadband": {
                     "type": "boolean",
                     "default": false
                 }
             },
             "required": [
-                "hasBroadband",
-                "hasBroadbandOnly"
+                "tvAndBroadband",
+                "broadband"
             ],
             "additionalProperties": false
         },
