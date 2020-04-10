@@ -229,7 +229,7 @@
                     "type": "boolean",
                     "default": false
                 },
-                "hasInternetPackage": {
+                "hasBroadband": {
                     "type": "boolean",
                     "default": false
                 },
@@ -239,7 +239,7 @@
                 }
             },
             "required": [
-                "hasInternetPackage",
+                "hasBroadband",
                 "hasBroadbandOnly"
             ],
             "additionalProperties": false
