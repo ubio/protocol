@@ -21,7 +21,7 @@
         "contactPerson": {
             "typeRef": "#/domains/BroadbandSignupUS/types/PersonDob"
         },
-        "hasInternet": {
+        "addBroadband": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Internet"
         },
         "selectedTvPackages": {
