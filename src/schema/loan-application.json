@@ -126,6 +126,9 @@
         },
         "savedUrl": {
             "typeRef": "#/domains/LoanApplication/types/SavedUrl"
+        },
+        "debug": {
+            "typeRef": "#/domains/LoanApplication/types/Anything"
         }
     },
     "types": {
@@ -818,6 +821,22 @@
         },
         "Boolean": {
             "type": "boolean"
+        },
+        "Anything": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "array"
+                },
+                {
+                    "type": "object"
+                },
+                {
+                    "type": "boolean"
+                }
+            ]
         }
     },
     "errors": [
