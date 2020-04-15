@@ -234,7 +234,7 @@
                 },
                 "checkoutType": {
                     "type": "string",
-                    "enum": ["broadband-only", "tv-and-broadband"]
+                    "enum": ["broadband-and-tv", "tv-and-broadband"]
                 }
             },
             "required": [
