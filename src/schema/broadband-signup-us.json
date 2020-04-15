@@ -234,7 +234,7 @@
                 },
                 "checkoutType": {
                     "type": "string",
-                    "enum": ["broadband-only", "tv-and-broadband"]
+                    "enum": ["broadband-and-tv", "tv-and-broadband"]
                 }
             },
             "required": [
@@ -258,7 +258,7 @@
                         "socialSecurityNumber": {
                             "type": "string",
                             "minLength": 9,
-                            "maxLength": 9,
+                            "maxLength": 11,
                             "default": ""
                         }
                     },
