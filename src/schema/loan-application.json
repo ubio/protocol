@@ -841,6 +841,11 @@
     },
     "errors": [
         {
+            "code": "ConnectionReset",
+            "category": "website",
+            "description":"The supplier reset the TCP connection."
+        },
+        {
             "code": "AlreadyACustomer",
             "category": "client",
             "description":"The customer already has a loan with this provider."
