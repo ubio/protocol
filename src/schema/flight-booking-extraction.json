@@ -6,7 +6,9 @@
             "typeRef": "#/domains/Generic/types/URL"
         },
         "options": {
-            "typeRef": "#/domains/FlightBooking/types/Options"
+            "typeRef": "#/domains/FlightBooking/types/Options",
+            "default": {},
+            "initial": true
         },
         "selectedOriginAirportCode": {
             "typeRef": "#/domains/FlightBooking/types/AirportCode",
@@ -96,4 +98,3 @@
     "errors": [
     ]
 }
-

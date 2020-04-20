@@ -3,7 +3,9 @@
     "private": true,
     "inputs": {
         "options": {
-            "typeRef": "#/domains/HotelBookingExtraction/types/Options"
+            "typeRef": "#/domains/HotelBookingExtraction/types/Options",
+            "default": {},
+            "initial": true
         },
         "selectedDestination": {
             "typeRef": "#/domains/HotelBookingExtraction/types/Destination",
@@ -77,4 +79,3 @@
     "errors": [
     ]
 }
-

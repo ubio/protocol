@@ -43,6 +43,7 @@
         },
         "options": {
             "typeRef": "#/domains/EventBooking/types/Options",
+            "default": {},
             "initial": true
         },
         "selectedRefund": {

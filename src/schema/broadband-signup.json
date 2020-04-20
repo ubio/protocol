@@ -13,6 +13,7 @@
         },
         "options": {
             "typeRef": "#/domains/BroadbandSignup/types/Options",
+            "default": {},
             "initial": true
         },
         "landlineCheck": {
