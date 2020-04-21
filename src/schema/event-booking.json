@@ -393,6 +393,11 @@
     },
     "errors": [
         {
+            "code": "BasketCleared",
+            "category": "client",
+            "description": "Basket cleared upon request."
+        },
+        {
             "code": "DeliveryOptionInvalid",
             "category": "client",
             "description": "Delivery option does not match one of the options we are expecting"
