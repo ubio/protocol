@@ -13,6 +13,7 @@
         },
         "options": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Options",
+            "default": {},
             "initial": true
         },
         "serviceAddress": {

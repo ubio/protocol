@@ -9,7 +9,8 @@
         "options": {
             "typeRef": "#/domains/Internal/types/Options",
             "description": "Used by service-api tests.",
-            "default": {}
+            "default": {},
+            "initial": true
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",

@@ -3,7 +3,9 @@
     "private": true,
     "inputs": {
         "options": {
-            "typeRef": "#/domains/MotorInsurance/types/Options"
+            "typeRef": "#/domains/MotorInsurance/types/Options",
+            "default": {},
+            "initial": true
         }
     },
     "outputs": {
@@ -19,4 +21,3 @@
     "errors": [
     ]
 }
-

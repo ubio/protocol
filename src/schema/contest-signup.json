@@ -48,6 +48,7 @@
         },
         "options": {
             "typeRef": "#/domains/ContestSignup/types/Options",
+            "default": {},
             "initial": true
         },
         "discount": {

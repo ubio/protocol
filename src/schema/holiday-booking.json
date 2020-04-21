@@ -13,6 +13,7 @@
         },
         "options": {
             "typeRef": "#/domains/HolidayBooking/types/Options",
+            "default": {},
             "initial": true,
             "description": "A set of options that define the automation's behaviour."
         },
