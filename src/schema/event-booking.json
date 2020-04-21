@@ -71,6 +71,10 @@
             "description": "List of selected upsells.",
             "sourceOutputKey": "availableUpsells",
             "inputMethod": "SelectMany"
+        },
+        "overrideIntent": {
+            "typeRef": "#/domains/EventBooking/types/Intent",
+            "description": "List of intents."
         }
     },
     "outputs": {
@@ -379,6 +383,12 @@
         },
         "Boolean": {
             "type": "boolean"
+        },
+        "Intent": {
+            "type": "string",
+            "enum": [
+                "clearBasket"
+            ]
         }
     },
     "errors": [
