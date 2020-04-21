@@ -848,6 +848,16 @@
     },
     "errors": [
         {
+            "code": "InvalidSSN",
+            "category": "client",
+            "description": "The social security number is invalid."
+        },
+        {
+            "code": "InvalidPIN",
+            "category": "client",
+            "description": "The PIN is invalid."
+        },
+        {
             "code": "PackageNotAvailable",
             "category": "client",
             "description": "The package is not available."
