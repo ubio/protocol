@@ -185,7 +185,7 @@
             "typeRef": "#/domains/BroadbandSignupUS/types/AvailableSetupDatesOrNull"
         },
         "availableActiveLandlineOptions": {
-            "typeRef": "#/domains/BroadbandSignup/types/AvailableActiveLandlineOptions"
+            "typeRef": "#/domains/BroadbandSignupUS/types/AvailableActiveLandlineOptions"
         },
         "creditCheckServiceFee": {
             "typeRef": "#/domains/BroadbandSignupUS/types/CheckServiceFeeOrNull"
