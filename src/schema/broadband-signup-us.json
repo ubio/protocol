@@ -844,6 +844,12 @@
             "category": "client",
             "description": "Document expiration date is not accepted by the website",
             "example": "Document should be valid for more than 3 months"
+        },
+        {
+            "code": "SecurityInformationInvalid",
+            "category": "client",
+            "description": "The security information provided was not accepted by the website.",
+            "example": "Invalid security code or question."
         }
     ]
 }
