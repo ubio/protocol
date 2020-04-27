@@ -685,6 +685,11 @@
             "code": "RoomNotAvailable",
             "category": "client",
             "description": "The website claims the room is not available for the selected dates."
+        },
+        {
+            "code": "MultipleRoomsRequired",
+            "category": "client",
+            "description": "Multiple rooms required for the requested amount of guests."
         }
     ]
 }
