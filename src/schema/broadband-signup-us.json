@@ -70,6 +70,11 @@
             "sourceOutputKey": "availableBroadbandPackages",
             "inputMethod": "SelectOne"
         },
+        "selectedInstallationOption": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/InstallationOption",
+            "sourceOutputKey": "availableInstallationOptions",
+            "inputMethod": "SelectOne"
+        },
         "selectedPhonePackage": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackage",
             "sourceOutputKey": "availablePhonePackages",
@@ -174,6 +179,9 @@
         },
         "availablePhonePackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
+        },
+        "availableInstallationOptions": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/InstallationOptions"
         },
         "availableSecurityQuestions": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SecurityQuestions"
@@ -436,6 +444,32 @@
                 },
                 "estimatedSpeed": {
                     "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "InstallationOptions": {
+            "type": "array",
+            "description": "A list of installation packages.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/InstallationOption" }
+        },
+        "InstallationOption": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Professional Install",
+                    "minLength": 1
+                },
+                "description": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
                 }
             },
             "required": [
