@@ -245,9 +245,7 @@
                     "enum": ["broadband-and-tv", "tv-and-broadband"]
                 }
             },
-            "required": [
-                "checkoutType"
-            ],
+            "required": [],
             "additionalProperties": false
         },
         "Internet": {
