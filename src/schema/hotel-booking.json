@@ -101,6 +101,10 @@
             "typeRef": "#/domains/HotelBooking/types/Rooms",
             "description": "List of rooms found on the supplier's website."
         },
+        "guestsAgeRanges": {
+            "typeRef": "#/domains/HotelBooking/types/AgeRanges",
+            "description": "Age ranges. Guest type min/max age."
+        },
         "availablePaymentMethods": {
             "typeRef": "#/domains/HotelBooking/types/PaymentMethods",
             "description": "List of payment methods found on the supplier's website."
@@ -633,6 +637,35 @@
             "required": [
                 "firstName",
                 "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "AgeRanges": {
+            "type": "object",
+            "properties": {
+                "children": {
+                    "$ref": "#/domains/HotelBooking/types/AgeRange"
+                },
+                "infants": {
+                    "$ref": "#/domains/HotelBooking/types/AgeRange"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "AgeRange": {
+            "type": "object",
+            "properties": {
+                "minAge": {
+                    "type": "integer"
+                },
+                "maxAge": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "minAge",
+                "maxAge"
             ],
             "additionalProperties": false
         },
