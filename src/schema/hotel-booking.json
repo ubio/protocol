@@ -17,7 +17,6 @@
         },
         "options": {
             "typeRef": "#/domains/HotelBooking/types/Options",
-            "default": {},
             "initial": true,
             "description": "A set of options that define the automation's behaviour."
         },
@@ -100,6 +99,10 @@
         "availableRooms": {
             "typeRef": "#/domains/HotelBooking/types/Rooms",
             "description": "List of rooms found on the supplier's website."
+        },
+        "guestsAgeRanges": {
+            "typeRef": "#/domains/HotelBooking/types/AgeRangesOrNull",
+            "description": "Age ranges. Guest type min/max age."
         },
         "availablePaymentMethods": {
             "typeRef": "#/domains/HotelBooking/types/PaymentMethods",
@@ -339,6 +342,7 @@
             ],
             "additionalProperties": false
         },
+
         "Hotel": {
             "type": "object",
             "properties": {
@@ -636,6 +640,53 @@
             ],
             "additionalProperties": false
         },
+        "AgeRangesOrNull": {
+            "oneOf": [{
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "children": {
+                            "type": "object",
+                            "properties": {
+                                "minAge": {
+                                    "type": "integer"
+                                },
+                                "maxAge": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "minAge",
+                                "maxAge"
+                            ],
+                            "additionalProperties": false
+                        },
+                        "infants": {
+                            "type": "object",
+                            "properties": {
+                                "minAge": {
+                                    "type": "integer"
+                                },
+                                "maxAge": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "minAge",
+                                "maxAge"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "children"
+                    ],
+                    "additionalProperties": false
+                }
+            ]
+        },
         "BookingConfirmation": {
             "type": "object",
             "description": "Information gathered on \"Booking success\" page.",
@@ -685,11 +736,6 @@
             "code": "RoomNotAvailable",
             "category": "client",
             "description": "The website claims the room is not available for the selected dates."
-        },
-        {
-            "code": "MultipleRoomsRequired",
-            "category": "client",
-            "description": "Multiple rooms required for the requested amount of guests."
         }
     ]
 }
