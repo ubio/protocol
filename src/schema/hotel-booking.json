@@ -648,36 +648,10 @@
                     "type": "object",
                     "properties": {
                         "children": {
-                            "type": "object",
-                            "properties": {
-                                "minAge": {
-                                    "type": "integer"
-                                },
-                                "maxAge": {
-                                    "type": "integer"
-                                }
-                            },
-                            "required": [
-                                "minAge",
-                                "maxAge"
-                            ],
-                            "additionalProperties": false
+                            "$ref": "#/domains/HotelBooking/types/Ranges"
                         },
                         "infants": {
-                            "type": "object",
-                            "properties": {
-                                "minAge": {
-                                    "type": "integer"
-                                },
-                                "maxAge": {
-                                    "type": "integer"
-                                }
-                            },
-                            "required": [
-                                "minAge",
-                                "maxAge"
-                            ],
-                            "additionalProperties": false
+                            "$ref": "#/domains/HotelBooking/types/Ranges"
                         }
                     },
                     "required": [
@@ -686,6 +660,22 @@
                     "additionalProperties": false
                 }
             ]
+        },
+        "Ranges": {
+            "type": "object",
+            "properties": {
+                "minAge": {
+                    "type": "integer"
+                },
+                "maxAge": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "minAge",
+                "maxAge"
+            ],
+            "additionalProperties": false
         },
         "BookingConfirmation": {
             "type": "object",
