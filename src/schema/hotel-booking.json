@@ -648,10 +648,10 @@
                     "type": "object",
                     "properties": {
                         "children": {
-                            "$ref": "#/domains/HotelBooking/types/Ranges"
+                            "$ref": "#/domains/HotelBooking/types/AgeRange"
                         },
                         "infants": {
-                            "$ref": "#/domains/HotelBooking/types/Ranges"
+                            "$ref": "#/domains/HotelBooking/types/AgeRange"
                         }
                     },
                     "required": [
@@ -661,7 +661,7 @@
                 }
             ]
         },
-        "Ranges": {
+        "AgeRange": {
             "type": "object",
             "properties": {
                 "minAge": {
