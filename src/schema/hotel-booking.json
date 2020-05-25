@@ -105,6 +105,10 @@
             "typeRef": "#/domains/HotelBooking/types/AgeRanges",
             "description": "Age ranges. Guest type min/max age."
         },
+        "totalBookingPrice": {
+            "typeRef": "#/domains/HotelBooking/types/TotalPrice",
+            "description": "Total price of the current booking."
+        },
         "availablePaymentMethods": {
             "typeRef": "#/domains/HotelBooking/types/PaymentMethods",
             "description": "List of payment methods found on the supplier's website."
@@ -691,6 +695,17 @@
             "additionalProperties": false,
             "required": [
                 "bookingReference"
+            ]
+        },
+        "TotalPrice": {
+            "type": "object",
+            "description": "Total booking price that includes pay now and pay later",
+            "properties": {
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "additionalProperties": false,
+            "required": [
+                "price"
             ]
         },
         "Payment": {
