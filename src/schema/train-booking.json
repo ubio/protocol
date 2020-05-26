@@ -110,7 +110,7 @@
                     "description": "Outbound trip specification."
                 },
                 "inbound": {
-                    "$ref": "#/domains/TrainBooking/types/CoachSearch",
+                    "$ref": "#/domains/TrainBooking/types/TrainSearch",
                     "description": "Inbound (return) trip specification. If omitted, one-way trip booking flow is used."
                 },
                 "passengerAges": {
