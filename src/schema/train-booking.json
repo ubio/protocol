@@ -106,7 +106,7 @@
             "description": "Information about the trip.",
             "properties": {
                 "outbound": {
-                    "$ref": "#/domains/TrainBooking/types/CoachSearch",
+                    "$ref": "#/domains/TrainBooking/types/TrainSearch",
                     "description": "Outbound trip specification."
                 },
                 "inbound": {
@@ -125,7 +125,7 @@
             ],
             "additionalProperties": false
         },
-        "CoachSearch": {
+        "TrainSearch": {
             "type": "object",
             "description": "Outbound and inbound trips specification.",
             "properties": {
