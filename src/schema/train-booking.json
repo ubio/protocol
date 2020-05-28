@@ -1,0 +1,465 @@
+{
+    "description": "Automates bus and chack tickets booking on websites.",
+    "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/bookingReference"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to one of the checkout flow pages."
+        },
+        "search": {
+            "typeRef": "#/domains/TrainBooking/types/Search",
+            "initial": true
+        },
+        "selectedOutboundTrip": {
+            "typeRef": "#/domains/TrainBooking/types/Trip",
+            "sourceOutputKey": "availableOutboundTrips",
+            "inputMethod": "SelectOne"
+        },
+        "selectedInboundTrip": {
+            "typeRef": "#/domains/TrainBooking/types/Trip",
+            "sourceOutputKey": "availableInboundTrips",
+            "inputMethod": "SelectOne"
+        },
+        "selectedOutboundFare": {
+            "typeRef": "#/domains/TrainBooking/types/Fare",
+            "sourceOutputKey": "availableOutboundFares",
+            "inputMethod": "SelectOne"
+        },
+        "selectedInboundFare": {
+            "typeRef": "#/domains/TrainBooking/types/Fare",
+            "sourceOutputKey": "availableInboundFares",
+            "inputMethod": "SelectOne"
+        },
+        "selectedDelivery": {
+            "typeRef": "#/domains/TrainBooking/types/Delivery",
+            "description": "Requested when delivery choices are required by website.<br/>At this point <code>availableDeliveries</code> output should contain information about available delivery options.<br/>Note: on deep links with pre-selected delivery options, this input might not required.<br/>Automation may fail if the incorrect option is specified, or if the delivery option is no longer available, for example, for a late or same day booking.",
+            "sourceOutputKey": "availableDeliveries",
+            "inputMethod": "SelectOne"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": [
+                "/email"
+            ]
+        },
+        "passengers": {
+            "typeRef": "#/domains/TrainBooking/types/Passengers"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent"
+        },
+        "smsConfirmation": {
+            "typeRef": "#/domains/TrainBooking/types/VerificationCode",
+            "description": "An SMS confirmation for authorizing the payment. Occurs in some of the transactions in place of 3dsecure."
+        },
+        "options": {
+            "typeRef": "#/domains/TrainBooking/types/Options",
+            "default": {},
+            "initial": true
+        }
+    },
+    "outputs": {
+        "availableOutboundTrips": {
+            "typeRef": "#/domains/TrainBooking/types/Trips"
+        },
+        "availableInboundTrips": {
+            "typeRef": "#/domains/TrainBooking/types/Trips"
+        },
+        "availableOutboundFares": {
+            "typeRef": "#/domains/TrainBooking/types/AvailableFares"
+        },
+        "availableInboundFares": {
+            "typeRef": "#/domains/TrainBooking/types/AvailableFares"
+        },
+        "availableDeliveries": {
+            "typeRef": "#/domains/TrainBooking/types/AvailableDeliveriesOrNull",
+            "description": "Emitted when actual delivery information is collected.<br/>Note: on deep links with pre-selected delivery, this output may not be provided."
+        },
+        "estimatedPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Price shown by the website prior to requiring passenger information.<br/>This is likely not the final price, as flight ancilliaries may be added as requested, or additional credit card charges may be applied."
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/TrainBooking/types/BookingConfirmation"
+        }
+    },
+    "types": {
+        "Search": {
+            "type": "object",
+            "description": "Information about the trip.",
+            "properties": {
+                "outbound": {
+                    "$ref": "#/domains/TrainBooking/types/TrainSearch",
+                    "description": "Outbound trip specification."
+                },
+                "inbound": {
+                    "$ref": "#/domains/TrainBooking/types/TrainSearch",
+                    "description": "Inbound (return) trip specification. If omitted, one-way trip booking flow is used."
+                },
+                "passengerAges": {
+                    "$ref": "#/domains/Generic/types/Ages",
+                    "description": "Ages of all passengers.",
+                    "example": [34, 31, 9]
+                }
+            },
+            "required": [
+                "outbound",
+                "passengerAges"
+            ],
+            "additionalProperties": false
+        },
+        "TrainSearch": {
+            "type": "object",
+            "description": "Outbound and inbound trips specification.",
+            "properties": {
+                "origin": { "$ref": "#/domains/TrainBooking/types/DateTerminal" },
+                "destination": { "$ref": "#/domains/TrainBooking/types/DateTerminal" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ],
+            "additionalProperties": false
+        },
+        "DateTerminal": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of trip (terminal local date).",
+                    "example": "2019-01-01"
+                },
+                "terminalLocality": {
+                    "type": "string",
+                    "description": "Terminal locality, usually city name.",
+                    "example": "London"
+                },
+                "terminalName": {
+                    "type": "string",
+                    "description": "Name of the terminal as found on the booking website.",
+                    "example": "London Liverpool Street"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of the terminal.",
+                    "example": "gb"
+                }
+            },
+            "required": [
+                "date",
+                "terminalLocality",
+                "terminalName"
+            ],
+            "additionalProperties": false
+        },
+        "Trips": {
+            "type": "array",
+            "description": "An array of trips.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/TrainBooking/types/Trip" }
+        },
+        "Trip": {
+            "type": "object",
+            "description": "Outbound and inbound specification.",
+            "properties": {
+                "origin": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" },
+                "destination": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableFares": {
+            "type": "array",
+            "description": "A list of available fares found on the website.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/TrainBooking/types/Fare" }
+        },
+        "Fare": {
+            "type": "object",
+            "description": "Train fare information.",
+            "additionalProperties": false,
+            "properties": {
+                "cabinClass": { "$ref": "#/domains/TrainBooking/types/CabinClass" },
+                "cancellation": {
+                    "type": "string",
+                    "description": "Fare cancellation type.",
+                    "example": "rebookable",
+                    "enum": ["rebookable", "non-rebookable", "refundable"]
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "cabinClass",
+                "cancellation",
+                "price"
+            ]
+        },
+        "CabinClass": {
+            "type": "string",
+            "enum": ["second-class", "first-class"]
+        },
+        "DateTimeTerminal": {
+            "type": "object",
+            "properties": {
+                "dateTime": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
+                    "description": "Date and time (terminal local time).",
+                    "example": "2018-02-02 19:40"
+                },
+                "terminalLocality": {
+                    "type": "string",
+                    "description": "Terminal locality, usually city name.",
+                    "example": "London"
+                },
+                "terminalName": {
+                    "type": "string",
+                    "description": "Name of the terminal as found on the booking website.",
+                    "example": "London Liverpool Street"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of the terminal.",
+                    "example": "gb"
+                }
+            },
+            "required": [
+                "dateTime",
+                "terminalLocality",
+                "terminalName"
+            ],
+            "additionalProperties": false
+        },
+        "Passengers": {
+            "type": "array",
+            "description": "An array with details for each passenger.",
+            "pii": true,
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/TrainBooking/types/Passenger" }
+        },
+        "Passenger": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "addAdditionalLuggage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3,
+                    "default": 0
+                },
+                "document": {
+                    "$ref": "#/domains/TrainBooking/types/PassengerDocument"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth",
+                "addAdditionalLuggage"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableDeliveriesOrNull": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "description": "A list of available delivery options found on the page.",
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": { "$ref": "#/domains/TrainBooking/types/Delivery" }
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "Delivery": {
+            "type": "object",
+            "description": "Ticket delivery information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Delivery text as provided by the insurer."
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "PassengerDocument": {
+            "type": "object",
+            "description": "Passenger ID (passport or other travel document). Automation may fail if this information is required by website, but not provided by Client.",
+            "pii": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Document type.",
+                    "enum": [
+                        "passport",
+                        "national-id"
+                    ]
+                },
+                "number": {
+                    "type": "string",
+                    "description": "Document number.",
+                    "example": "75 127001"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "issueCountryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Code of country where the document was issued."
+                }
+            },
+            "required": [
+                "type",
+                "number",
+                "expirationDate",
+                "issueCountryCode"
+            ],
+            "additionalProperties": false
+        },
+        "VerificationCode": {
+            "type": "object",
+            "description": "Verification code",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "example": "1234"
+                }
+            },
+            "required": [
+                "code"
+            ]
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end."
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        }
+    },
+    "errors": [
+        {
+            "code": "TripInvalid",
+            "category": "client",
+            "description": "Trip details are invalid."
+        },
+        {
+            "code": "OutboundTripNotAvailable",
+            "category": "client",
+            "description": "Outbound trip dates/times are not available, either sold out or not found."
+        },
+        {
+            "code": "ExtraLuggageNotAvailable",
+            "category": "client",
+            "description": "The website does not allow adding additional luggage."
+        },
+        {
+            "code": "ExtraLuggageLimitExceeded",
+            "category": "client",
+            "description": "The website does not allow adding the amount of additional luggage specified in the input."
+        },
+        {
+            "code": "PassengerDetailsInvalid",
+            "category": "client",
+            "description": "The website invalidates some of the passenger details."
+        },
+        {
+            "code": "DocumentDetailsInavlid",
+            "category": "client",
+            "description": "The website invalidates the document details."
+        },
+        {
+            "code": "SeatsNotAvailable",
+            "category": "client",
+            "description": "The website claims that either no seats are available, or the selected seats are not available."
+        }
+    ]
+}
