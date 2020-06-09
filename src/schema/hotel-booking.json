@@ -137,6 +137,9 @@
         },
         "loggedIn": {
             "typeRef": "#/domains/HotelBooking/types/Boolean"
+        },
+        "bookingInputs": {
+            "typeRef": "#/domains/HotelBooking/types/BookingInputs"
         }
     },
     "types": {
@@ -726,6 +729,24 @@
         },
         "Boolean": {
             "type": "boolean"
+        },
+        "BookingInputs": {
+            "type": "object",
+            "description": "Some of the inputs sent to the job, reflected back.",
+            "pii": false,
+            "properties": {
+                "search": {
+                    "$ref": "#/domains/HotelBooking/types/Search"
+                },
+                "selectedRooms": {
+                    "$ref": "#/domains/HotelBooking/types/Rooms"
+                }
+            },
+            "required": [
+                "search",
+                "selectedRooms"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
