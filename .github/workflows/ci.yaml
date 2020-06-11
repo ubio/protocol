@@ -1,0 +1,37 @@
+name: CI
+on: push
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build and push development image
+        uses: docker/build-push-action@v1
+        with:
+          username: _json_key
+          password: ${{ secrets.GCP_ACCESS_DEVELOPMENT }}
+          registry: gcr.io
+          repository: automation-cloud-development/protocol
+          tag_with_sha: true
+
+      - name: Build and push production image
+        uses: docker/build-push-action@v1
+        with:
+          username: _json_key
+          password: ${{ secrets.GCP_ACCESS_PRODUCTION }}
+          registry: gcr.io
+          repository: automation-cloud-production/protocol
+          tag_with_sha: true
+
+      - name: Notify k8s repo
+        uses: ubio/github-actions/repository-dispatch@master
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          owner: ubio
+          repository: k8s
+          event: built-protocol
+          payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
