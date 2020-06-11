@@ -16,7 +16,7 @@ jobs:
           password: ${{ secrets.GCP_ACCESS_DEVELOPMENT }}
           registry: gcr.io
           repository: automation-cloud-development/protocol
-          tag_with_sha: true
+          tags: ${{ github.sha }}
 
       - name: Build and push production image
         uses: docker/build-push-action@v1
@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.GCP_ACCESS_PRODUCTION }}
           registry: gcr.io
           repository: automation-cloud-production/protocol
-          tag_with_sha: true
+          tags: ${{ github.sha }}
 
       - name: Notify k8s repo
         uses: ubio/github-actions/repository-dispatch@master
