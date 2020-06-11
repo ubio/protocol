@@ -139,7 +139,8 @@
             "typeRef": "#/domains/HotelBooking/types/Boolean"
         },
         "bookingInputs": {
-            "typeRef": "#/domains/HotelBooking/types/BookingInputs"
+            "typeRef": "#/domains/HotelBooking/types/BookingInputs",
+            "description": "Echoed non-PII inputs"
         }
     },
     "types": {
