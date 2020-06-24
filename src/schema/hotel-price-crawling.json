@@ -100,6 +100,15 @@
                     "type": "string",
                     "description": "The number of guests that the rate is intended for."
                 },
+                "breakfastIncluded": {
+                    "type": "boolean"
+                },
+                "parkingIncluded": {
+                    "type": "boolean"
+                },
+                "internetIncluded": {
+                    "type": "boolean"
+                },
                 "baseRate": {
                     "$ref": "#/domains/Generic/types/Price"
                 },
