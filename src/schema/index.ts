@@ -11,6 +11,7 @@ import BroadbandSignupAU from './broadband-signup-au.json';
 import BroadbandSignupUS from './broadband-signup-us.json';
 import HotelBooking from './hotel-booking.json';
 import TestHotelBooking from './test-hotel-booking.json';
+import HotelPriceCrawling from './hotel-price-crawling.json';
 import HolidayBooking from './holiday-booking.json';
 import ElectronicTravelAuthorisation from './electronic-travel-authorisation.json';
 import FlightBookingExtraction from './flight-booking-extraction.json';
@@ -37,6 +38,7 @@ export const schema = {
         BroadbandSignupUS,
         HotelBooking,
         TestHotelBooking,
+        HotelPriceCrawling,
         HolidayBooking,
         ElectronicTravelAuthorisation,
         Internal,

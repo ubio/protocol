@@ -1,0 +1,177 @@
+{
+    "description": "Enables crawling hotel prices.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "search": {
+            "typeRef": "#/domains/HotelPriceCrawling/types/Search"
+        }
+    },
+    "outputs": {
+        "websiteHotelId": {
+            "typeRef": "#/domains/HotelPriceCrawling/types/String",
+            "description": "ID of the hotel as claimed by the website."
+        },
+        "ageThreshold": {
+            "typeRef": "#/domains/HotelPriceCrawling/types/Integer",
+            "description": "The threshold which differentiates child guests from adult guests. This value is right bounded (the threshold itself belongs to the child category)."
+        },
+        "availableRooms": {
+            "typeRef": "#/domains/HotelPriceCrawling/types/Rooms",
+            "description": "The list of available rooms with rates."
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "properties": {
+            },
+            "additionalProperties": false
+        },
+        "Rooms": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/HotelPriceCrawling/types/Room"
+            }
+        },
+        "Room": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the room, as presented to users."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "A room identifier, unique per hotel"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "capacity": {
+                    "type": "string",
+                    "description": "The maximum number of guests that a room can physically accommodate."
+                },
+                "occupancy": {
+                    "type": "string",
+                    "description": "The maximum number of guests that a room is intended for."
+                },
+                "images": {
+                    "type": "array",
+                    "minItems": 0,
+                    "items": {
+                        "$ref": "#/domains/Generic/types/Link"
+                    }
+                },
+                "rates": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/HotelPriceCrawling/types/Rate"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "rates"
+            ],
+            "additionalProperties": false
+        },
+        "Rate": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the rate, as presented to users."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "A rate identifier, unique per hotel"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "occupancy": {
+                    "type": "string",
+                    "description": "The number of guests that the rate is intended for."
+                },
+                "baseRate": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "taxes": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/Generic/types/NamedPrice"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "baseRate",
+                "taxes"
+            ],
+            "additionalProperties": false
+        },
+        "String": {
+            "type": "string"
+        },
+        "Integer": {
+            "type": "integer"
+        },
+        "Search": {
+            "type": "object",
+            "properties": {
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "rooms": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/HotelPriceCrawling/types/SearchRoom"
+                    }
+                }
+            },
+            "required": [
+                "checkInDate",
+                "checkOutDate",
+                "rooms"
+            ],
+            "additionalProperties": false
+        },
+        "SearchRoom": {
+            "type": "object",
+            "properties": {
+                "ages": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 150,
+                        "exmaple": 31
+                    }
+                }
+            },
+            "required": [
+                "ages"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+    ]
+}
