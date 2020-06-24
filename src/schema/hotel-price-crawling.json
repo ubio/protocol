@@ -54,11 +54,11 @@
                     "type": "string"
                 },
                 "capacity": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "The maximum number of guests that a room can physically accommodate."
                 },
                 "occupancy": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "The maximum number of guests that a room is intended for."
                 },
                 "images": {
@@ -97,7 +97,7 @@
                     "type": "string"
                 },
                 "occupancy": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "The number of guests that the rate is intended for."
                 },
                 "breakfastIncluded": {
