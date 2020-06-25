@@ -186,6 +186,16 @@
             "code": "RoomsNotAvailable",
             "category": "client",
             "description": "The website claims the room is not available for the search criteria."
+        },
+        {
+            "code": "ChildrenCountNotSupported",
+            "category": "client",
+            "description": "The requested number of children is not supported by any room at this hotel."
+        },
+        {
+            "code": "AdultsCountNotSupported",
+            "category": "client",
+            "description": "The requested number of adults is not supported by any room at this hotel."
         }
     ]
 }
