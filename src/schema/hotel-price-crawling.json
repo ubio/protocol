@@ -34,7 +34,7 @@
         },
         "Rooms": {
             "type": "array",
-            "minItems": 1,
+            "minItems": 0,
             "items": {
                 "$ref": "#/domains/HotelPriceCrawling/types/Room"
             }
