@@ -577,7 +577,8 @@
                 }
             },
             "required": [
-                "number"
+                "deductedValue",
+                "overallValue"
             ],
             "additionalProperties": false
         }
