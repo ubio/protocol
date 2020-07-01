@@ -68,6 +68,10 @@
             "inputMethod": "SeatSelection",
             "dynamic": true
         },
+        "voucher": {
+            "typeRef": "#/domains/FlightBooking/types/Voucher",
+            "description": "Discount voucher."
+        },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
@@ -536,6 +540,20 @@
             "minItems": 1,
             "items": { "type": "string" },
             "example": ["Miles & More", "Frequent Flyer Points Plus"]
+        },
+        "Voucher": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Voucher number",
+                    "example": "abc123456789"
+                }
+            },
+            "required": [
+                "number"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
