@@ -121,6 +121,10 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the privacy policy is presented."
         },
+        "voucherDetails": {
+            "typeRef": "#/domains/FlightBooking/types/VoucherDetails",
+            "description": "Voucher details"
+        },
         "estimatedPrice": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Price shown by the website prior to requiring passenger information.<br/>On many flight booking websites, it is possible to view an estimated price without entering passenger details, provided that the deeplink works and goes past the home page, where the count of passengers and their ages are usually required. This estimated price is emitted when the automation reaches a page where passenger or billing information is required, as long as the price is displayed.<br/>This is likely not the final price, as flight ancilliaries may be added as requested, or additional credit card charges may be applied."
@@ -548,6 +552,23 @@
                     "type": "string",
                     "description": "Voucher number",
                     "example": "abc123456789"
+                }
+            },
+            "required": [
+                "number"
+            ],
+            "additionalProperties": false
+        },
+        "VoucherDetails": {
+            "type": "object",
+            "properties": {
+                "overallValue": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Total amount the voucher is worth."
+                },
+                "deductedValue": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Amount the voucher deducts from the price."
                 }
             },
             "required": [
