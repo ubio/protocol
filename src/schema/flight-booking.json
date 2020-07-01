@@ -155,6 +155,11 @@
                     "description": "If <code>true</code>, automation will select the cheapest fare without requesting or using selected*boundFare inputs.",
                     "default": false
                 },
+                "voucher": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will request the voucher input before payment.",
+                    "default": false
+                },
                 "seatSelection": {
                     "type": "boolean",
                     "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
