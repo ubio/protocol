@@ -680,6 +680,11 @@
             "code": "DuplicateBooking",
             "category": "client",
             "description": "The website claims this is a duplicate booking attempt."
+        },
+        {
+            "code": "VoucherDetailsInvalid",
+            "category": "client",
+            "description": "The website claims this voucher's details are not valid (number or name mismatch)."
         }
     ]
 }
