@@ -247,6 +247,10 @@
                     "type": "boolean",
                     "default": false
                 },
+                "mockDatabaseUrl": {
+                    "type": "string",
+                    "default": ""
+                },
                 "checkoutType": {
                     "type": "string",
                     "enum": ["broadband-and-tv", "tv-and-broadband"]
