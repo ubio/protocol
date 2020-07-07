@@ -303,6 +303,7 @@
                     "minimum": 0
                 },
                 "residentialStatus": {
+                    "$ref": "#/domains/LoanApplication/types/ResidentialStatus"
                 }
             },
             "required": [
@@ -396,6 +397,7 @@
                     "minimum": 0
                 },
                 "residentialStatus": {
+                    "$ref": "#/domains/LoanApplication/types/ResidentialStatus"
                 }
             },
             "required": [
