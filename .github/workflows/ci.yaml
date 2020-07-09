@@ -28,7 +28,7 @@ jobs:
           tags: ${{ github.sha }}
 
       - name: Notify k8s repo
-        uses: ubio/github-actions/repository-dispatch@master
+        uses: docker://automationcloud/repository-dispatch:latest
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           owner: ubio
