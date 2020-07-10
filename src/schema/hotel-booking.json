@@ -172,6 +172,11 @@
                     "description": "If <code>true</code>, enables the discount code input.",
                     "default": false
                 },
+                "outputAvailableRoomsOnce": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, the availableRooms output is delayed until the website's prices get their final update.",
+                    "default": false
+                },
                 "userAgent": {
                     "type": "string",
                     "description": "Enables custom user-agent header when performing automations."
