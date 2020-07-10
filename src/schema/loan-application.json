@@ -876,6 +876,11 @@
             "code": "MobilePinVerificationFailed",
             "category": "client",
             "description":"Pin verification failed."
+        },
+        {
+            "code": "LoanTermsValidationFailed",
+            "category": "client",
+            "description":"Maximum amount or loan duration invalid."
         }
     ]
 }
