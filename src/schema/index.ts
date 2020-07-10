@@ -20,6 +20,7 @@ import MotorInsuranceExtraction from './motor-insurance-extraction.json';
 import PetInsurance from './pet-insurance.json';
 import MobileSignup from './mobile-signup.json';
 import TrainBooking from './train-booking.json';
+import FlightBookingStatus from './flight-booking-status.json';
 import FlightBookingManagement from './flight-booking-management.json';
 import ContestSignup from './contest-signup.json';
 
@@ -48,6 +49,7 @@ export const schema = {
         PetInsurance,
         MobileSignup,
         TrainBooking,
+        FlightBookingStatus,
         FlightBookingManagement,
         ContestSignup,
     }
