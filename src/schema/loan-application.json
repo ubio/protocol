@@ -129,6 +129,9 @@
         },
         "debug": {
             "typeRef": "#/domains/LoanApplication/types/Anything"
+        },
+        "financialPromotionRepresentativeSample": {
+            "typeRef": "#/domains/LoanApplication/types/FinancialPromotionRepresentativeSample"
         }
     },
     "types": {
@@ -820,6 +823,10 @@
                 "key"
             ],
             "additionalProperties": false
+        },
+        "FinancialPromotionRepresentativeSample": {
+            "type": "object",
+            "$ref": "#/domains/Generic/types/StructuredTextItem"
         },
         "Boolean": {
             "type": "boolean"
