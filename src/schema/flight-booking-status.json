@@ -19,7 +19,10 @@
         "outboundFlightNumber": {
             "typeRef": "#/domains/FlightBookingStatus/types/FlightNumber"
         },
-        "status": {
+        "outboundStatus": {
+            "typeRef": "#/domains/FlightBookingStatus/types/Status"
+        },
+        "inboundStatus": {
             "typeRef": "#/domains/FlightBookingStatus/types/Status"
         }
     },
