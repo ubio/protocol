@@ -283,108 +283,108 @@
                             "minLength": 9,
                             "maxLength": 11,
                             "default": ""
-                        }
-                    },
-                    "document": {
-                        "type": "object",
-                        "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
-                        "pii": true,
-                        "properties": {
-                            "type": {
-                                "type": "string",
-                                "description": "Document type.",
-                                "enum": [
-                                    "driver-license",
-                                    "state-issued-id",
-                                    "military-id",
-                                    "us-passport",
-                                    "foreign-government-id"
-                                ]
-                            },
-                            "number": {
-                                "type": "string",
-                                "description": "Document number.",
-                                "example": "75 127001"
-                            },
-                            "issueDate": {
-                                "type": "string",
-                                "format": "date",
-                                "example": "2008-01-01"
-                            },
-                            "expirationDate": {
-                                "type": "string",
-                                "format": "date",
-                                "example": "2028-01-01"
-                            },
-                            "issueCountryCode": {
-                                "$ref": "#/domains/Generic/types/CountryCode",
-                                "description": "Code of country where the document was issued."
-                            },
-                            "issueStateCode": {
-                                "type": "string",
-                                "description": "Code of state where the document was issued.",
-                                "example": "AZ",
-                                "enum": [
-                                    "AK",
-                                    "AL",
-                                    "AR",
-                                    "AZ",
-                                    "CA",
-                                    "CO",
-                                    "CT",
-                                    "DC",
-                                    "DE",
-                                    "FL",
-                                    "GA",
-                                    "HI",
-                                    "ID",
-                                    "IL",
-                                    "IN",
-                                    "KS",
-                                    "KY",
-                                    "LA",
-                                    "MA",
-                                    "MD",
-                                    "ME",
-                                    "MI",
-                                    "MN",
-                                    "MO",
-                                    "MS",
-                                    "MT",
-                                    "NC",
-                                    "ND",
-                                    "NE",
-                                    "NH",
-                                    "NJ",
-                                    "NM",
-                                    "NV",
-                                    "NY",
-                                    "OH",
-                                    "OK",
-                                    "OR",
-                                    "PA",
-                                    "RI",
-                                    "SC",
-                                    "SD",
-                                    "TN",
-                                    "TX",
-                                    "UT",
-                                    "VA",
-                                    "VT",
-                                    "WA",
-                                    "WI",
-                                    "WV",
-                                    "WY"
-                                ]
-                            }
                         },
-                        "required": [
-                            "type",
-                            "number",
-                            "expirationDate",
-                            "issueStateCode"
-                        ],
-                        "additionalProperties": false
+                        "document": {
+                            "type": "object",
+                            "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
+                            "pii": true,
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "description": "Document type.",
+                                    "enum": [
+                                        "driver-license",
+                                        "state-issued-id",
+                                        "military-id",
+                                        "us-passport",
+                                        "foreign-government-id"
+                                    ]
+                                },
+                                "number": {
+                                    "type": "string",
+                                    "description": "Document number.",
+                                    "example": "75 127001"
+                                },
+                                "issueDate": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "example": "2008-01-01"
+                                },
+                                "expirationDate": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "example": "2028-01-01"
+                                },
+                                "issueCountryCode": {
+                                    "$ref": "#/domains/Generic/types/CountryCode",
+                                    "description": "Code of country where the document was issued."
+                                },
+                                "issueStateCode": {
+                                    "type": "string",
+                                    "description": "Code of state where the document was issued.",
+                                    "example": "AZ",
+                                    "enum": [
+                                        "AK",
+                                        "AL",
+                                        "AR",
+                                        "AZ",
+                                        "CA",
+                                        "CO",
+                                        "CT",
+                                        "DC",
+                                        "DE",
+                                        "FL",
+                                        "GA",
+                                        "HI",
+                                        "ID",
+                                        "IL",
+                                        "IN",
+                                        "KS",
+                                        "KY",
+                                        "LA",
+                                        "MA",
+                                        "MD",
+                                        "ME",
+                                        "MI",
+                                        "MN",
+                                        "MO",
+                                        "MS",
+                                        "MT",
+                                        "NC",
+                                        "ND",
+                                        "NE",
+                                        "NH",
+                                        "NJ",
+                                        "NM",
+                                        "NV",
+                                        "NY",
+                                        "OH",
+                                        "OK",
+                                        "OR",
+                                        "PA",
+                                        "RI",
+                                        "SC",
+                                        "SD",
+                                        "TN",
+                                        "TX",
+                                        "UT",
+                                        "VA",
+                                        "VT",
+                                        "WA",
+                                        "WI",
+                                        "WV",
+                                        "WY"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "type",
+                                "number",
+                                "expirationDate",
+                                "issueStateCode"
+                            ],
+                            "additionalProperties": false
+                        }
                     },
                     "required": [
                         "socialSecurityNumber"
