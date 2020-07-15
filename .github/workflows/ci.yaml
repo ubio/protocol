@@ -35,3 +35,19 @@ jobs:
           repository: k8s
           event: built-protocol
           payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
+      - name: Notify Slack on Success
+        if: ${{ success() }}
+        uses: docker://automationcloud/rsslack:latest
+        with:
+          channel: ${{ secrets.SLACK_CHANNEL }}
+          message: ":success: Protocol has been built and <https://github.com/ubio/k8s|k8s> has been notified. Deployment incoming..."
+          slack_token: ${{ secrets.SLACK_TOKEN }}
+
+      - name: Notify Slack on Failure
+        if: ${{ failure() }}
+        uses: docker://automationcloud/rsslack:latest
+        with:
+          channel: ${{ secrets.SLACK_CHANNEL }}
+          message: ":suspicious: Protocol build failed"
+          slack_token: ${{ secrets.SLACK_TOKEN }}
