@@ -270,11 +270,10 @@
             "default": false
         },
         "CreditCheckOrNull": {
-            "oneOf": [
-                {
+            "oneOf": [{
                     "type": "null"
-                },
-                {
+                    },
+                    {
                     "type": "object",
                     "description": "Information for client credit validation.",
                     "pii": true,
