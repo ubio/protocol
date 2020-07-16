@@ -191,6 +191,11 @@
                     "type": "string",
                     "description": "Discount code",
                     "example": "RL2XYZ"
+                },
+                "agentCode": {
+                    "type": "string",
+                    "description": "Agent code to unlock special discount codes",
+                    "example": "ABC1234"
                 }
             },
             "additionalProperties": false,
