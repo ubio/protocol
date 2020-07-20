@@ -65,6 +65,9 @@
             "additionalProperties": false
         }
     },
-    "errors": [
-    ]
+    "errors": [{
+        "code": "RefundAlreadyRequested",
+        "category": "client",
+        "description":"A refund has already been requested for this booking."
+    }]
 }
