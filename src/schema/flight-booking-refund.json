@@ -1,5 +1,5 @@
 {
-    "description": "Allows automating flight status retrieval.",
+    "description": "Allows automating flight refunds.",
     "private": false,
     "inputs": {
         "flight": {
