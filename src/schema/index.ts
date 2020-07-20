@@ -21,7 +21,7 @@ import PetInsurance from './pet-insurance.json';
 import MobileSignup from './mobile-signup.json';
 import TrainBooking from './train-booking.json';
 import FlightBookingStatus from './flight-booking-status.json';
-import FlightBookingRefund from './flight-booking-status.json';
+import FlightBookingRefund from './flight-booking-refund.json';
 import FlightBookingManagement from './flight-booking-management.json';
 import ContestSignup from './contest-signup.json';
 

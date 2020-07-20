@@ -3,10 +3,10 @@
     "private": false,
     "inputs": {
         "flight": {
-            "typeRef": "#/domains/FlightBookingStatus/types/Flight"
+            "typeRef": "#/domains/FlightBookingRefund/types/Flight"
         },
         "contact": {
-            "typeRef": "#/domains/FlightBookingStatus/types/Contact"
+            "typeRef": "#/domains/FlightBookingRefund/types/Contact"
         }
     },
     "outputs": {
