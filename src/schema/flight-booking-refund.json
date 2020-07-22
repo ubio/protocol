@@ -69,5 +69,13 @@
         "code": "RefundAlreadyRequested",
         "category": "client",
         "description":"A refund has already been requested for this booking."
+    }, {
+        "code": "FlightDetailsInvalid",
+        "category": "client",
+        "description":"The flight details provided are invalid."
+    }, {
+        "code": "RefundRequestFailed",
+        "category": "website",
+        "description":"The refund request has failed."
     }]
 }
