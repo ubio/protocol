@@ -477,7 +477,7 @@
                         "$ref": "#/domains/HotelBooking/types/ValueAddition"
                     }
                 },
-                "maxOccupancy": {
+                "occupancy": {
                     "type": "object",
                     "properties": {
                         "adults": {
