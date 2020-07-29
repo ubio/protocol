@@ -191,6 +191,11 @@
                     "type": "string",
                     "description": "Discount code",
                     "example": "RL2XYZ"
+                },
+                "agentCode": {
+                    "type": "string",
+                    "description": "Agent code to unlock special discount codes",
+                    "example": "ABC1234"
                 }
             },
             "additionalProperties": false,
@@ -445,6 +450,24 @@
                     "items": {
                         "$ref": "#/domains/HotelBooking/types/PriceLineItem"
                     }
+                },
+                "maxOccupancy": {
+                    "type": "object",
+                    "properties": {
+                        "adults": {
+                            "type": "number"
+                        },
+                        "children": {
+                            "type": "number"
+                        },
+                        "infants": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "adults"
+                    ],
+                    "additionalProperties": false
                 },
                 "cancellation": {
                     "type": "object",
