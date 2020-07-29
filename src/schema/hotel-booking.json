@@ -451,24 +451,6 @@
                         "$ref": "#/domains/HotelBooking/types/PriceLineItem"
                     }
                 },
-                "maxOccupancy": {
-                    "type": "object",
-                    "properties": {
-                        "adults": {
-                            "type": "number"
-                        },
-                        "children": {
-                            "type": "number"
-                        },
-                        "infants": {
-                            "type": "number"
-                        }
-                    },
-                    "required": [
-                        "adults"
-                    ],
-                    "additionalProperties": false
-                },
                 "cancellation": {
                     "type": "object",
                     "properties": {
@@ -499,6 +481,24 @@
                     "items": {
                         "$ref": "#/domains/HotelBooking/types/ValueAddition"
                     }
+                },
+                "maxOccupancy": {
+                    "type": "object",
+                    "properties": {
+                        "adults": {
+                            "type": "number"
+                        },
+                        "children": {
+                            "type": "number"
+                        },
+                        "infants": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "adults"
+                    ],
+                    "additionalProperties": false
                 },
                 "rateGroup": {
                     "type": "string",
