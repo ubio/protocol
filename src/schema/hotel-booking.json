@@ -482,6 +482,24 @@
                         "$ref": "#/domains/HotelBooking/types/ValueAddition"
                     }
                 },
+                "occupancy": {
+                    "type": "object",
+                    "properties": {
+                        "adults": {
+                            "type": "number"
+                        },
+                        "children": {
+                            "type": "number"
+                        },
+                        "infants": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "adults"
+                    ],
+                    "additionalProperties": false
+                },
                 "rateGroup": {
                     "type": "string",
                     "example": "standard"
