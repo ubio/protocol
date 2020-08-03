@@ -7,6 +7,9 @@
         },
         "contact": {
             "typeRef": "#/domains/FlightBookingRefund/types/Contact"
+        },
+        "passengers": {
+            "typeRef": "#/domains/FlightBookingRefund/types/Passengers"
         }
     },
     "outputs": {
@@ -58,11 +61,38 @@
                 }
             },
             "required": [
-                "firstName",
-                "lastName",
                 "email"
             ],
             "additionalProperties": false
+        },
+        "Passenger": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name(s) or family name(s), as specified in passport or travel document.",
+                    "example": "Bobson"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "Passengers": {
+            "type": "array",
+            "description": "An array with details for each passenger.",
+            "pii": true,
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/FlightBookingRefund/types/Passenger" }
         }
     },
     "errors": [{
