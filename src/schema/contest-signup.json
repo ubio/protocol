@@ -548,6 +548,11 @@
             "description": "The event is not available."
         },
         {
+            "code": "EventRegistrationEnded",
+            "category": "client",
+            "description": "The registration for this event ended."
+        },
+        {
             "code": "InvalidPassword",
             "category": "client",
             "description": "The specified password is not valid."
