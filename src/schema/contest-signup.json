@@ -85,6 +85,9 @@
             "typeRef": "#/domains/ContestSignup/types/AvailableDynamicOption",
             "dynamic": true
         },
+        "visibleOptions": {
+            "typeRef": "#/domains/ContestSignup/types/VisibleOptions"
+        },
         "confirmation": {
             "typeRef": "#/domains/ContestSignup/types/Confirmation"
         }
@@ -522,6 +525,19 @@
                 "inputType",
                 "label",
                 "options"
+            ],
+            "additionalProperties": false
+        },
+        "VisibleOptions": {
+            "type": "array",
+            "description": "Additional options to be filled in, visible to the automation at that point in time.",
+            "properties": {
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "label"
             ],
             "additionalProperties": false
         }
