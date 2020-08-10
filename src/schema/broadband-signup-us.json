@@ -65,6 +65,11 @@
             "sourceOutputKey": "availableLandlordPermissionAnswers",
             "inputMethod": "SelectOne"
         },
+        "selectedBroadbandExtras": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/BroadbandExtras",
+            "sourceOutputKey": "availableBroadbandExtras",
+            "inputMethod": "SelectMany"
+        },
         "selectedBroadbandPackage": {
             "typeRef": "#/domains/BroadbandSignupUS/types/SelectedPackage",
             "sourceOutputKey": "availableBroadbandPackages",
@@ -168,6 +173,9 @@
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignupUS/types/Packages"
         },
+        "availableBroadbandExtras": {
+            "typeRef": "#/domains/BroadbandSignupUS/types/BroadbandExtras"
+        },
         "availableHardwareExtras": {
             "typeRef": "#/domains/BroadbandSignupUS/types/HardwareExtras"
         },
@@ -227,6 +235,65 @@
                 "unit": {
                     "type": "string",
                     "default": ""
+                },
+                "city": {
+                    "type": "string",
+                    "default": ""
+                },
+                "state": {
+                    "type": "string",
+                    "enum": [
+                        "AK",
+                        "AL",
+                        "AR",
+                        "AZ",
+                        "CA",
+                        "CO",
+                        "CT",
+                        "DC",
+                        "DE",
+                        "FL",
+                        "GA",
+                        "HI",
+                        "ID",
+                        "IL",
+                        "IN",
+                        "KS",
+                        "KY",
+                        "LA",
+                        "MA",
+                        "MD",
+                        "ME",
+                        "MI",
+                        "MN",
+                        "MO",
+                        "MS",
+                        "MT",
+                        "NC",
+                        "ND",
+                        "NE",
+                        "NH",
+                        "NJ",
+                        "NM",
+                        "NV",
+                        "NY",
+                        "OH",
+                        "OK",
+                        "OR",
+                        "PA",
+                        "RI",
+                        "SC",
+                        "SD",
+                        "TN",
+                        "TX",
+                        "UT",
+                        "VA",
+                        "VT",
+                        "WA",
+                        "WI",
+                        "WV",
+                        "WY"
+                    ]
                 },
                 "zip": {
                     "type": "string",
@@ -410,6 +477,65 @@
                             "type": "string",
                             "default": ""
                         },
+                        "city": {
+                            "type": "string",
+                            "default": ""
+                        },
+                        "state": {
+                            "type": "string",
+                            "enum": [
+                                "AK",
+                                "AL",
+                                "AR",
+                                "AZ",
+                                "CA",
+                                "CO",
+                                "CT",
+                                "DC",
+                                "DE",
+                                "FL",
+                                "GA",
+                                "HI",
+                                "ID",
+                                "IL",
+                                "IN",
+                                "KS",
+                                "KY",
+                                "LA",
+                                "MA",
+                                "MD",
+                                "ME",
+                                "MI",
+                                "MN",
+                                "MO",
+                                "MS",
+                                "MT",
+                                "NC",
+                                "ND",
+                                "NE",
+                                "NH",
+                                "NJ",
+                                "NM",
+                                "NV",
+                                "NY",
+                                "OH",
+                                "OK",
+                                "OR",
+                                "PA",
+                                "RI",
+                                "SC",
+                                "SD",
+                                "TN",
+                                "TX",
+                                "UT",
+                                "VA",
+                                "VT",
+                                "WA",
+                                "WI",
+                                "WV",
+                                "WY"
+                            ]
+                        },
                         "zip": {
                             "type": "string",
                             "default": ""
@@ -443,13 +569,16 @@
                     "format": "email",
                     "example": "agent@example.com"
                 },
+                "userName": {
+                    "type": "string",
+                    "default": ""
+                },
                 "password": {
                     "type": "string",
                     "default": ""
                 }
             },
             "required": [
-                "email",
                 "password"
 
             ],
@@ -553,6 +682,38 @@
                 },
                 "estimatedSpeed": {
                     "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "BroadbandExtras": {
+            "type": "array",
+            "description": "A list of broadband extra options.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupUS/types/BroadbandExtra" }
+        },
+        "BroadbandExtra": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "description": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/domains/Generic/types/StructuredTextItem"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
                 }
             },
             "required": [
