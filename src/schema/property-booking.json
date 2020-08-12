@@ -1,0 +1,170 @@
+{
+    "description": "Allows automating property booking.",
+    "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/bookingReference"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "mainGuest": {
+            "typeRef": "#/domains/PropertyBooking/types/MainGuest",
+            "description": "Personal details about the main guest.",
+            "canonical": [
+                "/person",
+                "/contact/email"
+            ]
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        }
+    },
+    "outputs": {
+        "property": {
+            "typeRef": "#/domains/PropertyBooking/types/Property"
+        },
+        "termsAndConditions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/PropertyBooking/types/BookingConfirmation"
+        }
+    },
+    "types": {
+        "Property": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "priceBreakdown": {
+                    "typeRef": "#/domains/Generic/types/StructuredTextItems"
+                },
+                "dates": {
+                    "type": "object",
+                    "properties": {
+                        "checkin": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2008-01-01"
+                        },
+                        "checkout": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2008-01-01"
+                        }
+                    },
+                    "required": [
+                        "checkin",
+                        "checkout"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "name",
+                "price",
+                "dates"
+            ],
+            "additionalProperties": false
+        },
+        "MainGuest": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/PropertyBooking/types/Person"
+                },
+                "contact": {
+                    "$ref": "#/domains/PropertyBooking/types/GuestContact"
+                }
+            },
+            "required": [
+                "person",
+                "contact"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
+            "pii": true,
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "GuestContact": {
+            "type": "object",
+            "properties": {
+                "phone": {
+                    "$ref": "#/domains/Generic/types/AnyPhoneString"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address used for contact.",
+                    "format": "email",
+                    "example": "client@example.com"
+                }
+            },
+            "required": [
+                "phone",
+                "email"
+            ],
+            "additionalProperties": false
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        },
+    },
+    "errors": [
+    ]
+}
