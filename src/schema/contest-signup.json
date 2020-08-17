@@ -88,6 +88,10 @@
         "visibleOptions": {
             "typeRef": "#/domains/ContestSignup/types/VisibleOptions"
         },
+        "priceBreakdown": {
+            "typeRef": "#/domains/ContestSignup/types/PriceBreakdown",
+            "description": "The list of price components, as found on the website."
+        },
         "confirmation": {
             "typeRef": "#/domains/ContestSignup/types/Confirmation"
         }
@@ -540,6 +544,28 @@
                 "label"
             ],
             "additionalProperties": false
+        },
+        "PriceBreakdown": {
+            "type": "array",
+            "description": "The list of price components, as found on the website.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/ContestSignup/types/PriceBreakdownItem" }
+        },
+        "PriceBreakdownItem": {
+            "type": "object",
+            "description": "A component of the price breakdown.",
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The description of an item on the price breakdown list, as found on the website.",
+                    "example": "Credit card charge"
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "text",
+                "price"
+            ]
         }
     },
     "errors": [
