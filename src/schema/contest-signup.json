@@ -377,6 +377,9 @@
                 },
                 "isMandatory": {
                     "type": "boolean"
+                },
+                "images": {
+                    "$ref": "#/domains/ContestSignup/types/Images"
                 }
             },
             "required": [
@@ -400,6 +403,9 @@
                 },
                 "isMandatory": {
                     "type": "boolean"
+                },
+                "images": {
+                    "$ref": "#/domains/ContestSignup/types/Images"
                 }
             },
             "required": [
@@ -424,6 +430,9 @@
                 },
                 "isMandatory": {
                     "type": "boolean"
+                },
+                "images": {
+                    "$ref": "#/domains/ContestSignup/types/Images"
                 }
             },
             "required": [
@@ -478,6 +487,9 @@
                 },
                 "isMandatory": {
                     "type": "boolean"
+                },
+                "images": {
+                    "$ref": "#/domains/ContestSignup/types/Images"
                 }
             },
             "required": [
@@ -499,6 +511,9 @@
                 },
                 "isMandatory": {
                     "type": "boolean"
+                },
+                "images": {
+                    "$ref": "#/domains/ContestSignup/types/Images"
                 }
             },
             "required": [
@@ -523,6 +538,9 @@
                 },
                 "isMandatory": {
                     "type": "boolean"
+                },
+                "images": {
+                    "$ref": "#/domains/ContestSignup/types/Images"
                 }
             },
             "required": [
@@ -544,6 +562,13 @@
                 "label"
             ],
             "additionalProperties": false
+        },
+        "Images": {
+            "type": "array",
+            "description": "Relevant images.",
+            "items": {
+                "$ref": "#/domains/Generic/types/Link"
+            }
         },
         "PriceBreakdown": {
             "type": "array",
