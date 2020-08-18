@@ -91,7 +91,7 @@
             "description": "An array with details for each passenger.",
             "pii": true,
             "minItems": 1,
-            "maxItems": 9,
+            "maxItems": 20,
             "items": { "$ref": "#/domains/FlightBookingRefund/types/Passenger" }
         }
     },
