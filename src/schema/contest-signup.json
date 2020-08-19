@@ -380,6 +380,9 @@
                 },
                 "images": {
                     "$ref": "#/domains/ContestSignup/types/Images"
+                },
+                "description": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -406,6 +409,9 @@
                 },
                 "images": {
                     "$ref": "#/domains/ContestSignup/types/Images"
+                },
+                "description": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -433,6 +439,9 @@
                 },
                 "images": {
                     "$ref": "#/domains/ContestSignup/types/Images"
+                },
+                "description": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -490,6 +499,9 @@
                 },
                 "images": {
                     "$ref": "#/domains/ContestSignup/types/Images"
+                },
+                "description": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -514,6 +526,9 @@
                 },
                 "images": {
                     "$ref": "#/domains/ContestSignup/types/Images"
+                },
+                "description": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -541,6 +556,9 @@
                 },
                 "images": {
                     "$ref": "#/domains/ContestSignup/types/Images"
+                },
+                "description": {
+                    "type": "string"
                 }
             },
             "required": [
