@@ -11,6 +11,11 @@
             "initial": true,
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
+        "options": {
+            "typeRef": "#/domains/PropertyBooking/types/Options",
+            "default": {},
+            "initial": true
+        },
         "mainGuest": {
             "typeRef": "#/domains/PropertyBooking/types/MainGuest",
             "description": "Personal details about the main guest.",
@@ -84,6 +89,9 @@
                 },
                 "contact": {
                     "$ref": "#/domains/PropertyBooking/types/GuestContact"
+                },
+                "address": {
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
                 }
             },
             "required": [
@@ -125,7 +133,8 @@
             "type": "object",
             "properties": {
                 "phone": {
-                    "$ref": "#/domains/Generic/types/AnyPhoneString"
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
                 },
                 "email": {
                     "type": "string",
@@ -138,6 +147,17 @@
                 "phone",
                 "email"
             ],
+            "additionalProperties": false
+        },
+        "Options": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [],
             "additionalProperties": false
         },
         "BookingConfirmation": {
@@ -163,8 +183,39 @@
             "required": [
                 "bookingReference"
             ]
-        },
+        }
     },
     "errors": [
+        {
+            "code": "DepositNotFound",
+            "category": "client",
+            "description": "Given deposit option does not match one of the options we are expecting"
+        },
+        {
+            "code": "PetOptionInvalid",
+            "category": "client",
+            "description": "Given pet option does not match one of the options we are expecting"
+        },
+        {
+            "code": "PetOptionNotAvailable",
+            "category": "client",
+            "description": "Pet option is not available"
+        },
+        {
+            "code": "GuestCountInvalid",
+            "category": "client",
+            "description": "Number of guests is not accepted by the website"
+        },
+        {
+            "code": "GuestAgeInvalid",
+            "category": "client",
+            "description": "Guest age is not accepted by the website"
+        },
+        {
+            "code": "PropertyRentalNotAvailable",
+            "category": "client",
+            "description": "Property rental is not found",
+            "example": "Property rental unavailable on given date provided"
+        }
     ]
 }
