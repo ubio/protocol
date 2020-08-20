@@ -81,6 +81,13 @@
                         "checkout"
                     ],
                     "additionalProperties": false
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 20600,
+                        "currency": "gbp"
+                    }
                 }
             },
             "required": [
