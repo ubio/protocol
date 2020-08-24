@@ -122,6 +122,16 @@
             "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
             "pii": true,
             "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
                 "firstName": {
                     "type": "string",
                     "description": "First name(s) or given name(s), as specified in ID.",
