@@ -165,7 +165,6 @@
             },
             "required": [
                 "date",
-                "terminalLocality",
                 "terminalName"
             ],
             "additionalProperties": false
