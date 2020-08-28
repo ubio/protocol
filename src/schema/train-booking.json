@@ -180,7 +180,8 @@
             "description": "Outbound and inbound specification.",
             "properties": {
                 "origin": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" },
-                "destination": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" }
+                "destination": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" },
+                "lowestPrice": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
                 "origin",
