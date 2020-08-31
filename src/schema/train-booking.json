@@ -179,9 +179,28 @@
             "type": "object",
             "description": "Outbound and inbound specification.",
             "properties": {
-                "origin": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" },
-                "destination": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" },
-                "lowestPrice": { "$ref": "#/domains/Generic/types/Price" }
+                "origin": {
+                    "$ref": "#/domains/TrainBooking/types/DateTimeTerminal"
+                },
+                "destination": {
+                    "$ref": "#/domains/TrainBooking/types/DateTimeTerminal"
+                },
+                "lowestPrice": {
+                    "type": "object",
+                    "description": "'Start from' price for each class.",
+                    "properties": {
+                        "secondClass": {
+                            "$ref": "#/domains/Generic/types/Price"
+                        },
+                        "firstClass": {
+                            "$ref": "#/domains/Generic/types/Price"
+                        }
+                    },
+                    "required": [
+                        "secondClass"
+                    ],
+                    "additionalProperties": false
+                }
             },
             "required": [
                 "origin",
