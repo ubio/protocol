@@ -165,7 +165,6 @@
             },
             "required": [
                 "date",
-                "terminalLocality",
                 "terminalName"
             ],
             "additionalProperties": false
@@ -180,8 +179,22 @@
             "type": "object",
             "description": "Outbound and inbound specification.",
             "properties": {
-                "origin": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" },
-                "destination": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" }
+                "origin": {"$ref": "#/domains/TrainBooking/types/DateTimeTerminal"},
+                "destination": {"$ref": "#/domains/TrainBooking/types/DateTimeTerminal"},
+                "lowestPrice": {
+                    "type": "object",
+                    "description": "'Start from' price for each class.",
+                    "properties": {
+                        "secondClass": {
+                            "$ref": "#/domains/Generic/types/Price"
+                        },
+                        "firstClass": {
+                            "$ref": "#/domains/Generic/types/Price"
+                        }
+                    },
+                    "required": [],
+                    "additionalProperties": false
+                }
             },
             "required": [
                 "origin",
