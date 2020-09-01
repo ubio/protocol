@@ -192,9 +192,7 @@
                             "$ref": "#/domains/Generic/types/Price"
                         }
                     },
-                    "required": [
-                        "secondClass"
-                    ],
+                    "required": [],
                     "additionalProperties": false
                 }
             },
