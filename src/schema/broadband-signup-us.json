@@ -1157,6 +1157,11 @@
             "category": "client",
             "description": "The security information provided was not accepted by the website.",
             "example": "Invalid security code or question."
+        },
+        {
+            "code": "ContactDetailsInvalid",
+            "category": "client",
+            "description": "Invalid contact details."
         }
     ]
 }
