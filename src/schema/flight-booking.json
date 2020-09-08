@@ -39,6 +39,9 @@
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
+        "accountVerification": {
+            "typeRef": "#/domains/FlightBooking/types/AccountVerification"
+        },
         "passengers": {
             "typeRef": "#/domains/FlightBooking/types/Passengers",
             "canonical": [
@@ -580,6 +583,11 @@
                 "deductedValue"
             ],
             "additionalProperties": false
+        },
+        "AccountVerification": {
+            "type": "string",
+            "description": "Account verification challenge, usually a code or a link.",
+            "example": "ABC123"
         }
     },
     "errors": [
