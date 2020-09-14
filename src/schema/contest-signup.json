@@ -60,6 +60,9 @@
         "selectedDynamicOption": {
             "typeRef": "#/domains/ContestSignup/types/SelectedDynamicOption",
             "dynamic": true
+        },
+        "isRegistrantAccountOwner": {
+            "typeRef": "#/domains/ContestSignup/types/Boolean"
         }
     },
     "outputs": {
@@ -144,6 +147,10 @@
                 },
                 "address": {
                     "$ref": "#/domains/Generic/types/Address"
+                },
+                "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
                 },
                 "securityQuestion": {
                 },
@@ -658,6 +665,9 @@
                 "text",
                 "price"
             ]
+        },
+        "Boolean": {
+            "type": "boolean"
         }
     },
     "errors": [
