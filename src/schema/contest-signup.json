@@ -139,6 +139,12 @@
                     "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
                     "type": "boolean"
                 },
+                "person": {
+                    "$ref": "#/domains/ContestSignup/types/PersonDob"
+                },
+                "address": {
+                    "$ref": "#/domains/Generic/types/Address"
+                },
                 "securityQuestion": {
                 },
                 "securityAnswer": {
@@ -147,6 +153,49 @@
             "required": [
                 "email",
                 "isExisting"
+            ],
+            "additionalProperties": false
+        },
+        "PersonDob": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName",
+                "dateOfBirth"
             ],
             "additionalProperties": false
         },
