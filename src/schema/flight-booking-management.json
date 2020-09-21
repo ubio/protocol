@@ -157,6 +157,12 @@
                     "type": "string",
                     "description": "Last name or surname, as specified in passport or travel document.",
                     "example": "Smith"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
                 }
             },
             "additionalProperties": false,
