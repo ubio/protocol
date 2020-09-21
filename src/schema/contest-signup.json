@@ -707,6 +707,11 @@
             "description": "The specified account already exists."
         },
         {
+            "code": "ParticipantAlreadyRegistered",
+            "category": "client",
+            "description": "The specified participant is already registered."
+        },
+        {
             "code": "AccountLocked",
             "category": "client",
             "description": "The specified account is not accessible."
