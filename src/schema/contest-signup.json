@@ -470,7 +470,7 @@
             "required": [
                 "inputType",
                 "label",
-                "options"
+                "option"
             ],
             "additionalProperties": false
         },
