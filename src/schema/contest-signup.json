@@ -455,7 +455,7 @@
                     "type": "string"
                 },
                 "options": {
-                    "type": "array",
+                    "type": "object",
                     "items": {
                         "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                     }
@@ -485,7 +485,7 @@
                     "type": "string"
                 },
                 "options": {
-                    "type": "array",
+                    "type": "object",
                     "items": {
                         "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                     }
@@ -602,7 +602,7 @@
                     "type": "string"
                 },
                 "options": {
-                    "type": "array",
+                    "type": "object",
                     "items": {
                         "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                     }
