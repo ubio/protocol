@@ -181,6 +181,9 @@
             "properties": {
                 "origin": {"$ref": "#/domains/TrainBooking/types/DateTimeTerminal"},
                 "destination": {"$ref": "#/domains/TrainBooking/types/DateTimeTerminal"},
+                "numberOfConnections": {
+                    "type": "integer"
+                },
                 "lowestPrice": {
                     "type": "object",
                     "description": "'Start from' price for each class.",
@@ -214,6 +217,11 @@
             "description": "Train fare information.",
             "additionalProperties": false,
             "properties": {
+                "stationNames": {
+                    "type": "array",
+                    "description": "List of available structured text items.",
+                    "items": {"type": "string"}
+                },
                 "cabinClass": { "$ref": "#/domains/TrainBooking/types/CabinClass" },
                 "cancellation": {
                     "type": "string",
