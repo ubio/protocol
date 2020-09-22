@@ -454,8 +454,11 @@
                 "label": {
                     "type": "string"
                 },
-                "option": {
-                    "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
+                    }
                 },
                 "isMandatory": {
                     "type": "boolean"
@@ -470,7 +473,7 @@
             "required": [
                 "inputType",
                 "label",
-                "option"
+                "options"
             ],
             "additionalProperties": false
         },
