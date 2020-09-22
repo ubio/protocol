@@ -454,10 +454,8 @@
                 "label": {
                     "type": "string"
                 },
-                "options": {
-                    "items": {
-                        "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
-                    }
+                "option": {
+                    "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                 },
                 "isMandatory": {
                     "type": "boolean"
@@ -484,6 +482,7 @@
                     "type": "string"
                 },
                 "options": {
+                    "type": "array",
                     "items": {
                         "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                     }
@@ -573,7 +572,7 @@
                     "type": "string"
                 },
                 "option": {
-                    "type": "string"
+                    "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                 },
                 "isMandatory": {
                     "type": "boolean"
@@ -600,7 +599,7 @@
                     "type": "string"
                 },
                 "options": {
-                    "type": "object",
+                    "type": "array",
                     "items": {
                         "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                     }
