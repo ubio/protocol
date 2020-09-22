@@ -89,7 +89,7 @@
             "dynamic": true
         },
         "visibleOptions": {
-            "typeRef": "#/domains/ContestSignup/types/OptionWithPrice"
+            "typeRef": "#/domains/ContestSignup/types/VisibleOptions"
         },
         "priceBreakdown": {
             "typeRef": "#/domains/ContestSignup/types/PriceBreakdown",
@@ -632,6 +632,19 @@
                     "type": "string"
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "label"
+            ],
+            "additionalProperties": false
+        },
+        "VisibleOptions": {
+            "type": "array",
+            "description": "Additional options to be filled in, visible to the automation at that point in time.",
+            "properties": {
+                "label": {
+                    "type": "string"
+                }
             },
             "required": [
                 "label"
