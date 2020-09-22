@@ -455,7 +455,6 @@
                     "type": "string"
                 },
                 "options": {
-                    "type": "object",
                     "items": {
                         "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                     }
@@ -485,7 +484,6 @@
                     "type": "string"
                 },
                 "options": {
-                    "type": "object",
                     "items": {
                         "$ref": "#/domains/ContestSignup/types/OptionWithPrice"
                     }
@@ -625,7 +623,7 @@
             "additionalProperties": false
         },
         "OptionWithPrice": {
-            "type": "array",
+            "type": "object",
             "description": "Additional options to be filled in, visible to the automation at that point in time.",
             "properties": {
                 "label": {
