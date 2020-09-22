@@ -181,7 +181,7 @@
             "properties": {
                 "origin": {"$ref": "#/domains/TrainBooking/types/DateTimeTerminal"},
                 "destination": {"$ref": "#/domains/TrainBooking/types/DateTimeTerminal"},
-                "numberOfConnections": {
+                "connectionsCount": {
                     "type": "integer"
                 },
                 "lowestPrice": {
