@@ -219,7 +219,7 @@
             "properties": {
                 "stationNames": {
                     "type": "array",
-                    "description": "List of available structured text items.",
+                    "description": "List of change stations names.",
                     "items": {"type": "string"}
                 },
                 "cabinClass": { "$ref": "#/domains/TrainBooking/types/CabinClass" },
