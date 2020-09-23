@@ -132,7 +132,11 @@
                     "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"
                 }
             },
-            "required": [],
+            "required": [
+                "title",
+                "firstName",
+                "lastName"
+            ],
             "additionalProperties": false
         },
         "IncludedLuggage": {
