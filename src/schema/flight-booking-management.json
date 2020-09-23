@@ -12,6 +12,14 @@
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
             "initial": true
         },
+        "passengers": {
+            "typeRef": "#/domains/FlightBookingManagement/types/Passengers",
+            "canonical": [
+                "/0/firstName",
+                "/0/lastName",
+                "/0/dateOfBirth"
+            ]
+        },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
@@ -68,6 +76,68 @@
                     "default": false
                 }
             }
+        },
+        "Passengers": {
+            "type": "array",
+            "description": "An array with details for each passenger.",
+            "pii": true,
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
+        },
+        "Passenger": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Passenger's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "addAdditionalLuggage": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3,
+                    "default": 0
+                },
+                "document": {
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
+                },
+                "frequentFlyer": {
+                    "$ref": "#/domains/FlightBooking/types/PassengerFrequentFlyer"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
         },
         "IncludedLuggage": {
             "type": "array",
@@ -167,8 +237,7 @@
             },
             "additionalProperties": false,
             "required": [
-                "bookingReference",
-                "lastName"
+                "bookingReference"
             ]
         },
         "Seat": {
