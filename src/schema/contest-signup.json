@@ -60,9 +60,6 @@
         "selectedDynamicOption": {
             "typeRef": "#/domains/ContestSignup/types/SelectedDynamicOption",
             "dynamic": true
-        },
-        "isRegistrantAccountOwner": {
-            "typeRef": "#/domains/ContestSignup/types/Boolean"
         }
     },
     "outputs": {
@@ -313,7 +310,12 @@
                     "description": "Additional personal details requested by the supplier.",
                     "$ref": "#/domains/ContestSignup/types/SelectedOptions"
                 },
-                "address": { "$ref": "#/domains/Generic/types/ExplicitAddress" }
+                "address": { "$ref": "#/domains/Generic/types/ExplicitAddress" },
+                "isRegistrantAccountOwner": {
+                    "description": "Specifies whether the participant is the account owner or not.",
+                    "default": false,
+                    "$ref": "#/domains/ContestSignup/types/Boolean"
+                }
             },
             "required": [
                 "title",
