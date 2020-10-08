@@ -217,10 +217,10 @@
             "description": "Train fare information.",
             "additionalProperties": false,
             "properties": {
-                "stationNames": {
+                "segments": {
                     "type": "array",
                     "description": "List of change stations names.",
-                    "items": {"type": "string"}
+                    "items": { "$ref": "#/domains/TrainBooking/types/Segment" }
                 },
                 "cabinClass": { "$ref": "#/domains/TrainBooking/types/CabinClass" },
                 "cancellation": {
@@ -235,6 +235,29 @@
                 "cabinClass",
                 "cancellation",
                 "price"
+            ]
+        },
+        "Segment": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "origin": { "$ref": "#/domains/TrainBooking/types/Itinerary" },
+                "destination": { "$ref": "#/domains/TrainBooking/types/Itinerary" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ]
+        },
+        "Itinerary": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "station": {"type": "string"},
+                "time": {"type": "string"} 
+            },
+            "required": [
+                "station"
             ]
         },
         "CabinClass": {
