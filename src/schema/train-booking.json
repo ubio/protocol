@@ -219,6 +219,7 @@
             "properties": {
                 "segments": {
                     "type": "array",
+                    "description": "List of change stations names.",
                     "items": { "$ref": "#/domains/TrainBooking/types/Segment" }
                 },
                 "cabinClass": { "$ref": "#/domains/TrainBooking/types/CabinClass" },
