@@ -125,7 +125,6 @@
                 }
             },
             "required": [
-                "cabinClass",
                 "outbound",
                 "passengerAges"
             ],
