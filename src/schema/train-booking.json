@@ -41,7 +41,7 @@
             "inputMethod": "SelectOne"
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
+            "typeRef": "#/domains/TrainBooking/types/Account",
             "canonical": [
                 "/email"
             ]
@@ -105,6 +105,11 @@
             "type": "object",
             "description": "Information about the trip.",
             "properties": {
+                "cabinClass": {
+                    "description": "Preferred cabin class, used on trip search forms.",
+                    "type": "string",
+                    "enum": ["second", "first"]
+                },
                 "outbound": {
                     "$ref": "#/domains/TrainBooking/types/TrainSearch",
                     "description": "Outbound trip specification."
@@ -120,6 +125,7 @@
                 }
             },
             "required": [
+                "cabinClass",
                 "outbound",
                 "passengerAges"
             ],
@@ -357,6 +363,141 @@
             ],
             "additionalProperties": false
         },
+        "Account": {
+            "type": "object",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Account email, typically used for user sign up / sign in.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully. Use contactEmail when different.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "contactEmail": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
+                    "default": ""
+                },
+                "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "isExisting": {
+                    "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
+                    "type": "boolean"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "john012345"
+                },
+                "person": {
+                    "description": "When an account needs to be created for a person (first name, last name, etc), this key will be used.",
+                    "$ref": "#/domains/TrainBooking/types/Person"
+                }
+            },
+            "required": [
+                "email",
+                "isExisting"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "document": {
+                    "$ref": "#/domains/TrainBooking/types/IdentityDocument"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "IdentityDocument": {
+            "type": "object",
+            "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
+            "pii": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Document type.",
+                    "enum": [
+                        "passport",
+                        "national-id"
+                    ]
+                },
+                "number": {
+                    "type": "string",
+                    "description": "Document number.",
+                    "example": "75 127001"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+
+                "issueCountryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Code of country where the document was issued."
+                }
+            },
+            "required": [
+                "type",
+                "number",
+                "expirationDate",
+                "issueCountryCode"
+            ],
+            "additionalProperties": false
+        },
         "AvailableDeliveriesOrNull": {
             "oneOf": [
                 {
@@ -413,6 +554,12 @@
                     "type": "string",
                     "format": "date",
                     "example": "2028-01-01"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "New York"
                 },
                 "issueCountryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
