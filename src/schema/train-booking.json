@@ -483,7 +483,12 @@
                     "format": "date",
                     "example": "2028-01-01"
                 },
-
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "New York"
+                },
                 "issueCountryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
                     "description": "Code of country where the document was issued."
@@ -553,12 +558,6 @@
                     "type": "string",
                     "format": "date",
                     "example": "2028-01-01"
-                },
-                "city": {
-                    "type": "string",
-                    "description": "Name of city, town or other settlement.",
-                    "minLength": 1,
-                    "example": "New York"
                 },
                 "issueCountryCode": {
                     "$ref": "#/domains/Generic/types/CountryCode",
