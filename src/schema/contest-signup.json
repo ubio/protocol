@@ -249,6 +249,9 @@
                 "count": {
                     "type": "integer"
                 },
+                "description": {
+                    "type": "string"
+                },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "additionalProperties": false,
