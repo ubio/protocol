@@ -23,8 +23,16 @@
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
+        "dynamicPayment": {
+            "typeRef": "#/domains/Generic/types/Payment",
+            "dynamic": true
+        },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "dynamicPanToken": {
+            "typeRef": "#/domains/Generic/types/PanToken",
+            "dynamic": true
         },
         "priceRange": {
             "typeRef": "#/domains/Generic/types/PriceRange",
