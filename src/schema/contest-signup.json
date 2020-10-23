@@ -114,6 +114,10 @@
                     "description": "If <code>true</code>, returns a fake success without making a booking.",
                     "default": false
                 },
+                "dynamicPayment": {
+                    "type": "boolean",
+                    "default": false
+                },
                 "metadataId": {
                     "type": "string",
                     "description": "Metadata ID",
