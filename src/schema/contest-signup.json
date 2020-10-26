@@ -20,6 +20,10 @@
                 "/email"
             ]
         },
+        "dynamicAccount": {
+            "typeRef": "#/domains/ContestSignup/types/Account",
+            "dynamic": true
+        },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
