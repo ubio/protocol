@@ -118,6 +118,10 @@
                     "type": "boolean",
                     "default": false
                 },
+                "dynamicAccount": {
+                    "type": "boolean",
+                    "default": false
+                },
                 "metadataId": {
                     "type": "string",
                     "description": "Metadata ID",
