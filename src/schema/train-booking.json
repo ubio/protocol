@@ -267,7 +267,7 @@
         },
         "CabinClass": {
             "type": "string",
-            "enum": ["second-class", "first-class"]
+            "enum": ["second-class", "first-class", "sleeping-car"]
         },
         "DateTimeTerminal": {
             "type": "object",
