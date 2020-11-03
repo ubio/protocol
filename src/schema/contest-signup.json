@@ -464,7 +464,8 @@
                 },
                 "description": {
                     "type": "string"
-                }
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
                 "inputType",
@@ -583,7 +584,8 @@
                 },
                 "description": {
                     "type": "string"
-                }
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
                 "inputType",
