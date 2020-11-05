@@ -354,11 +354,9 @@
                 }
             },
             "required": [
-                "title",
                 "firstName",
                 "lastName",
-                "dateOfBirth",
-                "addAdditionalLuggage"
+                "dateOfBirth"
             ],
             "additionalProperties": false
         },
