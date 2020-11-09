@@ -312,9 +312,7 @@
             "required": [
                 "person",
                 "dateOfBirth",
-                "relationshipStatus",
-                "nationality",
-                "countryOfBirth"
+                "nationality"
             ],
             "additionalProperties": false
         },
@@ -406,9 +404,7 @@
             "required": [
                 "person",
                 "dateOfBirth",
-                "relationshipStatus",
-                "nationality",
-                "countryOfBirth"
+                "nationality"
             ],
             "additionalProperties": false
         },
