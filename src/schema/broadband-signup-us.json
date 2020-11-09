@@ -338,6 +338,7 @@
             "default": false
         },
         "CreditCheckOrNull": {
+            "pii": true,
             "oneOf": [{
                     "type": "null"
                 },
@@ -463,6 +464,7 @@
             ]
         },
         "CheckAddressOrNull": {
+            "pii": true,
             "oneOf": [{
                     "type": "null"
                 },
