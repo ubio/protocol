@@ -633,6 +633,21 @@
             "description": "Outbound trip dates/times are not available, either sold out or not found."
         },
         {
+            "code": "InboundTripNotAvailable",
+            "category": "client",
+            "description": "Inbound trip dates/times are not available, either sold out or not found."
+        },
+        {
+            "code": "OutboundFareNotFound",
+            "category": "client",
+            "description": "Given outbound fare does not match one of the options we are expecting"
+        },
+        {
+            "code": "InboundFareNotFound",
+            "category": "client",
+            "description": "Given inbound fare does not match one of the options we are expecting"
+        },
+        {
             "code": "ExtraLuggageNotAvailable",
             "category": "client",
             "description": "The website does not allow adding additional luggage."
