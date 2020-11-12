@@ -337,7 +337,8 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "Type of transportation (ie train, bus)."
+                    "description": "Type of transportation (ie train, bus).",
+                    "enum": ["train", "bus"]
                 }
             },
             "required": [
