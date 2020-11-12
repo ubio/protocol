@@ -24,6 +24,16 @@
             "sourceOutputKey": "availableInboundTrips",
             "inputMethod": "SelectOne"
         },
+        "selectedOutboundJourney": {
+            "typeRef": "#/domains/TrainBooking/types/Journey",
+            "sourceOutputKey": "availableOutboundJourneys",
+            "inputMethod": "SelectOne"
+        },
+        "selectedInboundJourney": {
+            "typeRef": "#/domains/TrainBooking/types/Journey",
+            "sourceOutputKey": "availableInboundJourneys",
+            "inputMethod": "SelectOne"
+        },
         "selectedOutboundFare": {
             "typeRef": "#/domains/TrainBooking/types/Fare",
             "sourceOutputKey": "availableOutboundFares",
@@ -77,6 +87,12 @@
         },
         "availableInboundTrips": {
             "typeRef": "#/domains/TrainBooking/types/Trips"
+        },
+        "availableOutboundJourneys": {
+            "typeRef": "#/domains/TrainBooking/types/Journeys"
+        },
+        "availableInboundJourneys": {
+            "typeRef": "#/domains/TrainBooking/types/Journeys"
         },
         "availableOutboundFares": {
             "typeRef": "#/domains/TrainBooking/types/AvailableFares"
@@ -210,6 +226,61 @@
             ],
             "additionalProperties": false
         },
+        "Journeys": {
+            "type": "array",
+            "description": "An array of journeys.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/TrainBooking/types/Journey" }
+        },
+        "Journey": {
+            "type": "object",
+            "description": "Outbound and inbound specification.",
+            "properties": {
+                "segments": {
+                    "type": "array",
+                    "description": "List of change stations names.",
+                    "items": { "$ref": "#/domains/TrainBooking/types/Segment" }
+                },
+                "origin": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" },
+                "destination": { "$ref": "#/domains/TrainBooking/types/DateTimeTerminal" },
+                "connectionsCount": {
+                    "type": "integer"
+                },
+                "fares": { "$ref": "#/domains/TrainBooking/types/JourneyFares" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ],
+            "additionalProperties": false
+        },
+        "JourneyFares": {
+            "type": "array",
+            "description": "A list of available journey fares found on the website.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/TrainBooking/types/Fare" }
+        },
+        "JourneyFare": {
+            "type": "object",
+            "description": "Train fare information.",
+            "additionalProperties": false,
+            "properties": {
+                "cabinClass": { "$ref": "#/domains/TrainBooking/types/CabinClass" },
+                "cancellation": {
+                    "type": "string",
+                    "description": "Fare cancellation type.",
+                    "example": "rebookable",
+                    "enum": ["rebookable", "non-rebookable", "refundable"]
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "cabinClass",
+                "cancellation",
+                "price"
+            ]
+        },
         "AvailableFares": {
             "type": "array",
             "description": "A list of available fares found on the website.",
@@ -247,11 +318,30 @@
             "additionalProperties": false,
             "properties": {
                 "origin": { "$ref": "#/domains/TrainBooking/types/Itinerary" },
-                "destination": { "$ref": "#/domains/TrainBooking/types/Itinerary" }
+                "destination": { "$ref": "#/domains/TrainBooking/types/Itinerary" },
+                "transport": { "$ref": "#/domains/TrainBooking/types/Transport" }
             },
             "required": [
                 "origin",
                 "destination"
+            ]
+        },
+        "Transport": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "number": {
+                    "type": "integer",
+                    "description": "Reference number of the transportation vehicle.",
+                    "example": "1675"
+                },
+                "method": {
+                    "type": "string",
+                    "description": "Type of transportation (ie train, bus)."
+                }
+            },
+            "required": [
+                "number"
             ]
         },
         "Itinerary": {
