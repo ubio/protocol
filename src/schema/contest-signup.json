@@ -100,6 +100,9 @@
         "visibleOptions": {
             "typeRef": "#/domains/ContestSignup/types/VisibleOptions"
         },
+        "existingAccountDetails": {
+            "typeRef": "#/domains/ContestSignup/types/ExistingAccountDetails"
+        },
         "priceBreakdown": {
             "typeRef": "#/domains/ContestSignup/types/PriceBreakdown",
             "description": "The list of price components, as found on the website."
@@ -706,6 +709,11 @@
                 "text",
                 "price"
             ]
+        },
+        "ExistingAccountDetails": {
+            "type": "array",
+            "minItems": 0,
+            "items": { "$ref": "#/domains/Generic/types/NamedText" }
         },
         "Boolean": {
             "type": "boolean"
