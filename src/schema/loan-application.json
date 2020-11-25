@@ -884,6 +884,11 @@
             "code": "LoanTermsValidationFailed",
             "category": "client",
             "description":"Maximum amount or loan duration invalid."
+        },
+        {
+            "code": "DirectDebitInvalid",
+            "category": "client",
+            "description":"The directDebit is invalid, according to the supplier."
         }
     ]
 }
