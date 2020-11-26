@@ -1167,6 +1167,11 @@
             "code": "ContactDetailsInvalid",
             "category": "client",
             "description": "Invalid contact details."
+        },
+        {
+            "code": "CreditCheckAddressInvalid",
+            "category": "client",
+            "description": "Invalid credit check address."
         }
     ]
 }
