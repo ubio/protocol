@@ -97,7 +97,7 @@
         {
             "code": "BookingNotAvailable",
             "category": "client",
-            "description": "Booking not blocked, usually caused by trying to access it after short periods of time."
+            "description": "Booking is blocked, usually caused by trying to access it after short periods of time."
         }
     ]
 }
