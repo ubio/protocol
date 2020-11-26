@@ -65,6 +65,13 @@
             ]
         },
         "BookedTickets": {
+            "type": "array",
+            "description": "A list of available tickets found on the website.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/TravelTicketRetrieval/types/Ticket" }
+        },
+        "Ticket": {
             "type": "object",
             "description": "Extracted tickets fom the page.",
             "properties": {
