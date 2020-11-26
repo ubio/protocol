@@ -21,6 +21,7 @@ import MotorInsuranceExtraction from './motor-insurance-extraction.json';
 import PetInsurance from './pet-insurance.json';
 import MobileSignup from './mobile-signup.json';
 import TrainBooking from './train-booking.json';
+import TravelTicketRetrieval from './travel-ticket-retrieval.json';
 import FlightBookingStatus from './flight-booking-status.json';
 import FlightBookingRefund from './flight-booking-refund.json';
 import FlightBookingManagement from './flight-booking-management.json';
@@ -52,6 +53,7 @@ export const schema = {
         PetInsurance,
         MobileSignup,
         TrainBooking,
+        TravelTicketRetrieval,
         FlightBookingStatus,
         FlightBookingRefund,
         FlightBookingManagement,
