@@ -1,0 +1,103 @@
+{
+    "description": "Allows automating tickets retrieval from means of travel on websites.",
+    "private": false,
+    "inputs": {
+        "options": {
+            "typeRef": "#/domains/TravelTicketRetrieval/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "initial": true
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/TravelTicketRetrieval/types/BookingConfirmation"
+        }
+    },
+    "outputs": {
+        "bookedTickets": {
+            "typeRef": "#/domains/TravelTicketRetrieval/types/BookedTickets"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "properties": {
+                "luggageSelection": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will select additional luggage.",
+                    "default": false
+                },
+                "seatSelection": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
+                    "default": false
+                }
+            }
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        },
+        "BookedTickets": {
+            "type": "object",
+            "description": "Extracted tickets fom the page.",
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "outbound",
+                        "inbound"
+                    ]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {"$ref": "#/domains/Generic/types/URL"}
+            },
+            "additionalProperties": false,
+            "required": [
+                "direction",
+                "url"
+            ]
+        }
+    },
+    "errors": [
+        {
+            "code": "BookingNotFound",
+            "category": "client",
+            "description": "Booking not found, usually caused by wrong booking reference or name."
+        },
+        {
+            "code": "BookingNotAvailable",
+            "category": "client",
+            "description": "Booking not blocked, usually caused by trying to access it after short periods of time."
+        }
+    ]
+}
