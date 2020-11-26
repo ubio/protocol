@@ -1,5 +1,5 @@
 {
-    "description": "Allows automating tickets retrieval from means of travel on websites.",
+    "description": "Allows automating tickets retrieval for means of travel on websites.",
     "private": false,
     "inputs": {
         "options": {
