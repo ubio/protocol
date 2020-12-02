@@ -98,11 +98,11 @@
             "description": "List of rooms found on the supplier's website."
         },
         "guestsAgeRanges": {
-            "typeRef": "#/domains/HotelBooking/types/AgeRanges",
+            "typeRef": "#/domains/TestHotelBooking/types/AgeRanges",
             "description": "Age ranges. Guest type min/max age."
         },
         "totalBookingPrice": {
-            "typeRef": "#/domains/HotelBooking/types/TotalPrice",
+            "typeRef": "#/domains/TestHotelBooking/types/TotalPrice",
             "description": "Total price of the current booking."
         },
         "availablePaymentMethods": {
@@ -609,10 +609,10 @@
             "type": "object",
             "properties": {
                 "children": {
-                    "$ref": "#/domains/HotelBooking/types/AgeRange"
+                    "$ref": "#/domains/TestHotelBooking/types/AgeRange"
                 },
                 "infants": {
-                    "$ref": "#/domains/HotelBooking/types/AgeRange"
+                    "$ref": "#/domains/TestHotelBooking/types/AgeRange"
                 }
             },
             "required": [],
