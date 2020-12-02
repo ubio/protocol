@@ -97,6 +97,14 @@
             "typeRef": "#/domains/TestHotelBooking/types/Rooms",
             "description": "List of rooms found on the supplier's website."
         },
+        "guestsAgeRanges": {
+            "typeRef": "#/domains/HotelBooking/types/AgeRanges",
+            "description": "Age ranges. Guest type min/max age."
+        },
+        "totalBookingPrice": {
+            "typeRef": "#/domains/HotelBooking/types/TotalPrice",
+            "description": "Total price of the current booking."
+        },
         "availablePaymentMethods": {
             "typeRef": "#/domains/TestHotelBooking/types/PaymentMethods",
             "description": "List of payment methods found on the supplier's website."
@@ -597,6 +605,35 @@
             ],
             "additionalProperties": false
         },
+        "AgeRanges": {
+            "type": "object",
+            "properties": {
+                "children": {
+                    "$ref": "#/domains/HotelBooking/types/AgeRange"
+                },
+                "infants": {
+                    "$ref": "#/domains/HotelBooking/types/AgeRange"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "AgeRange": {
+            "type": "object",
+            "properties": {
+                "minAge": {
+                    "type": "integer"
+                },
+                "maxAge": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "minAge",
+                "maxAge"
+            ],
+            "additionalProperties": false
+        },
         "BookingConfirmation": {
             "type": "object",
             "description": "Information gathered on \"Booking success\" page.",
@@ -619,6 +656,17 @@
             "additionalProperties": false,
             "required": [
                 "bookingReference"
+            ]
+        },
+        "TotalPrice": {
+            "type": "object",
+            "description": "Total booking price that includes pay now and pay later",
+            "properties": {
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "additionalProperties": false,
+            "required": [
+                "price"
             ]
         },
         "Payment": {
