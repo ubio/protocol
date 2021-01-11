@@ -1278,6 +1278,11 @@
             "description": "Price range exceeded input specifications."
         },
         {
+            "code": "AuthenticationError",
+            "category": "client",
+            "description": "The authentication attempt failed."
+        },
+        {
             "code": "PriceChangedAfterConsent",
             "category": "website",
             "description": "Price changed after final price consent."
