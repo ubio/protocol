@@ -168,6 +168,12 @@
                     "description": "Date of trip (terminal local date).",
                     "example": "2019-01-01"
                 },
+                "time": {
+                    "type": "string",
+                    "pattern": "^[012][0-9]:[0-5][0-9]$",
+                    "description": "Selected time for availability search.",
+                    "example": "08:00"
+                },
                 "terminalLocality": {
                     "type": "string",
                     "description": "Terminal locality, usually city name.",
@@ -186,6 +192,7 @@
             },
             "required": [
                 "date",
+                "time",
                 "terminalName"
             ],
             "additionalProperties": false
