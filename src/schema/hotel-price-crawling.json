@@ -7,29 +7,72 @@
             "initial": true,
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
-        "search": {
-            "typeRef": "#/domains/HotelPriceCrawling/types/Search"
+        "searches": {
+            "typeRef": "#/domains/HotelPriceCrawling/types/Searches"
         }
     },
     "outputs": {
-        "websiteHotelId": {
-            "typeRef": "#/domains/HotelPriceCrawling/types/String",
-            "description": "ID of the hotel as claimed by the website."
+        "hotel": {
+            "typeRef": "#/domains/HotelPriceCrawling/types/Hotel",
+            "description": "Hotel details as claimed by the website."
         },
         "ageThreshold": {
             "typeRef": "#/domains/HotelPriceCrawling/types/Integer",
             "description": "The threshold which differentiates child guests from adult guests. This value is right bounded (the threshold itself belongs to the child category)."
         },
-        "availableRooms": {
-            "typeRef": "#/domains/HotelPriceCrawling/types/Rooms",
+        "results": {
+            "typeRef": "#/domains/HotelPriceCrawling/types/Results",
             "description": "The list of available rooms with rates."
         }
     },
     "types": {
         "Options": {
             "type": "object",
+            "properties": {},
+            "additionalProperties": false
+        },
+        "Results": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+                "$ref": "#/domains/HotelPriceCrawling/types/ResultItem"
+            }
+        },
+        "ResultItem": {
+            "type": "object",
             "properties": {
+                "search": {
+                    "$ref": "#/domains/HotelPriceCrawling/types/Search"
+                },
+                "result": {
+                    "$ref": "#/domains/HotelPriceCrawling/types/Result"
+
+                }
             },
+            "required": [
+                "search",
+                "result"
+            ],
+            "additionalProperties": false
+        },
+        "Result": {
+            "type": "object",
+            "properties": {
+                "estimated": {
+                    "type": "boolean"
+                },
+                "crawledAt": {
+                    "type": "integer"
+                },
+                "rooms": {
+                    "$ref": "#/domains/HotelPriceCrawling/types/Rooms"
+                }
+            },
+            "required": [
+                "estimated",
+                "crawledAt",
+                "rooms"
+            ],
             "additionalProperties": false
         },
         "Rooms": {
@@ -127,62 +170,76 @@
             ],
             "additionalProperties": false
         },
+        "Hotel":{
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "A identifier, unique per hotel"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the hotel."
+                },
+                "language": {
+                    "type": "string",
+                    "description": "Default hotel language."
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "Default hotel currency."
+                },
+                "address": {
+                    "type": "string",
+                    "description": "Hotel address."
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
         "String": {
             "type": "string"
         },
         "Integer": {
             "type": "integer"
         },
+        "Searches": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+                "$ref": "#/domains/HotelPriceCrawling/types/Search"
+            }
+        },
         "Search": {
             "type": "object",
             "properties": {
-                "checkInDate": {
+                "hotelId": {
+                    "type": "string",
+                    "description": "A identifier, unique per hotel"
+                },
+                "checkIn": {
                     "type": "string",
                     "format": "date",
                     "example": "1976-01-27"
                 },
-                "checkOutDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "1976-01-27"
+                "nights": {
+                    "type": "integer"
                 },
-                "rooms": {
-                    "type": "array",
-                    "minItems": 1,
-                    "items": {
-                        "$ref": "#/domains/HotelPriceCrawling/types/SearchRoom"
-                    }
+                "guests": {
+                    "type": "integer"
                 }
             },
             "required": [
-                "checkInDate",
+                "hotelId",
                 "checkOutDate",
-                "rooms"
-            ],
-            "additionalProperties": false
-        },
-        "SearchRoom": {
-            "type": "object",
-            "properties": {
-                "ages": {
-                    "type": "array",
-                    "minItems": 1,
-                    "items": {
-                        "type": "number",
-                        "minimum": 0,
-                        "maximum": 150,
-                        "exmaple": 31
-                    }
-                }
-            },
-            "required": [
-                "ages"
+                "nights"
             ],
             "additionalProperties": false
         }
     },
-    "errors": [
-        {
+    "errors": [{
             "code": "RoomsNotAvailable",
             "category": "client",
             "description": "The website claims the room is not available for the search criteria."
