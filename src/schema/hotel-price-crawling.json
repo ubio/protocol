@@ -233,7 +233,7 @@
             },
             "required": [
                 "hotelId",
-                "checkOutDate",
+                "checkIn",
                 "nights",
                 "guests"
             ],
