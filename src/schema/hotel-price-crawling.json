@@ -234,8 +234,7 @@
             "required": [
                 "hotelId",
                 "checkIn",
-                "nights",
-                "guests"
+                "nights"
             ],
             "additionalProperties": false
         }
