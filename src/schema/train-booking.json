@@ -273,6 +273,8 @@
             "description": "Train fare information.",
             "additionalProperties": false,
             "properties": {
+                "fareName": {"type": "string"},
+                "className": {"type": "string"},
                 "cabinClass": { "$ref": "#/domains/TrainBooking/types/CabinClass" },
                 "cancellation": {
                     "type": "string",
@@ -305,6 +307,8 @@
                     "description": "List of change stations names.",
                     "items": { "$ref": "#/domains/TrainBooking/types/Segment" }
                 },
+                "fareName": {"type": "string"},
+                "className": {"type": "string"},
                 "cabinClass": { "$ref": "#/domains/TrainBooking/types/CabinClass" },
                 "cancellation": {
                     "type": "string",
