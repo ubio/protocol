@@ -243,8 +243,7 @@
             },
             "required": [
                 "firstName",
-                "lastName",
-                "dateOfBirth"
+                "lastName"
             ],
             "additionalProperties": false
         },
