@@ -19,13 +19,12 @@
         "serviceAddress": {
             "typeRef": "#/domains/BroadbandSignupES/types/ServiceAddress",
             "canonical": [
-                "/address/postcode",
-                "/address/city",
-                "/address/countrySubdivision"
+                "/postcode",
+                "/city"
             ]
         },
         "selectedBroadbandPackage": {
-            "typeRef": "#/domains/BroadbandSignupES/types/SelectedPackage",
+            "typeRef": "#/domains/BroadbandSignupES/types/Package",
             "sourceOutputKey": "availableBroadbandPackages",
             "inputMethod": "SelectOne"
         },
@@ -59,7 +58,7 @@
         },
         "selectedBillingAddress": {
             "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
-            "sourceOutputKey": "selectedBillingAddresses",
+            "sourceOutputKey": "availableBillingAddresses",
             "inputMethod": "SelectOne"
         }
     },
