@@ -59,6 +59,9 @@
         "passengers": {
             "typeRef": "#/domains/TrainBooking/types/Passengers"
         },
+        "companyDiscountCode": {
+            "typeRef": "#/domains/TrainBooking/types/DiscountCode"
+        },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
@@ -515,6 +518,11 @@
                 "isExisting"
             ],
             "additionalProperties": false
+        },
+        "DiscountCode": {
+            "type": "string",
+            "minLength": 1,
+            "pii": true
         },
         "Person": {
             "type": "object",
