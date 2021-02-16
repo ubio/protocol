@@ -1,0 +1,375 @@
+{
+    "description": "Allows automating broadband package signups in the ES.",
+    "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/reference"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
+            "initial": true
+        },
+        "options": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "serviceAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/ServiceAddress",
+            "canonical": [
+                "/address/postcode",
+                "/address/city",
+                "/address/countrySubdivision"
+            ]
+        },
+        "selectedBroadbandPackage": {
+            "typeRef": "#/domains/BroadbandSignupES/types/SelectedPackage",
+            "sourceOutputKey": "availableBroadbandPackages",
+            "inputMethod": "SelectOne"
+        },
+        "contactPerson": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Person"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "directDebit": {
+            "typeRef": "#/domains/BroadbandSignupES/types/DirectDebit"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent"
+        },
+        "selectedBroadbandSetupDate": {
+            "typeRef": "#/domains/BroadbandSignupES/types/SetupDate",
+            "sourceOutputKey": "availableBroadbandSetupDates",
+            "inputMethod": "SelectOne"
+        },
+        "selectedAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
+            "sourceOutputKey": "availableAddresses",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBillingAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
+            "sourceOutputKey": "selectedBillingAddresses",
+            "inputMethod": "SelectOne"
+        }
+    },
+    "outputs": {
+        "availableBroadbandPackages": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Packages"
+        },
+        "availableAddresses": {
+            "typeRef": "#/domains/BroadbandSignupES/types/AvailableAddresses"
+        },
+        "selectedBillingAddresses": {
+            "typeRef": "#/domains/BroadbandSignupES/types/AvailableAddresses"
+        },
+        "availableBroadbandSetupDates": {
+            "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDates"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Confirmation"
+        },
+        "serviceTermsAndConditions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when T&Cs are presented."
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "ServiceAddress": {
+            "type": "object",
+            "description": "Information about the property to be serviced.",
+            "pii": true,
+            "properties": {
+                "street": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Da road"
+                },
+                "number": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "93"
+                },
+                "floor": {
+                    "type": "string",
+                    "example": "2"
+                },
+                "door": {
+                    "type": "string",
+                    "example": "16"
+                },
+                "building": {
+                    "type": "string",
+                    "example": "Interior"
+                },
+                "portal": {
+                    "type": "string",
+                    "example": "5"
+                },
+                "bis": {
+                    "type": "string",
+                    "example": "Bis"
+                },
+                "postcode": {
+                    "$ref": "#/domains/BroadbandSignupES/types/Postcode"
+                },
+                "city": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Madrid"
+                },
+                "region": {
+                    "type": "string",
+                    "example": "Madrid"
+                }
+            },
+            "required": [
+                "street",
+                "number",
+                "city",
+                "floor",
+                "door",
+                "building",
+                "portal",
+                "bis"
+            ],
+            "additionalProperties": false
+        },
+        "Packages": {
+            "type": "array",
+            "description": "A list of packages.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupES/types/Package" }
+        },
+        "Package": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "All in One Package",
+                    "minLength": 1
+                },
+                "description": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/domains/Generic/types/StructuredTextItem"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "image": {
+                    "$ref": "#/domains/Generic/types/Link"
+                },
+                "estimatedSpeed": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Customer's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "DNI": {
+                    "type": "string",
+                    "description": "Customer's national document of identity.",
+                    "example": "11111111H"
+                },
+                "NIE": {
+                    "type": "string",
+                    "description": "Customer's foreigner identification number.",
+                    "example": "Y-12345678-R"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName",
+                "dateOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "DirectDebit": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "pii": true,
+            "properties": {
+                "IBAN": {
+                    "type": "string",
+                    "description": "International bank account number.",
+                    "example": "NL99BANK0123456789"
+                },
+                "accountHolder": { "$ref": "#/domains/BroadbandSignupES/types/Person" },
+                "accountHolderAddress": { "$ref": "#/domains/Generic/BroadbandSignupES/ServiceAddress" }
+            },
+            "required": [
+                "IBAN",
+                "accountHolder",
+                "accountHolderAddress"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableSetupDates": {
+            "type": "array",
+            "description": "A list of setup dates.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/BroadbandSignupES/types/SetupDate"
+            }
+        },
+        "SetupDate": {
+            "type": "string",
+            "description": "Account details for direct debit.",
+            "format": "date",
+            "example": "2019-01-01"
+        },
+        "Postcode": {
+            "type": "string",
+            "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+            "minLength": 4,
+            "example": "RM108DE"
+        },
+        "AvailableAddresses": {
+            "type": "array",
+            "description": "A list of addresses.",
+            "minItems": 1,
+            "items": { "type": "string" }
+        },
+        "Boolean": {
+            "type": "boolean",
+            "enum": [
+                true,
+                false
+            ]
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "reference"
+            ]
+        },
+        "PIIString": {
+            "type": "string",
+            "pii": true
+        },
+        "String": {
+            "type": "string"
+        }
+    },
+    "errors": [
+        {
+            "code": "ContactUsToContinue",
+            "category": "client",
+            "description": "The user being asked to contact the supplier to continue the purchase."
+        },
+        {
+            "code": "AlreadyACustomer",
+            "category": "client",
+            "description": "The user being signed up is already a customer of this service."
+        },
+        {
+            "code": "PackageNotAvailable",
+            "category": "client",
+            "description": "The package is not avaialbe."
+        },
+        {
+            "code": "BankDetailsInvalid",
+            "category": "client",
+            "description": "Bank details invalid."
+        },
+        {
+            "code": "DirectDebitRejected",
+            "category": "client",
+            "description": "Direct debit details rejected."
+        },
+        {
+            "code": "LandlineMandatory",
+            "category": "client",
+            "description": "The landline is mandatory, but not either not provided or not valid."
+        },
+        {
+            "code": "LandlineInvalid",
+            "category": "client",
+            "description": "The landline is not valid."
+        },
+        {
+            "code": "OfferNotAvailable",
+            "category": "client",
+            "description": "The offer is not available, usually expired or not applicable to the user or client."
+        }
+    ]
+}
