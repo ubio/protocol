@@ -70,7 +70,7 @@
         "availableAddresses": {
             "typeRef": "#/domains/BroadbandSignupES/types/AvailableAddresses"
         },
-        "selectedBillingAddresses": {
+        "availableBillingAddresses": {
             "typeRef": "#/domains/BroadbandSignupES/types/AvailableAddresses"
         },
         "availableBroadbandSetupDates": {
@@ -260,7 +260,7 @@
                     "example": "NL99BANK0123456789"
                 },
                 "accountHolder": { "$ref": "#/domains/BroadbandSignupES/types/Person" },
-                "accountHolderAddress": { "$ref": "#/domains/Generic/BroadbandSignupES/ServiceAddress" }
+                "accountHolderAddress": { "$ref": "#/domains/BroadbandSignupES/types/ServiceAddress" }
             },
             "required": [
                 "IBAN",
