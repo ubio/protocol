@@ -23,6 +23,10 @@
         "results": {
             "typeRef": "#/domains/HotelPriceCrawling/types/Results",
             "description": "The list of available rooms with rates."
+        },
+        "pointOfSale": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "The list of available rooms with rates."
         }
     },
     "types": {
