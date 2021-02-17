@@ -52,7 +52,7 @@
             "inputMethod": "SelectOne"
         },
         "selectedMarketingContactOptions": {
-            "typeRef": "#/domains/MotorInsurance/types/SelectedItem",
+            "typeRef": "#/domains/BroadbandSignupES/types/SelectedItem",
             "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
             "inputMethod": "SelectMany"
@@ -69,11 +69,11 @@
             "typeRef": "#/domains/BroadbandSignupES/types/NullableStructuredTextItem"
         },
         "privacyPolicy": {
-            "typeRef": "#/domains/MotorInsurance/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/BroadbandSignupES/types/NullableStructuredTextItem",
             "description": "Emitted when the privacy policy is presented."
         },
         "availableMarketingContactOptions": {
-            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "typeRef": "#/domains/Generic/types/MarketingContactOptions",
             "description": "List of marketing contact options provided by the provider."
         },
         "confirmation": {
@@ -300,6 +300,12 @@
                 true,
                 false
             ]
+        },
+        "MarketingContactOptions": {
+            "type": "array",
+            "description": "A list of marketing contact options.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "Confirmation": {
             "type": "object",
