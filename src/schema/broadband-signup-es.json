@@ -56,6 +56,16 @@
             "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
             "inputMethod": "SelectMany"
+        },
+        "selectedAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
+            "sourceOutputKey": "availableAddresses",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBillingAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
+            "sourceOutputKey": "availableBillingAddresses",
+            "inputMethod": "SelectOne"
         }
     },
     "outputs": {
