@@ -51,6 +51,12 @@
             "sourceOutputKey": "availableBroadbandSetupDates",
             "inputMethod": "SelectOne"
         },
+        "selectedMarketingContactOptions": {
+            "typeRef": "#/domains/BroadbandSignupES/types/SelectedItem",
+            "description": "List of marketing contact options to be selected.",
+            "sourceOutputKey": "availableMarketingContactOptions",
+            "inputMethod": "SelectMany"
+        },
         "selectedAddress": {
             "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
             "sourceOutputKey": "availableAddresses",
@@ -66,14 +72,19 @@
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignupES/types/Packages"
         },
-        "availableAddresses": {
-            "typeRef": "#/domains/BroadbandSignupES/types/AvailableAddresses"
-        },
-        "availableBillingAddresses": {
-            "typeRef": "#/domains/BroadbandSignupES/types/AvailableAddresses"
-        },
         "availableBroadbandSetupDates": {
             "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDates"
+        },
+        "legalConditions": {
+            "typeRef": "#/domains/BroadbandSignupES/types/NullableStructuredTextItem"
+        },
+        "privacyPolicy": {
+            "typeRef": "#/domains/BroadbandSignupES/types/NullableStructuredTextItem",
+            "description": "Emitted when the privacy policy is presented."
+        },
+        "availableMarketingContactOptions": {
+            "typeRef": "#/domains/Generic/types/MarketingContactOptions",
+            "description": "List of marketing contact options provided by the provider."
         },
         "confirmation": {
             "typeRef": "#/domains/BroadbandSignupES/types/Confirmation"
@@ -300,6 +311,12 @@
                 false
             ]
         },
+        "MarketingContactOptions": {
+            "type": "array",
+            "description": "A list of marketing contact options.",
+            "minItems": 1,
+            "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
+        },
         "Confirmation": {
             "type": "object",
             "description": "Information gathered on \"Booking success\" page.",
@@ -318,6 +335,16 @@
             "additionalProperties": false,
             "required": [
                 "reference"
+            ]
+        },
+        "NullableStructuredTextItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                },
+                {
+                    "type": "null"
+                }
             ]
         },
         "PIIString": {
