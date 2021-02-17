@@ -19,13 +19,12 @@
         "serviceAddress": {
             "typeRef": "#/domains/BroadbandSignupES/types/ServiceAddress",
             "canonical": [
-                "/address/postcode",
-                "/address/city",
-                "/address/countrySubdivision"
+                "/postcode",
+                "/city"
             ]
         },
         "selectedBroadbandPackage": {
-            "typeRef": "#/domains/BroadbandSignupES/types/SelectedPackage",
+            "typeRef": "#/domains/BroadbandSignupES/types/Package",
             "sourceOutputKey": "availableBroadbandPackages",
             "inputMethod": "SelectOne"
         },
@@ -52,29 +51,30 @@
             "sourceOutputKey": "availableBroadbandSetupDates",
             "inputMethod": "SelectOne"
         },
-        "selectedAddress": {
-            "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
-            "sourceOutputKey": "availableAddresses",
-            "inputMethod": "SelectOne"
-        },
-        "selectedBillingAddress": {
-            "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
-            "sourceOutputKey": "selectedBillingAddresses",
-            "inputMethod": "SelectOne"
+        "selectedMarketingContactOptions": {
+            "typeRef": "#/domains/MotorInsurance/types/SelectedItem",
+            "description": "List of marketing contact options to be selected.",
+            "sourceOutputKey": "availableMarketingContactOptions",
+            "inputMethod": "SelectMany"
         }
     },
     "outputs": {
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignupES/types/Packages"
         },
-        "availableAddresses": {
-            "typeRef": "#/domains/BroadbandSignupES/types/AvailableAddresses"
-        },
-        "availableBillingAddresses": {
-            "typeRef": "#/domains/BroadbandSignupES/types/AvailableAddresses"
-        },
         "availableBroadbandSetupDates": {
             "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDates"
+        },
+        "legalConditions": {
+            "typeRef": "#/domains/BroadbandSignupES/types/NullableStructuredTextItem"
+        },
+        "privacyPolicy": {
+            "typeRef": "#/domains/MotorInsurance/types/NullableStructuredTextItem",
+            "description": "Emitted when the privacy policy is presented."
+        },
+        "availableMarketingContactOptions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "List of marketing contact options provided by the provider."
         },
         "confirmation": {
             "typeRef": "#/domains/BroadbandSignupES/types/Confirmation"
@@ -244,8 +244,7 @@
             },
             "required": [
                 "firstName",
-                "lastName",
-                "dateOfBirth"
+                "lastName"
             ],
             "additionalProperties": false
         },
@@ -320,6 +319,16 @@
             "additionalProperties": false,
             "required": [
                 "reference"
+            ]
+        },
+        "NullableStructuredTextItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/StructuredTextItem"
+                },
+                {
+                    "type": "null"
+                }
             ]
         },
         "PIIString": {
