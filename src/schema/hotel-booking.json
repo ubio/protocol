@@ -785,6 +785,11 @@
             "description": "The website claims the room is not available for the selected dates."
         },
         {
+            "code": "DiscountCodeInvalid",
+            "category": "client",
+            "description": "The website claims the discount code provided is invalid."
+        },
+        {
             "code": "MultipleRoomsRequired",
             "category": "client",
             "description": "Multiple rooms required for the requested amount of guests."
