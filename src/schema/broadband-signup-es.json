@@ -40,6 +40,9 @@
         "directDebit": {
             "typeRef": "#/domains/BroadbandSignupES/types/DirectDebit"
         },
+        "landlineOptions": {
+            "typeRef": "#/domains/BroadbandSignupES/types/LandlineOptions"
+        },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
@@ -56,16 +59,6 @@
             "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
             "inputMethod": "SelectMany"
-        },
-        "selectedAddress": {
-            "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
-            "sourceOutputKey": "availableAddresses",
-            "inputMethod": "SelectOne"
-        },
-        "selectedBillingAddress": {
-            "typeRef": "#/domains/BroadbandSignupES/types/PIIString",
-            "sourceOutputKey": "availableBillingAddresses",
-            "inputMethod": "SelectOne"
         }
     },
     "outputs": {
@@ -83,7 +76,7 @@
             "description": "Emitted when the privacy policy is presented."
         },
         "availableMarketingContactOptions": {
-            "typeRef": "#/domains/Generic/types/MarketingContactOptions",
+            "typeRef": "#/domains/BroadbandSignupES/types/MarketingContactOptions",
             "description": "List of marketing contact options provided by the provider."
         },
         "confirmation": {
@@ -310,6 +303,27 @@
                 true,
                 false
             ]
+        },
+        "LandlineOptions": {
+            "type": "object",
+            "description": "Landline options.",
+            "properties": {
+                "keepPhoneNumber": {
+                    "type": "boolean"
+                },
+                "phoneNumber": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "serviceProvider": {
+                    "type": "string",
+                    "example": "dodo"
+                }
+            },
+            "required": [
+                "keepPhoneNumber",
+                "phoneNumber"
+            ],
+            "additionalProperties": false
         },
         "MarketingContactOptions": {
             "type": "array",
