@@ -55,7 +55,7 @@
             "inputMethod": "SelectOne"
         },
         "selectedMarketingContactOptions": {
-            "typeRef": "#/domains/BroadbandSignupES/types/SelectedItem",
+            "typeRef": "#/domains/BroadbandSignupES/types/MarketingContactOptions",
             "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
             "inputMethod": "SelectMany"
