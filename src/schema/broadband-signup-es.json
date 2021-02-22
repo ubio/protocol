@@ -328,7 +328,7 @@
         "MarketingContactOptions": {
             "type": "array",
             "description": "A list of marketing contact options.",
-            "minItems": 1,
+            "minItems": 0,
             "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "Confirmation": {
