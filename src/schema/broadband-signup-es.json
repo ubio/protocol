@@ -399,16 +399,6 @@
                 "reference"
             ]
         },
-        "NullableStructuredTextItem": {
-            "oneOf": [
-                {
-                    "$ref": "#/domains/Generic/types/StructuredTextItem"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
         "PIIString": {
             "type": "string",
             "pii": true
