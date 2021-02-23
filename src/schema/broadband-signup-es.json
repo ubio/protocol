@@ -358,25 +358,25 @@
         "MarketingContactOptions": {
             "type": "array",
             "description": "A list of marketing contact options.",
-            "minItems": 0,
+            "minItems": 1,
             "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "ServiceAddresses": {
             "type": "array",
             "description": "A list of service addresses.",
-            "minItems": 0,
+            "minItems": 1,
             "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "BillingAddresses": {
             "type": "array",
             "description": "A list of billing addresses.",
-            "minItems": 0,
+            "minItems": 1,
             "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "ServiceProviders": {
             "type": "array",
             "description": "A list of providers.",
-            "minItems": 0,
+            "minItems": 1,
             "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "Confirmation": {
