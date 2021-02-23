@@ -55,10 +55,28 @@
             "inputMethod": "SelectOne"
         },
         "selectedMarketingContactOptions": {
-            "typeRef": "#/domains/BroadbandSignupES/types/SelectedItem",
+            "typeRef": "#/domains/BroadbandSignupES/types/MarketingContactOptions",
             "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
             "inputMethod": "SelectMany"
+        },
+        "selectedServiceAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "description": "Selected service addresses.",
+            "sourceOutputKey": "availableServiceAddresses",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBillingAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "description": "Selected billing addresses.",
+            "sourceOutputKey": "availableBillingAddresses",
+            "inputMethod": "SelectOne"
+        },
+        "selectedServiceProvider": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "description": "Selected provider.",
+            "sourceOutputKey": "availableServiceProviders",
+            "inputMethod": "SelectOne"
         }
     },
     "outputs": {
@@ -69,15 +87,27 @@
             "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDates"
         },
         "legalConditions": {
-            "typeRef": "#/domains/BroadbandSignupES/types/NullableStructuredTextItem"
+            "typeRef": "#/domains/Generic/types/HTML"
         },
         "privacyPolicy": {
-            "typeRef": "#/domains/BroadbandSignupES/types/NullableStructuredTextItem",
+            "typeRef": "#/domains/Generic/types/Link",
             "description": "Emitted when the privacy policy is presented."
         },
         "availableMarketingContactOptions": {
             "typeRef": "#/domains/BroadbandSignupES/types/MarketingContactOptions",
             "description": "List of marketing contact options provided by the provider."
+        },
+        "availableServiceAddresses": {
+            "typeRef": "#/domains/BroadbandSignupES/types/ServiceAddresses",
+            "description": "List of service addresses."
+        },
+        "availableBillingAddresses": {
+            "typeRef": "#/domains/BroadbandSignupES/types/BillingAddresses",
+            "description": "List of billing addresses."
+        },
+        "availableServiceProviders": {
+            "typeRef": "#/domains/BroadbandSignupES/types/ServiceProviders",
+            "description": "List of providers."
         },
         "confirmation": {
             "typeRef": "#/domains/BroadbandSignupES/types/Confirmation"
@@ -328,7 +358,25 @@
         "MarketingContactOptions": {
             "type": "array",
             "description": "A list of marketing contact options.",
-            "minItems": 1,
+            "minItems": 0,
+            "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
+        },
+        "ServiceAddresses": {
+            "type": "array",
+            "description": "A list of service addresses.",
+            "minItems": 0,
+            "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
+        },
+        "BillingAddresses": {
+            "type": "array",
+            "description": "A list of billing addresses.",
+            "minItems": 0,
+            "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
+        },
+        "ServiceProviders": {
+            "type": "array",
+            "description": "A list of providers.",
+            "minItems": 0,
             "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "Confirmation": {
