@@ -87,10 +87,10 @@
             "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDates"
         },
         "legalConditions": {
-            "typeRef": "#/domains/Generic/types/HTML"
+            "typeRef": "#/domains/Generic/types/Link"
         },
         "privacyPolicy": {
-            "typeRef": "#/domains/Generic/types/Link",
+            "typeRef": "#/domains/Generic/types/HTML",
             "description": "Emitted when the privacy policy is presented."
         },
         "availableMarketingContactOptions": {
@@ -358,7 +358,7 @@
         "MarketingContactOptions": {
             "type": "array",
             "description": "A list of marketing contact options.",
-            "minItems": 1,
+            "minItems": 0,
             "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "ServiceAddresses": {
