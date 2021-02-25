@@ -350,8 +350,7 @@
                 }
             },
             "required": [
-                "keepPhoneNumber",
-                "phoneNumber"
+                "keepPhoneNumber"
             ],
             "additionalProperties": false
         },
