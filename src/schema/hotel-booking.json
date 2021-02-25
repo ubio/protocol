@@ -793,6 +793,16 @@
             "code": "MultipleRoomsRequired",
             "category": "client",
             "description": "Multiple rooms required for the requested amount of guests."
+        },
+        {
+            "code": "MinimumStayRequired",
+            "category": "client",
+            "description": "The minimum stay requirement is not met."
+        },
+        {
+            "code": "GuestDetailsInvalid",
+            "category": "client",
+            "description": "The guest details are invalid."
         }
     ]
 }
