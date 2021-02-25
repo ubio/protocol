@@ -302,12 +302,17 @@
             "additionalProperties": false
         },
         "AvailableSetupDates": {
-            "type": "array",
-            "description": "A list of setup dates.",
-            "minItems": 1,
-            "items": {
-                "$ref": "#/domains/BroadbandSignupES/types/SetupDate"
-            }
+            "oneOf": [{
+                "type": "null"
+            },
+            {
+                "type": "array",
+                "description": "A list of setup dates.",
+                "minItems": 1,
+                "items": {
+                    "$ref": "#/domains/BroadbandSignupES/types/SetupDate"
+                }
+            }]
         },
         "SetupDate": {
             "type": "string",
