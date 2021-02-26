@@ -94,7 +94,7 @@
             "typeRef": "#/domains/BroadbandSignupES/types/Packages"
         },
         "availableBroadbandSetupDates": {
-            "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDates"
+            "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDatesOrNull"
         },
         "legalConditions": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem"
@@ -165,26 +165,6 @@
                     "minLength": 1,
                     "example": "93"
                 },
-                "floor": {
-                    "type": "string",
-                    "example": "2"
-                },
-                "door": {
-                    "type": "string",
-                    "example": "16"
-                },
-                "building": {
-                    "type": "string",
-                    "example": "Interior"
-                },
-                "portal": {
-                    "type": "string",
-                    "example": "5"
-                },
-                "bis": {
-                    "type": "string",
-                    "example": "Bis"
-                },
                 "postcode": {
                     "$ref": "#/domains/BroadbandSignupES/types/Postcode"
                 },
@@ -201,12 +181,7 @@
             "required": [
                 "street",
                 "number",
-                "city",
-                "floor",
-                "door",
-                "building",
-                "portal",
-                "bis"
+                "city"
             ],
             "additionalProperties": false
         },
@@ -325,19 +300,19 @@
             ],
             "additionalProperties": false
         },
-        "AvailableSetupDates": {
-            "oneOf": [{
-                "type": "null"
-            },
-            {
-                "type": "array",
-                "description": "A list of setup dates.",
-                "minItems": 1,
-                "items": {
-                    "$ref": "#/domains/BroadbandSignupES/types/SetupDate"
+        "AvailableSetupDatesOrNull": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "description": "A list of setup dates.",
+                    "minItems": 1,
+                    "items": { "$ref": "#/domains/BroadbandSignupES/types/SetupDate" }
+                },
+                {
+                    "type": "null"
                 }
-            }]
-        },
+            ]
+            },
         "SetupDate": {
             "type": "string",
             "description": "Account details for direct debit.",
