@@ -123,7 +123,7 @@
             "typeRef": "#/domains/BroadbandSignupES/types/StringsOrNull"
         },
         "requiredAdditionalBillingAddressFields": {
-            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+            "typeRef": "#/domains/BroadbandSignupES/types/StringsOrNull"
         },
         "availableNationalities": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
