@@ -235,6 +235,7 @@
             ]
         },
         "ApplicantOrNull": {
+            "pii": true,
             "oneOf": [
                 {
                     "$ref": "#/domains/LoanApplication/types/Applicant"
@@ -571,6 +572,7 @@
             ]
         },
         "DirectDebitPaymentOrNull": {
+            "pii": true,
             "oneOf": [
                 {
                     "$ref": "#/domains/LoanApplication/types/DirectDebitPayment"
