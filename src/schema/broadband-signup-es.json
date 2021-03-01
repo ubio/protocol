@@ -55,7 +55,7 @@
             "inputMethod": "SelectOne"
         },
         "selectedMarketingContactOptions": {
-            "typeRef": "#/domains/BroadbandSignupES/types/MarketingContactOptions",
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings",
             "description": "List of marketing contact options to be selected.",
             "sourceOutputKey": "availableMarketingContactOptions",
             "inputMethod": "SelectMany"
@@ -72,6 +72,16 @@
             "sourceOutputKey": "availableBillingAddresses",
             "inputMethod": "SelectOne"
         },
+        "additionalServiceAddressFields": {
+            "typeRef": "#/domains/BroadbandSignupES/types/AdditionalAddresses",
+            "sourceOutputKey": "requiredAdditionalServiceAddressFields",
+            "inputMethod": "SelectMany"
+        },
+        "additionalBillingAddressFields": {
+            "typeRef": "#/domains/BroadbandSignupES/types/AdditionalAddresses",
+            "sourceOutputKey": "requiredAdditionalBillingAddressFields",
+            "inputMethod": "SelectMany"
+        },
         "selectedServiceProvider": {
             "typeRef": "#/domains/BroadbandSignupES/types/String",
             "description": "Selected provider.",
@@ -84,17 +94,17 @@
             "typeRef": "#/domains/BroadbandSignupES/types/Packages"
         },
         "availableBroadbandSetupDates": {
-            "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDates"
+            "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDatesOrNull"
         },
         "legalConditions": {
-            "typeRef": "#/domains/Generic/types/Link"
+            "typeRef": "#/domains/Generic/types/StructuredTextItem"
         },
         "privacyPolicy": {
-            "typeRef": "#/domains/Generic/types/HTML",
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the privacy policy is presented."
         },
         "availableMarketingContactOptions": {
-            "typeRef": "#/domains/BroadbandSignupES/types/MarketingContactOptions",
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings",
             "description": "List of marketing contact options provided by the provider."
         },
         "availableServiceAddresses": {
@@ -108,6 +118,15 @@
         "availableServiceProviders": {
             "typeRef": "#/domains/BroadbandSignupES/types/ServiceProviders",
             "description": "List of providers."
+        },
+        "requiredAdditionalServiceAddressFields": {
+            "typeRef": "#/domains/BroadbandSignupES/types/StringsOrNull"
+        },
+        "requiredAdditionalBillingAddressFields": {
+            "typeRef": "#/domains/BroadbandSignupES/types/StringsOrNull"
+        },
+        "availableNationalities": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
         "confirmation": {
             "typeRef": "#/domains/BroadbandSignupES/types/Confirmation"
@@ -146,26 +165,6 @@
                     "minLength": 1,
                     "example": "93"
                 },
-                "floor": {
-                    "type": "string",
-                    "example": "2"
-                },
-                "door": {
-                    "type": "string",
-                    "example": "16"
-                },
-                "building": {
-                    "type": "string",
-                    "example": "Interior"
-                },
-                "portal": {
-                    "type": "string",
-                    "example": "5"
-                },
-                "bis": {
-                    "type": "string",
-                    "example": "Bis"
-                },
                 "postcode": {
                     "$ref": "#/domains/BroadbandSignupES/types/Postcode"
                 },
@@ -182,12 +181,7 @@
             "required": [
                 "street",
                 "number",
-                "city",
-                "floor",
-                "door",
-                "building",
-                "portal",
-                "bis"
+                "city"
             ],
             "additionalProperties": false
         },
@@ -264,6 +258,10 @@
                     "format": "date",
                     "example": "1976-01-27"
                 },
+                "nationality": {
+                    "type": "string",
+                    "example": "Argentina"
+                },
                 "DNI": {
                     "type": "string",
                     "description": "Customer's national document of identity.",
@@ -276,6 +274,7 @@
                 }
             },
             "required": [
+                "nationality",
                 "firstName",
                 "lastName"
             ],
@@ -301,19 +300,19 @@
             ],
             "additionalProperties": false
         },
-        "AvailableSetupDates": {
-            "oneOf": [{
-                "type": "null"
-            },
-            {
-                "type": "array",
-                "description": "A list of setup dates.",
-                "minItems": 1,
-                "items": {
-                    "$ref": "#/domains/BroadbandSignupES/types/SetupDate"
+        "AvailableSetupDatesOrNull": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "description": "A list of setup dates.",
+                    "minItems": 1,
+                    "items": { "$ref": "#/domains/BroadbandSignupES/types/SetupDate" }
+                },
+                {
+                    "type": "null"
                 }
-            }]
-        },
+            ]
+            },
         "SetupDate": {
             "type": "string",
             "description": "Account details for direct debit.",
@@ -359,11 +358,22 @@
             ],
             "additionalProperties": false
         },
-        "MarketingContactOptions": {
+        "AdditionalAddresses": {
             "type": "array",
-            "description": "A list of marketing contact options.",
             "minItems": 0,
-            "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
+            "items": { "$ref": "#/domains/BroadbandSignupES/types/AdditionalAddress" }
+        },
+        "AdditionalAddress": {
+            "type": "object",
+            "properties": {
+                 "label": { "$ref": "#/domains/BroadbandSignupES/types/String" },
+                 "value": { "$ref": "#/domains/BroadbandSignupES/types/String" }
+            },
+            "additionalProperties": false,
+            "required": [
+                "label",
+                "value"
+            ]
         },
         "ServiceAddresses": {
             "type": "array",
@@ -406,6 +416,21 @@
         "PIIString": {
             "type": "string",
             "pii": true
+        },
+        "StringsOrNull": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {"$ref": "#/domains/BroadbandSignupES/types/String"}
+                }, 
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "Strings": {
+            "type": "array",
+            "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
         },
         "String": {
             "type": "string"
