@@ -60,6 +60,46 @@
             "sourceOutputKey": "availableMarketingContactOptions",
             "inputMethod": "SelectMany"
         },
+        "selectedFloorNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableFloorNumbers",
+            "inputMethod": "SelectOne"
+        },
+        "selectedDoorNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableDoorNumbers",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBuildingNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableBuildingNumbers",
+            "inputMethod": "SelectOne"
+        },
+        "selectedEntranceNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableEntranceNumbers",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBillingFloorNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableBillingFloorNumbers",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBillingDoorNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableBillingDoorNumbers",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBillingEntranceNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableBillingEntranceNumber",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBillingBuildingNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableBillingBuildingNumbers",
+            "inputMethod": "SelectOne"
+        },
         "selectedServiceAddress": {
             "typeRef": "#/domains/BroadbandSignupES/types/String",
             "description": "Selected service addresses.",
@@ -71,16 +111,6 @@
             "description": "Selected billing addresses.",
             "sourceOutputKey": "availableBillingAddresses",
             "inputMethod": "SelectOne"
-        },
-        "additionalServiceAddressFields": {
-            "typeRef": "#/domains/BroadbandSignupES/types/AdditionalAddresses",
-            "sourceOutputKey": "requiredAdditionalServiceAddressFields",
-            "inputMethod": "SelectMany"
-        },
-        "additionalBillingAddressFields": {
-            "typeRef": "#/domains/BroadbandSignupES/types/AdditionalAddresses",
-            "sourceOutputKey": "requiredAdditionalBillingAddressFields",
-            "inputMethod": "SelectMany"
         },
         "selectedServiceProvider": {
             "typeRef": "#/domains/BroadbandSignupES/types/String",
@@ -119,13 +149,31 @@
             "typeRef": "#/domains/BroadbandSignupES/types/ServiceProviders",
             "description": "List of providers."
         },
-        "requiredAdditionalServiceAddressFields": {
-            "typeRef": "#/domains/BroadbandSignupES/types/StringsOrNull"
-        },
-        "requiredAdditionalBillingAddressFields": {
-            "typeRef": "#/domains/BroadbandSignupES/types/StringsOrNull"
-        },
         "availableNationalities": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableFloorNumbers": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableDoorNumbers": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableBuildingNumbers": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableEntranceNumbers": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableBillingFloorNumbers": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableBillingDoorNumbers": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableBillingEntranceNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableBillingBuildingNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
         "confirmation": {
@@ -357,23 +405,6 @@
                 "keepPhoneNumber"
             ],
             "additionalProperties": false
-        },
-        "AdditionalAddresses": {
-            "type": "array",
-            "minItems": 0,
-            "items": { "$ref": "#/domains/BroadbandSignupES/types/AdditionalAddress" }
-        },
-        "AdditionalAddress": {
-            "type": "object",
-            "properties": {
-                 "label": { "$ref": "#/domains/BroadbandSignupES/types/String" },
-                 "value": { "$ref": "#/domains/BroadbandSignupES/types/String" }
-            },
-            "additionalProperties": false,
-            "required": [
-                "label",
-                "value"
-            ]
         },
         "ServiceAddresses": {
             "type": "array",
