@@ -92,7 +92,7 @@
         },
         "selectedBillingEntranceNumber": {
             "typeRef": "#/domains/BroadbandSignupES/types/String",
-            "sourceOutputKey": "availableBillingEntranceNumber",
+            "sourceOutputKey": "availableBillingEntranceNumbers",
             "inputMethod": "SelectOne"
         },
         "selectedBillingBuildingNumber": {
@@ -170,7 +170,7 @@
         "availableBillingDoorNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
-        "availableBillingEntranceNumber": {
+        "availableBillingEntranceNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
         "availableBillingBuildingNumbers": {
