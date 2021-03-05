@@ -23,6 +23,13 @@
                 "/city"
             ]
         },
+        "billingAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/ServiceAddress",
+            "canonical": [
+                "/postcode",
+                "/city"
+            ]
+        },
         "selectedBroadbandPackage": {
             "typeRef": "#/domains/BroadbandSignupES/types/Package",
             "sourceOutputKey": "availableBroadbandPackages",
@@ -338,8 +345,7 @@
                     "description": "International bank account number.",
                     "example": "NL99BANK0123456789"
                 },
-                "accountHolder": { "$ref": "#/domains/BroadbandSignupES/types/Person" },
-                "accountHolderAddress": { "$ref": "#/domains/BroadbandSignupES/types/ServiceAddress" }
+                "accountHolder": { "$ref": "#/domains/BroadbandSignupES/types/Person" }
             },
             "required": [
                 "IBAN",
