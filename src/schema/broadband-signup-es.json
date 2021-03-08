@@ -349,8 +349,7 @@
             },
             "required": [
                 "IBAN",
-                "accountHolder",
-                "accountHolderAddress"
+                "accountHolder"
             ],
             "additionalProperties": false
         },
@@ -405,6 +404,9 @@
                 "serviceProvider": {
                     "type": "string",
                     "example": "dodo"
+                },
+                "owner": {
+                    "$ref": "#/domains/BroadbandSignupES/types/Person"
                 }
             },
             "required": [
