@@ -2,13 +2,7 @@
     "description": "Generic domain contains type definitions used in other domains.",
     "private": false,
     "inputs": {},
-    "outputs": {
-        "event": {
-            "typeRef": "#/domains/Generic/types/Event",
-            "description": "Service-specific job events.",
-            "dynamic": true
-        }
-    },
+    "outputs": {},
     "types": {
         "Event": {
             "type": "object",
