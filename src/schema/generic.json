@@ -4,6 +4,18 @@
     "inputs": {},
     "outputs": {},
     "types": {
+        "Event": {
+            "type": "object",
+            "description": "An object describing an specific event emitted by automation job. The exact event types and data depend on the specific service.",
+            "required": ["eventType"],
+            "properties": {
+                "eventType": {
+                    "type": "string",
+                    "description": "Event type, specific to automation service."
+                }
+            },
+            "additionalProperties": true
+        },
         "Ages": {
             "type": "array",
             "description": "A list of ages of persons.",
