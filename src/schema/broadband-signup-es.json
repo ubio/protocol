@@ -130,6 +130,9 @@
         "availableBroadbandPackages": {
             "typeRef": "#/domains/BroadbandSignupES/types/Packages"
         },
+        "updatedBroadbandPrice": {
+            "typeRef": "#/domains/BroadbandSignupES/types/UpdatedPrice"
+        },
         "availableBroadbandSetupDates": {
             "typeRef": "#/domains/BroadbandSignupES/types/AvailableSetupDatesOrNull"
         },
@@ -204,6 +207,10 @@
                     "default": false
                 }
             }
+        },
+        "UpdatedPrice": {
+            "type": "object",
+            "$ref": "#/domains/Generic/types/Price"
         },
         "ServiceAddress": {
             "type": "object",
