@@ -193,6 +193,9 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when T&Cs are presented."
         },
+        "estimatedPriceBreakdown": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem"
+        },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
