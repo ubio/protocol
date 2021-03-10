@@ -228,6 +228,11 @@
                     "minLength": 1,
                     "example": "Madrid"
                 },
+                "citySubdivision": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Madrid"
+                },
                 "region": {
                     "type": "string",
                     "example": "Madrid"
