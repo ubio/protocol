@@ -344,7 +344,6 @@
                 }
             },
             "required": [
-                "nationality",
                 "firstName",
                 "lastName"
             ],
