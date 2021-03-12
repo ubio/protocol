@@ -1,0 +1,383 @@
+{
+    "description": "Allows a payment of money that is transferred to another party",
+    "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/reference"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
+            "initial": true
+        },
+        "options": {
+            "typeRef": "#/domains/Remittance/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Remittance/types/Account"
+        },
+        "sender": {
+            "typeRef": "#/domains/Remittance/types/Sender"
+        },
+        "recipient": {
+            "typeRef": "#/domains/Remittance/types/Recipient"
+        },
+        "directDebit": {
+            "typeRef": "#/domains/Remittance/types/DirectDebit"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/PaymentCard"
+        },
+        "alternativeBillingAddress": {
+            "typeRef": "#/domains/Remittance/types/Recipient"
+        },
+        "selectedPaymentMethod": {
+            "typeRef": "#/domains/Remittance/types/PaymentMethod",
+            "sourceOutputKey": "availablePaymentMethods",
+            "inputMethod": "SelectOne"
+        },
+        "selectedSendingReason": {
+            "typeRef": "#/domains/Remittance/types/String",
+            "sourceOutputKey": "availableSendingReasons",
+            "inputMethod": "SelectOne"
+        },
+        "selectedTopupAmount": {
+            "typeRef": "#/domains/Remittance/types/String",
+            "sourceOutputKey": "availableTopupAmounts",
+            "inputMethod": "SelectOne"
+        },
+        "smsCode": {
+            "typeRef": "#/domains/Remittance/types/String"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        }
+    },
+    "outputs": {
+        "availablePaymentMethods": {
+            "typeRef": "#/domains/Remittance/types/PaymentMethods",
+            "description": "List of payment methods found on the supplier's website."
+        },
+        "availableSendingReasons": {
+            "typeRef": "#/domains/Remittance/types/Strings"
+        },
+        "availableTopupAmounts": {
+            "typeRef": "#/domains/Remittance/types/Strings"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/Remittance/types/Confirmation"
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "Account": {
+            "type": "object",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Account email, typically used for user sign up / sign in.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully. Use contactEmail when different.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "contactEmail": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
+                    "default": ""
+                },
+                "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "isExisting": {
+                    "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
+                    "type": "boolean"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "john012345"
+                },
+                "person": {
+                    "description": "When an account needs to be created for a person (first name, last name, etc), this key will be used.",
+                    "$ref": "#/domains/Generic/types/Person"
+                },
+                "transferType": {
+                    "type": "string",
+                    "example": "Bank Transfer"
+                }
+            },
+            "required": [
+                "email",
+                "isExisting"
+            ],
+            "additionalProperties": false
+        },
+        "Sender": {
+            "type": "object",
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/Remittance/types/Person"
+                },
+                "amount": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "address": {
+                    "$ref": "#/domains/Remittance/types/Address"
+                },
+                "delivery": { 
+                    "$ref": "#/domains/Remittance/types/Delivery"
+                }
+            },
+            "required": [
+                "keepPhoneNumber"
+            ],
+            "additionalProperties": false
+        },
+        "Recipient": {
+            "type": "object",
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/Remittance/types/Person"
+                },
+                "phone": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "address": {
+                    "$ref": "#/domains/Remittance/types/Address"
+                },
+                "CLABE": { 
+                    "type": "string",
+                    "description": "Recipient's account number"
+                }
+            },
+            "required": [
+                "keepPhoneNumber"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in passport or travel document.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Customer's date of birth in YYYY-MM-DD format.",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "nationality": {
+                    "type": "string",
+                    "example": "Argentina"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "Address": {
+            "type": "object",
+            "description": "Address components common to inlined addresses (line1, line2)",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "minLength": 1,
+                    "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                }
+            },
+            "required": [
+                "city",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
+        },
+        "Delivery": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "method": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Bank Deposit"
+                },
+                "location": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Santander"
+                }
+            },
+            "required": [
+                "method",
+                "location"
+            ],
+            "additionalProperties": false
+        },
+        "DirectDebit": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "pii": true,
+            "properties": {
+                "accountNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "3850237499"
+                },
+                "routingNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "322271721"
+                },
+                "bankAccountType": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Checking"
+                },
+                "accountHolder": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "John Doe"
+                }
+            
+            },
+            "required": [
+                "accountNumber",
+                "routingNumber",
+                "bankAccountType",
+                "accountHolder"
+            ],
+            "additionalProperties": false
+        },
+        "PaymentMethods": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/Remittance/types/PaymentMethod"
+            }
+        },
+        "PaymentMethod": {
+            "type": "string",
+            "enum": [
+                "card",
+                "paypal",
+                "direct-debit",
+                "bank-transfer",
+                "no-prepayment"
+            ]
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Information gathered on success page.",
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "description": "Confirmation reference grabbed from the page.",
+                    "example": "215664558"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful transfer.",
+                    "example": "Your transfer was successful."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "reference"
+            ]
+        },
+        "Strings": {
+            "type": "array",
+            "items": { "$ref": "#/domains/Remittance/types/String" }
+        },
+        "String": {
+            "type": "string"
+        }
+    },
+    "errors": [
+        {
+            "code": "ContactUsToContinue",
+            "category": "client",
+            "description": "The user being asked to contact the supplier to continue the purchase."
+        },
+        {
+            "code": "BankDetailsInvalid",
+            "category": "client",
+            "description": "Bank details invalid."
+        },
+        {
+            "code": "DirectDebitRejected",
+            "category": "client",
+            "description": "Direct debit details rejected."
+        }
+    ]
+}

@@ -20,6 +20,7 @@ import FlightBookingExtraction from './flight-booking-extraction.json';
 import HotelBookingExtraction from './hotel-booking-extraction.json';
 import MotorInsuranceExtraction from './motor-insurance-extraction.json';
 import PetInsurance from './pet-insurance.json';
+import Remittance from './remittance.json';
 import MobileSignup from './mobile-signup.json';
 import TrainBooking from './train-booking.json';
 import TravelTicketRetrieval from './travel-ticket-retrieval.json';
@@ -46,6 +47,7 @@ export const schema = {
         TestHotelBooking,
         HotelPriceCrawling,
         PropertyBooking,
+        Remittance,
         HolidayBooking,
         ElectronicTravelAuthorisation,
         Internal,
