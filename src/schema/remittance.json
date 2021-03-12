@@ -29,10 +29,10 @@
             "typeRef": "#/domains/Remittance/types/DirectDebit"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/PaymentCard"
+            "typeRef": "#/domains/Remittance/types/Payment"
         },
         "alternativeBillingAddress": {
-            "typeRef": "#/domains/Remittance/types/Recipient"
+            "typeRef": "#/domains/Generic/types/Address"
         },
         "selectedPaymentMethod": {
             "typeRef": "#/domains/Remittance/types/PaymentMethod",
@@ -54,6 +54,12 @@
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent"
         }
     },
     "outputs": {
@@ -144,14 +150,18 @@
                     "$ref": "#/domains/Generic/types/Price"
                 },
                 "address": {
-                    "$ref": "#/domains/Remittance/types/Address"
+                    "$ref": "#/domains/Generic/types/Address"
                 },
                 "delivery": { 
                     "$ref": "#/domains/Remittance/types/Delivery"
                 }
             },
             "required": [
-                "keepPhoneNumber"
+                "person",
+                "amount",
+                "address",
+                "delivery"
+
             ],
             "additionalProperties": false
         },
@@ -165,7 +175,7 @@
                     "$ref": "#/domains/Generic/types/Phone"
                 },
                 "address": {
-                    "$ref": "#/domains/Remittance/types/Address"
+                    "$ref": "#/domains/Generic/types/Address"
                 },
                 "CLABE": { 
                     "type": "string",
@@ -173,7 +183,10 @@
                 }
             },
             "required": [
-                "keepPhoneNumber"
+                "person",
+                "phone",
+                "address",
+                "CLABE"
             ],
             "additionalProperties": false
         },
@@ -219,47 +232,6 @@
             "required": [
                 "firstName",
                 "lastName"
-            ],
-            "additionalProperties": false
-        },
-        "Address": {
-            "type": "object",
-            "description": "Address components common to inlined addresses (line1, line2)",
-            "pii": true,
-            "properties": {
-                "line1": {
-                    "type": "string",
-                    "description": "Street name with house number.",
-                    "minLength": 1,
-                    "example": "501 Twin Peaks Blv"
-                },
-                "line2": {
-                    "type": "string",
-                    "description": "Additional address information (e.g. flat).",
-                    "example": "Flat 2"
-                },
-                "city": {
-                    "type": "string",
-                    "description": "Name of city, town or other settlement.",
-                    "minLength": 1,
-                    "example": "San Francisco"
-                },
-                "postcode": {
-                    "type": "string",
-                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
-                    "example": "94581"
-                },
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
-                },
-                "countrySubdivision": {
-                    "$ref": "#/domains/Generic/types/CountrySubdivision"
-                }
-            },
-            "required": [
-                "city",
-                "countryCode",
-                "countrySubdivision"
             ],
             "additionalProperties": false
         },
@@ -316,6 +288,18 @@
                 "routingNumber",
                 "bankAccountType",
                 "accountHolder"
+            ],
+            "additionalProperties": false
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details.",
+            "pii": true,
+            "properties": { 
+                "card": {"$ref": "#/domains/Generic/types/PaymentCard" }
+            },
+            "required": [
+                "card"
             ],
             "additionalProperties": false
         },
