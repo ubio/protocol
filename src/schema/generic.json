@@ -7,11 +7,11 @@
         "Event": {
             "type": "object",
             "description": "An object describing an specific event emitted by automation job. The exact event types and data depend on the specific service.",
-            "required": ["eventType"],
+            "required": ["type"],
             "properties": {
-                "eventType": {
+                "type": {
                     "type": "string",
-                    "description": "Event type, specific to automation service."
+                    "description": "Event type, specific to an automation service."
                 }
             },
             "additionalProperties": true
