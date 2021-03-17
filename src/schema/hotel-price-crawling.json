@@ -7,6 +7,10 @@
             "initial": true,
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
+        "previousResults": {
+            "typeRef": "#/domains/HotelPriceCrawling/types/Results",
+            "description": "The list of available rooms with rates."
+        },
         "searches": {
             "typeRef": "#/domains/HotelPriceCrawling/types/Searches"
         }
