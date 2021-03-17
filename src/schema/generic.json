@@ -960,6 +960,12 @@
                     "description": "The name or title of the text grouping."
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" },
+                "priceLine": {
+                    "type": "string"
+                },
+                "description": {
+                    "$ref": "#/domains/Generic/types/StructuredTextItems"
+                },
                 "contents": {
                     "type": "array",
                     "description": "An array of structured text items.",
@@ -971,8 +977,7 @@
             "required": [
                 "type",
                 "name",
-                "price",
-                "contents"
+                "price"
             ],
             "additionalProperties": false
         },
