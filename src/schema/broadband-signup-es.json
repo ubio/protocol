@@ -119,6 +119,14 @@
             "sourceOutputKey": "availableBillingAddresses",
             "inputMethod": "SelectOne"
         },
+        "selectedServiceAddressComponent": {
+            "typeRef": "#/domains/BroadbandSignupES/types/SelectedDynamicOption",
+            "dynamic": true
+        },
+        "selectedBillingAddressComponent": {
+            "typeRef": "#/domains/BroadbandSignupES/types/SelectedDynamicOption",
+            "dynamic": true
+        },
         "selectedServiceProvider": {
             "typeRef": "#/domains/BroadbandSignupES/types/String",
             "description": "Selected provider.",
@@ -161,6 +169,14 @@
         },
         "availableNationalities": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableServiceAddressComponent": {
+            "typeRef": "#/domains/BroadbandSignupES/types/AvailableDynamicOption",
+            "dynamic": true
+        },
+        "availableBillingAddressComponent": {
+            "typeRef": "#/domains/BroadbandSignupES/types/AvailableDynamicOption",
+            "dynamic": true
         },
         "availableFloorNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
@@ -251,6 +267,148 @@
                 "street",
                 "number",
                 "city"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableDynamicOption": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignupES/types/AvailableOptionString"
+                },
+                {
+                    "$ref": "#/domains/BroadbandSignupES/types/AvailableOptionSelectOne"
+                },
+                {
+                    "$ref": "#/domains/BroadbandSignupES/types/AvailableOptionSelectMany"
+                }
+            ]
+        },
+        "AvailableOptionString": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "String" ] },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableOptionSelectOne": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectOne" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/BroadbandSignupES/types/String"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableOptionSelectMany": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectMany" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/BroadbandSignupES/types/String"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedDynamicOption": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignupES/types/SelectedOptionString"
+                },
+                {
+                    "$ref": "#/domains/BroadbandSignupES/types/SelectedOptionSelectOne"
+                },
+                {
+                    "$ref": "#/domains/BroadbandSignupES/types/SelectedOptionSelectMany"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "SelectedOptionString": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "String" ] },
+                "label": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "text"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptionSelectOne": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectOne" ] },
+                "label": {
+                    "type": "string"
+                },
+                "option": {
+                    "$ref": "#/domains/BroadbandSignupES/types/String"
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "option"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptionSelectMany": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectMany" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/BroadbandSignupES/types/String"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
             ],
             "additionalProperties": false
         },
