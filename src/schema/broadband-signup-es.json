@@ -67,6 +67,11 @@
             "sourceOutputKey": "availableMarketingContactOptions",
             "inputMethod": "SelectMany"
         },
+        "selectedStreetNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableStreetNumbers",
+            "inputMethod": "SelectOne"
+        },
         "selectedFloorNumber": {
             "typeRef": "#/domains/BroadbandSignupES/types/String",
             "sourceOutputKey": "availableFloorNumbers",
@@ -85,6 +90,11 @@
         "selectedEntranceNumber": {
             "typeRef": "#/domains/BroadbandSignupES/types/String",
             "sourceOutputKey": "availableEntranceNumbers",
+            "inputMethod": "SelectOne"
+        },
+        "selectedBillingStreetNumber": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "sourceOutputKey": "availableBillingStreetNumbers",
             "inputMethod": "SelectOne"
         },
         "selectedBillingFloorNumber": {
@@ -178,6 +188,9 @@
             "typeRef": "#/domains/BroadbandSignupES/types/AvailableDynamicOption",
             "dynamic": true
         },
+        "availableStreetNumbers": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
         "availableFloorNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
@@ -188,6 +201,9 @@
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
         "availableEntranceNumbers": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "availableBillingStreetNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
         "availableBillingFloorNumbers": {
