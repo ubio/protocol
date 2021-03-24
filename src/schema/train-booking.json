@@ -344,9 +344,9 @@
             "additionalProperties": false,
             "properties": {
                 "number": {
-                    "type": "integer",
+                    "type": "string",
                     "description": "Reference number of the transportation vehicle.",
-                    "example": "1675"
+                    "example": "AW 1675"
                 },
                 "method": {
                     "type": "string",
