@@ -19,7 +19,8 @@
         "serviceAddress": {
             "typeRef": "#/domains/BroadbandSignupUS/types/ServiceAddress",
             "canonical": [
-                "/zip"
+                "/zip",
+                "/streetAddress"
             ]
         },
         "contactPerson": {
