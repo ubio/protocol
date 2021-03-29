@@ -7,12 +7,6 @@
             "initial": true,
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
-        "options": {
-            "typeRef": "#/domains/CheckinManagement/types/Options",
-            "default": {},
-            "initial": true,
-            "description": "A set of options that define the automation's behavior."
-        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "description": "If required, used for logging in."
@@ -219,16 +213,6 @@
             ],
             "additionalProperties": false
         },
-        "Options": {
-            "type": "object",
-            "properties": {
-                "success": {
-                    "type": "boolean",
-                    "description": "If <code>true</code>, returns a fake success without making a booking.",
-                    "default": false
-                }
-            }
-        },
         "GuestsCount": {
             "type": "object",
             "properties": {
@@ -247,7 +231,7 @@
         },
         "Strings": {
             "type": "array",
-            "items": { "$ref": "#/domains/Remittance/types/String" }
+            "items": { "$ref": "#/domains/CheckinManagement/types/String" }
         },
         "String": {
             "type": "string"
