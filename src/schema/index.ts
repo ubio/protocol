@@ -2,6 +2,7 @@ import Generic from './generic.json';
 import Internal from './internal.json';
 import FlightBooking from './flight-booking.json';
 import CoachBooking from './coach-booking.json';
+import CheckinManagement from './checkin-management.json';
 import VacationRental from './vacation-rental.json';
 import MotorInsurance from './motor-insurance.json';
 import LoanApplication from './loan-application.json';
@@ -35,6 +36,7 @@ export const schema = {
         Generic,
         FlightBooking,
         CoachBooking,
+        CheckinManagement,
         VacationRental,
         MotorInsurance,
         LoanApplication,
