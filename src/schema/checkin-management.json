@@ -1,5 +1,5 @@
 {
-    "description": "Allows automating hotel booking check-in and updates on individual supplier dashboards.",
+    "description": "Allows automating hotel booking check-in and updates on individual suppliers.",
     "private": false,
     "inputs": {
         "url": {
