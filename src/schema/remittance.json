@@ -138,6 +138,10 @@
                     "description": "When an account needs to be created for a person (first name, last name, etc), this key will be used.",
                     "$ref": "#/domains/Generic/types/Person"
                 },
+                "pinNumber": {
+                    "type": "string",
+                    "example": "Bank Transfer"
+                },
                 "transferType": {
                     "type": "string",
                     "example": "Bank Transfer"
