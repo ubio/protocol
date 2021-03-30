@@ -1,0 +1,256 @@
+{
+    "description": "Allows automating hotel booking check-in and updates on individual suppliers.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "description": "If required, used for logging in."
+        },
+        "bookingReference": {
+            "typeRef": "#/domains/CheckinManagement/types/PiiString",
+            "description": "Hotel booking reference code."
+        },
+        "checkInText": {
+            "typeRef": "#/domains/CheckinManagement/types/PiiString",
+            "description": "Optional comment made by the hotel regarding the check-in status."
+        },
+        "mainGuestChanges": {
+            "typeRef": "#/domains/CheckinManagement/types/MainGuest",
+            "description": "Personal details about the main guest.",
+            "canonical": [
+                "/person",
+                "/contact/email"
+            ]
+        },
+        "bookingDetailsChanges": {
+            "typeRef": "#/domains/CheckinManagement/types/BookingDetails",
+            "description": "Details about hotel booking."
+        },
+        "addressChanges": {
+            "typeRef": "#/domains/Generic/types/Address",
+            "description": "Physical address information, typically used as part of billing or shipping address objects."
+        },
+        "guests": {
+            "typeRef": "#/domains/CheckinManagement/types/Guests",
+            "description": "Personal details about the guests."
+        }
+    },
+    "outputs": {
+        "mainGuest": {
+            "typeRef": "#/domains/CheckinManagement/types/MainGuest",
+            "description": "Personal details about the main guest."
+        },
+        "address": {
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "typeRef": "#/domains/Generic/types/Address"
+        },
+        "bookingDetails": {
+            "typeRef": "#/domains/CheckinManagement/types/BookingDetailsOutput",
+            "description": "Details about hotel booking."
+        }
+    },
+    "types": {
+        "BookingDetails": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "guestStatus": {
+                    "type": "string",
+                    "example": "Confirmed"
+                },
+                "hotelStatus": {
+                    "type": "string",
+                    "example": "Cancelled by guest"
+                },
+                "roomsCount": {
+                    "type": "string"
+                },
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "arrivalTime": {
+                    "type": "string",
+                    "pattern": "^[012][0-9]:[0-5][0-9]$",
+                    "example": "18:00"
+                },
+                "guestsCount": {
+                    "$ref": "#/domains/CheckinManagement/types/GuestsCount"
+                }
+            },
+            "required": [
+                "guestStatus",
+                "hotelStatus",
+                "roomsCount",
+                "checkInDate",
+                "checkOutDate",
+                "arrivalTime",
+                "guestsCount"
+            ],
+            "additionalProperties": false
+        },
+        "BookingDetailsOutput": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "roomId": {
+                    "type": "string",
+                    "example": "Studio"
+                },
+                "guestsCount": {
+                    "$ref": "#/domains/CheckinManagement/types/GuestsCount"
+                }
+            },
+            "required": [
+                "checkInDate",
+                "checkOutDate",
+                "roomId",
+                "guestsCount"
+            ],
+            "additionalProperties": false
+        },
+        "MainGuest": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/CheckinManagement/types/Person"
+                },
+                "contact": {
+                    "$ref": "#/domains/CheckinManagement/types/GuestContact"
+                }
+            },
+            "required": [
+                "person",
+                "contact"
+            ],
+            "additionalProperties": false
+        },
+        "Guests": {
+            "type": "array",
+            "description": "A list of guests.",
+            "minItems": 1,
+            "pii": true,
+            "items": {
+                "$ref": "#/domains/CheckinManagement/types/Person"
+            }
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "example": "Smith"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "middleName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "GuestContact": {
+            "type": "object",
+            "properties": {
+                "phone": {
+                    "$ref": "#/domains/Generic/types/AnyPhoneString"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address used for contact.",
+                    "format": "email",
+                    "example": "client@example.com"
+                }
+            },
+            "required": [
+                "phone",
+                "email"
+            ],
+            "additionalProperties": false
+        },
+        "GuestsCount": {
+            "type": "object",
+            "properties": {
+                "adults": {
+                    "type": "string"
+                },
+                "children": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "adults",
+                "children"
+            ],
+            "additionalProperties": false
+        },
+        "Strings": {
+            "type": "array",
+            "items": { "$ref": "#/domains/CheckinManagement/types/String" }
+        },
+        "String": {
+            "type": "string"
+        },
+        "PiiString": {
+            "type": "string",
+            "pii": true
+        }
+    },
+    "errors": [
+        {
+            "code": "BookingNotFound",
+            "category": "client",
+            "description": "Booking not found, usually caused by wrong booking reference or name."
+        },
+        {
+            "code": "ContactDetailsInvalid",
+            "category": "client",
+            "description": "Invalid contact details."
+        }
+    ]
+}
