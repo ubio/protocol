@@ -356,6 +356,7 @@
                 "countryCode": {"$ref": "#/domains/Generic/types/CountryCode"},
                 "CLABE": { 
                     "type": "string",
+                    "minLength": 1,
                     "description": "Recipient's account number specific to Mexico"
                 }
             },
@@ -373,10 +374,12 @@
                 "countryCode": {"$ref": "#/domains/Generic/types/CountryCode"},
                 "routingNumber": {
                     "type": "string",
+                    "minLength": 1,
                     "example": "111000025"
                 },
                 "accountNumber": {
                     "type": "string",
+                    "minLength": 1,
                     "example": "10548568"
                 }
             },
