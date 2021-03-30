@@ -28,6 +28,11 @@
         "directDebit": {
             "typeRef": "#/domains/Remittance/types/DirectDebit"
         },
+        "selectedAccountType": {
+            "typeRef": "#/domains/Remittance/types/AccountType",
+            "sourceOutputKey": "availableAccountTypes",
+            "inputMethod": "SelectOne"
+        },
         "payment": {
             "typeRef": "#/domains/Remittance/types/Payment"
         },
@@ -66,6 +71,10 @@
         "availablePaymentMethods": {
             "typeRef": "#/domains/Remittance/types/PaymentMethods",
             "description": "List of payment methods found on the supplier's website."
+        },
+        "availableAccountTypes": {
+            "typeRef": "#/domains/Remittance/types/AccountTypes",
+            "description": "List of account types found on the supplier's website."
         },
         "availableSendingReasons": {
             "typeRef": "#/domains/Remittance/types/Strings"
@@ -177,16 +186,22 @@
                 "address": {
                     "$ref": "#/domains/Generic/types/Address"
                 },
-                "CLABE": { 
-                    "type": "string",
-                    "description": "Recipient's account number"
+                "bankAccount": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/domains/Remittance/types/BankAccountMX"
+                        },
+                        {
+                            "$ref": "#/domains/Remittance/types/BankAccountUS"
+                        }
+                    ]
                 }
             },
             "required": [
                 "person",
                 "phone",
                 "address",
-                "CLABE"
+                "bankAccount"
             ],
             "additionalProperties": false
         },
@@ -276,6 +291,11 @@
                     "minLength": 1,
                     "example": "Checking"
                 },
+                "bankName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Bank of America"
+                },
                 "accountHolder": {
                     "type": "string",
                     "minLength": 1,
@@ -318,6 +338,57 @@
                 "bank-transfer",
                 "no-prepayment"
             ]
+        },
+        "AccountTypes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/Remittance/types/AccountType"
+            }
+        },
+        "AccountType": {
+            "type": "string"
+        },
+        "BankAccountMX": {
+            "type": "object",
+            "description": "Account details for direct debit Mexico.",
+            "pii": true,
+            "properties": {
+                "countryCode": {"$ref": "#/domains/Generic/types/CountryCode"},
+                "CLABE": { 
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Recipient's account number specific to Mexico"
+                }
+            },
+            "required": [
+                "countryCode",
+                "CLABE"
+            ],
+            "additionalProperties": false
+        },
+        "BankAccountUS": {
+            "type": "object",
+            "description": "Account details for direct debit USA.",
+            "pii": true,
+            "properties": {
+                "countryCode": {"$ref": "#/domains/Generic/types/CountryCode"},
+                "routingNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "111000025"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "10548568"
+                }
+            },
+            "required": [
+                "countryCode",
+                "routingNumber",
+                "accountNumber"
+            ],
+            "additionalProperties": false
         },
         "Confirmation": {
             "type": "object",
