@@ -32,7 +32,7 @@
             "description": "Details about hotel booking."
         },
         "addressChanges": {
-            "typeRef": "#/domains/Generic/types/Address",
+            "typeRef": "#/domains/CheckinManagement/types/Address",
             "description": "Physical address information, typically used as part of billing or shipping address objects."
         },
         "guests": {
@@ -47,7 +47,7 @@
         },
         "address": {
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
-            "typeRef": "#/domains/Generic/types/Address"
+            "typeRef": "#/domains/CheckinManagement/types/Address"
         },
         "bookingDetails": {
             "typeRef": "#/domains/CheckinManagement/types/BookingDetailsOutput",
@@ -203,7 +203,6 @@
                 "email": {
                     "type": "string",
                     "description": "Email address used for contact.",
-                    "format": "email",
                     "example": "client@example.com"
                 }
             },
@@ -228,6 +227,84 @@
                 "children"
             ],
             "additionalProperties": false
+        },
+        "ExplicitAddress": {
+            "type": "object",
+            "description": "Explicit address components (parsed version, used to format into various standards).",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Name of the street.",
+                    "example": "Clerkenwell Close"
+                },
+                "streetNumber": {
+                    "type": "string",
+                    "description": "Number of the street or other building identifier, such as house number or house name",
+                    "example": "27-31"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                }
+            },
+            "required": [
+                "streetName",
+                "city",
+                "postcode"
+            ],
+            "additionalProperties": false
+        },
+        "InlinedAddress": {
+            "type": "object",
+            "description": "Address components common to inlined addresses (line1, line2)",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "example": "501 Twin Peaks Blv"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                }
+            },
+            "required": [
+                "line1",
+                "city",
+                "postcode"
+            ],
+            "additionalProperties": false
+        },
+        "Address": {
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "oneOf": [
+                {
+                    "$ref": "#/domains/CheckinManagement/types/ExplicitAddress"
+                },
+                {
+                    "$ref": "#/domains/CheckinManagement/types/InlinedAddress"
+                }
+            ]
         },
         "Strings": {
             "type": "array",
