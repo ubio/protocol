@@ -175,7 +175,6 @@
                 "middleName": {
                     "type": "string",
                     "minLength": 1,
-                    "default": "",
                     "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
                 },
                 "lastName": {
