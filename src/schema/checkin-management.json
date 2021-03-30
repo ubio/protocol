@@ -61,12 +61,12 @@
             "properties": {
                 "guestStatus": {
                     "type": "string",
-                    "minItems": 1,
+                    "minLength": 1,
                     "example": "Confirmed"
                 },
                 "hotelStatus": {
                     "type": "string",
-                    "minItems": 1,
+                    "minLength": 1,
                     "example": "Cancelled by guest"
                 },
                 "roomsCount": {
@@ -113,7 +113,7 @@
                 },
                 "roomId": {
                     "type": "string",
-                    "minItems": 1,
+                    "minLength": 1,
                     "example": "Studio"
                 },
                 "guestsCount": {
