@@ -353,7 +353,10 @@
             "description": "Account details for direct debit Mexico.",
             "pii": true,
             "properties": {
-                "countryCode": {"$ref": "#/domains/Generic/types/CountryCode"},
+                "countryCode": {
+                    "type": "string",
+                    "enum": ["mx"]
+                },
                 "CLABE": { 
                     "type": "string",
                     "minLength": 1,
@@ -371,7 +374,10 @@
             "description": "Account details for direct debit USA.",
             "pii": true,
             "properties": {
-                "countryCode": {"$ref": "#/domains/Generic/types/CountryCode"},
+                "countryCode": {
+                    "type": "string",
+                    "enum": ["us"]
+                },
                 "routingNumber": {
                     "type": "string",
                     "minLength": 1,
