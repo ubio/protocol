@@ -186,24 +186,22 @@
                 "address": {
                     "$ref": "#/domains/Generic/types/Address"
                 },
-                "CLABE": { 
-                    "type": "string",
-                    "description": "Recipient's account number specific to Mexico"
-                },
-                "routingNumber": {
-                    "type": "string",
-                    "example": "111000025"
-                },
-                "accountNumber": {
-                    "type": "string",
-                    "example": "10548568"
+                "bankAccount": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/domains/Remittance/types/BankAccountMX"
+                        },
+                        {
+                            "$ref": "#/domains/Remittance/types/BankAccountUS"
+                        }
+                    ]
                 }
             },
             "required": [
                 "person",
                 "phone",
                 "address",
-                "CLABE"
+                "bankAccount"
             ],
             "additionalProperties": false
         },
@@ -349,6 +347,45 @@
         },
         "AccountType": {
             "type": "string"
+        },
+        "BankAccountMX": {
+            "type": "object",
+            "description": "Account details for direct debit Mexico.",
+            "pii": true,
+            "properties": {
+                "countryCode": {"$ref": "#/domains/Generic/types/PaymentCard"},
+                "CLABE": { 
+                    "type": "string",
+                    "description": "Recipient's account number specific to Mexico"
+                }
+            },
+            "required": [
+                "countryCode",
+                "CLABE"
+            ],
+            "additionalProperties": false
+        },
+        "BankAccountUS": {
+            "type": "object",
+            "description": "Account details for direct debit USA.",
+            "pii": true,
+            "properties": {
+                "countryCode": {"$ref": "#/domains/Generic/types/PaymentCard"},
+                "routingNumber": {
+                    "type": "string",
+                    "example": "111000025"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "example": "10548568"
+                }
+            },
+            "required": [
+                "countryCode",
+                "routingNumber",
+                "accountNumber"
+            ],
+            "additionalProperties": false
         },
         "Confirmation": {
             "type": "object",
