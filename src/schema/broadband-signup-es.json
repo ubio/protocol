@@ -51,7 +51,7 @@
             "typeRef": "#/domains/BroadbandSignupES/types/LandlineOptions"
         },
         "finalPriceConsent": {
-            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "typeRef": "#/domains/BroadbandSignupES/types/FinalPrice",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent"
@@ -233,7 +233,7 @@
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
-            "typeRef": "#/domains/Generic/types/PriceConsent"
+            "typeRef": "#/domains/BroadbandSignupES/types/FinalPrice"
         }
     },
     "types": {
@@ -653,6 +653,21 @@
         },
         "String": {
             "type": "string"
+        },
+        "FinalPrice": {
+            "type": "object",
+            "properties": {
+                "now": {
+                    "type": "string"
+                },
+                "monthly": {
+                    "type": "string"
+                },
+                "monthlyDiscounted": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
         }
     },
     "errors": [
