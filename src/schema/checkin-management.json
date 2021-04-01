@@ -198,7 +198,6 @@
                 "dateOfBirth": {
                     "type": "string",
                     "description": "Guest's date of birth in YYYY-MM-DD format.",
-                    "format": "date",
                     "example": "1976-01-27"
                 }
             },
@@ -242,68 +241,9 @@
             ],
             "additionalProperties": false
         },
-        "ExplicitAddress": {
+        "Address": {
             "type": "object",
-            "description": "Explicit address components (parsed version, used to format into various standards).",
-            "pii": true,
-            "properties": {
-                "streetName": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Name of the street.",
-                    "example": "Clerkenwell Close"
-                },
-                "streetNumber": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Number of the street or other building identifier, such as house number or house name",
-                    "example": "27-31"
-                },
-                "line2": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Additional address information (e.g. flat).",
-                    "example": "Flat 2"
-                },
-                "city": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Name of city, town or other settlement.",
-                    "example": "San Francisco"
-                },
-                "postcode": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
-                    "example": "94581"
-                },
-                "citySubdivision": {
-                    "type": "string",
-                    "minLength": 1,
-                    "description": "Name of the city subdivision.",
-                    "example": "Glen Park"
-                },
-                "countryCode": {
-                    "$ref": "#/domains/Generic/types/CountryCode"
-                },
-                "country": {
-                    "type": "string",
-                    "description": "Name of the country"
-                },
-                "countrySubdivision": {
-                    "$ref": "#/domains/Generic/types/CountrySubdivision"
-                }
-            },
-            "required": [
-                "streetName",
-                "city",
-                "postcode"
-            ],
-            "additionalProperties": false
-        },
-        "InlinedAddress": {
-            "type": "object",
-            "description": "Address components common to inlined addresses (line1, line2)",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
             "pii": true,
             "properties": {
                 "line1": {
@@ -318,6 +258,18 @@
                     "description": "Additional address information (e.g. flat).",
                     "example": "Flat 2"
                 },
+                "streetName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Name of the street.",
+                    "example": "Clerkenwell Close"
+                },
+                "streetNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Number of the street or other building identifier, such as house number or house name",
+                    "example": "27-31"
+                },
                 "city": {
                     "type": "string",
                     "minLength": 1,
@@ -348,23 +300,10 @@
                 }
             },
             "required": [
-                "line1",
                 "city",
                 "postcode"
             ],
             "additionalProperties": false
-        },
-        "Address": {
-            "description": "Physical address information, typically used as part of billing or shipping address objects.",
-            "pii": true,
-            "oneOf": [
-                {
-                    "$ref": "#/domains/CheckinManagement/types/ExplicitAddress"
-                },
-                {
-                    "$ref": "#/domains/CheckinManagement/types/InlinedAddress"
-                }
-            ]
         },
         "IdentityDocument": {
             "type": "object",
@@ -376,8 +315,10 @@
                     "description": "Document type.",
                     "enum": [
                         "passport",
-                        "national-id"
+                        "national-id",
+                        "N/A"
                     ]
+                    
                 },
                 "number": {
                     "type": "string",
