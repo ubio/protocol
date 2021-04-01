@@ -308,6 +308,16 @@
                     "type": "string",
                     "example": "London, UK",
                     "minLength": 3
+                },
+                "currencyCode": {
+                    "$ref": "#/domains/Generic/types/CurrencyCode"
+                },
+                "languageCode": {
+                    "type": "string",
+                    "minLength": 2
+                },
+                "hotelId": {
+                    "type": "string"
                 }
             },
             "required": [
