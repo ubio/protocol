@@ -416,6 +416,11 @@
             "code": "EventNotAvailable",
             "category": "client",
             "description": "Requested event is not found"
+        },
+        {
+            "code": "UpsellNotAvailable",
+            "category": "client",
+            "description": "Selected upsell item or quantity not available."
         }
     ]
 }
