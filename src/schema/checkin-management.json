@@ -50,7 +50,7 @@
             "typeRef": "#/domains/CheckinManagement/types/Address"
         },
         "bookingDetails": {
-            "typeRef": "#/domains/CheckinManagement/types/BookingDetailsOutput",
+            "typeRef": "#/domains/CheckinManagement/types/BookingDetails",
             "description": "Details about hotel booking."
         }
     },
@@ -87,35 +87,6 @@
                     "pattern": "^[012][0-9]:[0-5][0-9]$",
                     "example": "18:00"
                 },
-                "guestsCount": {
-                    "$ref": "#/domains/CheckinManagement/types/GuestsCount"
-                }
-            },
-            "required": [
-                "checkInDate",
-                "checkOutDate"
-            ],
-            "additionalProperties": false
-        },
-        "BookingDetailsOutput": {
-            "type": "object",
-            "pii": true,
-            "properties": {
-                "checkInDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "1976-01-27"
-                },
-                "checkOutDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "1976-01-27"
-                },
-                "roomId": {
-                    "type": "string",
-                    "minLength": 1,
-                    "example": "Studio"
-                },
                 "remarks": {
                     "type": "string",
                     "minLength": 1,
@@ -126,10 +97,7 @@
                     "$ref": "#/domains/CheckinManagement/types/GuestsCount"
                 }
             },
-            "required": [
-                "checkInDate",
-                "checkOutDate"
-            ],
+            "required": [],
             "additionalProperties": false
         },
         "MainGuest": {
@@ -175,7 +143,8 @@
                         "mr",
                         "miss",
                         "ms",
-                        "mrs"
+                        "mrs",
+                        "N/A"
                     ]
                 },
                 "firstName": {
@@ -199,6 +168,13 @@
                     "type": "string",
                     "description": "Guest's date of birth in YYYY-MM-DD format.",
                     "example": "1976-01-27"
+                },
+                "ageType": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Age type of guests.",
+                    "example": "Adult",
+                    "enum": ["adult", "child", "infant"]
                 }
             },
             "required": [
@@ -233,11 +209,15 @@
                 },
                 "children": {
                     "type": "integer"
+                },
+                "infants": {
+                    "type": "integer"
                 }
             },
             "required": [
                 "adults",
-                "children"
+                "children",
+                "infants"
             ],
             "additionalProperties": false
         },
