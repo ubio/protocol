@@ -72,6 +72,11 @@
                 "roomsCount": {
                     "type": "integer"
                 },
+                "roomId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "582765"
+                },
                 "checkInDate": {
                     "type": "string",
                     "format": "date",
