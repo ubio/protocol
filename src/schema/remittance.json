@@ -412,7 +412,7 @@
             },
             "required": [
                 "countryCode",
-                "routingNumber",
+                "bankName",
                 "accountNumber"
             ],
             "additionalProperties": false
