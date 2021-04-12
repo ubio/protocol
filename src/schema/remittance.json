@@ -396,7 +396,7 @@
             "properties": {
                 "countryCode": {
                     "type": "string",
-                    "enum": ["sv"]
+                    "enum": ["do", "gt", "hn", "sv"]
                 },
                 "bankName": {
                     "type": "string",
