@@ -210,6 +210,9 @@
                             "$ref": "#/domains/Remittance/types/BankAccountMX"
                         },
                         {
+                            "$ref": "#/domains/Remittance/types/BankAccountNameNumber"
+                        },
+                        {
                             "$ref": "#/domains/Remittance/types/BankAccountUS"
                         }
                     ]
@@ -375,7 +378,7 @@
                     "type": "string",
                     "enum": ["mx"]
                 },
-                "CLABE": { 
+                "CLABE": {
                     "type": "string",
                     "minLength": 1,
                     "description": "Recipient's account number specific to Mexico"
@@ -384,6 +387,33 @@
             "required": [
                 "countryCode",
                 "CLABE"
+            ],
+            "additionalProperties": false
+        },
+        "BankAccountNameNumber": {
+            "type": "object",
+            "description": "Account details for direct debit USA.",
+            "pii": true,
+            "properties": {
+                "countryCode": {
+                    "type": "string",
+                    "enum": ["sv"]
+                },
+                "bankName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Banco Agricola"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "10548568"
+                }
+            },
+            "required": [
+                "countryCode",
+                "routingNumber",
+                "accountNumber"
             ],
             "additionalProperties": false
         },
