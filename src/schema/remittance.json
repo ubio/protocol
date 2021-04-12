@@ -207,13 +207,13 @@
                             "$ref": "#/domains/Remittance/types/BankAccountSWIFT"
                         },
                         {
-                            "$ref": "#/domains/Remittance/types/BankAccountMX"
+                            "$ref": "#/domains/Remittance/types/BankAccountClabe"
                         },
                         {
                             "$ref": "#/domains/Remittance/types/BankAccountNameNumber"
                         },
                         {
-                            "$ref": "#/domains/Remittance/types/BankAccountUS"
+                            "$ref": "#/domains/Remittance/types/BankAccountRoutingNumber"
                         }
                     ]
                 }
@@ -369,7 +369,7 @@
         "AccountType": {
             "type": "string"
         },
-        "BankAccountMX": {
+        "BankAccountClabe": {
             "type": "object",
             "description": "Account details for direct debit Mexico.",
             "pii": true,
@@ -444,7 +444,7 @@
             ],
             "additionalProperties": false
         },
-        "BankAccountUS": {
+        "BankAccountRoutingAccount": {
             "type": "object",
             "description": "Account details for direct debit USA.",
             "pii": true,
