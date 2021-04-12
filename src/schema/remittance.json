@@ -322,7 +322,6 @@
                     "minLength": 1,
                     "example": "John Doe"
                 }
-            
             },
             "required": [
                 "accountNumber",
@@ -439,7 +438,7 @@
             },
             "required": [
                 "countryCode",
-                "routingNumber",
+                "swiftCode",
                 "accountNumber"
             ],
             "additionalProperties": false
