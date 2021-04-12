@@ -204,6 +204,9 @@
                 "bankAccount": {
                     "oneOf": [
                         {
+                            "$ref": "#/domains/Remittance/types/BankAccountSWIFT"
+                        },
+                        {
                             "$ref": "#/domains/Remittance/types/BankAccountMX"
                         },
                         {
@@ -381,6 +384,33 @@
             "required": [
                 "countryCode",
                 "CLABE"
+            ],
+            "additionalProperties": false
+        },
+        "BankAccountSWIFT": {
+            "type": "object",
+            "description": "Account details for direct debit USA.",
+            "pii": true,
+            "properties": {
+                "countryCode": {
+                    "type": "string",
+                    "enum": ["sv"]
+                },
+                "swiftCode": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "111000025"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "10548568"
+                }
+            },
+            "required": [
+                "countryCode",
+                "routingNumber",
+                "accountNumber"
             ],
             "additionalProperties": false
         },
