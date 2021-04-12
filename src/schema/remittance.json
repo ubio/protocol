@@ -213,7 +213,7 @@
                             "$ref": "#/domains/Remittance/types/BankAccountNameNumber"
                         },
                         {
-                            "$ref": "#/domains/Remittance/types/BankAccountRoutingNumber"
+                            "$ref": "#/domains/Remittance/types/BankAccountRoutingAccount"
                         }
                     ]
                 }
