@@ -203,6 +203,9 @@
         "availableEntranceNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
+        "finalServiceAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String"
+        },
         "availableBillingStreetNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
         },
@@ -217,6 +220,9 @@
         },
         "availableBillingBuildingNumbers": {
             "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "finalBillingAddress": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String"
         },
         "confirmation": {
             "typeRef": "#/domains/BroadbandSignupES/types/Confirmation"
