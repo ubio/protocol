@@ -3,6 +3,7 @@ import Internal from './internal.json';
 import FlightBooking from './flight-booking.json';
 import CoachBooking from './coach-booking.json';
 import CheckinManagement from './checkin-management.json';
+import LockManagement from './lock-management.json';
 import VacationRental from './vacation-rental.json';
 import MotorInsurance from './motor-insurance.json';
 import LoanApplication from './loan-application.json';
@@ -37,6 +38,7 @@ export const schema = {
         FlightBooking,
         CoachBooking,
         CheckinManagement,
+        LockManagement,
         VacationRental,
         MotorInsurance,
         LoanApplication,
