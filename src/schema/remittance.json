@@ -57,6 +57,9 @@
             "sourceOutputKey": "availableTopupAmounts",
             "inputMethod": "SelectOne"
         },
+        "selectedDeliveryMethod": {
+            "typeRef": "#/domains/Remittance/types/DeliveryMethod"
+        },
         "smsCode": {
             "typeRef": "#/domains/Remittance/types/String"
         },
@@ -84,6 +87,9 @@
         },
         "availableTopupAmounts": {
             "typeRef": "#/domains/Remittance/types/Strings"
+        },
+        "availableDeliveryMethods": {
+            "typeRef": "#/domains/Remittance/types/AvailableDeliveryMethods"
         },
         "confirmation": {
             "typeRef": "#/domains/Remittance/types/Confirmation"
@@ -275,11 +281,6 @@
             "type": "object",
             "pii": true,
             "properties": {
-                "method": {
-                    "type": "string",
-                    "minLength": 1,
-                    "example": "Bank Deposit"
-                },
                 "location": {
                     "type": "string",
                     "minLength": 1,
@@ -287,7 +288,6 @@
                 }
             },
             "required": [
-                "method",
                 "location"
             ],
             "additionalProperties": false
@@ -489,6 +489,13 @@
             "required": [
                 "reference"
             ]
+        },
+        "AvailableDeliveryMethods": {
+            "type": "array",
+            "items": { "$ref": "#/domains/Remittance/types/DeliveryMethod" }
+        },
+        "DeliveryMethod": {
+            "type": "string"
         },
         "Strings": {
             "type": "array",
