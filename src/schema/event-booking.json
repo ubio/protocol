@@ -75,6 +75,9 @@
         "overrideIntent": {
             "typeRef": "#/domains/EventBooking/types/Intent",
             "description": "List of intents."
+        },
+        "promoCode": {
+            "typeRef": "#/domains/EventBooking/types/String"
         }
     },
     "outputs": {
@@ -389,6 +392,9 @@
             "enum": [
                 "clearBasket"
             ]
+        },
+        "String": {
+            "type": "string"
         }
     },
     "errors": [
