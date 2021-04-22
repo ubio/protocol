@@ -201,9 +201,7 @@
             "required": [
                 "person",
                 "amount",
-                "address",
-                "delivery"
-
+                "address"
             ],
             "additionalProperties": false
         },
