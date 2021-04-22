@@ -58,7 +58,16 @@
             "inputMethod": "SelectOne"
         },
         "selectedDeliveryMethod": {
-            "typeRef": "#/domains/Remittance/types/DeliveryMethod"
+            "typeRef": "#/domains/Remittance/types/String"
+        },
+        "selectedDeliveryLocation": {
+            "typeRef": "#/domains/Remittance/types/String"
+        },
+        "selectedSecurityQuestions": {
+            "typeRef": "#/domains/Remittance/types/String"
+        },
+        "securityAnswer": {
+            "typeRef": "#/domains/Remittance/types/String"
         },
         "smsCode": {
             "typeRef": "#/domains/Remittance/types/String"
@@ -89,7 +98,13 @@
             "typeRef": "#/domains/Remittance/types/Strings"
         },
         "availableDeliveryMethods": {
-            "typeRef": "#/domains/Remittance/types/AvailableDeliveryMethods"
+            "typeRef": "#/domains/Remittance/types/Strings"
+        },
+        "availableDeliveryLocations": {
+            "typeRef": "#/domains/Remittance/types/Strings"
+        },
+        "availableSecurityQuestions": {
+            "typeRef": "#/domains/Remittance/types/Strings"
         },
         "confirmation": {
             "typeRef": "#/domains/Remittance/types/Confirmation"
@@ -181,9 +196,6 @@
                 },
                 "address": {
                     "$ref": "#/domains/Generic/types/Address"
-                },
-                "delivery": {
-                    "$ref": "#/domains/Remittance/types/Delivery"
                 }
             },
             "required": [
@@ -277,21 +289,6 @@
             ],
             "additionalProperties": false
         },
-        "Delivery": {
-            "type": "object",
-            "pii": true,
-            "properties": {
-                "location": {
-                    "type": "string",
-                    "minLength": 1,
-                    "example": "Santander"
-                }
-            },
-            "required": [
-                "location"
-            ],
-            "additionalProperties": false
-        },
         "DirectDebit": {
             "type": "object",
             "description": "Account details for direct debit.",
@@ -352,7 +349,8 @@
         "PaymentMethod": {
             "type": "string",
             "enum": [
-                "card",
+                "card-credit",
+                "card-debit",
                 "paypal",
                 "direct-debit",
                 "bank-transfer",
