@@ -63,7 +63,7 @@
         "selectedDeliveryLocation": {
             "typeRef": "#/domains/Remittance/types/String"
         },
-        "selectedSecurityQuestions": {
+        "selectedSecurityQuestion": {
             "typeRef": "#/domains/Remittance/types/String"
         },
         "securityAnswer": {
