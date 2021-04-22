@@ -52,6 +52,10 @@
         "bookingDetails": {
             "typeRef": "#/domains/CheckinManagement/types/BookingDetails",
             "description": "Details about hotel booking."
+        },
+        "property": {
+            "typeRef": "#/domains/CheckinManagement/types/Property",
+            "description": "Details about the hotel."
         }
     },
     "types": {
@@ -97,6 +101,20 @@
             "required": [],
             "additionalProperties": false
         },
+        "Property": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Apartrooms Hotel"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
         "BookingDetails": {
             "type": "object",
             "pii": true,
@@ -114,10 +132,15 @@
                 "roomsCount": {
                     "type": "integer"
                 },
-                "roomId": {
+                "roomNumber": {
                     "type": "string",
                     "minLength": 1,
                     "example": "582765"
+                },
+                "roomType": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Studio"
                 },
                 "checkInDate": {
                     "type": "string",
