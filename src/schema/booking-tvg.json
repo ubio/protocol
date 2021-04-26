@@ -1,0 +1,480 @@
+{
+    "description": "Allows automating hotel booking on individual suppliers and OTAs.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "search": {
+            "typeRef": "#/domains/BookingTVG/types/String"
+        },
+        "dates": {
+            "typeRef": "#/domains/BookingTVG/types/Dates"
+        },
+        "advertiser": {
+            "typeRef": "#/domains/BookingTVG/types/Advertiser"
+        },
+        "guest": {
+            "typeRef": "#/domains/BookingTVG/types/Guest"
+        },
+        "card": {
+            "typeRef": "#/domains/BookingTVG/types/Card"
+        },
+        "localeInput": {
+            "typeRef": "#/domains/Generic/types/CountryCode"
+        }
+    },
+    "outputs": {
+        "browser": {
+            "typeRef": "#/domains/BookingTVG/types/Browser"
+        },
+        "isApp": {
+            "typeRef": "#/domains/BookingTVG/types/App"
+        },
+        "isVPN": {
+            "typeRef": "#/domains/BookingTVG/types/Vpn"
+        },
+        "transactionType": {
+            "typeRef": "#/domains/BookingTVG/types/TransactionType"
+        },
+        "notificationType": {
+            "typeRef": "#/domains/BookingTVG/types/NotificationType"
+        },
+        "isExpress": {
+            "typeRef": "#/domains/BookingTVG/types/Express"
+        },
+        "trivagoLp": {
+            "typeRef": "#/domains/BookingTVG/types/TrivagoLp"
+        },
+        "item": {
+            "typeRef": "#/domains/BookingTVG/types/String"
+        },
+        "clickoutTime": {
+            "typeRef": "#/domains/BookingTVG/types/ClickoutTime"
+        },
+        "clickoutDate": {
+            "typeRef": "#/domains/BookingTVG/types/ClickoutDate"
+        },
+        "trvReference": {
+            "typeRef": "#/domains/BookingTVG/types/TrvReference"
+        },
+        "lpAmount": {
+            "typeRef": "#/domains/BookingTVG/types/LpAmount"
+        },
+        "deviceType": {
+            "typeRef": "#/domains/BookingTVG/types/DeviceType"
+        },
+        "checkinDate": {
+            "typeRef": "#/domains/BookingTVG/types/CheckinDate"
+        },
+        "checkoutDate": {
+            "typeRef": "#/domains/BookingTVG/types/CheckoutDate"
+        },
+        "bookingDate": {
+            "typeRef": "#/domains/BookingTVG/types/BookingDate"
+        },
+        "freeCancellationUntil": {
+            "typeRef": "#/domains/BookingTVG/types/FreeCancellationUntil"
+        },
+        "isExpressBooking": {
+            "typeRef": "#/domains/BookingTVG/types/ExpressBooking"
+        },
+        "noOfRooms": {
+            "typeRef": "#/domains/BookingTVG/types/NoOfRooms"
+        },
+        "locale": {
+            "typeRef": "#/domains/Generic/types/CountryCode"
+        },
+        "adblockSettings": {
+            "typeRef": "#/domains/BookingTVG/types/AdblockSettings"
+        },
+        "advertiserId": {
+            "typeRef": "#/domains/BookingTVG/types/AdvertiserId"
+        },
+        "taxesAndFees": {
+            "typeRef": "#/domains/BookingTVG/types/TaxesAndFees"
+        },
+        "resortFee": {
+            "typeRef": "#/domains/BookingTVG/types/ResortFee"
+        },
+        "bookingTime": {
+            "typeRef": "#/domains/BookingTVG/types/BookingTime"
+        },
+        "bookingId": {
+            "typeRef": "#/domains/BookingTVG/types/BookingId"
+        },
+        "bookingUrl": {
+            "typeRef": "#/domains/BookingTVG/types/String"
+        },
+        "serviceCharge": {
+            "typeRef": "#/domains/BookingTVG/types/ServiceCharge"
+        },
+        "partnerId": {
+            "typeRef": "#/domains/BookingTVG/types/PartnerId"
+        },
+        "bookingValueGross": {
+            "typeRef": "#/domains/BookingTVG/types/BookingValueGross"
+        } 
+    },
+    "types": {
+        "Dates": {
+            "type": "object",
+            "properties": {
+                "checkin": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkout": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Advertiser": {
+            "type": "object",
+            "properties": {
+                "advertiserID": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Guest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "number": {
+                    "type": "string"
+                },
+                "street": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Card": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "expiration": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}/(?:0[1-9]|1[0-2])$",
+                    "minLength": 7,
+                    "maxLength": 7
+                },
+                "cvv": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 4
+                },
+                "bank": {
+                    "type": "string"
+                },
+                "pan_token": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Browser": {
+            "type": "object",
+            "properties": {
+                "browser": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "App": {
+            "type": "object",
+            "properties": {
+                "isApp": {
+                    "type": "boolean"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Vpn": {
+            "type": "object",
+            "properties": {
+                "isVPN": {
+                    "type": "boolean"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Express": {
+            "type": "object",
+            "properties": {
+                "isExpress": {
+                    "type": "boolean"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "TrivagoLp": {
+            "type": "object",
+            "properties": {
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "ClickoutTime": {
+            "type": "object",
+            "properties": {
+                "clickoutTime": {
+                    "type": "string",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]:[0-5][0-9]$"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "ClickoutDate": {
+            "type": "object",
+            "properties": {
+                "clickoutDate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "TrvReference": {
+            "type": "object",
+            "properties": {
+                "trvReference": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "LpAmount": {
+            "type": "object",
+            "properties": {
+                "lpAmount": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "DeviceType": {
+            "type": "object",
+            "properties": {
+                "deviceType": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "CheckinDate": {
+            "type": "object",
+            "properties": {
+                "checkinDate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "CheckoutDate": {
+            "type": "object",
+            "properties": {
+                "checkoutDate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "NotificationType": {
+            "type": "object",
+            "properties": {
+                "notificationType": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "TransactionType": {
+            "type": "object",
+            "properties": {
+                "transactionType": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "BookingDate": {
+            "type": "object",
+            "properties": {
+                "bookingDate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "FreeCancellationUntil": {
+                "oneOf": [
+                    {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "type": "null"
+                    }
+                ],
+                "required": [],
+                "additionalProperties": false
+            },
+        "BookingValueGross": {
+            "type": "object",
+            "properties": {
+                "bookingValueGross": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "ExpressBooking": {
+            "type": "object",
+            "properties": {
+                "isExpressBooking": {
+                    "type": "boolean"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "NoOfRooms": {
+            "type": "object",
+            "properties": {
+                "noOfRooms": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "AdblockSettings": {
+            "type": "object",
+            "properties": {
+                "adblockSettings": {
+                    "type": "boolean"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "AdvertiserId": {
+            "type": "object",
+            "properties": {
+                "advertiserId": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "TaxesAndFees": {
+            "type": "object",
+            "properties": {
+                "taxesAndFees": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "ResortFee": {
+            "type": "object",
+            "properties": {
+                "resortFee": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "BookingTime": {
+            "type": "object",
+            "properties": {
+                "bookingTime": {
+                    "type": "string",
+                    "pattern": "^[012][0-9]:[0-5][0-9]$"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "BookingId": {
+            "type": "object",
+            "properties": {
+                "bookingId": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "ServiceCharge": {
+            "type": "object",
+            "properties": {
+                "serviceCharge": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "PartnerId": {
+            "type": "object",
+            "properties": {
+                "partnerId": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "String": {
+            "type": "string"
+        }
+    },
+    "errors": []
+}

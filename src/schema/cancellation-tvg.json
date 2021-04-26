@@ -1,0 +1,63 @@
+{
+    "description": "Allows automating hotel booking cancellation on individual suppliers and OTAs.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "booking": {
+            "typeRef": "#/domains/CancellationTVG/types/Booking"
+        },
+        "login": {
+            "typeRef": "#/domains/CancellationTVG/types/Login"
+        }
+    },
+    "outputs": {
+        "cancellationConfirmation": {
+            "typeRef": "#/domains/CancellationTVG/types/Confirmation"
+        }  
+    },
+    "types": {
+        "Confirmation": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Booking": {
+            "type": "object",
+            "properties": {
+                "bookingReference": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Login": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        }
+    },
+    "errors": []
+}

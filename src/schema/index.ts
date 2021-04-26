@@ -2,6 +2,8 @@ import Generic from './generic.json';
 import Internal from './internal.json';
 import FlightBooking from './flight-booking.json';
 import CoachBooking from './coach-booking.json';
+import BookingTVG from './booking-tvg.json';
+import CancellationTVG from './cancellation-tvg.json';
 import CheckinManagement from './checkin-management.json';
 import LockManagement from './lock-management.json';
 import VacationRental from './vacation-rental.json';
@@ -36,6 +38,8 @@ export const schema = {
     domains: {
         Generic,
         FlightBooking,
+        BookingTVG,
+        CancellationTVG,
         CoachBooking,
         CheckinManagement,
         LockManagement,
