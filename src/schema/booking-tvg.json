@@ -122,12 +122,15 @@
         "Dates": {
             "type": "object",
             "properties": {
-                "checkin": {
+                "month": {
+                    "type": "string"
+                },
+                "checkIn": {
                     "type": "string",
                     "format": "date",
                     "example": "1976-01-27"
                 },
-                "checkout": {
+                "checkOut": {
                     "type": "string",
                     "format": "date",
                     "example": "1976-01-27"
@@ -150,6 +153,12 @@
             "type": "object",
             "properties": {
                 "name": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "firstName": {
                     "type": "string"
                 },
                 "email": {
@@ -176,6 +185,12 @@
             "type": "object",
             "properties": {
                 "name": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "firstName": {
                     "type": "string"
                 },
                 "expiration": {
