@@ -124,13 +124,20 @@
                     "minLength": 1,
                     "example": "Confirmed"
                 },
-                "hotelStatus": {
+                "roomStatus": {
                     "type": "string",
                     "minLength": 1,
                     "example": "Cancelled by guest"
                 },
-                "roomsCount": {
-                    "type": "integer"
+                "room": {
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
                 },
                 "roomNumber": {
                     "type": "string",
@@ -152,7 +159,12 @@
                     "format": "date",
                     "example": "1976-01-27"
                 },
-                "arrivalTime": {
+                "checkInTime": {
+                    "type": "string",
+                    "pattern": "^[012][0-9]:[0-5][0-9]$",
+                    "example": "18:00"
+                },
+                "checkOutTime": {
                     "type": "string",
                     "pattern": "^[012][0-9]:[0-5][0-9]$",
                     "example": "18:00"
@@ -256,7 +268,7 @@
         "GuestContact": {
             "type": "object",
             "properties": {
-                "phone": {
+                "mobileNumber": {
                     "$ref": "#/domains/Generic/types/AnyPhoneString"
                 },
                 "email": {
