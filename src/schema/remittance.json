@@ -72,6 +72,12 @@
         "smsCode": {
             "typeRef": "#/domains/Remittance/types/String"
         },
+        "proofOfId": {
+            "typeRef": "#/domains/Generic/types/File"
+        },
+        "selectedOccupation": {
+            "typeRef": "#/domains/Remittance/types/String"
+        },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
@@ -104,6 +110,9 @@
             "typeRef": "#/domains/Remittance/types/Strings"
         },
         "availableSecurityQuestions": {
+            "typeRef": "#/domains/Remittance/types/Strings"
+        },
+        "availableOccupations": {
             "typeRef": "#/domains/Remittance/types/Strings"
         },
         "confirmation": {
