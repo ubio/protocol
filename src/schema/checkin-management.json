@@ -295,7 +295,7 @@
             "type": "object",
             "properties": {
                 "mobileNumber": {
-                    "$ref": "#/domains/Generic/types/AnyPhoneString"
+                    "$ref": "#/domains/Generic/types/Phone"
                 },
                 "email": {
                     "type": "string",
