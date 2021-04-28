@@ -211,8 +211,34 @@
             "minItems": 1,
             "pii": true,
             "items": {
-                "$ref": "#/domains/CheckinManagement/types/Person"
+                "$ref": "#/domains/CheckinManagement/types/Guest"
             }
+        },
+        "Guest": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/CheckinManagement/types/Person"
+                },
+                "address": {
+                    "$ref": "#/domains/CheckinManagement/types/Address"
+                },
+                "contact": {
+                    "$ref": "#/domains/CheckinManagement/types/GuestContact"
+                },
+                "document": {
+                    "$ref": "#/domains/CheckinManagement/types/IdentityDocument"
+                },
+                "company": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "person"
+            ],
+            "additionalProperties": false
         },
         "Person": {
             "type": "object",
@@ -362,10 +388,7 @@
                     "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased."
                 }
             },
-            "required": [
-                "city",
-                "postcode"
-            ],
+            "required": [],
             "additionalProperties": false
         },
         "IdentityDocument": {
