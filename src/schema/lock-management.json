@@ -11,11 +11,7 @@
             "typeRef": "#/domains/LockManagement/types/Account",
             "description": "If required, used for logging in."
         },
-        "locationId": {
-            "typeRef": "#/domains/LockManagement/types/PiiString",
-            "description": "Hotel room or location name."
-        },
-        "guest": {
+        "guestInfo": {
             "typeRef": "#/domains/LockManagement/types/Guest",
             "description": "Personal details about the guest and."
         },
@@ -75,6 +71,22 @@
         },
         "Guest": {
             "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/LockManagement/types/Person"
+                },
+                "contact": {
+                    "$ref": "#/domains/LockManagement/types/GuestContact"
+                }
+            },
+            "required": [
+                "person"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
             "description": "Basic information about person's identity.",
             "pii": true,
             "properties": {
@@ -124,31 +136,52 @@
             ],
             "additionalProperties": false
         },
+        "GuestContact": {
+            "type": "object",
+            "properties": {
+                "mobileNumber": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Email address used for contact.",
+                    "example": "client@example.com"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
         "Device": {
             "type": "object",
             "pii": true,
             "properties": {
-                "startDate": {
+                "checkInDate": {
                     "type": "string",
                     "format": "date",
                     "example": "1976-01-27"
                 },
-                "endDate": {
+                "checkOutDate": {
                     "type": "string",
                     "format": "date",
                     "example": "1976-01-27"
                 },
-                "startTime": {
+                "checkInTime": {
                     "type": "string",
                     "pattern": "^[012][0-9]:[0-5][0-9]$",
                     "example": "18:00"
                 },
-                "endTime": {
+                "checkOutTime": {
                     "type": "string",
                     "pattern": "^[012][0-9]:[0-5][0-9]$",
                     "example": "18:00"
                 },
-                "id": {
+                "location": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Name of the device lock."
+                },
+                "name": {
                     "type": "string",
                     "minLength": 1,
                     "description": "Name of the device lock."
@@ -160,11 +193,12 @@
                 }
             },
             "required": [
-                "startDate",
-                "endDate",
-                "startTime",
-                "endTime",
-                "id",
+                "checkInDate",
+                "checkOutDate",
+                "checkInTime",
+                "checkOutTime",
+                "location",
+                "name",
                 "PIN"
 
             ],
