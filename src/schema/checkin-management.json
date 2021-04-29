@@ -300,7 +300,7 @@
             "type": "object",
             "properties": {
                 "mobileNumber": {
-                    "$ref": "#/domains/Generic/types/Phone"
+                    "type": "string"
                 },
                 "email": {
                     "type": "string",
