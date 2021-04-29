@@ -31,7 +31,7 @@
             "typeRef": "#/domains/CheckinManagement/types/BookingDetails",
             "description": "Details about hotel booking."
         },
-        "guests": {
+        "guestsChanges": {
             "typeRef": "#/domains/CheckinManagement/types/Guests",
             "description": "Personal details about the guests."
         }
@@ -40,6 +40,10 @@
         "mainGuest": {
             "typeRef": "#/domains/CheckinManagement/types/MainGuest",
             "description": "Personal details about the main guest."
+        },
+        "guests": {
+            "typeRef": "#/domains/CheckinManagement/types/Guests",
+            "description": "Personal details about the additional guests."
         },
         "bookingDetails": {
             "typeRef": "#/domains/CheckinManagement/types/BookingDetails",
@@ -303,10 +307,18 @@
                     "type": "string"
                 },
                 "email": {
-                    "type": "string",
-                    "format": "email",
-                    "description": "Email address used for contact.",
-                    "example": "client@example.com"
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "format": "email",
+                            "description": "Email address used for contact.",
+                            "example": "client@example.com"
+                        },
+                        {
+                            "type": "string",
+                            "enum": ["N/A"]
+                        }
+                    ]
                 }
             },
             "required": [
