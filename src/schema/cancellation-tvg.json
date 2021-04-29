@@ -1,6 +1,6 @@
 {
     "description": "Allows automating hotel booking cancellation on individual suppliers and OTAs.",
-    "private": false,
+    "private": true,
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
