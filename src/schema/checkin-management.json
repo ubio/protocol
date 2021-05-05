@@ -217,7 +217,7 @@
         "Guests": {
             "type": "array",
             "description": "A list of guests.",
-            "minItems": 1,
+            "minItems": 0,
             "pii": true,
             "items": {
                 "$ref": "#/domains/CheckinManagement/types/Guest"
