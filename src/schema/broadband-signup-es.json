@@ -44,8 +44,11 @@
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
         },
-        "directDebit": {
-            "typeRef": "#/domains/BroadbandSignupES/types/DirectDebit"
+        "iban": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+        },
+        "bankAccountHolder": {
+            "typeRef": "#/domains/BroadbandSignupES/types/Person"
         },
         "landlineOptions": {
             "typeRef": "#/domains/BroadbandSignupES/types/LandlineOptions"
@@ -525,24 +528,6 @@
             "required": [
                 "firstName",
                 "lastName"
-            ],
-            "additionalProperties": false
-        },
-        "DirectDebit": {
-            "type": "object",
-            "description": "Account details for direct debit.",
-            "pii": true,
-            "properties": {
-                "IBAN": {
-                    "type": "string",
-                    "description": "International bank account number.",
-                    "example": "NL99BANK0123456789"
-                },
-                "accountHolder": { "$ref": "#/domains/BroadbandSignupES/types/Person" }
-            },
-            "required": [
-                "IBAN",
-                "accountHolder"
             ],
             "additionalProperties": false
         },
