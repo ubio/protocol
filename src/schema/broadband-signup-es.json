@@ -45,7 +45,7 @@
             "typeRef": "#/domains/Generic/types/PanToken"
         },
         "iban": {
-            "typeRef": "#/domains/BroadbandSignupES/types/Strings"
+            "typeRef": "#/domains/BroadbandSignupES/types/String"
         },
         "bankAccountHolder": {
             "typeRef": "#/domains/BroadbandSignupES/types/Person"
