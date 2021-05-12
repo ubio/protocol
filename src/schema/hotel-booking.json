@@ -138,6 +138,9 @@
         "loggedIn": {
             "typeRef": "#/domains/HotelBooking/types/Boolean"
         },
+        "availableRoomsFinished": {
+            "typeRef": "#/domains/HotelBooking/types/RoomsFinished"
+        },
         "bookingInputs": {
             "typeRef": "#/domains/HotelBooking/types/BookingInputs",
             "description": "Echoed non-PII inputs"
@@ -611,6 +614,9 @@
                 "bank-transfer",
                 "no-prepayment"
             ]
+        },
+        "RoomsFinished": {
+            "type": "string"
         },
         "MainGuest": {
             "type": "object",
