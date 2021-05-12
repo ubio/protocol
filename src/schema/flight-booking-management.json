@@ -21,7 +21,7 @@
             ]
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
+            "typeRef": "#/domains/FlightBookingManagement/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -83,7 +83,7 @@
             "pii": true,
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/Passenger" }
+            "items": { "$ref": "#/domains/FlightBookingManagement/types/Passenger" }
         },
         "Passenger": {
             "type": "object",
@@ -119,6 +119,14 @@
                     "format": "date",
                     "example": "1976-01-27"
                 },
+                "ageGroup": {
+                    "enum": [
+                        "adult",
+                        "child",
+                        "infant",
+                        "infantOnLap"
+                    ]
+                },
                 "addAdditionalLuggage": {
                     "type": "integer",
                     "minimum": 0,
@@ -133,9 +141,6 @@
                 }
             },
             "required": [
-                "title",
-                "firstName",
-                "lastName"
             ],
             "additionalProperties": false
         },
@@ -194,9 +199,22 @@
             "type": "object",
             "properties": {
                 "leg": {
-                    "type": "string",
-                    "description": "Flight leg name as displayed on website.",
-                    "example": "LTN to ZRH, Wed 7th Mar"
+                    "type": "object",
+                    "properties": {
+                        "from": {
+                            "type": "string"
+                        },
+                        "to": {
+                            "type": "string"
+                        },
+                        "airline": {
+                            "type": "string"
+                        },
+                        "flightNumber": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "Flight leg."
                 },
                 "seats": {
                     "type": "array",
@@ -215,6 +233,7 @@
             "items": { "$ref": "#/domains/FlightBookingManagement/types/AvailableSeatsLeg" }
         },
         "BookingConfirmation": {
+            "pii": true,
             "type": "object",
             "description": "Information gathered on \"Booking success\" page.",
             "properties": {
@@ -270,6 +289,65 @@
             "type": "string",
             "description": "Seat number as extracted from website.",
             "example": "7A"
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "person": { "$ref": "#/domains/FlightBookingManagement/types/Person" },
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "address": { "$ref": "#/domains/Generic/types/Address" },
+                "tax": { "$ref": "#/domains/Generic/types/Tax" }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                },
+                "document": {
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
         },
         "Confirmation": {
             "type": "object",
