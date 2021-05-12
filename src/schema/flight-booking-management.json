@@ -35,6 +35,10 @@
         "selectedAdditionalLuggage": {
             "typeRef": "#/domains/FlightBookingManagement/types/AdditionalLuggage"
         },
+        "expectedPrice": {
+            "description": "Used to check the final price",
+            "typeRef": "#/domains/Generic/types/Price"
+        },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "sourceOutputKey": "finalPrice",
