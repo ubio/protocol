@@ -452,7 +452,13 @@
             "properties": {
                 "guestIDType": {
                     "type": "string",
-                    "description": "Document type."
+                    "description": "Document type.",
+                    "enum": [
+                        "passport",
+                        "national-id",
+                        "drivers-licence",
+                        "N/A"
+                    ]
                 },
                 "guestIDNumber": {
                     "type": "string",
