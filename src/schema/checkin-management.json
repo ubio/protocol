@@ -450,17 +450,11 @@
             "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
             "pii": true,
             "properties": {
-                "type": {
+                "guestIDType": {
                     "type": "string",
-                    "description": "Document type.",
-                    "enum": [
-                        "passport",
-                        "national-id",
-                        "N/A"
-                    ]
-                    
+                    "description": "Document type."
                 },
-                "number": {
+                "guestIDNumber": {
                     "type": "string",
                     "description": "Document number.",
                     "example": "75 127001"
@@ -481,8 +475,8 @@
                 }
             },
             "required": [
-                "type",
-                "number"
+                "guestIDType",
+                "guestIDNumber"
             ],
             "additionalProperties": false
         },
