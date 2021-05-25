@@ -411,9 +411,11 @@
                     "type": "string",
                     "enum": [
                         "monthly",
+                        "twice-monthly",
                         "weekly",
-                        "fortnightly",
-                        "four-weekly"
+                        "bi-weekly",
+                        "last-day-of-month",
+                        "last-friday-of-month"
                     ]
                 },
                 "payDay": {
