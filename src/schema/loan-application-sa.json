@@ -117,7 +117,7 @@
             },
             "additionalProperties": false,
             "required": [
-                "purpose", "amount"
+                 "amount"
             ]
         },
         "LoanAmount": {
@@ -145,23 +145,12 @@
                 "id", "token"
             ]
         },
-        "ApplicantOrNull": {
-            "pii": true,
-            "oneOf": [
-                {
-                    "$ref": "#/domains/LoanApplicationSA/types/Applicant"
-                },
-                {
-                    "type": "null"
-                }
-            ]
-        },
         "Applicant": {
             "type": "object",
             "description": "The person applying for the loan.",
             "pii": true,
             "properties": {
-                "person": { "$ref": "#/domains/Generic/types/Person" },
+                "person": { "$ref": "#/domains/LoanApplicationSA/types/Person" },
                 "addresses": {
                     "type": "array",
                     "description": "A list of addresses for the applicant.",
@@ -218,95 +207,45 @@
             ],
             "additionalProperties": false
         },
-        "Guarantor": {
+        "Person": {
             "type": "object",
-            "description": "The person guaranteeing for the loan.",
+            "description": "Basic information about person's identity.",
             "pii": true,
             "properties": {
-                "person": { "$ref": "#/domains/Generic/types/Person" },
-                "addresses": {
-                    "type": "array",
-                    "description": "A list of addresses for the guarantor.",
-                    "pii": true,
-                    "minItems": 1,
-                    "maxItems": 9,
-                    "items": { "$ref": "#/domains/LoanApplicationSA/types/LoanAddress" }
-                },
-                "dateOfBirth": {
-                    "type": "string",
-                    "format": "date",
-                    "description": "Date of birth YYYY-MM-DD.",
-                    "example": "1980-01-01"
-                },
-                "relationshipStatus": {
+                "title": {
                     "type": "string",
                     "description": "",
                     "enum": [
-                        "single",
-                        "married",
-                        "divorced",
-                        "cohabiting",
-                        "widower"
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
                     ]
                 },
-                "relationshipToApplicant": {
+                "firstName": {
                     "type": "string",
-                    "description": "",
-                    "enum": [
-                        "friend",
-                        "mother",
-                        "father",
-                        "partner",
-                        "sister",
-                        "brother",
-                        "mother-in-law",
-                        "father-in-law",
-                        "married",
-                        "grandmother",
-                        "grandfather",
-                        "cousin",
-                        "daughter",
-                        "son",
-                        "aunt",
-                        "brother-in-law",
-                        "sister-in-law",
-                        "uncle",
-                        "son-in-law",
-                        "daughter-in-law",
-                        "employer",
-                        "employee",
-                        "niece",
-                        "nephew"
-                    ]
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
                 },
-                "nationality": {
-                    "$ref": "#/domains/Generic/types/CountryCode",
-                    "description": "Nationality according to passport."
-                },
-                "countryOfBirth": {
-                    "$ref": "#/domains/Generic/types/CountryCode",
-                    "description": "Country of birth."
-                },
-                "email": {
+                "middleName": {
                     "type": "string",
-                    "format": "email",
-                    "example": "hello@example.com"
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
                 },
-                "phone": {
-                    "$ref": "#/domains/Generic/types/Phone"
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
                 },
-                "dependantsCount": {
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "residentialStatus": {
-                    "$ref": "#/domains/LoanApplicationSA/types/ResidentialStatus"
+                "document": {
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
                 }
             },
             "required": [
-                "person",
-                "dateOfBirth",
-                "nationality"
+                "firstName",
+                "lastName"
             ],
             "additionalProperties": false
         },
