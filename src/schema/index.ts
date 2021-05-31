@@ -9,6 +9,7 @@ import LockManagement from './lock-management.json';
 import VacationRental from './vacation-rental.json';
 import MotorInsurance from './motor-insurance.json';
 import LoanApplication from './loan-application.json';
+import LoanApplicationSA from './loan-application-sa.json';
 import EventBooking from './event-booking.json';
 import BroadbandSignup from './broadband-signup.json';
 import BroadbandSignupAU from './broadband-signup-au.json';
@@ -46,6 +47,7 @@ export const schema = {
         VacationRental,
         MotorInsurance,
         LoanApplication,
+        LoanApplicationSA,
         EventBooking,
         BroadbandSignup,
         BroadbandSignupAU,

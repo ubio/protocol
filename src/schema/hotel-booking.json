@@ -139,7 +139,7 @@
             "typeRef": "#/domains/HotelBooking/types/Boolean"
         },
         "availableRoomsFinished": {
-            "typeRef": "#/domains/HotelBooking/types/RoomsFinished"
+            "typeRef": "#/domains/HotelBooking/types/Boolean"
         },
         "bookingInputs": {
             "typeRef": "#/domains/HotelBooking/types/BookingInputs",
@@ -614,9 +614,6 @@
                 "bank-transfer",
                 "no-prepayment"
             ]
-        },
-        "RoomsFinished": {
-            "type": "string"
         },
         "MainGuest": {
             "type": "object",

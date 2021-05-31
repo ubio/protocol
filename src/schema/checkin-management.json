@@ -52,6 +52,10 @@
         "property": {
             "typeRef": "#/domains/CheckinManagement/types/Property",
             "description": "Details about the hotel."
+        },
+        "bookingsUrl": {
+            "typeRef": "#/domains/CheckinManagement/types/Bookings",
+            "description": "Upload a list of domain bookings."
         }
     },
     "types": {
@@ -346,6 +350,39 @@
             ],
             "additionalProperties": false
         },
+        "Bookings": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "$ref": "#/domains/Generic/types/URL"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
+                    "example": "/7c73814e-70af-40b0-bbac-2f7da6502354.csv"
+                },
+                "filename": {
+                    "type": "string",
+                    "example": "Bookings.csv"
+                },
+                "contentType": {
+                    "type": "string",
+                    "example": "text/csv"
+                },
+                "size": {
+                    "type": "integer",
+                    "example": "108375"
+                }
+            },
+            "required": [
+                "url",
+                "filename",
+                "path",
+                "contentType",
+                "size"
+            ],
+            "additionalProperties": false
+        },
         "Address": {
             "type": "object",
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
@@ -413,17 +450,17 @@
             "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
             "pii": true,
             "properties": {
-                "type": {
+                "guestIDType": {
                     "type": "string",
                     "description": "Document type.",
                     "enum": [
                         "passport",
                         "national-id",
+                        "drivers-licence",
                         "N/A"
                     ]
-                    
                 },
-                "number": {
+                "guestIDNumber": {
                     "type": "string",
                     "description": "Document number.",
                     "example": "75 127001"
@@ -444,8 +481,8 @@
                 }
             },
             "required": [
-                "type",
-                "number"
+                "guestIDType",
+                "guestIDNumber"
             ],
             "additionalProperties": false
         },
