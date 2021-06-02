@@ -71,6 +71,9 @@
         },
         "finalLoanAmount": {
             "typeRef": "#/domains/LoanApplicationSA/types/LoanAmount"
+        },
+        "user": {
+            "typeRef": "#/domains/LoanApplicationSA/types/User"
         }
     },
     "types": {
@@ -539,6 +542,14 @@
             "required": [
             ],
             "additionalProperties": false
+        },
+        "User": {
+            "type": "string",
+            "enum": [
+                "existing",
+                "not-existing",
+                "unknown"
+            ]  
         },
         "Expenses": {
             "type": "array",
