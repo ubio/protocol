@@ -71,9 +71,6 @@
         },
         "finalLoanAmount": {
             "typeRef": "#/domains/LoanApplicationSA/types/LoanAmount"
-        },
-        "user": {
-            "typeRef": "#/domains/LoanApplicationSA/types/User"
         }
     },
     "types": {
