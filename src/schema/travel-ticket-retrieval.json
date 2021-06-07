@@ -26,16 +26,6 @@
             "type": "object",
             "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
             "properties": {
-                "luggageSelection": {
-                    "type": "boolean",
-                    "description": "If <code>true</code>, automation will select additional luggage.",
-                    "default": false
-                },
-                "seatSelection": {
-                    "type": "boolean",
-                    "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
-                    "default": false
-                }
             }
         },
         "BookingConfirmation": {
@@ -44,8 +34,13 @@
             "properties": {
                 "bookingReference": {
                     "type": "string",
-                    "description": "Booking reference grabbed from the page.",
+                    "description": "Booking reference.",
                     "example": "RL2XYZ"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "Code required to amend a booking.",
+                    "example": "1411"
                 },
                 "lastName": {
                     "type": "string",
@@ -72,26 +67,32 @@
             "items": { "$ref": "#/domains/TravelTicketRetrieval/types/Ticket" }
         },
         "Ticket": {
-            "type": "object",
-            "description": "Extracted tickets fom the page.",
-            "properties": {
-                "direction": {
-                    "type": "string",
-                    "description": "",
-                    "enum": [
-                        "outbound",
-                        "inbound"
+            "oneOf": [
+                {
+                    "type": "object",
+                    "description": "Extracted tickets fom the page.",
+                    "properties": {
+                        "direction": {
+                            "type": "string",
+                            "description": "",
+                            "enum": [
+                                "outbound",
+                                "inbound"
+                            ]
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "url": {"$ref": "#/domains/Generic/types/URL"}
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                        "direction",
+                        "url"
                     ]
-                },
-                "name": {
-                    "type": "string"
-                },
-                "url": {"$ref": "#/domains/Generic/types/URL"}
-            },
-            "additionalProperties": false,
-            "required": [
-                "direction",
-                "url"
+                }, {
+                "$ref": "#/domains/Generic/types/File"
+                }
             ]
         }
     },
