@@ -49,7 +49,7 @@
     "types": {
         "OrderConfirmation": {
             "type": "object",
-            "description": "Information gathered on success page.",
+            "description": "Information gathered on success purchase page.",
             "properties": {
                 "orderReference": {
                     "type": "string",
@@ -76,8 +76,7 @@
         {
             "code": "ProductOutOfStock",
             "category": "client",
-            "description": "Product is out of stock.",
-            "example": ""
+            "description": "Product is out of stock."
         }
     ]
 }
