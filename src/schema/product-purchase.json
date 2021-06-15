@@ -17,6 +17,9 @@
                 "/email"
             ]
         },
+        "deliveryAddress": {
+            "typeRef": "#/domains/Generic/types/Address"
+        },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
