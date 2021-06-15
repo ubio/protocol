@@ -1,0 +1,80 @@
+{
+    "description": "",
+    "private": false,
+    "successCode": {
+        "outputKey": "orderConfirmation",
+        "valuePath": "/orderReference"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account",
+            "canonical": [
+                "/email"
+            ]
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent"
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "orderConfirmation": {
+            "typeRef": "#/domains/ProductPurchase/OrderConfirmation"
+        },
+        "estimatedPrice": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Price shown by the website prior to requiring guest information."
+        }
+    },
+    "types": {
+        "OrderConfirmation": {
+            "type": "object",
+            "description": "Information gathered on success page.",
+            "properties": {
+                "orderReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful purchase.",
+                    "example": "Your purchase was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful purchase page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "orderReference"
+            ]
+        }
+    },
+    "errors": [
+        {
+            "code": "ProductOutOfStock",
+            "category": "client",
+            "description": "Product is out of stock.",
+            "example": ""
+        }
+    ]
+}
