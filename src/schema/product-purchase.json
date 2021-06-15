@@ -40,10 +40,6 @@
         },
         "orderConfirmation": {
             "typeRef": "#/domains/ProductPurchase/OrderConfirmation"
-        },
-        "estimatedPrice": {
-            "typeRef": "#/domains/Generic/types/PriceConsent",
-            "description": "Price shown by the website prior to requiring guest information."
         }
     },
     "types": {
@@ -53,8 +49,8 @@
             "properties": {
                 "orderReference": {
                     "type": "string",
-                    "description": "Booking reference grabbed from the page.",
-                    "example": "RL2XYZ"
+                    "description": "Order reference grabbed from the page.",
+                    "example": "SUCCESS"
                 },
                 "message": {
                     "type": "string",
