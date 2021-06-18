@@ -234,6 +234,10 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when T&Cs are presented."
         },
+        "broadbandPackageName": {
+            "typeRef": "#/domains/BroadbandSignupES/types/String",
+            "description": "Emitted when there is a single package available and selected."
+        },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem"
         },
