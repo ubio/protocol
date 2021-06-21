@@ -39,7 +39,7 @@
             "typeRef": "#/domains/Generic/types/PriceConsent"
         },
         "orderConfirmation": {
-            "typeRef": "#/domains/ProductPurchase/OrderConfirmation"
+            "typeRef": "#/domains/ProductPurchase/types/OrderConfirmation"
         }
     },
     "types": {
