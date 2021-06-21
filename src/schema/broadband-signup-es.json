@@ -242,7 +242,7 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem"
         },
         "estimatedPrice": {
-            "typeRef": "#/domains/BroadbandSignupES/types/String"
+            "typeRef": "#/domains/BroadbandSignupES/types/EstimatedPrice"
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -645,6 +645,16 @@
         "Strings": {
             "type": "array",
             "items": { "$ref": "#/domains/BroadbandSignupES/types/String" }
+        },
+        "EstimatedPrice": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BroadbandSignupES/types/FinalPrice"
+                },
+                {
+                    "$ref": "#/domains/BroadbandSignupES/types/String"
+                }
+            ]
         },
         "String": {
             "type": "string"
