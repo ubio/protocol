@@ -33,6 +33,7 @@ import FlightBookingStatus from './flight-booking-status.json';
 import FlightBookingRefund from './flight-booking-refund.json';
 import FlightBookingManagement from './flight-booking-management.json';
 import ContestSignup from './contest-signup.json';
+import ProductPurchase from './product-purchase.json';
 
 export const schema = {
     $id: 'https://protocol.automationcloud.net/schema.json',
@@ -72,5 +73,6 @@ export const schema = {
         FlightBookingRefund,
         FlightBookingManagement,
         ContestSignup,
+        ProductPurchase,
     }
 };
