@@ -27,7 +27,7 @@
             "typeRef": "#/domains/Generic/types/Address"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
+            "typeRef": "#/domains/ProductPurchase/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -115,6 +115,22 @@
             "required": [
                 "firstName",
                 "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "person": { "$ref": "#/domains/ProductPurchase/types/Person" },
+                "address": { "$ref": "#/domains/Generic/types/Address" }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
             ],
             "additionalProperties": false
         },
