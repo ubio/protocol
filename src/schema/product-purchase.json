@@ -17,16 +17,17 @@
             "initial": true
         },
         "account": {
-            "typeRef": "#/domains/Generic/types/Account",
+            "typeRef": "#/domains/ProductPurchase/types/Account",
+            "description": "Name and contact details.",
             "canonical": [
-                "/email"
+                "/contact/email"
             ]
         },
         "deliveryAddress": {
             "typeRef": "#/domains/Generic/types/Address"
         },
         "payment": {
-            "typeRef": "#/domains/Generic/types/Payment"
+            "typeRef": "#/domains/ProductPurchase/types/Payment"
         },
         "panToken": {
             "typeRef": "#/domains/Generic/types/PanToken"
@@ -51,6 +52,87 @@
         "Attributes": {
             "type": "object",
             "default": {}
+        },
+        "Account": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/ProductPurchase/types/Person"
+                },
+                "contact": {
+                    "$ref": "#/domains/ProductPurchase/types/Contact"
+                }
+            },
+            "required": [
+                "person",
+                "contact"
+            ],
+            "additionalProperties": false
+        },
+        "Contact": {
+            "type": "object",
+            "properties": {
+                "phone": {
+                    "$ref": "#/domains/Generic/types/AnyPhoneString"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Contact email address.",
+                    "format": "email",
+                    "example": "mail@example.com"
+                }
+            },
+            "required": [
+                "phone",
+                "email"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
+            "pii": true,
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "person": { "$ref": "#/domains/ProductPurchase/types/Person" },
+                "address": { "$ref": "#/domains/Generic/types/Address" }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
         },
         "OrderConfirmation": {
             "type": "object",
