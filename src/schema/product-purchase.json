@@ -11,6 +11,11 @@
             "description": "Website entry point.",
             "initial": true
         },
+        "attributes": {
+            "typeRef": "#/domains/ProductPurchase/types/Attributes",
+            "description": "Product attributes such as size, colour, quantity/amount, type e.t.c.",
+            "initial": true
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account",
             "canonical": [
@@ -43,6 +48,10 @@
         }
     },
     "types": {
+        "Attributes": {
+            "type": "object",
+            "default": {}
+        },
         "OrderConfirmation": {
             "type": "object",
             "description": "Information gathered on success purchase page.",
