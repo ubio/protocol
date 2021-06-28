@@ -191,6 +191,7 @@
                     "type": "string",
                     "description": "Nationality according to passport.",
                     "enum": [
+                        "other",
                         "en",
                         "af",
                         "nd",
