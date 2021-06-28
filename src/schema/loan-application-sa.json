@@ -11,6 +11,9 @@
             "description": "Website entry point.",
             "initial": true
         },
+        "email": {
+            "typeRef": "#/domains/LoanApplicationSA/types/Email"
+        },
         "account": {
             "typeRef": "#/domains/Generic/types/Account"
         },
@@ -147,6 +150,11 @@
             "required": [
                 "id", "token"
             ]
+        },
+        "Email": {
+            "type": "string",
+            "format": "email",
+            "example": "hello@example.com"
         },
         "Applicant": {
             "type": "object",
