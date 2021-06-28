@@ -188,8 +188,12 @@
                     ]
                 },
                 "nationality": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Nationality according to passport."
+                },
+                "dialect": {
                     "type": "string",
-                    "description": "Nationality according to passport.",
+                    "description": "",
                     "enum": [
                         "other",
                         "en",
@@ -227,8 +231,7 @@
             },
             "required": [
                 "person",
-                "dateOfBirth",
-                "nationality"
+                "dateOfBirth"
             ],
             "additionalProperties": false
         },
