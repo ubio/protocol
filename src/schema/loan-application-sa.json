@@ -180,8 +180,21 @@
                     ]
                 },
                 "nationality": {
-                    "$ref": "#/domains/Generic/types/CountryCode",
-                    "description": "Nationality according to passport."
+                    "type": "string",
+                    "description": "Nationality according to passport.",
+                    "enum": [
+                        "en",
+                        "af",
+                        "nd",
+                        "xh",
+                        "zu",
+                        "nso",
+                        "st",
+                        "tn",
+                        "ss",
+                        "ve",
+                        "ts"
+                    ]
                 },
                 "countryOfBirth": {
                     "$ref": "#/domains/Generic/types/CountryCode",
