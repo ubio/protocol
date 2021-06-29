@@ -1,0 +1,449 @@
+{
+    "description": "Allows automating hotel booking information edit.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "account": {
+            "typeRef": "#/domains/ReservationEdit/types/Account",
+            "description": "If required, used for logging in."
+        },
+        "bookingReference": {
+            "typeRef": "#/domains/ReservationEdit/types/PiiString",
+            "description": "Hotel booking reference code."
+        },
+        "mainGuestChanges": {
+            "typeRef": "#/domains/ReservationEdit/types/MainGuest",
+            "description": "Personal details about the main guest.",
+            "canonical": [
+                "/person",
+                "/contact/email"
+            ]
+        },
+        "bookingDetailsChanges": {
+            "typeRef": "#/domains/ReservationEdit/types/BookingDetails",
+            "description": "Details about hotel booking."
+        },
+        "guestsChanges": {
+            "typeRef": "#/domains/ReservationEdit/types/Guests",
+            "description": "Personal details about the guests."
+        }
+    },
+    "outputs": {
+    },
+    "types": {
+        "Account": {
+            "type": "object",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Account email, typically used for user sign up / sign in.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully. Use contactEmail when different.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "contactEmail": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
+                    "default": ""
+                },
+                "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "isExisting": {
+                    "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
+                    "type": "boolean"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "john012345"
+                },
+                "person": {
+                    "description": "When an account needs to be created for a person (first name, last name, etc), this key will be used.",
+                    "$ref": "#/domains/Generic/types/Person"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Property": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Apartrooms Hotel"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "BookingDetails": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "guestStatus": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Confirmed"
+                },
+                "guestName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Mark Doe"
+                },
+                "roomStatus": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Cancelled by guest"
+                },
+                "room": {
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "roomNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "582765"
+                },
+                "roomType": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Studio"
+                },
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkInTime": {
+                    "type": "string",
+                    "pattern": "^[012][0-9]:[0-5][0-9]$",
+                    "example": "18:00"
+                },
+                "checkOutTime": {
+                    "type": "string",
+                    "pattern": "^[012][0-9]:[0-5][0-9]$",
+                    "example": "18:00"
+                },
+                "checkInText": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Optional comment made by the hotel regarding the check-in status."
+                },
+                "guestsCount": {
+                    "$ref": "#/domains/ReservationEdit/types/GuestsCount"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "MainGuest": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/ReservationEdit/types/Person"
+                },
+                "address": {
+                    "$ref": "#/domains/ReservationEdit/types/Address"
+                },
+                "contact": {
+                    "$ref": "#/domains/ReservationEdit/types/GuestContact"
+                },
+                "document": {
+                    "$ref": "#/domains/ReservationEdit/types/IdentityDocument"
+                },
+                "company": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "remarks": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Notes left by the guest.",
+                    "example": "Espresso & omelet."
+                }
+            },
+            "required": [
+                "person"
+            ],
+            "additionalProperties": false
+        },
+        "Guests": {
+            "type": "array",
+            "description": "A list of guests.",
+            "minItems": 0,
+            "pii": true,
+            "items": {
+                "$ref": "#/domains/ReservationEdit/types/Guest"
+            }
+        },
+        "Guest": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/ReservationEdit/types/Person"
+                },
+                "address": {
+                    "$ref": "#/domains/ReservationEdit/types/Address"
+                },
+                "contact": {
+                    "$ref": "#/domains/ReservationEdit/types/GuestContact"
+                },
+                "document": {
+                    "$ref": "#/domains/ReservationEdit/types/IdentityDocument"
+                },
+                "company": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "person"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs",
+                        "N/A"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Last name or surname, as specified in ID.",
+                    "example": "Smith"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "description": "Guest's date of birth in YYYY-MM-DD format.",
+                    "example": "1976-01-27"
+                },
+                "ageType": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Age type of guests.",
+                    "example": "Adult",
+                    "enum": ["adult", "child", "infant"]
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "GuestContact": {
+            "type": "object",
+            "properties": {
+                "mobileNumber": {
+                    "type": "string"
+                },
+                "email": {
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "format": "email",
+                            "description": "Email address used for contact.",
+                            "example": "client@example.com"
+                        },
+                        {
+                            "type": "string",
+                            "enum": ["N/A"]
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "mobileNumber"
+            ],
+            "additionalProperties": false
+        },
+        "GuestsCount": {
+            "type": "object",
+            "properties": {
+                "adults": {
+                    "type": "integer"
+                },
+                "children": {
+                    "type": "integer"
+                },
+                "infants": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "adults",
+                "children",
+                "infants"
+            ],
+            "additionalProperties": false
+        },
+        "Address": {
+            "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Street name with house number.",
+                    "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "streetName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Name of the street.",
+                    "example": "Clerkenwell Close"
+                },
+                "streetNumber": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Number of the street or other building identifier, such as house number or house name",
+                    "example": "27-31"
+                },
+                "city": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Name of city, town or other settlement.",
+                    "example": "San Francisco"
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Name of the city subdivision.",
+                    "example": "Glen Park"
+                },
+                "postcode": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "Name of the country"
+                },
+                "countrySubdivision": {
+                    "type": "string",
+                    "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased."
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "IdentityDocument": {
+            "type": "object",
+            "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
+            "pii": true,
+            "properties": {
+                "guestIDType": {
+                    "type": "string",
+                    "description": "Document type.",
+                    "enum": [
+                        "passport",
+                        "national-id",
+                        "drivers-licence",
+                        "N/A"
+                    ]
+                },
+                "guestIDNumber": {
+                    "type": "string",
+                    "description": "Document number.",
+                    "example": "75 127001"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "issueCountryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Code of country where the document was issued."
+                }
+            },
+            "required": [
+                "guestIDType",
+                "guestIDNumber"
+            ],
+            "additionalProperties": false
+        },
+        "PiiString": {
+            "type": "string",
+            "pii": true
+        }
+    },
+    "errors": [
+        {
+            "code": "BookingNotFound",
+            "category": "client",
+            "description": "Booking not found, usually caused by wrong booking reference or name."
+        },
+        {
+            "code": "ContactDetailsInvalid",
+            "category": "client",
+            "description": "Invalid contact details."
+        }
+    ]
+}

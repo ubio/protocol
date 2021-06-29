@@ -1,5 +1,5 @@
 {
-    "description": "Allows automating hotel booking check-in and updates on individual suppliers.",
+    "description": "Allows automating hotel booking details retrieval.",
     "private": false,
     "inputs": {
         "url": {
@@ -8,54 +8,30 @@
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
         "account": {
-            "typeRef": "#/domains/CheckinManagement/types/Account",
+            "typeRef": "#/domains/ReservationLookup/types/Account",
             "description": "If required, used for logging in."
         },
         "bookingReference": {
-            "typeRef": "#/domains/CheckinManagement/types/PiiString",
+            "typeRef": "#/domains/ReservationLookup/types/PiiString",
             "description": "Hotel booking reference code."
-        },
-        "checkInText": {
-            "typeRef": "#/domains/CheckinManagement/types/PiiString",
-            "description": "Optional comment made by the hotel regarding the check-in status."
-        },
-        "mainGuestChanges": {
-            "typeRef": "#/domains/CheckinManagement/types/MainGuest",
-            "description": "Personal details about the main guest.",
-            "canonical": [
-                "/person",
-                "/contact/email"
-            ]
-        },
-        "bookingDetailsChanges": {
-            "typeRef": "#/domains/CheckinManagement/types/BookingDetails",
-            "description": "Details about hotel booking."
-        },
-        "guestsChanges": {
-            "typeRef": "#/domains/CheckinManagement/types/Guests",
-            "description": "Personal details about the guests."
         }
     },
     "outputs": {
         "mainGuest": {
-            "typeRef": "#/domains/CheckinManagement/types/MainGuest",
+            "typeRef": "#/domains/ReservationLookup/types/MainGuest",
             "description": "Personal details about the main guest."
         },
         "guests": {
-            "typeRef": "#/domains/CheckinManagement/types/Guests",
+            "typeRef": "#/domains/ReservationLookup/types/Guests",
             "description": "Personal details about the additional guests."
         },
         "bookingDetails": {
-            "typeRef": "#/domains/CheckinManagement/types/BookingDetails",
+            "typeRef": "#/domains/ReservationLookup/types/BookingDetails",
             "description": "Details about hotel booking."
         },
         "property": {
-            "typeRef": "#/domains/CheckinManagement/types/Property",
+            "typeRef": "#/domains/ReservationLookup/types/Property",
             "description": "Details about the hotel."
-        },
-        "bookingsUrl": {
-            "typeRef": "#/domains/CheckinManagement/types/Bookings",
-            "description": "Upload a list of domain bookings."
         }
     },
     "types": {
@@ -180,7 +156,7 @@
                     "description": "Optional comment made by the hotel regarding the check-in status."
                 },
                 "guestsCount": {
-                    "$ref": "#/domains/CheckinManagement/types/GuestsCount"
+                    "$ref": "#/domains/ReservationLookup/types/GuestsCount"
                 }
             },
             "required": [],
@@ -191,16 +167,16 @@
             "pii": true,
             "properties": {
                 "person": {
-                    "$ref": "#/domains/CheckinManagement/types/Person"
+                    "$ref": "#/domains/ReservationLookup/types/Person"
                 },
                 "address": {
-                    "$ref": "#/domains/CheckinManagement/types/Address"
+                    "$ref": "#/domains/ReservationLookup/types/Address"
                 },
                 "contact": {
-                    "$ref": "#/domains/CheckinManagement/types/GuestContact"
+                    "$ref": "#/domains/ReservationLookup/types/GuestContact"
                 },
                 "document": {
-                    "$ref": "#/domains/CheckinManagement/types/IdentityDocument"
+                    "$ref": "#/domains/ReservationLookup/types/IdentityDocument"
                 },
                 "company": {
                     "type": "string",
@@ -224,7 +200,7 @@
             "minItems": 0,
             "pii": true,
             "items": {
-                "$ref": "#/domains/CheckinManagement/types/Guest"
+                "$ref": "#/domains/ReservationLookup/types/Guest"
             }
         },
         "Guest": {
@@ -232,16 +208,16 @@
             "pii": true,
             "properties": {
                 "person": {
-                    "$ref": "#/domains/CheckinManagement/types/Person"
+                    "$ref": "#/domains/ReservationLookup/types/Person"
                 },
                 "address": {
-                    "$ref": "#/domains/CheckinManagement/types/Address"
+                    "$ref": "#/domains/ReservationLookup/types/Address"
                 },
                 "contact": {
-                    "$ref": "#/domains/CheckinManagement/types/GuestContact"
+                    "$ref": "#/domains/ReservationLookup/types/GuestContact"
                 },
                 "document": {
-                    "$ref": "#/domains/CheckinManagement/types/IdentityDocument"
+                    "$ref": "#/domains/ReservationLookup/types/IdentityDocument"
                 },
                 "company": {
                     "type": "string",
@@ -350,39 +326,6 @@
             ],
             "additionalProperties": false
         },
-        "Bookings": {
-            "type": "object",
-            "properties": {
-                "url": {
-                    "$ref": "#/domains/Generic/types/URL"
-                },
-                "path": {
-                    "type": "string",
-                    "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
-                    "example": "/7c73814e-70af-40b0-bbac-2f7da6502354.csv"
-                },
-                "filename": {
-                    "type": "string",
-                    "example": "Bookings.csv"
-                },
-                "contentType": {
-                    "type": "string",
-                    "example": "text/csv"
-                },
-                "size": {
-                    "type": "integer",
-                    "example": "108375"
-                }
-            },
-            "required": [
-                "url",
-                "filename",
-                "path",
-                "contentType",
-                "size"
-            ],
-            "additionalProperties": false
-        },
         "Address": {
             "type": "object",
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
@@ -485,13 +428,6 @@
                 "guestIDNumber"
             ],
             "additionalProperties": false
-        },
-        "Strings": {
-            "type": "array",
-            "items": { "$ref": "#/domains/CheckinManagement/types/String" }
-        },
-        "String": {
-            "type": "string"
         },
         "PiiString": {
             "type": "string",

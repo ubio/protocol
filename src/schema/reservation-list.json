@@ -1,0 +1,118 @@
+{
+    "description": "Allows automating hotel reservation list retrieval.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "account": {
+            "typeRef": "#/domains/ReservationList/types/Account",
+            "description": "If required, used for logging in."
+        },
+        "bookingReference": {
+            "typeRef": "#/domains/ReservationList/types/PiiString",
+            "description": "Hotel booking reference code."
+        }
+    },
+    "outputs": {
+        "bookingsUrl": {
+            "typeRef": "#/domains/ReservationList/types/Bookings",
+            "description": "Upload a list of domain bookings."
+        }
+    },
+    "types": {
+        "Account": {
+            "type": "object",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Account email, typically used for user sign up / sign in.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully. Use contactEmail when different.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "contactEmail": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
+                    "default": ""
+                },
+                "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "isExisting": {
+                    "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
+                    "type": "boolean"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "john012345"
+                },
+                "person": {
+                    "description": "When an account needs to be created for a person (first name, last name, etc), this key will be used.",
+                    "$ref": "#/domains/Generic/types/Person"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Bookings": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "$ref": "#/domains/Generic/types/URL"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Website entry point. Should be a deep link to either package selection page, or to payment page.",
+                    "example": "/7c73814e-70af-40b0-bbac-2f7da6502354.csv"
+                },
+                "filename": {
+                    "type": "string",
+                    "example": "Bookings.csv"
+                },
+                "contentType": {
+                    "type": "string",
+                    "example": "text/csv"
+                },
+                "size": {
+                    "type": "integer",
+                    "example": "108375"
+                }
+            },
+            "required": [
+                "url",
+                "filename",
+                "path",
+                "contentType",
+                "size"
+            ],
+            "additionalProperties": false
+        },
+        "PiiString": {
+            "type": "string",
+            "pii": true
+        }
+    },
+    "errors": [
+        {
+            "code": "BookingNotFound",
+            "category": "client",
+            "description": "Booking not found, usually caused by wrong booking reference or name."
+        },
+        {
+            "code": "ContactDetailsInvalid",
+            "category": "client",
+            "description": "Invalid contact details."
+        }
+    ]
+}

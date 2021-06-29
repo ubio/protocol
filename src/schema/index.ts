@@ -4,7 +4,10 @@ import FlightBooking from './flight-booking.json';
 import CoachBooking from './coach-booking.json';
 import BookingTVG from './booking-tvg.json';
 import CancellationTVG from './cancellation-tvg.json';
-import CheckinManagement from './checkin-management.json';
+import Checkin from './checkin.json';
+import ReservationList from './reservation-list.json';
+import ReservationLookup from './reservation-lookup.json';
+import ReservationEdit from './reservation-edit.json';
 import LockManagement from './lock-management.json';
 import VacationRental from './vacation-rental.json';
 import MotorInsurance from './motor-insurance.json';
@@ -43,7 +46,10 @@ export const schema = {
         BookingTVG,
         CancellationTVG,
         CoachBooking,
-        CheckinManagement,
+        Checkin,
+        ReservationList,
+        ReservationLookup,
+        ReservationEdit,
         LockManagement,
         VacationRental,
         MotorInsurance,
