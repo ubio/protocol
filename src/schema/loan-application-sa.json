@@ -183,7 +183,9 @@
                         "single",
                         "married",
                         "divorced",
+                        "living-together",
                         "cohabiting",
+                        "separated",
                         "widower"
                     ]
                 },
