@@ -181,12 +181,16 @@
                     "description": "",
                     "enum": [
                         "single",
-                        "married",
+                        "married-prenuptial",
+                        "married-community",
                         "divorced",
                         "living-together",
                         "cohabiting",
-                        "separated",
-                        "widower"
+                        "separated-prenuptial",
+                        "separated-community",
+                        "widower",
+                        "other-prenuptial",
+                        "other-community"
                     ]
                 },
                 "nationality": {
