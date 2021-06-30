@@ -75,8 +75,11 @@
         "finalLoanAmount": {
             "typeRef": "#/domains/LoanApplicationSA/types/LoanAmount"
         },
+        "existingEmail": {
+            "typeRef": "#/domains/LoanApplicationSA/types/Existing"
+        },
         "existingUser": {
-            "typeRef": "#/domains/LoanApplicationSA/types/User"
+            "typeRef": "#/domains/LoanApplicationSA/types/Existing"
         }
     },
     "types": {
@@ -574,7 +577,7 @@
             ],
             "additionalProperties": false
         },
-        "User": {
+        "Existing": {
             "type": "string",
             "enum": [
                 "existing",
