@@ -118,16 +118,20 @@
                 }
             },
             "required": [
-                "checkInDate",
-                "checkOutDate",
                 "location",
-                "name",
-                "PIN"
-
+                "name"
             ],
             "additionalProperties": false
         },
         "CheckInReceived": {
+            "type": "array",
+            "minItems": 0,
+            "pii": true,
+            "items": {
+                "$ref": "#/domains/LockManagementLookup/types/CheckInReceivedItem"
+            }
+        },
+        "CheckInReceivedItem": {
             "type": "object",
             "pii": true,
             "properties": {
