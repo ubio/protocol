@@ -8,21 +8,21 @@
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
         "account": {
-            "typeRef": "#/domains/LockManagement/types/Account",
+            "typeRef": "#/domains/LockManagementEdit/types/Account",
             "description": "If required, used for logging in."
         },
         "guestInfo": {
-            "typeRef": "#/domains/LockManagement/types/Guest",
+            "typeRef": "#/domains/LockManagementEdit/types/Guest",
             "description": "Personal details about the guest and."
         },
         "device": {
-            "typeRef": "#/domains/LockManagement/types/Device",
+            "typeRef": "#/domains/LockManagementEdit/types/Device",
             "description": "Device lock parameters."
         }
     },
     "outputs": {
         "lockState": {
-            "typeRef": "#/domains/LockManagement/types/State",
+            "typeRef": "#/domains/LockManagementEdit/types/State",
             "description": "Device lock status."
         }
     },
@@ -74,10 +74,10 @@
             "pii": true,
             "properties": {
                 "person": {
-                    "$ref": "#/domains/LockManagement/types/Person"
+                    "$ref": "#/domains/LockManagementEdit/types/Person"
                 },
                 "contact": {
-                    "$ref": "#/domains/LockManagement/types/GuestContact"
+                    "$ref": "#/domains/LockManagementEdit/types/GuestContact"
                 }
             },
             "required": [

@@ -8,7 +8,8 @@ import Checkin from './checkin.json';
 import ReservationList from './reservation-list.json';
 import ReservationLookup from './reservation-lookup.json';
 import ReservationEdit from './reservation-edit.json';
-import LockManagement from './lock-management.json';
+import LockManagementEdit from './lock-management-edit.json';
+import LockManagementLookup from './lock-management-lookup.json';
 import VacationRental from './vacation-rental.json';
 import MotorInsurance from './motor-insurance.json';
 import LoanApplication from './loan-application.json';
@@ -50,7 +51,8 @@ export const schema = {
         ReservationList,
         ReservationLookup,
         ReservationEdit,
-        LockManagement,
+        LockManagementEdit,
+        LockManagementLookup,
         VacationRental,
         MotorInsurance,
         LoanApplication,

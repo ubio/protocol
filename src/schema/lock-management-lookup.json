@@ -1,0 +1,199 @@
+{
+    "description": "Allows automating hotel electronic door locks.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "account": {
+            "typeRef": "#/domains/LockManagementLookup/types/Account",
+            "description": "If required, used for logging in."
+        },
+        "device": {
+            "typeRef": "#/domains/LockManagementLookup/types/Device",
+            "description": "Device lock parameters."
+        }
+    },
+    "outputs": {
+        "checkInReceived": {
+            "typeRef": "#/domains/LockManagementLookup/types/CheckInReceived",
+            "description": "Information about check in."
+        },
+        "lockOnlineAtStatus": {
+            "typeRef": "#/domains/LockManagementLookup/types/Boolean",
+            "description": "Device lock status."
+        },
+        "batteryStatus": {
+            "typeRef": "#/domains/LockManagementLookup/types/BatteryStatus",
+            "description": "Device battery status."
+        },
+        "lastSyncTime": {
+            "typeRef": "#/domains/LockManagementLookup/types/LastSyncTime",
+            "description": "Device lock last synchronization date & time."
+        }
+    },
+    "types": {
+        "Account": {
+            "type": "object",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Account email, typically used for user sign up / sign in.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully. Use contactEmail when different.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "contactEmail": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
+                    "default": ""
+                },
+                "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "isExisting": {
+                    "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
+                    "type": "boolean"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "john012345"
+                },
+                "person": {
+                    "description": "When an account needs to be created for a person (first name, last name, etc), this key will be used.",
+                    "$ref": "#/domains/Generic/types/Person"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Device": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkInTime": {
+                    "type": "string",
+                    "pattern": "^[012][0-9]:[0-5][0-9]$",
+                    "example": "18:00"
+                },
+                "checkOutTime": {
+                    "type": "string",
+                    "pattern": "^[012][0-9]:[0-5][0-9]$",
+                    "example": "18:00"
+                },
+                "location": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Name of the device lock."
+                },
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Name of the device lock."
+                },
+                "PIN": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Personal identification number of the device lock."
+                }
+            },
+            "required": [
+                "checkInDate",
+                "checkOutDate",
+                "location",
+                "name",
+                "PIN"
+
+            ],
+            "additionalProperties": false
+        },
+        "CheckInReceived": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "guestName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Mark Doe"
+                },
+                "PIN": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Personal identification number of the device lock."
+                },
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "received": {
+                    "$ref": "#/domains/LockManagementLookup/types/Boolean"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "BatteryStatus": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+                "N/A",
+                "full"
+            ]
+        },
+        "LastSyncTime": {
+            "type": "string",
+            "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-3][0-9]) [012][0-9]:[0-5][0-9]$",
+            "description": "Date and time (terminal local time).",
+            "example": "2018-02-02 19:40"
+        },
+        "Boolean": {
+            "type": "boolean",
+            "enum": [
+                true,
+                false
+            ]
+        },
+        "PiiString": {
+            "type": "string",
+            "pii": true
+        }
+    },
+    "errors": [
+        {
+            "code": "LockNotFound",
+            "category": "client",
+            "description": "Device lock not found, usually caused by wrong device reference or name."
+        },
+        {
+            "code": "LockDetailsInvalid",
+            "category": "client",
+            "description": "Invalid device details."
+        }
+    ]
+}
