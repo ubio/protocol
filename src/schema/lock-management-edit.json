@@ -229,6 +229,11 @@
             "description": "Device lock not found, usually caused by wrong device reference or name."
         },
         {
+            "code": "LocationNotFound",
+            "category": "client",
+            "description": "Location not found, usually caused by wrong location reference or name."
+        },
+        {
             "code": "LockDetailsInvalid",
             "category": "client",
             "description": "Invalid device details."
