@@ -58,7 +58,7 @@
         },
         "Applicant": {
             "type": "object",
-            "description": "The person applying for the loan.",
+            "description": "The person applying for the bank account.",
             "pii": true,
             "properties": {
                 "person": { "$ref": "#/domains/Generic/types/Person" },
