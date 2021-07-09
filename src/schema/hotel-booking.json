@@ -624,11 +624,27 @@
                 },
                 "contact": {
                     "$ref": "#/domains/HotelBooking/types/GuestContact"
+                },
+                "memberId": {
+                    "$ref": "#/domains/HotelBooking/types/MemberId"
                 }
             },
             "required": [
                 "person",
                 "contact"
+            ],
+            "additionalProperties": false
+        },
+        "MemberId": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "example": "12345"
+                }
+            },
+            "required": [
+                "number"
             ],
             "additionalProperties": false
         },
