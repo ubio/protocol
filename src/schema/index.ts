@@ -1,3 +1,4 @@
+import AccountApplication from './account-application.json';
 import Generic from './generic.json';
 import Internal from './internal.json';
 import FlightBooking from './flight-booking.json';
@@ -42,6 +43,7 @@ import ProductPurchase from './product-purchase.json';
 export const schema = {
     $id: 'https://protocol.automationcloud.net/schema.json',
     domains: {
+        AccountApplication,
         Generic,
         FlightBooking,
         BookingTVG,

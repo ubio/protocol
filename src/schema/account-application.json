@@ -1,0 +1,375 @@
+{
+    "description": "",
+    "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/message"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "applicant": {
+            "typeRef": "#/domains/AccountApplication/types/Applicant"
+        },
+        "employment": {
+            "typeRef": "#/domains/AccountApplication/types/Employment"
+        },
+        "options": {
+            "typeRef": "#/domains/AccountApplication/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "validationAccount": {
+            "typeRef": "#/domains/AccountApplication/types/ValidationAccount"
+        },
+        "selectedBranch": {
+            "typeRef": "#/domains/AccountApplication/types/Branch",
+            "sourceOutputKey": "availableBranches",
+            "inputMethod": "SelectOne"
+        },
+        "mobilePinConfirmation": {
+            "typeRef": "#/domains/AccountApplication/types/MobilePinConfirmation"
+        }
+    },
+    "outputs": {
+        "availableBranches": {
+            "typeRef": "#/domains/AccountApplication/types/Branches"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/AccountApplication/types/Confirmation"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features.",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
+            ],
+            "additionalProperties": false
+        },
+        "Applicant": {
+            "type": "object",
+            "description": "The person applying for the loan.",
+            "pii": true,
+            "properties": {
+                "person": { "$ref": "#/domains/Generic/types/Person" },
+                "addresses": {
+                    "type": "array",
+                    "description": "A list of addresses for the applicant.",
+                    "pii": true,
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": { "$ref": "#/domains/AccountApplication/types/Address" }
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of birth YYYY-MM-DD.",
+                    "example": "1980-01-01"
+                },
+                "nationality": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Nationality according to passport."
+                },
+                "countryOfBirth": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country of birth."
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "phone": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "document": {
+                    "$ref": "#/domains/Generic/types/IdentityDocument"
+                }
+            },
+            "required": [
+                "person",
+                "dateOfBirth",
+                "nationality"
+            ],
+            "additionalProperties": false
+        },
+        "Address": {
+            "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "minLength": 1,
+                    "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "street": {
+                    "$ref": "#/domains/AccountApplication/types/Street"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "minLength": 1,
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                }
+            },
+            "required": [
+                "city",
+                "postcode"
+            ],
+            "additionalProperties": false
+        },
+        "Street": {
+            "type": "object",
+            "properties": {
+                "prefix": {
+                    "type": "string",
+                    "description": "Calle",
+                    "minLength": 1
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Romero Robledo"
+                },
+                "number": {
+                    "type": "string",
+                    "description": "56"
+                }
+                
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "Employment": {
+            "type": "object",
+            "description": "Applicant employment details.",
+            "pii": true,
+            "properties": {
+                "companyName": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "status": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "employed-fulltime",
+                        "employed-parttime",
+                        "unemployed",
+                        "autonomous",
+                        "self-employed",
+                        "on-benefits",
+                        "retired",
+                        "student"
+                    ]
+                },
+                "profession": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "others",
+                        "administrative",
+                        "in-charge",
+                        "manager",
+                        "intermediate-control",
+                        "military",
+                        "worker",
+                        "skilled-worker",
+                        "teacher",
+                        "advanced-technician",
+                        "commission-seller"
+                    ]
+                },
+                "activitySector": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "others",
+                        "public-administration",
+                        "travel-agencies",
+                        "agriculture",
+                        "food-and-tobacco",
+                        "furniture",
+                        "financial",
+                        "commerce",
+                        "communication",
+                        "building",
+                        "diplomats",
+                        "energy-and-water",
+                        "teaching",
+                        "shows",
+                        "electrical-electronic-manufacturing",
+                        "it-services",
+                        "engineering",
+                        "metallurgy",
+                        "military",
+                        "mining",
+                        "paper-and-graphic-arts",
+                        "fishing",
+                        "press",
+                        "vehicle-repair",
+                        "health",
+                        "domestic-services",
+                        "textile",
+                        "transport"
+                    ]
+                    
+                },
+                "phone": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "otherNetIncome": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Applicant's total of other earnings (after tax)."
+                },
+                "netIncome": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Applicant's total net salary (after tax)."
+                },
+                "otherIncomeSource": {
+                    "type": "string",
+                    "enum": [
+                        "others",
+                        "movable-capital",
+                        "real-estate-capital"
+                    ]
+                },
+                "payFrequency": {
+                    "type": "string",
+                    "enum": [
+                        "monthly",
+                        "weekly",
+                        "fortnightly",
+                        "four-weekly"
+                    ]
+                }
+            },
+            "required": [
+                "status"
+            ],
+            "additionalProperties": false
+        },
+        "Branches": {
+            "type": "array",
+            "description": "A list of available branches found on the website.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/AccountApplication/types/Branch" }
+        },
+        "Branch": {
+            "type": "object",
+            "description": "Branch information.",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "MADRID-R. VICTORIA"
+                },
+                "address": {
+                    "type": "string",
+                    "example": "AV. REINA VICTORIA, 58"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "349121257151"
+                }   
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "ValidationAccount": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "example": "12121212121212"
+                }
+            },
+            "required": [
+                "number"
+            ],
+            "additionalProperties": false
+        },
+        "MobilePinConfirmation": {
+            "type": "object",
+            "description": "Mobile pin confirmation to confirm the applicant's mobile number.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "pin confirmation code.",
+                    "example": "12345678",
+                    "minLength": 3,
+                    "maxLength": 10
+                }
+            },
+            "required": [
+                "code"
+            ],
+            "additionalProperties": false
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Confirmation of the account.",
+            "pii": true,
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "description": "Confirmation message from the web page.",
+                    "example": "Your account is created."
+                }
+            },
+            "required": [
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+        {
+            "code": "AccountApplicationDeclined",
+            "category": "client",
+            "description":"Account application denied by Bank."
+        },
+        {
+            "code": "MobilePinVerificationFailed",
+            "category": "client",
+            "description":"Pin verification failed."
+        },
+        {
+            "code": "InvalidValidationAccountNumber",
+            "category": "client",
+            "description":"The validation account number is invalid, according to the supplier."
+        }
+    ]
+}
