@@ -750,12 +750,17 @@
         {
             "code": "OutboundFareNotFound",
             "category": "client",
-            "description": "Given outbound fare does not match one of the options we are expecting"
+            "description": "Given outbound fare does not match one of the options we are expecting."
+        },
+        {
+            "code": "NoJourneysAvailable",
+            "category": "client",
+            "description": "When the search returns no results."
         },
         {
             "code": "InboundFareNotFound",
             "category": "client",
-            "description": "Given inbound fare does not match one of the options we are expecting"
+            "description": "Given inbound fare does not match one of the options we are expecting."
         },
         {
             "code": "ExtraLuggageNotAvailable",
