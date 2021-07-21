@@ -82,5 +82,10 @@
         }
     },
     "errors": [
+        {
+            "code": "CustomerVerificationRequired",
+            "category": "client",
+            "description": "The website requires customer verification."
+        }
     ]
 }
