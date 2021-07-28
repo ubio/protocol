@@ -1,10 +1,6 @@
 {
     "description": "Internal domain for testing platform features.",
     "private": false,
-    "successCode": {
-        "outputKey": "confirmation",
-        "valuePath": "/code"
-    },
     "inputs": {
         "options": {
             "typeRef": "#/domains/AdJob/types/Options",
