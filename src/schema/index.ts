@@ -85,5 +85,6 @@ export const schema = {
         FlightBookingManagement,
         ContestSignup,
         ProductPurchase,
+        AdJob,
     }
 };
