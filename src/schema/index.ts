@@ -39,6 +39,7 @@ import FlightBookingRefund from './flight-booking-refund.json';
 import FlightBookingManagement from './flight-booking-management.json';
 import ContestSignup from './contest-signup.json';
 import ProductPurchase from './product-purchase.json';
+import AdJob from './ad-job.json';
 
 export const schema = {
     $id: 'https://protocol.automationcloud.net/schema.json',

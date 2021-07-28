@@ -1,0 +1,58 @@
+{
+    "description": "Internal domain for testing platform features.",
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/code"
+    },
+    "inputs": {
+        "options": {
+            "typeRef": "#/domains/AdJob/types/Options",
+            "description": "Used by service-api tests.",
+            "default": {},
+            "initial": true
+        },
+        "password": {
+            "typeRef": "#/domains/AdJob/types/SomethingPrivate",
+            "description": "Private/PII/Confidential."
+        }
+    },
+    "outputs": {
+        "object": {
+            "typeRef": "#/domains/AdJob/types/Object"
+        }
+    },
+    "types": {
+        "Object": {
+            "type": "object",
+            "description": "An object of arbitrary structure."
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for testing optional features.",
+            "properties": {
+                "flag": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
+        },
+        "SomethingPrivate": {
+            "type": "string",
+            "description": "I contain some PII.",
+            "pii": true,
+            "example": "N/A"
+        }
+    },
+    "errors": [
+        {
+            "code": "InternalError",
+            "category": "server",
+            "description": "AdJob error occurred"
+        },
+        {
+            "code": "ClientError",
+            "category": "client",
+            "description": "Client caused error"
+        }
+    ]
+}
