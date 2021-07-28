@@ -21,6 +21,10 @@
             "description": "Used by test-stages service.",
             "dynamic": true
         },
+        "password": {
+            "typeRef": "#/domains/Internal/types/SomethingPrivate",
+            "description": "Private/PII/Confidential."
+        },
         "finalPriceConsent": {
             "typeRef": "#/domains/Generic/types/PriceConsent",
             "description": "Used by test-price-consent service.",
