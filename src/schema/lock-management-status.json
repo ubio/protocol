@@ -8,29 +8,29 @@
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
         "account": {
-            "typeRef": "#/domains/LockManagementLookup/types/Account",
+            "typeRef": "#/domains/LockManagementStatus/types/Account",
             "description": "If required, used for logging in."
         },
         "device": {
-            "typeRef": "#/domains/LockManagementLookup/types/Device",
+            "typeRef": "#/domains/LockManagementStatus/types/Device",
             "description": "Device lock parameters."
         }
     },
     "outputs": {
         "checkInReceived": {
-            "typeRef": "#/domains/LockManagementLookup/types/CheckInReceived",
+            "typeRef": "#/domains/LockManagementStatus/types/CheckInReceived",
             "description": "Information about check in."
         },
         "lockOnlineAtStatus": {
-            "typeRef": "#/domains/LockManagementLookup/types/Boolean",
+            "typeRef": "#/domains/LockManagementStatus/types/Boolean",
             "description": "Device lock status."
         },
         "batteryStatus": {
-            "typeRef": "#/domains/LockManagementLookup/types/BatteryStatus",
+            "typeRef": "#/domains/LockManagementStatus/types/BatteryStatus",
             "description": "Device battery status."
         },
         "lastSyncTime": {
-            "typeRef": "#/domains/LockManagementLookup/types/LastSyncTime",
+            "typeRef": "#/domains/LockManagementStatus/types/LastSyncTime",
             "description": "Device lock last synchronization date & time."
         }
     },
@@ -128,7 +128,7 @@
             "minItems": 0,
             "pii": true,
             "items": {
-                "$ref": "#/domains/LockManagementLookup/types/CheckInReceivedItem"
+                "$ref": "#/domains/LockManagementStatus/types/CheckInReceivedItem"
             }
         },
         "CheckInReceivedItem": {
@@ -156,7 +156,7 @@
                     "example": "1976-01-27"
                 },
                 "received": {
-                    "$ref": "#/domains/LockManagementLookup/types/Boolean"
+                    "$ref": "#/domains/LockManagementStatus/types/Boolean"
                 }
             },
             "required": [],
