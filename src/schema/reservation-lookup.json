@@ -14,6 +14,10 @@
         "bookingReference": {
             "typeRef": "#/domains/ReservationLookup/types/PiiString",
             "description": "Hotel booking reference code."
+        },
+        "loginConfirmationCode": {
+            "typeRef": "#/domains/ReservationLookup/types/PiiString",
+            "description": "2F authentication code for login."
         }
     },
     "outputs": {
