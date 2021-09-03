@@ -30,6 +30,10 @@
         "guestsChanges": {
             "typeRef": "#/domains/ReservationEdit/types/Guests",
             "description": "Personal details about the guests."
+        },
+        "loginConfirmationCode": {
+            "typeRef": "#/domains/ReservationLookup/types/PiiString",
+            "description": "2F authentication code for login."
         }
     },
     "outputs": {
