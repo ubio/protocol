@@ -14,7 +14,7 @@
             "typeRef": "#/domains/BookingTVG/types/Dates"
         },
         "advertiser": {
-            "typeRef": "#/domains/BookingTVG/types/Advertiser"
+            "typeRef": "#/domains/BookingTVG/types/AdvertiserId"
         },
         "guest": {
             "typeRef": "#/domains/BookingTVG/types/Guest"
@@ -23,7 +23,10 @@
             "typeRef": "#/domains/BookingTVG/types/Card"
         },
         "localeInput": {
-            "typeRef": "#/domains/Generic/types/CountryCode"
+            "typeRef": "#/domains/BookingTVG/types/String"
+        },
+        "trvLogin": {
+            "typeRef": "#/domains/BookingTVG/types/TrvLogin"
         }
     },
     "outputs": {
@@ -85,7 +88,7 @@
             "typeRef": "#/domains/BookingTVG/types/NoOfRooms"
         },
         "locale": {
-            "typeRef": "#/domains/Generic/types/CountryCode"
+            "typeRef": "#/domains/BookingTVG/types/String"
         },
         "adblockSettings": {
             "typeRef": "#/domains/BookingTVG/types/AdblockSettings"
@@ -139,10 +142,14 @@
             "required": [],
             "additionalProperties": false
         },
-        "Advertiser": {
+        "TrvLogin": {
             "type": "object",
             "properties": {
-                "advertiserID": {
+                "trvEmail": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "trvPassword": {
                     "type": "string"
                 }
             },
