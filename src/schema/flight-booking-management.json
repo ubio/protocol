@@ -246,6 +246,11 @@
                     "description": "Booking reference grabbed from the page.",
                     "example": "RL2XYZ"
                 },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name, as specified in passport or travel document.",
+                    "example": "Smith"
+                },
                 "lastName": {
                     "type": "string",
                     "description": "Last name or surname, as specified in passport or travel document.",
