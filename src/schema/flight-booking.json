@@ -421,6 +421,7 @@
                 "segment": {
                     "type": "string",
                     "description": "Flight segments name as displayed on website.",
+                    "pattern": "^[A-Z]{3} to [A-Z]{3}$",
                     "example": "LTN to ZRH"
                 },
                 "seats": {
@@ -429,7 +430,6 @@
                 }
             },
             "required": [
-                "segment",
                 "seats"
             ],
             "additionalProperties": false
