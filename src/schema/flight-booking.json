@@ -66,7 +66,7 @@
             "inputMethod": "SelectOne"
         },
         "selectedSeats": {
-            "typeRef": "#/domains/FlightBooking/types/SelectedSeatsStage",
+            "typeRef": "#/domains/FlightBooking/types/SelectedSeats",
             "sourceOutputKey": "availableSeats",
             "inputMethod": "SeatSelection",
             "dynamic": true
@@ -101,7 +101,7 @@
             "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
         "availableSeats": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableSeatsStage",
+            "typeRef": "#/domains/FlightBooking/types/AvailableSeats",
             "dynamic": true
         },
         "availableFrequentFlyerProgrammes": {
@@ -409,28 +409,41 @@
                 "price"
             ]
         },
-        "SelectedSeatsStage": {
+        "SelectedSeats": {
+            "type": "array",
+            "description": "An array of selected seats.",
+            "items": { "$ref": "#/domains/FlightBooking/types/SelectedSeat" }
+        },
+        "SelectedSeat": {
             "type": "object",
-            "description": "Seat selection stage. Each stage corresponds to a particular flight leg where seat selection is supported. Client provides each stage separately after reading corresponding seat availability information from <code>availableSeats</code> output.",
+            "description": "Selected seats information.",
             "properties": {
-                "seatNumbers": {
+                "segment": {
+                    "type": "string",
+                    "description": "Flight segments name as displayed on website.",
+                    "example": "LTN to ZRH"
+                },
+                "seats": {
                     "type": "array",
-                    "description": "An array of <code>seatNumber</code> selected per each passenger.<br/>Order must match the order of <code>passengers</code> array.",
-                    "minItems": 1,
-                    "maxItems": 9,
                     "items": { "$ref": "#/domains/FlightBooking/types/SeatNumber" }
                 }
             },
             "required": [
-                "seatNumbers"
+                "segment",
+                "seats"
             ],
             "additionalProperties": false
         },
-        "AvailableSeatsStage": {
+        "AvailableSeats": {
+            "type": "array",
+            "description": "An array of available seats.",
+            "items": { "$ref": "#/domains/FlightBooking/types/AvailableSeat" }
+        },
+        "AvailableSeat": {
             "type": "object",
-            "description": "Seat availability information for each seat selection stage. Each stage corresponds to a particular flight leg where seat selection is supported. Each stage is emitted separately when automation reaches corresponding seat selection screen.",
+            "description": "Seat availability information.",
             "properties": {
-                "leg": {
+                "segment": {
                     "type": "string",
                     "description": "Flight leg name as displayed on website.",
                     "example": "LTN to ZRH, Wed 7th Mar"
@@ -441,15 +454,10 @@
                 }
             },
             "required": [
-                "leg",
+                "segment",
                 "seats"
             ],
             "additionalProperties": false
-        },
-        "SeatNumber": {
-            "type": "string",
-            "description": "Seat number as extracted from website.",
-            "example": "7A"
         },
         "Seat": {
             "type": "object",
@@ -476,6 +484,11 @@
                 "available"
             ],
             "additionalProperties": false
+        },
+        "SeatNumber": {
+            "type": "string",
+            "description": "Seat number as extracted from website.",
+            "example": "7A"
         },
         "BookingConfirmation": {
             "type": "object",
