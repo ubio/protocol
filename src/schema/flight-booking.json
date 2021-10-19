@@ -167,6 +167,9 @@
                     "type": "boolean",
                     "description": "If <code>true</code>, automation will request <code>selectedSeats</code> for seat selection.",
                     "default": false
+                },
+                "lhBookingRef": {
+                    "type": "string"
                 }
             }
         },
@@ -604,10 +607,10 @@
         }
     },
     "errors": [
-        {
+	    {
             "code": "PassengerDetailsInvalid",
             "category": "client",
-            "description":"Passenger details invalid"
+            "description": "Passenger details invalid"
         },
         {
             "code": "OutboundFlightDateInvalid",
