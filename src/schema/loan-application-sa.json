@@ -27,7 +27,7 @@
             "typeRef": "#/domains/LoanApplicationSA/types/Employment"
         },
         "tokenId": {
-            "typeRef": "#/domains/LoanApplicationSA/types/String"
+            "typeRef": "#/domains/LoanApplicationSA/types/PiiString"
         },
         "directDebit": {
             "typeRef": "#/domains/LoanApplicationSA/types/DirectDebitPaymentOrNull"
@@ -89,6 +89,10 @@
         },
         "String": {
             "type": "string"
+        },
+        "PiiString": {
+            "type": "string",
+            "pii": true
         },
         "Loan": {
             "type": "object",
