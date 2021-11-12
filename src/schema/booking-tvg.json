@@ -63,6 +63,9 @@
         "trvReference": {
             "typeRef": "#/domains/BookingTVG/types/TrvReference"
         },
+        "job_outputs": {
+            "typeRef": "#/domains/BookingTVG/types/Job_outputs"
+        },
         "lpAmount": {
             "typeRef": "#/domains/BookingTVG/types/LpAmount"
         },
@@ -122,6 +125,64 @@
         } 
     },
     "types": {
+        "Job_outputs": {
+            "type": "object",
+            "properties": {
+                "clickout_price": { "$ref": "#/domains/Generic/types/Price" },
+                "item_id": {
+                    "type": "string"
+                },
+                "clickout_timestamp": {
+                    "type": "string"
+                },
+                "trv_reference": {
+                    "type": "string"
+                },
+                "advertiser_lp_price": { "$ref": "#/domains/Generic/types/Price" },
+                "arrival_date": {
+                    "type": "string"
+                },
+                "departure_date": {
+                    "type": "string"
+                },
+                "booking_timestamp": {
+                    "type": "string"
+                },
+                "booking_price": { "$ref": "#/domains/Generic/types/Booking_price" },
+                "is_express_booking": {
+                    "type": "boolean"
+                },
+                "number_of_rooms": {
+                    "type": "integer"
+                },
+                "locale": {
+                    "type": "string"
+                },
+                "advertiser_id": {
+                    "type": "string"
+                },
+                "booking_id": {
+                    "type": "string"
+                },
+                "booking_url": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Booking_price": {
+            "type": "object",
+            "properties": {
+                "net": { "$ref": "#/domains/Generic/types/Price" },
+                "tax": {
+                    "type": "string"
+                },
+                "gross": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
         "Dates": {
             "type": "object",
             "properties": {

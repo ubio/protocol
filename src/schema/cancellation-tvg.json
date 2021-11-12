@@ -17,9 +17,58 @@
     "outputs": {
         "cancellationConfirmation": {
             "typeRef": "#/domains/CancellationTVG/types/Confirmation"
+        },
+        "job_outputs": {
+            "typeRef": "#/domains/BookingTVG/types/Job_outputs"
         }  
     },
     "types": {
+        "Job_outputs": {
+            "type": "object",
+            "properties": {
+                "clickout_price": { "$ref": "#/domains/Generic/types/Price" },
+                "item_id": {
+                    "type": "string"
+                },
+                "clickout_timestamp": {
+                    "type": "string"
+                },
+                "trv_reference": {
+                    "type": "string"
+                },
+                "advertiser_lp_price": { "$ref": "#/domains/Generic/types/Price" },
+                "arrival_date": {
+                    "type": "string"
+                },
+                "departure_date": {
+                    "type": "string"
+                },
+                "booking_timestamp": {
+                    "type": "string"
+                },
+                "booking_price": { "$ref": "#/domains/Generic/types/Booking_price" },
+                "is_express_booking": {
+                    "type": "boolean"
+                },
+                "number_of_rooms": {
+                    "type": "integer"
+                },
+                "locale": {
+                    "type": "string"
+                },
+                "advertiser_id": {
+                    "type": "string"
+                },
+                "booking_id": {
+                    "type": "string"
+                },
+                "booking_url": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
         "Confirmation": {
             "type": "object",
             "properties": {
