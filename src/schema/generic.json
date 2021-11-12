@@ -1081,6 +1081,7 @@
                 },
                 "url": {
                     "type": "string",
+                    "format": "url",
                     "description": "Location of the resource."
                 }
             },
