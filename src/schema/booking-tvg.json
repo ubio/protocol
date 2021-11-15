@@ -64,7 +64,7 @@
             "typeRef": "#/domains/BookingTVG/types/TrvReference"
         },
         "job_outputs": {
-            "typeRef": "#/domains/BookingTVG/types/Job_outputs"
+            "typeRef": "#/domains/BookingTVG/types/JobOutputs"
         },
         "lpAmount": {
             "typeRef": "#/domains/BookingTVG/types/LpAmount"
@@ -125,7 +125,7 @@
         } 
     },
     "types": {
-        "Job_outputs": {
+        "JobOutputs": {
             "type": "object",
             "properties": {
                 "clickout_price": { "$ref": "#/domains/Generic/types/Price" },
@@ -148,7 +148,7 @@
                 "booking_timestamp": {
                     "type": "string"
                 },
-                "booking_price": { "$ref": "#/domains/Generic/types/Booking_price" },
+                "booking_price": { "$ref": "#/domains/BookingTVG/types/BookingPrice" },
                 "is_express_booking": {
                     "type": "boolean"
                 },
@@ -171,7 +171,7 @@
             "required": [],
             "additionalProperties": false
         },
-        "Booking_price": {
+        "BookingPrice": {
             "type": "object",
             "properties": {
                 "net": { "$ref": "#/domains/Generic/types/Price" },

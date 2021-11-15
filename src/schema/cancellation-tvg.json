@@ -19,11 +19,11 @@
             "typeRef": "#/domains/CancellationTVG/types/Confirmation"
         },
         "job_outputs": {
-            "typeRef": "#/domains/BookingTVG/types/Job_outputs"
+            "typeRef": "#/domains/CancellationTVG/types/JobOutputs"
         }  
     },
     "types": {
-        "Job_outputs": {
+        "JobOutputs": {
             "type": "object",
             "properties": {
                 "clickout_price": { "$ref": "#/domains/Generic/types/Price" },
@@ -46,7 +46,7 @@
                 "booking_timestamp": {
                     "type": "string"
                 },
-                "booking_price": { "$ref": "#/domains/Generic/types/Booking_price" },
+                "booking_price": { "$ref": "#/domains/CancellationTVG/types/BookingPrice" },
                 "is_express_booking": {
                     "type": "boolean"
                 },
@@ -65,6 +65,18 @@
                 "booking_url": {
                     "type": "string"
                 }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "BookingPrice": {
+            "type": "object",
+            "properties": {
+                "net": { "$ref": "#/domains/Generic/types/Price" },
+                "tax": {
+                    "type": "string"
+                },
+                "gross": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [],
             "additionalProperties": false
