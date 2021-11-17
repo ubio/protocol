@@ -113,7 +113,6 @@
                 },
                 "PIN": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Personal identification number of the device lock."
                 }
             },
@@ -137,12 +136,10 @@
             "properties": {
                 "guestName": {
                     "type": "string",
-                    "minLength": 1,
                     "example": "Mark Doe"
                 },
                 "PIN": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Personal identification number of the device lock."
                 },
                 "checkInDate": {

@@ -101,17 +101,14 @@
             "properties": {
                 "guestStatus": {
                     "type": "string",
-                    "minLength": 1,
                     "example": "Confirmed"
                 },
                 "guestName": {
                     "type": "string",
-                    "minLength": 1,
                     "example": "Mark Doe"
                 },
                 "roomStatus": {
                     "type": "string",
-                    "minLength": 1,
                     "example": "Cancelled by guest"
                 },
                 "room": {
@@ -126,12 +123,10 @@
                 },
                 "roomNumber": {
                     "type": "string",
-                    "minLength": 1,
                     "example": "582765"
                 },
                 "roomType": {
                     "type": "string",
-                    "minLength": 1,
                     "example": "Studio"
                 },
                 "checkInDate": {
@@ -156,7 +151,6 @@
                 },
                 "checkInText": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Optional comment made by the hotel regarding the check-in status."
                 },
                 "guestsCount": {
@@ -183,12 +177,10 @@
                     "$ref": "#/domains/ReservationLookup/types/IdentityDocument"
                 },
                 "company": {
-                    "type": "string",
-                    "minLength": 1
+                    "type": "string"
                 },
                 "remarks": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Notes left by the guest.",
                     "example": "Espresso & omelet."
                 }
@@ -224,8 +216,7 @@
                     "$ref": "#/domains/ReservationLookup/types/IdentityDocument"
                 },
                 "company": {
-                    "type": "string",
-                    "minLength": 1
+                    "type": "string"
                 }
             },
             "required": [
@@ -256,7 +247,6 @@
                 },
                 "middleName": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
                 },
                 "lastName": {
@@ -272,7 +262,6 @@
                 },
                 "ageType": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Age type of guests.",
                     "example": "Adult",
                     "enum": ["adult", "child", "infant"]
@@ -337,43 +326,36 @@
             "properties": {
                 "line1": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Street name with house number.",
                     "example": "501 Twin Peaks Blv"
                 },
                 "line2": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Additional address information (e.g. flat).",
                     "example": "Flat 2"
                 },
                 "streetName": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Name of the street.",
                     "example": "Clerkenwell Close"
                 },
                 "streetNumber": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Number of the street or other building identifier, such as house number or house name",
                     "example": "27-31"
                 },
                 "city": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Name of city, town or other settlement.",
                     "example": "San Francisco"
                 },
                 "citySubdivision": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Name of the city subdivision.",
                     "example": "Glen Park"
                 },
                 "postcode": {
                     "type": "string",
-                    "minLength": 1,
                     "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
                     "example": "94581"
                 },
