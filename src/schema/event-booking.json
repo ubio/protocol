@@ -140,7 +140,7 @@
                     "example": "Your booking was successful."
                 },
                 "price": {
-                    "$ref": "#/domains/Generic/types/Price",
+                    "$ref": "#/domains/EventBooking/types/Price",
                     "description": "Price, if found on the successful booking page."
                 }
             },
@@ -159,7 +159,7 @@
                     "description": "Delivery text as provided by the insurer.",
                     "example": "Collection from venue, Royal Mail post, Courier delivery"
                 },
-                "price": { "$ref": "#/domains/Generic/types/Price" }
+                "price": { "$ref": "#/domains/EventBooking/types/Price" }
             },
             "required": [
                 "name"
@@ -232,7 +232,7 @@
                     "description": "Refund marketing text as provided by the insurer.",
                     "example": "No-Matter-What, Medical Emergency Only"
                 },
-                "price": { "$ref": "#/domains/Generic/types/Price" }
+                "price": { "$ref": "#/domains/EventBooking/types/Price" }
             },
             "required": [
                 "name"
@@ -263,7 +263,7 @@
                     "example": "This package contains amazing glasses of wine (actual drink not included)."
                 },
                 "price": {
-                    "$ref": "#/domains/Generic/types/Price"
+                    "$ref": "#/domains/EventBooking/types/Price"
                 }
             },
             "required": [
@@ -337,7 +337,7 @@
                     "example": "Full price variety bundle"
                 },
                 "price": {
-                    "$ref": "#/domains/Generic/types/Price",
+                    "$ref": "#/domains/EventBooking/types/Price",
                     "description": "Price, if found on the seat selection page."
                 }
             },
@@ -395,6 +395,27 @@
         },
         "String": {
             "type": "string"
+        },
+        "Price": {
+            "type": "object",
+            "description": "Basic price information.",
+            "properties": {
+                "currencyCode": { "$ref": "#/domains/Generic/types/CurrencyCode" },
+                "value": {
+                    "type": "integer",
+                    "description": "An integer in the smallest currency unit (100 for £1.00).",
+                    "example": "12300"
+                },
+                "tax": {
+                    "type": "integer",
+                    "example": "12"
+                }
+            },
+            "required": [
+                "currencyCode",
+                "value"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
