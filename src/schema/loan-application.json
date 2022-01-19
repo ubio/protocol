@@ -641,8 +641,6 @@
                 }
             },
             "required": [
-                "line1",
-                "line2",
                 "city",
                 "postcode",
                 "countryCode",
