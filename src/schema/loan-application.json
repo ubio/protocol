@@ -588,7 +588,7 @@
                     "example": "Twin Peaks Blv"
                 },
                 "houseNumber": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "House number.",
                     "minLength": 1,
                     "example": "501"
