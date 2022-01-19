@@ -308,6 +308,9 @@
                 },
                 "residentialStatus": {
                     "$ref": "#/domains/LoanApplication/types/ResidentialStatus"
+                },
+                "openBankingInfo": {
+                    "$ref": "#/domains/LoanApplication/types/OpenBankingInfo"
                 }
             },
             "required": [
@@ -316,6 +319,136 @@
                 "nationality"
             ],
             "additionalProperties": false
+        },
+        "OpenBankingInfo": {
+            "type": "object",
+            "properties": {
+                "bankSortcode": {
+                    "type": "string"
+                },
+                "bankAccountNumber": {
+                    "type": "string"
+                },
+                "averageIncomeLast30Days": {
+                    "type": "string"
+                },
+                "averageIncomeAvg6Months": {
+                    "type": "string"
+                },
+                "averageExpenditureLast30Days": {
+                    "type": "string"
+                },
+                "averageExpenditureAvg6Months": {
+                    "type": "string"
+                },
+                "mortgageRentLast30Days": {
+                    "type": "string"
+                },
+                "mortgageRentAvg6Months": {
+                    "type": "string"
+                },
+                "unsecuredCreditPaymentsLast30Days": {
+                    "type": "string"
+                },
+                "unsecuredCreditPaymentsAvg6Months": {
+                    "type": "string"
+                },
+                "unsecuredCreditPaymentsVolLast30Days": {
+                    "type": "string"
+                },
+                "foodLast30Days": {
+                    "type": "string"
+                },
+                "foodAvg6Months": {
+                    "type": "string"
+                },
+                "travelPetrolLast30Days": {
+                    "type": "string"
+                },
+                "travelPetrolAvg6Months": {
+                    "type": "string"
+                },
+                "utilitiesLast30Days": {
+                    "type": "string"
+                },
+                "utilitiesAvg6Months": {
+                    "type": "string"
+                },
+                "councilTaxLast30Days": {
+                    "type": "string"
+                },
+                "councilTaxAvg6Months": {
+                    "type": "string"
+                },
+                "childCareLast30Days": {
+                    "type": "string"
+                },
+                "childCareAvg6Months": {
+                    "type": "string"
+                },
+                "gamblingTransactionLast30Days": {
+                    "type": "string"
+                },
+                "gamblingTransactionAvg6Months": {
+                    "type": "string"
+                },
+                "gamblingTransactionVolLast30Days": {
+                    "type": "string"
+                },
+                "gamblingTransactionVolAvg6Months": {
+                    "type": "string"
+                },
+                "failedDDLast30Days": {
+                    "type": "string"
+                },
+                "failedDDAvg6Months": {
+                    "type": "string"
+                },
+                "failedDDVolLast30Days": {
+                    "type": "string"
+                },
+                "failedDDVolAvg6Months": {
+                    "type": "string"
+                },
+                "failedStandingOrderLast30Days": {
+                    "type": "string"
+                },
+                "failedStandingOrderAvg6Months": {
+                    "type": "string"
+                },
+                "failedStandingOrderVolLast30Days": {
+                    "type": "string"
+                },
+                "failedStandingOrderVolAvg6Months": {
+                    "type": "string"
+                },
+                "savingsLast30Days": {
+                    "type": "string"
+                },
+                "savingsAvg6Months": {
+                    "type": "string"
+                },
+                "savingsVolLast30Days": {
+                    "type": "string"
+                },
+                "savingsVolAvg6Months": {
+                    "type": "string"
+                },
+                "industry": {
+                    "type": "string"
+                },
+                "jobTitle": {
+                    "type": "string"
+                },
+                "noOfDependents": {
+                    "type": "string"
+                },
+                "openBanking": {
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": false,
+            "required": []
         },
         "Guarantor": {
             "type": "object",
