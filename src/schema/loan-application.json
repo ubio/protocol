@@ -356,6 +356,9 @@
                 "unsecuredCreditPaymentsVolLast30Days": {
                     "type": "string"
                 },
+                "unsecuredCreditPaymentsVolAvg6Months": {
+                    "type": "string"
+                },
                 "foodLast30Days": {
                     "type": "string"
                 },
@@ -444,7 +447,7 @@
                     "type": "string"
                 },
                 "openBanking": {
-                    "type": "boolean"
+                    "type": "string"
                 }
             },
             "additionalProperties": false,
