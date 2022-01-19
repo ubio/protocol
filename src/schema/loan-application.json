@@ -708,6 +708,7 @@
                 "payFrequency": {
                     "type": "string",
                     "enum": [
+                        "annually",
                         "monthly",
                         "weekly",
                         "fortnightly",
