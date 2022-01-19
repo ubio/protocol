@@ -581,6 +581,18 @@
             "description": "Physical address information, typically used as part of billing or shipping address objects.",
             "pii": true,
             "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Street name.",
+                    "minLength": 1,
+                    "example": "Twin Peaks Blv"
+                },
+                "houseNumber": {
+                    "type": "string",
+                    "description": "House number.",
+                    "minLength": 1,
+                    "example": "501"
+                },
                 "line1": {
                     "type": "string",
                     "description": "Street name with house number.",
