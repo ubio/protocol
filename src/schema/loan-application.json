@@ -309,6 +309,9 @@
                 "residentialStatus": {
                     "$ref": "#/domains/LoanApplication/types/ResidentialStatus"
                 },
+                "partnerInfo": {
+                    "$ref": "#/domains/LoanApplication/types/PartnerInfo"
+                },
                 "openBankingInfo": {
                     "$ref": "#/domains/LoanApplication/types/OpenBankingInfo"
                 }
@@ -319,6 +322,26 @@
                 "nationality"
             ],
             "additionalProperties": false
+        },
+        "PartnerInfo": {
+            "type": "object",
+            "properties": {
+                "partnerId": {
+                    "type": "string"
+                },
+                "partnerTrackingId": {
+                    "type": "string"
+                },
+                "partnerAdditionalReference": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "partnerId",
+                "partnerTrackingId",
+                "partnerAdditionalReference"
+            ]
         },
         "OpenBankingInfo": {
             "type": "object",
