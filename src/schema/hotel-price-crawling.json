@@ -261,6 +261,11 @@
             "code": "AdultsCountNotSupported",
             "category": "client",
             "description": "The requested number of adults is not supported by any room at this hotel."
+        },
+        {
+            "code": "HotelNotOnIbe",
+            "category": "client",
+            "description": "The hotel was not found on the IBE."
         }
     ]
 }
