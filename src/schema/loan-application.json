@@ -675,6 +675,10 @@
                     "type": "string",
                     "minLength": 1
                 },
+                "industry": {
+                    "type": "string",
+                    "minLength": 1
+                },
                 "status": {
                     "type": "string",
                     "description": "",
