@@ -6,6 +6,7 @@ import CoachBooking from './coach-booking.json';
 // import BookingTVG from './booking-tvg.json';
 // import CancellationTVG from './cancellation-tvg.json';
 import Checkin from './checkin.json';
+import QRCodeExtraction from './qr-code-extraction.json';
 import ReservationList from './reservation-list.json';
 import ReservationLookup from './reservation-lookup.json';
 import ReservationEdit from './reservation-edit.json';
@@ -71,6 +72,7 @@ export const schema = {
         PropertyBooking,
         Remittance,
         HolidayBooking,
+        QRCodeExtraction,
         ElectronicTravelAuthorisation,
         Internal,
         FlightBookingExtraction,

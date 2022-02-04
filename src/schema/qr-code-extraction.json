@@ -1,0 +1,38 @@
+{
+    "description": "Allows QR code data extraction from different types of files",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        }
+    },
+    "outputs": {
+        "QRCodeContent": {
+            "typeRef": "#/domains/QRCodeExtraction/types/CodeContents"
+        }
+    },
+    "types": {
+        "CodeContents": {
+            "type": "array",
+            "description": "",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/PetInsurance/types/CodeContent"
+            }
+        },
+        "CodeContent": {
+            "type": "object",
+            "description": "",
+            "additionalProperties": false,
+            "properties": {
+                "content": {
+                    "type": "string"
+                }
+            },
+            "required": []
+        }
+    },
+    "errors": []
+}
