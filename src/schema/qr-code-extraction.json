@@ -9,7 +9,7 @@
         }
     },
     "outputs": {
-        "QRCodeContent": {
+        "qrCodeContent": {
             "typeRef": "#/domains/QRCodeExtraction/types/CodeContents"
         }
     },
@@ -19,7 +19,7 @@
             "description": "",
             "minItems": 1,
             "items": {
-                "$ref": "#/domains/PetInsurance/types/CodeContent"
+                "$ref": "#/domains/QRCodeExtraction/types/CodeContent"
             }
         },
         "CodeContent": {
