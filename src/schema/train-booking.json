@@ -297,7 +297,6 @@
             "type": "array",
             "description": "A list of available fares found on the website.",
             "minItems": 1,
-            "maxItems": 9,
             "items": { "$ref": "#/domains/TrainBooking/types/Fare" }
         },
         "Fare": {
