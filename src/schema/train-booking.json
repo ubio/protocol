@@ -268,7 +268,6 @@
             "type": "array",
             "description": "A list of available journey fares found on the website.",
             "minItems": 1,
-            "maxItems": 9,
             "items": { "$ref": "#/domains/TrainBooking/types/Fare" }
         },
         "JourneyFare": {
@@ -419,7 +418,6 @@
             "description": "An array with details for each passenger.",
             "pii": true,
             "minItems": 1,
-            "maxItems": 9,
             "items": { "$ref": "#/domains/TrainBooking/types/Passenger" }
         },
         "Passenger": {
@@ -624,7 +622,6 @@
                     "type": "array",
                     "description": "A list of available delivery options found on the page.",
                     "minItems": 1,
-                    "maxItems": 9,
                     "items": { "$ref": "#/domains/TrainBooking/types/Delivery" }
                 },
                 {
