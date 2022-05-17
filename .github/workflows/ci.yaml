@@ -1,4 +1,5 @@
 name: CI
+
 on:
   push:
     branches:
@@ -6,51 +7,20 @@ on:
 
 jobs:
   build:
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    uses: ubio/github-actions/.github/workflows/ci-build.yaml@master
+    with:
+      name: Protocol
+      image: gcr.io/automation-cloud-registry/protocol
+      ref: ${{ github.sha }}
+    secrets:
+      REGISTRY_SECRET: ${{ secrets.GCP_REGISTRY_ACCESS }}
+      SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+      SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
 
-      - name: Build and push development image
-        uses: docker/build-push-action@v1
-        with:
-          username: _json_key
-          password: ${{ secrets.GCP_ACCESS_DEVELOPMENT }}
-          registry: gcr.io
-          repository: automation-cloud-development/protocol
-          tags: ${{ github.sha }}
-
-      - name: Build and push production image
-        uses: docker/build-push-action@v1
-        with:
-          username: _json_key
-          password: ${{ secrets.GCP_ACCESS_PRODUCTION }}
-          registry: gcr.io
-          repository: automation-cloud-production/protocol
-          tags: ${{ github.sha }}
-
-      - name: Notify k8s repo
-        uses: docker://automationcloud/repository-dispatch:latest
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          owner: ubio
-          repository: k8s
-          event: built-protocol
-          payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
-
-      - name: Notify Slack on Success
-        if: ${{ success() }}
-        uses: docker://automationcloud/rsslack:latest
-        with:
-          channel: ${{ secrets.SLACK_CHANNEL }}
-          message: ":success: Protocol has been built and <https://github.com/ubio/k8s|k8s> has been notified. Deployment incoming..."
-          slack_token: ${{ secrets.SLACK_TOKEN }}
-
-      - name: Notify Slack on Failure
-        if: ${{ failure() }}
-        uses: docker://automationcloud/rsslack:latest
-        with:
-          channel: ${{ secrets.SLACK_CHANNEL }}
-          message: ":suspicious: Protocol build failed"
-          slack_token: ${{ secrets.SLACK_TOKEN }}
+  deploy:
+    needs: build
+    uses: ubio/github-actions/.github/workflows/cd-dispatch.yaml@master
+    with:
+      event_name: built-protocol
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
