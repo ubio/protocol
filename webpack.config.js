@@ -35,6 +35,8 @@ module.exports = {
         new VueLoaderPlugin()
     ],
     devServer: {
-        contentBase: outputDir,
+        static: {
+            directory: outputDir
+        }
     }
 }
