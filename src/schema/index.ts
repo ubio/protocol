@@ -14,6 +14,7 @@ import LockManagementEdit from './lock-management-edit.json';
 import LockManagementStatus from './lock-management-status.json';
 import VacationRental from './vacation-rental.json';
 import MotorInsurance from './motor-insurance.json';
+import CreditCardApplication from './credit-card-application.json';
 import LoanApplication from './loan-application.json';
 import LoanApplicationSA from './loan-application-sa.json';
 import EventBooking from './event-booking.json';
@@ -59,6 +60,7 @@ export const schema = {
         LockManagementStatus,
         VacationRental,
         MotorInsurance,
+        CreditCardApplication,
         LoanApplication,
         LoanApplicationSA,
         EventBooking,

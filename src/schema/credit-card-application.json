@@ -1,0 +1,429 @@
+{
+    "description": "Allows applying for business credit cards.",
+    "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/code"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "applicant": {
+            "typeRef": "#/domains/CreditCardApplication/types/Applicant"
+        },
+        "employment": {
+            "typeRef": "#/domains/CreditCardApplication/types/Employment"
+        },
+        "mobilePinConfirmation": {
+            "typeRef": "#/domains/CreditCardApplication/types/MobilePinConfirmation"
+        },
+        "options": {
+            "typeRef": "#/domains/CreditCardApplication/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "company": {
+            "typeRef": "#/domains/CreditCardApplication/types/Company"
+        },
+        "selectedAnswers": {
+            "typeRef": "#/domains/CreditCardApplication/types/Answers"
+        }
+    },
+    "outputs": {
+
+        "availableQuestions": {
+            "typeRef": "#/domains/CreditCardApplication/types/Questions"
+        },
+        "debug": {
+            "typeRef": "#/domains/CreditCardApplication/types/Anything"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/CreditCardApplication/types/Confirmation"
+        }
+    },
+    "types": {
+        "Applicant": {
+            "type": "object",
+            "description": "The person applying for the credit card.",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/Generic/types/Person"
+                },
+                "mainAddress": {
+                    "description": "A list of addresses for the applicant.",
+                    "$ref": "#/domains/CreditCardApplication/types/Address"
+                },
+                "otherAddresses": {
+                    "type": "array",
+                    "description": "A list of addresses for the applicant.",
+                    "pii": true,
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": {
+                        "$ref": "#/domains/CreditCardApplication/types/Address"
+                    }
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of birth YYYY-MM-DD.",
+                    "example": "1980-01-01"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "phone": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                }
+            },
+            "required": [
+                "person",
+                "mainAddress",
+                "dateOfBirth"
+            ],
+            "additionalProperties": false
+        },
+        "Address": {
+            "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Street name.",
+                    "minLength": 1,
+                    "example": "Twin Peaks Blv"
+                },
+                "houseName": {
+                    "type": "string",
+                    "description": "House name.",
+                    "minLength": 1,
+                    "example": "Twin Peaks Blv"
+                },
+                "houseNumber": {
+                    "type": "integer",
+                    "description": "House number.",
+                    "minLength": 1,
+                    "example": "501"
+                },
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "minLength": 1,
+                    "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "minLength": 1,
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                },
+                "dateMovedIn": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date at which the applicant moved into this address."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "own",
+                        "family",
+                        "rent-unfurnished",
+                        "rent-furnished",
+                        "rent-council",
+                        "rent-other",
+                        "share",
+                        "living-with-parents"
+                    ]
+                },
+                "mortgage": {
+                    "$ref": "#/domains/CreditCardApplication/types/Mortgage"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Mortgage": {
+            "type": "object",
+            "description": "Mortgage information for the associated address.",
+            "pii": true,
+            "properties": {
+                "monthlyPayment": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The amount paid per month by the credit card applicant."
+                },
+                "jointMonthlyPayment": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "The amount paid per month for a joint mortgage."
+                }
+            },
+            "required": [
+                "monthlyPayment"
+            ],
+            "additionalProperties": false
+        },
+        "Employment": {
+            "type": "object",
+            "description": "Applicant employment details.",
+            "pii": true,
+            "properties": {
+                "companyName": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "industry": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "status": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "employed-fulltime",
+                        "employed-parttime",
+                        "unemployed",
+                        "homemaker",
+                        "self-employed",
+                        "on-benefits",
+                        "retired",
+                        "student"
+                    ]
+                },
+                "jobTitle": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Job title.",
+                    "example": "Computer programmer"
+                },
+                "phone": {
+                    "$ref": "#/domains/Generic/types/Phone"
+                },
+                "grossIncome": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Applicant's total annual gross salary (before tax)."
+                },
+                "netIncome": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Applicant's total annual net salary (after tax)."
+                }
+            },
+            "required": [
+                "status"
+            ],
+            "additionalProperties": false
+        },
+        "Company": {
+            "type": "object",
+            "description": "Applicant company details.",
+            "pii": true,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "industry": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "isFreelancer": {
+                    "type": "boolean"
+                },
+                "employees": {
+                    "type": "number",
+                    "description": "The number employees in the company.",
+                    "example": 48
+                },
+                "monthlyExpenses": {
+                    "type": "string",
+                    "description": "Expected monthly spend on your account.",
+                    "minLength": 1
+                },
+                "annualRevenue": {
+                    "type": "string",
+                    "description": "Company's annual revenue.",
+                    "minLength": 1
+                },
+                "nameOnCard": {
+                    "type": "string",
+                    "description": "Business name on card.",
+                    "minLength": 1
+                },
+                "hasWebsite": {
+                    "type": "boolean"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "MobilePinConfirmation": {
+            "type": "object",
+            "description": "Mobile pin confirmation to confirm the applicant's mobile number.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "pin confirmation code.",
+                    "example": "1234",
+                    "minLength": 3,
+                    "maxLength": 10
+                }
+            },
+            "required": [
+                "code"
+            ],
+            "additionalProperties": false
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Confirmation of the credit card.",
+            "pii": true,
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Credit card confirmation code",
+                    "example": "1234"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Confirmation message from the web page.",
+                    "example": "Your credit card application is confirmed."
+                },
+                "savedUrl": {
+                    "$ref": "#/domains/Generic/types/Link"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features.",
+            "properties": {
+                "skipMobilePinVerification": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "continueAfterSubmittingUrl": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Answers": {
+            "type": "array",
+            "description": "A list of available cover options found on the page.",
+            "minItems": 1,
+            "maxItems": 40,
+            "items": {
+                "$ref": "#/domains/CreditCardApplication/types/Answer"
+            }
+        },
+        "Answer": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "How much do you earn per month?"
+                },
+                "value": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "2000"
+                }
+            },
+            "required": [
+                "key",
+                "value"
+            ],
+            "additionalProperties": false
+        },
+        "Questions": {
+            "type": "array",
+            "description": "A list of available cover options found on the page.",
+            "minItems": 1,
+            "maxItems": 40,
+            "items": {
+                "$ref": "#/domains/CreditCardApplication/types/Question"
+            }
+        },
+        "Question": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "key"
+            ],
+            "additionalProperties": false
+        },
+        "Anything": {
+            "oneOf": [{
+                    "type": "string"
+                },
+                {
+                    "type": "array"
+                },
+                {
+                    "type": "object"
+                },
+                {
+                    "type": "boolean"
+                }
+            ]
+        }
+    },
+    "errors": [{
+            "code": "ConnectionReset",
+            "category": "website",
+            "description": "The supplier reset the TCP connection."
+        },
+        {
+            "code": "AlreadyACustomer",
+            "category": "client",
+            "description": "The customer already has an account with this provider."
+        },
+        {
+            "code": "CreditCardApplicationDeclined",
+            "category": "client",
+            "description": "Credit card application denied by provider."
+        },
+        {
+            "code": "MobilePinVerificationFailed",
+            "category": "client",
+            "description": "Pin verification failed."
+        }
+    ]
+}
