@@ -101,13 +101,13 @@
                     "type": "string",
                     "description": "Street name.",
                     "minLength": 1,
-                    "example": "Twin Peaks Blv"
+                    "example": "Twin Peaks Blv."
                 },
                 "houseName": {
                     "type": "string",
                     "description": "House name.",
                     "minLength": 1,
-                    "example": "Twin Peaks Blv"
+                    "example": "Orchard House."
                 },
                 "houseNumber": {
                     "type": "string",
