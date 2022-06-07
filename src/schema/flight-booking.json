@@ -40,7 +40,10 @@
             "typeRef": "#/domains/Generic/types/Account"
         },
         "accountVerification": {
-            "typeRef": "#/domains/FlightBooking/types/AccountVerification"
+            "typeRef": "#/domains/FlightBooking/types/VerificationString"
+        },
+        "deviceVerification": {
+            "typeRef": "#/domains/FlightBooking/types/VerificationString"
         },
         "passengers": {
             "typeRef": "#/domains/FlightBooking/types/Passengers",
@@ -600,7 +603,7 @@
             ],
             "additionalProperties": false
         },
-        "AccountVerification": {
+        "VerificationString": {
             "type": "string",
             "description": "Account verification challenge, usually a code or a link.",
             "example": "ABC123"
