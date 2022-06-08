@@ -10,9 +10,6 @@
     "src/",
     "out/"
   ],
-  "browser": {
-    "node-fetch": "./fetch-browser.js"
-  },
   "scripts": {
     "clean": "rm -rf out/ public/",
     "check": "tslint --project ./tsconfig.json",
@@ -36,7 +33,6 @@
     "@types/jsonpointer": "^4.0.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^13.1.1",
-    "@types/node-fetch": "^2.5.4",
     "chai": "^4.2.0",
     "css-loader": "^3.4.0",
     "eslint": "^6.4.0",
@@ -60,6 +56,6 @@
   "dependencies": {
     "ajv": "^6.10.2",
     "jsonpointer": "^5.0.0",
-    "node-fetch": "^2.6.0"
+    "isomorphic-fetch": "^3.0.0"
   }
 }

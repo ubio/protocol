@@ -1,5 +1,5 @@
 import { Protocol } from './protocol';
-import fetch from 'node-fetch';
+import 'isomorphic-fetch';
 
 export interface ProtocolProviderOptions {
     url: string;
