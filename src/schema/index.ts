@@ -3,8 +3,8 @@ import Generic from './generic.json';
 import Internal from './internal.json';
 import FlightBooking from './flight-booking.json';
 import CoachBooking from './coach-booking.json';
-// import BookingTVG from './booking-tvg.json';
-// import CancellationTVG from './cancellation-tvg.json';
+import BookingTVG from './booking-tvg.json';
+import CancellationTVG from './cancellation-tvg.json';
 import Checkin from './checkin.json';
 import QRCodeExtraction from './qr-code-extraction.json';
 import ReservationList from './reservation-list.json';
@@ -49,8 +49,8 @@ export const schema = {
         AccountApplication,
         Generic,
         FlightBooking,
-        // BookingTVG,
-        // CancellationTVG,
+        BookingTVG,
+        CancellationTVG,
         CoachBooking,
         Checkin,
         ReservationList,
