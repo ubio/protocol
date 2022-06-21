@@ -39,11 +39,17 @@
         },
         "optionalExtras": {
             "typeRef": "#/domains/BicycleInsurance/types/OptionalExtras"
+        },
+        "selectedPackage": {
+            "typeRef": "#/domains/BicycleInsurance/types/Package"
         }
     },
     "outputs": {
         "coverValues": {
             "typeRef": "#/domains/BicycleInsurance/types/CoverValues"
+        },
+        "availablePackages": {
+            "typeRef": "#/domains/BicycleInsurance/types/AvailablePackages"
         },
         "availablePaymentMethods": {
             "typeRef": "#/domains/BicycleInsurance/types/AvailablePaymentMethods"
@@ -338,6 +344,41 @@
             "properties": {
             },
             "required": [
+            ],
+            "additionalProperties": true
+        },
+        "AvailablePackages": {
+            "type": "array",
+            "description": "An array of Package objects.",
+            "items": { "$ref": "#/domains/BicycleInsurance/types/Package" },
+            "minItems": 1
+        },
+        "Package": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "description": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "monthly": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "annually": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "benefits": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "name"
             ],
             "additionalProperties": true
         }
