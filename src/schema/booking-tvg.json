@@ -122,7 +122,7 @@
         },
         "bookingValueGross": {
             "typeRef": "#/domains/BookingTVG/types/BookingValueGross"
-        } 
+        }
     },
     "types": {
         "JobOutputs": {
