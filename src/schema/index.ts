@@ -13,6 +13,7 @@ import ReservationEdit from './reservation-edit.json';
 import LockManagementEdit from './lock-management-edit.json';
 import LockManagementStatus from './lock-management-status.json';
 import VacationRental from './vacation-rental.json';
+import BicycleInsurance from './bicycle-insurance.json';
 import MotorInsurance from './motor-insurance.json';
 import CreditCardApplication from './credit-card-application.json';
 import LoanApplication from './loan-application.json';
@@ -59,6 +60,7 @@ export const schema = {
         LockManagementEdit,
         LockManagementStatus,
         VacationRental,
+        BicycleInsurance,
         MotorInsurance,
         CreditCardApplication,
         LoanApplication,

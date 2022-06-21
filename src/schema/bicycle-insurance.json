@@ -1,0 +1,347 @@
+{
+    "description": "",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "bikes": {
+            "typeRef": "#/domains/BicycleInsurance/types/Bikes"
+        },
+        "account": {
+            "typeRef": "#/domains/Generic/types/Account"
+        },
+        "applicant": {
+            "typeRef": "#/domains/BicycleInsurance/types/Applicant"
+        },
+        "directDebit": {
+            "typeRef": "#/domains/BicycleInsurance/types/DirectDebit"
+        },
+        "payment": {
+            "typeRef": "#/domains/Generic/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "cover": {
+            "typeRef": "#/domains/BicycleInsurance/types/Cover"
+        },
+        "selectedPaymentMethod": {
+            "typeRef": "#/domains/BicycleInsurance/types/PaymentMethod"
+        },
+        "optionalExtras": {
+            "typeRef": "#/domains/BicycleInsurance/types/OptionalExtras"
+        }
+    },
+    "outputs": {
+        "coverValues": {
+            "typeRef": "#/domains/BicycleInsurance/types/CoverValues"
+        },
+        "availablePaymentMethods": {
+            "typeRef": "#/domains/BicycleInsurance/types/AvailablePaymentMethods"
+        },
+        "estimatedQuote": {
+            "typeRef": "#/domains/BicycleInsurance/types/QuoteValue"
+        },
+        "quote": {
+            "typeRef": "#/domains/BicycleInsurance/types/QuoteValue"
+        },
+        "documents": {
+            "typeRef": "#/domains/Generic/types/Link"
+        },
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "confirmation": {
+            "typeRef": "#/domains/BicycleInsurance/types/Confirmation"
+        }
+    },
+    "types": {
+        "Bikes": {
+            "type": "array",
+            "description": "An array of Bike objects.",
+            "items": { "$ref": "#/domains/BicycleInsurance/types/Bike" },
+            "minItems": 1
+        },
+        "Bike": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": ["road", "mountain", "hybrid", "electric", "folding"]
+                },
+                "make": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "value": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "type",
+                "make",
+                "value"
+            ],
+            "additionalProperties": false
+        },
+        "Applicant": {
+            "type": "object",
+            "properties": {
+                "person": {
+                    "type": "object",
+                    "description": "Basic information about person's identity.",
+                    "pii": true,
+                    "properties": {
+                        "title": {
+                            "type": "string",
+                            "description": "",
+                            "enum": [
+                                "mr",
+                                "miss",
+                                "ms",
+                                "mrs"
+                            ]
+                        },
+                        "firstName": {
+                            "type": "string",
+                            "description": "First name(s) or given name(s), as specified in ID.",
+                            "minLength": 1,
+                            "example": "Bob"
+                        },
+                        "lastName": {
+                            "type": "string",
+                            "description": "Last name or surname, as specified in ID.",
+                            "minLength": 1,
+                            "example": "Smith"
+                        },
+                        "dateOfBirth": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Date of birth YYYY-MM-DD.",
+                            "example": "1980-01-01"
+                        },
+                        "email": {
+                            "type": "string",
+                            "format": "email",
+                            "example": "hello@example.com"
+                        },
+                        "phone": {
+                            "$ref": "#/domains/Generic/types/Phone"
+                        }
+                    },
+                    "required": [
+                        "title",
+                        "firstName",
+                        "lastName",
+                        "dateOfBirth",
+                        "email",
+                        "phone"
+                    ],
+                    "additionalProperties": false
+                },
+                "address": {
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
+                }
+            },
+            "required": [
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
+        },
+        "DirectDebit": {
+            "type": "object",
+            "description": "Account details for direct debit.",
+            "pii": true,
+            "properties": {
+                "sortCode": {
+                    "type": "string",
+                    "description": "Bank sort code",
+                    "pattern": "\\d{2}-?\\d{2}-?\\d{2}",
+                    "example": "56-00-29"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 8,
+                    "description": "Cover marketing name as provided by the insurer.",
+                    "example": "26207729"
+                },
+                "accountName": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "bankName": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "sortCode",
+                "accountNumber",
+                "accountName",
+                "bankName"
+            ],
+            "additionalProperties": false
+        },
+        "CoverValues": {
+            "type": "array",
+            "description": "An array of CoverNameValues objects.",
+            "items": { "$ref": "#/domains/BicycleInsurance/types/CoverNameValues" },
+            "minItems": 0
+        },
+        "CoverNames": {
+            "type": "string",
+            "enum": [
+                "excess",
+                "accessories",
+                "replacementHire",
+                "helmetAndClothing",
+                "noClaimsBonus"
+            ]
+        },
+        "CoverNameValues": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "$ref": "#/domains/BicycleInsurance/types/CoverNames"
+                },
+                "values": {
+                    "type": "array",
+                    "description": "An array of strings.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                }
+            },
+            "required": [
+                "name",
+                "values"
+            ],
+            "additionalProperties": false
+        },
+        "Cover": {
+            "type": "object",
+            "properties": {
+                "startDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of birth YYYY-MM-DD.",
+                    "example": "1980-01-01"
+                },
+                "excess": {
+                    "type": "string"
+                },
+                "accessories": {
+                    "type": "string"
+                },
+                "trailerDetails": {
+                    "type": "string"
+                },
+                "replacementHire": {
+                    "type": "string"
+                },
+                "helmetAndClothing": {
+                    "type": "string"
+                },
+                "noClaimsBonus": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "startDate"
+            ],
+            "additionalProperties": false
+        },
+        "AvailablePaymentMethods": {
+            "type": "array",
+            "description": "An array of PaymentMethod objects.",
+            "items": { "$ref": "#/domains/BicycleInsurance/types/PaymentMethod" },
+            "minItems": 1
+        },
+        "PaymentMethod": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "annually",
+                        "monthly"
+                    ]
+                },
+                "method": {
+                    "type": "string",
+                    "enum": [
+                        "direct-debit",
+                        "credit-card"
+                    ]
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
+            },
+            "required": [
+                "type",
+                "method",
+                "price"
+            ],
+            "additionalProperties": false
+        },
+        "QuoteValue": {
+            "type": "object",
+            "properties": {
+                "monthly": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "annually": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
+            },
+            "required": [
+                "monthly",
+                "annually"
+            ],
+            "additionalProperties": false
+        },
+        "Confirmation": {
+            "type": "object",
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about the successful operation."
+                }
+            },
+            "required": [
+                "message"
+            ],
+            "additionalProperties": false
+        },
+        "OptionalExtras": {
+            "type": "object",
+            "properties": {
+            },
+            "required": [
+            ],
+            "additionalProperties": true
+        }
+    },
+    "errors": [
+    ]
+}
