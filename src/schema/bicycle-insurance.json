@@ -32,7 +32,7 @@
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
         },
         "cover": {
-            "typeRef": "#/domains/BicycleInsurance/types/Cover"
+            "typeRef": "#/domains/BicycleInsurance/types/SelectedOptions"
         },
         "selectedPaymentMethod": {
             "typeRef": "#/domains/BicycleInsurance/types/PaymentMethod"
@@ -46,7 +46,7 @@
     },
     "outputs": {
         "coverValues": {
-            "typeRef": "#/domains/BicycleInsurance/types/CoverValues"
+            "typeRef": "#/domains/BicycleInsurance/types/AvailableOptions"
         },
         "availablePackages": {
             "typeRef": "#/domains/BicycleInsurance/types/AvailablePackages"
@@ -61,7 +61,7 @@
             "typeRef": "#/domains/BicycleInsurance/types/QuoteValue"
         },
         "documents": {
-            "typeRef": "#/domains/Generic/types/Link"
+            "typeRef": "#/domains/BicycleInsurance/types/Documents"
         },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
@@ -92,6 +92,19 @@
                 "value": {
                     "type": "string",
                     "minLength": 1
+                },
+                "dateOfPurchase": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of birth YYYY-MM-DD.",
+                    "example": "1980-01-01"
+                },
+                "condition": {
+                    "type": "string",
+                    "enum": [
+                        "new",
+                        "used"
+                    ]
                 }
             },
             "required": [
@@ -103,6 +116,7 @@
         },
         "Applicant": {
             "type": "object",
+            "pii": true,
             "properties": {
                 "person": {
                     "type": "object",
@@ -198,76 +212,6 @@
                 "accountNumber",
                 "accountName",
                 "bankName"
-            ],
-            "additionalProperties": false
-        },
-        "CoverValues": {
-            "type": "array",
-            "description": "An array of CoverNameValues objects.",
-            "items": { "$ref": "#/domains/BicycleInsurance/types/CoverNameValues" },
-            "minItems": 0
-        },
-        "CoverNames": {
-            "type": "string",
-            "enum": [
-                "excess",
-                "accessories",
-                "replacementHire",
-                "helmetAndClothing",
-                "noClaimsBonus"
-            ]
-        },
-        "CoverNameValues": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "$ref": "#/domains/BicycleInsurance/types/CoverNames"
-                },
-                "values": {
-                    "type": "array",
-                    "description": "An array of strings.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "minItems": 1
-                }
-            },
-            "required": [
-                "name",
-                "values"
-            ],
-            "additionalProperties": false
-        },
-        "Cover": {
-            "type": "object",
-            "properties": {
-                "startDate": {
-                    "type": "string",
-                    "format": "date",
-                    "description": "Date of birth YYYY-MM-DD.",
-                    "example": "1980-01-01"
-                },
-                "excess": {
-                    "type": "string"
-                },
-                "accessories": {
-                    "type": "string"
-                },
-                "trailerDetails": {
-                    "type": "string"
-                },
-                "replacementHire": {
-                    "type": "string"
-                },
-                "helmetAndClothing": {
-                    "type": "string"
-                },
-                "noClaimsBonus": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "startDate"
             ],
             "additionalProperties": false
         },
@@ -381,6 +325,197 @@
                 "name"
             ],
             "additionalProperties": true
+        },
+        "Documents": {
+            "type": "array",
+            "description": "An array of Link objects.",
+            "items": { "$ref": "#/domains/Generic/types/Link" },
+            "minItems": 1
+        },
+        "AvailableOptions": {
+            "type": "array",
+            "description": "Additional options to be filled in.",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/domains/BicycleInsurance/types/AvailableOptionString"
+                    },
+                    {
+                        "$ref": "#/domains/BicycleInsurance/types/AvailableOptionBoolean"
+                    },
+                    {
+                        "$ref": "#/domains/BicycleInsurance/types/AvailableOptionSelectOne"
+                    },
+                    {
+                        "$ref": "#/domains/BicycleInsurance/types/AvailableOptionSelectMany"
+                    }
+                ]
+            }
+        },
+        "AvailableOptionString": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "String" ] },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableOptionBoolean": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "Boolean" ] },
+                "label": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableOptionSelectOne": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectOne" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableOptionSelectMany": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectMany" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptions": {
+            "type": "array",
+            "description": "Additional options to fill in.",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/domains/BicycleInsurance/types/SelectedOptionString"
+                    },
+                    {
+                        "$ref": "#/domains/BicycleInsurance/types/SelectedOptionBoolean"
+                    },
+                    {
+                        "$ref": "#/domains/BicycleInsurance/types/SelectedOptionSelectOne"
+                    },
+                    {
+                        "$ref": "#/domains/BicycleInsurance/types/SelectedOptionSelectMany"
+                    }
+                ]
+            }
+        },
+        "SelectedOptionString": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "String" ] },
+                "label": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "text"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptionBoolean": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "String" ] },
+                "label": {
+                    "type": "string"
+                },
+                "option": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "option"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptionSelectOne": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectOne" ] },
+                "label": {
+                    "type": "string"
+                },
+                "option": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "option"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedOptionSelectMany": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "SelectMany" ] },
+                "label": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "inputType",
+                "label",
+                "options"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
