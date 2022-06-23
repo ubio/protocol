@@ -34,6 +34,9 @@
         "cover": {
             "typeRef": "#/domains/BicycleInsurance/types/SelectedOptions"
         },
+        "coverStartDate": {
+            "typeRef": "#/domains/BicycleInsurance/types/CoverStartDate"
+        },
         "selectedPaymentMethod": {
             "typeRef": "#/domains/BicycleInsurance/types/PaymentMethod"
         },
@@ -516,6 +519,12 @@
                 "options"
             ],
             "additionalProperties": false
+        },
+        "CoverStartDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The date the cover starts on.",
+            "example": "1980-01-01"
         }
     },
     "errors": [
