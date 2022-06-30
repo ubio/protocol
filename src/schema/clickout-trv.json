@@ -1,0 +1,38 @@
+{
+    "description": "Spidering Trivago to get a Forearder Url.",
+    "private": false,
+    "inputs": {
+        "Url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "AdvertiserId": {
+            "typeRef": "#/domains/ClickoutTRV/types/String"
+        },
+        "TrvEmail": {
+            "typeRef": "#/domains/ClickoutTRV/types/Email"
+        },
+        "TrvPassword": {
+            "typeRef": "#/domains/ClickoutTRV/types/String"
+        }
+    },
+    "outputs": {
+        "ForewarderUrl": {
+            "typeRef": "#/domains/Generic/types/URL"
+        },
+        "ClickoutPrice": {
+            "typeRef": "#/domains/Generic/types/Price"
+        }
+    },
+    "types": {
+        "String": {
+            "type": "string"
+        },
+        "Email": {
+            "type": "string",
+            "format": "email"
+        }
+    },
+    "errors": []
+}

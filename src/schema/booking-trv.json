@@ -1,0 +1,84 @@
+{
+    "description": "Allows automating hotel booking on individual suppliers and OTAs.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Url of Forewarder which will be redirected to advertisers landing page."
+        },
+        "GuestFirstName": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "GuestLastName": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "GuestEmail": {
+            "typeRef": "#/domains/BookingTRV/types/Email"
+        },
+        "GuestNumber": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "GuestStreet": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "GuestCity": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "GuestZip": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "CardPanToken": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "CardInfoToken": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        }
+    },
+    "outputs": {
+        "BookingId": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "BookingUrl": {
+            "typeRef": "#/domains/Generic/types/URL"
+        },
+        "ClickoutPrice": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "AdvertiserLpPrice": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "BookingPriceNet": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "BookingPriceTax": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "BookingPriceGross": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "TrvReference": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "BookingTimestamp": {
+            "typeRef": "#/domains/BookingTRV/types/UnixTimestamp"
+        },
+        "ClickoutTimestamp": {
+            "typeRef": "#/domains/BookingTRV/types/UnixTimestamp"
+        }
+    },
+    "types": {
+        "Email": {
+            "type": "string",
+            "format": "email"
+        },
+        "String": {
+            "type": "string"
+        },
+        "UnixTimestamp": {
+            "type": "string",
+            "pattern": "^\\d+$"
+        }
+    },
+    "errors": []
+}
