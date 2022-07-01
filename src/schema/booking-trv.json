@@ -1,83 +1,78 @@
 {
-    "description": "Allows automating hotel booking on individual suppliers and OTAs.",
+    "description": "Automating hotel booking.",
     "private": false,
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "initial": true,
-            "description": "Url of Forewarder which will be redirected to advertisers landing page."
+            "description": "Url of Forwarder which will be redirected to advertisers landing page."
         },
-        "GuestFirstName": {
+        "guest_first_name": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "GuestLastName": {
+        "guest_last_name": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "GuestEmail": {
-            "typeRef": "#/domains/BookingTRV/types/Email"
-        },
-        "GuestNumber": {
+        "guest_email": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "GuestStreet": {
+        "guest_number": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "GuestCity": {
+        "guest_street": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "GuestZip": {
+        "guest_city": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "CardPanToken": {
+        "guest_zip": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "CardInfoToken": {
+        "card_pan_token": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "card_expiration_date": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "card_cvv": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "card_bank_name": {
             "typeRef": "#/domains/BookingTRV/types/String"
         }
     },
     "outputs": {
-        "BookingId": {
+        "advertiser_lp_price": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "booking_price_net": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "booking_price_tax": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "booking_price_gross": {
+            "typeRef": "#/domains/Generic/types/Price"
+        },
+        "trv_reference": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "BookingUrl": {
-            "typeRef": "#/domains/Generic/types/URL"
-        },
-        "ClickoutPrice": {
-            "typeRef": "#/domains/Generic/types/Price"
-        },
-        "AdvertiserLpPrice": {
-            "typeRef": "#/domains/Generic/types/Price"
-        },
-        "BookingPriceNet": {
-            "typeRef": "#/domains/Generic/types/Price"
-        },
-        "BookingPriceTax": {
-            "typeRef": "#/domains/Generic/types/Price"
-        },
-        "BookingPriceGross": {
-            "typeRef": "#/domains/Generic/types/Price"
-        },
-        "TrvReference": {
+        "booking_id": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "BookingTimestamp": {
-            "typeRef": "#/domains/BookingTRV/types/UnixTimestamp"
+        "booking_timestamp": {
+            "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "ClickoutTimestamp": {
-            "typeRef": "#/domains/BookingTRV/types/UnixTimestamp"
+        "clickout_timestamp": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "booking_url": {
+            "typeRef": "#/domains/BookingTRV/types/String"
         }
     },
     "types": {
-        "Email": {
-            "type": "string",
-            "format": "email"
-        },
         "String": {
             "type": "string"
-        },
-        "UnixTimestamp": {
-            "type": "string",
-            "pattern": "^\\d+$"
         }
     },
     "errors": []
