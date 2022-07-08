@@ -35,6 +35,9 @@
                 "phone": {
                     "description": "Account phone number, may also be used as contact details.",
                     "$ref": "#/domains/Generic/types/Phone"
+                "nationality": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Nationality according to passport."
                 }
             },
             "required": [
