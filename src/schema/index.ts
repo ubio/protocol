@@ -2,6 +2,7 @@ import AccountApplication from './account-application.json';
 import Generic from './generic.json';
 import Internal from './internal.json';
 import FlightBooking from './flight-booking.json';
+import FlightBookingAccountSignup from './flight-booking-account-signup.json';
 import CoachBooking from './coach-booking.json';
 import BookingTVG from './booking-tvg.json';
 import CancellationTVG from './cancellation-tvg.json';
@@ -50,6 +51,7 @@ export const schema = {
         AccountApplication,
         Generic,
         FlightBooking,
+        FlightBookingAccountSignup,
         BookingTVG,
         CancellationTVG,
         CoachBooking,
