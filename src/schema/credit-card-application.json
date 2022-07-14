@@ -43,6 +43,9 @@
         "debug": {
             "typeRef": "#/domains/CreditCardApplication/types/Anything"
         },
+        "keyTerms": {
+            "typeRef": "#/domains/CreditCardApplication/types/KeyTerms"
+        },
         "confirmation": {
             "typeRef": "#/domains/CreditCardApplication/types/Confirmation"
         }
@@ -402,6 +405,34 @@
                     "type": "boolean"
                 }
             ]
+        },
+        "KeyTerms": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "creditCardLimit": {
+                    "type": "integer",
+                    "minLength": 1
+                },
+                "term": {
+                    "type": "integer",
+                    "minLength": 1
+                },
+                "minimumMonthlyRepayment": {
+                    "type": "integer",
+                    "minLength": 1
+                },
+                "apr": {
+                    "type": "integer",
+                    "minLength": 1
+                },
+                "totalAmountPayable": {
+                    "type": "integer",
+                    "minLength": 1
+                }     
+            },
+            "required": [],
+            "additionalProperties": false
         }
     },
     "errors": [{

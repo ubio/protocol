@@ -130,6 +130,9 @@
         "debug": {
             "typeRef": "#/domains/LoanApplication/types/Anything"
         },
+        "keyTerms": {
+            "typeRef": "#/domains/LoanApplication/types/KeyTerms"
+        },
         "financialPromotionRepresentativeSample": {
             "typeRef": "#/domains/LoanApplication/types/FinancialPromotionRepresentativeSample"
         }
@@ -1019,6 +1022,34 @@
                 }
             ]
         }
+    },
+    "KeyTerms": {
+        "type": "object",
+        "pii": true,
+        "properties": {
+            "loanAmount": {
+                "type": "integer",
+                "minLength": 1
+            },
+            "term": {
+                "type": "integer",
+                "minLength": 1
+            },
+            "monthlyRepayment": {
+                "type": "integer",
+                "minLength": 1
+            },
+            "apr": {
+                "type": "integer",
+                "minLength": 1
+            },
+            "totalAmountPayable": {
+                "type": "integer",
+                "minLength": 1
+            }     
+        },
+        "required": [],
+        "additionalProperties": false
     },
     "errors": [
         {
