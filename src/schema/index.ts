@@ -4,8 +4,8 @@ import Internal from './internal.json';
 import FlightBooking from './flight-booking.json';
 import FlightBookingAccountSignup from './flight-booking-account-signup.json';
 import CoachBooking from './coach-booking.json';
-import BookingTVG from './booking-tvg.json';
-import CancellationTVG from './cancellation-tvg.json';
+import BookingTRV from './booking-trv.json';
+import ClickoutTRV from './clickout-trv.json';
 import Checkin from './checkin.json';
 import QRCodeExtraction from './qr-code-extraction.json';
 import ReservationList from './reservation-list.json';
@@ -51,9 +51,8 @@ export const schema = {
         AccountApplication,
         Generic,
         FlightBooking,
-        FlightBookingAccountSignup,
-        BookingTVG,
-        CancellationTVG,
+        BookingTRV,
+        ClickoutTRV,
         CoachBooking,
         Checkin,
         ReservationList,

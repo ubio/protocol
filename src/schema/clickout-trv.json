@@ -1,0 +1,38 @@
+{
+    "description": "Spidering Trivago to get a Forwarder Url.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "advertiser_id": {
+            "typeRef": "#/domains/ClickoutTRV/types/String"
+        },
+        "trv_email": {
+            "typeRef": "#/domains/ClickoutTRV/types/String"
+        },
+        "trv_password": {
+            "typeRef": "#/domains/ClickoutTRV/types/String"
+        }
+    },
+    "outputs": {
+        "forwarder_url": {
+            "typeRef": "#/domains/ClickoutTRV/types/String"
+        },
+        "clickout_price": {
+            "typeRef": "#/domains/Generic/types/Price"
+        }
+    },
+    "types": {
+        "String": {
+            "type": "string"
+        },
+        "Email": {
+            "type": "string",
+            "format": "email"
+        }
+    },
+    "errors": []
+}
