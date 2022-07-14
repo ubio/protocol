@@ -1021,35 +1021,35 @@
                     "type": "boolean"
                 }
             ]
-        }
-    },
-    "KeyTerms": {
-        "type": "object",
-        "pii": true,
-        "properties": {
-            "loanAmount": {
-                "type": "integer",
-                "minLength": 1
-            },
-            "term": {
-                "type": "integer",
-                "minLength": 1
-            },
-            "monthlyRepayment": {
-                "type": "integer",
-                "minLength": 1
-            },
-            "apr": {
-                "type": "integer",
-                "minLength": 1
-            },
-            "totalAmountPayable": {
-                "type": "integer",
-                "minLength": 1
-            }     
         },
-        "required": [],
-        "additionalProperties": false
+        "KeyTerms": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "loanAmount": {
+                    "type": "integer",
+                    "minLength": 1
+                },
+                "term": {
+                    "type": "integer",
+                    "minLength": 1
+                },
+                "monthlyRepayment": {
+                    "type": "integer",
+                    "minLength": 1
+                },
+                "apr": {
+                    "type": "integer",
+                    "minLength": 1
+                },
+                "totalAmountPayable": {
+                    "type": "integer",
+                    "minLength": 1
+                }     
+            },
+            "required": [],
+            "additionalProperties": false
+        }
     },
     "errors": [
         {
