@@ -16,10 +16,13 @@
         "guest_email": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
-        "guest_number": {
+        "guest_phone_number": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
         "guest_street": {
+            "typeRef": "#/domains/BookingTRV/types/String"
+        },
+        "guest_house_number": {
             "typeRef": "#/domains/BookingTRV/types/String"
         },
         "guest_city": {
