@@ -78,5 +78,21 @@
             "type": "string"
         }
     },
-    "errors": []
+    "errors": [
+        {
+            "code": "JobInputError",
+            "category": "client",
+            "description": "Raise if the job failed due to the inputs to the script being faulty (NA etc.)"
+        },
+        {
+            "code": "JobPageError",
+            "category": "client",
+            "description": "Raise if the job failed because some error was encountered on the spidered page"
+        },
+        {
+            "code": "JobPaymentError",
+            "category": "client",
+            "description": "Raise if the job failed because the payment or creditcard got rejected"
+        }
+    ]
 }
