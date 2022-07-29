@@ -68,24 +68,36 @@
                     "type": "boolean",
                     "description": "True if cookie is secure."
                 },
+                "session": {
+                    "type": "boolean",
+                    "description": "True if cookie is a session cookie."
+                },
+                "priority": {
+                    "type": "string",
+                    "description": "Cookie priority."
+                },
                 "httpOnly": {
                     "type": "boolean",
                     "description": "True if cookie is http-only."
                 },
                 "sameSite": {
-                    "enum": ["Strict", "Lax"],
+                    "type": "string",
                     "description": "Cookie same-site type."
                 },
                 "expires": {
                     "type": "number",
                     "description": "Expiration date in seconds since the epoch (January 1, 1970 UTC)."
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Size of the cookie."
                 }
             },
             "required": [
                 "name",
                 "value"
             ],
-            "additionalProperties": false
+            "additionalProperties": true
         },
         "Account": {
             "type": "object",
