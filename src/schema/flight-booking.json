@@ -12,6 +12,11 @@
             "default": {},
             "initial": true
         },
+        "cookies": {
+            "typeRef": "#/domains/Generic/types/Cookies",
+            "default": [],
+            "initial": true
+        },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
