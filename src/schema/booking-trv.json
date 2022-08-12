@@ -78,5 +78,21 @@
             "type": "string"
         }
     },
-    "errors": []
+    "errors": [
+        {
+            "code": "JobInputError",
+            "category": "server",
+            "description": "Script inputs are faulty"
+        },
+        {
+            "code": "JobPaymentError",
+            "category": "client",
+            "description": "Payment failed"
+        },
+        {
+            "code": "JobPageError",
+            "category": "client",
+            "description": "An Error occurred on the crawled page"
+        }
+    ]
 }
