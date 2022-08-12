@@ -1083,6 +1083,11 @@
             "description":"Loan application denied by lender."
         },
         {
+            "code": "LoanApplicationSuperseded",
+            "category": "client",
+            "description":"Loan application is superseded."
+        },
+        {
             "code": "MobilePinVerificationFailed",
             "category": "client",
             "description":"Pin verification failed."
