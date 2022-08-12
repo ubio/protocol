@@ -74,7 +74,7 @@
             "inputMethod": "SelectOne"
         },
         "selectedSeats": {
-            "typeRef": "#/domains/FlightBooking/types/SelectedSeats",
+            "typeRef": "#/domains/FlightBooking/types/SelectedSegmentSeats",
             "sourceOutputKey": "availableSeats",
             "inputMethod": "SeatSelection",
             "dynamic": true
@@ -109,7 +109,7 @@
             "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
         "availableSeats": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableSeats",
+            "typeRef": "#/domains/FlightBooking/types/AvailableSegmentSeats",
             "dynamic": true
         },
         "availableFrequentFlyerProgrammes": {
@@ -420,12 +420,7 @@
                 "price"
             ]
         },
-        "SelectedSeats": {
-            "type": "array",
-            "description": "An array of selected seats.",
-            "items": { "$ref": "#/domains/FlightBooking/types/SelectedSeat" }
-        },
-        "SelectedSeat": {
+        "SelectedSegmentSeats": {
             "type": "object",
             "description": "Selected seats information.",
             "properties": {
@@ -445,12 +440,7 @@
             ],
             "additionalProperties": false
         },
-        "AvailableSeats": {
-            "type": "array",
-            "description": "An array of available seats.",
-            "items": { "$ref": "#/domains/FlightBooking/types/AvailableSeat" }
-        },
-        "AvailableSeat": {
+        "AvailableSegmentSeats": {
             "type": "object",
             "description": "Seat availability information.",
             "properties": {
