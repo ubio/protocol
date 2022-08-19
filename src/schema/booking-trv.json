@@ -81,7 +81,7 @@
     "errors": [
         {
             "code": "JobInputError",
-            "category": "server",
+            "category": "client",
             "description": "Script inputs are faulty"
         },
         {
