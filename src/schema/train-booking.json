@@ -773,7 +773,7 @@
             "description": "The website invalidates some of the passenger details."
         },
         {
-            "code": "DocumentDetailsInavlid",
+            "code": "DocumentDetailsInvalid",
             "category": "client",
             "description": "The website invalidates the document details."
         },
