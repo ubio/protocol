@@ -529,5 +529,30 @@
         }
     },
     "errors": [
+        {
+            "code": "AccountDetailsInvalid",
+            "category": "client",
+            "description": "The account details are invalid"
+        },
+        {
+            "code": "BicycleDetailsInvalid",
+            "category": "client",
+            "description": "The bicycle details are invalid"
+        },
+        {
+            "code": "DirectDebitDetailsInvalid",
+            "category": "client",
+            "description": "The direct debit details are invalid"
+        },
+        {
+            "code": "ApplicantDetailsInvalid",
+            "category": "client",
+            "description": "The applicant's details are invalid"
+        },
+        {
+            "code": "QuoteNotAvailableOnline",
+            "category": "website",
+            "description": "The requested quote is not available online"
+        }
     ]
 }
