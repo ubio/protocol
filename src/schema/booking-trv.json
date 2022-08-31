@@ -93,6 +93,11 @@
             "code": "JobPageError",
             "category": "client",
             "description": "An Error occurred on the crawled page"
+        },
+        {
+            "code": "ContextLimitError",
+            "category": "client",
+            "description": "No Context with non reached visit limit matches"
         }
     ]
 }
