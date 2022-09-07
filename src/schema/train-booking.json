@@ -282,7 +282,7 @@
                     "type": "string",
                     "description": "Fare cancellation type.",
                     "example": "rebookable",
-                    "enum": ["rebookable", "non-rebookable", "refundable"]
+                    "enum": ["rebookable", "non-rebookable", "refundable", "unknown"]
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
