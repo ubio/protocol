@@ -1,6 +1,10 @@
 {
     "description": "",
     "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/reference"
+    },
     "inputs": {
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
