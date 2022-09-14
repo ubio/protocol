@@ -245,7 +245,8 @@
                     "type": "string",
                     "enum": [
                         "direct-debit",
-                        "credit-card"
+                        "credit-card",
+                        "mixed"
                     ]
                 },
                 "price": {
