@@ -282,7 +282,7 @@
                     "type": "string",
                     "description": "Fare cancellation type.",
                     "example": "rebookable",
-                    "enum": ["rebookable", "non-rebookable", "refundable"]
+                    "enum": ["rebookable", "non-rebookable", "refundable", "unknown"]
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
@@ -315,7 +315,7 @@
                     "type": "string",
                     "description": "Fare cancellation type.",
                     "example": "rebookable",
-                    "enum": ["rebookable", "non-rebookable", "refundable"]
+                    "enum": ["rebookable", "non-rebookable", "refundable", "unknown"]
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
@@ -773,7 +773,7 @@
             "description": "The website invalidates some of the passenger details."
         },
         {
-            "code": "DocumentDetailsInavlid",
+            "code": "DocumentDetailsInvalid",
             "category": "client",
             "description": "The website invalidates the document details."
         },

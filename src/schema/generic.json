@@ -41,7 +41,7 @@
         },
         "Cookie": {
             "type": "object",
-            "description": "An object which defines a cookie. For more information on the fields of this object, see <a href=\"https://tools.ietf.org/html/rfc6265#section-5.2\" target=\"_blank\" rel=\"noopener\">RFC 6265 section 5.2</a>.",
+            "description": "An object which defines a cookie. It must either contain a URL or a domain, alongisde name and value. For more information on the fields of this object, see <a href=\"https://tools.ietf.org/html/rfc6265#section-5.2\" target=\"_blank\" rel=\"noopener\">RFC 6265 section 5.2</a>.",
             "properties": {
                 "name": {
                     "type": "string",
@@ -68,25 +68,36 @@
                     "type": "boolean",
                     "description": "True if cookie is secure."
                 },
+                "session": {
+                    "type": "boolean",
+                    "description": "True if cookie is a session cookie."
+                },
+                "priority": {
+                    "type": "string",
+                    "description": "Cookie priority."
+                },
                 "httpOnly": {
                     "type": "boolean",
                     "description": "True if cookie is http-only."
                 },
                 "sameSite": {
-                    "enum": ["Strict", "Lax"],
+                    "type": "string",
                     "description": "Cookie same-site type."
                 },
                 "expires": {
                     "type": "number",
                     "description": "Expiration date in seconds since the epoch (January 1, 1970 UTC)."
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Size of the cookie."
                 }
             },
             "required": [
                 "name",
-                "value",
-                "url"
+                "value"
             ],
-            "additionalProperties": false
+            "additionalProperties": true
         },
         "Account": {
             "type": "object",
