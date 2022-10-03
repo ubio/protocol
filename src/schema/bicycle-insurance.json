@@ -232,6 +232,16 @@
             "minItems": 1
         },
         "PaymentMethod": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/BicycleInsurance/types/PaymentMethodPrice"
+                },
+                {
+                    "$ref": "#/domains/BicycleInsurance/types/PaymentMethodTotal"
+                }
+            ]
+        },
+        "PaymentMethodPrice": {
             "type": "object",
             "properties": {
                 "type": {
@@ -257,6 +267,39 @@
                 "type",
                 "method",
                 "price"
+            ],
+            "additionalProperties": false
+        },
+        "PaymentMethodTotal": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "annually",
+                        "monthly"
+                    ]
+                },
+                "method": {
+                    "type": "string",
+                    "enum": [
+                        "direct-debit",
+                        "credit-card",
+                        "mixed"
+                    ]
+                },
+                "monthly": {
+                    "$ref": "#/domains/Generic/types/Price"
+                },
+                "total": {
+                    "$ref": "#/domains/Generic/types/Price"
+                }
+            },
+            "required": [
+                "type",
+                "method",
+                "monthly",
+                "total"
             ],
             "additionalProperties": false
         },
