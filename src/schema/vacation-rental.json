@@ -137,6 +137,9 @@
                     "description": "Booking reference grabbed from the page.",
                     "example": "RL2XYZ"
                 },
+                "PIN": {
+                    "type": "string"
+                },
                 "message": {
                     "type": "string",
                     "description": "Message about successful booking.",
