@@ -86,6 +86,9 @@
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent",
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided."
+        },
+        "cancelBooking": {
+            "typeRef": "#/domains/FlightBooking/types/Boolean"
         }
     },
     "outputs": {
@@ -600,6 +603,10 @@
             "type": "string",
             "description": "Account verification challenge, usually a code or a link.",
             "example": "ABC123"
+        },
+        "Boolean": {
+            "type": "boolean",
+            "example": false
         }
     },
     "errors": [
