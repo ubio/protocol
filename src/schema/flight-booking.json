@@ -712,6 +712,11 @@
             "code": "VoucherDetailsInvalid",
             "category": "client",
             "description": "The website claims this voucher's details are not valid (number or name mismatch)."
+        },
+        {
+            "code": "PriceCheck",
+            "category": "client",
+            "description": "This was a price check, not a booking attempt."
         }
     ]
 }
