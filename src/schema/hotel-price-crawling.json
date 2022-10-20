@@ -95,6 +95,7 @@
             "properties": {
                 "name": {
                     "type": "string",
+                    "maxLength": 200,
                     "description": "The name of the room, as presented to users."
                 },
                 "id": {
@@ -138,6 +139,7 @@
             "properties": {
                 "name": {
                     "type": "string",
+                    "maxLength": 200,
                     "description": "The name of the rate, as presented to users."
                 },
                 "id": {
@@ -187,6 +189,7 @@
                 },
                 "name": {
                     "type": "string",
+                    "maxLength": 200,
                     "description": "Name of the hotel."
                 },
                 "language": {
