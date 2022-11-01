@@ -23,6 +23,9 @@
         "directDebit": {
             "typeRef": "#/domains/BicycleInsurance/types/DirectDebit"
         },
+        "selectedAddress": {
+            "typeRef": "#/domains/BicycleInsurance/types/Address"
+        },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
@@ -60,6 +63,9 @@
         },
         "availablePaymentMethods": {
             "typeRef": "#/domains/BicycleInsurance/types/AvailablePaymentMethods"
+        },
+        "availableAddresses": {
+            "typeRef": "#/domains/BicycleInsurance/types/AvailableAddresses"
         },
         "estimatedQuote": {
             "typeRef": "#/domains/BicycleInsurance/types/QuoteValue"
@@ -342,6 +348,15 @@
             "required": [
             ],
             "additionalProperties": true
+        },
+        "AvailableAddresses": {
+            "type": "array",
+            "description": "An array of Addresses.",
+            "items": { "$ref": "#/domains/BicycleInsurance/types/Address" },
+            "minItems": 1
+        },
+        "Address": {
+            "type": "string"
         },
         "AvailablePackages": {
             "type": "array",
