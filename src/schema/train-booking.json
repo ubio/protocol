@@ -699,7 +699,13 @@
         },
         "Options": {
             "type": "object",
-            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end."
+            "description": "Flags for enabling optional automation features such as upsells and additional features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "properties": {
+                "priceCheck": {
+                    "type": "boolean",
+                    "default": false
+                }
+            }
         },
         "BookingConfirmation": {
             "type": "object",

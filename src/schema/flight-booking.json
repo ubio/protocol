@@ -179,6 +179,13 @@
                 },
                 "lhBookingRef": {
                     "type": "string"
+                },
+                "clientReference": {
+                    "type": "string"
+                },
+                "priceCheck": {
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
