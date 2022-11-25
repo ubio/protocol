@@ -700,6 +700,11 @@
             "description": "Client asked for seat selection but it's not available for the website"
         },
         {
+            "code": "LoadingFailed",
+            "category": "client",
+            "description": "A website issue in which the page gets stuck in infinite loading."
+        },
+        {
             "code": "LuggageCannotBeAdded",
             "category": "client",
             "description": "Luggage cannot be added",
