@@ -754,6 +754,11 @@
             "description": "Given outbound fare does not match one of the options we are expecting."
         },
         {
+            "code": "LoadingFailed",
+            "category": "client",
+            "description": "A website issue in which the page gets stuck in infinite loading."
+        },
+        {
             "code": "NoJourneysAvailable",
             "category": "client",
             "description": "When the search returns no results."
