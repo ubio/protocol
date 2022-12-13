@@ -98,6 +98,11 @@
             "code": "ContextLimitError",
             "category": "client",
             "description": "No Context with non reached visit limit matches"
+        },
+        {
+            "code": "JobBotDetectionError",
+            "category": "client",
+            "description": "The automation was detected as a bot"
         }
     ]
 }
