@@ -1,0 +1,191 @@
+{
+    "description": "Enables booking hotel rooms.",
+    "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/reference"
+    },
+    "inputs": {
+        "search": {
+            "typeRef": "#/domains/HotelRoomBooking/types/Search"
+		},
+        "roomId": {
+            "typeRef": "#/domains/HotelRoomBooking/types/String",
+            "description": "Identifier of the room to be booked."
+        },
+		"rateId": {
+            "typeRef": "#/domains/HotelRoomBooking/types/String",
+            "description": "Identifier of the rate to be booked."
+		},
+        "mainGuest": {
+            "typeRef": "#/domains/HotelRoomBooking/types/MainGuest",
+            "description": "Personal details about the main guest.",
+            "canonical": [
+                "/person",
+                "/contact/email"
+            ]
+        },
+        "payment": {
+            "typeRef": "#/domains/HotelRoomBooking/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
+        },
+        "finalPriceConsent": {
+            "typeRef": "#/domains/Generic/types/PriceConsent",
+            "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
+            "sourceOutputKey": "finalPrice",
+            "inputMethod": "Consent"
+        }
+    },
+    "outputs": {
+        "finalPrice": {
+            "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
+            "typeRef": "#/domains/Generic/types/PriceConsent"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/HotelRoomBooking/types/BookingConfirmation"
+        }
+    },
+    "types": {
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "reference"
+            ]
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
+                "person": { "$ref": "#/domains/HotelRoomBooking/types/Person" },
+                "address": { "$ref": "#/domains/Generic/types/Address" }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity.",
+            "pii": true,
+            "properties": {
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "GuestContact": {
+            "type": "object",
+            "properties": {
+                "phone": {
+                    "$ref": "#/domains/Generic/types/AnyPhoneString"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address used for contact.",
+                    "format": "email",
+                    "example": "client@example.com"
+                }
+            },
+            "required": [
+                "phone",
+                "email"
+            ],
+            "additionalProperties": false
+        },
+        "MainGuest": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/HotelRoomBooking/types/Person"
+                },
+                "contact": {
+                    "$ref": "#/domains/HotelRoomBooking/types/GuestContact"
+                }
+            },
+            "required": [
+                "person",
+                "contact"
+            ],
+            "additionalProperties": false
+        },
+		"String": {
+            "type": "string"
+		},
+        "Search": {
+            "type": "object",
+            "properties": {
+                "hotelId": {
+                    "type": "string",
+                    "description": "UBIO hotel identifier"
+                },
+                "checkIn": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2023-06-27"
+                },
+                "nights": {
+                    "type": "integer",
+					"example": 2
+                },
+                "guests": {
+                    "type": "integer",
+					"example": 2
+                }
+            },
+            "required": [
+                "hotelId",
+                "checkIn",
+                "nights",
+				"guests"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+        {
+            "code": "RoomNotAvailable",
+            "category": "client",
+            "description": "The website claims that the room is not available for the search criteria."
+        }
+    ]
+}
