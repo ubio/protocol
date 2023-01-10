@@ -64,36 +64,7 @@
             "description": "A list of available tickets found on the website.",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/TravelTicketRetrieval/types/Ticket" }
-        },
-        "Ticket": {
-            "oneOf": [
-                {
-                    "type": "object",
-                    "description": "Extracted tickets fom the page.",
-                    "properties": {
-                        "direction": {
-                            "type": "string",
-                            "description": "",
-                            "enum": [
-                                "outbound",
-                                "inbound"
-                            ]
-                        },
-                        "name": {
-                            "type": "string"
-                        },
-                        "url": {"$ref": "#/domains/Generic/types/URL"}
-                    },
-                    "additionalProperties": false,
-                    "required": [
-                        "direction",
-                        "url"
-                    ]
-                }, {
-                "$ref": "#/domains/Generic/types/File"
-                }
-            ]
+            "items": { "$ref": "#/domains/Generic/types/File" }
         }
     },
     "errors": [
