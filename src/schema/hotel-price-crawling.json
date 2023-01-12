@@ -146,6 +146,10 @@
                     "type": "string",
                     "description": "A rate identifier, unique per hotel"
                 },
+                "rule": {
+                    "type": "string",
+                    "description": "A rate rule ID, e.g. 'member' or 'mobile'"
+                },
                 "description": {
                     "type": "string"
                 },
