@@ -382,6 +382,13 @@
                     "maximum": 3,
                     "default": 0
                 },
+                "additionalLuggage": {
+                    "type": "array",
+                    "description": "A list of additional luggage to be purchased for the passenger.",
+                    "minItems": 1,
+                    "maxItems": 9,
+                    "items": { "$ref": "#/domains/FlightBooking/types/LuggageSimple" }
+                },
                 "document": {
                     "$ref": "#/domains/Generic/types/IdentityDocument"
                 },
@@ -393,8 +400,7 @@
                 "title",
                 "firstName",
                 "lastName",
-                "dateOfBirth",
-                "addAdditionalLuggage"
+                "dateOfBirth"
             ],
             "additionalProperties": false
         },
@@ -422,10 +428,82 @@
                     "items": { "$ref": "#/domains/Generic/types/StructuredTextItem" }
                 }
             },
+            "luggage": {
+                "$ref": "#/domains/FlightBooking/types/LuggageSimple"
+            },
             "required": [
                 "fareName",
                 "cabinClass",
                 "price"
+            ]
+        },
+        "LuggageSimple": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [ "under-seat", "cabin", "checked" ],
+                    "example": "economy"
+                },
+                "count": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "example": 1
+                },
+                "weight": {
+                    "type": "string",
+                    "example": "10kg"
+                },
+                "size": {
+                    "type": "string",
+                    "example": "40cm x 20cm x 25cm"
+                }
+            },
+            "required": [
+                "type",
+                "count"
+            ]
+        },
+        "LuggageWithPrice": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [ "under-seat", "cabin", "checked" ],
+                    "example": "economy"
+                },
+                "weight": {
+                    "type": "string",
+                    "example": "10kg"
+                },
+                "size": {
+                    "type": "string",
+                    "example": "40cm x 20cm x 25cm"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Luggage price."
+                },
+                "maxPerPassenger": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "example": 1
+                },
+                "maxPerGroup": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 20,
+                    "example": 1
+                }
+            },
+            "required": [
+                "type",
+                "price",
+                "weight"
             ]
         },
         "SelectedSegmentSeats": {
