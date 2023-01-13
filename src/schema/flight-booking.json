@@ -109,6 +109,10 @@
             "typeRef": "#/domains/FlightBooking/types/AvailableFares",
             "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
+        "selectableLuggage": {
+            "typeRef": "#/domains/FlightBooking/types/LuggageWithPrice",
+            "description": "The luggage which can be selected for the passengers."
+        },
         "availableSeats": {
             "typeRef": "#/domains/FlightBooking/types/AvailableSegmentSeats",
             "dynamic": true
@@ -515,7 +519,7 @@
                 },
                 "price": {
                     "$ref": "#/domains/Generic/types/Price",
-                    "description": "Luggage price."
+                    "description": "Luggage price. This is the cost of luggage"
                 },
                 "maxPerPassenger": {
                     "type": "number",
