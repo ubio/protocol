@@ -426,10 +426,10 @@
                 "services": {
                     "type": "array",
                     "items": { "$ref": "#/domains/Generic/types/StructuredTextItem" }
+                },
+                "luggage": {
+                    "$ref": "#/domains/FlightBooking/types/LuggageSimple"
                 }
-            },
-            "luggage": {
-                "$ref": "#/domains/FlightBooking/types/LuggageSimple"
             },
             "required": [
                 "fareName",
