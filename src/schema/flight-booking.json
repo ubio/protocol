@@ -54,7 +54,7 @@
             ]
         },
         "additionalLuggage": {
-            "typeRef": "#/domains/FlightBooking/types/ListOfLuggageWithWeight",
+            "typeRef": "#/domains/FlightBooking/types/PassengersAdditionalLuggage",
             "description": "A list of additional luggage to be purchased per passenger. The cartinality of this array must match the one of passengers."
         },
         "payment": {
