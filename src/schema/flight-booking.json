@@ -53,6 +53,10 @@
                 "/0/dateOfBirth"
             ]
         },
+        "additionalLuggage": {
+            "typeRef": "#/domains/FlightBooking/types/ListOfLuggageWithWeight",
+            "description": "A list of additional luggage to be purchased per passenger. The cartinality of this array must match the one of passengers."
+        },
         "payment": {
             "typeRef": "#/domains/Generic/types/Payment"
         },
@@ -386,13 +390,6 @@
                     "maximum": 3,
                     "default": 0
                 },
-                "additionalLuggage": {
-                    "type": "array",
-                    "description": "A list of additional luggage to be purchased for the passenger.",
-                    "minItems": 1,
-                    "maxItems": 9,
-                    "items": { "$ref": "#/domains/FlightBooking/types/LuggageWithWeight" }
-                },
                 "document": {
                     "$ref": "#/domains/Generic/types/IdentityDocument"
                 },
@@ -407,6 +404,13 @@
                 "dateOfBirth"
             ],
             "additionalProperties": false
+        },
+        "PassengersAdditionalLuggage": {
+            "type": "array",
+            "description": "The cardinality of this array must match that of the passengers. A mismatch leads to the input being invalidated.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/FlightBooking/types/LuggageWithWeight" }
         },
         "AvailableFares": {
             "type": "array",
@@ -502,11 +506,6 @@
                 "weight"
             ]
         },
-        "ListOfLuggageWithPrice": {
-            "type": "array",
-            "description": "A list of luggage with price.",
-            "items": { "$ref": "#/domains/FlightBooking/types/LuggageWithPrice" }
-        },
         "LuggageWithPrice": {
             "type": "object",
             "additionalProperties": false,
@@ -546,6 +545,16 @@
                 "price",
                 "weight"
             ]
+        },
+        "ListOfLuggageWithWeight": {
+            "type": "array",
+            "description": "A list of luggage with weight.",
+            "items": { "$ref": "#/domains/FlightBooking/types/LuggageWithWeight" }
+        },
+        "ListOfLuggageWithPrice": {
+            "type": "array",
+            "description": "A list of luggage with price.",
+            "items": { "$ref": "#/domains/FlightBooking/types/LuggageWithPrice" }
         },
         "SelectedSegmentSeats": {
             "type": "object",
