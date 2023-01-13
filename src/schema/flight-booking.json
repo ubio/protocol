@@ -110,7 +110,7 @@
             "description": "Emitted when actual inbound fares information is collected.<br/>Note: on deep links with pre-selected flight this output will not be provided."
         },
         "selectableLuggage": {
-            "typeRef": "#/domains/FlightBooking/types/LuggageWithPrice",
+            "typeRef": "#/domains/FlightBooking/types/ListOfLuggageWithPrice",
             "description": "The luggage which can be selected for the passengers."
         },
         "availableSeats": {
@@ -499,6 +499,11 @@
                 "count",
                 "weight"
             ]
+        },
+        "ListOfLuggageWithPrice": {
+            "type": "array",
+            "description": "A list of luggage with price.",
+            "items": { "$ref": "#/domains/FlightBooking/types/LuggageWithPrice" }
         },
         "LuggageWithPrice": {
             "type": "object",
