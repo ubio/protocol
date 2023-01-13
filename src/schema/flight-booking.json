@@ -432,7 +432,9 @@
                     "items": { "$ref": "#/domains/Generic/types/StructuredTextItem" }
                 },
                 "luggage": {
-                    "$ref": "#/domains/FlightBooking/types/LuggageBasic"
+                    "type": "array",
+                    "description": "A list of luggage with price.",
+                    "items": { "$ref": "#/domains/FlightBooking/types/LuggageBasic" }
                 }
             },
             "required": [
