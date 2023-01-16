@@ -387,8 +387,7 @@
                 "addAdditionalLuggage": {
                     "type": "integer",
                     "minimum": 0,
-                    "maximum": 3,
-                    "default": 0
+                    "maximum": 3
                 },
                 "document": {
                     "$ref": "#/domains/Generic/types/IdentityDocument"
