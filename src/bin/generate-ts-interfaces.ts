@@ -3,64 +3,112 @@ import $RefParser from '@apidevtools/json-schema-ref-parser';
 import path from 'path';
 import * as fs from 'fs';
 // import * as mySchema from './schema.json';
-import * as mySchema from '../schema/hotel-price-crawling.json';
+import * as HotelPriceCrawling from '../schema/hotel-price-crawling.json';
+import * as Generic from '../schema/generic.json';
 
 const generateInterfaces = async () => {
-  // const schemaFolderPath = path.resolve('./src/schema/');
-  const schemaFolderPath = './src/schema/';
+  const genericSchema = await createValidSchema(Generic, 'generic');
+  // TODO read schemas and call generateInterface
+  generateInterface(genericSchema, 'generic');
+  // generateInterface(HotelPriceCrawling, 'generic');
+};
 
-  let mySchemaStr = JSON.stringify(mySchema);
-  // replace typeRef with $ref
-  let validSchema = mySchemaStr.replaceAll('"typeRef"', '"$ref"');
-
-  let index = 0;
-  const searchString = '#/domains/';
-  const pascalCaseNames = new Set<string>();
-  while (index >= 0) {
-    index = validSchema.indexOf(searchString, index);
-    index += searchString.length;
-    const endIndex = validSchema.indexOf('/', index);
-    const name = validSchema.substring(index, endIndex);
-    pascalCaseNames.add(name);
-    index = validSchema.indexOf(searchString, endIndex);
-  }
-
-  // modify $ref path, e.g. #/domains/HotelPriceCrawling/types/Results
-  // #/domains = <path to ./src/schema folder
-  // HotelPriceCrawling = hotel-price-crawling.json
-  for (const pascaleName of pascalCaseNames) {
-    const kebabName = pascaleName
-      .replace(/([a-z0–9])([A-Z])/g, '$1-$2')
-      .toLowerCase();
-    validSchema = validSchema.replaceAll(
-      `"${searchString}${pascaleName}`,
-      `"${schemaFolderPath}${kebabName}.json#`
-    );
-  }
-
-  const validSchemaJson = JSON.parse(validSchema);
-
-  let schema;
+const generateInterface = async (schema: JSON, filename: string) => {
+  let dereferencedSchema: $RefParser.JSONSchema;
   let refs;
   try {
-    schema = await $RefParser.dereference(validSchemaJson, {
+    dereferencedSchema = await $RefParser.dereference(schema, {
       continueOnError: true,
     });
-    refs = await $RefParser.resolve(validSchemaJson);
+    refs = await $RefParser.resolve(schema);
   } catch (err) {
     console.error(err);
   }
 
-  const compiledInterfaces = await compile(
-    validSchemaJson,
-    'HotelPriceCrawling',
-    undefined
-  );
+  const compileAndExportInterface = async () => {
+    const compiledInterfaces = await compile(schema, filename, {
+      $refOptions: {
+        parse: { json: true },
+        resolve: { external: true, file: true, http: false },
+        continueOnError: true,
+      },
+    });
 
-  let data = JSON.stringify(compiledInterfaces);
-  const filePath = path.resolve('./src/interfaces/hotel-price-crawling.ts');
+    let data = JSON.stringify(compiledInterfaces, null, 4);
+    // let cache: any[] | null = [];
+    // let data = JSON.stringify(dereferencedSchema, (key, value) => {
+    //   if (typeof value === 'object' && value !== null) {
+    //     // Duplicate reference found, discard key
+    //     if (cache?.includes(value)) return;
+
+    //     // Store value in our collection
+    //     cache?.push(value);
+    //   }
+    //   return value;
+    // });
+    // cache = null; // Enable garbage collection
+
+    const filePath = path.resolve(`./src/interfaces/${filename}.ts`);
+    fs.writeFileSync(filePath, data);
+  };
+
+  await compileAndExportInterface();
+};
+
+const createValidSchema = async (inputSchema: any, filename: string) => {
+  const schemaFolderPath = './src/generated-schema/';
+
+  let validSchema = JSON.stringify(inputSchema);
+  // replace typeRef with $ref
+  validSchema = validSchema.replaceAll('"typeRef"', '"$ref"');
+
+  const searchString = '#/domains/';
+  const findReferences = () => {
+    let index = 0;
+    const pascalCaseNames = new Set<string>();
+
+    while (index >= 0) {
+      index = validSchema.indexOf(searchString, index);
+      index += searchString.length;
+      const endIndex = validSchema.indexOf('/', index);
+      const name = validSchema.substring(index, endIndex);
+      pascalCaseNames.add(name);
+      index = validSchema.indexOf(searchString, endIndex);
+    }
+
+    return pascalCaseNames;
+  };
+
+  const pascalCaseNames = findReferences();
+
+  // modify $ref path, e.g. #/domains/HotelPriceCrawling/types/Results
+  // #/domains = <schemaFolderPath>
+  // HotelPriceCrawling = hotel-price-crawling
+  const createValidRefPaths = (schema: string) => {
+    for (const pascaleName of pascalCaseNames) {
+      const kebabName = pascaleName
+        .replace(/([a-z0–9])([A-Z])/g, '$1-$2')
+        .toLowerCase();
+      schema = schema.replaceAll(
+        `"${searchString}${pascaleName}`,
+        // `"${schemaFolderPath}${kebabName}.json`
+        `"#`
+      );
+    }
+
+    return schema;
+  };
+
+  validSchema = createValidRefPaths(validSchema);
+
+  const validSchemaJson = JSON.parse(validSchema);
+  const prettySchema = JSON.stringify(validSchemaJson, null, 4);
+
+  const filePath = path.join(schemaFolderPath, `${filename}.json`);
   console.log(filePath);
-  fs.writeFileSync(filePath, data);
+  fs.writeFileSync(filePath, prettySchema);
+
+  return validSchemaJson;
 };
 
 generateInterfaces().catch();
