@@ -241,6 +241,9 @@
                     "$ref": "#/domains/Generic/types/Ages",
                     "description": "Ages of all passengers.",
                     "example": [34, 31, 9]
+                },
+                "promoCode": {
+                    "type": "string"
                 }
             },
             "required": [
