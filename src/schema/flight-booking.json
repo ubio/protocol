@@ -859,6 +859,11 @@
             "description": "The website claims this voucher's details are not valid (number or name mismatch)."
         },
         {
+            "code": "PromoCodeInvalid",
+            "category": "client",
+            "description": "The promo code you entered is not valid or mistyped."
+        },
+        {
             "code": "PriceCheck",
             "category": "client",
             "description": "This was a price check, not a booking attempt."
