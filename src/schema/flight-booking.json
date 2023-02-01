@@ -704,7 +704,6 @@
         },
         "AvailableFrequentFlyerProgrammes": {
             "type": "array",
-            "minItems": 1,
             "items": { "type": "string" },
             "example": ["Miles & More", "Frequent Flyer Points Plus"]
         },
