@@ -352,7 +352,7 @@
                 "countryCode": { "$ref": "#/domains/Generic/types/CountryCode" },
                 "number": {
                     "type": "string",
-                    "minLength": 7,
+                    "minLength": 6,
                     "description": "Mobile phone number (numbers only, excluding country code).",
                     "example": "123456789"
                 }
