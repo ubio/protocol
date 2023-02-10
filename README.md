@@ -12,7 +12,15 @@ Definitions also have `$id` attribute which is a fragment identifier used to uni
 
 To make changes to protocol `src/schema/` files need to be updated and `schema.json` regenerated.
 
-Since current codebase may be not compatible with the recent version of nodejs, you may need `docker-compose.yml` to test changes locally.
+Since current codebase may be not compatible with the recent version of nodejs, you may need `docker-compose.yml` to test changes locally. Additionally, protocol URL is hardcoded and point to production environment, thus you may need to **temporary** override it to see changes on http://localhost:8080/. Edit `site/provider.js` but DO NOT commit it to GH repo with your other changes:
+
+```js
+export const provider = new ProtocolProvider({
+    url: 'http://localhost:8080/schema.json', // ! \\
+    autoRefresh: true,
+    ttl: 60000
+});
+```
 
 Build `./public` static files:
 
@@ -26,5 +34,9 @@ Run `nginx` and open browser to test it:
 Shut down and cleanup when done:
 
     $ docker-compose down
+
+Don't forget to revert `site/provider.js`:
+
+    $ git checkout site/provider.js
 
 Good luck!
