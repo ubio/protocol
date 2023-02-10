@@ -12,7 +12,9 @@ Definitions also have `$id` attribute which is a fragment identifier used to uni
 
 To make changes to protocol `src/schema/` files need to be updated and `schema.json` regenerated.
 
-Since current codebase may be not compatible with the recent version of nodejs, you may need `docker-compose.yml` to test changes locally. Additionally, protocol URL is hardcoded and point to production environment, thus you may need to **temporary** override it to see changes on http://localhost:8080/. Edit `site/provider.js` but DO NOT commit it to GH repo with your other changes:
+Since current codebase may be not compatible with the recent version of nodejs, you may need `docker-compose.yml` to test changes locally.
+
+Additionally, protocol URL is hardcoded and points to production environment, thus you may need to **temporary** override it to see changes on http://localhost:8080/. Edit [`site/provider.js`](https://github.com/ubio/protocol/blob/master/site/provider.js) but DO NOT commit it to GH repo with your other changes:
 
 ```js
 export const provider = new ProtocolProvider({
