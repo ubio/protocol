@@ -167,7 +167,7 @@
                     "type": "boolean"
                 },
                 "refundable": {
-                    "$ref": "#/domain/Generic/types/Refundable"
+                    "$ref": "#/domains/Generic/types/Refundable"
                 },
                 "baseRate": {
                     "$ref": "#/domains/Generic/types/Price"
