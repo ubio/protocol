@@ -167,7 +167,7 @@
                     "type": "boolean"
                 },
                 "refundable": {
-                    "$ref": "#/domains/Generic/types/Refundable"
+                    "$ref": "#/domains/HotelPriceCrawling/types/Refundable"
                 },
                 "baseRate": {
                     "$ref": "#/domains/Generic/types/Price"
@@ -184,6 +184,30 @@
                 "name",
                 "baseRate",
                 "taxes"
+            ],
+            "additionalProperties": false
+        },
+        "Refundable": {
+            "type": "object",
+            "description": "Describes the refund policy available and its deadlines.",
+            "properties": {
+                "available": { 
+                    "type": "boolean",
+                    "description": "A boolean indicating if refund is available or not."
+                },
+                "untilDate": {
+                    "type": "string",
+                    "description": "String date in yyyy-MM-dd format that indicates until which date refund is available. Is not be present if available is false.",
+                    "example": "2023-01-01"
+                },
+                "untilTime": {
+                    "type": "string",
+                    "description": "String in the format HH:mm representing the hour until which refund is available. Is not be present if available is false.",
+                    "example": "16:30"
+                }
+            },
+            "required": [
+                "available"
             ],
             "additionalProperties": false
         },
