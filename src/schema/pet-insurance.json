@@ -40,11 +40,23 @@
         "selectedPaymentMethod": {
             "typeRef": "#/domains/PetInsurance/types/PaymentMethod"
         },
+        "selectedUserDeclarations": {
+            "typeRef": "#/domains/PetInsurance/types/AvailableUserDeclarations"
+        },
+        "selectedTermsAndConditions": {
+            "typeRef": "#/domains/PetInsurance/types/AvailableTermsAndConditions"
+        },
+        "selectedAdditionalUserDeclarations": {
+            "typeRef": "#/domains/PetInsurance/types/AvailableUserDeclarations"
+        },
+        "selectedAdditionalTermsAndConditions": {
+            "typeRef": "#/domains/PetInsurance/types/AvailableTermsAndConditions"
+        },
         "optionalExtras": {
             "typeRef": "#/domains/PetInsurance/types/OptionalExtras"
         },
-        "selectedPackage": {
-            "typeRef": "#/domains/PetInsurance/types/Package"
+        "selectedPackages": {
+            "typeRef": "#/domains/PetInsurance/types/AvailablePackages"
         }
     },
     "outputs": {
@@ -56,6 +68,18 @@
         },
         "availablePaymentMethods": {
             "typeRef": "#/domains/PetInsurance/types/AvailablePaymentMethods"
+        },
+        "availableUserDeclarations": {
+            "typeRef": "#/domains/PetInsurance/types/AvailableUserDeclarations"
+        },
+        "availableTermsAndConditions": {
+            "typeRef": "#/domains/PetInsurance/types/AvailableTermsAndConditions"
+        },
+        "availableAdditionalUserDeclarations": {
+            "typeRef": "#/domains/PetInsurance/types/AvailableUserDeclarations"
+        },
+        "availableAdditionalTermsAndConditions": {
+            "typeRef": "#/domains/PetInsurance/types/AvailableTermsAndConditions"
         },
         "estimatedQuote": {
             "typeRef": "#/domains/PetInsurance/types/QuoteValue"
@@ -879,6 +903,72 @@
             },
             "minItems": 1
         },
+        "AvailableUserDeclarations": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/PetInsurance/types/UserDeclaration"
+            }
+        },
+        "UserDeclaration": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "inputType": {
+                    "type": "string",
+                    "enum": [
+                        "String",
+                        "SelectMany",
+                        "SelectOne",
+                        "Boolean"
+                    ]
+                },
+                "options": {
+                    "$ref": "#/domains/PetInsurance/types/Strings"
+                }
+            },
+            "required": [
+                "label",
+                "required",
+                "inputType"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableTermsAndConditions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/PetInsurance/types/TermsAndConditions"
+            }
+        },
+        "TermsAndConditions": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "inputType": {
+                    "type": "string",
+                    "enum": [
+                        "String",
+                        "SelectMany",
+                        "SelectOne",
+                        "Boolean"
+                    ]
+                },
+                "options": {
+                    "$ref": "#/domains/PetInsurance/types/Strings"
+                }
+            },
+            "required": [
+                "label",
+                "inputType"
+            ],
+            "additionalProperties": false
+        },
         "PaymentMethod": {
             "type": "object",
             "properties": {
@@ -945,6 +1035,29 @@
             "additionalProperties": true
         },
         "AvailablePackages": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/PetInsurance/types/AvailablePackage"
+            },
+            "minItems": 1
+        },
+        "AvailablePackage": {
+            "type": "object",
+            "properties": {
+                "petName": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "packages": {
+                    "$ref": "#/domains/PetInsurance/types/Packages"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": true
+        },
+        "Packages": {
             "type": "array",
             "description": "An array of Package objects.",
             "items": {
@@ -1193,6 +1306,15 @@
             "format": "date",
             "description": "The date the cover starts on.",
             "example": "1980-01-01"
+        },
+        "Strings": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/PetInsurance/types/String"
+            }
+        },
+        "String": {
+            "type": "string"
         }
     },
     "errors": []
