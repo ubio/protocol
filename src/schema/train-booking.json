@@ -453,6 +453,9 @@
                     "format": "date",
                     "example": "1976-01-27"
                 },
+                "loyaltyNumber": {
+                    "type": "string"
+                },
                 "addAdditionalLuggage": {
                     "type": "integer",
                     "minimum": 0,
