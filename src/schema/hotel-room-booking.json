@@ -8,15 +8,15 @@
     "inputs": {
         "search": {
             "typeRef": "#/domains/HotelRoomBooking/types/Search"
-		},
+        },
         "roomId": {
             "typeRef": "#/domains/HotelRoomBooking/types/String",
             "description": "Identifier of the room to be booked."
         },
-		"rateId": {
+        "rateId": {
             "typeRef": "#/domains/HotelRoomBooking/types/String",
             "description": "Identifier of the rate to be booked."
-		},
+        },
         "mainGuest": {
             "typeRef": "#/domains/HotelRoomBooking/types/MainGuest",
             "description": "Personal details about the main guest.",
@@ -36,6 +36,11 @@
             "description": "Client's consent for final price, should exactly match the <code>finalPrice</code> object from output.<br/>Automation will not proceed with placing order until the consent is provided.",
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent"
+        },
+        "options": {
+            "typeRef": "#/domains/HotelRoomBooking/types/Options",
+            "default": {},
+            "initial": true
         }
     },
     "outputs": {
@@ -148,9 +153,9 @@
             ],
             "additionalProperties": false
         },
-		"String": {
+        "String": {
             "type": "string"
-		},
+        },
         "Search": {
             "type": "object",
             "properties": {
@@ -165,20 +170,24 @@
                 },
                 "nights": {
                     "type": "integer",
-					"example": 2
+                    "example": 2
                 },
                 "guests": {
                     "type": "integer",
-					"example": 2
+                    "example": 2
                 }
             },
             "required": [
                 "hotelId",
                 "checkIn",
                 "nights",
-				"guests"
+                "guests"
             ],
             "additionalProperties": false
+        },
+        "Options": {
+            "type": "object",
+            "additionalProperties": true
         }
     },
     "errors": [
