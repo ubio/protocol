@@ -1081,7 +1081,7 @@
         "Package": {
             "type": "object",
             "properties": {
-                "name": {
+                "petName": {
                     "type": "string",
                     "minLength": 1
                 },
@@ -1103,7 +1103,7 @@
                 }
             },
             "required": [
-                "name"
+                "petName"
             ],
             "additionalProperties": true
         },
