@@ -25,10 +25,6 @@
                 "/contact/email"
             ]
         },
-        "priceBreakdown": {
-            "typeRef": "#/domains/HotelRoomBooking/types/PriceBreakdown",
-            "description": "Total price breakdown."
-        },
         "payment": {
             "typeRef": "#/domains/HotelRoomBooking/types/Payment"
         },
@@ -48,6 +44,10 @@
         }
     },
     "outputs": {
+        "priceBreakdown": {
+            "typeRef": "#/domains/HotelRoomBooking/types/PriceBreakdown",
+            "description": "Total price breakdown."
+        },
         "finalPrice": {
             "description": "Emitted immediately before placing order, when final price is available.<br/>Automation will request <code>finalPriceConsent</code> input which should match this object.",
             "typeRef": "#/domains/Generic/types/PriceConsent"
