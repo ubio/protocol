@@ -25,6 +25,10 @@
                 "/contact/email"
             ]
         },
+        "priceBreakdown": {
+            "typeRef": "#/domains/HotelRoomBooking/types/PriceBreakdown",
+            "description": "Total price breakdown."
+        },
         "payment": {
             "typeRef": "#/domains/HotelRoomBooking/types/Payment"
         },
@@ -182,6 +186,54 @@
                 "checkIn",
                 "nights",
                 "guests"
+            ],
+            "additionalProperties": false
+        },
+        "PriceBreakdown": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/HotelRoomBooking/types/PriceLineItem"
+            }
+        },
+        "PriceLineItem": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "net-rate",
+                        "city-tax",
+                        "vat",
+                        "hotel-fee",
+                        "resort-fee",
+                        "service-fee",
+                        "booking-fee",
+                        "total-now",
+                        "total-later",
+                        "total-later-supplier",
+                        "total-overall",
+                        "total-overall-supplier",
+                        "others"
+                    ]
+                },
+                "paidAtHotel": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 20600,
+                        "currency": "gbp"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "description",
+                "price"
             ],
             "additionalProperties": false
         },
