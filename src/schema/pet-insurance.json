@@ -1043,7 +1043,7 @@
                 }
             },
             "required": [
-                "name"
+                "petName"
             ],
             "additionalProperties": true
         },
@@ -1081,7 +1081,7 @@
         "Package": {
             "type": "object",
             "properties": {
-                "petName": {
+                "name": {
                     "type": "string",
                     "minLength": 1
                 },
@@ -1103,7 +1103,7 @@
                 }
             },
             "required": [
-                "petName"
+                "name"
             ],
             "additionalProperties": true
         },
