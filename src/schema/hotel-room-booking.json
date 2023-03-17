@@ -54,6 +54,14 @@
         },
         "bookingConfirmation": {
             "typeRef": "#/domains/HotelRoomBooking/types/BookingConfirmation"
+        },
+        "bookingTermsAndConditions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when booking T&Cs are presented."
+        },
+        "privacyPolicy": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when the privacy policy is presented."
         }
     },
     "types": {
