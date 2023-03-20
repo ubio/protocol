@@ -160,6 +160,15 @@
                 "breakfastIncluded": {
                     "type": "boolean"
                 },
+                "lunchIncluded": {
+                    "type": "boolean"
+                },
+                "dinnerIncluded": {
+                    "type": "boolean"
+                },
+                "allInclusive": {
+                    "type": "boolean"
+                },
                 "parkingIncluded": {
                     "type": "boolean"
                 },
@@ -191,7 +200,7 @@
             "type": "object",
             "description": "Describes the refund policy available and its deadlines.",
             "properties": {
-                "available": { 
+                "available": {
                     "type": "boolean",
                     "description": "A boolean indicating if refund is available or not."
                 },
