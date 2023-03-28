@@ -421,7 +421,7 @@
             "type": "array",
             "description": "A list of available fares found on the website.",
             "minItems": 1,
-            "maxItems": 9,
+            "maxItems": 15,
             "items": { "$ref": "#/domains/FlightBooking/types/Fare" }
         },
         "Fare": {
