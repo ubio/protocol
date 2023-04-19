@@ -185,7 +185,7 @@
                     "type": "array",
                     "minItems": 0,
                     "items": {
-                        "$ref": "#/domains/Generic/types/NamedPrice"
+                        "$ref": "#/domains/HotelPriceCrawling/types/Tax"
                     }
                 }
             },
@@ -193,6 +193,35 @@
                 "name",
                 "baseRate",
                 "taxes"
+            ],
+            "additionalProperties": false
+        },
+        "Tax": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "The code inferred based on the name.",
+                    "enum": [
+                        "city-tax",
+                        "vat",
+                        "hotel-fee",
+                        "resort-fee",
+                        "service-fee",
+                        "booking-fee",
+                        "other"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the price."
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "code",
+                "name",
+                "price"
             ],
             "additionalProperties": false
         },
