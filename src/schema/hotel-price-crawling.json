@@ -185,7 +185,7 @@
                     "type": "array",
                     "minItems": 0,
                     "items": {
-                        "$ref": "#/domains/Generic/types/NamedPrice"
+                        "$ref": "#/domains/HotelPriceCrawling/types/Tax"
                     }
                 }
             },
