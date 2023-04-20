@@ -199,6 +199,11 @@
         "Tax": {
             "type": "object",
             "properties": {
+                "type": {
+                    "enum": [
+                        "NamedPrice"
+                    ]
+                },
                 "code": {
                     "type": "string",
                     "description": "The code inferred based on the name.",
@@ -219,7 +224,6 @@
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
             "required": [
-                "code",
                 "name",
                 "price"
             ],
