@@ -196,6 +196,39 @@
             ],
             "additionalProperties": false
         },
+        "Tax": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "NamedPrice"
+                    ]
+                },
+                "code": {
+                    "type": "string",
+                    "description": "The code inferred based on the name.",
+                    "enum": [
+                        "city-tax",
+                        "vat",
+                        "hotel-fee",
+                        "resort-fee",
+                        "service-fee",
+                        "booking-fee",
+                        "other"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the price."
+                },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            },
+            "required": [
+                "name",
+                "price"
+            ],
+            "additionalProperties": false
+        },
         "Refundable": {
             "type": "object",
             "description": "Describes the refund policy available and its deadlines.",
