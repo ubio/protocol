@@ -1,0 +1,2788 @@
+{
+    "description": "Generic domain contains type definitions used in other domains.",
+    "private": false,
+    "inputs": {},
+    "outputs": {},
+    "types": {
+        "Event": {
+            "type": "object",
+            "description": "An object describing an specific event emitted by automation job. The exact event types and data depend on the specific service.",
+            "required": [
+                "type"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Event type, specific to an automation service."
+                }
+            },
+            "additionalProperties": true
+        },
+        "Ages": {
+            "type": "array",
+            "description": "A list of ages of persons.",
+            "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 200,
+                "example": 42
+            }
+        },
+        "URL": {
+            "type": "string",
+            "format": "url",
+            "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
+            "example": "http://example.com"
+        },
+        "Cookies": {
+            "type": "array",
+            "description": "An array of cookie definitions.",
+            "items": {
+                "$ref": "#/types/Cookie"
+            }
+        },
+        "Cookie": {
+            "type": "object",
+            "description": "An object which defines a cookie. It must either contain a URL or a domain, alongisde name and value. For more information on the fields of this object, see <a href=\"https://tools.ietf.org/html/rfc6265#section-5.2\" target=\"_blank\" rel=\"noopener\">RFC 6265 section 5.2</a>.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Cookie name."
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Cookie value."
+                },
+                "url": {
+                    "type": "string",
+                    "format": "url",
+                    "description": "The URL from which the cookie is set."
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Cookie domain."
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Cookie path."
+                },
+                "secure": {
+                    "type": "boolean",
+                    "description": "True if cookie is secure."
+                },
+                "session": {
+                    "type": "boolean",
+                    "description": "True if cookie is a session cookie."
+                },
+                "priority": {
+                    "type": "string",
+                    "description": "Cookie priority."
+                },
+                "httpOnly": {
+                    "type": "boolean",
+                    "description": "True if cookie is http-only."
+                },
+                "sameSite": {
+                    "type": "string",
+                    "description": "Cookie same-site type."
+                },
+                "expires": {
+                    "type": "number",
+                    "description": "Expiration date in seconds since the epoch (January 1, 1970 UTC)."
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Size of the cookie."
+                }
+            },
+            "required": [
+                "name",
+                "value"
+            ],
+            "additionalProperties": true
+        },
+        "Account": {
+            "type": "object",
+            "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+            "pii": true,
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Account email, typically used for user sign up / sign in.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully. Use contactEmail when different.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
+                    "format": "email",
+                    "example": "hello@example.com"
+                },
+                "contactEmail": {
+                    "type": "string",
+                    "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                    "format": "email",
+                    "example": "client@example.com"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
+                    "default": ""
+                },
+                "phone": {
+                    "description": "Account phone number, may also be used as contact details.",
+                    "$ref": "#/types/Phone"
+                },
+                "isExisting": {
+                    "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
+                    "type": "boolean"
+                },
+                "username": {
+                    "type": "string",
+                    "example": "john012345"
+                },
+                "person": {
+                    "description": "When an account needs to be created for a person (first name, last name, etc), this key will be used.",
+                    "$ref": "#/types/Person"
+                }
+            },
+            "required": [
+                "email",
+                "isExisting"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                },
+                "document": {
+                    "$ref": "#/types/IdentityDocument"
+                }
+            },
+            "required": [
+                "title",
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "IdentityDocument": {
+            "type": "object",
+            "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
+            "pii": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Document type.",
+                    "enum": [
+                        "passport",
+                        "national-id"
+                    ]
+                },
+                "number": {
+                    "type": "string",
+                    "description": "Document number.",
+                    "example": "75 127001"
+                },
+                "issueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2008-01-01"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2028-01-01"
+                },
+                "issueCountryCode": {
+                    "$ref": "#/types/CountryCode",
+                    "description": "Code of country where the document was issued."
+                }
+            },
+            "required": [
+                "type",
+                "number",
+                "expirationDate",
+                "issueCountryCode"
+            ],
+            "additionalProperties": false
+        },
+        "ExplicitAddress": {
+            "type": "object",
+            "description": "Explicit address components (parsed version, used to format into various standards).",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Name of the street.",
+                    "minLength": 1,
+                    "example": "Clerkenwell Close"
+                },
+                "streetNumber": {
+                    "type": "string",
+                    "description": "Number of the street or other building identifier, such as house number or house name",
+                    "minLength": 1,
+                    "example": "27-31"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "description": "Name of the city subdivision.",
+                    "minLength": 1,
+                    "example": "Glen Park"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/types/CountrySubdivision"
+                }
+            },
+            "required": [
+                "streetName",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
+        },
+        "InlinedAddress": {
+            "type": "object",
+            "description": "Address components common to inlined addresses (line1, line2)",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "minLength": 1,
+                    "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "description": "Name of the city subdivision.",
+                    "minLength": 1,
+                    "example": "Glen Park"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/types/CountrySubdivision"
+                }
+            },
+            "required": [
+                "line1",
+                "city",
+                "postcode",
+                "countryCode",
+                "countrySubdivision"
+            ],
+            "additionalProperties": false
+        },
+        "Address": {
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "oneOf": [
+                {
+                    "$ref": "#/types/ExplicitAddress"
+                },
+                {
+                    "$ref": "#/types/InlinedAddress"
+                }
+            ]
+        },
+        "Phone": {
+            "type": "object",
+            "description": "Phone information, typically used on contact details pages.",
+            "pii": true,
+            "properties": {
+                "countryCode": {
+                    "$ref": "#/types/CountryCode"
+                },
+                "number": {
+                    "type": "string",
+                    "minLength": 7,
+                    "description": "Mobile phone number (numbers only, excluding country code).",
+                    "example": "123456789"
+                }
+            },
+            "required": [
+                "countryCode",
+                "number"
+            ],
+            "additionalProperties": false
+        },
+        "PriceConsent": {
+            "type": "object",
+            "description": "Price consent object used in final price confirmation flow.<br/>When automation reaches final price (typically happens immediately before placing the order) it will emit <code>finalPrice</code> object in output and will wait for consent from you. You then need to provide the exact copy of this object as <code>finalPriceConsent</code> input.",
+            "properties": {
+                "price": {
+                    "$ref": "#/types/Price"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "price"
+            ]
+        },
+        "Price": {
+            "type": "object",
+            "description": "Basic price information.",
+            "properties": {
+                "currencyCode": {
+                    "$ref": "#/types/CurrencyCode"
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "An integer in the smallest currency unit (100 for £1.00).",
+                    "example": "12300"
+                }
+            },
+            "required": [
+                "currencyCode",
+                "value"
+            ],
+            "additionalProperties": false
+        },
+        "PriceRange": {
+            "type": "object",
+            "description": "Price range information.",
+            "properties": {
+                "currencyCode": {
+                    "$ref": "#/types/CurrencyCode"
+                },
+                "min": {
+                    "type": "integer",
+                    "description": "An integer in the smallest currency unit (100 for £1.00).",
+                    "example": "12000"
+                },
+                "max": {
+                    "type": "integer",
+                    "description": "An integer in the smallest currency unit (100 for £1.00).",
+                    "example": "12300"
+                }
+            },
+            "required": [
+                "currencyCode",
+                "min",
+                "max"
+            ],
+            "additionalProperties": false
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "person": {
+                    "$ref": "#/types/Person"
+                },
+                "card": {
+                    "$ref": "#/types/PaymentCard"
+                },
+                "address": {
+                    "$ref": "#/types/Address"
+                },
+                "tax": {
+                    "$ref": "#/types/Tax"
+                }
+            },
+            "required": [
+                "card",
+                "person",
+                "address"
+            ],
+            "additionalProperties": false
+        },
+        "Tax": {
+            "type": "object",
+            "description": "Tax information.",
+            "pii": true,
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Local tax number.",
+                    "example": "RO37866619"
+                }
+            },
+            "required": [
+                "number"
+            ],
+            "additionalProperties": false
+        },
+        "PaymentCard": {
+            "type": "object",
+            "description": "Payment information for card payment. Note: card number should not be submitted in plain text as per PCI DSS. Use <code>panToken</code> to provide it securely instead.",
+            "pii": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Card type, debit or credit.",
+                    "enum": [
+                        "debit",
+                        "credit"
+                    ]
+                },
+                "holderType": {
+                    "type": "string",
+                    "description": "Card's holder type, personal or corporate.",
+                    "enum": [
+                        "personal",
+                        "corporate"
+                    ],
+                    "default": "corporate"
+                },
+                "brand": {
+                    "type": "string",
+                    "description": "Card brand, must be one of the supported card brands. Automation may fail if a specific card brand is not supported on a particular website.",
+                    "enum": [
+                        "visa",
+                        "mastercard",
+                        "amex",
+                        "discover"
+                    ]
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "Expiration date in YYYY-MM format as written on card.",
+                    "example": "2020-04",
+                    "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
+                    "minLength": 7,
+                    "maxLength": 7
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Cardholder's name as written on card.",
+                    "example": "Alice Smith"
+                },
+                "cvv": {
+                    "type": "string",
+                    "description": "Security code written on card, 3- or 4-digit number.",
+                    "example": "123",
+                    "minLength": 3,
+                    "maxLength": 4
+                },
+                "binReplacement": {
+                    "type": "string",
+                    "description": "Experimental. BIN to replace with, where possible.",
+                    "example": "467095",
+                    "minLength": 6,
+                    "maxLength": 6
+                }
+            },
+            "required": [
+                "type",
+                "brand",
+                "expirationDate",
+                "name",
+                "cvv"
+            ],
+            "additionalProperties": false
+        },
+        "PanToken": {
+            "type": "string",
+            "description": "An encrypted PAN token, obtained from Automation Cloud Vault. Please consult \"Vaulting Payment Card Information\" section of Documentation for information on how to acquire it.",
+            "example": "5d41402abc4b2a76b9719d911017c592",
+            "minLength": 15
+        },
+        "CountryCode": {
+            "type": "string",
+            "title": "ISO 3166-1 alpha-2 Country Code",
+            "description": "ISO 3166-1 alpha-2 code representing the country. United Kingdom is officially assigned the alpha-2 code gb rather than uk. Lowercase.",
+            "example": "us",
+            "minLength": 2,
+            "maxLength": 2,
+            "enum": [
+                "ad",
+                "ae",
+                "af",
+                "ag",
+                "ai",
+                "al",
+                "am",
+                "ao",
+                "aq",
+                "ar",
+                "as",
+                "at",
+                "au",
+                "aw",
+                "ax",
+                "az",
+                "ba",
+                "bb",
+                "bd",
+                "be",
+                "bf",
+                "bg",
+                "bh",
+                "bi",
+                "bj",
+                "bl",
+                "bm",
+                "bn",
+                "bo",
+                "bq",
+                "br",
+                "bs",
+                "bt",
+                "bv",
+                "bw",
+                "by",
+                "bz",
+                "ca",
+                "cc",
+                "cd",
+                "cf",
+                "cg",
+                "ch",
+                "ci",
+                "ck",
+                "cl",
+                "cm",
+                "cn",
+                "co",
+                "cr",
+                "cu",
+                "cv",
+                "cw",
+                "cx",
+                "cy",
+                "cz",
+                "de",
+                "dj",
+                "dk",
+                "dm",
+                "do",
+                "dz",
+                "ec",
+                "ee",
+                "eg",
+                "eh",
+                "er",
+                "es",
+                "et",
+                "fi",
+                "fj",
+                "fk",
+                "fm",
+                "fo",
+                "fr",
+                "ga",
+                "gb",
+                "gd",
+                "ge",
+                "gf",
+                "gg",
+                "gh",
+                "gi",
+                "gl",
+                "gm",
+                "gn",
+                "gp",
+                "gq",
+                "gr",
+                "gs",
+                "gt",
+                "gu",
+                "gw",
+                "gy",
+                "hk",
+                "hm",
+                "hn",
+                "hr",
+                "ht",
+                "hu",
+                "id",
+                "ie",
+                "il",
+                "im",
+                "in",
+                "io",
+                "iq",
+                "ir",
+                "is",
+                "it",
+                "je",
+                "jm",
+                "jo",
+                "jp",
+                "ke",
+                "kg",
+                "kh",
+                "ki",
+                "km",
+                "kn",
+                "kp",
+                "kr",
+                "kw",
+                "ky",
+                "kz",
+                "la",
+                "lb",
+                "lc",
+                "li",
+                "lk",
+                "lr",
+                "ls",
+                "lt",
+                "lu",
+                "lv",
+                "ly",
+                "ma",
+                "mc",
+                "md",
+                "me",
+                "mf",
+                "mg",
+                "mh",
+                "mk",
+                "ml",
+                "mm",
+                "mn",
+                "mo",
+                "mp",
+                "mq",
+                "mr",
+                "ms",
+                "mt",
+                "mu",
+                "mv",
+                "mw",
+                "mx",
+                "my",
+                "mz",
+                "na",
+                "nc",
+                "ne",
+                "nf",
+                "ng",
+                "ni",
+                "nl",
+                "no",
+                "np",
+                "nr",
+                "nu",
+                "nz",
+                "om",
+                "pa",
+                "pe",
+                "pf",
+                "pg",
+                "ph",
+                "pk",
+                "pl",
+                "pm",
+                "pn",
+                "pr",
+                "ps",
+                "pt",
+                "pw",
+                "py",
+                "qa",
+                "re",
+                "ro",
+                "rs",
+                "ru",
+                "rw",
+                "sa",
+                "sb",
+                "sc",
+                "sd",
+                "se",
+                "sg",
+                "sh",
+                "si",
+                "sj",
+                "sk",
+                "sl",
+                "sm",
+                "sn",
+                "so",
+                "sr",
+                "ss",
+                "st",
+                "sv",
+                "sx",
+                "sy",
+                "sz",
+                "tc",
+                "td",
+                "tf",
+                "tg",
+                "th",
+                "tj",
+                "tk",
+                "tl",
+                "tm",
+                "tn",
+                "to",
+                "tr",
+                "tt",
+                "tv",
+                "tw",
+                "tz",
+                "ua",
+                "ug",
+                "um",
+                "us",
+                "uy",
+                "uz",
+                "va",
+                "vc",
+                "ve",
+                "vg",
+                "vi",
+                "vn",
+                "vu",
+                "wf",
+                "ws",
+                "xk",
+                "ye",
+                "yt",
+                "za",
+                "zm",
+                "zw"
+            ]
+        },
+        "CountrySubdivision": {
+            "type": "string",
+            "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased.",
+            "example": "ca"
+        },
+        "CurrencyCode": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "title": "ISO 4217 Currency Code",
+            "description": "ISO 4217 3-letter code representing the currency. Lowercase.",
+            "example": "usd",
+            "enum": [
+                "aed",
+                "afn",
+                "all",
+                "amd",
+                "ang",
+                "aoa",
+                "ars",
+                "aud",
+                "awg",
+                "azn",
+                "bam",
+                "bdt",
+                "bbd",
+                "bgn",
+                "bhd",
+                "bmd",
+                "bnd",
+                "bob",
+                "brl",
+                "bsd",
+                "bwp",
+                "byn",
+                "bzd",
+                "cad",
+                "chf",
+                "clp",
+                "cny",
+                "cop",
+                "crc",
+                "cup",
+                "cve",
+                "czk",
+                "djf",
+                "dkk",
+                "dop",
+                "dzd",
+                "egp",
+                "etb",
+                "eur",
+                "fjd",
+                "fkp",
+                "gbp",
+                "gel",
+                "ggp",
+                "ghs",
+                "gip",
+                "gtq",
+                "gyd",
+                "hkd",
+                "hnl",
+                "hrk",
+                "huf",
+                "idr",
+                "ils",
+                "imp",
+                "inr",
+                "iqd",
+                "irr",
+                "isk",
+                "jep",
+                "jmd",
+                "jod",
+                "jpy",
+                "kes",
+                "kgs",
+                "khr",
+                "kpw",
+                "krw",
+                "kwd",
+                "kyd",
+                "kzt",
+                "lak",
+                "lbp",
+                "lkr",
+                "lrd",
+                "mad",
+                "mkd",
+                "mmk",
+                "mnt",
+                "mop",
+                "mur",
+                "mvr",
+                "mxn",
+                "myr",
+                "mzn",
+                "nad",
+                "ngn",
+                "nio",
+                "nok",
+                "npr",
+                "nzd",
+                "omr",
+                "pab",
+                "pen",
+                "pgk",
+                "php",
+                "pkr",
+                "pln",
+                "pyg",
+                "qar",
+                "ron",
+                "rsd",
+                "rub",
+                "rwf",
+                "sar",
+                "sbd",
+                "scr",
+                "sek",
+                "sgd",
+                "shp",
+                "sos",
+                "srd",
+                "svc",
+                "syp",
+                "thb",
+                "tjs",
+                "tnd",
+                "try",
+                "ttd",
+                "tvd",
+                "twd",
+                "tzs",
+                "uah",
+                "ugx",
+                "usd",
+                "uyu",
+                "uzs",
+                "vef",
+                "ves",
+                "vnd",
+                "xaf",
+                "xcd",
+                "xof",
+                "yer",
+                "zar",
+                "zmw",
+                "zwd"
+            ]
+        },
+        "StructuredText": {
+            "type": "object",
+            "description": "A list of structured text.",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "StructuredText"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the text grouping."
+                },
+                "contents": {
+                    "type": "array",
+                    "description": "An array of structured text items.",
+                    "items": {
+                        "$ref": "#/types/StructuredTextItem"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "contents"
+            ],
+            "additionalProperties": false
+        },
+        "StructuredPrice": {
+            "type": "object",
+            "description": "A list of structured text.",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "StructuredPrice"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the text grouping."
+                },
+                "price": {
+                    "$ref": "#/types/Price"
+                },
+                "priceLine": {
+                    "type": "string"
+                },
+                "description": {
+                    "$ref": "#/types/StructuredTextItems"
+                },
+                "contents": {
+                    "type": "array",
+                    "description": "An array of structured text items.",
+                    "items": {
+                        "$ref": "#/types/StructuredTextItem"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "price"
+            ],
+            "additionalProperties": false
+        },
+        "StructuredTextItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/types/StructuredText"
+                },
+                {
+                    "$ref": "#/types/File"
+                },
+                {
+                    "$ref": "#/types/Link"
+                },
+                {
+                    "$ref": "#/types/NamedText"
+                },
+                {
+                    "$ref": "#/types/StructuredPrice"
+                },
+                {
+                    "$ref": "#/types/NamedPrice"
+                },
+                {
+                    "$ref": "#/types/HTML"
+                },
+                {
+                    "$ref": "#/types/Text"
+                }
+            ]
+        },
+        "StructuredTextItems": {
+            "type": "array",
+            "description": "List of available structured text items.",
+            "items": {
+                "$ref": "#/types/StructuredTextItem"
+            }
+        },
+        "File": {
+            "type": "object",
+            "description": "A document downloaded from the target website.<br/>To retrieve this document, you must include the <strong>SECRET_KEY</strong> authorisation header with your request.",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "File"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the document."
+                },
+                "url": {
+                    "type": "string",
+                    "description": "Location of the resource."
+                },
+                "filename": {
+                    "type": "string",
+                    "description": "The name of the file, including the extension."
+                },
+                "headers": {
+                    "type": "object",
+                    "description": "List of relevant headers associated with the uri.",
+                    "items": {
+                        "type": "object",
+                        "properties": {},
+                        "required": [],
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "example": [
+                        {
+                            "Authorization": "Bearer abc123"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "type",
+                "url",
+                "filename"
+            ],
+            "additionalProperties": false
+        },
+        "Link": {
+            "type": "object",
+            "description": "A document accessible on the target website.",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "Link"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the document."
+                },
+                "url": {
+                    "type": "string",
+                    "format": "url",
+                    "description": "Location of the resource."
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "url"
+            ],
+            "additionalProperties": false
+        },
+        "NamedText": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "NamedText"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the text."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "Location of the resource."
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "text"
+            ],
+            "additionalProperties": false
+        },
+        "NamedPrice": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "NamedPrice"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the price."
+                },
+                "price": {
+                    "$ref": "#/types/Price"
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "price"
+            ],
+            "additionalProperties": false
+        },
+        "Text": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "Text"
+                    ]
+                },
+                "text": {
+                    "type": "string",
+                    "description": "Location of the resource."
+                }
+            },
+            "required": [
+                "type",
+                "text"
+            ],
+            "additionalProperties": false
+        },
+        "NamedContents": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "NamedContents"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name or title of the text."
+                },
+                "contents": {
+                    "type": "array",
+                    "description": "An array of structured text items.",
+                    "items": {
+                        "$ref": "#/types/StructuredTextItem"
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "name",
+                "contents"
+            ],
+            "additionalProperties": false
+        },
+        "HTML": {
+            "type": "object",
+            "description": "Inner HTML contents of an element.",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "HTML"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Optional name or title of the HTML section."
+                },
+                "html": {
+                    "type": "string",
+                    "description": "HTML contents."
+                }
+            },
+            "required": [
+                "type",
+                "html"
+            ],
+            "additionalProperties": false
+        },
+        "AnyPhoneString": {
+            "type": "string",
+            "description": "Any phone-like string. Must only contain digits and symbol separators (parens, dashes, plus sign, spaces, other common phone number separators.",
+            "example": "+44 (0) 747-444-7447"
+        }
+    },
+    "errors": [
+        {
+            "code": "InputInvalid",
+            "category": "client",
+            "description": "Failed to create a job due to invalid input"
+        },
+        {
+            "code": "JobCancelled",
+            "category": "client",
+            "description": "Job cancelled by client"
+        },
+        {
+            "code": "InputTimeout",
+            "category": "client",
+            "description": "Input was not provided within 15 minutes"
+        },
+        {
+            "code": "TdsTimeout",
+            "category": "client",
+            "description": "3D Secure was not completed by the card holder"
+        },
+        {
+            "code": "InputRejected",
+            "category": "client",
+            "description": "Replacement for rejected input was not provided within 15 minutes"
+        },
+        {
+            "code": "PaymentRejected",
+            "category": "client",
+            "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if available"
+        },
+        {
+            "code": "CardDetailsInvalid",
+            "category": "client",
+            "description": "Unable to process payment as card details are invalid"
+        },
+        {
+            "code": "AddressInvalid",
+            "category": "client",
+            "description": "Invalid address provided"
+        },
+        {
+            "code": "AccountDetailsInvalid",
+            "category": "client",
+            "description": "Cannot sign in as invalid account details provided"
+        },
+        {
+            "code": "PaymentDetailsInvalid",
+            "category": "client",
+            "description": "Cannot submit or process the payment because the payment details provided are invalid."
+        },
+        {
+            "code": "CardTypeNotSupported",
+            "category": "client",
+            "description": "Cannot submit or process the payment because the card type is not supported by this supplier."
+        },
+        {
+            "code": "UrlInvalid",
+            "category": "client",
+            "description": "Invalid url provided"
+        },
+        {
+            "code": "UnsupportedWebsiteLanguage",
+            "category": "client",
+            "description": "The deeplink or url landed on a page in an unsupported language."
+        },
+        {
+            "code": "FinalPriceNotFound",
+            "category": "client",
+            "description": "Final price provided does not match expectation"
+        },
+        {
+            "code": "PanTokenInvalid",
+            "category": "client",
+            "description": "Invalid pan token provided"
+        },
+        {
+            "code": "CookieInvalid",
+            "category": "client",
+            "description": "Invalid cookie provided"
+        },
+        {
+            "code": "PriceRangeExceeded",
+            "category": "client",
+            "description": "Price range exceeded input specifications."
+        },
+        {
+            "code": "AuthenticationError",
+            "category": "client",
+            "description": "The authentication attempt failed."
+        },
+        {
+            "code": "PriceChangedAfterConsent",
+            "category": "website",
+            "description": "Price changed after final price consent."
+        },
+        {
+            "code": "WebsiteValidationFailed",
+            "category": "website",
+            "description": "Website's validation rule doesn't allow the input data"
+        },
+        {
+            "code": "SystemUnavailable",
+            "category": "website",
+            "description": "Website system is down/Website doesn't work at the moment"
+        },
+        {
+            "code": "KnownLimitation",
+            "category": "website",
+            "description": "Cannot process due to known limitation"
+        },
+        {
+            "code": "GenericWebsiteError",
+            "category": "website",
+            "description": "Website threw general error during automation process. A message will be forwarded from the website if available"
+        },
+        {
+            "code": "UnableToContinueProcess",
+            "category": "website",
+            "description": "Process couldn't reach the final step. Website finished the process early",
+            "example": "Unable to purchase online"
+        },
+        {
+            "code": "SessionExpired",
+            "category": "website",
+            "description": "The website timed out the session. Each website has its own timeout settings, usually after inactivity such as waiting too long for an input.",
+            "example": "Your basket has expired, you must complete the purchase within 5 minutes."
+        },
+        {
+            "code": "ServerError",
+            "category": "server",
+            "description": "Server Error"
+        },
+        {
+            "code": "JobTimeout",
+            "category": "server",
+            "description": "Job timeout after an hour of job creation without reaching the final step."
+        },
+        {
+            "code": "BotDetection",
+            "category": "server",
+            "description": "The automation could not continue because it was bot detected and the available countermeasures did not work around the issue."
+        }
+    ],
+    "default": {
+        "description": "Generic domain contains type definitions used in other domains.",
+        "private": false,
+        "inputs": {},
+        "outputs": {},
+        "types": {
+            "Event": {
+                "type": "object",
+                "description": "An object describing an specific event emitted by automation job. The exact event types and data depend on the specific service.",
+                "required": [
+                    "type"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Event type, specific to an automation service."
+                    }
+                },
+                "additionalProperties": true
+            },
+            "Ages": {
+                "type": "array",
+                "description": "A list of ages of persons.",
+                "items": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 200,
+                    "example": 42
+                }
+            },
+            "URL": {
+                "type": "string",
+                "format": "url",
+                "description": "URL Record, as defined by <a href=\"https://url.spec.whatwg.org/#concept-url\" target=\"_blank\" rel=\"noopener\">WHATWG URL Standard</a>.",
+                "example": "http://example.com"
+            },
+            "Cookies": {
+                "type": "array",
+                "description": "An array of cookie definitions.",
+                "items": {
+                    "$ref": "#/types/Cookie"
+                }
+            },
+            "Cookie": {
+                "type": "object",
+                "description": "An object which defines a cookie. It must either contain a URL or a domain, alongisde name and value. For more information on the fields of this object, see <a href=\"https://tools.ietf.org/html/rfc6265#section-5.2\" target=\"_blank\" rel=\"noopener\">RFC 6265 section 5.2</a>.",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Cookie name."
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Cookie value."
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "url",
+                        "description": "The URL from which the cookie is set."
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "Cookie domain."
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "Cookie path."
+                    },
+                    "secure": {
+                        "type": "boolean",
+                        "description": "True if cookie is secure."
+                    },
+                    "session": {
+                        "type": "boolean",
+                        "description": "True if cookie is a session cookie."
+                    },
+                    "priority": {
+                        "type": "string",
+                        "description": "Cookie priority."
+                    },
+                    "httpOnly": {
+                        "type": "boolean",
+                        "description": "True if cookie is http-only."
+                    },
+                    "sameSite": {
+                        "type": "string",
+                        "description": "Cookie same-site type."
+                    },
+                    "expires": {
+                        "type": "number",
+                        "description": "Expiration date in seconds since the epoch (January 1, 1970 UTC)."
+                    },
+                    "size": {
+                        "type": "number",
+                        "description": "Size of the cookie."
+                    }
+                },
+                "required": [
+                    "name",
+                    "value"
+                ],
+                "additionalProperties": true
+            },
+            "Account": {
+                "type": "object",
+                "description": "Account information for filling in contact details.<br/>Receipts and booking references will typically be sent to specified <code>email</code>.<br/>Some websites also require registering user account, in which case <code>password</code> must be provided.",
+                "pii": true,
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "Account email, typically used for user sign up / sign in.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully. Use contactEmail when different.<br/>Automation may result in registering new user account with this email address, and may fail if account with specified email already exists. We recommend you <a href=\"https://docs.automationcloud.net/v2.0/docs/email-proxy\" target=\"_blank\" rel=\"noopener\">use an email proxy to mitigate this issue</a>.",
+                        "format": "email",
+                        "example": "hello@example.com"
+                    },
+                    "contactEmail": {
+                        "type": "string",
+                        "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
+                        "format": "email",
+                        "example": "client@example.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
+                        "default": ""
+                    },
+                    "phone": {
+                        "description": "Account phone number, may also be used as contact details.",
+                        "$ref": "#/types/Phone"
+                    },
+                    "isExisting": {
+                        "description": "If value is <code>true</code> automation will try to use account details to perform sign in instead of sign up. Automation will fail if incorrect account details are specified.",
+                        "type": "boolean"
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "john012345"
+                    },
+                    "person": {
+                        "description": "When an account needs to be created for a person (first name, last name, etc), this key will be used.",
+                        "$ref": "#/types/Person"
+                    }
+                },
+                "required": [
+                    "email",
+                    "isExisting"
+                ],
+                "additionalProperties": false
+            },
+            "Person": {
+                "type": "object",
+                "description": "Basic information about person's identity.",
+                "pii": true,
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "",
+                        "enum": [
+                            "mr",
+                            "miss",
+                            "ms",
+                            "mrs"
+                        ]
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "description": "First name(s) or given name(s), as specified in ID.",
+                        "minLength": 1,
+                        "example": "Bob"
+                    },
+                    "middleName": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "description": "Last name or surname, as specified in ID.",
+                        "minLength": 1,
+                        "example": "Smith"
+                    },
+                    "document": {
+                        "$ref": "#/types/IdentityDocument"
+                    }
+                },
+                "required": [
+                    "title",
+                    "firstName",
+                    "lastName"
+                ],
+                "additionalProperties": false
+            },
+            "IdentityDocument": {
+                "type": "object",
+                "description": "Person ID (passport or other document). Automation may fail if this information is required by the website, but not provided.",
+                "pii": true,
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Document type.",
+                        "enum": [
+                            "passport",
+                            "national-id"
+                        ]
+                    },
+                    "number": {
+                        "type": "string",
+                        "description": "Document number.",
+                        "example": "75 127001"
+                    },
+                    "issueDate": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2008-01-01"
+                    },
+                    "expirationDate": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2028-01-01"
+                    },
+                    "issueCountryCode": {
+                        "$ref": "#/types/CountryCode",
+                        "description": "Code of country where the document was issued."
+                    }
+                },
+                "required": [
+                    "type",
+                    "number",
+                    "expirationDate",
+                    "issueCountryCode"
+                ],
+                "additionalProperties": false
+            },
+            "ExplicitAddress": {
+                "type": "object",
+                "description": "Explicit address components (parsed version, used to format into various standards).",
+                "pii": true,
+                "properties": {
+                    "streetName": {
+                        "type": "string",
+                        "description": "Name of the street.",
+                        "minLength": 1,
+                        "example": "Clerkenwell Close"
+                    },
+                    "streetNumber": {
+                        "type": "string",
+                        "description": "Number of the street or other building identifier, such as house number or house name",
+                        "minLength": 1,
+                        "example": "27-31"
+                    },
+                    "line2": {
+                        "type": "string",
+                        "description": "Additional address information (e.g. flat).",
+                        "example": "Flat 2"
+                    },
+                    "city": {
+                        "type": "string",
+                        "description": "Name of city, town or other settlement.",
+                        "minLength": 1,
+                        "example": "San Francisco"
+                    },
+                    "citySubdivision": {
+                        "type": "string",
+                        "description": "Name of the city subdivision.",
+                        "minLength": 1,
+                        "example": "Glen Park"
+                    },
+                    "postcode": {
+                        "type": "string",
+                        "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                        "example": "94581"
+                    },
+                    "countryCode": {
+                        "$ref": "#/types/CountryCode"
+                    },
+                    "countrySubdivision": {
+                        "$ref": "#/types/CountrySubdivision"
+                    }
+                },
+                "required": [
+                    "streetName",
+                    "city",
+                    "postcode",
+                    "countryCode",
+                    "countrySubdivision"
+                ],
+                "additionalProperties": false
+            },
+            "InlinedAddress": {
+                "type": "object",
+                "description": "Address components common to inlined addresses (line1, line2)",
+                "pii": true,
+                "properties": {
+                    "line1": {
+                        "type": "string",
+                        "description": "Street name with house number.",
+                        "minLength": 1,
+                        "example": "501 Twin Peaks Blv"
+                    },
+                    "line2": {
+                        "type": "string",
+                        "description": "Additional address information (e.g. flat).",
+                        "example": "Flat 2"
+                    },
+                    "city": {
+                        "type": "string",
+                        "description": "Name of city, town or other settlement.",
+                        "minLength": 1,
+                        "example": "San Francisco"
+                    },
+                    "citySubdivision": {
+                        "type": "string",
+                        "description": "Name of the city subdivision.",
+                        "minLength": 1,
+                        "example": "Glen Park"
+                    },
+                    "postcode": {
+                        "type": "string",
+                        "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                        "example": "94581"
+                    },
+                    "countryCode": {
+                        "$ref": "#/types/CountryCode"
+                    },
+                    "countrySubdivision": {
+                        "$ref": "#/types/CountrySubdivision"
+                    }
+                },
+                "required": [
+                    "line1",
+                    "city",
+                    "postcode",
+                    "countryCode",
+                    "countrySubdivision"
+                ],
+                "additionalProperties": false
+            },
+            "Address": {
+                "description": "Physical address information, typically used as part of billing or shipping address objects.",
+                "pii": true,
+                "oneOf": [
+                    {
+                        "$ref": "#/types/ExplicitAddress"
+                    },
+                    {
+                        "$ref": "#/types/InlinedAddress"
+                    }
+                ]
+            },
+            "Phone": {
+                "type": "object",
+                "description": "Phone information, typically used on contact details pages.",
+                "pii": true,
+                "properties": {
+                    "countryCode": {
+                        "$ref": "#/types/CountryCode"
+                    },
+                    "number": {
+                        "type": "string",
+                        "minLength": 7,
+                        "description": "Mobile phone number (numbers only, excluding country code).",
+                        "example": "123456789"
+                    }
+                },
+                "required": [
+                    "countryCode",
+                    "number"
+                ],
+                "additionalProperties": false
+            },
+            "PriceConsent": {
+                "type": "object",
+                "description": "Price consent object used in final price confirmation flow.<br/>When automation reaches final price (typically happens immediately before placing the order) it will emit <code>finalPrice</code> object in output and will wait for consent from you. You then need to provide the exact copy of this object as <code>finalPriceConsent</code> input.",
+                "properties": {
+                    "price": {
+                        "$ref": "#/types/Price"
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "price"
+                ]
+            },
+            "Price": {
+                "type": "object",
+                "description": "Basic price information.",
+                "properties": {
+                    "currencyCode": {
+                        "$ref": "#/types/CurrencyCode"
+                    },
+                    "value": {
+                        "type": "integer",
+                        "description": "An integer in the smallest currency unit (100 for £1.00).",
+                        "example": "12300"
+                    }
+                },
+                "required": [
+                    "currencyCode",
+                    "value"
+                ],
+                "additionalProperties": false
+            },
+            "PriceRange": {
+                "type": "object",
+                "description": "Price range information.",
+                "properties": {
+                    "currencyCode": {
+                        "$ref": "#/types/CurrencyCode"
+                    },
+                    "min": {
+                        "type": "integer",
+                        "description": "An integer in the smallest currency unit (100 for £1.00).",
+                        "example": "12000"
+                    },
+                    "max": {
+                        "type": "integer",
+                        "description": "An integer in the smallest currency unit (100 for £1.00).",
+                        "example": "12300"
+                    }
+                },
+                "required": [
+                    "currencyCode",
+                    "min",
+                    "max"
+                ],
+                "additionalProperties": false
+            },
+            "Payment": {
+                "type": "object",
+                "description": "Payment information, including card details and billing address.",
+                "pii": true,
+                "properties": {
+                    "person": {
+                        "$ref": "#/types/Person"
+                    },
+                    "card": {
+                        "$ref": "#/types/PaymentCard"
+                    },
+                    "address": {
+                        "$ref": "#/types/Address"
+                    },
+                    "tax": {
+                        "$ref": "#/types/Tax"
+                    }
+                },
+                "required": [
+                    "card",
+                    "person",
+                    "address"
+                ],
+                "additionalProperties": false
+            },
+            "Tax": {
+                "type": "object",
+                "description": "Tax information.",
+                "pii": true,
+                "properties": {
+                    "number": {
+                        "type": "string",
+                        "description": "Local tax number.",
+                        "example": "RO37866619"
+                    }
+                },
+                "required": [
+                    "number"
+                ],
+                "additionalProperties": false
+            },
+            "PaymentCard": {
+                "type": "object",
+                "description": "Payment information for card payment. Note: card number should not be submitted in plain text as per PCI DSS. Use <code>panToken</code> to provide it securely instead.",
+                "pii": true,
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Card type, debit or credit.",
+                        "enum": [
+                            "debit",
+                            "credit"
+                        ]
+                    },
+                    "holderType": {
+                        "type": "string",
+                        "description": "Card's holder type, personal or corporate.",
+                        "enum": [
+                            "personal",
+                            "corporate"
+                        ],
+                        "default": "corporate"
+                    },
+                    "brand": {
+                        "type": "string",
+                        "description": "Card brand, must be one of the supported card brands. Automation may fail if a specific card brand is not supported on a particular website.",
+                        "enum": [
+                            "visa",
+                            "mastercard",
+                            "amex",
+                            "discover"
+                        ]
+                    },
+                    "expirationDate": {
+                        "type": "string",
+                        "description": "Expiration date in YYYY-MM format as written on card.",
+                        "example": "2020-04",
+                        "pattern": "^20[0-9]{2}-(?:0[1-9]|1[0-2])$",
+                        "minLength": 7,
+                        "maxLength": 7
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Cardholder's name as written on card.",
+                        "example": "Alice Smith"
+                    },
+                    "cvv": {
+                        "type": "string",
+                        "description": "Security code written on card, 3- or 4-digit number.",
+                        "example": "123",
+                        "minLength": 3,
+                        "maxLength": 4
+                    },
+                    "binReplacement": {
+                        "type": "string",
+                        "description": "Experimental. BIN to replace with, where possible.",
+                        "example": "467095",
+                        "minLength": 6,
+                        "maxLength": 6
+                    }
+                },
+                "required": [
+                    "type",
+                    "brand",
+                    "expirationDate",
+                    "name",
+                    "cvv"
+                ],
+                "additionalProperties": false
+            },
+            "PanToken": {
+                "type": "string",
+                "description": "An encrypted PAN token, obtained from Automation Cloud Vault. Please consult \"Vaulting Payment Card Information\" section of Documentation for information on how to acquire it.",
+                "example": "5d41402abc4b2a76b9719d911017c592",
+                "minLength": 15
+            },
+            "CountryCode": {
+                "type": "string",
+                "title": "ISO 3166-1 alpha-2 Country Code",
+                "description": "ISO 3166-1 alpha-2 code representing the country. United Kingdom is officially assigned the alpha-2 code gb rather than uk. Lowercase.",
+                "example": "us",
+                "minLength": 2,
+                "maxLength": 2,
+                "enum": [
+                    "ad",
+                    "ae",
+                    "af",
+                    "ag",
+                    "ai",
+                    "al",
+                    "am",
+                    "ao",
+                    "aq",
+                    "ar",
+                    "as",
+                    "at",
+                    "au",
+                    "aw",
+                    "ax",
+                    "az",
+                    "ba",
+                    "bb",
+                    "bd",
+                    "be",
+                    "bf",
+                    "bg",
+                    "bh",
+                    "bi",
+                    "bj",
+                    "bl",
+                    "bm",
+                    "bn",
+                    "bo",
+                    "bq",
+                    "br",
+                    "bs",
+                    "bt",
+                    "bv",
+                    "bw",
+                    "by",
+                    "bz",
+                    "ca",
+                    "cc",
+                    "cd",
+                    "cf",
+                    "cg",
+                    "ch",
+                    "ci",
+                    "ck",
+                    "cl",
+                    "cm",
+                    "cn",
+                    "co",
+                    "cr",
+                    "cu",
+                    "cv",
+                    "cw",
+                    "cx",
+                    "cy",
+                    "cz",
+                    "de",
+                    "dj",
+                    "dk",
+                    "dm",
+                    "do",
+                    "dz",
+                    "ec",
+                    "ee",
+                    "eg",
+                    "eh",
+                    "er",
+                    "es",
+                    "et",
+                    "fi",
+                    "fj",
+                    "fk",
+                    "fm",
+                    "fo",
+                    "fr",
+                    "ga",
+                    "gb",
+                    "gd",
+                    "ge",
+                    "gf",
+                    "gg",
+                    "gh",
+                    "gi",
+                    "gl",
+                    "gm",
+                    "gn",
+                    "gp",
+                    "gq",
+                    "gr",
+                    "gs",
+                    "gt",
+                    "gu",
+                    "gw",
+                    "gy",
+                    "hk",
+                    "hm",
+                    "hn",
+                    "hr",
+                    "ht",
+                    "hu",
+                    "id",
+                    "ie",
+                    "il",
+                    "im",
+                    "in",
+                    "io",
+                    "iq",
+                    "ir",
+                    "is",
+                    "it",
+                    "je",
+                    "jm",
+                    "jo",
+                    "jp",
+                    "ke",
+                    "kg",
+                    "kh",
+                    "ki",
+                    "km",
+                    "kn",
+                    "kp",
+                    "kr",
+                    "kw",
+                    "ky",
+                    "kz",
+                    "la",
+                    "lb",
+                    "lc",
+                    "li",
+                    "lk",
+                    "lr",
+                    "ls",
+                    "lt",
+                    "lu",
+                    "lv",
+                    "ly",
+                    "ma",
+                    "mc",
+                    "md",
+                    "me",
+                    "mf",
+                    "mg",
+                    "mh",
+                    "mk",
+                    "ml",
+                    "mm",
+                    "mn",
+                    "mo",
+                    "mp",
+                    "mq",
+                    "mr",
+                    "ms",
+                    "mt",
+                    "mu",
+                    "mv",
+                    "mw",
+                    "mx",
+                    "my",
+                    "mz",
+                    "na",
+                    "nc",
+                    "ne",
+                    "nf",
+                    "ng",
+                    "ni",
+                    "nl",
+                    "no",
+                    "np",
+                    "nr",
+                    "nu",
+                    "nz",
+                    "om",
+                    "pa",
+                    "pe",
+                    "pf",
+                    "pg",
+                    "ph",
+                    "pk",
+                    "pl",
+                    "pm",
+                    "pn",
+                    "pr",
+                    "ps",
+                    "pt",
+                    "pw",
+                    "py",
+                    "qa",
+                    "re",
+                    "ro",
+                    "rs",
+                    "ru",
+                    "rw",
+                    "sa",
+                    "sb",
+                    "sc",
+                    "sd",
+                    "se",
+                    "sg",
+                    "sh",
+                    "si",
+                    "sj",
+                    "sk",
+                    "sl",
+                    "sm",
+                    "sn",
+                    "so",
+                    "sr",
+                    "ss",
+                    "st",
+                    "sv",
+                    "sx",
+                    "sy",
+                    "sz",
+                    "tc",
+                    "td",
+                    "tf",
+                    "tg",
+                    "th",
+                    "tj",
+                    "tk",
+                    "tl",
+                    "tm",
+                    "tn",
+                    "to",
+                    "tr",
+                    "tt",
+                    "tv",
+                    "tw",
+                    "tz",
+                    "ua",
+                    "ug",
+                    "um",
+                    "us",
+                    "uy",
+                    "uz",
+                    "va",
+                    "vc",
+                    "ve",
+                    "vg",
+                    "vi",
+                    "vn",
+                    "vu",
+                    "wf",
+                    "ws",
+                    "xk",
+                    "ye",
+                    "yt",
+                    "za",
+                    "zm",
+                    "zw"
+                ]
+            },
+            "CountrySubdivision": {
+                "type": "string",
+                "description": "Full name of country subdivision (e.g. state, region, county, etc.), except for US states which require 2 letter code. Lowercased.",
+                "example": "ca"
+            },
+            "CurrencyCode": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 3,
+                "title": "ISO 4217 Currency Code",
+                "description": "ISO 4217 3-letter code representing the currency. Lowercase.",
+                "example": "usd",
+                "enum": [
+                    "aed",
+                    "afn",
+                    "all",
+                    "amd",
+                    "ang",
+                    "aoa",
+                    "ars",
+                    "aud",
+                    "awg",
+                    "azn",
+                    "bam",
+                    "bdt",
+                    "bbd",
+                    "bgn",
+                    "bhd",
+                    "bmd",
+                    "bnd",
+                    "bob",
+                    "brl",
+                    "bsd",
+                    "bwp",
+                    "byn",
+                    "bzd",
+                    "cad",
+                    "chf",
+                    "clp",
+                    "cny",
+                    "cop",
+                    "crc",
+                    "cup",
+                    "cve",
+                    "czk",
+                    "djf",
+                    "dkk",
+                    "dop",
+                    "dzd",
+                    "egp",
+                    "etb",
+                    "eur",
+                    "fjd",
+                    "fkp",
+                    "gbp",
+                    "gel",
+                    "ggp",
+                    "ghs",
+                    "gip",
+                    "gtq",
+                    "gyd",
+                    "hkd",
+                    "hnl",
+                    "hrk",
+                    "huf",
+                    "idr",
+                    "ils",
+                    "imp",
+                    "inr",
+                    "iqd",
+                    "irr",
+                    "isk",
+                    "jep",
+                    "jmd",
+                    "jod",
+                    "jpy",
+                    "kes",
+                    "kgs",
+                    "khr",
+                    "kpw",
+                    "krw",
+                    "kwd",
+                    "kyd",
+                    "kzt",
+                    "lak",
+                    "lbp",
+                    "lkr",
+                    "lrd",
+                    "mad",
+                    "mkd",
+                    "mmk",
+                    "mnt",
+                    "mop",
+                    "mur",
+                    "mvr",
+                    "mxn",
+                    "myr",
+                    "mzn",
+                    "nad",
+                    "ngn",
+                    "nio",
+                    "nok",
+                    "npr",
+                    "nzd",
+                    "omr",
+                    "pab",
+                    "pen",
+                    "pgk",
+                    "php",
+                    "pkr",
+                    "pln",
+                    "pyg",
+                    "qar",
+                    "ron",
+                    "rsd",
+                    "rub",
+                    "rwf",
+                    "sar",
+                    "sbd",
+                    "scr",
+                    "sek",
+                    "sgd",
+                    "shp",
+                    "sos",
+                    "srd",
+                    "svc",
+                    "syp",
+                    "thb",
+                    "tjs",
+                    "tnd",
+                    "try",
+                    "ttd",
+                    "tvd",
+                    "twd",
+                    "tzs",
+                    "uah",
+                    "ugx",
+                    "usd",
+                    "uyu",
+                    "uzs",
+                    "vef",
+                    "ves",
+                    "vnd",
+                    "xaf",
+                    "xcd",
+                    "xof",
+                    "yer",
+                    "zar",
+                    "zmw",
+                    "zwd"
+                ]
+            },
+            "StructuredText": {
+                "type": "object",
+                "description": "A list of structured text.",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "StructuredText"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name or title of the text grouping."
+                    },
+                    "contents": {
+                        "type": "array",
+                        "description": "An array of structured text items.",
+                        "items": {
+                            "$ref": "#/types/StructuredTextItem"
+                        }
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "contents"
+                ],
+                "additionalProperties": false
+            },
+            "StructuredPrice": {
+                "type": "object",
+                "description": "A list of structured text.",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "StructuredPrice"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name or title of the text grouping."
+                    },
+                    "price": {
+                        "$ref": "#/types/Price"
+                    },
+                    "priceLine": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "$ref": "#/types/StructuredTextItems"
+                    },
+                    "contents": {
+                        "type": "array",
+                        "description": "An array of structured text items.",
+                        "items": {
+                            "$ref": "#/types/StructuredTextItem"
+                        }
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "price"
+                ],
+                "additionalProperties": false
+            },
+            "StructuredTextItem": {
+                "oneOf": [
+                    {
+                        "$ref": "#/types/StructuredText"
+                    },
+                    {
+                        "$ref": "#/types/File"
+                    },
+                    {
+                        "$ref": "#/types/Link"
+                    },
+                    {
+                        "$ref": "#/types/NamedText"
+                    },
+                    {
+                        "$ref": "#/types/StructuredPrice"
+                    },
+                    {
+                        "$ref": "#/types/NamedPrice"
+                    },
+                    {
+                        "$ref": "#/types/HTML"
+                    },
+                    {
+                        "$ref": "#/types/Text"
+                    }
+                ]
+            },
+            "StructuredTextItems": {
+                "type": "array",
+                "description": "List of available structured text items.",
+                "items": {
+                    "$ref": "#/types/StructuredTextItem"
+                }
+            },
+            "File": {
+                "type": "object",
+                "description": "A document downloaded from the target website.<br/>To retrieve this document, you must include the <strong>SECRET_KEY</strong> authorisation header with your request.",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "File"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name or title of the document."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "Location of the resource."
+                    },
+                    "filename": {
+                        "type": "string",
+                        "description": "The name of the file, including the extension."
+                    },
+                    "headers": {
+                        "type": "object",
+                        "description": "List of relevant headers associated with the uri.",
+                        "items": {
+                            "type": "object",
+                            "properties": {},
+                            "required": [],
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        },
+                        "example": [
+                            {
+                                "Authorization": "Bearer abc123"
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "type",
+                    "url",
+                    "filename"
+                ],
+                "additionalProperties": false
+            },
+            "Link": {
+                "type": "object",
+                "description": "A document accessible on the target website.",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "Link"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name or title of the document."
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "url",
+                        "description": "Location of the resource."
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "url"
+                ],
+                "additionalProperties": false
+            },
+            "NamedText": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "NamedText"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name or title of the text."
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Location of the resource."
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "text"
+                ],
+                "additionalProperties": false
+            },
+            "NamedPrice": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "NamedPrice"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name or title of the price."
+                    },
+                    "price": {
+                        "$ref": "#/types/Price"
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "price"
+                ],
+                "additionalProperties": false
+            },
+            "Text": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "Text"
+                        ]
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Location of the resource."
+                    }
+                },
+                "required": [
+                    "type",
+                    "text"
+                ],
+                "additionalProperties": false
+            },
+            "NamedContents": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "NamedContents"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name or title of the text."
+                    },
+                    "contents": {
+                        "type": "array",
+                        "description": "An array of structured text items.",
+                        "items": {
+                            "$ref": "#/types/StructuredTextItem"
+                        }
+                    }
+                },
+                "required": [
+                    "type",
+                    "name",
+                    "contents"
+                ],
+                "additionalProperties": false
+            },
+            "HTML": {
+                "type": "object",
+                "description": "Inner HTML contents of an element.",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            "HTML"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Optional name or title of the HTML section."
+                    },
+                    "html": {
+                        "type": "string",
+                        "description": "HTML contents."
+                    }
+                },
+                "required": [
+                    "type",
+                    "html"
+                ],
+                "additionalProperties": false
+            },
+            "AnyPhoneString": {
+                "type": "string",
+                "description": "Any phone-like string. Must only contain digits and symbol separators (parens, dashes, plus sign, spaces, other common phone number separators.",
+                "example": "+44 (0) 747-444-7447"
+            }
+        },
+        "errors": [
+            {
+                "code": "InputInvalid",
+                "category": "client",
+                "description": "Failed to create a job due to invalid input"
+            },
+            {
+                "code": "JobCancelled",
+                "category": "client",
+                "description": "Job cancelled by client"
+            },
+            {
+                "code": "InputTimeout",
+                "category": "client",
+                "description": "Input was not provided within 15 minutes"
+            },
+            {
+                "code": "TdsTimeout",
+                "category": "client",
+                "description": "3D Secure was not completed by the card holder"
+            },
+            {
+                "code": "InputRejected",
+                "category": "client",
+                "description": "Replacement for rejected input was not provided within 15 minutes"
+            },
+            {
+                "code": "PaymentRejected",
+                "category": "client",
+                "description": "Payment rejected due to a problem with the card. A message will be forwarded from the website if available"
+            },
+            {
+                "code": "CardDetailsInvalid",
+                "category": "client",
+                "description": "Unable to process payment as card details are invalid"
+            },
+            {
+                "code": "AddressInvalid",
+                "category": "client",
+                "description": "Invalid address provided"
+            },
+            {
+                "code": "AccountDetailsInvalid",
+                "category": "client",
+                "description": "Cannot sign in as invalid account details provided"
+            },
+            {
+                "code": "PaymentDetailsInvalid",
+                "category": "client",
+                "description": "Cannot submit or process the payment because the payment details provided are invalid."
+            },
+            {
+                "code": "CardTypeNotSupported",
+                "category": "client",
+                "description": "Cannot submit or process the payment because the card type is not supported by this supplier."
+            },
+            {
+                "code": "UrlInvalid",
+                "category": "client",
+                "description": "Invalid url provided"
+            },
+            {
+                "code": "UnsupportedWebsiteLanguage",
+                "category": "client",
+                "description": "The deeplink or url landed on a page in an unsupported language."
+            },
+            {
+                "code": "FinalPriceNotFound",
+                "category": "client",
+                "description": "Final price provided does not match expectation"
+            },
+            {
+                "code": "PanTokenInvalid",
+                "category": "client",
+                "description": "Invalid pan token provided"
+            },
+            {
+                "code": "CookieInvalid",
+                "category": "client",
+                "description": "Invalid cookie provided"
+            },
+            {
+                "code": "PriceRangeExceeded",
+                "category": "client",
+                "description": "Price range exceeded input specifications."
+            },
+            {
+                "code": "AuthenticationError",
+                "category": "client",
+                "description": "The authentication attempt failed."
+            },
+            {
+                "code": "PriceChangedAfterConsent",
+                "category": "website",
+                "description": "Price changed after final price consent."
+            },
+            {
+                "code": "WebsiteValidationFailed",
+                "category": "website",
+                "description": "Website's validation rule doesn't allow the input data"
+            },
+            {
+                "code": "SystemUnavailable",
+                "category": "website",
+                "description": "Website system is down/Website doesn't work at the moment"
+            },
+            {
+                "code": "KnownLimitation",
+                "category": "website",
+                "description": "Cannot process due to known limitation"
+            },
+            {
+                "code": "GenericWebsiteError",
+                "category": "website",
+                "description": "Website threw general error during automation process. A message will be forwarded from the website if available"
+            },
+            {
+                "code": "UnableToContinueProcess",
+                "category": "website",
+                "description": "Process couldn't reach the final step. Website finished the process early",
+                "example": "Unable to purchase online"
+            },
+            {
+                "code": "SessionExpired",
+                "category": "website",
+                "description": "The website timed out the session. Each website has its own timeout settings, usually after inactivity such as waiting too long for an input.",
+                "example": "Your basket has expired, you must complete the purchase within 5 minutes."
+            },
+            {
+                "code": "ServerError",
+                "category": "server",
+                "description": "Server Error"
+            },
+            {
+                "code": "JobTimeout",
+                "category": "server",
+                "description": "Job timeout after an hour of job creation without reaching the final step."
+            },
+            {
+                "code": "BotDetection",
+                "category": "server",
+                "description": "The automation could not continue because it was bot detected and the available countermeasures did not work around the issue."
+            }
+        ]
+    }
+}

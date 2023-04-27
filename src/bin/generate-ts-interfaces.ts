@@ -2,14 +2,14 @@ import { compile } from 'json-schema-to-typescript';
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 import path from 'path';
 import * as fs from 'fs';
-// import * as mySchema from './schema.json';
-import * as HotelPriceCrawling from '../schema/hotel-price-crawling.json';
-import * as Generic from '../schema/generic.json';
+import * as mySchema from './schema.json';
+// import * as HotelPriceCrawling from '../schema/hotel-price-crawling.json';
+// import * as Generic from '../schema/generic.json';
 
 const generateInterfaces = async () => {
-  const genericSchema = await createValidSchema(Generic, 'generic');
+  // const genericSchema = await createValidSchema(mySchema, 'schema');
   // TODO read schemas and call generateInterface
-  generateInterface(genericSchema, 'generic');
+  generateInterface(mySchema as unknown as JSON, 'schema');
   // generateInterface(HotelPriceCrawling, 'generic');
 };
 
@@ -27,6 +27,7 @@ const generateInterface = async (schema: JSON, filename: string) => {
 
   const compileAndExportInterface = async () => {
     const compiledInterfaces = await compile(schema, filename, {
+      additionalProperties: false,
       $refOptions: {
         parse: { json: true },
         resolve: { external: true, file: true, http: false },

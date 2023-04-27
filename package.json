@@ -23,7 +23,8 @@
     "build:public": "node ./out/bin/build",
     "preversion": "run-s check build test",
     "postversion": "npm publish --access public && git push origin master --tags",
-    "generate": "node ./out/bin/generate-ts-interfaces"
+    "generate": "node ./out/bin/generate-ts-interfaces",
+    "gen": "node ./out/bin/generates"
   },
   "pre-commit": [
     "check"
@@ -42,6 +43,7 @@
     "eslint-plugin-vue": "^5.2.3",
     "glob": "^7.1.6",
     "json-schema-to-typescript": "^11.0.2",
+    "json-to-ts": "^1.7.0",
     "mocha": "^7.1.2",
     "npm-run-all": "^4.1.2",
     "pre-commit": "^1.2.2",
