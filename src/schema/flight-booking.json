@@ -153,6 +153,9 @@
             "typeRef": "#/domains/FlightBooking/types/PriceBreakdown",
             "description": "The list of price components, as found on the website."
         },
+        "isPromoCodeApplied": {
+            "typeRef": "#/domains/FlightBooking/types/Boolean"
+        },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/FlightBooking/types/PriceBreakdown",
             "description": "The list of estimated price components, as found on the website."
