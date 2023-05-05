@@ -126,6 +126,9 @@
                     "items": {
                         "$ref": "#/domains/HotelPriceCrawling/types/Rate"
                     }
+                },
+                "canBeShared": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -187,6 +190,9 @@
                     "items": {
                         "$ref": "#/domains/HotelPriceCrawling/types/Tax"
                     }
+                },
+                "isShared": {
+                    "type": "boolean"
                 }
             },
             "required": [
