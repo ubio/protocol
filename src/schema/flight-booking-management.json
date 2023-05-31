@@ -338,6 +338,11 @@
                     "description": "Last name or surname, as specified in passport or travel document.",
                     "example": "Smith"
                 },
+                "originAirport": {
+                    "type": "string",
+                    "description": "Departure airport.",
+                    "example": "JFK"
+                },
                 "email": {
                     "type": "string",
                     "description": "Contact email. When this property is not set but required by the target website, account.email is used instead.",
