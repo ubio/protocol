@@ -59,6 +59,10 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when booking T&Cs are presented."
         },
+        "supportedCards": {
+            "typeRef": "#/domains/HotelRoomBooking/types/SupportedCards",
+            "description": "List of card brands and types found on the supplier's website."
+        },
         "privacyPolicy": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when the privacy policy is presented."
@@ -202,6 +206,41 @@
             "items": {
                 "$ref": "#/domains/HotelRoomBooking/types/PriceLineItem"
             }
+        },
+        "SupportedCards": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+                "$ref": "#/domains/HotelRoomBooking/types/CardBrandType"
+            }
+        },
+        "CardBrandType": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Card type, debit or credit.",
+                    "enum": [
+                        "debit",
+                        "credit"
+                    ]
+                },
+                "brand": {
+                    "type": "string",
+                    "description": "Card brand.",
+                    "enum": [
+                        "visa",
+                        "mastercard",
+                        "amex",
+                        "discover"
+                    ]
+                }
+            },
+            "required": [
+                "brand",
+                "type"
+            ],
+            "additionalProperties": false
         },
         "PriceLineItem": {
             "type": "object",
