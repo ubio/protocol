@@ -280,13 +280,20 @@
             "description": "Outbound and inbound flights specification.",
             "properties": {
                 "origin": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
-                "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" }
+                "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
+                "segments": { "$ref": "#/domains/FlightBooking/types/Segments" }
             },
             "required": [
                 "origin",
                 "destination"
             ],
             "additionalProperties": false
+        },
+        "Segments": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": { "$ref": "#/domains/FlightBooking/types/Flight" }
         },
         "CabinClass": {
             "type": "string",
