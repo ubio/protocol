@@ -222,7 +222,8 @@
                     "description": "Card type, debit or credit.",
                     "enum": [
                         "debit",
-                        "credit"
+                        "credit", 
+                        "prepaid"
                     ]
                 },
                 "brand": {
