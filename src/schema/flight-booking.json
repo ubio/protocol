@@ -42,6 +42,9 @@
         "accountVerification": {
             "typeRef": "#/domains/FlightBooking/types/VerificationString"
         },
+        "addPriorityBoarding": {
+            "typeRef": "#/domains/FlightBooking/types/AddPriorityBoarding"
+        },
         "deviceVerification": {
             "typeRef": "#/domains/FlightBooking/types/VerificationString"
         },
@@ -156,6 +159,9 @@
         "isPromoCodeApplied": {
             "typeRef": "#/domains/FlightBooking/types/Boolean"
         },
+        "availablePriorityBoarding": {
+            "typeRef": "#/domains/FlightBooking/types/AvailablePriorityBoarding"
+        },
         "estimatedPriceBreakdown": {
             "typeRef": "#/domains/FlightBooking/types/PriceBreakdown",
             "description": "The list of estimated price components, as found on the website."
@@ -197,6 +203,10 @@
                 "priceCheck": {
                     "type": "boolean",
                     "default": false
+                },
+                "enableExperimentalPriorityBoarding": {
+                    "type": "boolean",
+                    "default": false
                 }
             }
         },
@@ -222,6 +232,77 @@
                 "cabinClass",
                 "outbound"
             ],
+            "additionalProperties": false
+        },
+         "AddPriorityBoarding": {
+            "type": "object",
+            "properties": {
+                "outbound": {
+                    "$ref": "#/domains/FlightBooking/types/AddPriorityBoardingOptions"
+
+                },
+                "inbound": {
+                    "$ref": "#/domains/FlightBooking/types/AddPriorityBoardingOptions"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "AddPriorityBoardingOptions": {
+            "type": "array",
+            "items": { "$ref": "#/domains/FlightBooking/types/AddPriorityBoardingOption" },
+            "minItems": 1
+        },
+        "AddPriorityBoardingOption": {
+            "type": "object",
+            "properties": {
+                "addPriority": {
+                   "type": "boolean"
+
+                },
+                "firstName": {
+                    "type": "string"
+
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "AvailablePriorityBoarding": {
+            "type": "object",
+            "properties": {
+                "outbound": {
+                    "$ref": "#/domains/FlightBooking/types/AvailablePriorityBoardingOptions"
+
+                },
+                "inbound": {
+                    "$ref": "#/domains/FlightBooking/types/AvailablePriorityBoardingOptions"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "AvailablePriorityBoardingOptions": {
+            "type": "array",
+            "items": { "$ref": "#/domains/FlightBooking/types/AvailablePriorityBoardingOption" },
+            "minItems": 1
+        },
+        "AvailablePriorityBoardingOption": {
+            "type": "object",
+            "properties": {
+                "price": { "$ref": "#/domains/Generic/types/Price" },
+                "firstName": {
+                    "type": "string"
+
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            },
+            "required": [],
             "additionalProperties": false
         },
         "Search": {
