@@ -362,6 +362,7 @@
             "properties": {
                 "origin": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
                 "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
+                "price": { "$ref": "#/domains/Generic/types/Price" },
                 "segments": { "$ref": "#/domains/FlightBooking/types/Segments" }
             },
             "required": [
