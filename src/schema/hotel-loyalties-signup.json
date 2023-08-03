@@ -2,8 +2,8 @@
     "description": "Allows creating accounts for hotel loyalties programmes.",
     "private": false,
     "successCode": {
-        "outputKey": "confirmation",
-        "valuePath": "/code"
+        "outputKey": "accountConfirmation",
+        "valuePath": "/number"
     },
     "inputs": {
         "options": {
@@ -34,6 +34,9 @@
         "accountTermsAndConditions": {
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when account T&Cs are presented."
+        },
+        "accountConfirmation": {
+            "typeRef": "#/domains/HotelLoyaltiesSignup/types/Confirmation"
         }
     },
     "types": {
@@ -44,7 +47,7 @@
         },
         "Confirmation": {
             "type": "object",
-            "description": "Information gathered on \"Booking success\" page.",
+            "description": "Information gathered on \"Account creation success\" page.",
             "properties": {
                 "number": {
                     "type": "string",
