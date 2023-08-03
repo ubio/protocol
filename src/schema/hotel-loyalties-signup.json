@@ -42,8 +42,7 @@
     "types": {
         "Options": {
             "type": "object",
-            "description": "Flags for enabling optional automation features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
-            "additionalProperties": false
+            "description": "Flags for enabling optional automation features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end."
         },
         "Confirmation": {
             "type": "object",
@@ -71,7 +70,7 @@
                 },
                 "address": {
                     "type": "object",
-                    "$ref": "#/domains/Generic/types/Address"
+                    "$ref": "#/domains/HotelLoyaltiesSignup/types/ExplicitAddress"
                 },
                 "contact": {
                     "type": "object",
@@ -100,8 +99,7 @@
             "required": [
                 "person",
                 "contact",
-                "emergencyContact",
-                "documents"
+                "password"
             ],
             "additionalProperties": false
         },
@@ -126,8 +124,7 @@
                     "description": "",
                     "enum": [
                         "male",
-                        "female",
-                        "transgender"
+                        "female"
                     ]
                 },
                 "firstName": {
@@ -149,6 +146,45 @@
             "required": [
                 "firstName",
                 "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "ExplicitAddress": {
+            "type": "object",
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Street name without number.",
+                    "example": "Twin Peaks Blv"
+                },
+                "streetNumberOrHouseName": {
+                    "type": "string",
+                    "description": "Street number or house name.",
+                    "example": "Buckingham Palace"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "example": "San Francisco"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                },
+                "countryCode": {"$ref": "#/domains/ElectronicTravelAuthorisation/types/CountryCodeOrEmptyString"},
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                }
+            },
+            "required": [
             ],
             "additionalProperties": false
         },
