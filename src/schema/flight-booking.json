@@ -962,6 +962,11 @@
             "description": "The promo code you entered is not valid or mistyped."
         },
         {
+            "code": "paymentCardRequiredAtAirport",
+            "category": "client",
+            "description": "Payment card is required to be presented at airport."
+        },
+        {
             "code": "PriceCheck",
             "category": "client",
             "description": "This was a price check, not a booking attempt."
