@@ -45,6 +45,7 @@ import FlightBookingManagement from './flight-booking-management.json';
 import ContestSignup from './contest-signup.json';
 import ProductPurchase from './product-purchase.json';
 import AdJob from './ad-job.json';
+import HotelLoyaltiesSignup from './hotel-loyalties-signup.json';
 
 export const schema = {
     $id: 'https://protocol.automationcloud.net/schema.json',
@@ -76,6 +77,7 @@ export const schema = {
         TestHotelBooking,
         HotelPriceCrawling,
         HotelRoomBooking,
+        HotelLoyaltiesSignup,
         PropertyBooking,
         Remittance,
         HolidayBooking,

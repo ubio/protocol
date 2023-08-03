@@ -1,0 +1,165 @@
+{
+    "description": "Allows creating accounts for hotel loyalties programmes.",
+    "private": false,
+    "successCode": {
+        "outputKey": "confirmation",
+        "valuePath": "/code"
+    },
+    "inputs": {
+        "options": {
+            "typeRef": "#/domains/HotelLoyaltiesSignup/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either login page or further down the funnel.",
+            "initial": true
+        },
+        "account": {
+            "typeRef": "#/domains/HotelLoyaltiesSignup/types/Account"
+        },
+        "selectedMarketingOptions": {
+            "typeRef": "#/domains/HotelLoyaltiesSignup/types/SelectedItem",
+            "description": "List of marketing options to be selected.",
+            "sourceOutputKey": "availableMarketingOptions",
+            "inputMethod": "SelectMany"
+        }
+    },
+    "outputs": {
+        "availableMarketingOptions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItems",
+            "description": "List of marketing options provided by the hotel."
+        },
+        "accountTermsAndConditions": {
+            "typeRef": "#/domains/Generic/types/StructuredTextItem",
+            "description": "Emitted when account T&Cs are presented."
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "additionalProperties": false
+        },
+        "Confirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Loyalty number grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful member account creation."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+            ]
+        },
+        "Account": {
+            "type": "object",
+            "properties": {
+                "person": {
+                    "$ref": "#/domains/HotelLoyaltiesSignup/types/Person"
+                },
+                "address": {
+                    "type": "object",
+                    "$ref": "#/domains/Generic/types/Address"
+                },
+                "contact": {
+                    "type": "object",
+                    "properties": {
+                        "email": {
+                            "type": "string",
+                            "description": "Applicant email, typically used for contact details.<br/>Note: most websites will send receipt and/or confirmation emails when order is placed successfully.",
+                            "format": "email",
+                            "example": "hello@example.com"
+                        },
+                        "phone": {
+                            "description": "Phone number, may also be used as contact details.",
+                            "$ref": "#/domains/Generic/types/Phone"
+                        }
+                    },
+                    "required": [
+                    ],
+                    "additionalProperties": false
+                },
+                "password": {
+                    "type": "string",
+                    "description": "May be omitted if particular website does not require user sign in / sign up. Automation may fail if password is required on a particular website but not provided. One strategy could be to always generate random passwords to create one-time account.",
+                    "default": ""
+                }
+            },
+            "required": [
+                "person",
+                "contact",
+                "emergencyContact",
+                "documents"
+            ],
+            "additionalProperties": false
+        },
+        "Person": {
+            "type": "object",
+            "description": "Basic information about person's identity.",
+            "pii": true,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "",
+                        "mr",
+                        "miss",
+                        "ms",
+                        "mrs"
+                    ]
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "",
+                    "enum": [
+                        "male",
+                        "female",
+                        "transgender"
+                    ]
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "example": "Bob"
+                },
+                "middleName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "example": "Smith"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName"
+            ],
+            "additionalProperties": false
+        },
+        "SelectedItem": {
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/StructuredTextItems"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    },
+    "errors": [
+    ]
+}
