@@ -962,7 +962,7 @@
             "description": "The promo code you entered is not valid or mistyped."
         },
         {
-            "code": "paymentCardRequiredAtAirport",
+            "code": "PaymentCardRequiredAtAirport",
             "category": "client",
             "description": "Payment card is required to be presented at airport."
         },
