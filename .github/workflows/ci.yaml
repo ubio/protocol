@@ -6,14 +6,15 @@ on:
       - master
 
 jobs:
-  steps:
-    - name: checkout
-      uses: actions/checkout@v2
-    - name: nvm use v12.14.0
-      uses: actions/setup-node@v2
-      with:
-        node-version: '12.14.0'
-    - run: npm ci
-    - run: npm run lint
-    - run: npm run compile
-    - run: npm test
+  test:
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: nvm use v12.14.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12.14.0'
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build:ts
+      - run: npm test

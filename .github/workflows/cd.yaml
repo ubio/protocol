@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    uses: ubio/github-actions/.github/workflows/ci-build-ref.yaml@master
+    uses: ubio/github-actions/.github/workflows/ci-build.yaml@master
     with:
       name: Protocol
       image: gcr.io/automation-cloud-registry/protocol
