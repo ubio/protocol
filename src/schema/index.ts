@@ -27,7 +27,7 @@ import HotelLoyaltiesSignup from './hotel-loyalties-signup.json';
 import HotelPriceCrawling from './hotel-price-crawling.json';
 import HotelRoomBooking from './hotel-room-booking.json';
 import Internal from './internal.json';
-import JobBoardApplication from './job-board-application.json'
+import JobBoardApplication from './job-board-application.json';
 import LoanApplication from './loan-application.json';
 import LoanApplicationSA from './loan-application-sa.json';
 import LockManagementEdit from './lock-management-edit.json';
