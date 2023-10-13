@@ -1,0 +1,26 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    uses: ubio/github-actions/.github/workflows/ci-build-ref.yaml@master
+    with:
+      name: Protocol
+      image: gcr.io/automation-cloud-registry/protocol
+      ref: ${{ github.ref }}
+    secrets:
+      REGISTRY_SECRET: ${{ secrets.GCP_REGISTRY_ACCESS }}
+      SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+      SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+
+  deploy:
+    needs: build
+    uses: ubio/github-actions/.github/workflows/cd-dispatch.yaml@master
+    with:
+      event_name: built-protocol
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
