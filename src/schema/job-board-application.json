@@ -110,25 +110,25 @@
             "items": {
                 "anyOf": [
                     {
-                        "$ref": "#/domains/ContestSignup/types/SelectedQuestionText"
+                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionText"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/SelectedQuestionTextArea"
+                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionTextArea"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/SelectedQuestionSelectOne"
+                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionSelectOne"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/SelectedQuestionSelectMultiple"
+                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionSelectMultiple"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/SelectedQuestionBoolean"
+                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionBoolean"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/SelectedQuestionDate"
+                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionDate"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/SelectedQuestionArrayOfObjects"
+                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionArrayOfObjects"
                     }
                 ]
             }
@@ -311,7 +311,7 @@
                 "value": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/domains/ContestSignup/types/SelectedDynamicQuestions"
+                        "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions"
                     }
                 },
                 "mandatory": {
@@ -330,25 +330,25 @@
             "items": {
                 "anyOf": [
                     {
-                        "$ref": "#/domains/ContestSignup/types/AvailableQuestionText"
+                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionText"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/AvailableQuestionTextArea"
+                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextArea"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/AvailableQuestionSelectOne"
+                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectOne"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/AvailableQuestionSelectMultiple"
+                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectMultiple"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/AvailableQuestionBoolean"
+                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionBoolean"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/AvailableQuestionDate"
+                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionDate"
                     },
                     {
-                        "$ref": "#/domains/ContestSignup/types/AvailableQuestionArrayOfObjects"
+                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
                     }
                 ]
             }
