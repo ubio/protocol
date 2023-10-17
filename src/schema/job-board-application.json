@@ -27,6 +27,9 @@
         "selectedDynamicQuestions": {
             "typeRef": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions",
             "dynamic": true
+        },
+        "client": {
+            "typeRef": "#/domains/JobBoardApplication/types/Client"
         }
     },
     "outputs": {
@@ -38,10 +41,10 @@
             "dynamic": true
         },
         "review": {
-            "typeRef": "#/domains/JobBoardApplication/types/Review",
+            "typeRef": "#/domains/JobBoardApplication/types/Review"
         },
         "successfulApplication": {
-            "typeRef": "#/domains/JobBoardApplication/types/SuccessfulApplication",
+            "typeRef": "#/domains/JobBoardApplication/types/SuccessfulApplication"
         }
     },
     "types": {
@@ -549,6 +552,22 @@
                 "message"
             ],
             "additionalProperties": false
+        },
+        "Client": {
+            "type": "object",
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "jobPostId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "clientId"
+            ],
+            "additionalProperties": false
+
         }
     },
     "errors": [
