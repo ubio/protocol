@@ -564,7 +564,8 @@
                 }
             },
             "required": [
-                "clientId"
+                "clientId",
+                "jobPostId"
             ],
             "additionalProperties": false
 
