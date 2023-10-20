@@ -64,22 +64,27 @@
             "description": "Basic information about person's identity.",
             "pii": true,
             "properties": {
-                "firstName": {
-                    "type": "string",
-                    "description": "First name(s) or given name(s), as specified in ID.",
-                    "minLength": 1,
-                    "example": "Bob"
-                },
-                "middleName": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Middle name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
-                },
-                "lastName": {
-                    "type": "string",
-                    "description": "Last name or surname, as specified in ID.",
-                    "minLength": 1,
-                    "example": "Smith"
+                "person": {
+                    "type": "object",
+                    "properties": {
+                        "firstName": {
+                            "type": "string",
+                            "description": "First name(s) or given name(s), as specified in ID.",
+                            "minLength": 1,
+                            "example": "Bob"
+                        },
+                        "middleName": {
+                            "type": "string",
+                            "default": "",
+                            "description": "Middlnpme name, if applicable.<br/>This will only be used on websites which provide separate entry for middle names, otherwise it will be ignored.<br/>If middle name is essential for placing order, consider appending it to <code>firstName</code>."
+                        },
+                        "lastName": {
+                            "type": "string",
+                            "description": "Last name or surname, as specified in ID.",
+                            "minLength": 1,
+                            "example": "Smith"
+                        }
+                    }
                 }
             },
             "required": [
