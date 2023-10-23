@@ -84,13 +84,14 @@
                             "minLength": 1,
                             "example": "Smith"
                         }
-                    }
+                    },
+                    
+                    "required": [
+                        "firstName",
+                        "lastName"
+                    ]
                 }
             },
-            "required": [
-                "firstName",
-                "lastName"
-            ],
             "additionalProperties": false
         },
         "Files": {
