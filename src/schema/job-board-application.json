@@ -84,13 +84,14 @@
                             "minLength": 1,
                             "example": "Smith"
                         }
-                    }
+                    },
+                    
+                    "required": [
+                        "firstName",
+                        "lastName"
+                    ]
                 }
             },
-            "required": [
-                "firstName",
-                "lastName"
-            ],
             "additionalProperties": false
         },
         "Files": {
@@ -565,6 +566,9 @@
                     "type": "string"
                 },
                 "jobPostId": {
+                    "type": "string"
+                },
+                "clientName": {
                     "type": "string"
                 }
             },
