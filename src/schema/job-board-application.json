@@ -566,6 +566,9 @@
                 },
                 "jobPostId": {
                     "type": "string"
+                },
+                "clientName": {
+                    "type": "string"
                 }
             },
             "required": [
