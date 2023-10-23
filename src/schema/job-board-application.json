@@ -171,7 +171,7 @@
         "SelectedQuestionTextArea": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "TextArea" ] },
                 "id": {
                     "type": "string"
                 },
@@ -197,7 +197,7 @@
         "SelectedQuestionSelectOne": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "SelectOne" ] },
                 "id": {
                     "type": "string"
                 },
@@ -223,7 +223,7 @@
         "SelectedQuestionSelectMultiple": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "SelectMultiple" ] },
                 "id": {
                     "type": "string"
                 },
@@ -252,7 +252,7 @@
         "SelectedQuestionBoolean": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "Boolean" ] },
                 "id": {
                     "type": "string"
                 },
@@ -278,7 +278,7 @@
         "SelectedQuestionDate": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "Date" ] },
                 "id": {
                     "type": "string"
                 },
@@ -307,7 +307,7 @@
         "SelectedQuestionArrayOfObjects": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "ArrayOfObjects" ] },
                 "id": {
                     "type": "string"
                 },
@@ -391,7 +391,7 @@
         "AvailableQuestionTextArea": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "TextArea" ] },
                 "id": {
                     "type": "string"
                 },
@@ -417,7 +417,7 @@
         "AvailableQuestionSelectOne": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "SelectOne" ] },
                 "id": {
                     "type": "string"
                 },
@@ -443,7 +443,7 @@
         "AvailableQuestionSelectMultiple": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "SelectMultiple" ] },
                 "id": {
                     "type": "string"
                 },
@@ -469,7 +469,7 @@
         "AvailableQuestionBoolean": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "Boolean" ] },
                 "id": {
                     "type": "string"
                 },
@@ -495,7 +495,7 @@
         "AvailableQuestionDate": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "Date" ] },
                 "id": {
                     "type": "string"
                 },
@@ -521,7 +521,7 @@
         "AvailableQuestionArrayOfObjects": {
             "type": "object",
             "properties": {
-                "inputType": { "enum": [ "Text" ] },
+                "inputType": { "enum": [ "ArrayOfObjects" ] },
                 "id": {
                     "type": "string"
                 },
