@@ -427,6 +427,14 @@
                 "question": {
                     "type": "string"
                 },
+                "options": {
+                    "type": "array",
+                    "description": "A list of available options.",
+                    "items": {
+                        "type": "string",
+                        "example": "example"
+                    }
+                },
                 "mandatory": {
                     "type": "boolean"
                 }
@@ -436,6 +444,7 @@
                 "id",
                 "label",
                 "question",
+                "options",
                 "mandatory"
             ],
             "additionalProperties": false
@@ -453,6 +462,14 @@
                 "question": {
                     "type": "string"
                 },
+                "options": {
+                    "type": "array",
+                    "description": "A list of available options.",
+                    "items": {
+                        "type": "string",
+                        "example": "example"
+                    }
+                },
                 "mandatory": {
                     "type": "boolean"
                 }
@@ -462,6 +479,7 @@
                 "id",
                 "label",
                 "question",
+                "options",
                 "mandatory"
             ],
             "additionalProperties": false
