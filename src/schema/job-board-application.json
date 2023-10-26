@@ -431,8 +431,19 @@
                     "type": "array",
                     "description": "A list of available options.",
                     "items": {
-                        "type": "string",
-                        "example": "example"
+                        "type": "object",
+                        "properties": {
+                            "answer": {
+                                "type":"string"
+                            },
+                            "conditionalQuestions": {
+                                "type":"array",
+                                "items": {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions"
+                                }
+                            }
+                        },
+                    "example": "example"
                     }
                 },
                 "mandatory": {
@@ -466,8 +477,19 @@
                     "type": "array",
                     "description": "A list of available options.",
                     "items": {
-                        "type": "string",
-                        "example": "example"
+                        "type": "object",
+                        "properties": {
+                            "answer": {
+                                "type": "string"
+                            },
+                            "conditionalQuestions": {
+                                "type":"array",
+                                "items": {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions"
+                                }
+                            }
+
+                        }
                     }
                 },
                 "mandatory": {
