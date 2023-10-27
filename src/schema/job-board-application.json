@@ -320,7 +320,31 @@
                 "value": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions"
+                        
+                            "anyOf": [
+                                {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionText"
+                                },
+                                {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionTextArea"
+                                },
+                                {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionSelectOne"
+                                },
+                                {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionSelectMultiple"
+                                },
+                                {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionBoolean"
+                                },
+                                {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionDate"
+                                },
+                                {
+                                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionArrayOfObjects"
+                                }
+                            ]
+                        
                     }
                 },
                 "mandatory": {
