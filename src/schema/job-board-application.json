@@ -439,7 +439,7 @@
                             "conditionalQuestions": {
                                 "type":"array",
                                 "items": {
-                                    "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions"
+                                    "$ref": "#/domains/JobBoardApplication/types/AvailableDynamicQuestions"
                                 }
                             }
                         },
@@ -485,7 +485,7 @@
                             "conditionalQuestions": {
                                 "type":"array",
                                 "items": {
-                                    "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions"
+                                    "$ref": "#/domains/JobBoardApplication/types/AvailableDynamicQuestions"
                                 }
                             }
 
