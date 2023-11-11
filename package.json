@@ -39,7 +39,7 @@
     "eslint-config-ub": "^3.0.0",
     "eslint-plugin-vue": "^5.2.3",
     "glob": "^7.1.6",
-    "mocha": "^7.1.2",
+    "mocha": "^10.2.0",
     "npm-run-all": "^4.1.2",
     "pre-commit": "^1.2.2",
     "tslint": "^5.20.1",
