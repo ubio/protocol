@@ -17,10 +17,29 @@ jobs:
       SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
       SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
 
-  deploy:
+  deploy-staging:
     needs: build
-    uses: ubio/github-actions/.github/workflows/cd-dispatch.yaml@master
+    uses: ubio/github-actions/.github/workflows/cd-dispatch-deploy.yaml@master
     with:
-      event_name: built-protocol
+      gh_user: ubio
+      gh_repo: infrastructure
+      image_name: website-protocol
+      env_name: staging
+      app_path: automation-cloud/website-protocol
+      auto_merge: true
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+  deploy-production:
+    needs: build
+    uses: ubio/github-actions/.github/workflows/cd-dispatch-deploy.yaml@master
+    with:
+      gh_user: ubio
+      gh_repo: infrastructure
+      image_name: website-protocol
+      env_name: production
+      app_path: automation-cloud/website-protocol
+      auto_merge: false
+      pr_assignees: ${{ github.actor }}
     secrets:
       ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
