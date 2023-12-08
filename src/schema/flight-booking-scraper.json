@@ -1,0 +1,268 @@
+{
+    "description": "Allows scraping automation on airline websites and OTAs.",
+    "private": true,
+    "inputs": {
+        "options": {
+            "typeRef": "#/domains/FlightBookingScraper/types/Options",
+            "default": {},
+            "initial": true
+        },
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "initial": true
+        },
+        "search": {
+            "typeRef": "#/domains/FlightBookingScraper/types/Search",
+            "initial": true
+        }
+    },
+    "outputs": {
+        "results": {
+            "typeRef": "#/domains/FlightBookingScraper/types/Results"
+        },
+        "csv": {
+            "typeRef": "#/domains/FlightBookingScraper/types/Csv"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features like seat selection. Clients should send <code>false</code> or omit flags if specific features are not implemented on their end.",
+            "properties": {}
+        },
+        "Search": {
+            "type": "object",
+            "description": "Information about flights and cabin class preference.",
+            "properties": {
+                "cabinClass": {
+                    "$ref": "#/domains/FlightBookingScraper/types/CabinClass",
+                    "description": "Preferred cabin class, used on flight search forms."
+                },
+                "outbound": {
+                    "$ref": "#/domains/FlightBookingScraper/types/FlightSearch",
+                    "description": "Outbound flight specification."
+                },
+                "inbound": {
+                    "$ref": "#/domains/FlightBookingScraper/types/FlightSearch",
+                    "description": "Inbound (return) flight specification. If omitted, one-way flight booking flow is used."
+                },
+                "passengerAges": {
+                    "$ref": "#/domains/Generic/types/Ages",
+                    "description": "Ages of all passengers.",
+                    "example": [34, 31, 9]
+                },
+                "promoCode": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "cabinClass",
+                "outbound",
+                "passengerAges"
+            ],
+            "additionalProperties": false
+        },
+        "FlightSearch": {
+            "type": "object",
+            "description": "Outbound and inbound flights specification.",
+            "properties": {
+                "origin": { "$ref": "#/domains/FlightBookingScraper/types/DateAirport" },
+                "destination": { "$ref": "#/domains/FlightBookingScraper/types/DateAirport" }
+            },
+            "required": [
+                "origin",
+                "destination"
+            ],
+            "additionalProperties": false
+        },
+        "CabinClass": {
+            "type": "string",
+            "enum": ["economy", "premium economy", "business", "first"]
+        },
+        "DateAirport": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of flight (airport local date).",
+                    "example": "2019-01-01"
+                },
+                "airportCode": {
+                    "$ref": "#/domains/FlightBookingScraper/types/AirportCode"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Country code of airport.",
+                    "example": "us"
+                }
+            },
+            "required": [
+                "date",
+                "airportCode"
+            ],
+            "additionalProperties": false
+        },
+        "AirportCode": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "pattern": "^[A-Z]{3}$",
+            "description": "International Air Transport Association airport code.",
+            "example": "SFO"
+        },
+        "Results": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/FlightBookingScraper/types/Result"
+            },
+            "minItems": 1
+        },
+        "Result": {
+            "type": "object",
+            "properties": {
+                "site": {
+                    "type": "string"
+                },
+                "market": {
+                    "type": "string"
+                },
+                "outbound_date": {
+                    "type": "string"
+                },
+                "inbound_date": {
+                    "type": "string"
+                },
+                "outbound_city": {
+                    "type": "string"
+                },
+                "inbound_city": {
+                    "type": "string"
+                },
+                "outbound_flight_number": {
+                    "type": "string"
+                },
+                "inbound_flight_number": {
+                    "type": "string"
+                },
+                "outbound_airport": {
+                    "type": "string"
+                },
+                "inbound_airport": {
+                    "type": "string"
+                },
+                "outbound_airline": {
+                    "type": "string"
+                },
+                "inbound_airline": {
+                    "type": "string"
+                },
+                "supplier": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "booking_class": {
+                    "type": "string"
+                },
+                "outbound_class": {
+                    "type": "string"
+                },
+                "inbound_class": {
+                    "type": "string"
+                },
+                "outbound_stops": {
+                    "type": "string"
+                },
+                "inbound_stops": {
+                    "type": "string"
+                },
+                "outbound_departure_time": {
+                    "type": "string"
+                },
+                "inbound_departure_time": {
+                    "type": "string"
+                },
+                "outbound_duration": {
+                    "type": "string"
+                },
+                "inbound_duration": {
+                    "type": "string"
+                },
+                "sort_order": {
+                    "type": "string"
+                },
+                "search_date": {
+                    "type": "string"
+                },
+                "search_timestamp": {
+                    "type": "string"
+                },
+                "snapshot_link": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Csv": {
+            "type": "string"
+        }
+    },
+    "errors": [
+        {
+            "code": "OutboundFlightDateInvalid",
+            "category": "client",
+            "description": "Outbound flight date is not accepted by the website",
+            "example": "Selected date is too close"
+        },
+        {
+            "code": "InboundFlightDateInvalid",
+            "category": "client",
+            "description": "Inbound flight date is not accepted by the website",
+            "example": "Selected date is too close"
+        },
+        {
+            "code": "OutboundFlightNotAvailable",
+            "category": "client",
+            "description": "Outbound flight is not found",
+            "example": "Flight is not available on given date"
+        },
+        {
+            "code": "InboundFlightNotAvailable",
+            "category": "client",
+            "description": "Inbound flight is not found",
+            "example": "Flight is not available on given date"
+        },
+        {
+            "code": "OriginAirportNotFound",
+            "category": "client",
+            "description": "Airport is not found with given airport code"
+        },
+        {
+            "code": "DestinationAirportNotFound",
+            "category": "client",
+            "description": "Airport is not found with given airport code"
+        },
+        {
+            "code": "LoadingFailed",
+            "category": "client",
+            "description": "A website issue in which the page gets stuck in infinite loading."
+        },
+        {
+            "code": "DuplicateBooking",
+            "category": "client",
+            "description": "The website claims this is a duplicate booking attempt."
+        },
+        {
+            "code": "PromoCodeInvalid",
+            "category": "client",
+            "description": "The promo code you entered is not valid or mistyped."
+        }
+    ]
+}

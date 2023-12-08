@@ -19,6 +19,7 @@ import FlightBookingExtraction from './flight-booking-extraction.json';
 import FlightBookingManagement from './flight-booking-management.json';
 import FlightBookingRefund from './flight-booking-refund.json';
 import FlightBookingStatus from './flight-booking-status.json';
+import FlightBookingScraper from './flight-booking-scraper.json';
 import Generic from './generic.json';
 import HolidayBooking from './holiday-booking.json';
 import HotelBooking from './hotel-booking.json';
@@ -71,6 +72,8 @@ export const schema = {
         FlightBookingManagement,
         FlightBookingRefund,
         FlightBookingStatus,
+        FlightBookingAccountSignup,
+        FlightBookingScraper,
         Generic,
         HolidayBooking,
         HotelBooking,
