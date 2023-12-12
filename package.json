@@ -1,6 +1,6 @@
 {
   "name": "@ubio/protocol",
-  "version": "7.2.20",
+  "version": "7.2.21",
   "description": "ubio Automation Protocol",
   "main": "out/main/index.js",
   "types": "out/main/index.d.ts",
