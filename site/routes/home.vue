@@ -10,7 +10,7 @@
 
         <p>
             Please refer to
-            <a href="https://docs.automationcloud.net" target="_blank">documentation</a>
+            <a href="https://developers.automation.cloud/api/" target="_blank">documentation</a>
             for further information regarding intergration.
         </p>
     </div>
