@@ -14,7 +14,7 @@
                 <div class="layout__header-links">
                     <a target="_blank"
                         class="layout__header-link"
-                        href="https://docs.automationcloud.net">
+                        href="https://developers.automation.cloud/api/">
                         Documentation
                     </a>
                 </div>
