@@ -15,6 +15,10 @@
         "search": {
             "typeRef": "#/domains/FlightBookingScraper/types/Search",
             "initial": true
+        },
+        "country": {
+            "typeRef": "#/domains/Generic/types/CountryCode",
+            "initial": true
         }
     },
     "outputs": {
@@ -162,7 +166,7 @@
                     "type": "string"
                 },
                 "price": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "currency": {
                     "type": "string"
@@ -177,10 +181,10 @@
                     "type": "string"
                 },
                 "outbound_stops": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "inbound_stops": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "outbound_departure_time": {
                     "type": "string"
