@@ -638,7 +638,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Delivery text as provided by the insurer."
+                    "description": "Delivery text as displayed by the provider."
                 },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             },
