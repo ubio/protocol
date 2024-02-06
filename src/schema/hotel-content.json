@@ -1,0 +1,422 @@
+{
+    "description": "Enables scraping hotel details.",
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "id": {
+            "typeRef": "#/domains/HotelContent/types/String",
+            "description": "Identifier."
+        },
+        "originalName": {
+            "typeRef": "#/domains/HotelContent/types/String",
+            "description": "Hotel name (best effort)."
+        },
+        "coords": {
+            "typeRef": "#/domains/HotelContent/types/Coords",
+            "description": "Hotel coordinates as lat long."
+        },
+        "address": {
+            "typeRef": "#/domains/HotelContent/types/Address",
+            "description": "Hotel address (best effort)."
+        }
+    },
+    "outputs": {
+        "additionalUrls": {
+            "typeRef": "#/domains/HotelContent/types/AdditionalUrl",
+            "description": "Additional URLs."
+        },
+        "addressMatch": {
+            "typeRef": "#/domains/HotelContent/types/AddressMatch",
+            "description": "Address match."
+        },
+        "descriptions": {
+            "typeRef": "#/domains/HotelContent/types/Description",
+            "description": "Description data."
+        },
+        "features": {
+            "typeRef": "#/domains/HotelContent/types/Features",
+            "description": "List of features."
+        },
+        "hotelId": {
+            "typeRef": "#/domains/HotelContent/types/String",
+            "description": "Identifier."
+        },
+        "hotelName": {
+            "typeRef": "#/domains/HotelContent/types/NameMatch",
+            "description": "Name match."
+        },
+        "master-data": {
+            "typeRef": "#/domains/HotelContent/types/MasterData",
+            "description": "Master data."
+        },
+        "ratings": {
+            "typeRef": "#/domains/HotelContent/types/Ratings",
+            "description": "Ratings summary."
+        },
+        "reviews": {
+            "typeRef": "#/domains/HotelContent/types/Reviews",
+            "description": "List of reviews."
+        }
+    },
+    "types": {
+        "String": {
+            "type": "string",
+            "description": "Any string",
+            "example": "Abc123#"
+        },
+        "Coords": {
+            "type": "object",
+            "properties": {
+                "lat": {
+                    "type": "string"
+                },
+                "long": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "lat",
+                "long"
+            ],
+            "additionalProperties": false
+        },
+        "Address": {
+            "type": "object",
+            "properties": {
+                "line1": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "postcode": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "line1",
+                "city",
+                "postcode"
+            ],
+            "additionalProperties": false
+        },
+        "AdditionalUrl": {
+            "type": "object",
+            "properties": {
+                "sourced_url": {
+                    "$ref": "#/domains/Generic/types/URL",
+                },
+                "extracted_ta_url": {
+                    "$ref": "#/domains/Generic/types/URL",
+                }
+            },
+            "required": [
+                "sourced_url",
+                "extracted_ta_url"
+            ],
+            "additionalProperties": false
+        },
+        "AddressMatch": {
+            "type": "object",
+            "properties": {
+                "match": {
+                    "type": "boolean"
+                },
+                "input": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "$ref": "#/domains/HotelContent/types/Address"
+                        },
+                        "coords": {
+                            "$ref": "#/domains/HotelContent/types/Coords"
+                        }
+                    },
+                    "required": [
+                        "address",
+                        "coords"
+                    ],
+                    "additionalProperties": false
+                },
+                "output": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "address"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "match",
+                "input",
+                "output"
+            ],
+            "additionalProperties": false
+        },
+        "Description": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "body"
+            ],
+            "additionalProperties": false
+        },
+        "Features": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/HotelContent/types/Feature"
+            }
+        },
+        "Feature": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "available": {
+                    "type": "boolean"
+                },
+                "subtype": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "available",
+                "subtype"
+            ],
+            "additionalProperties": false
+        },
+        "NameMatch": {
+            "type": "object",
+            "properties": {
+                "match": {
+                    "type": "boolean"
+                },
+                "input": {
+                    "type": "string"
+                },
+                "output": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "match",
+                "input",
+                "output"
+            ],
+            "additionalProperties": false
+        },
+        "MasterData": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "$ref": "#/domains/HotelContent/types/Explicit_Address"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "accommodation_type": {
+                    "type": "string"
+                },
+                "star_rating": {
+                    "type": "object",
+                    "properties": {
+                        "star": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "star"
+                    ],
+                    "additionalProperties": false
+                },
+                "check_in_time": {
+                    "type": "object",
+                    "properties": {
+                        "from": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "from"
+                    ],
+                    "additionalProperties": false
+                },
+                "check_out_time": {
+                    "type": "object",
+                    "properties": {
+                        "until": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "until"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "required": [
+                "name",
+                "address",
+                "accommodation_type",
+                "star_rating"
+            ],
+            "additionalProperties": false
+        },
+        "Explicit_Address": {
+            "type": "object",
+            "properties": {
+                "street_1": {
+                    "type": "string"
+                },
+                "postal_code": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Ratings": {
+            "type": "object",
+            "properties": {
+                "rating": {
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "type": "number"
+                        },
+                        "max": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "value",
+                        "max"
+                    ],
+                    "additionalProperties": false
+                },
+                "rating_based_on": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "rating",
+                "rating_based_on"
+            ],
+            "additionalProperties": false
+        },
+        "Reviews": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/HotelContent/types/Review"
+            }
+        },
+        "Review": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ],
+                    "additionalProperties": false
+                },
+                "stats": {
+                    "type": "object",
+                    "properties": {
+                        "normalized_rating": {
+                            "type": "integer"
+                        },
+                        "sentiment": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "normalized_rating",
+                        "sentiment"
+                    ],
+                    "additionalProperties": false
+                },
+                "body": {
+                    "type": "string"
+                },
+                "aspect_ratings": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "rating": {
+                                "type": "object",
+                                "properties": {
+                                    "max": {
+                                        "type": "number"
+                                    },
+                                    "value": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "max",
+                                    "value"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "rating"
+                        ],
+                        "additionalProperties": false
+                    }
+                },
+                "traits": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "author",
+                "stats",
+                "body",
+                "aspect_ratings"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "errors": [
+        {
+            "code": "HotelNotFound",
+            "category": "server",
+            "description": "Could not find the hotel"
+        }
+    ]
+}
