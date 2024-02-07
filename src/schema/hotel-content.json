@@ -417,6 +417,11 @@
             "code": "HotelNotFound",
             "category": "server",
             "description": "Could not find the hotel"
+        },
+        {
+            "code": "DecoratePageFailed",
+            "category": "server",
+            "description": "Could not decorate the page"
         }
     ]
 }
