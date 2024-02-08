@@ -234,6 +234,9 @@
                 "accommodation_type": {
                     "type": "string"
                 },
+                "homepage_url": {
+                    "type": "string"
+                },
                 "star_rating": {
                     "type": "object",
                     "properties": {
@@ -245,6 +248,12 @@
                         "star"
                     ],
                     "additionalProperties": false
+                },
+                "styles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "check_in_time": {
                     "type": "object",
@@ -273,9 +282,7 @@
             },
             "required": [
                 "name",
-                "address",
-                "accommodation_type",
-                "star_rating"
+                "address"
             ],
             "additionalProperties": false
         },
@@ -292,7 +299,9 @@
                     "type": "string"
                 }
             },
-            "required": [],
+            "required": [
+                "street_1"
+            ],
             "additionalProperties": false
         },
         "Ratings": {
