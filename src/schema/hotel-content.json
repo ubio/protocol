@@ -6,6 +6,10 @@
             "typeRef": "#/domains/Generic/types/URL",
             "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
         },
+        "search": {
+            "typeRef": "#/domains/HotelContent/types/String",
+            "description": "Search string."
+        },
         "identifier": {
             "typeRef": "#/domains/HotelContent/types/String",
             "description": "Hotel identifier."
@@ -59,6 +63,10 @@
         "reviews": {
             "typeRef": "#/domains/HotelContent/types/Reviews",
             "description": "List of reviews."
+        },
+        "advertisers": {
+            "typeRef": "#/domains/HotelContent/types/Advertisers",
+            "description": "List of advertisers."
         }
     },
     "types": {
@@ -111,11 +119,13 @@
                 },
                 "extracted_ta_url": {
                     "$ref": "#/domains/Generic/types/URL",
+                },
+                "ibe_link": {
+                    "$ref": "#/domains/Generic/types/URL",
                 }
             },
             "required": [
-                "sourced_url",
-                "extracted_ta_url"
+                "sourced_url"
             ],
             "additionalProperties": false
         },
@@ -290,13 +300,28 @@
             "type": "object",
             "properties": {
                 "street_1": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
+                },
+                "street_2": {
+                    "type": "string",
+                    "minLength": 1
                 },
                 "postal_code": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
                 },
                 "city": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1
+                },
+                "state": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "country": {
+                    "type": "string",
+                    "minLength": 1
                 }
             },
             "required": [
@@ -325,6 +350,46 @@
                 },
                 "rating_based_on": {
                     "type": "integer"
+                },
+                "review_mention_ratings": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "sentiment": {
+                                "type": "object",
+                                "properties": {
+                                    "overall": {
+                                        "type": "string"
+                                    },
+                                    "negative": {
+                                        "type": "integer"
+                                    },
+                                    "positive": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "overall",
+                                    "negative",
+                                    "positive"
+                                ],
+                                "additionalProperties": false
+                            },
+                            "mentions": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "sentiment",
+                            "mentions"
+                        ],
+                        "additionalProperties": false
+                    }
                 }
             },
             "required": [
@@ -342,6 +407,9 @@
         "Review": {
             "type": "object",
             "properties": {
+                "title": {
+                    "type": "string"
+                },
                 "author": {
                     "type": "object",
                     "properties": {
@@ -384,6 +452,9 @@
                             "rating": {
                                 "type": "object",
                                 "properties": {
+                                    "min": {
+                                        "type": "number"
+                                    },
                                     "max": {
                                         "type": "number"
                                     },
@@ -405,18 +476,60 @@
                         "additionalProperties": false
                     }
                 },
+                "hotelier_answer": {
+                    "type": "string",
+                    "minLength": 1
+                },
                 "traits": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
+                },
+                "trip": {
+                    "type": "object",
+                    "properties": {
+                        "day": {
+                            "type": "integer"
+                        },
+                        "month": {
+                            "type": "integer"
+                        },
+                        "year": {
+                            "type": "integer"
+                        },
+                        "duration": {
+                            "type": "integer"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "with": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [],
+                    "additionalProperties": false
                 }
             },
             "required": [
-                "author",
-                "stats",
-                "body",
-                "aspect_ratings"
+                "body"
+            ],
+            "additionalProperties": false
+        },
+        "Advertisers": {
+            "type": "object",
+            "properties": {
+                "advertiser": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                }
+            },
+            "required": [
+                "advertiser",
+                "price"
             ],
             "additionalProperties": false
         }
@@ -431,6 +544,11 @@
             "code": "DecoratePageFailed",
             "category": "server",
             "description": "Could not decorate the page"
+        },
+        {
+            "code": "RedirectFailed",
+            "category": "server",
+            "description": "Could not navigate"
         }
     ]
 }
