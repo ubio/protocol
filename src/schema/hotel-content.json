@@ -184,12 +184,24 @@
             "additionalProperties": false
         },
         "Features": {
+            "type": "object",
+            "properties": {
+                "facilities": {
+                    "$ref": "#/domains/HotelContent/types/Facilities"
+                }
+            },
+            "required": [
+                "facilities"
+            ],
+            "additionalProperties": false
+        },
+        "Facilities": {
             "type": "array",
             "items": {
-                "$ref": "#/domains/HotelContent/types/Feature"
+                "$ref": "#/domains/HotelContent/types/Facility"
             }
         },
-        "Feature": {
+        "Facility": {
             "type": "object",
             "properties": {
                 "type": {
