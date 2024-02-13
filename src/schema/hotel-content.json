@@ -536,6 +536,12 @@
             }
         },
         "Advertisers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/HotelContent/types/Advertiser",
+            }
+        },
+        "Advertiser": {
             "type": "object",
             "properties": {
                 "advertiser": {
