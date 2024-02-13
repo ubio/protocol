@@ -402,6 +402,9 @@
                         ],
                         "additionalProperties": false
                     }
+                },
+                "aspect_ratings": {
+                    "$ref": "#/domains/HotelContent/types/AspectRatings",
                 }
             },
             "required": [
@@ -454,39 +457,7 @@
                     "type": "string"
                 },
                 "aspect_ratings": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "rating": {
-                                "type": "object",
-                                "properties": {
-                                    "min": {
-                                        "type": "number"
-                                    },
-                                    "max": {
-                                        "type": "number"
-                                    },
-                                    "value": {
-                                        "type": "number"
-                                    }
-                                },
-                                "required": [
-                                    "max",
-                                    "value"
-                                ],
-                                "additionalProperties": false
-                            }
-                        },
-                        "required": [
-                            "name",
-                            "rating"
-                        ],
-                        "additionalProperties": false
-                    }
+                    "$ref": "#/domains/HotelContent/types/AspectRatings",
                 },
                 "hotelier_answer": {
                     "type": "string",
@@ -528,6 +499,41 @@
                 "body"
             ],
             "additionalProperties": false
+        },
+        "AspectRatings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "object",
+                        "properties": {
+                            "min": {
+                                "type": "number"
+                            },
+                            "max": {
+                                "type": "number"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "max",
+                            "value"
+                        ],
+                        "additionalProperties": false
+                    }
+                },
+                "required": [
+                    "name",
+                    "rating"
+                ],
+                "additionalProperties": false
+            }
         },
         "Advertisers": {
             "type": "object",
