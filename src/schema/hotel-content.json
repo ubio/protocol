@@ -262,7 +262,7 @@
                     "type": "object",
                     "properties": {
                         "star": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     },
                     "required": [
