@@ -106,8 +106,7 @@
             },
             "required": [
                 "line1",
-                "city",
-                "postcode"
+                "city"
             ],
             "additionalProperties": false
         },
