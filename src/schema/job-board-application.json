@@ -672,5 +672,40 @@
         }
     },
     "errors": [
+        {
+            "code": "FileTypeNotSupported",
+            "category": "client",
+            "description": "File type not supported"
+        },
+        {
+            "code": "ApplicantDetailsInvalid",
+            "category": "client",
+            "description": "Applicant details invalid"
+        },
+        {
+            "code": "JobExpired",
+            "category": "client",
+            "description": "Job expired"
+        },
+        {
+            "code": "JobNotFound",
+            "category": "client",
+            "description": "Job could not be found"
+        },
+        {
+            "code": "MandatoryQuestionsNotAnswered",
+            "category": "client",
+            "description": "Mandatory questions must be answered"
+        },
+        {
+            "code": "FileFailedToUpload",
+            "category": "website",
+            "description": "File could not be uploaded"
+        },
+        {
+            "code": "ApplicationFailed",
+            "category": "client",
+            "description": "Application process failed"
+        }
     ]
 }
