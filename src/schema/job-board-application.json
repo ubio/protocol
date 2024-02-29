@@ -360,7 +360,7 @@
                         "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
                     },
                     {
-                        "$ref": "#/domains/JobBoardApplication/types/TextLiteral"
+                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
                     }
                 ]
             }
@@ -463,11 +463,14 @@
                                         },
                                         {
                                             "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
+                                        },
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
                                         }
                                     ]
                                 }
                             }
-                        },
+                        },  
                     "example": "example"
                     }
                 },
@@ -623,6 +626,9 @@
                             },
                             {
                                 "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
                             }
                         ]
                     }
