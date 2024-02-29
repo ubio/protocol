@@ -358,6 +358,9 @@
                     },
                     {
                         "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
+                    },
+                    {
+                        "$ref": "#/domains/JobBoardApplication/types/TextLiteral"
                     }
                 ]
             }
@@ -635,6 +638,36 @@
             ],
             "additionalProperties": false
         },
+        "AvailableQuestionTextLiteral": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "TextLiteral" ] },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "question": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "mandatory" : {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "inputType",
+                "id",
+                "label",
+                "question",
+                "value",
+                "mandatory"
+            ],
+            "additionalProperties": false
+        },
         "Review": {
             "type": "boolean"
         },
@@ -672,5 +705,40 @@
         }
     },
     "errors": [
+        {
+            "code": "FileTypeNotSupported",
+            "category": "client",
+            "description": "File type not supported"
+        },
+        {
+            "code": "ApplicantDetailsInvalid",
+            "category": "client",
+            "description": "Applicant details invalid"
+        },
+        {
+            "code": "JobExpired",
+            "category": "client",
+            "description": "Job expired"
+        },
+        {
+            "code": "JobNotFound",
+            "category": "client",
+            "description": "Job could not be found"
+        },
+        {
+            "code": "MandatoryQuestionsNotAnswered",
+            "category": "client",
+            "description": "Mandatory questions must be answered"
+        },
+        {
+            "code": "FileFailedToUpload",
+            "category": "website",
+            "description": "File could not be uploaded"
+        },
+        {
+            "code": "ApplicationFailed",
+            "category": "client",
+            "description": "Application process failed"
+        }
     ]
 }
