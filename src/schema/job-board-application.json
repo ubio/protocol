@@ -358,6 +358,9 @@
                     },
                     {
                         "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
+                    },
+                    {
+                        "$ref": "#/domains/JobBoardApplication/types/TextLiteral"
                     }
                 ]
             }
@@ -631,6 +634,36 @@
                 "id",
                 "label",
                 "question",
+                "mandatory"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableQuestionTextLiteral": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "TextLiteral" ] },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "question": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "mandatory" : {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "inputType",
+                "id",
+                "label",
+                "question",
+                "value",
                 "mandatory"
             ],
             "additionalProperties": false
