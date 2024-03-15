@@ -79,6 +79,9 @@
             "sourceOutputKey": "finalPrice",
             "inputMethod": "Consent"
         },
+        "discount": {
+            "typeRef": "#/domains/TestHotelBooking/types/Discount"
+        },
         "loginConfirmationCode": {
             "typeRef": "#/domains/TestHotelBooking/types/ConfirmationCode",
             "description": "When logging in, some websites require a confirmation code."
@@ -130,6 +133,13 @@
         },
         "billingPrice": {
             "typeRef": "#/domains/Generic/types/Price"
+        },
+        "loggedIn": {
+            "typeRef": "#/domains/TestHotelBooking/types/Boolean"
+        },
+        "bookingInputs": {
+            "typeRef": "#/domains/TestHotelBooking/types/BookingInputs",
+            "description": "Echoed non-PII inputs"
         }
     },
     "types": {
@@ -139,6 +149,11 @@
                 "success": {
                     "type": "boolean",
                     "description": "If <code>true</code>, returns a fake success without making a booking.",
+                    "default": false
+                },
+                "useSearchNotUrl": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, uses the search input.",
                     "default": false
                 },
                 "searchRates": {
@@ -151,11 +166,41 @@
                     "description": "If <code>true</code>, enables member rates output and input at room selection.",
                     "default": false
                 },
+                "enableDiscountCode": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, enables the discount code input.",
+                    "default": false
+                },
+                "outputAvailableRoomsOnce": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, the availableRooms output is delayed until the website's prices get their final update.",
+                    "default": false
+                },
                 "userAgent": {
                     "type": "string",
                     "description": "Enables custom user-agent header when performing automations."
                 }
             }
+        },
+        "Discount": {
+            "type": "object",
+            "description": "Discount code.",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Discount code",
+                    "example": "RL2XYZ"
+                },
+                "agentCode": {
+                    "type": "string",
+                    "description": "Agent code to unlock special discount codes",
+                    "example": "ABC1234"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "code"
+            ]
         },
         "Visit": {
             "type": "object",
@@ -357,7 +402,7 @@
         },
         "RoomDescription": {
             "type": "array",
-            "description": "A list to describe a room.",
+            "description": "A list to describe a room or a rate.",
             "minItems": 0,
             "items": {
                 "type": "string",
@@ -380,6 +425,9 @@
                     "example": "Breakfast Plus"
                 },
                 "description": {
+                    "$ref": "#/domains/TestHotelBooking/types/RoomDescription"
+                },
+                "rateDescription": {
                     "$ref": "#/domains/TestHotelBooking/types/RoomDescription"
                 },
                 "price": {
@@ -433,9 +481,31 @@
                         "$ref": "#/domains/TestHotelBooking/types/ValueAddition"
                     }
                 },
+                "occupancy": {
+                    "type": "object",
+                    "properties": {
+                        "adults": {
+                            "type": "number"
+                        },
+                        "children": {
+                            "type": "number"
+                        },
+                        "infants": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "adults"
+                    ],
+                    "additionalProperties": false
+                },
                 "rateGroup": {
                     "type": "string",
                     "example": "standard"
+                },
+                "isMemberRate": {
+                    "type": "boolean",
+                    "example": true
                 },
                 "images": {
                     "type": "array",
@@ -684,6 +754,27 @@
                 "address"
             ],
             "additionalProperties": false
+        },
+        "Boolean": {
+            "type": "boolean"
+        },
+        "BookingInputs": {
+            "type": "object",
+            "description": "Some of the inputs sent to the job, reflected back.",
+            "pii": false,
+            "properties": {
+                "search": {
+                    "$ref": "#/domains/TestHotelBooking/types/Search"
+                },
+                "selectedRooms": {
+                    "$ref": "#/domains/TestHotelBooking/types/Rooms"
+                }
+            },
+            "required": [
+                "search",
+                "selectedRooms"
+            ],
+            "additionalProperties": false
         }
     },
     "errors": [
@@ -691,6 +782,11 @@
             "code": "RoomNotAvailable",
             "category": "client",
             "description": "The website claims the room is not available for the selected dates."
+        },
+        {
+            "code": "MultipleRoomsRequired",
+            "category": "client",
+            "description": "Multiple rooms required for the requested amount of guests."
         }
     ]
 }
