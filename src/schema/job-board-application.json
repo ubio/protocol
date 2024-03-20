@@ -28,6 +28,11 @@
             "typeRef": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions",
             "dynamic": true
         },
+        "conditionalDynamicQuestions": {
+            "typeRef": "#/domains/JobBoardApplication/types/ConditionalDynamicQuestions",
+            "dynamic": true,
+            "description": "Debug info. Used in onbording of people who are not familiar with the script, helps them understand where conditional questions happen."
+        },
         "client": {
             "typeRef": "#/domains/JobBoardApplication/types/Client"
         }
@@ -85,7 +90,7 @@
                             "example": "Smith"
                         }
                     },
-                    
+
                     "required": [
                         "firstName",
                         "lastName"
@@ -113,34 +118,63 @@
             "pii": false,
             "additionalProperties": false
         },
+        "ConditionalDynamicQuestions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/domains/JobBoardApplication/types/ConditionalDynamicQuestion"
+            }
+        },
+        "ConditionalDynamicQuestion": {
+            "type": "object",
+            "properties": {
+                "sourceQuestion": {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableDynamicQuestion"
+                },
+                "triggerAnswer": {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestion"
+                },
+                "conditionalQuestion": {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableDynamicQuestion"
+                }
+            },
+            "required": [
+                "sourceQuestion",
+                "triggerAnswer",
+                "conditionalQuestion"
+            ],
+            "additionalProperties": false
+        },
         "SelectedDynamicQuestions": {
             "type": "array",
             "description": "Additional options to fill in.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionText"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionTextArea"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionSelectOne"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionSelectMultiple"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionBoolean"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionDate"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionArrayOfObjects"
-                    }
-                ]
+                "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestion"
             }
+        },
+        "SelectedDynamicQuestion": {
+            "anyOf": [
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionText"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionTextArea"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionSelectOne"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionSelectMultiple"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionBoolean"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionDate"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionArrayOfObjects"
+                }
+            ]
         },
         "SelectedQuestionText": {
             "type": "object",
@@ -337,33 +371,36 @@
             "type": "array",
             "description": "Additional options to fill in.",
             "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionText"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextArea"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectOne"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectMultiple"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionBoolean"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionDate"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
-                    },
-                    {
-                        "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
-                    }
-                ]
+                "$ref": "#/domains/JobBoardApplication/types/AvailableDynamicQuestion"
             }
+        },
+        "AvailableDynamicQuestion": {
+            "anyOf": [
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionText"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextArea"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectOne"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectMultiple"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionBoolean"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionDate"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
+                }
+            ]
         },
         "AvailableQuestionText": {
             "type": "object",
@@ -470,7 +507,7 @@
                                     ]
                                 }
                             }
-                        },  
+                        },
                     "example": "example"
                     }
                 },
