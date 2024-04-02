@@ -936,6 +936,11 @@
             "description": "A website issue in which the page gets stuck in infinite loading."
         },
         {
+            "code": "PaymentFailed",
+            "category": "client",
+            "description": "A website or other issue in which the success page cannot be reached after payment stage."
+        },
+        {
             "code": "LuggageCannotBeAdded",
             "category": "client",
             "description": "Luggage cannot be added",
