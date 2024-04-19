@@ -434,6 +434,9 @@
                 },
                 {
                     "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionFile"
                 }
             ]
         },
@@ -704,6 +707,9 @@
                             },
                             {
                                 "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionFile"
                             }
                         ]
                     }
