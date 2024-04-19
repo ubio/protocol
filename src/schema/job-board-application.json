@@ -9,7 +9,7 @@
         },
         "url": {
             "typeRef": "#/domains/Generic/types/URL",
-            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "description": "Website entry point.",
             "initial": true
         },
         "account": {
@@ -30,8 +30,7 @@
         },
         "conditionalDynamicQuestions": {
             "typeRef": "#/domains/JobBoardApplication/types/ConditionalDynamicQuestions",
-            "dynamic": true,
-            "description": "Debug info. Used in onbording of people who are not familiar with the script, helps them understand where conditional questions happen."
+            "dynamic": true
         },
         "client": {
             "typeRef": "#/domains/JobBoardApplication/types/Client"
@@ -105,7 +104,7 @@
             "properties": {
                 "cv": {
                     "typeRef": "#/domains/Generic/types/File",
-                    "description": "A photo with passport details section. Used for passport validation."
+                    "description": "A file containing the CV"
                 }
             },
             "required": [
@@ -173,6 +172,9 @@
                 },
                 {
                     "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionArrayOfObjects"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionFile"
                 }
             ]
         },
@@ -367,6 +369,39 @@
             ],
             "additionalProperties": false
         },
+        "SelectedQuestionFile": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "File" ] },
+                "id": {
+                    "type":"string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "question": {
+                    "type":"string"
+                },
+                "value": {
+                    "type": "object",
+                    "pii": true,
+                    "properties": {
+                            "typeRef": "#/domains/Generic/types/File",
+                            "description": "Any file that is not the CV"
+                    },
+                    "additionalProperties": false
+
+                },
+                "mandatory": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "id",
+                "value"
+            ],
+            "additionalProperties": false
+        },
         "AvailableDynamicQuestions": {
             "type": "array",
             "description": "Additional options to fill in.",
@@ -503,6 +538,9 @@
                                         },
                                         {
                                             "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
+                                        },
+                                        {
+                                            "$ref":"#/domains/JobBoardApplication/types/AvailableQuestionFile"
                                         }
                                     ]
                                 }
@@ -707,6 +745,32 @@
                 "label",
                 "question",
                 "value",
+                "mandatory"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableQuestionFile": {
+            "type": "object",
+            "properties": {
+                "input": { "enum": [ "File" ] },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "question": {
+                    "type":"string"
+                },
+                "mandatory": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "inputType",
+                "id",
+                "label",
+                "question",
                 "mandatory"
             ],
             "additionalProperties": false
