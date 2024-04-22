@@ -383,13 +383,7 @@
                     "type":"string"
                 },
                 "value": {
-                    "type": "object",
-                    "pii": true,
-                    "properties": {
-                            "typeRef": "#/domains/Generic/types/File",
-                            "description": "Any file that is not the CV"
-                    },
-                    "additionalProperties": false
+                    "typeRef": "#/domains/Generic/types/File"
 
                 },
                 "mandatory": {
