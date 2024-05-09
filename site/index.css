@@ -15,6 +15,8 @@
     --ui-warning--inverse: #765;
     --ui-failure: #ff5a5f;
     --ui-failure--inverse: #fff;
+    --ui-restart: #6bb9cc;
+    --ui-restart--inverse: #fff;
 
     --ui-highlight: hsl(210,100%,95%);
 
@@ -107,4 +109,9 @@ pre {
 .tag--warning {
     background: var(--ui-warning);
     color: var(--ui-warning--inverse);
+}
+
+.tag--restart {
+    background: var(--ui-restart);
+    color: var(--ui-restart--inverse);
 }

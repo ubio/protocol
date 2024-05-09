@@ -19,6 +19,10 @@
                     v-if="def.spec.deprecated">
                     deprecated
                 </span>
+                <span class="tag tag--restart"
+                    v-if="def.spec.deleteOnRestart">
+                    delete on restart
+                </span>
             </div>
         </div>
         <div class="oneliner__body">
