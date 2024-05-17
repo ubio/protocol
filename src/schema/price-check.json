@@ -1,0 +1,56 @@
+{
+    "private": false,
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point.",
+            "initial": true
+        },
+        "options": {
+            "typeRef": "#/domains/PriceCheck/types/Options",
+            "default": {},
+            "initial": true
+        }
+    },
+    "outputs": {
+        "landingPagePrice": {
+            "typeRef": "#/domains/PriceCheck/types/PriceCheck"
+        },
+        "itemPricePage": {
+            "typeRef": "#/domains/PriceCheck/types/PriceCheck"
+        },
+        "priceBreakdown": {
+            "typeRef": "#/domains/PriceCheck/types/PriceBreakdown"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "description": "Flags for enabling optional automation features.",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
+            ],
+            "additionalProperties": false
+        },
+        "PriceCheck": {
+            "type":"object",
+            "properties": {
+                "originalPrice": { "$ref": "#/domains/Generic/types/Price" },
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            }
+        },
+        "PriceBreakdown": {
+            "type": "object",
+            "properties": {
+                "description": "string",
+                "price": { "$ref": "#/domains/Generic/types/Price" }
+            }
+
+        }
+    }
+}
