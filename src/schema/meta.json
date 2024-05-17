@@ -109,6 +109,11 @@
                 "inputMethod": {
                     "type": "string",
                     "enum": [ "SeatSelection", "Consent", "SelectOne", "SelectMany" ]
+                },
+                "deleteOnRestart": {
+                    "type": "boolean",
+                    "description": "When deleteOnRestart flag set to true input will be deleted on job restart",
+                    "default": false
                 }
             },
             "dependencies": {
