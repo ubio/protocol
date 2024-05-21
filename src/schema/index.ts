@@ -38,6 +38,7 @@ import MobileSignup from './mobile-signup.json';
 import MotorInsurance from './motor-insurance.json';
 import MotorInsuranceExtraction from './motor-insurance-extraction.json';
 import PetInsurance from './pet-insurance.json';
+import PriceScrapingPages from './price-scraping-pages.json';
 import ProductPurchase from './product-purchase.json';
 import PropertyBooking from './property-booking.json';
 import QRCodeExtraction from './qr-code-extraction.json';
@@ -93,6 +94,7 @@ export const schema = {
         MotorInsurance,
         MotorInsuranceExtraction,
         PetInsurance,
+        PriceScrapingPages,
         ProductPurchase,
         PropertyBooking,
         QRCodeExtraction,
