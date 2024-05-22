@@ -1,4 +1,5 @@
 {
+    "description": "",
     "private": false,
     "inputs": {
         "url": {
@@ -47,10 +48,15 @@
         "PriceBreakdown": {
             "type": "object",
             "properties": {
-                "description": "string",
+                "description": {
+                    "type": "string",
+                    "description": "The description of an item on the price breakdown list, as found on the website.",
+                    "example": "Credit card charge"
+                },
                 "price": { "$ref": "#/domains/Generic/types/Price" }
             }
 
         }
-    }
+    },
+    "errors": []
 }
