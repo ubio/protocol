@@ -480,6 +480,10 @@
                     "format": "date",
                     "example": "1976-01-27"
                 },
+                "nationality": {
+                    "$ref": "#/domains/Generic/types/CountryCode",
+                    "description": "Nationality according to passport."
+                },
                 "addAdditionalLuggage": {
                     "type": "integer",
                     "minimum": 0,
@@ -950,6 +954,11 @@
             "code": "PassengerDocumentRequired",
             "category": "client",
             "description": "Passenger document (passport or other travel document) is required by the website"
+        },
+        {
+            "code": "NationalityRequired",
+            "category": "client",
+            "description": "Nationality country is required by the website"
         },
         {
             "code": "DuplicateBooking",
