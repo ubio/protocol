@@ -590,7 +590,35 @@
                             "conditionalQuestions": {
                                 "type":"array",
                                 "items": {
-                                    "$ref": "#/domains/JobBoardApplication/types/AvailableDynamicQuestions"
+                                    "anyOf": [
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionText"
+                                        },
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextArea"
+                                        },
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectOne"
+                                        },
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectMultiple"
+                                        },
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionBoolean"
+                                        },
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionDate"
+                                        },
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
+                                        },
+                                        {
+                                            "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
+                                        },
+                                        {
+                                            "$ref":"#/domains/JobBoardApplication/types/AvailableQuestionFile"
+                                        }
+                                    ]
                                 }
                             }
 
@@ -757,7 +785,7 @@
         "AvailableQuestionFile": {
             "type": "object",
             "properties": {
-                "input": { "enum": [ "File" ] },
+                "inputType": { "enum": [ "File" ] },
                 "id": {
                     "type": "string"
                 },
