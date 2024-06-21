@@ -785,7 +785,7 @@
         "AvailableQuestionFile": {
             "type": "object",
             "properties": {
-                "input": { "enum": [ "File" ] },
+                "inputType": { "enum": [ "File" ] },
                 "id": {
                     "type": "string"
                 },
