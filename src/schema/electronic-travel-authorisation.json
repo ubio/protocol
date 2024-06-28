@@ -400,8 +400,6 @@
             },
             "required": [
                 "person",
-                "contact",
-                "emergencyContact",
                 "documents"
             ],
             "additionalProperties": false
