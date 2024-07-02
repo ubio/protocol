@@ -686,7 +686,7 @@
         },
         "Map": {
             "type": "object",
-             "description": "A seat map of the aircraft layout and cabin class.",
+             "description": "A map of the aircraft layout and cabin class.",
              "properties": {
                  "cabinClass": {
                     "$ref": "#/domains/FlightBooking/types/CabinClass",
@@ -706,7 +706,7 @@
          },
          "Layout": {
            "type": "object",
-            "description": "Flight leg that corresponds with the current seat map.",
+            "description": "Flight map seat layout.",
             "properties": {
                 "columns": { "$ref": "#/domains/FlightBooking/types/Columns" },
                 "rows": { "$ref": "#/domains/FlightBooking/types/Rows" }
@@ -729,8 +729,7 @@
         },
         "Column": {
             "type": "object",
-             "description": "Flight leg that corresponds with the current seat map.",
-             "properties": {
+            "properties": {
                  "value": {
                      "type": "string",
                      "description": "Column letter.",
