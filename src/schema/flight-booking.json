@@ -75,10 +75,8 @@
             "sourceOutputKey": "availableInboundFares",
             "inputMethod": "SelectOne"
         },
-        "selectedSeats": {
-            "typeRef": "#/domains/FlightBooking/types/SelectedSegmentSeats",
-            "sourceOutputKey": "availableSeats",
-            "inputMethod": "SeatSelection",
+        "selectedDynamicSeats": {
+            "typeRef": "#/domains/FlightBooking/types/SelectedDynamicSeats",
             "dynamic": true
         },
         "voucher": {
@@ -120,8 +118,8 @@
             "typeRef": "#/domains/FlightBooking/types/ListOfLuggageWithPrice",
             "description": "The luggage which can be selected for the passengers."
         },
-        "availableSeats": {
-            "typeRef": "#/domains/FlightBooking/types/AvailableSegmentSeats",
+        "availableDynamicSeats": {
+            "typeRef": "#/domains/FlightBooking/types/AvailableDynamicSeats",
             "dynamic": true
         },
         "availableFrequentFlyerProgrammes": {
@@ -658,76 +656,86 @@
             "description": "A list of luggage with price.",
             "items": { "$ref": "#/domains/FlightBooking/types/LuggageWithPrice" }
         },
-        "SelectedSegmentSeats": {
+        "SelectedDynamicSeats": {
+            "type": "array",
+            "description": "The cardinality of this array must match that of the passengers. A mismatch leads to the input being invalidated.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": {
+                "type": "array",
+                "items": { "name": "#/domains/FlightBooking/types/SeatNumber" }
+            }
+        },
+        "AvailableDynamicSeats": {
             "type": "object",
-            "description": "Selected seats information.",
+            "description": "Seat availability mapping.",
             "properties": {
-                "segment": {
-                    "type": "string",
-                    "description": "Flight segments name as displayed on website.",
-                    "pattern": "^[A-Z]{3} to [A-Z]{3}$",
-                    "example": "LTN to ZRH"
+                "leg": {
+                    "items": { "$ref": "#/domains/FlightBooking/types/Leg" }
                 },
-                "seats": {
+                "rows": {
                     "type": "array",
-                    "items": { "$ref": "#/domains/FlightBooking/types/SeatNumber" }
+                    "items": { "$ref": "#/domains/FlightBooking/types/Rows" }
                 }
             },
             "required": [
-                "seats"
+                "leg",
+                "rows"
             ],
             "additionalProperties": false
         },
-        "AvailableSegmentSeats": {
-            "type": "object",
-            "description": "Seat availability information.",
+        "Leg": {
+           "type": "object",
+            "description": "Flight leg that corresponds with the current seat map.",
             "properties": {
-                "segment": {
+                "from": {
                     "type": "string",
-                    "description": "Flight leg name as displayed on website.",
-                    "example": "LTN to ZRH, Wed 7th Mar"
+                    "description": "Origin airport name grabbed from the page.",
+                    "example": "Deer Lake"
                 },
-                "seats": {
-                    "type": "array",
-                    "items": { "$ref": "#/domains/FlightBooking/types/Seat" }
+                "to": {
+                    "type": "string",
+                    "description": "Destination airport name grabbed from the page.",
+                    "example": "Kitchener-Waterloo"
                 }
             },
+            "additionalProperties": false,
             "required": [
-                "segment",
-                "seats"
-            ],
-            "additionalProperties": false
-        },
-        "Seat": {
-            "type": "object",
-            "description": "Seat metadata.",
-            "properties": {
-                "seatNumber": {
-                    "$ref": "#/domains/FlightBooking/types/SeatNumber"
-                },
-                "available": {
-                    "type": "boolean",
-                    "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
-                },
-                "restricted": {
-                    "type": "boolean",
-                    "description": "<code>true</code> if seat has restrictions for certain groups of passengers."
-                },
-                "price": {
-                    "$ref": "#/domains/Generic/types/Price",
-                    "description": "Seat price, if such information is available."
-                }
-            },
-            "required": [
-                "seatNumber",
-                "available"
-            ],
-            "additionalProperties": false
+                "from",
+                "to"
+            ]
         },
         "SeatNumber": {
             "type": "string",
             "description": "Seat number as extracted from website.",
             "example": "7A"
+        },
+        "Rows": {
+            "type": "array",
+            "description": "An array of cabin rows.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": {
+                "type": "array",
+                "items": { "name": "#/domains/FlightBooking/types/Row" }
+            }
+        },
+        "Row": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "number": {
+                    "type": "integer",
+                    "description": "Row Number.",
+                    "example": "5"
+                },
+                "seats": { "$ref": "#/domains/FlightBooking/types/Seats" }
+            },
+            "additionalProperties": false,
+            "required": [
+                "number",
+                "seats"
+            ]
         },
         "BookingConfirmation": {
             "type": "object",
@@ -752,6 +760,65 @@
             "required": [
                 "bookingReference"
             ]
+        },
+        "Seats": {
+            "type": "array",
+            "description": "An array of seats.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": {
+                "type": "array",
+                "items": { "name": "#/domains/FlightBooking/types/Seat" }
+            }
+        },
+        "Seat": {
+            "type": "object",
+            "description": "Seat metadata.",
+            "properties": {
+                "column": {
+                    "type": "string",
+                    "description": "Column letter.",
+                    "example": "B"
+                },
+                "number": {
+                    "$ref": "#/domains/FlightBooking/types/SeatNumber"
+                },
+                "isAvailable": {
+                    "type": "boolean",
+                    "description": "<code>true</code> if website allows selecting this seat, <code>false</code> otherwise."
+                },
+                "isRestricted": {
+                    "type": "boolean",
+                    "description": "<code>true</code> if seat has restrictions for certain groups of passengers."
+                },
+                "seatCharacteristics": {
+                    "$ref": "#/domains/FlightBooking/types/SeatCharacteristics"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Seat price, if such information is available."
+                }
+            },
+            "required": [
+                "column",
+                "number",
+                "isAvailable"
+            ],
+            "additionalProperties": false
+        },
+        "SeatCharacteristics": {
+            "type": "array",
+            "description": "An array of seat particularities.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": {
+                "type": "array",
+                "items": { "name": "#/domains/FlightBooking/types/SeatCharacteristic" }
+            }
+        },
+        "SeatCharacteristic": {
+            "type": "string",
+            "example": "extra-legroom"
         },
         "PriceBreakdown": {
             "type": "array",
