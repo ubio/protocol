@@ -673,17 +673,82 @@
                 "leg": {
                     "items": { "$ref": "#/domains/FlightBooking/types/Leg" }
                 },
-                "rows": {
+                "map": {
                     "type": "array",
-                    "items": { "$ref": "#/domains/FlightBooking/types/Rows" }
+                    "items": { "$ref": "#/domains/FlightBooking/types/Map" }
                 }
             },
             "required": [
                 "leg",
-                "rows"
+                "map"
             ],
             "additionalProperties": false
         },
+        "Map": {
+            "type": "object",
+             "description": "A seat map of the aircraft layout and cabin class.",
+             "properties": {
+                 "cabinClass": {
+                    "$ref": "#/domains/FlightBooking/types/CabinClass",
+                    "description": "Preferred cabin class, used on flight search forms."
+                },
+                 "layout": {
+                     "$ref": "#/domains/FlightBooking/types/Layout",
+                     "description": "Seat layout.",
+                     "example": "Kitchener-Waterloo"
+                 }
+             },
+             "additionalProperties": false,
+             "required": [
+                 "cabinClass",
+                 "layout"
+             ]
+         },
+         "Layout": {
+           "type": "object",
+            "description": "Flight leg that corresponds with the current seat map.",
+            "properties": {
+                "columns": { "$ref": "#/domains/FlightBooking/types/Columns" },
+                "rows": { "$ref": "#/domains/FlightBooking/types/Rows" }
+            },
+            "additionalProperties": false,
+            "required": [
+                "columns",
+                "rows"
+            ]
+        },
+        "Columns": {
+            "type": "array",
+            "description": "An array of columns letters and position.",
+            "minItems": 1,
+            "maxItems": 9,
+            "items": {
+                "type": "array",
+                "items": { "name": "#/domains/FlightBooking/types/Column" }
+            }
+        },
+        "Column": {
+            "type": "object",
+             "description": "Flight leg that corresponds with the current seat map.",
+             "properties": {
+                 "value": {
+                     "type": "string",
+                     "description": "Column letter.",
+                     "example": "A"
+                 },
+                 "position": {
+                     "type": "string",
+                     "description": "Position of the seat in the row.",
+                     "enum": ["window", "middle", "aisle"],
+                     "example": "aisle"
+                 }
+             },
+             "additionalProperties": false,
+             "required": [
+                 "value",
+                 "position"
+             ]
+         },
         "Leg": {
            "type": "object",
             "description": "Flight leg that corresponds with the current seat map.",
