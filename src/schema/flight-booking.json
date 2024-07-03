@@ -670,8 +670,8 @@
             "type": "object",
             "description": "Seat availability mapping.",
             "properties": {
-                "leg": {
-                    "items": { "$ref": "#/domains/FlightBooking/types/Leg" }
+                "segment": {
+                    "items": { "$ref": "#/domains/FlightBooking/types/Segment" }
                 },
                 "map": {
                     "type": "array",
@@ -679,7 +679,7 @@
                 }
             },
             "required": [
-                "leg",
+                "segment",
                 "map"
             ],
             "additionalProperties": false
@@ -748,9 +748,9 @@
                  "position"
              ]
          },
-        "Leg": {
+        "Segment": {
            "type": "object",
-            "description": "Flight leg that corresponds with the current seat map.",
+            "description": "Flight segment that corresponds with the current seat map.",
             "properties": {
                 "from": {
                     "type": "string",
