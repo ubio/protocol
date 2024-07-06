@@ -661,22 +661,14 @@
             "description": "The cardinality of this array must match that of the passengers. A mismatch leads to the input being invalidated.",
             "minItems": 1,
             "maxItems": 9,
-            "items": {
-                "type": "array",
-                "items": { "name": "#/domains/FlightBooking/types/SeatNumber" }
-            }
+            "items": {"items": { "name": "#/domains/FlightBooking/types/SeatNumber" }}
         },
         "AvailableDynamicSeats": {
             "type": "object",
             "description": "Seat availability mapping.",
             "properties": {
-                "segment": {
-                    "items": { "$ref": "#/domains/FlightBooking/types/Segment" }
-                },
-                "map": {
-                    "type": "array",
-                    "items": { "$ref": "#/domains/FlightBooking/types/Map" }
-                }
+                "segment": {"items": { "$ref": "#/domains/FlightBooking/types/Segment" }},
+                "map": {"items": { "$ref": "#/domains/FlightBooking/types/Map" }}
             },
             "required": [
                 "segment",
