@@ -132,6 +132,7 @@
                 }
             },
             "required": [
+                "id",
                 "name",
                 "rates"
             ],
@@ -196,6 +197,7 @@
                 }
             },
             "required": [
+                "id",
                 "name",
                 "baseRate",
                 "taxes"
