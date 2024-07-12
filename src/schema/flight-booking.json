@@ -659,8 +659,6 @@
         "SelectedDynamicSeats": {
             "type": "array",
             "description": "The cardinality of this array must match that of the passengers. A mismatch leads to the input being invalidated.",
-            "minItems": 1,
-            "maxItems": 9,
             "items": {"items": { "name": "#/domains/FlightBooking/types/SeatNumber" }}
         },
         "AvailableDynamicSeats": {
