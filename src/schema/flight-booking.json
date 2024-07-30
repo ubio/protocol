@@ -361,6 +361,7 @@
                 "origin": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
                 "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
                 "price": { "$ref": "#/domains/Generic/types/Price" },
+                "flightNumber": { "$ref": "#/domains/FlightBooking/types/ArrayOrString"},
                 "segments": { "$ref": "#/domains/FlightBooking/types/Segments" }
             },
             "required": [
@@ -373,21 +374,7 @@
             "type": "array",
             "minItems": 1,
             "maxItems": 9,
-            "items": { "$ref": "#/domains/FlightBooking/types/Segment" }
-        },
-        "Segment": {
-            "type": "object",
-            "description": "Outbound and inbound flights specification.",
-            "properties": {
-                "origin": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
-                "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
-                "flightNumber": { "$ref": "#/domains/FlightBooking/types/ArrayOrString"},
-            },
-            "required": [
-                "origin",
-                "destination"
-            ],
-            "additionalProperties": false
+            "items": { "$ref": "#/domains/FlightBooking/types/Flight" }
         },
         "CabinClass": {
             "type": "string",
