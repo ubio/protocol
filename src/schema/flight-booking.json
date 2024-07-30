@@ -361,7 +361,7 @@
                 "origin": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
                 "destination": { "$ref": "#/domains/FlightBooking/types/DateTimeAirport" },
                 "price": { "$ref": "#/domains/Generic/types/Price" },
-                "flightNumber": { "$ref": "#/domains/FlightBooking/types/Strings"},
+                "flightNumber": { "$ref": "#/domains/FlightBooking/types/ArrayOrString"},
                 "segments": { "$ref": "#/domains/FlightBooking/types/Segments" }
             },
             "required": [
@@ -967,6 +967,18 @@
             "items": { "$ref": "#/domains/FlightBooking/types/String" }
         },
         "String": {"type": "string"},
+        "ArrayOrString": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "array",
+                    "items": { "$ref": "#/domains/FlightBooking/types/String" },
+                    "minItems": 1
+                }
+            ]
+        },
         "Boolean": {
             "type": "boolean",
             "example": false
