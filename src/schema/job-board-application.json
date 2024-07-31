@@ -179,6 +179,9 @@
                     "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionArrayOfObjects"
                 },
                 {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionFragmentedQuestion"
+                },
+                {
                     "$ref": "#/domains/JobBoardApplication/types/SelectedQuestionFile"
                 }
             ]
@@ -374,6 +377,31 @@
             ],
             "additionalProperties": false
         },
+        "SelectedQuestionFragmentedQuestion": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "FragmentedQuestion" ] },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type":"string"
+                },
+                "question": {
+                    "type":"string"
+                },
+                "value": {
+                    "$ref": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions"
+                },
+                "mandatory": {
+                    "type": "boolean"
+                }
+            },
+            "required":[
+                "id",
+                "value"
+            ]
+        },
         "SelectedQuestionFile": {
             "type": "object",
             "properties": {
@@ -430,6 +458,9 @@
                 },
                 {
                     "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
+                },
+                {
+                    "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionFragmentedQuestion"
                 },
                 {
                     "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
@@ -667,6 +698,67 @@
             "type": "object",
             "properties": {
                 "inputType": { "enum": [ "ArrayOfObjects" ] },
+                "id": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "question": {
+                    "type": "string"
+                },
+                "mandatory": {
+                    "type": "boolean"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionText"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextArea"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectOne"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionSelectMultiple"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionBoolean"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionDate"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionArrayOfObjects"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionTextLiteral"
+                            },
+                            {
+                                "$ref": "#/domains/JobBoardApplication/types/AvailableQuestionFile"
+                            }
+                        ]
+                    }
+
+                }
+            },
+            "required": [
+                "inputType",
+                "id",
+                "label",
+                "question",
+                "mandatory"
+            ],
+            "additionalProperties": false
+        },
+        "AvailableQuestionFragmentedQuestion": {
+            "type": "object",
+            "properties": {
+                "inputType": { "enum": [ "FragmentedQuestion" ] },
                 "id": {
                     "type": "string"
                 },
