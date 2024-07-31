@@ -129,6 +129,46 @@
                 },
                 "canBeShared": {
                     "type": "boolean"
+                },
+                "bed": {
+                    "type": "array",
+                    "description": "Types of the beds.",
+                    "minItems": 0,
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "single",
+                            "double",
+                            "semi-double",
+                            "queen",
+                            "king",
+                            "twin",
+                            "3",
+                            "4",
+                            "more than 4"
+                        ]
+                    }
+                },
+                "style": {
+                    "type": "string",
+                    "description": "Style of room for japanese hotels.",
+                    "enum": [
+                        "japanese",
+                        "western"
+                    ]
+                },
+                "features": {
+                    "type": "array",
+                    "description": "Room characteristics",
+                    "minItems": 0,
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "smoking",
+                            "non-smoking",
+                            "openAirBath"
+                        ]
+                    }
                 }
             },
             "required": [
@@ -194,6 +234,16 @@
                 },
                 "isShared": {
                     "type": "boolean"
+                },
+                "checkInTime": {
+                    "type": "string",
+                    "description": "String in the format HH:mm",
+                    "example": "16:30"
+                },
+                "checkOutTime": {
+                    "type": "string",
+                    "description": "String in the format HH:mm",
+                    "example": "16:30"
                 }
             },
             "required": [
