@@ -141,7 +141,7 @@
                             "double",
                             "semi-double",
                             "queen",
-                            "king",
+                            "king"
                         ]
                     }
                 },
@@ -154,18 +154,11 @@
                         "japanese-western"
                     ]
                 },
-                "features": {
-                    "type": "array",
-                    "description": "Room characteristics",
-                    "minItems": 0,
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "smoking",
-                            "non-smoking",
-                            "open-air-bath"
-                        ]
-                    }
+                "smoking": {
+                    "type": "boolean"
+                },
+                "openAirBath": {
+                    "type": "boolean"
                 }
             },
             "required": [
