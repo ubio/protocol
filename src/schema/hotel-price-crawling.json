@@ -130,7 +130,7 @@
                 "canBeShared": {
                     "type": "boolean"
                 },
-                "bed": {
+                "beds": {
                     "type": "array",
                     "description": "Types of the beds.",
                     "minItems": 0,
