@@ -142,10 +142,6 @@
                             "semi-double",
                             "queen",
                             "king",
-                            "twin",
-                            "3",
-                            "4",
-                            "more than 4"
                         ]
                     }
                 },
@@ -154,7 +150,8 @@
                     "description": "Style of room for japanese hotels.",
                     "enum": [
                         "japanese",
-                        "western"
+                        "western",
+                        "japanese-western"
                     ]
                 },
                 "features": {
@@ -166,7 +163,7 @@
                         "enum": [
                             "smoking",
                             "non-smoking",
-                            "openAirBath"
+                            "open-air-bath"
                         ]
                     }
                 }
