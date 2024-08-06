@@ -130,9 +130,9 @@
                 "canBeShared": {
                     "type": "boolean"
                 },
-                "beds": {
+                "bedTypes": {
                     "type": "array",
-                    "description": "Types of the beds.",
+                    "description": "Type(s) of the beds.",
                     "minItems": 0,
                     "items": {
                         "type": "string",
@@ -144,6 +144,9 @@
                             "king"
                         ]
                     }
+                },
+                "bedCount": {
+                    "type": "integer"
                 },
                 "style": {
                     "type": "string",
