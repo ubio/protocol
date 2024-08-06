@@ -129,6 +129,39 @@
                 },
                 "canBeShared": {
                     "type": "boolean"
+                },
+                "bedTypes": {
+                    "type": "array",
+                    "description": "Type(s) of the beds.",
+                    "minItems": 0,
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "single",
+                            "double",
+                            "semi-double",
+                            "queen",
+                            "king"
+                        ]
+                    }
+                },
+                "bedCount": {
+                    "type": "integer"
+                },
+                "style": {
+                    "type": "string",
+                    "description": "Style of room for japanese hotels.",
+                    "enum": [
+                        "japanese",
+                        "western",
+                        "japanese-western"
+                    ]
+                },
+                "smoking": {
+                    "type": "boolean"
+                },
+                "openAirBath": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -194,6 +227,16 @@
                 },
                 "isShared": {
                     "type": "boolean"
+                },
+                "checkInTime": {
+                    "type": "string",
+                    "description": "String in the format HH:mm",
+                    "example": "16:30"
+                },
+                "checkOutTime": {
+                    "type": "string",
+                    "description": "String in the format HH:mm",
+                    "example": "16:30"
                 }
             },
             "required": [
