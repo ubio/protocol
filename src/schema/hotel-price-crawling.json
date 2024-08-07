@@ -130,7 +130,7 @@
                 "canBeShared": {
                     "type": "boolean"
                 },
-                "bedTypes": {
+                "beds": {
                     "type": "array",
                     "description": "Type(s) of the beds.",
                     "minItems": 0,
@@ -141,16 +141,14 @@
                             "double",
                             "semi-double",
                             "queen",
-                            "king"
+                            "king",
+                            "unknown"
                         ]
                     }
                 },
-                "bedCount": {
-                    "type": "integer"
-                },
                 "style": {
                     "type": "string",
-                    "description": "Style of room for japanese hotels.",
+                    "description": "Style of room for hotels.",
                     "enum": [
                         "japanese",
                         "western",
