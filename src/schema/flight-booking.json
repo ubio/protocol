@@ -760,9 +760,19 @@
             ]
         },
         "SeatNumber": {
-            "type": "string",
+            "type": "object",
             "description": "Seat number as extracted from website.",
-            "example": "7A"
+            "properties": {
+                "number": {
+                    "type": "string",
+                    "description": "Seat Number.",
+                    "example": "7A"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "number"
+            ]
         },
         "Rows": {
             "type": "array",
