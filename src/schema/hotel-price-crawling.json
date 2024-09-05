@@ -263,7 +263,8 @@
                         "resort-fee",
                         "service-fee",
                         "booking-fee",
-                        "other"
+                        "other-taxes",
+                        "other-fees"
                     ]
                 },
                 "name": {
