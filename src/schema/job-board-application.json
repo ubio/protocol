@@ -797,7 +797,9 @@
                 },
                 "accept": {
                     "type": "array",
-                    "items": ["doc", "docx", "xls", "xlsx", "ppt", "pptx", "pdf", "txt"]
+                    "items": {
+                        "anyOf": ["doc", "docx", "xls", "xlsx", "ppt", "pptx", "pdf", "txt"]
+                    }
                 },
                 "mandatory": {
                     "type": "boolean"
