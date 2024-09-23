@@ -887,6 +887,13 @@
                 "question": {
                     "type":"string"
                 },
+                "accept": {
+                    "type": "array",
+                    "items": {
+                        "type":"string",
+                        "enum": ["doc", "docx", "xls", "xlsx", "ppt", "pptx", "pdf", "txt"]
+                    }
+                },
                 "mandatory": {
                     "type": "boolean"
                 }
@@ -896,6 +903,7 @@
                 "id",
                 "label",
                 "question",
+                "accept",
                 "mandatory"
             ],
             "additionalProperties": false
