@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+    shell:
+        volumes:
+            - ..:/protocol:cached
+            # - ../public:/var/www/html
+            - ~/.ssh:/home/developer/.ssh:ro,cached
+            - vscode-extensions:/home/developer/.vscode-server/extensions
+            - vscode-insiders-extensions:/home/developer/.vscode-server-insiders/extensions
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        environment:
+            - 'FOO=bar'
+        command: /bin/sh -c "while sleep 1000; do :; done"
+
+volumes:
+  vscode-extensions:
+  vscode-insiders-extensions:
