@@ -223,13 +223,6 @@
                         "$ref": "#/domains/HotelPriceCrawling/types/Tax"
                     }
                 },
-                "fees": {
-                    "type": "array",
-                    "minItems": 0,
-                    "items": {
-                        "$ref": "#/domains/HotelPriceCrawling/types/Fee"
-                    }
-                },
                 "isShared": {
                     "type": "boolean"
                 },
@@ -273,37 +266,6 @@
                         "other-taxes",
                         "other-fees",
                         "other"
-                    ]
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name or title of the price."
-                },
-                "price": { "$ref": "#/domains/Generic/types/Price" }
-            },
-            "required": [
-                "name",
-                "price"
-            ],
-            "additionalProperties": false
-        },
-        "Fee": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "enum": [
-                        "NamedPrice"
-                    ]
-                },
-                "code": {
-                    "type": "string",
-                    "description": "The code inferred based on the name.",
-                    "enum": [
-                        "hotel-fee",
-                        "resort-fee",
-                        "service-fee",
-                        "booking-fee",
-                        "other-fees"
                     ]
                 },
                 "name": {
