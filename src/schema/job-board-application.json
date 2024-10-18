@@ -891,7 +891,7 @@
                     "type": "array",
                     "items": {
                         "type":"string",
-                        "enum": ["doc", "docx", "xls", "xlsx", "ppt", "pptx", "pdf", "txt"]
+                        "enum": [".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt"]
                     }
                 },
                 "mandatory": {
