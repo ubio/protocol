@@ -6,8 +6,15 @@
         "valuePath": "/reference"
     },
     "inputs": {
-        "search": {
-            "typeRef": "#/domains/HotelRoomBooking/types/Search"
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
+            "initial": true
+        },
+        "selectedRooms": {
+            "typeRef": "#/domains/HotelRoomBooking/types/Rooms",
+            "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed.",
+            "inputMethod": "SelectMany"
         },
         "roomId": {
             "typeRef": "#/domains/HotelRoomBooking/types/String",
@@ -100,14 +107,114 @@
             "properties": {
                 "card": { "$ref": "#/domains/Generic/types/PaymentCard" },
                 "person": { "$ref": "#/domains/HotelRoomBooking/types/Person" },
-                "address": { "$ref": "#/domains/Generic/types/Address" }
+                "address": { "$ref": "#/domains/HotelRoomBooking/types/Address" }
             },
-            "required": [
-                "card",
-                "person",
-                "address"
-            ],
+            "required": [],
             "additionalProperties": false
+        },
+        "ExplicitAddress": {
+            "type": "object",
+            "description": "Explicit address components (parsed version, used to format into various standards).",
+            "pii": true,
+            "properties": {
+                "streetName": {
+                    "type": "string",
+                    "description": "Name of the street.",
+                    "minLength": 1,
+                    "example": "Clerkenwell Close"
+                },
+                "streetNumber": {
+                    "type": "string",
+                    "description": "Number of the street or other building identifier, such as house number or house name",
+                    "minLength": 1,
+                    "example": "27-31"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "description": "Name of the city subdivision.",
+                    "minLength": 1,
+                    "example": "Glen Park"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "InlinedAddress": {
+            "type": "object",
+            "description": "Address components common to inlined addresses (line1, line2)",
+            "pii": true,
+            "properties": {
+                "line1": {
+                    "type": "string",
+                    "description": "Street name with house number.",
+                    "minLength": 1,
+                    "example": "501 Twin Peaks Blv"
+                },
+                "line2": {
+                    "type": "string",
+                    "description": "Additional address information (e.g. flat).",
+                    "example": "Flat 2"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "Name of city, town or other settlement.",
+                    "minLength": 1,
+                    "example": "San Francisco"
+                },
+                "citySubdivision": {
+                    "type": "string",
+                    "description": "Name of the city subdivision.",
+                    "minLength": 1,
+                    "example": "Glen Park"
+                },
+                "postcode": {
+                    "type": "string",
+                    "description": "Postcode in country-specific format, e.g. 5-digit number in US or <code>E3 3RP</code> in UK.",
+                    "example": "94581"
+                },
+                "countryCode": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
+                },
+                "countrySubdivision": {
+                    "$ref": "#/domains/Generic/types/CountrySubdivision"
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "Address": {
+            "description": "Physical address information, typically used as part of billing or shipping address objects.",
+            "pii": true,
+            "oneOf": [
+                {
+                    "$ref": "#/domains/Generic/types/ExplicitAddress"
+                },
+                {
+                    "$ref": "#/domains/Generic/types/InlinedAddress"
+                }
+            ]
         },
         "Person": {
             "type": "object",
@@ -146,10 +253,7 @@
                     "example": "client@example.com"
                 }
             },
-            "required": [
-                "phone",
-                "email"
-            ],
+            "required": [],
             "additionalProperties": false
         },
         "MainGuest": {
@@ -172,32 +276,185 @@
         "String": {
             "type": "string"
         },
-        "Search": {
+        "Rooms": {
+            "type": "array",
+            "description": "A list of rooms.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/HotelRoomBooking/types/Room"
+            }
+        },
+        "Room": {
             "type": "object",
             "properties": {
-                "hotelId": {
+                "type": {
                     "type": "string",
-                    "description": "UBIO hotel identifier"
+                    "example": "Standard Single Room"
                 },
-                "checkIn": {
+                "name": {
                     "type": "string",
-                    "format": "date",
-                    "example": "2023-06-27"
+                    "example": "Room with Window"
                 },
-                "nights": {
-                    "type": "integer",
-                    "example": 2
+                "rate": {
+                    "type": "string",
+                    "example": "Breakfast Plus"
                 },
-                "guests": {
-                    "type": "integer",
-                    "example": 2
+                "description": {
+                    "$ref": "#/domains/HotelRoomBooking/types/RoomDescription"
+                },
+                "rateDescription": {
+                    "$ref": "#/domains/HotelRoomBooking/types/RoomDescription"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 20600,
+                        "currency": "gbp"
+                    }
+                },
+                "strikePrice": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 30600,
+                        "currency": "gbp"
+                    }
+                },
+                "priceLines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/HotelRoomBooking/types/PriceLineItem"
+                    }
+                },
+                "cancellation": {
+                    "type": "object",
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "enum": [
+                                "full-refundable",
+                                "flexible-refundable",
+                                "non-refundable",
+                                "unknown"
+                            ]
+                        },
+                        "details": {
+                            "$ref": "#/domains/Generic/types/StructuredTextItem",
+                            "example": {
+                                "type": "Text",
+                                "text": "Free cancellation up to 24h before. Cancellation not allowed afterwards."
+                            }
+                        }
+                    },
+                    "required": [
+                        "code"
+                    ],
+                    "additionalProperties": false
+                },
+                "valueAdditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/HotelRoomBooking/types/ValueAddition"
+                    }
+                },
+                "occupancy": {
+                    "type": "object",
+                    "properties": {
+                        "adults": {
+                            "type": "number"
+                        },
+                        "children": {
+                            "type": "number"
+                        },
+                        "infants": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "adults"
+                    ],
+                    "additionalProperties": false
+                },
+                "rateGroup": {
+                    "type": "string",
+                    "example": "standard"
+                },
+                "isMemberRate": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/Generic/types/Link"
+                    }
+                }
+            },
+            "required": [],
+            "additionalProperties": false
+        },
+        "ValueAddition": {
+            "type": "string",
+            "enum": [
+                "pay-later",
+                "free-breakfast",
+                "free-half-board",
+                "free-full-board",
+                "free-all-inclusive",
+                "free-parking",
+                "free-internet"
+            ]
+        },
+        "RoomDescription": {
+            "type": "array",
+            "description": "A list to describe a room or a rate.",
+            "minItems": 0,
+            "items": {
+                "type": "string",
+                "example": "Maximum occupancy: 2"
+            }
+        },
+        "PriceLineItem": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "net-rate",
+                        "city-tax",
+                        "vat",
+                        "hotel-fee",
+                        "resort-fee",
+                        "service-fee",
+                        "booking-fee",
+                        "total-now",
+                        "total-later",
+                        "total-later-supplier",
+                        "total-overall",
+                        "total-overall-supplier",
+                        "others"
+                    ]
+                },
+                "paidAtHotel": {
+                    "type": "boolean"
+                },
+                "excludedFromTotals": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "example": {
+                        "value": 20600,
+                        "currency": "gbp"
+                    }
                 }
             },
             "required": [
-                "hotelId",
-                "checkIn",
-                "nights",
-                "guests"
+                "type",
+                "description",
+                "price"
             ],
             "additionalProperties": false
         },
@@ -240,48 +497,6 @@
             "required": [
                 "brand",
                 "type"
-            ],
-            "additionalProperties": false
-        },
-        "PriceLineItem": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "net-rate",
-                        "city-tax",
-                        "vat",
-                        "hotel-fee",
-                        "resort-fee",
-                        "service-fee",
-                        "booking-fee",
-                        "total-now",
-                        "total-later",
-                        "total-later-supplier",
-                        "total-overall",
-                        "total-overall-supplier",
-                        "others"
-                    ]
-                },
-                "paidAtHotel": {
-                    "type": "boolean"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "price": {
-                    "$ref": "#/domains/Generic/types/Price",
-                    "example": {
-                        "value": 20600,
-                        "currency": "gbp"
-                    }
-                }
-            },
-            "required": [
-                "type",
-                "description",
-                "price"
             ],
             "additionalProperties": false
         },
