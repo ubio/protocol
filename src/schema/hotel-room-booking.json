@@ -11,6 +11,9 @@
             "description": "Website entry point. Should be a deep link to either flight page or flight selection page.",
             "initial": true
         },
+         "search": {
+            "typeRef": "#/domains/HotelRoomBooking/types/Search"
+         },
         "selectedRooms": {
             "typeRef": "#/domains/HotelRoomBooking/types/Rooms",
             "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed.",
@@ -99,6 +102,35 @@
             "required": [
                 "reference"
             ]
+        },
+        "Search": {
+            "type": "object",
+            "properties": {
+                "hotelId": {
+                    "type": "string",
+                    "description": "UBIO hotel identifier"
+                },
+                "checkIn": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2023-06-27"
+                },
+                "nights": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "guests": {
+                    "type": "integer",
+                    "example": 2
+                }
+            },
+            "required": [
+                "hotelId",
+                "checkIn",
+                "nights",
+                "guests"
+            ],
+            "additionalProperties": false
         },
         "Payment": {
             "type": "object",
