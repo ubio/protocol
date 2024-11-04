@@ -979,6 +979,11 @@
             "code": "ApplicationFailed",
             "category": "client",
             "description": "Application process failed"
+        },
+        {
+            "code": "AlreadyApplied",
+            "category": "client",
+            "description": "An application has already been sent"
         }
     ]
 }
