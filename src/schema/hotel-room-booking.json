@@ -69,6 +69,10 @@
             "typeRef": "#/domains/Generic/types/StructuredTextItem",
             "description": "Emitted when booking T&Cs are presented."
         },
+        "availableRooms": {
+            "typeRef": "#/domains/HotelRoomBooking/types/Rooms",
+            "description": "List of rooms found on the supplier's website."
+        },
         "supportedCards": {
             "typeRef": "#/domains/HotelRoomBooking/types/SupportedCards",
             "description": "List of card brands and types found on the supplier's website."
