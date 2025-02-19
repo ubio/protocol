@@ -542,6 +542,11 @@
             "code": "RoomNotAvailable",
             "category": "client",
             "description": "The website claims that the room is not available for the search criteria."
+        },
+        {
+            "code": "DuplicateBooking",
+            "category": "client",
+            "description": "The website claims that there is another booking with the same details"
         }
     ]
 }
