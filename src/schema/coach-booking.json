@@ -374,11 +374,6 @@
             "code": "SeatsNotAvailable",
             "category": "client",
             "description": "The website claims that either no seats are available, or the selected seats are not available."
-        },
-        {
-            "code": "TripValid",
-            "category": "client",
-            "description": "Trip details are valid."
         }
     ]
 }
