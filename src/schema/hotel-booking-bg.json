@@ -483,28 +483,6 @@
         },
         "Boolean": {
             "type": "boolean"
-        },
-        "priceElement": {
-            "type": "object",
-            "properties": {
-                "type": {
-                    "type": "string",
-                            "enum": [
-                                "NetRate",
-                                "TaxesAndFees",
-                                "HotelFees"
-                            ]
-                },
-                "name": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "currency": {
-                    "$ref": "#/domains/Generic/types/CurrencyCode"
-                }
-            }
         }
     },
     "errors": [
