@@ -23,6 +23,7 @@ import FlightBookingScraper from './flight-booking-scraper.json';
 import Generic from './generic.json';
 import HolidayBooking from './holiday-booking.json';
 import HotelBooking from './hotel-booking.json';
+import HotelBookingBG from './hotel-booking-bg.json';
 import HotelBookingExtraction from './hotel-booking-extraction.json';
 import HotelContent from './hotel-content.json';
 import HotelLoyaltiesSignup from './hotel-loyalties-signup.json';
@@ -79,6 +80,7 @@ export const schema = {
         Generic,
         HolidayBooking,
         HotelBooking,
+        HotelBookingBG,
         HotelBookingExtraction,
         HotelContent,
         HotelLoyaltiesSignup,

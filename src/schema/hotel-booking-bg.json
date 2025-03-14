@@ -1,0 +1,531 @@
+{
+    "description": "Allows automating hotel booking on individual suppliers and OTAs for Book & Go",
+    "private": false,
+    "successCode": {
+        "outputKey": "bookingConfirmation",
+        "valuePath": "/bookingReference"
+    },
+    "inputs": {
+        "url": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "initial": true,
+            "description": "Website entry point. Should be a deep link to either package selection page, or to payment page."
+        },
+        "search": {
+            "typeRef": "#/domains/HotelBookingBG/types/Search"
+        },
+        "checkoutId": {
+            "type": "string"
+        },
+        "jobId": {
+            "type": "string"
+        },
+        "options": {
+            "typeRef": "#/domains/HotelBookingBG/types/Options",
+            "default": {},
+            "initial": true,
+            "description": "A set of options that define the automation's behaviour."
+        },
+        "selectedRooms": {
+            "typeRef": "#/domains/HotelBookingBG/types/Rooms",
+            "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed.",
+            "sourceOutputKey": "availableRooms",
+            "inputMethod": "SelectMany"
+        },
+        "guestData": {
+            "typeRef": "#/domains/HotelBookingBG/types/guestData",
+            "description": "Personal details about the main guest."
+        },
+        "roomsOccupancies": {
+            "typeRef": "#/domains/HotelBookingBG/types/roomOccupancy"
+        },
+        "payment": {
+            "typeRef": "#/domains/HotelBookingBG/types/Payment"
+        }
+    },
+    "outputs": {
+        "availableRooms": {
+            "typeRef": "#/domains/HotelBookingBG/types/Rooms"
+        },
+        "bookingConfirmation": {
+            "typeRef": "#/domains/HotelBookingBG/types/BookingConfirmation"
+        }
+    },
+    "types": {
+        "Options": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "description": "If <code>true</code>, returns a fake success without making a booking.",
+                    "default": false
+                }
+            }
+        },
+        "ConfirmationCode": {
+            "type": "string",
+            "minLength": 1,
+            "example": "ABC123"
+        },
+        "Search": {
+            "type": "object",
+            "properties": {
+                "checkInDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "checkOutDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1976-01-27"
+                },
+                "rooms": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "$ref": "#/domains/HotelBookingBG/types/SearchRoom"
+                    }
+                },
+                "currencyCode": {
+                    "$ref": "#/domains/Generic/types/CurrencyCode"
+                },
+                "languageCode": {
+                    "type": "string",
+                    "minLength": 2
+                }
+            },
+            "required": [
+                "checkInDate",
+                "checkOutDate",
+                "rooms"
+            ],
+            "additionalProperties": false
+        },
+        "SearchRoom": {
+            "type": "object",
+            "properties": {
+                "ages": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 150,
+                        "exmaple": 31
+                    }
+                }
+            },
+            "required": [
+                "ages"
+            ],
+            "additionalProperties": false
+        },
+        "Rooms": {
+            "type": "array",
+            "description": "A list of rooms.",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/domains/HotelBookingBG/types/Room"
+            }
+        },
+        "Room": {
+            "type": "object",
+            "properties": {
+                "roomName": {
+                    "type": "string",
+                    "example": "Room with Window"
+                },
+                "roomDescription": {
+                    "type": "string",
+                    "example": "A brief description of the room deal, if available. (eg: Room is pet-friendly and comes with a view)"
+                },
+                "amenities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/HotelBookingBG/types/Amenity"
+                    }
+                },
+                "rates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/domains/HotelBookingBG/types/Rate"
+                    }
+                },
+                "maximumOccupancy": {
+                    "type": "object",
+                    "properties": {
+                        "maxAdults": {
+                            "type": "number"
+                        },
+                        "maxChildren": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "adults"
+                    ],
+                    "additionalProperties": false
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "roomName",
+                "rates"
+            ],
+            "additionalProperties": false
+        },
+        "Rate": {
+            "type": "object",
+            "properties": {
+                "checkoutId": {
+                    "type": "string"
+                },
+                "rateType": {
+                    "type": "string",
+                    "enum": [
+                        "Default",
+                        "Mobile",
+                        "Reward"
+                    ]
+                },
+                "boardCode": {
+                    "type": "string",
+                    "enum": [
+                        "RoomOnly",
+                        "BedAndBreakfast",
+                        "HalfBoard",
+                        "FullBoard",
+                        "AllInclusive"
+                    ]
+                },
+                "boardDescription": {
+                    "type": "string",
+                    "example": "A more detailed description of the board type (e.g., Includes breakfast for 2 guests)"
+                },
+                "cancellationPolicy": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "NonRefundable",
+                                "FullyRefundable",
+                                "PartiallyRefundable"
+                            ]
+                        },
+                        "detailedDescription": {
+                            "type": "string",
+                            "example": "The detailed description of the cancellation policy containing information about partial refunds"
+                        },
+                        "penalties": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/domains/HotelBookingBG/types/CancellationPenalty"
+                            }       
+                        }
+                    }
+                },
+                "price": {
+                    "type": "object",
+                    "properties": {
+                        "totalPrice": {
+                            "type": "string"
+                        },
+                        "currency": {
+                            "$ref": "#/domains/Generic/types/CurrencyCode"
+                        },
+                        "priceElements": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/domains/Generic/types/priceElement"
+                            }
+                        }
+                    }
+                }
+            },
+            "required": [
+                "roomName",
+                "rates"
+            ],
+            "additionalProperties": false
+        },
+        "Amenity": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                    },
+                    "mostPopular": {
+                        "type": "boolean",
+                        "description": "If marked on website as one of the popular choices"
+                        }
+                    }
+        },
+        "CancellationPenalty": {
+            "type": "object",
+                    "properties": {
+                        "from": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Date determined from which time stamp this penalty is applied. If the penalty is applied from the time of booking, this field must not be provided (only the field 'fee' will be provided in the Penalty object)"
+                        },
+                        "fee": {
+                            "type": "object",
+                            "properties": {
+                                "value": {
+                                    "type": "string"
+                                },
+                                "currency": {
+                                    "$ref": "#/domains/Generic/types/CurrencyCode"
+                                }
+                            }
+                        }
+                    }
+        },
+        "GuestData": {
+            "type": "object",
+            "pii": true,
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address used for contact.",
+                    "format": "email",
+                    "example": "client@example.com"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "phone"
+            ],
+            "additionalProperties": false
+        },
+        "roomOccupancy": {
+            "type": "array",
+            "description": "A list of rooms with guests occupancy",
+            "minItems": 1,
+            "pii": true,
+            "items": {
+                "$ref": "#/domains/HotelBookingBG/types/roomOccupants"
+            }
+        },
+        "roomOccupants": {
+            "type": "object",
+            "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
+            "pii": true,
+            "properties": {
+                "guestFirstName": {
+                    "type": "string",
+                    "description": "First name(s) or given name(s), as specified in ID.",
+                    "minLength": 1,
+                    "example": "Bob"
+                },
+                "guestLastName": {
+                    "type": "string",
+                    "description": "Last name or surname, as specified in ID.",
+                    "minLength": 1,
+                    "example": "Smith"
+                },
+                "occupancy": {
+                    "type": "object",
+                    "properties": {
+                        "adults": {
+                            "type": "integer"
+                        },
+                        "childAges": {
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 150,
+                                "exmaple": 10
+                            }
+                        }
+                    }
+                }
+            },
+            "required": [
+                "guestFirstName",
+                "guestLastName"
+            ],
+            "additionalProperties": false
+        },
+        "BookingConfirmation": {
+            "type": "object",
+            "description": "Information gathered on \"Booking success\" page.",
+            "properties": {
+                "bookingReference": {
+                    "type": "string",
+                    "description": "Booking reference grabbed from the page.",
+                    "example": "RL2XYZ"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message about successful booking.",
+                    "example": "Your booking was successful."
+                },
+                "price": {
+                    "$ref": "#/domains/Generic/types/Price",
+                    "description": "Price, if found on the successful booking page."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "bookingReference"
+            ]
+        },
+        "Payment": {
+            "type": "object",
+            "description": "Payment information, including card details and billing address.",
+            "pii": true,
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "currency": {
+                    "$ref": "#/domains/Generic/types/CurrencyCode"
+                },
+                "countryCode": {
+                    "type": "string"
+                },
+                "stateCode": {
+                    "type": "string"
+                },
+                "postcode": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "Card",
+                        "TokenizedCard"
+                    ]
+                },
+                "cardHolderName": {
+                    "type": "string"
+                },
+                "cardNumber": {
+                    "typeRef": "#/domains/Generic/types/PanToken"
+                },
+                "cvv": {
+                    "type": "string",
+                    "description": "Security code written on card, 3- or 4-digit number.",
+                    "example": "123",
+                    "minLength": 3,
+                    "maxLength": 4
+                },
+                "expiresMonth": {
+                    "type": "integer",
+                    "minLength": 2,
+                    "maxLength": 2,
+                    "description": "Card expiration month 2 digit"
+                },
+                "expiresYear": {
+                    "type": "integer",
+                    "minLength": 2,
+                    "maxLength": 2,
+                    "description": "Card expiration year 2 digit"
+                },
+                "callbackUrls": {
+                    "type": "object",
+                    "properties": {
+                        "successUrl": {
+                            "type": "string"
+                        },
+                        "failedUrl": {
+                            "type": "string"
+                        },
+                        "cancelUrl": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "fraudDetectionToken": {
+                    "type": "string"
+                },
+                "clientIp": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "countryCode",
+                "postcode",
+                "type",
+                "cardHolderName",
+                "cardNumber",
+                "cvv",
+                "expiresMonth",
+                "expiresYear"
+            ],
+            "additionalProperties": false
+        },
+        "Boolean": {
+            "type": "boolean"
+        },
+        "priceElement": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                            "enum": [
+                                "NetRate",
+                                "TaxesAndFees",
+                                "HotelFees"
+                            ]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "currency": {
+                    "$ref": "#/domains/Generic/types/CurrencyCode"
+                }
+            }
+        }
+    },
+    "errors": [
+        {
+            "code": "RoomNotAvailable",
+            "category": "client",
+            "description": "The website claims the room is not available for the selected dates."
+        },
+        {
+            "code": "MultipleRoomsRequired",
+            "category": "client",
+            "description": "Multiple rooms required for the requested amount of guests."
+        },
+        {
+            "code": "MinimumStayRequired",
+            "category": "client",
+            "description": "The minimum stay requirement is not met."
+        },
+        {
+            "code": "GuestDetailsInvalid",
+            "category": "client",
+            "description": "The guest details are invalid."
+        },
+        {
+            "code": "DuplicateBooking",
+            "category": "client",
+            "description": "The website claims that there is another booking with the same details"
+        }
+    ]
+}
