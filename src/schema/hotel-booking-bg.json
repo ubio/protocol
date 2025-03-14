@@ -15,10 +15,10 @@
             "typeRef": "#/domains/HotelBookingBG/types/Search"
         },
         "checkoutId": {
-            "type": "string"
+            "typeRef": "#/domains/HotelBookingBG/types/CheckoutId"
         },
         "jobId": {
-            "type": "string"
+            "typeRef": "#/domains/HotelBookingBG/types/JobId"
         },
         "options": {
             "typeRef": "#/domains/HotelBookingBG/types/Options",
@@ -33,11 +33,11 @@
             "inputMethod": "SelectMany"
         },
         "guestData": {
-            "typeRef": "#/domains/HotelBookingBG/types/guestData",
+            "typeRef": "#/domains/HotelBookingBG/types/GuestData",
             "description": "Personal details about the main guest."
         },
         "roomsOccupancies": {
-            "typeRef": "#/domains/HotelBookingBG/types/roomOccupancy"
+            "typeRef": "#/domains/HotelBookingBG/types/RoomOccupancy"
         },
         "payment": {
             "typeRef": "#/domains/HotelBookingBG/types/Payment"
@@ -61,6 +61,12 @@
                     "default": false
                 }
             }
+        },
+        "CheckoutId": {
+            "type": "string"
+        },
+        "JobId": {
+            "type": "string"
         },
         "ConfirmationCode": {
             "type": "string",
@@ -316,16 +322,16 @@
             ],
             "additionalProperties": false
         },
-        "roomOccupancy": {
+        "RoomOccupancy": {
             "type": "array",
             "description": "A list of rooms with guests occupancy",
             "minItems": 1,
             "pii": true,
             "items": {
-                "$ref": "#/domains/HotelBookingBG/types/roomOccupants"
+                "$ref": "#/domains/HotelBookingBG/types/RoomOccupants"
             }
         },
-        "roomOccupants": {
+        "RoomOccupants": {
             "type": "object",
             "description": "Basic information about person's identity. This is a copy of Generic.Person, with title and document removed.",
             "pii": true,
