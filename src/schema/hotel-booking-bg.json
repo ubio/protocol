@@ -249,7 +249,7 @@
                         "priceElements": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/domains/Generic/types/priceElement"
+                                "$ref": "#/domains/Generic/types/PriceElement"
                             }
                         }
                     }
@@ -272,6 +272,28 @@
                         "description": "If marked on website as one of the popular choices"
                         }
                     }
+        },
+        "PriceElement": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                            "enum": [
+                                "NetRate",
+                                "TaxesAndFees",
+                                "HotelFees"
+                            ]
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "currency": {
+                    "$ref": "#/domains/Generic/types/CurrencyCode"
+                }
+            }
         },
         "CancellationPenalty": {
             "type": "object",
