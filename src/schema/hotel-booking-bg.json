@@ -249,7 +249,7 @@
                         "priceElements": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/domains/Generic/types/PriceElement"
+                                "$ref": "#/domains/HotelBookingBG/types/PriceElement"
                             }
                         }
                     }
