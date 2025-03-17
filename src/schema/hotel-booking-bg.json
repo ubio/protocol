@@ -390,7 +390,7 @@
             "type": "object",
             "properties": {
                 "adults": {
-                    "type": "integer"
+                    "type": "number"
                 },
                 "childAges": {
                     "type": "array",
@@ -544,13 +544,13 @@
                     "maxLength": 4
                 },
                 "expiresMonth": {
-                    "type": "integer",
+                    "type": "number",
                     "minLength": 2,
                     "maxLength": 2,
                     "description": "Card expiration month 2 digit"
                 },
                 "expiresYear": {
-                    "type": "integer",
+                    "type": "number",
                     "minLength": 2,
                     "maxLength": 2,
                     "description": "Card expiration year 2 digit"
