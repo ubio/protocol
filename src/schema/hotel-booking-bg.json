@@ -214,7 +214,7 @@
                     "type": "object",
                     "properties": {
                         "totalPrice": {
-                            "type": "string"
+                            "type": "number"
                         },
                         "currency": {
                             "$ref": "#/domains/Generic/types/CurrencyCode"
@@ -297,7 +297,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "number"
                 },
                 "currency": {
                     "$ref": "#/domains/Generic/types/CurrencyCode"
