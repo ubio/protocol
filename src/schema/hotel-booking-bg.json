@@ -229,8 +229,11 @@
                 }
             },
             "required": [
-                "roomName",
-                "rates"
+                "checkoutId",
+                "rateType",
+                "boardCode",
+                "cancellationPolicy",
+                "price"
             ],
             "additionalProperties": false
         },
@@ -303,24 +306,24 @@
         },
         "CancellationPenalty": {
             "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date determined from which time stamp this penalty is applied. If the penalty is applied from the time of booking, this field must not be provided (only the field 'fee' will be provided in the Penalty object)"
+                    },
+                "fee": {
+                    "type": "object",
                     "properties": {
-                        "from": {
-                            "type": "string",
-                            "format": "date",
-                            "description": "Date determined from which time stamp this penalty is applied. If the penalty is applied from the time of booking, this field must not be provided (only the field 'fee' will be provided in the Penalty object)"
-                        },
-                        "fee": {
-                            "type": "object",
-                            "properties": {
-                                "value": {
-                                    "type": "string"
-                                },
-                                "currency": {
-                                    "$ref": "#/domains/Generic/types/CurrencyCode"
-                                }
-                            }
+                        "value": {
+                            "type": "string"
+                            },
+                        "currency": {
+                            "$ref": "#/domains/Generic/types/CurrencyCode"
                         }
                     }
+                }
+            }
         },
         "GuestData": {
             "type": "object",
