@@ -2,8 +2,8 @@
     "description": "Allows automating hotel booking on individual suppliers and OTAs for Book & Go",
     "private": false,
     "successCode": {
-        "outputKey": "bookingConfirmation",
-        "valuePath": "/bookingReference"
+        "outputKey": "confirmationNumber",
+        "valuePath": "/confirmationNumber"
     },
     "inputs": {
         "url": {
