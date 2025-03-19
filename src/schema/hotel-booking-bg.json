@@ -512,7 +512,7 @@
             "pii": true,
             "properties": {
                 "value": {
-                    "type": "string"
+                    "type": "number"
                 },
                 "currency": {
                     "$ref": "#/domains/Generic/types/CurrencyCode"
