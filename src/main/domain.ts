@@ -1,8 +1,8 @@
-import { Protocol } from './protocol';
-
 import jsonPointer from 'jsonpointer';
-import { InputDef, OutputDef, TypeDef, Def } from './defs';
-import { ValidationResult } from './validator';
+
+import { Def, InputDef, OutputDef, TypeDef } from './defs.js';
+import { Protocol } from './protocol.js';
+import { ValidationResult } from './validator.js';
 
 export class Domain {
     spec: any;

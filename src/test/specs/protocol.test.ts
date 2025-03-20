@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import { protocol } from '../protocol';
 
 describe('Protocol', () => {

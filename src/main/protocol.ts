@@ -1,7 +1,8 @@
+import { Ajv } from 'ajv';
+
+import { Def } from './defs';
 import { Domain, ErrorDescriptor } from './domain';
 import { createValidator } from './validator';
-import { Def } from './defs';
-import { Ajv } from 'ajv';
 
 export class Protocol {
     domains: Domain[];

@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import { protocol } from '../protocol';
 
 // tslint:disable
@@ -16,7 +17,7 @@ import { protocol } from '../protocol';
  *   which indicates huge logical complexity.
  * - Helper functions implicitly return `undefined` if none of the branches match.
  *   This can't be translated to type-friendly code because either the function itself or all its
- *   call sites must be changed — which poses a risk of breaking the test itself
+ *   call sites must be changed — which poses a risk of breaking the test itself
  *   (and who wants to debug 18 ifs, anyone?)
  * - The code leans to the right and breaks conventional 120 line length.
  * - The helper functions are implemented as nested functions. Nested functions (closures)
@@ -32,7 +33,6 @@ import { protocol } from '../protocol';
  */
 
 describe('inputMethod', () => {
-
     it('should reference type definitions compatible with input method', () => {
         for (const domain of protocol.getDomains()) {
             for (const inputDef of domain.getInputs()) {

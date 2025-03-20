@@ -4,8 +4,8 @@ import BicycleInsurance from './bicycle-insurance.json';
 import BookingTRV from './booking-trv.json';
 import BroadbandSignup from './broadband-signup.json';
 import BroadbandSignupAU from './broadband-signup-au.json';
-import BroadbandSignupUS from './broadband-signup-us.json';
 import BroadbandSignupES from './broadband-signup-es.json';
+import BroadbandSignupUS from './broadband-signup-us.json';
 import Checkin from './checkin.json';
 import ClickoutTRV from './clickout-trv.json';
 import CoachBooking from './coach-booking.json';
@@ -18,8 +18,8 @@ import FlightBookingAccountSignup from './flight-booking-account-signup.json';
 import FlightBookingExtraction from './flight-booking-extraction.json';
 import FlightBookingManagement from './flight-booking-management.json';
 import FlightBookingRefund from './flight-booking-refund.json';
-import FlightBookingStatus from './flight-booking-status.json';
 import FlightBookingScraper from './flight-booking-scraper.json';
+import FlightBookingStatus from './flight-booking-status.json';
 import Generic from './generic.json';
 import HolidayBooking from './holiday-booking.json';
 import HotelBooking from './hotel-booking.json';
@@ -44,13 +44,13 @@ import ProductPurchase from './product-purchase.json';
 import PropertyBooking from './property-booking.json';
 import QRCodeExtraction from './qr-code-extraction.json';
 import Remittance from './remittance.json';
+import ReservationEdit from './reservation-edit.json';
 import ReservationList from './reservation-list.json';
 import ReservationLookup from './reservation-lookup.json';
-import ReservationEdit from './reservation-edit.json';
-import VacationRental from './vacation-rental.json';
 import TestHotelBooking from './test-hotel-booking.json';
 import TrainBooking from './train-booking.json';
 import TravelTicketRetrieval from './travel-ticket-retrieval.json';
+import VacationRental from './vacation-rental.json';
 
 export const schema = {
     $id: 'https://protocol.automationcloud.net/schema.json',

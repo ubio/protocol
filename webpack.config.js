@@ -2,6 +2,7 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const outputDir = path.resolve(process.cwd(), './docs');
+const publicDir = path.resolve(process.cwd(), './public');
 
 module.exports = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
@@ -35,6 +36,16 @@ module.exports = {
         new VueLoaderPlugin()
     ],
     devServer: {
-        contentBase: outputDir,
+        static: [
+            {
+                directory: outputDir,
+                publicPath: '/'
+            },
+            {
+                directory: publicDir,
+                publicPath: '/'
+            }
+        ],
+        hot: true
     }
 }

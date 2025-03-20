@@ -1,4 +1,5 @@
 import Ajv from 'ajv';
+
 import { Def } from './defs';
 
 export const DEFAULT_OPTIONS: Ajv.Options = {
