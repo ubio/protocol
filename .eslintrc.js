@@ -18,7 +18,6 @@ module.exports = {
     browser: true
   },
   rules: {
-    // Equivalentes a las reglas de TSLint
     '@typescript-eslint/explicit-member-accessibility': 'off', // equivalent to member-access: no-public
     '@typescript-eslint/no-empty': 'off', // equivalent to no-empty: false
     'quotes': ['error', 'single'], // equivalent to quotemark: single
