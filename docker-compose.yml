@@ -1,13 +1,13 @@
 version: '3.9'
 services:
     build:
-        image: node:12.14.0-alpine
+        image: node:22.14.0-alpine
         volumes:
             - .:/src
         working_dir: /src
         command: "sh -i -c 'npm ci && npm run build'"
     nginx:
-        image: nginx:1.15.3-alpine
+        image: nginx:1.27.4-alpine
         volumes:
             - ./public:/usr/share/nginx/html
         ports:
