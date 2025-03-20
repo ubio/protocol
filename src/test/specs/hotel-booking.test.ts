@@ -1,5 +1,7 @@
 import assert from 'assert';
+
 import { protocol } from '../protocol';
+
 const HotelBooking = protocol.getDomain('HotelBooking')!;
 
 describe('HotelBooking', () => {

@@ -1,0 +1,25 @@
+{
+    "extends": ["eslint-config-prettier"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": true
+    },
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "no-unused-expressions": "warn",
+        "no-case-declarations": "off",
+        "no-console": "warn",
+        "import/extensions": "off",
+        "import/newline-after-import": "off"
+    },
+    "ignorePatterns": [
+        "**/*.js",
+        "out/**",
+        "node_modules/**",
+        "site/**",
+        "public/**"
+    ]
+} 
