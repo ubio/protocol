@@ -526,6 +526,12 @@
                 "postcode": {
                     "type": "string"
                 },
+                "streetNumber": {
+                    "type": "string"
+                },
+                "streetName": {
+                    "type": "string"
+                },
                 "type": {
                     "type": "string",
                     "enum": [
@@ -538,6 +544,13 @@
                 },
                 "cardNumber": {
                     "typeRef": "#/domains/Generic/types/PanToken"
+                },
+                "cardType": {
+                    "type": "string",
+                    "enum": [
+                        "debit",
+                        "credit"
+                    ]
                 },
                 "cvv": {
                     "type": "string",
@@ -582,10 +595,13 @@
             "required": [
                 "countryCode",
                 "postcode",
+                "streetNumber",
+                "streetName",
                 "type",
                 "cardHolderName",
                 "cardNumber",
                 "cvv",
+                "cardType",
                 "expiresMonth",
                 "expiresYear"
             ],
