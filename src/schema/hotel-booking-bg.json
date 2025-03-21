@@ -26,12 +26,6 @@
             "initial": true,
             "description": "A set of options that define the automation's behaviour."
         },
-        "selectedRooms": {
-            "typeRef": "#/domains/HotelBookingBG/types/Rooms",
-            "description": "List of rooms to be booked in one go. Depending on the supplier, only one item may be allowed.",
-            "sourceOutputKey": "availableRooms",
-            "inputMethod": "SelectMany"
-        },
         "guestData": {
             "typeRef": "#/domains/HotelBookingBG/types/GuestData",
             "description": "Personal details about the main guest."
@@ -526,6 +520,12 @@
                 "postcode": {
                     "type": "string"
                 },
+                "streetNumber": {
+                    "type": "string"
+                },
+                "streetName": {
+                    "type": "string"
+                },
                 "type": {
                     "type": "string",
                     "enum": [
@@ -538,6 +538,13 @@
                 },
                 "cardNumber": {
                     "typeRef": "#/domains/Generic/types/PanToken"
+                },
+                "cardType": {
+                    "type": "string",
+                    "enum": [
+                        "debit",
+                        "credit"
+                    ]
                 },
                 "cvv": {
                     "type": "string",
@@ -582,10 +589,13 @@
             "required": [
                 "countryCode",
                 "postcode",
+                "streetNumber",
+                "streetName",
                 "type",
                 "cardHolderName",
                 "cardNumber",
                 "cvv",
+                "cardType",
                 "expiresMonth",
                 "expiresYear"
             ],
