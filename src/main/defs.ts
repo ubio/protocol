@@ -1,8 +1,9 @@
-import { Domain } from './domain';
-import { deepClone } from './util';
 import jsonPointer from 'jsonpointer';
-import { createExample } from './example';
-import { ValidationResult } from './validator';
+
+import { Domain } from './domain.js';
+import { createExample } from './example.js';
+import { deepClone } from './util.js';
+import { ValidationResult } from './validator.js';
 
 export class Def {
     spec: any;

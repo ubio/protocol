@@ -1,4 +1,4 @@
-import { Protocol } from './protocol';
+import { Protocol } from './protocol.js';
 
 export function createExample(protocol: Protocol, spec: any, visitedRefs: string[] = []): any {
     if (spec.example) {

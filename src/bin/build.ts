@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import { promises as fs } from 'fs';
+import glob from 'glob';
 import path from 'path';
 import { promisify } from 'util';
-import { schema } from '../schema';
-import glob from 'glob';
+
+import { schema } from '../schema/index.js';
 
 const globAsync = promisify(glob);
 
@@ -14,7 +15,6 @@ const filesToCopy = [
 ];
 
 main().catch(err => {
-    // tslint:disable-next-line no-console
     console.error(err);
     process.exit(1);
 });

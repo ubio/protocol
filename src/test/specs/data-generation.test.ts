@@ -1,8 +1,8 @@
 import Ajv from 'ajv';
+import assert from 'assert';
 
 import dataGeneration from '../../misc/data-generation.json';
 import meta from '../../misc/data-generation-meta.json';
-import assert from 'assert';
 import { protocol } from '../protocol';
 
 describe('Data Generation', () => {
@@ -12,7 +12,6 @@ describe('Data Generation', () => {
         const validate = ajv.compile(meta);
         const valid = validate(dataGeneration);
         if (validate.errors) {
-            // tslint:disable-next-line no-console
             console.log('Validation errors:', validate.errors);
         }
         assert.ok(valid);
