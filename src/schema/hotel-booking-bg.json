@@ -35,6 +35,9 @@
         },
         "payment": {
             "typeRef": "#/domains/HotelBookingBG/types/Payment"
+        },
+        "panToken": {
+            "typeRef": "#/domains/Generic/types/PanToken"
         }
     },
     "outputs": {
@@ -536,9 +539,6 @@
                 "cardHolderName": {
                     "type": "string"
                 },
-                "cardNumber": {
-                    "typeRef": "#/domains/Generic/types/PanToken"
-                },
                 "cardType": {
                     "type": "string",
                     "enum": [
@@ -593,7 +593,6 @@
                 "streetName",
                 "type",
                 "cardHolderName",
-                "cardNumber",
                 "cvv",
                 "cardType",
                 "expiresMonth",
