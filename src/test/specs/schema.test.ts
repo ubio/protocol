@@ -11,7 +11,6 @@ describe('Schema', () => {
         const validate = ajv.compile(meta);
         const valid = validate(protocol.schema);
         if (validate.errors) {
-            // eslint-disable-next-line no-console
             console.log('Validation errors:', validate.errors);
         }
         assert.ok(valid);

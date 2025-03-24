@@ -97,7 +97,7 @@ export class ProtocolProvider {
         const text = await res.text();
         try {
             return JSON.parse(text);
-        } catch (err) {
+        } catch {
             throw new RemoteProtocolFetchError('JSON parse failed', { url, tag, text });
         }
     }

@@ -12,7 +12,6 @@ describe('Data Generation', () => {
         const validate = ajv.compile(meta);
         const valid = validate(dataGeneration);
         if (validate.errors) {
-            // eslint-disable-next-line no-console
             console.log('Validation errors:', validate.errors);
         }
         assert.ok(valid);
