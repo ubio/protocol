@@ -555,15 +555,16 @@
                 },
                 "expiresMonth": {
                     "type": "number",
-                    "minLength": 2,
+                    "minLength": 1,
                     "maxLength": 2,
-                    "description": "Card expiration month 2 digit"
+                    "description": "Card expiration month between 1 and 12"
                 },
                 "expiresYear": {
                     "type": "number",
-                    "minLength": 2,
-                    "maxLength": 2,
-                    "description": "Card expiration year 2 digit"
+                    "pattern": "^20[0-9]{2}$"
+                    "minLength": 4,
+                    "maxLength": 4,
+                    "description": "Card expiration year 4 digit"
                 },
                 "callbackUrls": {
                     "type": "object",
