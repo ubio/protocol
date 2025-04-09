@@ -496,10 +496,6 @@
             "additionalProperties": false,
             "required": [
                 "confirmationNumber",
-                "guest",
-                "checkIn",
-                "checkOut",
-                "cancellationPolicy",
                 "price"
             ]
         },
