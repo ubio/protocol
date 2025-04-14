@@ -557,7 +557,7 @@
                 },
                 "expiresYear": {
                     "type": "number",
-                    "pattern": "^20[0-9]{2}$"
+                    "pattern": "^20[0-9]{2}$",
                     "minLength": 4,
                     "maxLength": 4,
                     "description": "Card expiration year 4 digit"
