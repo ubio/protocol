@@ -438,10 +438,10 @@
                 "postcode": {
                     "type": "string"
                 },
-                "streetNumber": {
+                "houseNumber": {
                     "type": "string"
                 },
-                "streetName": {
+                "street": {
                     "type": "string"
                 },
                 "type": {
@@ -505,8 +505,8 @@
             "required": [
                 "countryCode",
                 "postcode",
-                "streetNumber",
-                "streetName",
+                "houseNumber",
+                "street",
                 "type",
                 "cardHolderName",
                 "cvv",
