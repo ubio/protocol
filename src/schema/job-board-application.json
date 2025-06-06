@@ -485,6 +485,9 @@
                 },
                 "mandatory": {
                     "type": "boolean"
+                },
+                "ignoreCache": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -510,6 +513,9 @@
                     "type": "string"
                 },
                 "mandatory": {
+                    "type": "boolean"
+                },
+                "ignoreCache": {
                     "type": "boolean"
                 }
             },
@@ -583,6 +589,9 @@
                     }
                 },
                 "mandatory": {
+                    "type": "boolean"
+                },
+                "ignoreCache": {
                     "type": "boolean"
                 }
             },
@@ -658,6 +667,9 @@
                 },
                 "mandatory": {
                     "type": "boolean"
+                },
+                "ignoreCache": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -685,6 +697,9 @@
                 },
                 "mandatory": {
                     "type": "boolean"
+                },
+                "ignoreCache": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -710,6 +725,9 @@
                     "type": "string"
                 },
                 "mandatory": {
+                    "type": "boolean"
+                },
+                "ignoreCache": {
                     "type": "boolean"
                 }
             },
@@ -772,6 +790,9 @@
                         ]
                     }
 
+                },
+                "ignoreCache": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -833,6 +854,9 @@
                         ]
                     }
 
+                },
+                "ignoreCache": {
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -861,6 +885,9 @@
                     "type": "string"
                 },
                 "mandatory" : {
+                    "type": "boolean"
+                },
+                "ignoreCache": {
                     "type": "boolean"
                 }
             },
@@ -895,6 +922,9 @@
                     }
                 },
                 "mandatory": {
+                    "type": "boolean"
+                },
+                "ignoreCache": {
                     "type": "boolean"
                 }
             },
