@@ -1014,6 +1014,12 @@
             "code": "AlreadyApplied",
             "category": "client",
             "description": "An application has already been sent"
+        },
+        {
+            "code": "InternalError",
+            "category": "server",
+            "description": "Something went wrong on our side"
         }
+
     ]
 }
