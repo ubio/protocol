@@ -1014,6 +1014,11 @@
             "code": "AlreadyApplied",
             "category": "client",
             "description": "An application has already been sent"
+        },
+        {
+            "code": "AtsLookupError",
+            "category": "client",
+            "description": "An ATS Lookup job failed to resolve the provided URL"
         }
     ]
 }
