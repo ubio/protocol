@@ -976,14 +976,39 @@
     },
     "errors": [
         {
-            "code": "FileTypeNotSupported",
+            "code": "AlreadyApplied",
             "category": "client",
-            "description": "File type not supported"
+            "description": "An application has already been sent"
         },
         {
             "code": "ApplicantDetailsInvalid",
             "category": "client",
             "description": "Applicant details invalid"
+        },
+        {
+            "code": "ApplicationFailed",
+            "category": "client",
+            "description": "Application process failed"
+        },
+        {
+            "code": "AtsLookupError",
+            "category": "client",
+            "description": "An ATS Lookup failed to resolve the provided URL"
+        },
+        {
+            "code": "FileFailedToUpload",
+            "category": "website",
+            "description": "File could not be uploaded"
+        },
+        {
+            "code": "FileTypeNotSupported",
+            "category": "client",
+            "description": "File type not supported"
+        },
+        {
+            "code": "InternalError",
+            "category": "server",
+            "description": "Something went wrong on our side"
         },
         {
             "code": "JobExpired",
@@ -999,26 +1024,6 @@
             "code": "MandatoryQuestionsNotAnswered",
             "category": "client",
             "description": "Mandatory questions must be answered"
-        },
-        {
-            "code": "FileFailedToUpload",
-            "category": "website",
-            "description": "File could not be uploaded"
-        },
-        {
-            "code": "ApplicationFailed",
-            "category": "client",
-            "description": "Application process failed"
-        },
-        {
-            "code": "AlreadyApplied",
-            "category": "client",
-            "description": "An application has already been sent"
-        },
-        {
-            "code": "AtsLookupError",
-            "category": "client",
-            "description": "An ATS Lookup job failed to resolve the provided URL"
         }
     ]
 }
