@@ -1019,7 +1019,11 @@
             "code": "InternalError",
             "category": "server",
             "description": "Something went wrong on our side"
+        },
+        {
+            "code": "AtsLookupError",
+            "category": "client",
+            "description": "An ATS Lookup failed to resolve the provided URL"
         }
-
     ]
 }

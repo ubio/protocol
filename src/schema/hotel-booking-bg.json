@@ -103,7 +103,7 @@
                 "checkOutDate",
                 "rooms"
             ],
-            "additionalProperties": false
+            "additionalProperties": true
         },
         "SearchRoom": {
             "type": "object",
@@ -503,18 +503,13 @@
                 }
             },
             "required": [
-                "countryCode",
-                "postcode",
-                "houseNumber",
-                "street",
-                "type",
+                "cardType",
                 "cardHolderName",
                 "cvv",
-                "cardType",
                 "expiresMonth",
                 "expiresYear"
             ],
-            "additionalProperties": false
+            "additionalProperties": true
         },
         "Boolean": {
             "type": "boolean"
