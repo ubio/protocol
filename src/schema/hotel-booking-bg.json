@@ -28,7 +28,12 @@
         },
         "guestData": {
             "typeRef": "#/domains/HotelBookingBG/types/GuestData",
-            "description": "Personal details about the main guest."
+            "description": "Personal details about the main guest.",
+            "canonical": [
+                "/firstName",
+                "/lastName",
+                "/email"
+            ]
         },
         "roomsOccupancies": {
             "typeRef": "#/domains/HotelBookingBG/types/RoomOccupancy"
