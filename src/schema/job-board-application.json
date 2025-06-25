@@ -1006,6 +1006,26 @@
             "description": "File type not supported"
         },
         {
+            "code": "InputIncomplete",
+            "category": "server",
+            "description": "Mandatory questions must be answered (internal issue)"
+        },
+        {
+            "code": "InputInvalid",
+            "category": "server",
+            "description": "Internal input validation issue"
+        },
+        {
+            "code": "InputRejected",
+            "category": "server",
+            "description": "Replacement for rejected input was not provided within 15 minutes (internal issue)"
+        },
+        {
+            "code": "InputTimeout",
+            "category": "server",
+            "description": "Internal input timeout issue"
+        },
+        {
             "code": "InternalError",
             "category": "server",
             "description": "Something went wrong on our side"
