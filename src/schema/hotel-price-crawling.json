@@ -13,6 +13,10 @@
         },
         "searches": {
             "typeRef": "#/domains/HotelPriceCrawling/types/Searches"
+        },
+        "hotelierUrl": {
+            "typeRef": "#/domains/Generic/types/URL",
+            "description": "Hotelier URL"
         }
     },
     "outputs": {
