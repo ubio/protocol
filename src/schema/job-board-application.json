@@ -25,16 +25,13 @@
             "typeRef": "#/domains/JobBoardApplication/types/Submit"
         },
         "jobPostId": {
-            "typeRef": "#/domains/JobBoardApplication/types/JobPostID",
-            "description": "The ID of the job post to apply for."
+            "typeRef": "#/domains/JobBoardApplication/types/JobPostId"
         },
         "jobid": {
-            "typRef": "#/domains/JobBoardApplication/types/jobid",
-            "description": "The ID of the job post to apply for."
+            "typeRef": "#/domains/JobBoardApplication/types/Jobid"
         },
         "applicationId": {
-            "typeRef": "#/domains/JobBoardApplication/types/applicationId",
-            "description": "The ID of the application."
+            "typeRef": "#/domains/JobBoardApplication/types/ApplicationId"
         },
         "selectedDynamicQuestions": {
             "typeRef": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions",
@@ -129,17 +126,20 @@
             ],
             "additionalProperties": false
         },
-        "JobPostID": {
+        "JobPostId": {
             "type": "string",
-            "description": "The ID of the job post to apply for."
+            "description": "The ID of the job post to apply for.",
+            "additionalProperties": false
         },
-        "jobid": {
+        "Jobid": {
             "type": "string",
-            "description": "The ID of the job post to apply for."
+            "description": "The ID of the job post to apply for.",
+            "additionalProperties": false
         },
-        "applicationId": {
+        "ApplicationId": {
             "type": "string",
-            "description": "The ID of the application."
+            "description": "The ID of the application.",
+            "additionalProperties": false
         },
         "Submit": {
             "type": "boolean",
