@@ -24,6 +24,18 @@
         "submit": {
             "typeRef": "#/domains/JobBoardApplication/types/Submit"
         },
+        "jobPostId": {
+            "typeRef": "#/domains/JobBoardApplication/types/JobPostID",
+            "description": "The ID of the job post to apply for."
+        },
+        "jobid": {
+            "typRef": "#/domains/JobBoardApplication/types/jobid",
+            "description": "The ID of the job post to apply for."
+        },
+        "applicationId": {
+            "typeRef": "#/domains/JobBoardApplication/types/applicationId",
+            "description": "The ID of the application."
+        },
         "selectedDynamicQuestions": {
             "typeRef": "#/domains/JobBoardApplication/types/SelectedDynamicQuestions",
             "dynamic": true
@@ -116,6 +128,18 @@
                 "cv"
             ],
             "additionalProperties": false
+        },
+        "JobPostID": {
+            "type": "string",
+            "description": "The ID of the job post to apply for."
+        },
+        "jobid": {
+            "type": "string",
+            "description": "The ID of the job post to apply for."
+        },
+        "applicationId": {
+            "type": "string",
+            "description": "The ID of the application."
         },
         "Submit": {
             "type": "boolean",
@@ -963,6 +987,15 @@
                 },
                 "clientName": {
                     "type": "string"
+                },
+                "employer": {
+                    "type": "string"
+                },
+                "jobTitle": {
+                    "type": "string"
+                },
+                "country": {
+                    "$ref": "#/domains/Generic/types/CountryCode"
                 }
             },
             "required": [
