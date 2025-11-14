@@ -122,8 +122,22 @@
             "additionalProperties": false
         },
         "ResolvedUrl": {
-            "type": "string",
+            "type": "object",
             "description": "",
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": ""
+                },
+                "url": {
+                    "type": "string",
+                    "description": ""
+                }
+            },
+            "required": [
+                "domain",
+                "url"
+            ],
             "additionalProperties": false
         },
         "TriggerProxyEmailFallback": {
