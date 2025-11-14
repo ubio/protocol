@@ -51,6 +51,15 @@
         }
     },
     "outputs": {
+        "resolvedUrl": {
+            "typeRef": "#/domains/JobBoardApplication/types/ResolvedUrl"
+        },
+        "triggerProxyEmailFallback": {
+            "typeRef": "#/domains/JobBoardApplication/types/TriggerProxyEmailFallback"
+        },
+        "serviceData": {
+            "typeRef": "#/domains/JobBoardApplication/types/ServiceData"
+        },
         "cookies": {
             "typeRef": "#/domains/Generic/types/Cookies"
         },
@@ -110,6 +119,40 @@
                     ]
                 }
             },
+            "additionalProperties": false
+        },
+        "ResolvedUrl": {
+            "type": "string",
+            "description": "",
+            "additionalProperties": false
+        },
+        "TriggerProxyEmailFallback": {
+            "type": "boolean",
+            "description": "",
+            "additionalProperties": false
+        },
+        "ServiceData": {
+            "type": "object",
+            "description": "The service data.",
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": ""
+                },
+                "serviceId": {
+                    "type": "string",
+                    "description": ""
+                },
+                "url": {
+                    "type": "string",
+                    "description": ""
+                }
+            },
+            "required": [
+                "domain",
+                "serviceId",
+                "url"
+            ],
             "additionalProperties": false
         },
         "Files": {
