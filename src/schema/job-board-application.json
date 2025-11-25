@@ -142,7 +142,7 @@
         },
         "TriggerProxyEmail": {
             "type": "string",
-            "description": "",
+            "description": "The email address used for proxy email.",
             "additionalProperties": false
         },
         "ServiceData": {
