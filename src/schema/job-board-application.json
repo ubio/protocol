@@ -54,8 +54,8 @@
         "resolvedUrl": {
             "typeRef": "#/domains/JobBoardApplication/types/ResolvedUrl"
         },
-        "triggerProxyEmailFallback": {
-            "typeRef": "#/domains/JobBoardApplication/types/TriggerProxyEmailFallback"
+        "triggerProxyEmail": {
+            "typeRef": "#/domains/JobBoardApplication/types/TriggerProxyEmail"
         },
         "serviceData": {
             "typeRef": "#/domains/JobBoardApplication/types/ServiceData"
@@ -140,9 +140,9 @@
             ],
             "additionalProperties": false
         },
-        "TriggerProxyEmailFallback": {
-            "type": "boolean",
-            "description": "",
+        "TriggerProxyEmail": {
+            "type": "string",
+            "description": "The email address used for proxy email.",
             "additionalProperties": false
         },
         "ServiceData": {
@@ -778,6 +778,9 @@
                 },
                 "mandatory": {
                     "type": "boolean"
+                },
+                "value": {
+                    "type": "string"
                 },
                 "ignoreCache": {
                     "type": "boolean"
