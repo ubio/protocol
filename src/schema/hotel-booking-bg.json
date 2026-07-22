@@ -3,7 +3,7 @@
     "private": false,
     "successCode": {
         "outputKey": "bookingConfirmation",
-        "valuePath": "/confirmationNumber"
+        "valuePath": "/formattedPriceAndPNR"
     },
     "inputs": {
         "url": {
@@ -258,7 +258,7 @@
                         "NonRefundable",
                         "FullyRefundable",
                         "PartiallyRefundable"
-                        ]
+                    ]
                 },
                 "detailedDescription": {
                     "type": "string",
@@ -270,30 +270,30 @@
                         "$ref": "#/domains/HotelBookingBG/types/CancellationPenalty"
                     }
                 }
-            }       
+            }
         },
         "Amenity": {
             "type": "object",
             "properties": {
                 "name": {
                     "type": "string"
-                    },
-                    "mostPopular": {
-                        "type": "boolean",
-                        "description": "If marked on website as one of the popular choices"
-                        }
-                    }
+                },
+                "mostPopular": {
+                    "type": "boolean",
+                    "description": "If marked on website as one of the popular choices"
+                }
+            }
         },
         "PriceElement": {
             "type": "object",
             "properties": {
                 "type": {
                     "type": "string",
-                            "enum": [
-                                "NetRate",
-                                "TaxesAndFees",
-                                "HotelFees"
-                            ]
+                    "enum": [
+                        "NetRate",
+                        "TaxesAndFees",
+                        "HotelFees"
+                    ]
                 },
                 "name": {
                     "type": "string"
@@ -313,13 +313,13 @@
                     "type": "string",
                     "format": "date",
                     "description": "Date determined from which time stamp this penalty is applied. If the penalty is applied from the time of booking, this field must not be provided (only the field 'fee' will be provided in the Penalty object)"
-                    },
+                },
                 "fee": {
                     "type": "object",
                     "properties": {
                         "value": {
                             "type": "number"
-                            },
+                        },
                         "currency": {
                             "$ref": "#/domains/Generic/types/CurrencyCode"
                         }
@@ -416,6 +416,11 @@
                     "type": "string",
                     "description": "Booking reference grabbed from the page.",
                     "example": "RL2XYZ"
+                },
+                "formattedPriceAndPNR": {
+                    "type": "string",
+                    "description": "Formatted price and PNR grabbed from the page.",
+                    "example": "1866566 - usd 1151.57"
                 }
             },
             "additionalProperties": false,
