@@ -123,6 +123,22 @@ describe('Domain', () => {
             assert.ok(valid);
         });
 
+        it('should allow an optional ubio fee', async () => {
+            const { valid } = await Internal.validateOutput('finalPrice', {
+                price: { value: 12300, currencyCode: 'gbp' },
+                ubioFee: { value: 500, currencyCode: 'gbp' }
+            });
+            assert.ok(valid);
+        });
+
+        it('should reject a ubio fee that is not a price', async () => {
+            const { valid } = await Internal.validateOutput('finalPrice', {
+                price: { value: 12300, currencyCode: 'gbp' },
+                ubioFee: { amount: 500 }
+            });
+            assert.equal(valid, false);
+        });
+
         it('should report errors for invalid data', async () => {
             const { valid, errors } = await Internal.validateOutput('finalPrice', { value: 0 });
             assert.equal(valid, false);
